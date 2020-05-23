@@ -19,7 +19,7 @@ class CadastroFuncionarioTest extends TestCase
             'ponto_referencia' => 'Favela',
         ]);
 
-        $end_id = Endereco::first()
+        $end_id = Endereco::first();
 
         $resposta = $this->post('/funcionarios', [
             'nome' => 'Carlos Antônio',
@@ -54,7 +54,7 @@ class CadastroFuncionarioTest extends TestCase
             'ponto_referencia' => 'Favela',
         ]);
 
-        $end_id = Endereco::first()
+        $end_id = Endereco::first();
 
         $resposta = $this->post('/funcionarios', [
             'nome' => '',
@@ -86,7 +86,7 @@ class CadastroFuncionarioTest extends TestCase
         ]);
 
 
-        $end_id = Endereco::first()
+        $end_id = Endereco::first();
 
         $resposta = $this->post('/funcionarios', [
             'nome' => 'Carlos Antônio',
@@ -117,7 +117,7 @@ class CadastroFuncionarioTest extends TestCase
             'ponto_referencia' => 'Favela',
         ]);
 
-        $end_id = Endereco::first()
+        $end_id = Endereco::first();
 
         $resposta = $this->post('/funcionarios', [
             'nome' => 'Carlos Antônio',
@@ -150,7 +150,7 @@ class CadastroFuncionarioTest extends TestCase
         ]);
 
 
-        $end_id = Endereco::first()
+        $end_id = Endereco::first();
 
         $resposta = $this->post('/funcionarios', [
             'nome' => 'Carlos Antônio',
@@ -170,41 +170,39 @@ class CadastroFuncionarioTest extends TestCase
         $resposta->assertSessionHasErrors('status');
     }
 
-}
+    /** @test **/
+    public function statusPrecisaSerValido(){
 
-/** @test **/
-public function statusPrecisaSerValido(){
+        $this->withoutExceptionHandling();
 
-    $this->withoutExceptionHandling();
-
-    $endereco = factory(Endereco::class)->create([
-        'estado' => 'MG',
-        'cidade' => 'Joao Pinheiro',
-        'ponto_referencia' => 'Favela',
-    ]);
+        $endereco = factory(Endereco::class)->create([
+            'estado' => 'MG',
+            'cidade' => 'Joao Pinheiro',
+            'ponto_referencia' => 'Favela',
+        ]);
 
 
-    $end_id = Endereco::first()
+        $end_id = Endereco::first();
 
-    $resposta = $this->post('/funcionarios', [
-        'nome' => 'Carlos Antônio',
-        'cpf' => '12345678910',
-        'rg' => '12345678',
-        'status' => 'Status-Invalido.png',
-        'login' => '12345678910',
-        'senha' => '123',
-        'profissao' => 'Psicologo',
-        'id_endereco' => $end_id->id,
-        'telefone_1' => '123456789',
-        'email' => 'carlosaajunior.jp@gmail.com',
-        'estado_civil' => 'Solteiro',
-        'nacionalidade' => 'Brasileiro',
-    ]);
+        $resposta = $this->post('/funcionarios', [
+            'nome' => 'Carlos Antônio',
+            'cpf' => '12345678910',
+            'rg' => '12345678',
+            'status' => 'Status-Invalido.png',
+            'login' => '12345678910',
+            'senha' => '123',
+            'profissao' => 'Psicologo',
+            'id_endereco' => $end_id->id,
+            'telefone_1' => '123456789',
+            'email' => 'carlosaajunior.jp@gmail.com',
+            'estado_civil' => 'Solteiro',
+            'nacionalidade' => 'Brasileiro',
+        ]);
 
-    $resposta->assertSessionHasErrors('status');
-}
+        $resposta->assertSessionHasErrors('status');
+    }
 
-}
+
 
     /** @test **/
     public function loginNaoPodeFicarEmBranco(){
@@ -218,7 +216,7 @@ public function statusPrecisaSerValido(){
         ]);
 
 
-        $end_id = Endereco::first()
+        $end_id = Endereco::first();
 
         $resposta = $this->post('/funcionarios', [
             'nome' => 'Carlos Antônio',
@@ -251,7 +249,7 @@ public function statusPrecisaSerValido(){
         ]);
 
 
-        $end_id = Endereco::first()
+        $end_id = Endereco::first();
 
         $resposta = $this->post('/funcionarios', [
             'nome' => 'Carlos Antônio',
@@ -283,7 +281,7 @@ public function statusPrecisaSerValido(){
         ]);
 
 
-        $end_id = Endereco::first()
+        $end_id = Endereco::first();
 
         $resposta = $this->post('/funcionarios', [
             'nome' => 'Carlos Antônio',
@@ -309,7 +307,7 @@ public function statusPrecisaSerValido(){
         $this->withoutExceptionHandling();
 
 
-        $end_id = Endereco::first()
+        $end_id = Endereco::first();
 
         $resposta = $this->post('/funcionarios', [
             'nome' => 'Carlos Antônio',
@@ -342,7 +340,7 @@ public function statusPrecisaSerValido(){
         ]);
 
 
-        $end_id = Endereco::first()
+        $end_id = Endereco::first();
 
         $resposta = $this->post('/funcionarios', [
             'nome' => 'Carlos Antônio',
@@ -374,7 +372,7 @@ public function statusPrecisaSerValido(){
         ]);
 
 
-        $end_id = Endereco::first()
+        $end_id = Endereco::first();
 
         $resposta = $this->post('/funcionarios', [
             'nome' => 'Carlos Antônio',
@@ -406,7 +404,7 @@ public function statusPrecisaSerValido(){
         ]);
 
 
-        $end_id = Endereco::first()
+        $end_id = Endereco::first();
 
         $resposta = $this->post('/funcionarios', [
             'nome' => 'Carlos Antônio',
@@ -438,7 +436,7 @@ public function statusPrecisaSerValido(){
         ]);
 
 
-        $end_id = Endereco::first()
+        $end_id = Endereco::first();
 
         $resposta = $this->post('/funcionarios', [
             'nome' => 'Carlos Antônio',
@@ -470,7 +468,7 @@ public function statusPrecisaSerValido(){
         ]);
 
 
-        $end_id = Endereco::first()
+        $end_id = Endereco::first();
 
         $resposta = $this->post('/funcionarios', [
             'nome' => 'Carlos Antônio',
@@ -489,3 +487,4 @@ public function statusPrecisaSerValido(){
 
         $resposta->assertSessionHasErrors('estado_civil');
     }
+}
