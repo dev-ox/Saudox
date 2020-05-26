@@ -14,3 +14,17 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
+Route::prefix('anamnese')->group(function () {
+    require 'anamnese/anamnese_geral.php';
+});
+
+Route::prefix('avaliacao')->group(function () {
+    require 'avaliacao/avaliacao_geral.php';
+});
+
+Route::prefix('evolucao')->group(function () {
+    require 'evolucao/evolucao_geral.php';
+});
