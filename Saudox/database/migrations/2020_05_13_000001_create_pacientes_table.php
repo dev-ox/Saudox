@@ -15,10 +15,10 @@ class CreatePacientesTable extends Migration
     {
         Schema::create('pacientes', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
 
             $table->string('login')->unique();
             $table->string('senha');
+
             $table->string('nome_paciente');
             $table->string('cpf')->unique();
             $table->boolean('sexo');
@@ -44,6 +44,10 @@ class CreatePacientesTable extends Migration
             $table->boolean('tipo_filho_biologico_adotivo');
             $table->boolean('crianca_sabe_se_adotivo')->nullable(true);
             $table->text('reacao_quando_descobriu_se_adotivo')->nullable(true);
+
+            $table->timestamp('email_verified_at')->nullable();
+            $table->rememberToken();
+            $table->timestamps();
 
         });
     }
