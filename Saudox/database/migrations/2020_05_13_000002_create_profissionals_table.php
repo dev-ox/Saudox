@@ -22,7 +22,7 @@ class CreateProfissionalsTable extends Migration
             $table->string('rg')->unique();
             $table->string('status');
             $table->string('login')->unique();
-            $table->string('senha');
+            $table->string('password');
             $table->string('profissao');
             $table->unsignedInteger('numero_conselho')->nullable(true);
             $table->bigInteger('id_endereco')->unsigned();
