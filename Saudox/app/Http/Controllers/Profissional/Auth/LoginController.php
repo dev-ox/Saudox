@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 // Veio do Login do Auth padrão
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth; // Evitar erro de \Auth\Auth
 
 class LoginController extends Controller {
 
@@ -69,7 +70,7 @@ class LoginController extends Controller {
 	// Override da função username() em:
 	// Illuminate\Foundation\Auth\AuthenticatesUsers.php
 	// Para fazer login com outra coisa sem ser o email
-	public function username()) {
+	public function username() {
 		return 'login';
 	}
 

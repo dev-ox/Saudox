@@ -54,7 +54,7 @@ class LoginController extends Controller
     // Override da função username() em:
     // Illuminate\Foundation\Auth\AuthenticatesUsers.php
     // Para fazer login com outra coisa sem ser o email
-    public function username()) {
+    public function username() {
         return 'login';
     }
 

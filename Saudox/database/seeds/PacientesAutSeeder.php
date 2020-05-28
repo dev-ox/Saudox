@@ -15,8 +15,8 @@ class PacientesAutSeeder extends Seeder
         $qtd = 10;
         for($i = 0; $i < $qtd; $i++){
           DB::table('pacientes')->insert([
-            'login' => Str::random(8),
-            'senha' => Hash::make(Str::random(8)),
+            'login' => "PacienteLogin" . rand(1, 10000),
+            'password' => Hash::make("123123123"),
             'nome_paciente' => Str::random(10),
             'cpf' => (string)rand(10000000000,99999999999),
             'sexo' => rand(0,1) >= 0.5,

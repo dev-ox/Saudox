@@ -17,7 +17,7 @@ class CreateProfissionalsTable extends Migration
             $table->bigIncrements('id');
 
             $table->string('login')->unique();
-            $table->string('senha');
+            $table->string('password');
 
             $table->string('nome');
             $table->string('cpf')->unique();
