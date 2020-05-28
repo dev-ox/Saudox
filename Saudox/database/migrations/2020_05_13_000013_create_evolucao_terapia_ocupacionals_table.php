@@ -19,7 +19,7 @@ class CreateEvolucaoTerapiaOcupacionalsTable extends Migration
 
             $table->bigInteger('id_paciente')->unsigned();
             $table->bigInteger('id_profissional')->unsigned();
-            $table->bigInteger('id_evolucao_anterior')->unsigned();
+            $table->bigInteger('id_evolucao_anterior')->unsigned()->nullable(true);
             $table->foreign('id_paciente')->references('id')->on('pacientes');
             $table->foreign('id_profissional')->references('id')->on('profissionals');
             $table->foreign('id_evolucao_anterior')->references('id')->on('evolucao_terapia_ocupacionals')->nullable(true);

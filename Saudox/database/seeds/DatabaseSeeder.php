@@ -16,6 +16,19 @@ class DatabaseSeeder extends Seeder
         ProfissionaisAutSeeds::class,
         PacientesAutSeeder::class,
         AvaliacaoJudosAutSeeds::class,
+        AvaliacaoFonoaudiologiasAutSeeds::class,
+        AnamneseTerapiaOcupacionalsAutSeeds::class,
+        AvaliacaoTerapiaOcupacionalsAutSeeds::class,
+        ArquivosAvaliacaosAutSeeds::class,
+        ConveniosAutSeeds::class,
+        AgendamentosAutSeeds::class,
+        AnamneseFonoaudiologiasAutSeeds::class,
+        AvaliacaoFonoaudiologiaQuestionariosAutSeeds::class,
+        EvolucaoPsicologicasAutSeeds::class,
+        EvolucaoTerapiaOcupacionalsAutSeeds::class,
+        EvolucaoTerapiaOcupacionalsAutSeeds::class,
+        EvolucaoFonoaudiologiaAutSeeds::class,
+        AnamnesePsicopedaNeuroPsicomotosAutSeeds::class,
       ]);
     }
 }

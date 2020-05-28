@@ -11,12 +11,13 @@ class AvaliacaoJudosAutSeeds extends Seeder
      */
     public function run()
     {
+        include('database/seeds/SeedsConfig.php');
+
         //Gerando avaliacao de judo automaticamente
-        $qtd = 10;
-        for($i = 0; $i < $qtd; $i++){
+        for($i = 0; $i < $qtd_avaliacao_judo; $i++){
           DB::table('avaliacao__judos')->insert([
-            'id_paciente' => rand(1,10), // MUDAR RANGE A DEPENDER DA QUANTIDADE DE PACIENTES GERADOS
-            'id_profissional' => rand(1,10), // MUDAR RANGE A DEPENDER DA QUANTIDADE DE PROFISSIONAIS GERADOS
+            'id_paciente' => rand(1,$qtd_pacientes),
+            'id_profissional' => rand(1,$qtd_profissionals),
             'diagnostico' => Str::random(100),
             'relacao_com_as_pessoas_judo' => Str::random(15),
             'resposta_emocional' => Str::random(15),

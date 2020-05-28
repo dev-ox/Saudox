@@ -19,7 +19,7 @@ class CreateArquivosAvaliacaosTable extends Migration
 
             $table->string('tipo_da_avaliacao');
             $table->unsignedInteger('id_da_avaliacao');
-            $table->binary('arquivo');
+            $table->longText('arquivo');
 
         });
     }
