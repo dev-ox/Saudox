@@ -14,8 +14,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
-        'passwords' => 'users',
+        'guard' => 'paciente',
+        'passwords' => 'paciente',
     ],
 
     /*
@@ -36,9 +36,20 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        // Comentando Porque o default é paciente
+        // 'web' => [
+        //     'driver' => 'session',
+        //     'provider' => 'users',
+        // ],
+
+        'paciente' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'pacientes',
+        ],
+
+        'profissional' => [
+            'driver' => 'session',
+            'provider' => 'profissionals',
         ],
 
         'api' => [
@@ -66,9 +77,14 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'pacientes' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\Paciente::class,
+        ],
+
+        'profissionals' => [
+            'driver' => 'eloquent',
+            'model' => App\Profissional::class,
         ],
 
         // 'users' => [
@@ -93,10 +109,17 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
+        'paciente' => [
+            'provider' => 'pacientes',
             'table' => 'password_resets',
             'expire' => 60,
+            'throttle' => 60,
+        ],
+
+        'profissional' => [
+            'provider' => 'profissionals',
+            'table' => 'password_resets',
+            'expire' => 30,
             'throttle' => 60,
         ],
     ],
