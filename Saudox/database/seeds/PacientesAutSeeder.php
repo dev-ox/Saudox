@@ -12,8 +12,10 @@ class PacientesAutSeeder extends Seeder
      */
     public function run()
     {
-        $qtd = 10;
-        for($i = 0; $i < $qtd; $i++){
+        include('database/seeds/SeedsConfig.php');
+
+        //Gerando pacientes automaticamente
+        for($i = 0; $i < $qtd_pacientes; $i++){
           DB::table('pacientes')->insert([
             'login' => "PacienteLogin" . rand(1, 10000),
             'password' => Hash::make("123123123"),
@@ -32,7 +34,7 @@ class PacientesAutSeeder extends Seeder
             'email_mae' => Str::random(10).'@gmail.com',
             'idade_pai' => rand(20,100),
             'idade_mae' => rand(20,100),
-            'id_endereco' => rand(1,10), // MUDAR RANGE A DEPENDER DA QUANTIDADE DE ENDERECOS GERADOS
+            'id_endereco' => rand(1,$qtd_enderecos),
             'naturalidade' => Str::random(15),
             'pais_sao_casados' => rand(0,1) >= 0.5,
             'pais_sao_divorciados' => rand(0,1) >= 0.5,

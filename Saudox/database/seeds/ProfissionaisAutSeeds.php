@@ -11,9 +11,10 @@ class ProfissionaisAutSeeds extends Seeder
      */
     public function run()
     {
+        include('database/seeds/SeedsConfig.php');
+
         //Gerando profissionais automaticamente
-        $qtd = 10;
-        for($i = 0; $i < $qtd; $i++){
+        for($i = 0; $i < $qtd_profissionals; $i++){
           DB::table('profissionals')->insert([
             'nome' => Str::random(10),
             'cpf' => (string)rand(10000000000,99999999999),
@@ -23,7 +24,7 @@ class ProfissionaisAutSeeds extends Seeder
             'password' => Hash::make("123123123"),
             'profissao' => Str::random(20),
             'numero_conselho' => rand(100000000,999999999),
-            'id_endereco' => rand(1,10), // MUDAR RANGE A DEPENDER DA QUANTIDADE DE ENDERECOS GERADOS
+            'id_endereco' => rand(1,$qtd_enderecos),
             'telefone_1' => (string)rand(10000000000,99999999999),
             'telefone_2' => (string)rand(10000000000,99999999999),
             'email' => Str::random(10).'@gmail.com',
