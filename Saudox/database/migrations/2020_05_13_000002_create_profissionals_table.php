@@ -23,13 +23,6 @@ class CreateProfissionalsTable extends Migration
             $table->string('cpf')->unique();
             $table->string('rg')->unique();
             $table->string('status');
-<<<<<<< HEAD
-
-
-=======
-            $table->string('login')->unique();
-            $table->string('password');
->>>>>>> f136a6be0e575211ad90e305b4ed4a9572eb8f26
             $table->string('profissao');
             $table->unsignedInteger('numero_conselho')->nullable(true);
             $table->bigInteger('id_endereco')->unsigned();

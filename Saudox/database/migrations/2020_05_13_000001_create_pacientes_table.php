@@ -17,16 +17,8 @@ class CreatePacientesTable extends Migration
             $table->bigIncrements('id');
 
             $table->string('login')->unique();
-<<<<<<< HEAD
             $table->string('password');
-=======
-<<<<<<< HEAD
-            $table->string('senha');
->>>>>>> master
 
-=======
-            $table->string('password');
->>>>>>> f136a6be0e575211ad90e305b4ed4a9572eb8f26
             $table->string('nome_paciente');
             $table->string('cpf')->unique();
             $table->boolean('sexo');
