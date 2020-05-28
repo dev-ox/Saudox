@@ -11,9 +11,10 @@ class EnderecosAutSeeder extends Seeder
      */
     public function run()
     {
+        include('database/seeds/SeedsConfig.php');
+
         //Gerando endereços automaticamente
-        $qtd = 10;
-        for($i = 0; $i < $qtd; $i++){
+        for($i = 0; $i < $qtd_enderecos; $i++){
           DB::table('enderecos')->insert([
             'estado' => Str::random(10),
             'cidade' => Str::random(10),
