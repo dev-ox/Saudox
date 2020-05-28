@@ -16,38 +16,41 @@ class LoginController extends Controller {
 	public function showLoginForm() {
 		return view('auth.login',[
 			'title' => 'Profissional Login',
-			'loginRoute' => 'profissional.login',
+			'loginRoute' => 'profissional.efetuarLogin',
 			'forgotPasswordRoute' => 'profissional.password.request',
 		]);
 	}
-
 
 	public function login(Request $request) {
 		// Validação
 		$this->validator($request);
 
 		//Loga como Profissional
-		if(Auth::guard('profissional')){
-			redirect('profissional.home');
+		if(Auth::guard('profissional')->attempt($request->only('login','password'),$request->filled('remember'))) {
+			return redirect()->route('profissional.home');
 		}
 
 		// Caso o login tenha dado errado
 		return $this->loginFailed();
 	}
 
-
 	public function logout() {
 		Auth::logout();
-		Session::flush();
-		return redirect('profissional.login');
+
+		// A princípio tive algum tipo de problema quanto ao logout
+		// E foi dessa maneira que consegui resolver.
+		if(Auth::guard('profissional')->check()) {
+			Auth::guard('profissional')->logout();
+		} else if(Auth::guard('paciente')->check()) {
+			Auth::guard('paciente')->logout();
+		}
+		return redirect()->route('profissional.login');
 	}
 
-
-	// TODO: Alterar essa validação (email não é utilizado)
 	private function validator(Request $request) {
 		//Regras de validação
 		$rules = [
-			// 'email'    => 'required|email|exists:profissionals|min:5|max:191',
+			'login'    => 'required|exists:profissionals|min:5|max:191',
 			'password' => 'required|string|min:4|max:255',
 		];
 
@@ -64,8 +67,12 @@ class LoginController extends Controller {
 		return redirect()
 		->back()
 		->withInput()
-		->with('error','Erro ao tentar fazer longin, tente novamente.');
+		->with('errors','Erro ao tentar fazer longin, tente novamente.');
 	}
+
+
+
+
 
 	// Override da função username() em:
 	// Illuminate\Foundation\Auth\AuthenticatesUsers.php

@@ -6,6 +6,12 @@
         <div class="col-md-8">
             <div class="card">
 
+                <?php // TODO: arrumar isso, claro! ?>
+                <?php
+                if($errors) {
+                    echo($errors);
+                }
+                ?>
 
                 <div class="card-header">{{ $title }}</div>
 

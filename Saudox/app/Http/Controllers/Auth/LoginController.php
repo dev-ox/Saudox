@@ -5,39 +5,29 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth; // Evitar erro de \Auth\Auth
 
-class LoginController extends Controller
-{
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
+class LoginController extends Controller {
     use AuthenticatesUsers;
 
     /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
+    * Where to redirect users after login.
+    *
+    * @var string
+    */
     protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+    * Create a new controller instance.
+    *
+    * @return void
+    */
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
     }
 
+    // Para carregar página de login baseada no login de paciente
     public function showLoginForm() {
         return view('auth.login',[
             'title' => 'User Login',
@@ -48,8 +38,20 @@ class LoginController extends Controller
 
     public function logout() {
         Auth::logout();
-        return redirect('/')->with('status','User has been logged out!');
+
+        // A princípio tive algum tipo de problema quanto ao logout
+        // E foi dessa maneira que consegui resolver.
+        if(Auth::guard('paciente')->check()) {
+            Auth::guard('paciente')->logout();
+        } else if(Auth::guard('profissional')->check()) {
+            Auth::guard('profissional')->logout();
+        }
+        return redirect('/login')->with('status','User has been logged out!');
     }
+
+
+
+
 
     // Override da função username() em:
     // Illuminate\Foundation\Auth\AuthenticatesUsers.php
