@@ -15,7 +15,6 @@ class EnderecosAutSeeder extends Seeder
         $qtd = 10;
         for($i = 0; $i < $qtd; $i++){
           DB::table('enderecos')->insert([
-            'id' => $i,
             'estado' => Str::random(10),
             'cidade' => Str::random(10),
             'bairro' => Str::random(10),

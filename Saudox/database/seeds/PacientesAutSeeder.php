@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class PacientesAutSeeder extends Seeder
 {
@@ -11,18 +12,16 @@ class PacientesAutSeeder extends Seeder
      */
     public function run()
     {
-        //Gerando pacientes automaticamente
         $qtd = 10;
         for($i = 0; $i < $qtd; $i++){
           DB::table('pacientes')->insert([
-            'id' => $i,
             'login' => Str::random(8),
             'senha' => Hash::make(Str::random(8)),
             'nome_paciente' => Str::random(10),
             'cpf' => (string)rand(10000000000,99999999999),
             'sexo' => rand(0,1) >= 0.5,
-            'data_nascimento' => "??", //ver como gerar
-            'responsável' => Str::random(8),
+            'data_nascimento' => Carbon::now()->format('Y-m-d H:i:s'),
+            'responsavel' => Str::random(8),
             'numero_irmaos' => rand(0,10),
             'lista_irmaos' => Str::random(30),
             'nome_pai' => Str::random(10),
@@ -33,7 +32,7 @@ class PacientesAutSeeder extends Seeder
             'email_mae' => Str::random(10).'@gmail.com',
             'idade_pai' => rand(20,100),
             'idade_mae' => rand(20,100),
-            'id_endereco' => rand(0,9), // MUDAR RANGE A DEPENDER DA QUANTIDADE DE ENDERECOS GERADOS
+            'id_endereco' => rand(1,10), // MUDAR RANGE A DEPENDER DA QUANTIDADE DE ENDERECOS GERADOS
             'naturalidade' => Str::random(15),
             'pais_sao_casados' => rand(0,1) >= 0.5,
             'pais_sao_divorciados' => rand(0,1) >= 0.5,
