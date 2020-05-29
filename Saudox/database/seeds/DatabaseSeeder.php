@@ -11,6 +11,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+      $this->call([
+        EnderecosAutSeeder::class,
+        ProfissionaisAutSeeds::class,
+        PacientesAutSeeder::class,
+        AvaliacaoJudosAutSeeds::class,
+        AvaliacaoFonoaudiologiasAutSeeds::class,
+        AnamneseTerapiaOcupacionalsAutSeeds::class,
+        AvaliacaoTerapiaOcupacionalsAutSeeds::class,
+        ArquivosAvaliacaosAutSeeds::class,
+        ConveniosAutSeeds::class,
+        AgendamentosAutSeeds::class,
+        AnamneseFonoaudiologiasAutSeeds::class,
+        AvaliacaoFonoaudiologiaQuestionariosAutSeeds::class,
+        EvolucaoPsicologicasAutSeeds::class,
+        EvolucaoTerapiaOcupacionalsAutSeeds::class,
+        EvolucaoTerapiaOcupacionalsAutSeeds::class,
+        EvolucaoFonoaudiologiaAutSeeds::class,
+        AnamnesePsicopedaNeuroPsicomotosAutSeeds::class,
+      ]);
     }
 }

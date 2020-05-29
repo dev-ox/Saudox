@@ -433,7 +433,7 @@ class CadastroFuncionarioTest extends TestCase
 
 
     /** @test **/
-    public function senhaNaoPodeFicarEmBranco(){
+    public function passwordNaoPodeFicarEmBranco(){
 
         $this->withoutExceptionHandling();
 
@@ -461,11 +461,11 @@ class CadastroFuncionarioTest extends TestCase
             'nacionalidade' => 'Brasileiro',
         ]);
 
-        $resposta->assertSessionHasErrors('senha');
+        $resposta->assertSessionHasErrors('password');
    }
 
    /** @test **/
-   public function senhaNaoPodeTerPoucosCaracteres(){
+   public function passwordNaoPodeTerPoucosCaracteres(){
 
        $this->withoutExceptionHandling();
 
@@ -484,7 +484,7 @@ class CadastroFuncionarioTest extends TestCase
            'rg' => '12345678',
            'status' => 'Ativo',
            'login' => '1234556789',
-           'senha' => '123',
+           'password' => '123',
            'profissao' => 'Psicologo',
            'id_endereco' => $end_id->id,
            'telefone_1' => '12345678910',
@@ -493,7 +493,7 @@ class CadastroFuncionarioTest extends TestCase
            'nacionalidade' => 'Brasileiro',
        ]);
 
-       $resposta->assertSessionHasErrors('senha');
+       $resposta->assertSessionHasErrors('password');
    }
 
     /** @test **/

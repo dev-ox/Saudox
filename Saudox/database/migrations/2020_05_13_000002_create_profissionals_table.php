@@ -15,14 +15,14 @@ class CreateProfissionalsTable extends Migration
     {
         Schema::create('profissionals', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->timestamps();
+
+            $table->string('login')->unique();
+            $table->string('password');
 
             $table->string('nome');
             $table->string('cpf')->unique();
             $table->string('rg')->unique();
             $table->string('status');
-            $table->string('login')->unique();
-            $table->string('senha');
             $table->string('profissao');
             $table->unsignedInteger('numero_conselho')->nullable(true);
             $table->bigInteger('id_endereco')->unsigned();
@@ -33,6 +33,10 @@ class CreateProfissionalsTable extends Migration
             $table->string('estado_civil');
             $table->string('nacionalidade');
             $table->text('descricao_de_conhecimento_e_experiencia')->nullable(true);
+
+            $table->timestamp('email_verified_at')->nullable();
+            $table->rememberToken();
+            $table->timestamps();
 
         });
     }
