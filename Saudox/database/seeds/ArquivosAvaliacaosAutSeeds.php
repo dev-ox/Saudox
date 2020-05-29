@@ -4,11 +4,6 @@ use Illuminate\Database\Seeder;
 
 class ArquivosAvaliacaosAutSeeds extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
       include('database/seeds/SeedsConfig.php');

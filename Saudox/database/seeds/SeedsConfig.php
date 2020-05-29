@@ -29,8 +29,11 @@ $qtd_avaliacao_fonoaudiologias = 10;
 //Set a quantidade de avaliação de fonoaudiologias questionario a serem cadastrados automaticamente
 $qtd_avaliacao_fonoaudiologias_questionario = 10;
 
-//SSet a quantidade de avaliacao terapia ocupacional a serem cadastrados automaticamente
+//Set a quantidade de avaliacao terapia ocupacional a serem cadastrados automaticamente
 $qtd_avaliacao_terapia_ocupacionals =10;
+
+//Set a quantidade de avaliacao neuropisicologica a serem cadastrados automaticamente
+$qtd_avaliacao_neuropisicologica = 10;
 
 //Set a quantidade de arquivo avaliação a serem cadastrados automaticamente
 $qtd_arquivo_avaliacao = 10; // Colocar sempre o valor da menor quantidade de avaliação das varáveis anteriores para não gerar problema no momento de relacionar as tabelas
@@ -41,8 +44,8 @@ $qtd_anamnese_terapia_ocupacionals = 10;
 //Set a quantidade de anamnese fonoaudiologia a serem cadastrados automaticamente
 $qtd_anamnese_fonoaudiologia = 10;
 
-//Set a quantidade de anamnese psico neuro psicomotos  a serem cadastrados automaticamente
-$qtd_anamnese_psico_neuro_psicomotos = 10;
+//Set a quantidade de anamnese gigante a serem cadastrados automaticamente
+$qtd_anamnese_gigante = 10;
 
 //Set a quantidade de evolução psicologicas a serem cadastrados automaticamente
 $qtd_evolucao_psicologicas = 10;

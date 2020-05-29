@@ -5,11 +5,6 @@ use Carbon\Carbon;
 
 class EvolucaoFonoaudiologiaAutSeeds extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
       include('database/seeds/SeedsConfig.php');

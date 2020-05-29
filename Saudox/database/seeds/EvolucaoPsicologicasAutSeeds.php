@@ -5,14 +5,10 @@ use Carbon\Carbon;
 
 class EvolucaoPsicologicasAutSeeds extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
       include('database/seeds/SeedsConfig.php');
+      include_once('database/seeds/FuncoesAuxuliaresSeeds.php');
 
       //Gerando evolução psicologicas automaticamente
       for($i = 0; $i < $qtd_evolucao_psicologicas; $i++){
@@ -22,7 +18,7 @@ class EvolucaoPsicologicasAutSeeds extends Seeder
           'id_evolucao_anterior' => null, //rand(1,$qtd_evolucao_psicologicas),
           'data_evolucao' => Carbon::now()->format('Y-m-d H:i:s'),
           'tipo_atendimento' => Str::random(10),
-          'texto' => Str::random(1000),
+          'texto' => texto(50),
         ]);
       }
     }

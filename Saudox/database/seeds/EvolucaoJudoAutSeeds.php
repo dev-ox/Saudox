@@ -5,14 +5,10 @@ use Carbon\Carbon;
 
 class EvolucaoJudoAutSeeds extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
       include('database/seeds/SeedsConfig.php');
+      include_once('database/seeds/FuncoesAuxuliaresSeeds.php');
 
       //Gerando evolução judo automaticamente
       for($i = 0; $i < $qtd_evolucao_judo; $i++){
@@ -21,7 +17,7 @@ class EvolucaoJudoAutSeeds extends Seeder
           'id_profissional' => rand(1,$qtd_profissionals),
           'id_evolucao_anterior' => null, //rand(1,$qtd_evolucao_judo),
           'data_evolucao' => Carbon::now()->format('Y-m-d H:i:s'),
-          'descricao_evolucao' => Str::random(1000),
+          'descricao_evolucao' => texto(50),
           'carimbo' => base64_encode(file_get_contents(addslashes("https://core.ac.uk/download/pdf/71362264.pdf"))),
         ]);
       }

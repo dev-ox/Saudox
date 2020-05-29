@@ -36,14 +36,14 @@ class CreateAvaliacaoNeuropsicologicasTable extends Migration
             $table->text('humor_nos_dias_da_avalicao');
             $table->text('areas_preservadas');
             $table->text('areas_lesionadas');
-            $table->binary('anexar arquivos')->nullable(true);
+            $table->longText('anexar_arquivos')->nullable(true);
             $table->text('hipotese_diagnostica');
             $table->dateTime('dia_hora_devolutiva_aos_responsavel');
             $table->text('participantes');
             $table->json('atividades_para_ser_feito_na_clinica');
             $table->json('atividades_para_ser_feito_em_casa');
             $table->string('sugestao_encaminhamento')->nullable(true);
-            $table->binary('exames_clinicos_se_houver')->nullable(true);
+            $table->longText('exames_clinicos_se_houver')->nullable(true);
 
         });
     }
