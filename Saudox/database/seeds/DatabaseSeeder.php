@@ -4,11 +4,6 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     *
-     * @return void
-     */
     public function run()
     {
       $this->call([
@@ -29,6 +24,10 @@ class DatabaseSeeder extends Seeder
         EvolucaoTerapiaOcupacionalsAutSeeds::class,
         EvolucaoFonoaudiologiaAutSeeds::class,
         AnamnesePsicopedaNeuroPsicomotosAutSeeds::class,
+        AnamnesePsicopedaNeuroPsicomotosPt1AutSeeds::class,
+        AnamnesePsicopedaNeuroPsicomotosPt2AutSeeds::class,
+        AnamnesePsicopedaNeuroPsicomotosPt3AutSeeds::class,
+        AvaliacaoNeuropsicologicasAutSeeds::class,
       ]);
     }
 }
