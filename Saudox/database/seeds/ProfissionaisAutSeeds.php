@@ -4,14 +4,10 @@ use Illuminate\Database\Seeder;
 
 class ProfissionaisAutSeeds extends Seeder
 {
-    /**
-     * Seed the application's database.
-     *
-     * @return void
-     */
     public function run()
     {
         include('database/seeds/SeedsConfig.php');
+        include_once('database/seeds/FuncoesAuxuliaresSeeds.php');
 
         //Gerando profissionais automaticamente
         for($i = 0; $i < $qtd_profissionals; $i++){
@@ -30,7 +26,7 @@ class ProfissionaisAutSeeds extends Seeder
             'email' => Str::random(10).'@gmail.com',
             'estado_civil' => Str::random(10),
             'nacionalidade' => Str::random(15),
-            'descricao_de_conhecimento_e_experiencia' => Str::random(100),
+            'descricao_de_conhecimento_e_experiencia' => texto(20),
           ]);
         }
     }

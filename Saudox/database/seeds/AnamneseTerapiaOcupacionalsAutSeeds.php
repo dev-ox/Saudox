@@ -4,14 +4,10 @@ use Illuminate\Database\Seeder;
 
 class AnamneseTerapiaOcupacionalsAutSeeds extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
       include('database/seeds/SeedsConfig.php');
+      include_once('database/seeds/FuncoesAuxuliaresSeeds.php');
 
       //Gerando anamnese terapia ocupacional automaticamente
       for($i = 0; $i < $qtd_anamnese_terapia_ocupacionals; $i++){
@@ -20,7 +16,7 @@ class AnamneseTerapiaOcupacionalsAutSeeds extends Seeder
           'id_profissional' => rand(1,$qtd_profissionals),
           'gestacao' => Str::random(10),
           'doencas_da_mae_na_gravidez' => Str::random(10),
-          'inquietacoes_da_mae_na_gravidez' => Str::random(100),
+          'inquietacoes_da_mae_na_gravidez' => texto(10),
           'parto' => Str::random(10),
           'amamentacao_natural' => Str::random(10),
           'dificuldade_ou_atraso_no_controle_do_esfincter' => Str::random(10),
@@ -48,7 +44,7 @@ class AnamneseTerapiaOcupacionalsAutSeeds extends Seeder
           'ja_repetiu_alguma_serie' => Str::random(10),
           'possui_acompanhante_terapeutico_em_sala' => Str::random(10),
           'recebe_orientacao_aos_deveres_em_casa' => Str::random(10),
-          'quem_orienta_os_deveres_em_casa_se_sim_orientacao_deveres' => Str::random(100),
+          'quem_orienta_os_deveres_em_casa_se_sim_orientacao_deveres' => texto(10),
           'quanto_tempo_executa_os_deveres_em_casa' => Str::random(10),
           'quais_linguas_estrangeiras_fala' => Str::random(10),
           'quais_esportes_pratica' => Str::random(10),
@@ -80,12 +76,12 @@ class AnamneseTerapiaOcupacionalsAutSeeds extends Seeder
           'dorme_sozinho' => rand(0,1) >= 0.5,
           'dorme_no_quarto_dos_pais' => rand(0,1) >= 0.5,
           'divide_quarto_com_alguem' => Str::random(10),
-          'medidas_disciplinares_empregadas_pelos_pais' => Str::random(100),
-          'reação_do_filho_ao_ser_contrariado' => Str::random(100),
-          'atitude_dos_pais_a_reacao_filho_contrareado' => Str::random(100),
-          'acompanhamento_medico' => Str::random(100),
+          'medidas_disciplinares_empregadas_pelos_pais' => texto(10),
+          'reação_do_filho_ao_ser_contrariado' => texto(5),
+          'atitude_dos_pais_a_reacao_filho_contrareado' => texto(5),
+          'acompanhamento_medico' => texto(5),
           'qual_medico_responsavel' => Str::random(10),
-          'diagnostico_medico' => Str::random(1000),
+          'diagnostico_medico' => texto(20),
         ]);
       }
     }
