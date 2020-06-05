@@ -10,21 +10,26 @@ use Illuminate\Support\Facades\Auth; // Evitar erro de \Auth\Auth
 class LoginController extends Controller {
     use AuthenticatesUsers;
 
+
     /**
     * Where to redirect users after login.
     *
     * @var string
     */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/paciente/home';
 
     /**
     * Create a new controller instance.
     *
     * @return void
     */
-    public function __construct()
-    {
-        $this->middleware('guest')->except('logout');
+    public function __construct() {
+
+        // Verifica se ja tem alguem logado, se tiver, nao faz login
+        // Obrigado Deus!
+        $this->middleware('guest:paciente')->except('logout');
+        $this->middleware('guest:profissional')->except('logout');
     }
 
     // Para carregar página de login baseada no login de paciente

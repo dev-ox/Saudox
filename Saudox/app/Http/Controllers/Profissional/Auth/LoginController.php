@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Auth; // Evitar erro de \Auth\Auth
 
 class LoginController extends Controller {
 
+	// Criação do Middlware
+	public function __construct() {
+		$this->middleware('guest:profissional')->except('logout');
+	}
+
 	// Para carregar página de login baseada no login de profissionais
 	public function showLoginForm() {
 		return view('auth.login',[

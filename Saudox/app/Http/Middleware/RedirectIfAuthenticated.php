@@ -6,8 +6,7 @@ use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class RedirectIfAuthenticated
-{
+class RedirectIfAuthenticated {
     /**
      * Handle an incoming request.
      *
@@ -16,10 +15,15 @@ class RedirectIfAuthenticated
      * @param  string|null  $guard
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard = null)
-    {
+    public function handle($request, Closure $next, $guard = null) {
         if (Auth::guard($guard)->check()) {
-            return redirect(RouteServiceProvider::HOME);
+            if($guard == "profissional"){
+                // Se estiver autenticado como profissional
+                return redirect()->route('profissional.home');
+            } else {
+                // Guard Padrão
+                return redirect()->route('paciente.home');
+            }
         }
 
         return $next($request);
