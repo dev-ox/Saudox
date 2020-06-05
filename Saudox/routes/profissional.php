@@ -4,8 +4,8 @@
 Route::namespace('Auth')->group(function(){
 
     Route::middleware('auth:profissional')->group(function() {
-        Route::post('/logout','LoginController@logout')->name('logout');
-        Route::get('/logout','LoginController@logout')->name('logout');
+        Route::any('/logout','LoginController@logout')->name('logout');
+        Route::any('/logout','LoginController@logout')->name('logout');
     });
 
     Route::middleware('ninguemLogado')->group(function() {
@@ -25,7 +25,7 @@ Route::namespace('Auth')->group(function(){
 
 });
 
-// Colocar aqui as rotas que precisam de autenticamção do profissional
+// TODO: Colocar aqui as rotas que precisam de autenticação do profissional
 Route::middleware('auth:profissional')->group(function() {
 
     Route::get('/home','HomeController@index')->name('home');
