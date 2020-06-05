@@ -14,12 +14,12 @@ class LoginFuncionarioTest extends TestCase
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $resposta = $this->post('/login', [
+        $resposta = $this->post('/profissional/login', [
             'login' => $funcionario->login,
             'password' => $password,
         ]);
 
-        $resposta->assertRedirect('/home');
+        $resposta->assertRedirect('/profissional/home');
         $this->assertAuthenticatedAs($funcionario);
     }
 
@@ -29,12 +29,12 @@ class LoginFuncionarioTest extends TestCase
             'password' => bcrypt('123123123'),
         ]);
 
-        $resposta = $this->from('/login')->post('/login', [
+        $resposta = $this->from('/profissional/login')->post('/profissional/login', [
             'login' => $profissional->login,
             'password' => 'senha-inválida',
         ]);
 
-        $response->assertRedirect('/login');
+        $response->assertRedirect('/profissional/login');
         $response->assertSessionHasErrors('password');
         $this->assertTrue(session()->hasOldInput('login'));
         $this->assertFalse(session()->hasOldInput('password'));
@@ -48,12 +48,12 @@ class LoginFuncionarioTest extends TestCase
             'password' => bcrypt('123123123'),
         ]);
 
-        $resposta = $this->from('/login')->post('/login', [
+        $resposta = $this->from('/profissional/login')->post('/profissional/login', [
             'login' => 'carlos@gmail.com',
             'password' => $funcionario->password
         ]);
 
-        $response->assertRedirect('/login');
+        $response->assertRedirect('/profissional/login');
         $response->assertSessionHasErrors('login');
         $this->assertTrue(session()->hasOldInput('password'));
         $this->assertFalse(session()->hasOldInput('login'));
@@ -66,35 +66,35 @@ class LoginFuncionarioTest extends TestCase
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $resposta = $this->post('/login', [
+        $resposta = $this->post('/profissional/login', [
             'login' => $funcionario->login,
             'password' => $password,
         ]);
 
-        $resposta->assertRedirect('/home');
+        $resposta->assertRedirect('/profissional/home');
         $this->assertAuthenticatedAs($funcionario);
-        $this->post('/logout');
-        $this->visit('/home');
-        $this->seePageIs('/login');
+        $this->post('/profissional/logout');
+        $this->visit('/profissional/home');
+        $this->seePageIs('/profissional/login');
     }
 
-    public function funcionarioPodeTrocarSenha()
+    /*public function funcionarioPodeTrocarSenha()
     {
         $funcionario = factory(Funcionario::class)->create([
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $resposta = $this->post('/login', [
+        $resposta = $this->post('/profissional/login', [
             'login' => $funcionario->login,
             'password' => $password,
         ]);
 
-        $resposta->assertRedirect('/home');
+        $resposta->assertRedirect('/profissional/home');
         $this->assertAuthenticatedAs($funcionario);
-        $this->post('/logout');
-        $this->visit('/home');
-        $this->seePageIs('/login');
-    }
+        $this->post('/profissional/logout');
+        $this->visit('/profissional/home');
+        $this->seePageIs('/profissional/login');
+    } */
 
     public function funcionarioPodeVerAgendamentos()
     {
@@ -102,16 +102,16 @@ class LoginFuncionarioTest extends TestCase
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $resposta = $this->post('/login', [
+        $resposta = $this->post('/profissional/login', [
             'login' => $funcionario->login,
             'password' => $password,
         ]);
 
-        $resposta->assertRedirect('/home');
+        $resposta->assertRedirect('/profissional/home');
         $this->assertAuthenticatedAs($funcionario);
 
-        $this->visit('/home/agenda');
-        $this->seePageIs('/home/agenda');
+        $this->visit('/profissional/agenda');
+        $this->seePageIs('/profissional/agenda');
     }
 
 
@@ -121,18 +121,18 @@ class LoginFuncionarioTest extends TestCase
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $resposta = $this->post('/login', [
+        $resposta = $this->post('/profissional/login', [
             'login' => $funcionario->login,
             'password' => $password,
         ]);
 
-        $resposta->assertRedirect('/home');
+        $resposta->assertRedirect('/profissional/home');
         $this->assertAuthenticatedAs($funcionario);
 
-        $this->post('/logout');
+        $this->post('/profissional/logout');
 
-        $this->visit('/home/agenda');
-        $this->seePageIs('/login');
+        $this->visit('/profissional/agenda');
+        $this->seePageIs('/profissional/login');
     }
 
     public function funcionarioPodeVerPerfil()
@@ -141,16 +141,16 @@ class LoginFuncionarioTest extends TestCase
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $resposta = $this->post('/login', [
+        $resposta = $this->post('/profissional/login', [
             'login' => $funcionario->login,
             'password' => $password,
         ]);
 
-        $resposta->assertRedirect('/home');
+        $resposta->assertRedirect('/profissional/home');
         $this->assertAuthenticatedAs($funcionario);
 
-        $this->visit('/home/perfil');
-        $this->seePageIs('/home/perfil');
+        $this->visit('/profissional/perfil');
+        $this->seePageIs('/profissional/perfil');
     }
 
     public function funcionarioNaoPodeVerPerfilSeNaoEstiverLogado()
@@ -159,18 +159,18 @@ class LoginFuncionarioTest extends TestCase
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $resposta = $this->post('/login', [
+        $resposta = $this->post('/profissional/login', [
             'login' => $funcionario->login,
             'password' => $password,
         ]);
 
-        $resposta->assertRedirect('/home');
+        $resposta->assertRedirect('/profissional/home');
         $this->assertAuthenticatedAs($funcionario);
 
-        $this->post('/logout');
+        $this->post('/profissional/logout');
 
-        $this->visit('/home/perfil');
-        $this->seePageIs('/login');
+        $this->visit('/profissional/perfil');
+        $this->seePageIs('/profissional/login');
     }
 
 
