@@ -4,14 +4,10 @@ use Illuminate\Database\Seeder;
 
 class EnderecosAutSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     *
-     * @return void
-     */
     public function run()
     {
         include('database/seeds/SeedsConfig.php');
+        include_once('database/seeds/FuncoesAuxuliaresSeeds.php');
 
         //Gerando endereços automaticamente
         for($i = 0; $i < $qtd_enderecos; $i++){
@@ -21,7 +17,7 @@ class EnderecosAutSeeder extends Seeder
             'bairro' => Str::random(10),
             'nome_rua' =>  Str::random(15),
             'numero_casa' => ($i.$i.$i),
-            'descricao' => Str::random(30),
+            'descricao' => texto(2),
             'ponto_referencia' => Str::random(15),
           ]);
         }

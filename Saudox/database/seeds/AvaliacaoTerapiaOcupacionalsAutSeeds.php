@@ -5,14 +5,10 @@ use Carbon\Carbon;
 
 class AvaliacaoTerapiaOcupacionalsAutSeeds extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
       include('database/seeds/SeedsConfig.php');
+      include_once('database/seeds/FuncoesAuxuliaresSeeds.php');
 
       //Gerando anamnese terapia ocupacional automaticamente
       for($i = 0; $i < $qtd_avaliacao_terapia_ocupacionals; $i++){
@@ -21,7 +17,7 @@ class AvaliacaoTerapiaOcupacionalsAutSeeds extends Seeder
           'id_profissional' => rand(1,$qtd_profissionals),
           'data_avaliacao' => Carbon::now()->format('Y-m-d H:i:s'),
           'entrevistado' => Str::random(10),
-          'queixa_principal' => Str::random(100),
+          'queixa_principal' => texto(10),
           'brincadeiras_favoritas' => Str::random(10),
           'onde_brinca' => Str::random(10),
           'com_quem_prefere_brincar' => Str::random(10),
@@ -77,7 +73,7 @@ class AvaliacaoTerapiaOcupacionalsAutSeeds extends Seeder
           'gosta_pentear_cabelos' => rand(0,1) >= 0.5,
           'gosta_cortar_cabelos' => rand(0,1) >= 0.5,
           'gosta_cortar_unhas' => rand(0,1) >= 0.5,
-          'info_extras_relevante' => Str::random(100),
+          'info_extras_relevante' => texto(20),
         ]);
       }
     }

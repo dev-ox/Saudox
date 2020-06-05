@@ -5,14 +5,10 @@ use Carbon\Carbon;
 
 class AgendamentosAutSeeds extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
     public function run()
     {
       include('database/seeds/SeedsConfig.php');
+      include_once('database/seeds/FuncoesAuxuliaresSeeds.php');
 
       //Gerando anamnese terapia ocupacional automaticamente
       for($i = 0; $i < $qtd_agendamentos; $i++){
@@ -31,7 +27,7 @@ class AgendamentosAutSeeds extends Seeder
           'recorrencia_do_agendamento' => rand(0,1) >= 0.5,
           'quantidade_de_recorrencia' => rand(1,7),
           'tipo_da_recorrencia' => Str::random(10),
-          'observacoes' => Str::random(100),
+          'observacoes' => texto(5),
         ]);
       }
     }
