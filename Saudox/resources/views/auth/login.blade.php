@@ -13,6 +13,13 @@
                 }
                 ?>
 
+
+                @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @endif
+
                 <div class="card-header">{{ $title }}</div>
 
                 <div class="card-body">
