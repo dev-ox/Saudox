@@ -12,7 +12,7 @@ class AnamnesePsicopedaNeuroPsicomotosPt2AutSeeds extends Seeder
       //Gerando anamnese gigante parte 2 automaticamente
       for($i = 0; $i < $qtd_anamnese_gigante; $i++){
         DB::table('anamnese__pnp__pt2s')->insert([
-          'id_tp' => rand(1,$qtd_anamnese_gigante),
+          'id_tp' => ($i + 1),
           'teve_otite_infancia' => Str::random(10),
           'teve_adenoides_infancia' => Str::random(10),
           'teve_amigdalites_infancia' => Str::random(10),
