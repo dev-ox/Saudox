@@ -35,4 +35,25 @@ class Paciente extends Authenticatable {
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function evolucao_foneaudiologias() {
+        return $this->hasMany('App\Evolucao_foneaudiologia', 'id_paciente');
+    }
+
+    public function evolucao_judos() {
+        return $this->hasMany('App\Evolucao_judo', 'id_paciente');
+    }
+
+    public function evolucao_psicologicas() {
+        return $this->hasMany('App\Evolucao_psicologica', 'id_paciente');
+    }
+
+    public function evolucao_terapia_ocupacionals() {
+        return $this->hasMany('App\Evolucao_terapia_ocupacional', 'id_paciente');
+    }
+
+
+
 }
+
+

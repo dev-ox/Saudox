@@ -18,6 +18,9 @@
 ?>
 </h2>
 
+<a href="/paciente/evolucao">Evolução</a>
+<a href="/paciente/avaliacao">Avaliação</a>
+<a href="/paciente/anamnese">Anamnese</a>
 
 @if(Auth::guard('paciente')->check())
 	<a href="/logout">Deslogar</a>
