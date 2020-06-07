@@ -1,5 +1,8 @@
 <?php
 
+
+Route::get('/','PacienteAnamneseController@home');
+
 Route::prefix('fonoaudiologia')->group(function () {
     require 'fonoaudiologia.php';
 });

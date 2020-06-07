@@ -2,7 +2,6 @@
 
 namespace App;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -53,7 +52,23 @@ class Paciente extends Authenticatable {
     }
 
 
+    public function anamnese__terapia__ocupacionals() {
+        return $this->hasMany('App\Anamnese_Terapia_Ocupacional', 'id_paciente');
+    }
+
+    public function anamnese_fonoaudiologias() {
+        return $this->hasMany('App\Anamnese_fonoaudiologia', 'id_paciente');
+    }
+
+    /*
+     * Essa função de anamnese__psicopeda__neuro__psicomotos só pode ser chamada usando () no final
+     * Se for chamada sem () vai dar erro
+     * Certo: $user->anamnese__psicopeda__neuro__psicomotos();
+     * Errado: $user->anamnese__psicopeda__neuro__psicomotos;
+     */
+    public function anamnese__psicopeda__neuro__psicomotos() {
+        return \App\Anamnese_Psicopeda_Neuro_Psicomoto::pegar_por_paciente($this->id);
+    }
 
 }
-
 
