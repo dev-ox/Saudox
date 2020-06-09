@@ -67,7 +67,7 @@ class Paciente extends Authenticatable {
      * Errado: $user->anamnese__psicopeda__neuro__psicomotos;
      */
     public function anamnese__psicopeda__neuro__psicomotos() {
-        return \App\Anamnese_Psicopeda_Neuro_Psicomoto::pegar_por_paciente($this->id);
+        return \App\Anamnese_Psicopeda_Neuro_Psicomoto::pegar_por_id_paciente($this->id);
     }
 
 }

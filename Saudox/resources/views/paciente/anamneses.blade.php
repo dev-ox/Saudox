@@ -1,7 +1,7 @@
 <h1> listagem das anamnese </h1>
 
 <div>
-Tem-se {{ sizeof(Auth::user()->anamnese__psicopeda__neuro__psicomotos()) }} anamneses psicopedagogica/neurologica/psicopedagogica
+Id_tp = {{ Auth::user()->anamnese__psicopeda__neuro__psicomotos()->id_tp }} da anamneses psicopedagogica/neurologica/psicopedagogica
 <a href="/paciente/anamnese/psicopedagogia">Anamnese_Psicopeda_Neuro_Psicomotofono</a>
 </div>
 

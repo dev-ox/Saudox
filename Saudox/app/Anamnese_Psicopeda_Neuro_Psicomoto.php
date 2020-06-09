@@ -16,11 +16,11 @@ class Anamnese_Psicopeda_Neuro_Psicomoto extends Model
 
     public static function salvar($std_class_anamnese) {
 
-        $id = $std_class_anamnese->id_tp;
+        $id_tp = $std_class_anamnese->id_tp;
 
-        $pt1 = \App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt1::find($id);
-        $pt2 = \App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt2::find($id);
-        $pt3 = \App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt3::find($id);
+        $pt1 = \App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt1::where('id_tp', $id_tp)->first();
+        $pt2 = \App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt2::where('id_tp', $id_tp)->first();
+        $pt3 = \App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt3::where('id_tp', $id_tp)->first();
 
         $tabela_pt1 = app(\App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt1::class)->getTable();
         $tabela_pt2 = app(\App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt2::class)->getTable();
@@ -51,82 +51,73 @@ class Anamnese_Psicopeda_Neuro_Psicomoto extends Model
 
     }
 
-    public static function pegar_por_paciente($id_paciente) {
+    public static function pegar_por_id_paciente($id_paciente) {
 
-        $retorno = [];
+        // Pego a parte 1 da anamnese que tem o id_paciente e id_tp
+        $pt1 = \App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt1::where('id_paciente', $id_paciente)->first();
 
+        // Se foi, vou pegar a tabela index
+        $id_tp = $pt1->id_tp;
 
-        // Pego todas as anamneses
-        $anamneses = \App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt1::where('id_paciente', $id_paciente)->get();
+        // O id_tp = id de todas as tabelas, já que são criadas todas ao mesmo tempo
+        // Ai pq ter o id_tp e o id? Clareza, eles são o mesmo numero com nomes convenientes
+        // Pegar as partes 2 e 3, já que já tem a 1, sendo a parte 1 que tem o id do paciente
+        $pt2 = \App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt2::where('id_tp', $id_tp)->first();
+        $pt3 = \App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt3::where('id_tp', $id_tp)->first();
 
-        // Vou andar por todas elas
-        foreach($anamneses as $pt1) {
+        // Pega os atributos de todas as partes
+        $atributos_pt1 = getProtectedMember( (object) ((array)$pt1), "attributes");
+        $atributos_pt2 = getProtectedMember( (object) ((array)$pt2), "attributes");
+        $atributos_pt3 = getProtectedMember( (object) ((array)$pt3), "attributes");
 
-            // Se foi, vou pegar a tabela index
-            $id_tp = $pt1->id_tp;
+        // Transforma os 3 arrays de atributos em 1 array, dando merge neles, e transforma de volta num objeto std
+        $pt1_pt2_pt3 = (object) array_merge(array_merge($atributos_pt1, $atributos_pt2), $atributos_pt3);
 
-            // O id_tp = id de todas as tabelas, já que são criadas todas ao mesmo tempo
-            // Ai pq ter o id_tp e o id? Clareza, eles são o mesmo numero com nomes convenientes
-            // Pegar as partes 2 e 3, já que já tem a 1, sendo a parte 1 que tem o id do paciente
-            $pt2 = \App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt2::find($id_tp);
-            $pt3 = \App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt3::find($id_tp);
+        /* Cria um objeto de classe anonima que pode ter chamada de metodo normal
+         * que pode ser chamado como $obj->metodo();
+         * A função __get e __set garante que todos os objetos da anamnese são acessiveis
+         * como se essa classe anonima fosse a classe de anamnese.
+         * Em resumo, agora a classe anamnese tem o metodo save() que pode ser chamando
+         * padrão.
+         */
+        $anamnese_proxy = new class($pt1_pt2_pt3) {
+            private $anamnese_original;
+            private $id_tp;
 
-            // Pega os atributos de todas as partes
-            $atributos_pt1 = getProtectedMember( (object) ((array)$pt1), "attributes");
-            $atributos_pt2 = getProtectedMember( (object) ((array)$pt2), "attributes");
-            $atributos_pt3 = getProtectedMember( (object) ((array)$pt3), "attributes");
+            public function __construct($orig) {
+                $this->anamnese_original = $orig;
+                $this->id_tp = $orig->id_tp;
+            }
 
-            // Transforma os 3 arrays de atributos em 1 array, dando merge neles, e transforma de volta num objeto std
-            $pt1_pt2_pt3 = (object) array_merge(array_merge($atributos_pt1, $atributos_pt2), $atributos_pt3);
+            public function __get($name) {
+                return ($this->anamnese_original->$name);
+            }
 
-            /* Cria um objeto de classe anonima que pode ter chamada de metodo normal
-             * que pode ser chamado como $obj->metodo();
-             * A função __get e __set garante que todos os objetos da anamnese são acessiveis
-             * como se essa classe anonima fosse a classe de anamnese.
-             * Em resumo, agora a classe anamnese tem o metodo save() que pode ser chamando
-             * padrão.
-             */
-            $anamnese_proxy = new class($pt1_pt2_pt3) {
-                private $anamnese_original;
-                private $id;
+            public function __set($name, $value) {
+                $this->anamnese_original->$name = $value;
+            }
 
-                public function __construct($orig) {
-                    $this->anamnese_original = $orig;
-                    $this->id = $orig->id;
-                }
+            public function __call($name, $arguments) {
+                $anamnese = \App\Anamnese_Psicopeda_Neuro_Psicomoto::where('id_tp', $this->id_tp)->first();
+                return $anamnese->$name($arguments);
+            }
 
-                public function __get($name) {
-                    return ($this->anamnese_original->$name);
-                }
+            public function get_pt1() {
+                return \App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt1::where('id_tp', $this->id_tp)->first();
+            }
+            public function get_pt2() {
+                return \App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt2::where('id_tp', $this->id_tp)->first();
+            }
+            public function get_pt3() {
+                return \App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt3::where('id_tp', $this->id_tp)->first();
+            }
 
-                public function __set($name, $value) {
-                    $this->anamnese_original->$name = $value;
-                }
+            public function save() {
+                return \App\Anamnese_Psicopeda_Neuro_Psicomoto::salvar($this->anamnese_original);
+            }
+        };
 
-                public function __call($name, $arguments) {
-                    $anamnese = \App\Anamnese_Psicopeda_Neuro_Psicomoto::find($this->id);
-                    return $anamnese->$name($arguments);
-                }
+        return $anamnese_proxy;
 
-                public function get_pt1() {
-                    return \App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt1::find($this->id);
-                }
-                public function get_pt2() {
-                    return \App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt2::find($this->id);
-                }
-                public function get_pt3() {
-                    return \App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt3::find($this->id);
-                }
-
-                public function save() {
-                    return \App\Anamnese_Psicopeda_Neuro_Psicomoto::salvar($this->anamnese_original);
-                }
-            };
-
-            // Push no array que é retornado
-            array_push($retorno, $anamnese_proxy);
-
-        }
-        return $retorno;
     }
 }

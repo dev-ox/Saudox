@@ -1,6 +1,4 @@
 <?php
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
 
 // TODO: Colocar os 'names' nas rotas de anamnese, avaliacao, evolucao
 
