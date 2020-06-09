@@ -3,7 +3,6 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Closure;
 use Illuminate\Support\Facades\Schema;
 
 function getProtectedMember($class_object,$protected_member) {
@@ -23,14 +22,25 @@ class Anamnese_Psicopeda_Neuro_Psicomoto extends Model
         $pt2 = \App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt2::find($id);
         $pt3 = \App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt3::find($id);
 
-        $asdasdas = "";
+        $tabela_pt1 = app(\App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt1::class)->getTable();
+        $tabela_pt2 = app(\App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt2::class)->getTable();
+        $tabela_pt3 = app(\App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt3::class)->getTable();
+
+
+        // Qualquer classe php pode ser usada como um array associativo
+        // Um atributo/método é um indice do array
+        // $obj->atributo quer dizer a mesma coisa que ((array) $obj)[atributo]
+        // Então:
+        // Estrutura do array: ["nomeA" => valorA, "nomeB" => valorB, ...]
+        // $chave = Nome da coluna (nomeA, nomeB, ...)
+        // $valor = Valor da chave no array (valorA, valorB, ...)
         foreach($std_class_anamnese as $chave => $valor) {
 
-            if(Schema::hasColumn(app(\App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt1::class)->getTable(), $chave)) {
+            if(Schema::hasColumn($tabela_pt1, $chave)) {
                 $pt1->$chave = $valor;
-            } elseif(Schema::hasColumn(app(\App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt2::class)->getTable(), $chave)) {
+            } elseif(Schema::hasColumn($tabela_pt2, $chave)) {
                 $pt2->$chave = $valor;
-            } elseif(Schema::hasColumn(app(\App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt3::class)->getTable(), $chave)) {
+            } elseif(Schema::hasColumn($tabela_pt3, $chave)) {
                 $pt3->$chave = $valor;
             }
         }
@@ -47,15 +57,10 @@ class Anamnese_Psicopeda_Neuro_Psicomoto extends Model
 
 
         // Pego todas as anamneses
-        $anamneses = \App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt1::all();
+        $anamneses = \App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt1::where('id_paciente', $id_paciente)->get();
 
         // Vou andar por todas elas
         foreach($anamneses as $pt1) {
-
-            // Se a anamnese não for do paciente que foi requisitado, veja o proximo
-            if($pt1->id_paciente != $id_paciente) {
-                continue;
-            }
 
             // Se foi, vou pegar a tabela index
             $id_tp = $pt1->id_tp;
@@ -83,9 +88,11 @@ class Anamnese_Psicopeda_Neuro_Psicomoto extends Model
              */
             $anamnese_proxy = new class($pt1_pt2_pt3) {
                 private $anamnese_original;
+                private $id;
 
                 public function __construct($orig) {
                     $this->anamnese_original = $orig;
+                    $this->id = $orig->id;
                 }
 
                 public function __get($name) {
@@ -94,6 +101,21 @@ class Anamnese_Psicopeda_Neuro_Psicomoto extends Model
 
                 public function __set($name, $value) {
                     $this->anamnese_original->$name = $value;
+                }
+
+                public function __call($name, $arguments) {
+                    $anamnese = \App\Anamnese_Psicopeda_Neuro_Psicomoto::find($this->id);
+                    return $anamnese->$name($arguments);
+                }
+
+                public function get_pt1() {
+                    return \App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt1::find($this->id);
+                }
+                public function get_pt2() {
+                    return \App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt2::find($this->id);
+                }
+                public function get_pt3() {
+                    return \App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt3::find($this->id);
                 }
 
                 public function save() {
