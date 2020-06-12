@@ -8,6 +8,8 @@ use App\Endereco;
 
 class LoginFuncionarioTest extends TestCase
 {
+
+    /** @test **/
     public function funcionarioPodeLogarComDadosCorretos()
     {
         $funcionario = factory(Funcionario::class)->create([
@@ -23,6 +25,7 @@ class LoginFuncionarioTest extends TestCase
         $this->assertAuthenticatedAs($funcionario);
     }
 
+    /** @test **/
     public function funcionarioNaoPodeLogarComSenhaIncorreta()
     {
         $funcionario = factory(Funcionario::class)->create([
@@ -41,6 +44,7 @@ class LoginFuncionarioTest extends TestCase
         $this->assertGuest();
     }
 
+    /** @test **/
     public function funcionarioNaoPodeLogarComloginIncorreto()
     {
         $funcionario = factory(Funcionario::class)->create([
@@ -60,6 +64,7 @@ class LoginFuncionarioTest extends TestCase
         $this->assertGuest();
     }
 
+    /** @test **/
     public function funcionarioPodeFazerLogout()
     {
         $funcionario = factory(Funcionario::class)->create([
@@ -96,6 +101,7 @@ class LoginFuncionarioTest extends TestCase
         $this->seePageIs('/profissional/login');
     } */
 
+    /** @test **/
     public function funcionarioPodeVerAgendamentos()
     {
         $funcionario = factory(Funcionario::class)->create([
@@ -114,7 +120,7 @@ class LoginFuncionarioTest extends TestCase
         $this->seePageIs('/profissional/agenda');
     }
 
-
+    /** @test **/
     public function funcionarioNaoPodeVerAgendamentosSeNaoEstiverLogado()
     {
         $funcionario = factory(Funcionario::class)->create([
@@ -135,6 +141,7 @@ class LoginFuncionarioTest extends TestCase
         $this->seePageIs('/profissional/login');
     }
 
+    /** @test **/
     public function funcionarioPodeVerPerfil()
     {
         $funcionario = factory(Funcionario::class)->create([
@@ -153,6 +160,7 @@ class LoginFuncionarioTest extends TestCase
         $this->seePageIs('/profissional/perfil');
     }
 
+    /** @test **/
     public function funcionarioNaoPodeVerPerfilSeNaoEstiverLogado()
     {
         $funcionario = factory(Funcionario::class)->create([
