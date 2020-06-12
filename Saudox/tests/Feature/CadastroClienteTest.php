@@ -5,52 +5,58 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use App\Endereco;
+use App\Profissional;
+use App\Paciente;
 
 class CadastroClienteTest extends TestCase
 {
-    private $funcionario = factory(Funcionario::class)->create([
-        'password' => bcrypt($password = '123123123'),
-        'profissao' => 'Administrador'
-    ]);
+    public $funcionario;
 
-    private $endereco = factory(Endereco::class)->create([
-                'estado' => 'MG',
-                'cidade' => 'Joao Pinheiro',
-                'ponto_referencia' => 'Favela',
-    ]);
+    private $endereco;
 
-    private $paciente = [
-        'login' => 'literalmentequalquercoisa',
-        'password' => '123123123',
-        'nome_paciente' => 'Carlos Antonio Alves Junior',
-        'cpf' => '98765432110',
-        'sexo' => 'Masculino',
-        'data_nascimento' => '10-05-1999',
-        'responsavel' => 'Maria Sueli',
-        'numero_irmaos' => 1,
-        'lista_irmaos' => 'Barbara Yorrana',
-        'nome_pai' => 'Tenho Pai Nao',
-        'nome_mae' => 'Maria Sueli de Melo',
-        'telefone_pai' => '66666666666',
-        'telefone_mae' => '11111111111',
-        'email_pai' => 'satanas@inferno.com',
-        'email_mae' => 'emailteste@gmail.com',
-        'idade_pai' => 99,
-        'idade_mae' => 45,
-        'id_endereco' => $endereco->id,
-        'naturalidade' => 'Brasileiro',
-        'pais_sao_casados' => false,
-        'pais_sao_divorciados' => false,
-        'tipo_filho_biologico_adotivo' => false,
-    ];
+    private $paciente;
 
+    public function setUp() : void {
+        parent::setUp();
 
+        $this->funcionario = factory(Profissional::class)->create([
+            'password' => bcrypt($password = '123123123'),
+            'profissao' => 'Administrador',
+        ]);
 
+        $this->endereco = factory(Endereco::class)->create();
+
+        $this->paciente = [
+            'login' => 'literalmentequalquercoisa',
+            'password' => '123123123',
+            'nome_paciente' => 'Carlos Antonio Alves Junior',
+            'cpf' => '98765432110',
+            'sexo' => 'Masculino',
+            'data_nascimento' => '10-05-1999',
+            'responsavel' => 'Maria Sueli',
+            'numero_irmaos' => 1,
+            'lista_irmaos' => 'Barbara Yorrana',
+            'nome_pai' => 'Tenho Pai Nao',
+            'nome_mae' => 'Maria Sueli de Melo',
+            'telefone_pai' => '66666666666',
+            'telefone_mae' => '11111111111',
+            'email_pai' => 'satanas@inferno.com',
+            'email_mae' => 'emailteste@gmail.com',
+            'idade_pai' => 99,
+            'idade_mae' => 45,
+            'id_endereco' => $endereco->id,
+            'naturalidade' => 'Brasileiro',
+            'pais_sao_casados' => false,
+            'pais_sao_divorciados' => false,
+            'tipo_filho_biologico_adotivo' => false,
+        ];
+    }
 
 
     /** @test **/
     public function admPodeAcessarCriacaoPaciente()
     {
+        $this->first();
 
         $func = $this->$funcionario;
 
@@ -489,7 +495,7 @@ class CadastroClienteTest extends TestCase
 
         $copiaPac = $this->$paciente;
 
-        $copiaPac['numero_irmaos'] = ;
+        $copiaPac['numero_irmaos'] = '';
 
         $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
 
@@ -858,7 +864,7 @@ class CadastroClienteTest extends TestCase
 
         $copiaPac = $this->$paciente;
 
-        $copiaPac['idade_pai'] = ;
+        $copiaPac['idade_pai'] ='';
 
         $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
 
@@ -924,7 +930,7 @@ class CadastroClienteTest extends TestCase
 
         $copiaPac = $this->$paciente;
 
-        $copiaPac['idade_mae'] = ;
+        $copiaPac['idade_mae'] ='';
 
         $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
 
@@ -1016,7 +1022,7 @@ class CadastroClienteTest extends TestCase
 
         $copiaPac = $this->$paciente;
 
-        $copiaPac['naturalidade'] = '' ;
+        $copiaPac['naturalidade'] = '';
 
         $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
 
@@ -1039,7 +1045,7 @@ class CadastroClienteTest extends TestCase
 
         $copiaPac = $this->$paciente;
 
-        $copiaPac['naturalidade'] = 'Brasi131r0' ;
+        $copiaPac['naturalidade'] = 'Brasi131r0';
 
         $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
 
@@ -1061,7 +1067,7 @@ class CadastroClienteTest extends TestCase
 
         $copiaPac = $this->$paciente;
 
-        $copiaPac['pais_sao_casados'] = '' ;
+        $copiaPac['pais_sao_casados'] = '';
 
         $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
 
