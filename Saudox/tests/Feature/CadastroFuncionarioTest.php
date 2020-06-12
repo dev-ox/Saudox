@@ -33,6 +33,7 @@ class CadastroFuncionarioTest extends TestCase
     ];
 
 
+// TODO: Alterar as rotas de criação de funcionario
 
     /** @test **/
     public function funcionarioPodeSerAdicionado(){
@@ -521,7 +522,7 @@ class CadastroFuncionarioTest extends TestCase
         $this->withoutExceptionHandling();
 
         $copiaFunc = $this->array_funcionario;
-        $copiaFunc['numero_conselho'] = '1234';
+        $copiaFunc['numero_conselho'] = '123';
 
         $resposta = $this->post('/funcionarios', $copiaFunc);
 

@@ -46,7 +46,7 @@ class CadastroClienteTest extends TestCase
 
 
 
-// TODO: Alterar as rotas de criação de funcionario
+
 
     /** @test **/
     public function admPodeAcessarCriacaoPaciente()
