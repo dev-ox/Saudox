@@ -92,7 +92,7 @@ class CadastroClienteTest extends TestCase
 
         $pac = $this->$paciente;
 
-        $paciente = factory(Paciente::class)->create($pac));
+        $paciente = factory(Paciente::class)->create($pac);
 
         $resposta = $this->post('/paciente/login', [
             'login' => $paciente->login,
