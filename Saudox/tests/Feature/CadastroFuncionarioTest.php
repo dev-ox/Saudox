@@ -61,6 +61,7 @@ class CadastroFuncionarioTest extends TestCase
         $resposta = $this->post('/funcionarios', $copiaFunc);
 
         $resposta->assertSessionHasErrors('nome');
+        $this->assertCount(0, Funcionario::all());
     }
 
     /** @test **/
@@ -74,6 +75,7 @@ class CadastroFuncionarioTest extends TestCase
         $resposta = $this->post('/funcionarios', $copiaFunc);
 
         $resposta->assertSessionHasErrors('cpf');
+        $this->assertCount(0, Funcionario::all());
     }
 
 
@@ -88,6 +90,7 @@ class CadastroFuncionarioTest extends TestCase
         $resposta = $this->post('/funcionarios', $copiaFunc);
 
         $resposta->assertSessionHasErrors('cpf');
+        $this->assertCount(0, Funcionario::all());
     }
 
     /** @test **/
@@ -101,6 +104,7 @@ class CadastroFuncionarioTest extends TestCase
         $resposta = $this->post('/funcionarios', $copiaFunc);
 
         $resposta->assertSessionHasErrors('cpf');
+        $this->assertCount(0, Funcionario::all());
     }
 
     /** @test **/
@@ -113,6 +117,7 @@ class CadastroFuncionarioTest extends TestCase
 
         $resposta = $this->post('/funcionarios', $copiaFunc);
         $resposta->assertSessionHasErrors('cpf');
+        $this->assertCount(0, Funcionario::all());
     }
 
 
@@ -129,6 +134,7 @@ class CadastroFuncionarioTest extends TestCase
         $resposta = $this->post('/funcionarios', $copiaFunc);
 
         $resposta->assertSessionHasErrors('rg');
+        $this->assertCount(0, Funcionario::all());
     }
 
     /** @test **/
@@ -142,6 +148,7 @@ class CadastroFuncionarioTest extends TestCase
         $resposta = $this->post('/funcionarios', $copiaFunc);
 
         $resposta->assertSessionHasErrors('rg');
+        $this->assertCount(0, Funcionario::all());
     }
 
     /** @test **/
@@ -155,6 +162,7 @@ class CadastroFuncionarioTest extends TestCase
         $resposta = $this->post('/funcionarios', $copiaFunc);
 
         $resposta->assertSessionHasErrors('rg');
+        $this->assertCount(0, Funcionario::all());
     }
 
     /** @test **/
@@ -167,6 +175,7 @@ class CadastroFuncionarioTest extends TestCase
 
         $resposta = $this->post('/funcionarios', $copiaFunc);
         $resposta->assertSessionHasErrors('rg');
+        $this->assertCount(0, Funcionario::all());
     }
 
 
@@ -182,6 +191,7 @@ class CadastroFuncionarioTest extends TestCase
         $resposta = $this->post('/funcionarios', $copiaFunc);
 
         $resposta->assertSessionHasErrors('status');
+        $this->assertCount(0, Funcionario::all());
     }
 
     /** @test **/
@@ -195,6 +205,7 @@ class CadastroFuncionarioTest extends TestCase
         $resposta = $this->post('/funcionarios', $copiaFunc);
 
         $resposta->assertSessionHasErrors('status');
+        $this->assertCount(0, Funcionario::all());
     }
 
 
@@ -210,6 +221,7 @@ class CadastroFuncionarioTest extends TestCase
         $resposta = $this->post('/funcionarios', $copiaFunc);
 
         $resposta->assertSessionHasErrors('login');
+        $this->assertCount(0, Funcionario::all());
     }
 
 
@@ -224,6 +236,7 @@ class CadastroFuncionarioTest extends TestCase
         $resposta = $this->post('/funcionarios', $copiaFunc);
 
         $resposta->assertSessionHasErrors('password');
+        $this->assertCount(0, Funcionario::all());
    }
 
    /** @test **/
@@ -237,6 +250,7 @@ class CadastroFuncionarioTest extends TestCase
        $resposta = $this->post('/funcionarios', $copiaFunc);
 
        $resposta->assertSessionHasErrors('password');
+       $this->assertCount(0, Funcionario::all());
    }
 
     /** @test **/
@@ -250,6 +264,7 @@ class CadastroFuncionarioTest extends TestCase
         $resposta = $this->post('/funcionarios', $copiaFunc);
 
         $resposta->assertSessionHasErrors('profissao');
+        $this->assertCount(0, Funcionario::all());
     }
 
     /** @test **/
@@ -264,6 +279,7 @@ class CadastroFuncionarioTest extends TestCase
         $resposta = $this->post('/funcionarios', $copiaFunc);
 
         $resposta->assertSessionHasErrors('id_endereco');
+        $this->assertCount(0, Funcionario::all());
     }
 
     /** @test **/
@@ -278,6 +294,7 @@ class CadastroFuncionarioTest extends TestCase
         $resposta = $this->post('/funcionarios', $copiaFunc);
 
         $resposta->assertSessionHasErrors('id_endereco');
+        $this->assertCount(0, Funcionario::all());
     }
 
 
@@ -292,6 +309,7 @@ class CadastroFuncionarioTest extends TestCase
         $resposta = $this->post('/funcionarios', $copiaFunc);
 
         $resposta->assertSessionHasErrors('telefone_1');
+        $this->assertCount(0, Funcionario::all());
     }
 
     /** @test **/
@@ -305,10 +323,11 @@ class CadastroFuncionarioTest extends TestCase
         $resposta = $this->post('/funcionarios', $copiaFunc);
 
         $resposta->assertSessionHasErrors('telefone_1');
+        $this->assertCount(0, Funcionario::all());
     }
 
     /** @test **/
-    public function telefoneNaoPodeTerMenosDeOnzeNumeros(){
+    public function telefoneNaoPodeTerPoucosNumeros(){
 
         $this->withoutExceptionHandling();
 
@@ -318,19 +337,21 @@ class CadastroFuncionarioTest extends TestCase
         $resposta = $this->post('/funcionarios', $copiaFunc);
 
         $resposta->assertSessionHasErrors('telefone_1');
+        $this->assertCount(0, Funcionario::all());
     }
 
     /** @test **/
-    public function telefoneNaoPodeTerMaisDeOnzeNumeros(){
+    public function telefoneNaoPodeTerMuitosNumeros(){
 
         $this->withoutExceptionHandling();
 
         $copiaFunc = $this->array_funcionario;
-        $copiaFunc['telefone_1'] = '1234567890101';
+        $copiaFunc['telefone_1'] = '1234567890101112';
 
         $resposta = $this->post('/funcionarios', $copiaFunc);
 
         $resposta->assertSessionHasErrors('telefone_1');
+        $this->assertCount(0, Funcionario::all());
     }
 
     /** @test **/
@@ -344,10 +365,11 @@ class CadastroFuncionarioTest extends TestCase
         $resposta = $this->post('/funcionarios', $copiaFunc);
 
         $resposta->assertSessionHasErrors('telefone_2');
+        $this->assertCount(0, Funcionario::all());
     }
 
     /** @test **/
-    public function telefone2NaoPodeTerMenosDeOnzeNumeros(){
+    public function telefone2NaoPodeTerPoucosNumeros(){
 
         $this->withoutExceptionHandling();
 
@@ -357,19 +379,21 @@ class CadastroFuncionarioTest extends TestCase
         $resposta = $this->post('/funcionarios', $copiaFunc);
 
         $resposta->assertSessionHasErrors('telefone_2');
+        $this->assertCount(0, Funcionario::all());
     }
 
     /** @test **/
-    public function telefone2NaoPodeTerMaisDeOnzeNumeros(){
+    public function telefone2NaoPodeTerMuitosNumeros(){
 
         $this->withoutExceptionHandling();
 
         $copiaFunc = $this->array_funcionario;
-        $copiaFunc['telefone_2'] = '1234567891011';
+        $copiaFunc['telefone_2'] = '12345678910111213';
 
         $resposta = $this->post('/funcionarios', $copiaFunc);
 
         $resposta->assertSessionHasErrors('telefone_2');
+        $this->assertCount(0, Funcionario::all());
     }
 
     /** @test **/
@@ -383,6 +407,7 @@ class CadastroFuncionarioTest extends TestCase
         $resposta = $this->post('/funcionarios', $copiaFunc);
 
         $resposta->assertSessionHasErrors('email');
+        $this->assertCount(0, Funcionario::all());
     }
 
     /** @test **/
@@ -396,10 +421,11 @@ class CadastroFuncionarioTest extends TestCase
         $resposta = $this->post('/funcionarios', $copiaFunc);
 
         $resposta->assertSessionHasErrors('email');
+        $this->assertCount(0, Funcionario::all());
     }
 
     /** @test **/
-    public function emailPrecisaTerArroba(){
+    public function emailPrecisaTerFormatoCorreto(){
 
         $this->withoutExceptionHandling();
 
@@ -409,6 +435,7 @@ class CadastroFuncionarioTest extends TestCase
         $resposta = $this->post('/funcionarios', $copiaFunc);
 
         $resposta->assertSessionHasErrors('email');
+        $this->assertCount(0, Funcionario::all());
     }
 
     /** @test **/
@@ -422,6 +449,7 @@ class CadastroFuncionarioTest extends TestCase
         $resposta = $this->post('/funcionarios', $copiaFunc);
 
         $resposta->assertSessionHasErrors('nacionalidade');
+        $this->assertCount(0, Funcionario::all());
     }
 
     /** @test **/
@@ -436,6 +464,7 @@ class CadastroFuncionarioTest extends TestCase
 
 
         $resposta->assertSessionHasErrors('nacionalidade');
+        $this->assertCount(0, Funcionario::all());
     }
 
 
@@ -451,6 +480,7 @@ class CadastroFuncionarioTest extends TestCase
 
 
         $resposta->assertSessionHasErrors('estado_civil');
+        $this->assertCount(0, Funcionario::all());
     }
 
     /** @test **/
@@ -465,36 +495,39 @@ class CadastroFuncionarioTest extends TestCase
 
 
         $resposta->assertSessionHasErrors('estado_civil');
+        $this->assertCount(0, Funcionario::all());
     }
 
 
     /** @test **/
-    public function conselhoNaoPodeTerMaisDeQuatroNumeros(){
+    public function conselhoNaoPodeTerMaisDeSeteNumeros(){
 
         $this->withoutExceptionHandling();
 
         $copiaFunc = $this->array_funcionario;
-        $copiaFunc['numero_conselho'] = '12345';
+        $copiaFunc['numero_conselho'] = '12345678';
 
         $resposta = $this->post('/funcionarios', $copiaFunc);
 
 
         $resposta->assertSessionHasErrors('numero_conselho');
+        $this->assertCount(0, Funcionario::all());
     }
 
 
     /** @test **/
-    public function conselhoNaoPodeTerMenosQueTresNumeros(){
+    public function conselhoNaoPodeTerMenosQueQuatroNumeros(){
 
         $this->withoutExceptionHandling();
 
         $copiaFunc = $this->array_funcionario;
-        $copiaFunc['numero_conselho'] = '123';
+        $copiaFunc['numero_conselho'] = '1234';
 
         $resposta = $this->post('/funcionarios', $copiaFunc);
 
 
         $resposta->assertSessionHasErrors('numero_conselho');
+        $this->assertCount(0, Funcionario::all());
     }
 
     /** @test **/
@@ -509,5 +542,6 @@ class CadastroFuncionarioTest extends TestCase
 
 
         $resposta->assertSessionHasErrors('numero_conselho');
+        $this->assertCount(0, Funcionario::all());
     }
 }

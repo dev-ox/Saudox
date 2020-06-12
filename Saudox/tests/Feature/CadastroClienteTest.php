@@ -46,6 +46,8 @@ class CadastroClienteTest extends TestCase
 
 
 
+// TODO: Alterar as rotas de criação de funcionario
+
     /** @test **/
     public function admPodeAcessarCriacaoPaciente()
     {
@@ -90,8 +92,7 @@ class CadastroClienteTest extends TestCase
 
         $pac = $this->$paciente;
 
-        $paciente = factory(Paciente::class)->create($pac),
-        ]);
+        $paciente = factory(Paciente::class)->create($pac));
 
         $resposta = $this->post('/paciente/login', [
             'login' => $paciente->login,
@@ -273,7 +274,7 @@ class CadastroClienteTest extends TestCase
     }
 
     /** @test **/
-    public function cpfnPacienteNaoPodeTerMuitosCaracteres()
+    public function cpfPacienteNaoPodeTerMuitosCaracteres()
     {
         $func = $this->$funcionario;
 
@@ -475,7 +476,7 @@ class CadastroClienteTest extends TestCase
 
 
     /** @test **/
-    public function nirmaoPacienteNaoPodeFicarEmBranco()
+    public function numeroIrmaoPacienteNaoPodeFicarEmBranco()
     {
         $func = $this->$funcionario;
 
@@ -497,7 +498,7 @@ class CadastroClienteTest extends TestCase
     }
 
     /** @test **/
-    public function nirmaoPacienteNaoPodeTerLetras()
+    public function numeroIrmaoPacienteNaoPodeTerLetras()
     {
         $func = $this->$funcionario;
 
@@ -673,7 +674,7 @@ class CadastroClienteTest extends TestCase
 
         $copiaPac = $this->$paciente;
 
-        $copiaPac['telefone_mae'] = '1111111111111';
+        $copiaPac['telefone_mae'] = '1111111111111111';
 
         $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
 
@@ -741,7 +742,7 @@ class CadastroClienteTest extends TestCase
 
         $copiaPac = $this->$paciente;
 
-        $copiaPac['telefone_pai'] = '666666666666';
+        $copiaPac['telefone_pai'] = '66666666666666';
 
         $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
 
@@ -1046,31 +1047,6 @@ class CadastroClienteTest extends TestCase
         $this->assertCount(0, Paciente::all());
     }
 
-
-    /** @test **/
-    public function naturalidadePacientePrecisaExistir()
-    {
-        $func = $this->$funcionario;
-
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
-
-        $this->assertAuthenticatedAs($funcionario);
-
-        $copiaPac = $this->$paciente;
-
-        $copiaPac['naturalidade'] = 'Braziliano' ;
-
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
-
-
-
-        $resposta->assertSessionHasErrors('naturalidade');
-        $this->assertCount(0, Paciente::all());
-    }
-
     /** @test **/
     public function estadoCivilPaisPacienteNaoPodeFicarEmBranco()
     {
@@ -1108,7 +1084,7 @@ class CadastroClienteTest extends TestCase
 
         $copiaPac = $this->$paciente;
 
-        $copiaPac['pais_sao_divorciados'] = '' ;
+        $copiaPac['pais_sao_divorciados'] = '';
 
         $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
 
@@ -1131,7 +1107,7 @@ class CadastroClienteTest extends TestCase
 
         $copiaPac = $this->$paciente;
 
-        $copiaPac['tipo_filho_biologico_adotivo'] = '' ;
+        $copiaPac['tipo_filho_biologico_adotivo'] = '';
 
         $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
 
