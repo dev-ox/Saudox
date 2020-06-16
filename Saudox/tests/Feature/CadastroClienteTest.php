@@ -1123,14 +1123,319 @@ class CadastroClienteTest extends TestCase
     }
 
 
+    /** @test **/
+    public function clienteNaoPodeSerCadastradoDuasVezes()
+    {
+        $func = $this->$funcionario;
+
+        $this->post('/profissional/login', [
+            'login' => $func->login,
+            'password' => $password,
+        ]);
+
+        $this->assertAuthenticatedAs($funcionario);
+
+        $copiaPac = $this->$paciente;
+
+        $this->post('/profissional/criarpaciente', $copiaPac);
+
+        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+
+        $resposta->assertSessionHasErrors();
+        $this->assertCount(1, Paciente::all());
+
+        //Essa parte pode ser que seja desnecessária
+        //Garantindo que os dados fiquem digitados no form:
+        $this->assertTrue(session()->hasOldInput('login'));
+        $this->assertTrue(session()->hasOldInput('password'));
+        $this->assertTrue(session()->hasOldInput('nome_paciente'));
+        $this->assertTrue(session()->hasOldInput('cpf'));
+        $this->assertTrue(session()->hasOldInput('sexo'));
+        $this->assertTrue(session()->hasOldInput('data_nascimento'));
+        $this->assertTrue(session()->hasOldInput('responsavel'));
+        $this->assertTrue(session()->hasOldInput('numero_irmaos'));
+        $this->assertTrue(session()->hasOldInput('nome_pai'));
+        $this->assertTrue(session()->hasOldInput('nome_mae'));
+        $this->assertTrue(session()->hasOldInput('telefone_pai'));
+        $this->assertTrue(session()->hasOldInput('telefone_mae'));
+        $this->assertTrue(session()->hasOldInput('idade_pai'));
+        $this->assertTrue(session()->hasOldInput('idade_mae'));
+        $this->assertTrue(session()->hasOldInput('naturalidade'));
+        $this->assertTrue(session()->hasOldInput('pais_sao_casados'));
+        $this->assertTrue(session()->hasOldInput('pais_sao_divorciados'));
+        $this->assertTrue(session()->hasOldInput('tipo_filho_biologico_adotivo'));
+
+    }
+
+    /** @test **/
+    public function mensagemSucessoApareceAoCadastrarCliente()
+    {
+       $func = $this->$funcionario;
+
+       $this->post('/profissional/login', [
+            'login' => $func->login,
+            'password' => $password,
+       ]);
+
+       $this->assertAuthenticatedAs($funcionario);
+
+       $copiaPac = $this->$paciente;
+
+       $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+
+       $value = 'Paciente criado com sucesso!';
+
+       $resposta->assertSee($value, $escaped = true);
+       $resposta->assertOk();
+       $this->assertCount(1, Paciente::all());
+
+    }
+
+    /** @test **/
+    public function funcionarioPermitidoPodeAcessarAvaliacaoPacienteExistente()
+    {
+       $func = $this->$funcionario;
+
+       $this->post('/profissional/login', [
+            'login' => $func->login,
+            'password' => $password,
+       ]);
+
+       $this->assertAuthenticatedAs($funcionario);
+
+       $copiaPac = $this->$paciente;
+
+       $this->post('/profissional/criarpaciente', $copiaPac);
+
+       $pacie = Paciente::first();
+
+       $this->visit('/profissional/paciente/{$pacie->id}/avaliacao');
+       $this->seePageIs('/profissional/paciente/{$pacie->id}/avaliacao');
+       $resposta->assertOk();
+    }
+
+    /** @test **/
+    public function funcionarioPermitidoNaoPodeAcessarAvaliacaoPacienteInexistente()
+    {
+       $func = $this->$funcionario;
+
+       $this->post('/profissional/login', [
+            'login' => $func->login,
+            'password' => $password,
+       ]);
+
+       $this->assertAuthenticatedAs($funcionario);
+
+       $this->visit('/profissional/paciente/0/avaliacao');
+       $this->seePageIs('/profissional/home');
+    }
+
+    /** @test **/
+    public function funcionarioNaoPermitidoNaoPodeAcessarAvaliacaoPacienteExistente()
+    {
+         $func = $this->$funcionario;
 
 
+         $this->post('/profissional/login', [
+              'login' => $func->login,
+              'password' => $password,
+         ]);
+
+         $f = factory(Profissional::class)->create([
+          'password' => bcrypt($password = '123123123'),
+          'profissao' => 'Lutador',
+         ]);
 
 
+         $this->assertAuthenticatedAs($funcionario);
+
+         $copiaPac = $this->$paciente;
+
+         $this->post('/profissional/criarpaciente', $copiaPac);
+         $this->post('/profissional/logout');
+
+         $this->post('/profissional/login', [
+              'login' => $f->login,
+              'password' => $password,
+         ]);
+
+         $pacie = Paciente::first();
+
+         $this->visit('/profissional/paciente/{$pacie->id}/avaliacao');
+         $this->seePageIs('/profissional/home');
+    }
+
+    /** @test **/
+    public function funcionarioPermitidoPodeAcessarEvolucaoPacienteExistente()
+    {
+       $func = $this->$funcionario;
+
+       $this->post('/profissional/login', [
+            'login' => $func->login,
+            'password' => $password,
+       ]);
+
+       $this->assertAuthenticatedAs($funcionario);
+
+       $copiaPac = $this->$paciente;
+
+       $this->post('/profissional/criarpaciente', $copiaPac);
+
+       $pacie = Paciente::first();
+
+       $this->visit('/profissional/paciente/{$pacie->id}/evolucao');
+       $this->seePageIs('/profissional/paciente/{$pacie->id}/evolucao');
+       $resposta->assertOk();
+    }
+
+    /** @test **/
+    public function funcionarioPermitidoNaoPodeAcessarEvolucaoPacienteInexistente()
+    {
+       $func = $this->$funcionario;
+
+       $this->post('/profissional/login', [
+            'login' => $func->login,
+            'password' => $password,
+       ]);
+
+       $this->assertAuthenticatedAs($funcionario);
+
+       $this->visit('/profissional/paciente/0/evolucao');
+       $this->seePageIs('/profissional/home');
+    }
+
+    /** @test **/
+    public function funcionarioNaoPermitidoNaoPodeAcessarEvolucaoPacienteExistente()
+    {
+         $func = $this->$funcionario;
 
 
+         $this->post('/profissional/login', [
+              'login' => $func->login,
+              'password' => $password,
+         ]);
+
+         $f = factory(Profissional::class)->create([
+          'password' => bcrypt($password = '123123123'),
+          'profissao' => 'Lutador',
+         ]);
 
 
+         $this->assertAuthenticatedAs($funcionario);
+
+         $copiaPac = $this->$paciente;
+
+         $this->post('/profissional/criarpaciente', $copiaPac);
+         $this->post('/profissional/logout');
+
+         $this->post('/profissional/login', [
+              'login' => $f->login,
+              'password' => $password,
+         ]);
+
+         $pacie = Paciente::first();
+
+         $this->visit('/profissional/paciente/{$pacie->id}/evolucao');
+         $this->seePageIs('/profissional/home');
+    }
+
+    /** @test **/
+    public function funcionarioPermitidoPodeAcessarAnamnesePacienteExistente()
+    {
+       $func = $this->$funcionario;
+
+       $this->post('/profissional/login', [
+            'login' => $func->login,
+            'password' => $password,
+       ]);
+
+       $this->assertAuthenticatedAs($funcionario);
+
+       $copiaPac = $this->$paciente;
+
+       $this->post('/profissional/criarpaciente', $copiaPac);
+
+       $pacie = Paciente::first();
+
+       $this->visit('/profissional/paciente/{$pacie->id}/anamnese');
+       $this->seePageIs('/profissional/paciente/{$pacie->id}/anamnese');
+       $resposta->assertOk();
+    }
+
+    /** @test **/
+    public function funcionarioPermitidoNaoPodeAcessarAnamnesePacienteInexistente()
+    {
+       $func = $this->$funcionario;
+
+       $this->post('/profissional/login', [
+            'login' => $func->login,
+            'password' => $password,
+       ]);
+
+       $this->assertAuthenticatedAs($funcionario);
+
+       $this->visit('/profissional/paciente/0/anamnese');
+       $this->seePageIs('/profissional/home');
+    }
+
+    /** @test **/
+    public function funcionarioNaoPermitidoNaoPodeAcessarAnamnesePacienteExistente()
+    {
+         $func = $this->$funcionario;
+
+
+         $this->post('/profissional/login', [
+              'login' => $func->login,
+              'password' => $password,
+         ]);
+
+         $f = factory(Profissional::class)->create([
+          'password' => bcrypt($password = '123123123'),
+          'profissao' => 'Lutador',
+         ]);
+
+
+         $this->assertAuthenticatedAs($funcionario);
+
+         $copiaPac = $this->$paciente;
+
+         $this->post('/profissional/criarpaciente', $copiaPac);
+         $this->post('/profissional/logout');
+
+         $this->post('/profissional/login', [
+              'login' => $f->login,
+              'password' => $password,
+         ]);
+
+         $pacie = Paciente::first();
+
+         $this->visit('/profissional/paciente/{$pacie->id}/anamnese');
+         $this->seePageIs('/profissional/home');
+    }
+
+    /** @test **/
+    public function funcionarioNaoPermitidoNaoPodeCriarPaciente()
+    {
+
+         $f = factory(Profissional::class)->create([
+         'password' => bcrypt($password = '123123123'),
+         'profissao' => 'Lutador',
+         ]);
+
+         $this->post('/profissional/login', [
+              'login' => $f->login,
+              'password' => $password,
+         ]);
+
+         $this->assertAuthenticatedAs($funcionario);
+
+         $copiaPac = $this->$paciente;
+
+         $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+
+         $this->seePageIs('/profissional/home');
+         $this->assertCount(0, Paciente::all());
+    }
 
 
 
