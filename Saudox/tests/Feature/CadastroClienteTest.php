@@ -53,11 +53,19 @@ class CadastroClienteTest extends TestCase
     }
 
 
+    private function loginFunc() : void {
+        $func = $this->$funcionario;
+
+        $resposta = $this->post('/profissional/login', [
+            'login' => $func->login,
+            'password' => $password,
+        ]);
+    }
+
+
     /** @test **/
     public function admPodeAcessarCriacaoPaciente()
     {
-        $this->first();
-
         $func = $this->$funcionario;
 
         $resposta = $this->post('/profissional/login', [
@@ -116,12 +124,7 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function profissionalPodeCriarPaciente()
     {
-        $func = $this->$funcionario;
-
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
+        $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
@@ -149,12 +152,7 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function loginPacienteNaoPodeFicarEmBranco()
     {
-        $func = $this->$funcionario;
-
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
+        $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
@@ -172,13 +170,7 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function senhaPacienteNaoPodeFicarEmBranco()
     {
-        $func = $this->$funcionario;
-
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
-
+        $this->loginFunc();
         $this->assertAuthenticatedAs($funcionario);
 
         $copiaPac = $this->$paciente;
@@ -194,12 +186,7 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function senhaPacienteNaoPodeTerPoucosCaracteres()
     {
-        $func = $this->$funcionario;
-
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
+        $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
@@ -216,12 +203,7 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function nomePacienteNaoPodeFicarEmBranco()
     {
-        $func = $this->$funcionario;
-
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
+        $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
@@ -238,12 +220,7 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function cpfPacienteNaoPodeFicarEmBranco()
     {
-        $func = $this->$funcionario;
-
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
+        $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
@@ -260,12 +237,7 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function cpfPacienteNaoPodeTerPoucosCaracteres()
     {
-        $func = $this->$funcionario;
-
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
+        $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
@@ -282,12 +254,7 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function cpfPacienteNaoPodeTerMuitosCaracteres()
     {
-        $func = $this->$funcionario;
-
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
+        $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
@@ -305,12 +272,8 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function cpfPacienteNaoPodeTerLetras()
     {
-        $func = $this->$funcionario;
+        $this->loginFunc();
 
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
         $this->assertAuthenticatedAs($funcionario);
 
         $copiaPac = $this->$paciente;
@@ -327,12 +290,7 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function sexoPacienteNaoPodeFicarEmBranco()
     {
-        $func = $this->$funcionario;
-
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
+        $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
@@ -349,12 +307,8 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function sexoPacienteNaoPodeTerNumeros()
     {
-        $func = $this->$funcionario;
+        $this->loginFunc();
 
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
         $this->assertAuthenticatedAs($funcionario);
 
         $copiaPac = $this->$paciente;
@@ -371,12 +325,7 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function sexoPacienteNaoPodeSerInvalido()
     {
-        $func = $this->$funcionario;
-
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
+        $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
@@ -394,12 +343,7 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function nascimentoPacienteNaoPodeFicarEmBranco()
     {
-        $func = $this->$funcionario;
-
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
+        $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
@@ -417,12 +361,7 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function nascimentoPacienteNaoPodeTerLetras()
     {
-        $func = $this->$funcionario;
-
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
+        $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
@@ -440,12 +379,7 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function nascimentoPacientePrecisaTerFormatoCerto()
     {
-        $func = $this->$funcionario;
-
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
+        $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
@@ -462,12 +396,8 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function responsavelPacienteNaoPodeFicarEmBranco()
     {
-        $func = $this->$funcionario;
+        $this->loginFunc();
 
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
         $this->assertAuthenticatedAs($funcionario);
 
         $copiaPac = $this->$paciente;
@@ -484,12 +414,7 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function numeroIrmaoPacienteNaoPodeFicarEmBranco()
     {
-        $func = $this->$funcionario;
-
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
+        $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
@@ -506,12 +431,7 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function numeroIrmaoPacienteNaoPodeTerLetras()
     {
-        $func = $this->$funcionario;
-
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
+        $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
@@ -529,12 +449,7 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function nomePaiPacienteNaoPodeFicarEmBranco()
     {
-        $func = $this->$funcionario;
-
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
+        $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
@@ -553,12 +468,7 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function nomeMaePacienteNaoPodeFicarEmBranco()
     {
-        $func = $this->$funcionario;
-
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
+        $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
@@ -576,12 +486,7 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function telefonePaiPacienteNaoPodeFicarEmBranco()
     {
-        $func = $this->$funcionario;
-
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
+        $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
@@ -599,12 +504,7 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function telefoneMaePacienteNaoPodeFicarEmBranco()
     {
-        $func = $this->$funcionario;
-
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
+        $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
@@ -623,12 +523,7 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function telefoneMaePacienteNaoPodeTerLetras()
     {
-        $func = $this->$funcionario;
-
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
+        $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
@@ -646,12 +541,7 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function telefoneMaePacienteNaoPodeTerPoucosNumeros()
     {
-        $func = $this->$funcionario;
-
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
+        $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
@@ -669,12 +559,7 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function telefoneMaePacienteNaoPodeTerMuitosNumeros()
     {
-        $func = $this->$funcionario;
-
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
+        $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
@@ -691,12 +576,7 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function telefonePaiPacienteNaoPodeTerLetras()
     {
-        $func = $this->$funcionario;
-
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
+        $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
@@ -714,12 +594,7 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function telefonePaiPacienteNaoPodeTerPoucosNumeros()
     {
-        $func = $this->$funcionario;
-
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
+        $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
@@ -737,12 +612,7 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function telefonePaiPacienteNaoPodeTerMuitosNumeros()
     {
-        $func = $this->$funcionario;
-
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
+        $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
@@ -760,12 +630,7 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function emailPaiPacienteNaoPodeFicarEmBranco()
     {
-        $func = $this->$funcionario;
-
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
+        $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
@@ -784,12 +649,7 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function emailPaiPacienteNaoPodeSerInvalido()
     {
-        $func = $this->$funcionario;
-
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
+        $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
@@ -807,12 +667,7 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function emailMaePacienteNaoPodeFicarEmBranco()
     {
-        $func = $this->$funcionario;
-
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
+        $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
@@ -830,12 +685,7 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function emailMaePacienteNaoPodeSerInvalido()
     {
-        $func = $this->$funcionario;
-
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
+        $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
@@ -853,12 +703,7 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function idadePaiPacienteNaoPodeFicarEmBranco()
     {
-        $func = $this->$funcionario;
-
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
+        $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
@@ -876,12 +721,8 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function idadePaiPacienteNaoPodeTerLetras()
     {
-        $func = $this->$funcionario;
+        $this->loginFunc();
 
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
         $this->assertAuthenticatedAs($funcionario);
 
         $copiaPac = $this->$paciente;
@@ -897,12 +738,7 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function idadePaiPacienteNaoPodeSerGrande()
     {
-        $func = $this->$funcionario;
-
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
+        $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
@@ -920,12 +756,8 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function idadeMaePacienteNaoPodeFicarEmBranco()
     {
-        $func = $this->$funcionario;
+        $this->loginFunc();
 
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
         $this->assertAuthenticatedAs($funcionario);
 
         $copiaPac = $this->$paciente;
@@ -942,12 +774,7 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function idadeMaePacienteNaoPodeTerLetras()
     {
-        $func = $this->$funcionario;
-
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
+        $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
@@ -965,12 +792,7 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function idadeMaePacienteNaoPodeSerGrande()
     {
-        $func = $this->$funcionario;
-
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
+        $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
@@ -988,12 +810,7 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function enderecoPacienteNaoPodeFicarEmBranco()
     {
-        $func = $this->$funcionario;
-
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
+        $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
@@ -1011,12 +828,7 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function naturalidadePacienteNaoPodeFicarEmBranco()
     {
-        $func = $this->$funcionario;
-
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
+        $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
@@ -1034,12 +846,7 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function naturalidadePacienteNaoPodeTerNumeros()
     {
-        $func = $this->$funcionario;
-
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
+        $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
@@ -1056,12 +863,7 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function estadoCivilPaisPacienteNaoPodeFicarEmBranco()
     {
-        $func = $this->$funcionario;
-
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
+        $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
@@ -1080,12 +882,8 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function estadoCivilPaisPacienteDivorciadosNaoPodeFicarEmBranco()
     {
-        $func = $this->$funcionario;
+        $this->loginFunc();
 
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
         $this->assertAuthenticatedAs($funcionario);
 
         $copiaPac = $this->$paciente;
@@ -1103,21 +901,11 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function tipoDeFilhoPacienteNaoPodeFicarEmBranco()
     {
-        $func = $this->$funcionario;
-
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
+        $this->loginFunc();
         $this->assertAuthenticatedAs($funcionario);
-
         $copiaPac = $this->$paciente;
-
         $copiaPac['tipo_filho_biologico_adotivo'] = '';
-
         $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
-
-
         $resposta->assertSessionHasErrors('tipo_filho_biologico_adotivo');
         $this->assertCount(0, Paciente::all());
     }
@@ -1126,12 +914,7 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function clienteNaoPodeSerCadastradoDuasVezes()
     {
-        $func = $this->$funcionario;
-
-        $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-        ]);
+        $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
@@ -1170,247 +953,20 @@ class CadastroClienteTest extends TestCase
     /** @test **/
     public function mensagemSucessoApareceAoCadastrarCliente()
     {
-       $func = $this->$funcionario;
+        $this->loginFunc();
 
-       $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-       ]);
+        $this->assertAuthenticatedAs($funcionario);
 
-       $this->assertAuthenticatedAs($funcionario);
+        $copiaPac = $this->$paciente;
 
-       $copiaPac = $this->$paciente;
+        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
 
-       $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $value = 'sucesso';
+        $tempo = 5; // Tempo em segundo até o fim da espera
+        $resposta->waitForText($value, $tempo);
+        $resposta->assertOk();
+        $this->assertCount(1, Paciente::all());
 
-       $value = 'Paciente criado com sucesso!';
-
-       $resposta->assertSee($value, $escaped = true);
-       $resposta->assertOk();
-       $this->assertCount(1, Paciente::all());
-
-    }
-
-    /** @test **/
-    public function funcionarioPermitidoPodeAcessarAvaliacaoPacienteExistente()
-    {
-       $func = $this->$funcionario;
-
-       $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-       ]);
-
-       $this->assertAuthenticatedAs($funcionario);
-
-       $copiaPac = $this->$paciente;
-
-       $this->post('/profissional/criarpaciente', $copiaPac);
-
-       $pacie = Paciente::first();
-
-       $this->visit('/profissional/paciente/{$pacie->id}/avaliacao');
-       $this->seePageIs('/profissional/paciente/{$pacie->id}/avaliacao');
-       $resposta->assertOk();
-    }
-
-    /** @test **/
-    public function funcionarioPermitidoNaoPodeAcessarAvaliacaoPacienteInexistente()
-    {
-       $func = $this->$funcionario;
-
-       $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-       ]);
-
-       $this->assertAuthenticatedAs($funcionario);
-
-       $this->visit('/profissional/paciente/0/avaliacao');
-       $this->seePageIs('/profissional/home');
-    }
-
-    /** @test **/
-    public function funcionarioNaoPermitidoNaoPodeAcessarAvaliacaoPacienteExistente()
-    {
-         $func = $this->$funcionario;
-
-
-         $this->post('/profissional/login', [
-              'login' => $func->login,
-              'password' => $password,
-         ]);
-
-         $f = factory(Profissional::class)->create([
-          'password' => bcrypt($password = '123123123'),
-          'profissao' => 'Lutador',
-         ]);
-
-
-         $this->assertAuthenticatedAs($funcionario);
-
-         $copiaPac = $this->$paciente;
-
-         $this->post('/profissional/criarpaciente', $copiaPac);
-         $this->post('/profissional/logout');
-
-         $this->post('/profissional/login', [
-              'login' => $f->login,
-              'password' => $password,
-         ]);
-
-         $pacie = Paciente::first();
-
-         $this->visit('/profissional/paciente/{$pacie->id}/avaliacao');
-         $this->seePageIs('/profissional/home');
-    }
-
-    /** @test **/
-    public function funcionarioPermitidoPodeAcessarEvolucaoPacienteExistente()
-    {
-       $func = $this->$funcionario;
-
-       $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-       ]);
-
-       $this->assertAuthenticatedAs($funcionario);
-
-       $copiaPac = $this->$paciente;
-
-       $this->post('/profissional/criarpaciente', $copiaPac);
-
-       $pacie = Paciente::first();
-
-       $this->visit('/profissional/paciente/{$pacie->id}/evolucao');
-       $this->seePageIs('/profissional/paciente/{$pacie->id}/evolucao');
-       $resposta->assertOk();
-    }
-
-    /** @test **/
-    public function funcionarioPermitidoNaoPodeAcessarEvolucaoPacienteInexistente()
-    {
-       $func = $this->$funcionario;
-
-       $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-       ]);
-
-       $this->assertAuthenticatedAs($funcionario);
-
-       $this->visit('/profissional/paciente/0/evolucao');
-       $this->seePageIs('/profissional/home');
-    }
-
-    /** @test **/
-    public function funcionarioNaoPermitidoNaoPodeAcessarEvolucaoPacienteExistente()
-    {
-         $func = $this->$funcionario;
-
-
-         $this->post('/profissional/login', [
-              'login' => $func->login,
-              'password' => $password,
-         ]);
-
-         $f = factory(Profissional::class)->create([
-          'password' => bcrypt($password = '123123123'),
-          'profissao' => 'Lutador',
-         ]);
-
-
-         $this->assertAuthenticatedAs($funcionario);
-
-         $copiaPac = $this->$paciente;
-
-         $this->post('/profissional/criarpaciente', $copiaPac);
-         $this->post('/profissional/logout');
-
-         $this->post('/profissional/login', [
-              'login' => $f->login,
-              'password' => $password,
-         ]);
-
-         $pacie = Paciente::first();
-
-         $this->visit('/profissional/paciente/{$pacie->id}/evolucao');
-         $this->seePageIs('/profissional/home');
-    }
-
-    /** @test **/
-    public function funcionarioPermitidoPodeAcessarAnamnesePacienteExistente()
-    {
-       $func = $this->$funcionario;
-
-       $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-       ]);
-
-       $this->assertAuthenticatedAs($funcionario);
-
-       $copiaPac = $this->$paciente;
-
-       $this->post('/profissional/criarpaciente', $copiaPac);
-
-       $pacie = Paciente::first();
-
-       $this->visit('/profissional/paciente/{$pacie->id}/anamnese');
-       $this->seePageIs('/profissional/paciente/{$pacie->id}/anamnese');
-       $resposta->assertOk();
-    }
-
-    /** @test **/
-    public function funcionarioPermitidoNaoPodeAcessarAnamnesePacienteInexistente()
-    {
-       $func = $this->$funcionario;
-
-       $this->post('/profissional/login', [
-            'login' => $func->login,
-            'password' => $password,
-       ]);
-
-       $this->assertAuthenticatedAs($funcionario);
-
-       $this->visit('/profissional/paciente/0/anamnese');
-       $this->seePageIs('/profissional/home');
-    }
-
-    /** @test **/
-    public function funcionarioNaoPermitidoNaoPodeAcessarAnamnesePacienteExistente()
-    {
-         $func = $this->$funcionario;
-
-
-         $this->post('/profissional/login', [
-              'login' => $func->login,
-              'password' => $password,
-         ]);
-
-         $f = factory(Profissional::class)->create([
-          'password' => bcrypt($password = '123123123'),
-          'profissao' => 'Lutador',
-         ]);
-
-
-         $this->assertAuthenticatedAs($funcionario);
-
-         $copiaPac = $this->$paciente;
-
-         $this->post('/profissional/criarpaciente', $copiaPac);
-         $this->post('/profissional/logout');
-
-         $this->post('/profissional/login', [
-              'login' => $f->login,
-              'password' => $password,
-         ]);
-
-         $pacie = Paciente::first();
-
-         $this->visit('/profissional/paciente/{$pacie->id}/anamnese');
-         $this->seePageIs('/profissional/home');
     }
 
     /** @test **/
@@ -1436,19 +992,5 @@ class CadastroClienteTest extends TestCase
          $this->seePageIs('/profissional/home');
          $this->assertCount(0, Paciente::all());
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
