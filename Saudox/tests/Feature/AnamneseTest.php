@@ -336,7 +336,7 @@ class AnamneseTest extends TestCase
 
         $this->visit('/paciente/anamnese/neuroPsicomotora/{$anamnePsi->id_tp}');
 
-        $res = $this->post('/paciente/anamnese/neuroPsicomotora/{$anamnePsi->id_tp}/delete')
+        $res = $this->post('/paciente/anamnese/neuroPsicomotora/{$anamnePsi->id_tp}/delete');
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
@@ -369,7 +369,7 @@ class AnamneseTest extends TestCase
 
         $this->visit('/paciente/anamnese/fonoaudiologia/{$anamneFono->id}');
 
-        $res = $this->post('/paciente/anamnese/fonoaudiologia/{$anamneFono->id}/delete')
+        $res = $this->post('/paciente/anamnese/fonoaudiologia/{$anamneFono->id}/delete');
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
@@ -402,7 +402,7 @@ class AnamneseTest extends TestCase
 
         $this->visit('/paciente/anamnese/terapiaOcupacional/{$anamneTO->id}');
 
-        $res = $this->post('/paciente/anamnese/terapiaOcupacional/{$anamneTO->id}/delete')
+        $res = $this->post('/paciente/anamnese/terapiaOcupacional/{$anamneTO->id}/delete');
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
@@ -433,7 +433,7 @@ class AnamneseTest extends TestCase
 
         $this->visit('/paciente/anamnese/neuroPsicomotora/{$anamnePsi->id_tp}');
 
-        $res = $this->post('/paciente/anamnese/neuroPsicomotora/{$anamnePsi->id_tp}/edit')
+        $res = $this->post('/paciente/anamnese/neuroPsicomotora/{$anamnePsi->id_tp}/edit');
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
@@ -466,7 +466,7 @@ class AnamneseTest extends TestCase
 
         $this->visit('/paciente/anamnese/fonoaudiologia/{$anamneFono->id}');
 
-        $res = $this->post('/paciente/anamnese/fonoaudiologia/{$anamneFono->id}/edit')
+        $res = $this->post('/paciente/anamnese/fonoaudiologia/{$anamneFono->id}/edit');
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
@@ -499,7 +499,7 @@ class AnamneseTest extends TestCase
 
         $this->visit('/paciente/anamnese/terapiaOcupacional/{$anamneTO->id}');
 
-        $res = $this->post('/paciente/anamnese/terapiaOcupacional/{$anamneTO->id}/edit')
+        $res = $this->post('/paciente/anamnese/terapiaOcupacional/{$anamneTO->id}/edit');
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);

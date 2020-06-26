@@ -6,7 +6,6 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use App\Endereco;
 use App\Paciente;
-use App\Paciente;
 
 class LoginPacienteTest extends TestCase
 {

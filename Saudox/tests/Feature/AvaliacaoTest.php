@@ -393,7 +393,7 @@ class avaliacaoTest extends TestCase
 
         $this->visit('/paciente/avaliacao/judo/{$avaliJudo->id}');
 
-        $res = $this->post('/paciente/avaliacao/judo/{$avaliJudo->id}/delete')
+        $res = $this->post('/paciente/avaliacao/judo/{$avaliJudo->id}/delete');
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
@@ -426,7 +426,7 @@ class avaliacaoTest extends TestCase
 
         $this->visit('/paciente/avaliacao/neuropsicologica/{$avaliPsi->id}');
 
-        $res = $this->post('/paciente/avaliacao/neuropsicologica/{$avaliPsi->id}/delete')
+        $res = $this->post('/paciente/avaliacao/neuropsicologica/{$avaliPsi->id}/delete');
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
@@ -459,7 +459,7 @@ class avaliacaoTest extends TestCase
 
         $this->visit('/paciente/avaliacao/fonoaudiologia/{$avaliFono->id}');
 
-        $res = $this->post('/paciente/avaliacao/fonoaudiologia/{$avaliFono->id}/delete')
+        $res = $this->post('/paciente/avaliacao/fonoaudiologia/{$avaliFono->id}/delete');
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
@@ -492,7 +492,7 @@ class avaliacaoTest extends TestCase
 
         $this->visit('/paciente/avaliacao/terapiaOcupacional/{$avaliTO->id}');
 
-        $res = $this->post('/paciente/avaliacao/terapiaOcupacional/{$avaliTO->id}/delete')
+        $res = $this->post('/paciente/avaliacao/terapiaOcupacional/{$avaliTO->id}/delete');
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
@@ -526,7 +526,7 @@ class avaliacaoTest extends TestCase
 
         $this->visit('/paciente/avaliacao/judo/{$avaliJudo->id}');
 
-        $res = $this->post('/paciente/avaliacao/judo/{$avaliJudo->id}/edit')
+        $res = $this->post('/paciente/avaliacao/judo/{$avaliJudo->id}/edit');
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
@@ -560,7 +560,7 @@ class avaliacaoTest extends TestCase
 
         $this->visit('/paciente/avaliacao/neuropsicologica/{$avaliPsi->id}');
 
-        $res = $this->post('/paciente/avaliacao/neuropsicologica/{$avaliPsi->id}/edit')
+        $res = $this->post('/paciente/avaliacao/neuropsicologica/{$avaliPsi->id}/edit');
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
@@ -593,7 +593,7 @@ class avaliacaoTest extends TestCase
 
         $this->visit('/paciente/avaliacao/fonoaudiologia/{$avaliFono->id}');
 
-        $res = $this->post('/paciente/avaliacao/fonoaudiologia/{$avaliFono->id}/edit')
+        $res = $this->post('/paciente/avaliacao/fonoaudiologia/{$avaliFono->id}/edit');
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
@@ -626,7 +626,7 @@ class avaliacaoTest extends TestCase
 
         $this->visit('/paciente/avaliacao/terapiaOcupacional/{$avaliTO->id}');
 
-        $res = $this->post('/paciente/avaliacao/terapiaOcupacional/{$avaliTO->id}/edit')
+        $res = $this->post('/paciente/avaliacao/terapiaOcupacional/{$avaliTO->id}/edit');
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
