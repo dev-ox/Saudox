@@ -29,24 +29,20 @@ if(Auth::guard('profissional')->check() == 1) {
     $ava_neur = $paciente->avaliacao_neuro;
     $ava_tocp = $paciente->avaliacao_terapia_ocupacional;
 
-    /* TODO: Mudar os links de teste para a pagina de exibição de fato depois
-     * que fizer a pagina de exibição
-     */
-
     if($ava_fono) {
-        echo "<a href='/paciente/avaliacao/fonoaudiologia/teste'>Avaliação Fonoaudiologica</a><br>";
+        echo "<a href='/paciente/avaliacao/fonoaudiologia/ver'>Avaliação Fonoaudiologica</a><br>";
     }
 
     if($ava_judo) {
-        echo "<a href='/paciente/avaliacao/judo/teste'>Avaliação Judo</a><br>";
+        echo "<a href='/paciente/avaliacao/judo/ver'>Avaliação Judo</a><br>";
     }
 
     if($ava_neur) {
-        echo "<a href='/paciente/avaliacao/neuropsicologia/teste'>Avaliação Neuropsicologica</a><br>";
+        echo "<a href='/paciente/avaliacao/neuropsicologia/ver'>Avaliação Neuropsicologica</a><br>";
     }
 
     if($ava_tocp) {
-        echo "<a href='/paciente/avaliacao/terapia_ocupacional/teste'>Avaliação Terapia Ocupacional</a><br>";
+        echo "<a href='/paciente/avaliacao/terapia_ocupacional/ver'>Avaliação Terapia Ocupacional</a><br>";
     }
 
 ?>
