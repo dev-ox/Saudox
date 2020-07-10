@@ -70,5 +70,21 @@ class Paciente extends Authenticatable {
         return \App\Anamnese_Psicopeda_Neuro_Psicomoto::pegar_por_id_paciente($this->id);
     }
 
-}
+    public function avaliacao_fono() {
+        return $this->hasOne('App\Avaliacao_Fonoaudiologia', 'id_paciente');
+    }
 
+    public function avaliacao_judo() {
+        return $this->hasOne('App\Avaliacao_Judo', 'id_paciente');
+    }
+
+    public function avaliacao_neuro() {
+        return $this->hasOne('App\Avaliacao_Neuropsicologica', 'id_paciente');
+    }
+
+    public function avaliacao_terapia_ocupacional() {
+        return $this->hasOne('App\Avaliacao_Terapia_Ocupacional', 'id_paciente');
+    }
+
+
+}
