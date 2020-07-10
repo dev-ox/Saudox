@@ -21,7 +21,7 @@ class AnamneseTest extends TestCase
 
         $this->funcionario = factory(Profissional::class)->create([
             'password' => bcrypt($password = '123123123'),
-            'profissao' => 'Administrador',
+            'profissao' => 'Atendente',
         ]);
 
         $this->endereco = factory(Endereco::class)->create();
@@ -64,9 +64,7 @@ class AnamneseTest extends TestCase
 
        $this->assertAuthenticatedAs($funcionario);
 
-       $copiaPac = $this->$paciente;
-
-       $this->post('/profissional/criarpaciente', $copiaPac);
+       $copiaPac = factory(Paciente::class)->create($this->paciente);
 
        $pacie = Paciente::first();
 
@@ -91,40 +89,6 @@ class AnamneseTest extends TestCase
        $this->seePageIs('/profissional/home');
     }
 
-    /** @test **/
-    public function funcionarioNaoPermitidoNaoPodeAcessarAnamnesePacienteExistente()
-    {
-         $func = $this->$funcionario;
-
-
-         $this->post('/profissional/login', [
-              'login' => $func->login,
-              'password' => $password,
-         ]);
-
-         $f = factory(Profissional::class)->create([
-          'password' => bcrypt($password = '123123123'),
-          'profissao' => 'Lutador',
-         ]);
-
-
-         $this->assertAuthenticatedAs($funcionario);
-
-         $copiaPac = $this->$paciente;
-
-         $this->post('/profissional/criarpaciente', $copiaPac);
-         $this->post('/profissional/logout');
-
-         $this->post('/profissional/login', [
-              'login' => $f->login,
-              'password' => $password,
-         ]);
-
-         $pacie = Paciente::first();
-
-         $this->visit('/profissional/paciente/{$pacie->id}/anamnese');
-         $this->seePageIs('/profissional/home');
-    }
 
     /** @test **/
     public function pacientePodeVerPaginaAnamnesePacienteSeEstiverLogado()
@@ -163,8 +127,8 @@ class AnamneseTest extends TestCase
         $resposta->assertRedirect('/paciente/home');
         $this->assertAuthenticatedAs($paciente);
 
-        $this->visit('/paciente/anamnese/neuroPsicomotora/{$anamnePsi->id_tp}');
-        $this->seePageIs('/paciente/anamnese/neuroPsicomotora/{$anamnePsi->id_tp}');
+        $this->visit('/paciente/anamnese/neuroPsicomotora/');
+        $this->seePageIs('/paciente/anamnese/neuroPsicomotora/');
     }
 
     /** @test **/
@@ -187,8 +151,8 @@ class AnamneseTest extends TestCase
         $resposta->assertRedirect('/paciente/home');
         $this->assertAuthenticatedAs($paciente);
 
-        $this->visit('/paciente/anamnese/fonoaudiologia/{$anamneFono->id}');
-        $this->seePageIs('/paciente/anamnese/fonoaudiologia/{$anamneFono->id}');
+        $this->visit('/paciente/anamnese/fonoaudiologia');
+        $this->seePageIs('/paciente/anamnese/fonoaudiologia');
     }
 
     /** @test **/
@@ -211,8 +175,8 @@ class AnamneseTest extends TestCase
         $resposta->assertRedirect('/paciente/home');
         $this->assertAuthenticatedAs($paciente);
 
-        $this->visit('/paciente/anamnese/terapiaOcupacional/{$anamneTO->id}');
-        $this->seePageIs('/paciente/anamnese/terapiaOcupacional/{$anamneTO->id}');
+        $this->visit('/paciente/anamnese/terapiaOcupacional/');
+        $this->seePageIs('/paciente/anamnese/terapiaOcupacional/');
     }
 
 
@@ -235,7 +199,7 @@ class AnamneseTest extends TestCase
 
         $this->post('/paciente/logout');
 
-        $this->visit('/paciente/anamnese/neuroPsicomotora/{$anamnePsi->id_tp}');
+        $this->visit('/paciente/anamnese/neuroPsicomotora/');
         $this->seePageIs('/paciente/login');
     }
 
@@ -261,7 +225,7 @@ class AnamneseTest extends TestCase
 
         $this->post('/paciente/logout');
 
-        $this->visit('/paciente/anamnese/terapiaOcupacional/{$anamneTO->id}');
+        $this->visit('/paciente/anamnese/terapiaOcupacional/');
         $this->seePageIs('/paciente/login');
     }
 
@@ -289,7 +253,7 @@ class AnamneseTest extends TestCase
 
         $this->post('/paciente/logout');
 
-        $this->visit('/paciente/anamnese/fonoaudiologia/{$anamneFono->id}');
+        $this->visit('/paciente/anamnese/fonoaudiologia');
         $this->seePageIs('/paciente/login');
     }
 
@@ -316,257 +280,247 @@ class AnamneseTest extends TestCase
 
 
     /** @test **/
-    public function pacienteNaoPodeDeletarAnamnesePsicologia()
+    public function profissionalNaoAutorizadoNaoPodeDeletarAnamnesePsicologia()
     {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $resposta = $this->post('/paciente/login', [
-            'login' => $paciente->login,
-            'password' => $password,
+        $this->funcN = factory(Profissional::class)->create([
+            'password' => bcrypt($password = '123123123'),
+            'profissao' => 'Psicologo',
         ]);
+
+        $resposta = $this->post('/profissional/login', [
+            'login' => $funcionario->login,
+            'password' => $funcionario->$password
+        ]);
+
+        $resposta->assertRedirect('/profissional/home');
+        $this->assertAuthenticatedAs($funcionario);
+
 
         $anamnePsi = factory(Anamnese_Gigante_Psicopeda_Neuro_Psicomoto::class)->create();
 
         $this->assertCount(1, Anamnese_psicologica::all());
 
-        $resposta->assertRedirect('/paciente/home');
-        $this->assertAuthenticatedAs($paciente);
+        $resposta->assertRedirect('/profissional/home');
+        $this->assertAuthenticatedAs($funcionario);
 
-        $this->visit('/paciente/anamnese/neuroPsicomotora/{$anamnePsi->id_tp}');
+        $this->visit('/profissional/paciente/{$paciente->id}/anamnese/neuroPsicomotora/');
 
-        $res = $this->post('/paciente/anamnese/neuroPsicomotora/{$anamnePsi->id_tp}/delete');
+        $res = $this->post('/profissional/paciente/{$paciente->id}/anamnese/neuroPsicomotora/delete');
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
         $res->assertOk();
 
-        $this->seePageIs('/paciente/anamnese/neuroPsicomotora/{$anamnePsi->id_tp}');
+        $this->seePageIs('/profissional/paciente/{$paciente->id}/anamnese/neuroPsicomotora/');
     }
 
     /** @test **/
-    public function pacienteNaoPodeDeletarAnamneseFonoaudiologica()
+    public function profissionalNaoAutorizadoNaoPodeDeletarAnamneseFonoaudiologica()
     {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $resposta = $this->post('/paciente/login', [
-            'login' => $paciente->login,
-            'password' => $password,
+        $this->funcN = factory(Profissional::class)->create([
+            'password' => bcrypt($password = '123123123'),
+            'profissao' => 'Fonoaudiologo',
         ]);
+
+        $resposta = $this->post('/profissional/login', [
+            'login' => $funcionario->login,
+            'password' => $funcionario->$password
+        ]);
+
+        $resposta->assertRedirect('/profissional/home');
+        $this->assertAuthenticatedAs($funcionario);
 
         $anamneFono = factory(Anamnese_Fonoaudiologia::class)->create([
             'id_paciente' => $paciente->id,
-            'id_profissional' => $this->$funcionario->id,
+            'id_profissional' => $this->$funcN->id,
         ]);
 
         $this->assertCount(1, Anamnese_Fonoaudiologia::all());
 
-        $resposta->assertRedirect('/paciente/home');
-        $this->assertAuthenticatedAs($paciente);
+        $resposta->assertRedirect('/profissional/home');
+        $this->assertAuthenticatedAs($funcionario);
 
-        $this->visit('/paciente/anamnese/fonoaudiologia/{$anamneFono->id}');
+        $this->visit('/profissional/paciente/{$paciente->id}/anamnese/fonoaudiologia');
 
-        $res = $this->post('/paciente/anamnese/fonoaudiologia/{$anamneFono->id}/delete');
+        $res = $this->post('/profissional/paciente/{$paciente->id}/anamnese/fonoaudiologia/delete');
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
         $res->assertOk();
 
-        $this->seePageIs('/paciente/anamnese/fonoaudiologia/{$anamneFono->id}');
+        $this->seePageIs('/profissional/paciente/{$paciente->id}/anamnese/fonoaudiologia');
     }
 
     /** @test **/
-    public function pacienteNaoPodeDeletarAnamneseTerapiaOcupacional()
+    public function profissionalNaoAutorizadoNaoPodeDeletarAnamneseTerapiaOcupacional()
     {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $resposta = $this->post('/paciente/login', [
-            'login' => $paciente->login,
-            'password' => $password,
+        $this->funcN = factory(Profissional::class)->create([
+            'password' => bcrypt($password = '123123123'),
+            'profissao' => 'Terapeuta',
         ]);
+
+        $resposta = $this->post('/profissional/login', [
+            'login' => $funcionario->login,
+            'password' => $funcionario->$password
+        ]);
+
+        $resposta->assertRedirect('/profissional/home');
+        $this->assertAuthenticatedAs($funcionario);
+
 
         $anamneTO = factory(Anamnese_Terapia_Ocupacional::class)->create([
             'id_paciente' => $paciente->id,
-            'id_profissional' => $this->$funcionario->id,
+            'id_profissional' => $this->$funcN->id,
         ]);
 
         $this->assertCount(1, Anamnese_Terapia_Ocupacional::all());
 
-        $resposta->assertRedirect('/paciente/home');
-        $this->assertAuthenticatedAs($paciente);
+        $resposta->assertRedirect('/profisional/home');
+        $this->assertAuthenticatedAs($funcionario);
 
-        $this->visit('/paciente/anamnese/terapiaOcupacional/{$anamneTO->id}');
+        $this->visit('/profissional/paciente/{$paciente->id}/anamnese/terapiaOcupacional/');
 
-        $res = $this->post('/paciente/anamnese/terapiaOcupacional/{$anamneTO->id}/delete');
+        $res = $this->post('/profissional/paciente/{$paciente->id}/anamnese/terapiaOcupacional/delete');
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
         $res->assertOk();
 
-        $this->seePageIs('/paciente/anamnese/terapiaOcupacional/{$anamneTO->id}');
+        $this->seePageIs('/profissional/paciente/{$paciente->id}/anamnese/terapiaOcupacional/');
     }
 
 
 
     /** @test **/
-    public function pacienteNaoPodeEditarAnamneseNeuroPsicoMoto()
+    public function profissionalNaoAutorizadoNaoPodeEditarAnamneseNeuroPsicoMoto()
     {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $resposta = $this->post('/paciente/login', [
-            'login' => $paciente->login,
-            'password' => $password,
+        $this->funcN = factory(Profissional::class)->create([
+            'password' => bcrypt($password = '123123123'),
+            'profissao' => 'Neurologista',
         ]);
+
+        $resposta = $this->post('/profissional/login', [
+            'login' => $funcionario->login,
+            'password' => $funcionario->$password
+        ]);
+
+        $resposta->assertRedirect('/profissional/home');
+        $this->assertAuthenticatedAs($funcionario);
+
 
         $anamnePsi = factory(Anamnese_Gigante_Psicopeda_Neuro_Psicomoto::class)->create();
         $this->assertCount(1, Anamnese_Gigante_Psicopeda_Neuro_Psicomoto::all());
 
-        $resposta->assertRedirect('/paciente/home');
-        $this->assertAuthenticatedAs($paciente);
+        $resposta->assertRedirect('/profissional/home');
+        $this->assertAuthenticatedAs($funcionario);
 
-        $this->visit('/paciente/anamnese/neuroPsicomotora/{$anamnePsi->id_tp}');
+        $this->visit('/profissional/paciente/{$paciente->id}/anamnese/neuroPsicomotora/');
 
-        $res = $this->post('/paciente/anamnese/neuroPsicomotora/{$anamnePsi->id_tp}/edit');
+        $res = $this->post('/profissional/paciente/{$paciente->id}/anamnese/neuroPsicomotora/edit');
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
         $res->assertOk();
 
-        $this->seePageIs('/paciente/anamnese/neuroPsicomotora/{$anamnePsi->id_tp}');
+        $this->seePageIs('/profissional/paciente/{$paciente->id}/anamnese/neuroPsicomotora/');
     }
 
     /** @test **/
-    public function pacienteNaoPodeEditarAnamneseFonoaudiologica()
+    public function profissionalNaoAutorizadoNaoPodeEditarAnamneseFonoaudiologica()
     {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $resposta = $this->post('/paciente/login', [
-            'login' => $paciente->login,
-            'password' => $password,
+        $this->funcN = factory(Profissional::class)->create([
+            'password' => bcrypt($password = '123123123'),
+            'profissao' => 'Fonoaudiologo',
         ]);
+
+        $resposta = $this->post('/profissional/login', [
+            'login' => $funcionario->login,
+            'password' => $funcionario->$password
+        ]);
+
+        $resposta->assertRedirect('/profissional/home');
+        $this->assertAuthenticatedAs($funcionario);
 
         $anamneFono = factory(Anamnese_Fonoaudiologia::class)->create([
             'id_paciente' => $paciente->id,
-            'id_profissional' => $this->$funcionario->id,
+            'id_profissional' => $this->$funcN->id,
         ]);
 
         $this->assertCount(1, Anamnese_Fonoaudiologia::all());
 
-        $resposta->assertRedirect('/paciente/home');
-        $this->assertAuthenticatedAs($paciente);
+        $resposta->assertRedirect('/profisional/home');
+        $this->assertAuthenticatedAs($funcionario);
 
-        $this->visit('/paciente/anamnese/fonoaudiologia/{$anamneFono->id}');
+        $this->visit('/profissional/paciente/{$paciente->id}/anamnese/fonoaudiologia');
 
-        $res = $this->post('/paciente/anamnese/fonoaudiologia/{$anamneFono->id}/edit');
+        $res = $this->post('/profissional/paciente/{$paciente->id}/anamnese/fonoaudiologia/edit');
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
         $res->assertOk();
 
-        $this->seePageIs('/paciente/anamnese/fonoaudiologia/{$anamneFono->id}');
+        $this->seePageIs('/profissional/paciente/{$paciente->id}/anamnese/fonoaudiologia');
     }
 
     /** @test **/
-    public function pacienteNaoPodeEditarAnamneseTerapiaOcupacional()
+    public function profissionalNaoAutorizadoNaoPodeEditarAnamneseTerapiaOcupacional()
     {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $resposta = $this->post('/paciente/login', [
-            'login' => $paciente->login,
-            'password' => $password,
+        $this->funcN = factory(Profissional::class)->create([
+            'password' => bcrypt($password = '123123123'),
+            'profissao' => 'Terapeuta',
         ]);
+
+        $resposta = $this->post('/profissional/login', [
+            'login' => $funcionario->login,
+            'password' => $funcionario->$password
+        ]);
+
+        $resposta->assertRedirect('/profissional/home');
+        $this->assertAuthenticatedAs($funcionario);
 
         $anamneTO = factory(Anamnese_Terapia_Ocupacional::class)->create([
             'id_paciente' => $paciente->id,
-            'id_profissional' => $this->$funcionario->id,
+            'id_profissional' => $this->$funcN->id,
         ]);
 
         $this->assertCount(1, Anamnese_Terapia_Ocupacional::all());
 
-        $resposta->assertRedirect('/paciente/home');
-        $this->assertAuthenticatedAs($paciente);
+        $resposta->assertRedirect('/profisional/home');
+        $this->assertAuthenticatedAs($funcionario);
 
-        $this->visit('/paciente/anamnese/terapiaOcupacional/{$anamneTO->id}');
+        $this->visit('/profissional/paciente/{$paciente->id}/anamnese/terapiaOcupacional/');
 
-        $res = $this->post('/paciente/anamnese/terapiaOcupacional/{$anamneTO->id}/edit');
+        $res = $this->post('/profissional/paciente/{$paciente->id}/anamnese/terapiaOcupacional/edit');
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
         $res->assertOk();
 
-        $this->seePageIs('/paciente/anamnese/terapiaOcupacional/{$anamneTO->id}');
-    }
-
-
-    /** @test **/
-    public function pacienteNaoPodeVerAnamnesePsicologiaQueNaoExiste()
-    {
-        $paciente = factory(Paciente::class)->create([
-            'password' => bcrypt($password = '123123123'),
-        ]);
-
-        $resposta = $this->post('/paciente/login', [
-            'login' => $paciente->login,
-            'password' => $password,
-        ]);
-
-        $resposta->assertRedirect('/paciente/home');
-        $this->assertAuthenticatedAs($paciente);
-
-        $this->visit('/paciente/anamnese/neuroPsicomotora/999');
-        $this->seePageIs('/paciente/anamnese/neuroPsicomotora');
-    }
-
-    /** @test **/
-    public function pacienteNaoPodeVerAnamneseTerapiaOcupacionalQueNaoExiste()
-    {
-        $paciente = factory(Paciente::class)->create([
-            'password' => bcrypt($password = '123123123'),
-        ]);
-
-        $resposta = $this->post('/paciente/login', [
-            'login' => $paciente->login,
-            'password' => $password,
-        ]);
-
-        $resposta->assertRedirect('/paciente/home');
-        $this->assertAuthenticatedAs($paciente);
-
-        $this->visit('/paciente/anamnese/terapiaOcupacional/999');
-        $this->seePageIs('/paciente/anamnese/terapiaOcupacional/');
-    }
-
-
-
-    /** @test **/
-    public function pacienteNaoPodeVerAnamneseFonoaudiologiaQueNaoExiste()
-    {
-        $paciente = factory(Paciente::class)->create([
-            'password' => bcrypt($password = '123123123'),
-        ]);
-
-        $resposta = $this->post('/paciente/login', [
-            'login' => $paciente->login,
-            'password' => $password,
-        ]);
-
-
-        $resposta->assertRedirect('/paciente/home');
-        $this->assertAuthenticatedAs($paciente);
-
-        $this->visit('/paciente/anamnese/fonoaudiologia/999');
-        $this->seePageIs('/paciente/anamnese/fonoaudiologia');
+        $this->seePageIs('/profissional/paciente/{$paciente->id}/anamnese/terapiaOcupacional/');
     }
 
 

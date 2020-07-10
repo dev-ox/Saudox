@@ -21,7 +21,7 @@ class avaliacaoTest extends TestCase
 
         $this->funcionario = factory(Profissional::class)->create([
             'password' => bcrypt($password = '123123123'),
-            'profissao' => 'Administrador',
+            'profissao' => 'Atendente',
         ]);
 
         $this->endereco = factory(Endereco::class)->create();
@@ -63,9 +63,7 @@ class avaliacaoTest extends TestCase
 
        $this->assertAuthenticatedAs($funcionario);
 
-       $copiaPac = $this->$paciente;
-
-       $this->post('/profissional/criarpaciente', $copiaPac);
+       $copiaPac = factory(Paciente::class)->create($this->paciente);
 
        $pacie = Paciente::first();
 
@@ -90,40 +88,6 @@ class avaliacaoTest extends TestCase
        $this->seePageIs('/profissional/home');
     }
 
-    /** @test **/
-    public function funcionarioNaoPermitidoNaoPodeAcessarAvaliacaoPacienteExistente()
-    {
-         $func = $this->$funcionario;
-
-
-         $this->post('/profissional/login', [
-              'login' => $func->login,
-              'password' => $password,
-         ]);
-
-         $f = factory(Profissional::class)->create([
-          'password' => bcrypt($password = '123123123'),
-          'profissao' => 'Lutador',
-         ]);
-
-
-         $this->assertAuthenticatedAs($funcionario);
-
-         $copiaPac = $this->$paciente;
-
-         $this->post('/profissional/criarpaciente', $copiaPac);
-         $this->post('/profissional/logout');
-
-         $this->post('/profissional/login', [
-              'login' => $f->login,
-              'password' => $password,
-         ]);
-
-         $pacie = Paciente::first();
-
-         $this->visit('/profissional/paciente/{$pacie->id}/avaliacao');
-         $this->seePageIs('/profissional/home');
-    }
 
     /** @test **/
     public function pacientePodeVerPaginaAvalicaoPacienteSeEstiverLogado()
@@ -165,8 +129,8 @@ class avaliacaoTest extends TestCase
         $resposta->assertRedirect('/paciente/home');
         $this->assertAuthenticatedAs($paciente);
 
-        $this->visit('/paciente/avaliacao/judo/{$avaliJudo->id}');
-        $this->seePageIs('/paciente/avaliacao/judo/{$avaliJudo->id}');
+        $this->visit('/paciente/avaliacao/judo/');
+        $this->seePageIs('/paciente/avaliacao/judo/');
     }
 
     /** @test **/
@@ -189,8 +153,8 @@ class avaliacaoTest extends TestCase
         $resposta->assertRedirect('/paciente/home');
         $this->assertAuthenticatedAs($paciente);
 
-        $this->visit('/paciente/avaliacao/neuropsicologica/{$avaliPsi->id}');
-        $this->seePageIs('/paciente/avaliacao/neuropsicologica/{$avaliPsi->id}');
+        $this->visit('/paciente/avaliacao/neuropsicologica');
+        $this->seePageIs('/paciente/avaliacao/neuropsicologica');
     }
 
     /** @test **/
@@ -213,8 +177,8 @@ class avaliacaoTest extends TestCase
         $resposta->assertRedirect('/paciente/home');
         $this->assertAuthenticatedAs($paciente);
 
-        $this->visit('/paciente/avaliacao/fonoaudiologia/{$avaliFono->id}');
-        $this->seePageIs('/paciente/avaliacao/fonoaudiologia/{$avaliFono->id}');
+        $this->visit('/paciente/avaliacao/fonoaudiologia/');
+        $this->seePageIs('/paciente/avaliacao/fonoaudiologia/');
     }
 
     /** @test **/
@@ -237,8 +201,8 @@ class avaliacaoTest extends TestCase
         $resposta->assertRedirect('/paciente/home');
         $this->assertAuthenticatedAs($paciente);
 
-        $this->visit('/paciente/avaliacao/terapiaOcupacional/{$avaliTO->id}');
-        $this->seePageIs('/paciente/avaliacao/terapiaOcupacional/{$avaliTO->id}');
+        $this->visit('/paciente/avaliacao/terapiaOcupacional/');
+        $this->seePageIs('/paciente/avaliacao/terapiaOcupacional/');
     }
 
 
@@ -264,7 +228,7 @@ class avaliacaoTest extends TestCase
 
         $this->post('/paciente/logout');
 
-        $this->visit('/paciente/avaliacao/fonoaudiologia/{$avaliJudo->id}');
+        $this->visit('/paciente/avaliacao/fonoaudiologia/');
         $this->seePageIs('/paciente/login');
     }
 
@@ -290,7 +254,7 @@ class avaliacaoTest extends TestCase
 
         $this->post('/paciente/logout');
 
-        $this->visit('/paciente/avaliacao/neuropsicologica/{$avaliPsi->id}');
+        $this->visit('/paciente/avaliacao/neuropsicologica');
         $this->seePageIs('/paciente/login');
     }
 
@@ -316,7 +280,7 @@ class avaliacaoTest extends TestCase
 
         $this->post('/paciente/logout');
 
-        $this->visit('/paciente/avaliacao/terapiaOcupacional/{$avaliTO->id}');
+        $this->visit('/paciente/avaliacao/terapiaOcupacional/');
         $this->seePageIs('/paciente/login');
     }
 
@@ -344,7 +308,7 @@ class avaliacaoTest extends TestCase
 
         $this->post('/paciente/logout');
 
-        $this->visit('/paciente/avaliacao/judo/{$avaliFono->id}');
+        $this->visit('/paciente/avaliacao/judo/');
         $this->seePageIs('/paciente/login');
     }
 
@@ -376,344 +340,327 @@ class avaliacaoTest extends TestCase
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $resposta = $this->post('/paciente/login', [
-            'login' => $paciente->login,
-            'password' => $password,
+        $this->funcN = factory(Profissional::class)->create([
+            'password' => bcrypt($password = '123123123'),
+            'profissao' => 'Professor de Judô',
         ]);
+
+        $resposta = $this->post('/profissional/login', [
+            'login' => $funcionario->login,
+            'password' => $funcionario->$password
+        ]);
+
+        $resposta->assertRedirect('/profissional/home');
+        $this->assertAuthenticatedAs($funcionario);
 
         $avaliJudo = factory(Avalicao_Judo::class)->create([
             'id_paciente' => $paciente->id,
-            'id_profissional' => $this->$funcionario->id,
+            'id_profissional' => $this->$funcN->id,
         ]);
 
         $this->assertCount(1, Avalicao_Judo::all());
 
-        $resposta->assertRedirect('/paciente/home');
-        $this->assertAuthenticatedAs($paciente);
+        $resposta->assertRedirect('/profissional/home');
+        $this->assertAuthenticatedAs($funcionario);
 
-        $this->visit('/paciente/avaliacao/judo/{$avaliJudo->id}');
+        $this->visit('/profissional/paciente/{$paciente->id}/avaliacao/judo/');
 
-        $res = $this->post('/paciente/avaliacao/judo/{$avaliJudo->id}/delete');
+        $res = $this->post('/profissional/paciente/{$paciente->id}/avaliacao/judo/delete');
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
         $res->assertOk();
 
-        $this->seePageIs('/paciente/avaliacao/judo/{$avaliJudo->id}');
+        $this->seePageIs('/profissional/paciente/{$paciente->id}/avaliacao/judo/');
     }
 
     /** @test **/
-    public function pacienteNaoPodeDeletarAvalicaoPsicologia()
+    public function profissionalNaoAutorizadoNaoPodeDeletarAvalicaoPsicologia()
     {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $resposta = $this->post('/paciente/login', [
-            'login' => $paciente->login,
-            'password' => $password,
+        $this->funcN = factory(Profissional::class)->create([
+            'password' => bcrypt($password = '123123123'),
+            'profissao' => 'Psicologo',
         ]);
+
+        $resposta = $this->post('/profissional/login', [
+            'login' => $funcionario->login,
+            'password' => $funcionario->$password
+        ]);
+
+        $resposta->assertRedirect('/profissional/home');
+        $this->assertAuthenticatedAs($funcionario);
 
         $avaliPsi = factory(Avalicao_Neuropsicologica::class)->create([
             'id_paciente' => $paciente->id,
-            'id_profissional' => $this->$funcionario->id,
+            'id_profissional' => $this->$funcN->id,
         ]);
 
         $this->assertCount(1, Avalicao_Neuropsicologica::all());
 
-        $resposta->assertRedirect('/paciente/home');
-        $this->assertAuthenticatedAs($paciente);
+        $resposta->assertRedirect('/profissional/home');
+        $this->assertAuthenticatedAs($funcionario);
 
-        $this->visit('/paciente/avaliacao/neuropsicologica/{$avaliPsi->id}');
+        $this->visit('/profissional/paciente/{$paciente->id}/avaliacao/neuropsicologica');
 
-        $res = $this->post('/paciente/avaliacao/neuropsicologica/{$avaliPsi->id}/delete');
+        $res = $this->post('/profissional/paciente/{$paciente->id}/avaliacao/neuropsicologica/delete');
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
         $res->assertOk();
 
-        $this->seePageIs('/paciente/avaliacao/neuropsicologica/{$avaliPsi->id}');
+        $this->seePageIs('/profissional/paciente/{$paciente->id}/avaliacao/neuropsicologica');
     }
 
     /** @test **/
-    public function pacienteNaoPodeDeletarAvalicaoFonoaudiologica()
+    public function profissionalNaoAutorizadoNaoPodeDeletarAvalicaoFonoaudiologica()
     {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $resposta = $this->post('/paciente/login', [
-            'login' => $paciente->login,
-            'password' => $password,
+        $this->funcN = factory(Profissional::class)->create([
+            'password' => bcrypt($password = '123123123'),
+            'profissao' => 'Fonoaudiologo',
         ]);
+
+        $resposta = $this->post('/profissional/login', [
+            'login' => $funcionario->login,
+            'password' => $funcionario->$password
+        ]);
+
+        $resposta->assertRedirect('/profissional/home');
+        $this->assertAuthenticatedAs($funcionario);
 
         $avaliFono = factory(Avalicao_Fonoaudiologia::class)->create([
             'id_paciente' => $paciente->id,
-            'id_profissional' => $this->$funcionario->id,
+            'id_profissional' => $this->$funcN->id,
         ]);
 
         $this->assertCount(1, Avalicao_Fonoaudiologia::all());
 
-        $resposta->assertRedirect('/paciente/home');
-        $this->assertAuthenticatedAs($paciente);
+        $resposta->assertRedirect('/profissional/home');
+        $this->assertAuthenticatedAs($funcionario);
 
-        $this->visit('/paciente/avaliacao/fonoaudiologia/{$avaliFono->id}');
+        $this->visit('/profissional/paciente/{$paciente->id}/avaliacao/fonoaudiologia/');
 
-        $res = $this->post('/paciente/avaliacao/fonoaudiologia/{$avaliFono->id}/delete');
+        $res = $this->post('/profissional/paciente/{$paciente->id}/avaliacao/fonoaudiologia/eelete');
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
         $res->assertOk();
 
-        $this->seePageIs('/paciente/avaliacao/fonoaudiologia/{$avaliFono->id}');
+        $this->seePageIs('/profissional/paciente/{$paciente->id}/avaliacao/fonoaudiologia/');
     }
 
     /** @test **/
-    public function pacienteNaoPodeDeletarAvalicaoTerapiaOcupacional()
+    public function profissionalNaoAutorizadoNaoPodeDeletarAvalicaoTerapiaOcupacional()
     {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $resposta = $this->post('/paciente/login', [
-            'login' => $paciente->login,
-            'password' => $password,
+        $this->funcN = factory(Profissional::class)->create([
+            'password' => bcrypt($password = '123123123'),
+            'profissao' => 'Terapeuta',
         ]);
 
+        $resposta = $this->post('/profissional/login', [
+            'login' => $funcionario->login,
+            'password' => $funcionario->$password
+        ]);
+
+        $resposta->assertRedirect('/profissional/home');
+        $this->assertAuthenticatedAs($funcionario);
         $avaliTO = factory(Avalicao_Terapia_Ocupacional::class)->create([
             'id_paciente' => $paciente->id,
-            'id_profissional' => $this->$funcionario->id,
+            'id_profissional' => $this->$funcN->id,
         ]);
 
         $this->assertCount(1, Avalicao_Terapia_Ocupacional::all());
 
-        $resposta->assertRedirect('/paciente/home');
-        $this->assertAuthenticatedAs($paciente);
+        $resposta->assertRedirect('/profissional/home');
+        $this->assertAuthenticatedAs($funcionario);
 
-        $this->visit('/paciente/avaliacao/terapiaOcupacional/{$avaliTO->id}');
+        $this->visit('/profissional/paciente/{$paciente->id}/avaliacao/terapiaOcupacional/');
 
-        $res = $this->post('/paciente/avaliacao/terapiaOcupacional/{$avaliTO->id}/delete');
+        $res = $this->post('/profissional/paciente/{$paciente->id}/avaliacao/terapiaOcupacional/eelete');
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
         $res->assertOk();
 
-        $this->seePageIs('/paciente/avaliacao/terapiaOcupacional/{$avaliTO->id}');
+        $this->seePageIs('/profissional/paciente/{$paciente->id}/avaliacao/terapiaOcupacional/');
     }
 
 
     /** @test **/
-    public function pacienteNaoPodeEditarAvalicaoJudo()
+    public function profissionalNaoAutorizadoNaoPodeEditarAvalicaoJudo()
     {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $resposta = $this->post('/paciente/login', [
-            'login' => $paciente->login,
-            'password' => $password,
+        $this->funcN = factory(Profissional::class)->create([
+            'password' => bcrypt($password = '123123123'),
+            'profissao' => 'Professor de Judô',
         ]);
+
+        $resposta = $this->post('/profissional/login', [
+            'login' => $funcionario->login,
+            'password' => $funcionario->$password
+        ]);
+
+        $resposta->assertRedirect('/profissional/home');
+        $this->assertAuthenticatedAs($funcionario);
 
         $avaliJudo = factory(Avalicao_Judo::class)->create([
             'id_paciente' => $paciente->id,
-            'id_profissional' => $this->$funcionario->id,
+            'id_profissional' => $this->$funcN->id,
         ]);
 
         $this->assertCount(1, Avalicao_Judo::all());
 
-        $resposta->assertRedirect('/paciente/home');
-        $this->assertAuthenticatedAs($paciente);
+        $resposta->assertRedirect('/profissional/home');
+        $this->assertAuthenticatedAs($funcionario);
 
-        $this->visit('/paciente/avaliacao/judo/{$avaliJudo->id}');
+        $this->visit('/profissional/paciente/{$paciente->id}/avaliacao/judo/');
 
-        $res = $this->post('/paciente/avaliacao/judo/{$avaliJudo->id}/edit');
+        $res = $this->post('/profissional/paciente/{$paciente->id}/avaliacao/judo/edit');
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
         $res->assertOk();
 
-        $this->seePageIs('/paciente/avaliacao/judo/{$avaliJudo->id}');
+        $this->seePageIs('/profissional/paciente/{$paciente->id}/avaliacao/judo/');
     }
 
 
     /** @test **/
-    public function pacienteNaoPodeEditarAvalicaoPsicologia()
+    public function profissionalNaoAutorizadoNaoPodeEditarAvalicaoPsicologia()
     {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $resposta = $this->post('/paciente/login', [
-            'login' => $paciente->login,
-            'password' => $password,
+        $this->funcN = factory(Profissional::class)->create([
+            'password' => bcrypt($password = '123123123'),
+            'profissao' => 'Psicologo',
         ]);
+
+        $resposta = $this->post('/profissional/login', [
+            'login' => $funcionario->login,
+            'password' => $funcionario->$password
+        ]);
+
+        $resposta->assertRedirect('/profissional/home');
+        $this->assertAuthenticatedAs($funcionario);
 
         $avaliPsi = factory(Avalicao_Neuropsicologica::class)->create([
             'id_paciente' => $paciente->id,
-            'id_profissional' => $this->$funcionario->id,
+            'id_profissional' => $this->$funcN->id,
         ]);
 
         $this->assertCount(1, Avalicao_Neuropsicologica::all());
 
-        $resposta->assertRedirect('/paciente/home');
-        $this->assertAuthenticatedAs($paciente);
+        $resposta->assertRedirect('/profissional/home');
+        $this->assertAuthenticatedAs($funcionario);
 
-        $this->visit('/paciente/avaliacao/neuropsicologica/{$avaliPsi->id}');
+        $this->visit('/profissional/paciente/{$paciente->id}/avaliacao/neuropsicologica');
 
-        $res = $this->post('/paciente/avaliacao/neuropsicologica/{$avaliPsi->id}/edit');
+        $res = $this->post('/profissional/paciente/{$paciente->id}/avaliacao/neuropsicologica/edit');
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
         $res->assertOk();
 
-        $this->seePageIs('/paciente/avaliacao/neuropsicologica/{$avaliPsi->id}');
+        $this->seePageIs('/profissional/paciente/{$paciente->id}/avaliacao/neuropsicologica');
     }
 
     /** @test **/
-    public function pacienteNaoPodeEditarAvalicaoFonoaudiologica()
+    public function profissionalNaoAutorizadoNaoPodeEditarAvalicaoFonoaudiologica()
     {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $resposta = $this->post('/paciente/login', [
-            'login' => $paciente->login,
-            'password' => $password,
+        $this->funcN = factory(Profissional::class)->create([
+            'password' => bcrypt($password = '123123123'),
+            'profissao' => 'Fonoaudiologo',
         ]);
 
+        $resposta = $this->post('/profissional/login', [
+            'login' => $funcionario->login,
+            'password' => $funcionario->$password
+        ]);
+
+        $resposta->assertRedirect('/profissional/home');
+        $this->assertAuthenticatedAs($funcionario);
         $avaliFono = factory(Avalicao_Fonoaudiologia::class)->create([
             'id_paciente' => $paciente->id,
-            'id_profissional' => $this->$funcionario->id,
+            'id_profissional' => $this->$funcN->id,
         ]);
 
         $this->assertCount(1, Avalicao_Fonoaudiologia::all());
 
-        $resposta->assertRedirect('/paciente/home');
-        $this->assertAuthenticatedAs($paciente);
+        $resposta->assertRedirect('/profissional/home');
+        $this->assertAuthenticatedAs($funcionario);
 
-        $this->visit('/paciente/avaliacao/fonoaudiologia/{$avaliFono->id}');
+        $this->visit('/profissional/paciente/{$paciente->id}/avaliacao/fonoaudiologia/');
 
-        $res = $this->post('/paciente/avaliacao/fonoaudiologia/{$avaliFono->id}/edit');
+        $res = $this->post('/profissional/paciente/{$paciente->id}/avaliacao/fonoaudiologia/edit');
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
         $res->assertOk();
 
-        $this->seePageIs('/paciente/avaliacao/fonoaudiologia/{$avaliFono->id}');
+        $this->seePageIs('/profissional/paciente/{$paciente->id}/avaliacao/fonoaudiologia/');
     }
 
     /** @test **/
-    public function pacienteNaoPodeEditarAvalicaoTerapiaOcupacional()
+    public function profissionalNaoAutorizadoNaoPodeEditarAvalicaoTerapiaOcupacional()
     {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $resposta = $this->post('/paciente/login', [
-            'login' => $paciente->login,
-            'password' => $password,
+        $this->funcN = factory(Profissional::class)->create([
+            'password' => bcrypt($password = '123123123'),
+            'profissao' => 'Terapeuta',
         ]);
+
+        $resposta = $this->post('/profissional/login', [
+            'login' => $funcionario->login,
+            'password' => $funcionario->$password
+        ]);
+
+        $resposta->assertRedirect('/profissional/home');
+        $this->assertAuthenticatedAs($funcionario);
 
         $avaliTO = factory(Avalicao_Terapia_Ocupacional::class)->create([
             'id_paciente' => $paciente->id,
-            'id_profissional' => $this->$funcionario->id,
+            'id_profissional' => $this->$funcN->id,
         ]);
 
         $this->assertCount(1, Avalicao_Terapia_Ocupacional::all());
 
-        $resposta->assertRedirect('/paciente/home');
-        $this->assertAuthenticatedAs($paciente);
+        $resposta->assertRedirect('/profissional/home');
+        $this->assertAuthenticatedAs($funcionario);
 
-        $this->visit('/paciente/avaliacao/terapiaOcupacional/{$avaliTO->id}');
+        $this->visit('/profissional/paciente/{$paciente->id}/avaliacao/terapiaOcupacional/');
 
-        $res = $this->post('/paciente/avaliacao/terapiaOcupacional/{$avaliTO->id}/edit');
+        $res = $this->post('/profissional/paciente/{$paciente->id}/avaliacao/terapiaOcupacional/edit');
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
         $res->assertOk();
 
-        $this->seePageIs('/paciente/avaliacao/terapiaOcupacional/{$avaliTO->id}');
+        $this->seePageIs('/profissional/paciente/{$paciente->id}/avaliacao/terapiaOcupacional/');
     }
 
-
-        /** @test **/
-        public function pacienteNaoPodeVerAvaliacaoJudoQueNaoExiste()
-        {
-            $paciente = factory(Paciente::class)->create([
-                'password' => bcrypt($password = '123123123'),
-            ]);
-
-            $resposta = $this->post('/paciente/login', [
-                'login' => $paciente->login,
-                'password' => $password,
-            ]);
-
-            $resposta->assertRedirect('/paciente/home');
-            $this->assertAuthenticatedAs($paciente);
-
-            $this->visit('/paciente/avaliacao/judo/999');
-            $this->seePageIs('/paciente/avaliacao/judo');
-        }
-
-        /** @test **/
-        public function pacienteNaoPodeVerAvaliacaoPsicologiaQueNaoExiste()
-        {
-            $paciente = factory(Paciente::class)->create([
-                'password' => bcrypt($password = '123123123'),
-            ]);
-
-            $resposta = $this->post('/paciente/login', [
-                'login' => $paciente->login,
-                'password' => $password,
-            ]);
-
-            $resposta->assertRedirect('/paciente/home');
-            $this->assertAuthenticatedAs($paciente);
-
-            $this->visit('/paciente/avaliacao/neuroPsicomotora/999');
-            $this->seePageIs('/paciente/avaliacao/neuroPsicomotora');
-        }
-
-        /** @test **/
-        public function pacienteNaoPodeVerAvaliacaoTerapiaOcupacionalQueNaoExiste()
-        {
-            $paciente = factory(Paciente::class)->create([
-                'password' => bcrypt($password = '123123123'),
-            ]);
-
-            $resposta = $this->post('/paciente/login', [
-                'login' => $paciente->login,
-                'password' => $password,
-            ]);
-
-            $resposta->assertRedirect('/paciente/home');
-            $this->assertAuthenticatedAs($paciente);
-
-            $this->visit('/paciente/avaliacao/terapiaOcupacional/999');
-            $this->seePageIs('/paciente/avaliacao/terapiaOcupacional/');
-        }
-
-
-
-        /** @test **/
-        public function pacienteNaoPodeVerAvaliacaoFonoaudiologiaQueNaoExiste()
-        {
-            $paciente = factory(Paciente::class)->create([
-                'password' => bcrypt($password = '123123123'),
-            ]);
-
-            $resposta = $this->post('/paciente/login', [
-                'login' => $paciente->login,
-                'password' => $password,
-            ]);
-
-
-            $resposta->assertRedirect('/paciente/home');
-            $this->assertAuthenticatedAs($paciente);
-
-            $this->visit('/paciente/avaliacao/fonoaudiologia/999');
-            $this->seePageIs('/paciente/avaliacao/fonoaudiologia');
-        }
 
 
 }
