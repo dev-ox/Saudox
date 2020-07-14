@@ -55,7 +55,10 @@ class EvolucaoTest extends TestCase
     /** @test **/
     public function funcionarioPermitidoPodeAcessarEvolucaoPacienteExistente()
     {
-       $func = $this->$funcionario;
+        $func = factory(Profissional::class)->create([
+            'password' => bcrypt($password = '123123123'),
+            'profissao' => 'Administrador',
+        ]);
 
        $this->post('/profissional/login', [
             'login' => $func->login,
@@ -76,7 +79,10 @@ class EvolucaoTest extends TestCase
     /** @test **/
     public function funcionarioPermitidoNaoPodeAcessarEvolucaoPacienteInexistente()
     {
-       $func = $this->$funcionario;
+        $func = factory(Profissional::class)->create([
+            'password' => bcrypt($password = '123123123'),
+            'profissao' => 'Administrador',
+        ]);
 
        $this->post('/profissional/login', [
             'login' => $func->login,
@@ -90,6 +96,27 @@ class EvolucaoTest extends TestCase
     }
 
 
+    /** @test **/
+    public function funcionarioNaoAutorizadoNaoPodeAcessarEvolucaoPacienteExistente()
+    {
+
+       $func = $this->funcionario;
+
+       $this->post('/profissional/login', [
+            'login' => $func->login,
+            'password' => $password,
+       ]);
+
+       $this->assertAuthenticatedAs($funcionario);
+
+       $this->visit('/profissional/paciente/0/evolucao');
+
+       $value = 'Você não possui privilégios para isso.';
+       $tempo = 5; // Tempo em segundo até o fim da espera
+       $res->waitForText($value, $tempo);
+       $res->assertOk();
+       $this->seePageIs('/profissional/home');
+    }
 
     /** @test **/
     public function pacientePodeVerPaginaEvolucaoPacienteSeEstiverLogado()
@@ -368,7 +395,7 @@ class EvolucaoTest extends TestCase
 
         $this->visit('/profissional/paciente/{$paciente->id}/evolucao/judo/{$evoluJudo->id}');
 
-        $res = $this->post('/profissional/paciente/{$paciente->id}/evolucao/judo/{$evoluJudo->id}/delete')
+        $res = $this->post('/profissional/paciente/{$paciente->id}/evolucao/judo/{$evoluJudo->id}/delete');
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
@@ -410,7 +437,7 @@ class EvolucaoTest extends TestCase
 
         $this->visit('/profissional/paciente/{$paciente->id}/evolucao/psicologica/{$evoluPsi->id}');
 
-        $res = $this->post('/paciente/evolucao/psicologica/{$evoluPsi->id}/delete')
+        $res = $this->post('/paciente/evolucao/psicologica/{$evoluPsi->id}/delete');
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
@@ -452,7 +479,7 @@ class EvolucaoTest extends TestCase
 
         $this->visit('/profissional/paciente/{$paciente->id}/evolucao/fonoaudiologia/{$evoluFono->id}');
 
-        $res = $this->post('/profissional/paciente/{$paciente->id}/evolucao/fonoaudiologia/{$evoluFono->id}/delete')
+        $res = $this->post('/profissional/paciente/{$paciente->id}/evolucao/fonoaudiologia/{$evoluFono->id}/delete');
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
@@ -494,7 +521,7 @@ class EvolucaoTest extends TestCase
 
         $this->visit('/profissional/paciente/{$paciente->id}/evolucao/terapiaOcupacional/{$evoluTO->id}');
 
-        $res = $this->post('/profissional/paciente/{$paciente->id}/evolucao/terapiaOcupacional/{$evoluTO->id}/delete')
+        $res = $this->post('/profissional/paciente/{$paciente->id}/evolucao/terapiaOcupacional/{$evoluTO->id}/delete');
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
@@ -537,7 +564,7 @@ class EvolucaoTest extends TestCase
 
         $this->visit('/profissional/paciente/{$paciente->id}/evolucao/judo/{$evoluJudo->id}');
 
-        $res = $this->post('/profissional/paciente/{$paciente->id}/evolucao/judo/{$evoluJudo->id}/edit')
+        $res = $this->post('/profissional/paciente/{$paciente->id}/evolucao/judo/{$evoluJudo->id}/edit');
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
@@ -581,7 +608,7 @@ class EvolucaoTest extends TestCase
 
         $this->visit('/profissional/paciente/{$paciente->id}/evolucao/psicologica/{$evoluPsi->id}');
 
-        $res = $this->post('/profissional/paciente/{$paciente->id}/evolucao/psicologica/{$evoluPsi->id}/edit')
+        $res = $this->post('/profissional/paciente/{$paciente->id}/evolucao/psicologica/{$evoluPsi->id}/edit');
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
@@ -624,7 +651,7 @@ class EvolucaoTest extends TestCase
 
         $this->visit('/profissional/paciente/{$paciente->id}/evolucao/fonoaudiologia/{$evoluFono->id}');
 
-        $res = $this->post('/profissional/paciente/{$paciente->id}/evolucao/fonoaudiologia/{$evoluFono->id}/edit')
+        $res = $this->post('/profissional/paciente/{$paciente->id}/evolucao/fonoaudiologia/{$evoluFono->id}/edit');
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
@@ -666,7 +693,7 @@ class EvolucaoTest extends TestCase
 
         $this->visit('/profissional/paciente/{$paciente->id}/evolucao/terapiaOcupacional/{$evoluTO->id}');
 
-        $res = $this->post('/profissional/paciente/{$paciente->id}/evolucao/terapiaOcupacional/{$evoluTO->id}/edit')
+        $res = $this->post('/profissional/paciente/{$paciente->id}/evolucao/terapiaOcupacional/{$evoluTO->id}/edit');
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);

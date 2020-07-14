@@ -54,7 +54,10 @@ class avaliacaoTest extends TestCase
     /** @test **/
     public function funcionarioPermitidoPodeAcessarAvaliacaoPacienteExistente()
     {
-       $func = $this->$funcionario;
+        $func = factory(Profissional::class)->create([
+            'password' => bcrypt($password = '123123123'),
+            'profissao' => 'Administrador',
+        ]);
 
        $this->post('/profissional/login', [
             'login' => $func->login,
@@ -75,7 +78,10 @@ class avaliacaoTest extends TestCase
     /** @test **/
     public function funcionarioPermitidoNaoPodeAcessarAvaliacaoPacienteInexistente()
     {
-       $func = $this->$funcionario;
+        $func = factory(Profissional::class)->create([
+            'password' => bcrypt($password = '123123123'),
+            'profissao' => 'Administrador',
+        ]);
 
        $this->post('/profissional/login', [
             'login' => $func->login,
@@ -85,6 +91,28 @@ class avaliacaoTest extends TestCase
        $this->assertAuthenticatedAs($funcionario);
 
        $this->visit('/profissional/paciente/0/avaliacao');
+       $this->seePageIs('/profissional/home');
+    }
+
+    /** @test **/
+    public function funcionarioNaoAutorizadoNaoPodeAcessarAvaliacaoPacienteExistente()
+    {
+
+       $func = $this->funcionario;
+
+       $this->post('/profissional/login', [
+            'login' => $func->login,
+            'password' => $password,
+       ]);
+
+       $this->assertAuthenticatedAs($funcionario);
+
+       $this->visit('/profissional/paciente/0/avaliacao');
+
+       $value = 'Você não possui privilégios para isso.';
+       $tempo = 5; // Tempo em segundo até o fim da espera
+       $res->waitForText($value, $tempo);
+       $res->assertOk();
        $this->seePageIs('/profissional/home');
     }
 

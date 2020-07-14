@@ -55,7 +55,10 @@ class AnamneseTest extends TestCase
     /** @test **/
     public function funcionarioPermitidoPodeAcessarAnamnesePacienteExistente()
     {
-       $func = $this->$funcionario;
+       $func = factory(Profissional::class)->create([
+           'password' => bcrypt($password = '123123123'),
+           'profissao' => 'Administrador',
+       ]);
 
        $this->post('/profissional/login', [
             'login' => $func->login,
@@ -76,7 +79,11 @@ class AnamneseTest extends TestCase
     /** @test **/
     public function funcionarioPermitidoNaoPodeAcessarAnamnesePacienteInexistente()
     {
-       $func = $this->$funcionario;
+
+        $func = factory(Profissional::class)->create([
+            'password' => bcrypt($password = '123123123'),
+            'profissao' => 'Administrador',
+        ]);
 
        $this->post('/profissional/login', [
             'login' => $func->login,
@@ -86,6 +93,28 @@ class AnamneseTest extends TestCase
        $this->assertAuthenticatedAs($funcionario);
 
        $this->visit('/profissional/paciente/0/anamnese');
+       $this->seePageIs('/profissional/home');
+    }
+
+    /** @test **/
+    public function funcionarioNaoAutorizadoNaoPodeAcessarAnamnesePacienteExistente()
+    {
+
+       $func = $this->funcionario;
+
+       $this->post('/profissional/login', [
+            'login' => $func->login,
+            'password' => $password,
+       ]);
+
+       $this->assertAuthenticatedAs($funcionario);
+
+       $this->visit('/profissional/paciente/0/anamnese');
+
+       $value = 'Você não possui privilégios para isso.';
+       $tempo = 5; // Tempo em segundo até o fim da espera
+       $res->waitForText($value, $tempo);
+       $res->assertOk();
        $this->seePageIs('/profissional/home');
     }
 
