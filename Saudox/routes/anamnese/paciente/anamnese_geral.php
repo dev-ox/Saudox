@@ -7,7 +7,7 @@ Route::prefix('fonoaudiologia')->group(function () {
     require 'fonoaudiologia.php';
 });
 
-Route::prefix('psicopedagogia')->group(function () {
+Route::prefix('pnp')->group(function () {
     require 'psicopedagogia.php';
 });
 

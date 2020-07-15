@@ -20,8 +20,8 @@ if(Auth::guard('profissional')->check() == 1) {
 
 <?php
 
+    // Garantido que é paciente pelo middleware, já que chegou por essa rota...
     $paciente = \App\Paciente::find(Auth::id());
-
 
     // Se não tiver a avaliação vai ser nulo
     $ava_fono = $paciente->avaliacao_fono;
@@ -48,7 +48,26 @@ if(Auth::guard('profissional')->check() == 1) {
 ?>
 
 <a href="/paciente/evolucao">Evolução</a><br>
-<a href="/paciente/anamnese">Anamnese</a><br>
+
+<?php
+    $anamnese_fono = $paciente->anamnese__terapia__ocupacionals;
+    $anamnese_pnps = $paciente->anamnese_fonoaudiologias;
+    $anamnese_tocp = $paciente->anamnese__psicopeda__neuro__psicomotos();
+
+    if($anamnese_fono) {
+        echo "<a href='/paciente/anamnese/fonoaudiologia/ver'>Anamnese Fonoaudiologica</a><br>";
+    }
+
+    if($anamnese_pnps) {
+        echo "<a href='/paciente/anamnese/pnp/ver'>Anamnese Psicopedagogica/Neuropsicologica/Psicomotricidade (acho)</a><br>";
+    }
+
+    if($anamnese_tocp) {
+        echo "<a href='/paciente/anamnese/terapia_ocupacional/ver'>Anamnese Terapia Ocupacional</a><br>";
+    }
+
+?>
+
 
 @if(Auth::guard('paciente')->check())
     <a href="/logout">Deslogar</a>

@@ -53,11 +53,11 @@ class Paciente extends Authenticatable {
 
 
     public function anamnese__terapia__ocupacionals() {
-        return $this->hasMany('App\Anamnese_Terapia_Ocupacional', 'id_paciente');
+        return $this->hasOne('App\Anamnese_Terapia_Ocupacional', 'id_paciente');
     }
 
     public function anamnese_fonoaudiologias() {
-        return $this->hasMany('App\Anamnese_fonoaudiologia', 'id_paciente');
+        return $this->hasOne('App\Anamnese_fonoaudiologia', 'id_paciente');
     }
 
     /*
