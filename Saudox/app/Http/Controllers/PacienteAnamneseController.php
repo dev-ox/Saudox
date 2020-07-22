@@ -17,7 +17,7 @@ class PacienteAnamneseController extends Controller
         $anamnese = $paciente->anamnese_fonoaudiologias;
         //TODO: melhorar o erro
         if(!$anamnese) {
-            return "não tem essa avaliacao";
+            return "não tem essa anamnese";
         }
         return view('paciente/anamneses/fono')->with(["anamnese" => $anamnese]);
     }
@@ -27,7 +27,7 @@ class PacienteAnamneseController extends Controller
         $anamnese = $paciente->anamnese__psicopeda__neuro__psicomotos();
         //TODO: melhorar o erro
         if(!$anamnese) {
-            return "não tem essa avaliacao";
+            return "não tem essa anamnese";
         }
         return view('paciente/anamneses/pnp')->with(["anamnese" => $anamnese]);
     }
@@ -37,7 +37,7 @@ class PacienteAnamneseController extends Controller
         $anamnese = $paciente->anamnese__terapia__ocupacionals;
         //TODO: melhorar o erro
         if(!$anamnese) {
-            return "não tem essa avaliacao";
+            return "não tem essa anamnese";
         }
         return view('paciente/anamneses/tocp')->with(["anamnese" => $anamnese]);
     }
