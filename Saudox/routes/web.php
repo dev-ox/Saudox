@@ -23,7 +23,7 @@ Auth::routes();
 // Adiciona o profixo para o profissional e um nome para usar como por
 // exemplo: 'profissional.home'
 // O namespace basicamente indica o local (diretório) dos métodos chamados
-Route::prefix('/rofissional')->name('profissional')->namespace('Profissional')->group(function(){
+Route::prefix('/profissional')->name('profissional')->namespace('Profissional')->group(function(){
 
     require 'profissional.php';
 
