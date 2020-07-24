@@ -56,6 +56,11 @@ class Anamnese_Psicopeda_Neuro_Psicomoto extends Model
         // Pego a parte 1 da anamnese que tem o id_paciente e id_tp
         $pt1 = \App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt1::where('id_paciente', $id_paciente)->first();
 
+        // Verifica se tem aquela anamnese
+        if(!$pt1) {
+            return false;
+        }
+
         // Se foi, vou pegar a tabela index
         $id_tp = $pt1->id_tp;
 

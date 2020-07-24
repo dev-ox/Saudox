@@ -18,44 +18,20 @@ Middleware para PERMITIR quando ninguém (qualquer) estiver logado:
 _Para entender melhor, veja as rotas de teste no fim desse arquivo_
 */
 
-
 Auth::routes();
-
 
 // Adiciona o profixo para o profissional e um nome para usar como por
 // exemplo: 'profissional.home'
 // O namespace basicamente indica o local (diretório) dos métodos chamados
-Route::prefix('/profissional')->name('profissional.')->namespace('Profissional')->middleware('auth:profissional')->group(function(){
+Route::prefix('/profissional')->name('profissional')->namespace('Profissional')->group(function(){
+
     require 'profissional.php';
-
-    Route::prefix('anamnese')->group(function () {
-        require 'anamnese/profissional/anamnese_geral.php';
-    });
-
-    Route::prefix('avaliacao')->group(function () {
-        require 'avaliacao/profissional/avaliacao_geral.php';
-    });
-
-    Route::prefix('evolucao')->group(function () {
-        require 'evolucao/profissional/evolucao_geral.php';
-    });
 
 });
 
-Route::prefix('/paciente')->name('paciente.')->middleware('auth:paciente')->group(function(){
+Route::prefix('paciente')->name('paciente')->group(function(){
+
     require 'paciente.php';
-
-    Route::prefix('anamnese')->group(function () {
-        require 'anamnese/paciente/anamnese_geral.php';
-    });
-
-    Route::prefix('avaliacao')->group(function () {
-        require 'avaliacao/paciente/avaliacao_geral.php';
-    });
-
-    Route::prefix('evolucao')->group(function () {
-        require 'evolucao/paciente/evolucao_geral.php';
-    });
 
 });
 
@@ -66,6 +42,7 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout')->middleware
 Route::get('/', function () {
     return view('welcome');
 })->name('padrao');
+
 
 
 // ################
