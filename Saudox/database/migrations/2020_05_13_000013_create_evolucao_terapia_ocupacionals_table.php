@@ -27,6 +27,23 @@ class CreateEvolucaoTerapiaOcupacionalsTable extends Migration
             $table->longText('texto');
             $table->text('obs_importante')->default("Nenhuma observação.");
 
+            /* O responsavel_por_este_documento é o profissional que tem a
+             * resposabilidade, então ele vai ta no json de pode ver e pode
+             * editar.
+             * Toda vez que um profissional ver ou editar este documento, seu
+             * id vai ser salvo no campo responsavel_por_este_documento.
+             */
+
+            /* Cada json vai ter 2 arrays, o primeiro com os ids dos
+             * profissionais que vao ter o acesso de leitura,
+             * e o segundo de edição. Lembrar que é tudo em string.
+             */
+            $table->unsignedInteger('responsavel_por_este_documento')->nullable();
+            $table->json('id_pode_ver')->nullable();
+            $table->json('id_pode_editar')->nullable();
+
+
+
         });
     }
 
