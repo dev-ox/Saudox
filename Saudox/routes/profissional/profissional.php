@@ -28,18 +28,33 @@ Route::namespace('Auth')->group(function(){
 // TODO: Colocar aqui as rotas que precisam de autenticação do profissional
 Route::middleware('auth:profissional')->group(function() {
 
-    Route::get('/home','HomeController@index')->name('.home');
+    Route::get('/home','ProfissionalController@home')->name('.home');
+
+    Route::get('/ver/{id}', 'ProfissionalController@ver_profissional')->name('.ver');
+
+
+
 
     Route::prefix('anamnese')->name('.anamnese')->group(function () {
-        require 'profissional/anamnese/anamnese_geral.php';
+        require 'anamnese/anamnese_geral.php';
     });
 
     Route::prefix('avaliacao')->name('.avaliacao')->group(function () {
-        require 'profissional/avaliacao/avaliacao_geral.php';
+        require 'avaliacao/avaliacao_geral.php';
     });
 
     Route::prefix('evolucao')->name('.evolucao')->group(function () {
-        require 'profissional/evolucao/evolucao_geral.php';
+        require 'evolucao/evolucao_geral.php';
     });
+
+
+
+    Route::middleware('ehadmin')->group(function() {
+        // Admin
+        Route::get('/admin', 'AdminController@adminHome')->name('.admin');
+    });
+
+
+
 
 });
