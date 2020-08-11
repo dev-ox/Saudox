@@ -35,8 +35,8 @@ class Paciente extends Authenticatable {
         'email_verified_at' => 'datetime',
     ];
 
-    public function evolucao_foneaudiologias() {
-        return $this->hasMany('App\Evolucao_foneaudiologia', 'id_paciente');
+    public function evolucao_fonoaudiologias() {
+        return $this->hasMany('App\Evolucao_fonoaudiologia', 'id_paciente');
     }
 
     public function evolucao_judos() {
