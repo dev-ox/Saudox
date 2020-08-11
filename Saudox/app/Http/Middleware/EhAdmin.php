@@ -15,6 +15,9 @@ class EhAdmin {
      * @param  \Closure  $next
      * @return mixed
      */
+
+
+    // Verifica se tem algum profissional logado e se esse profissional é admin
     public function handle($request, Closure $next) {
         if(Auth::guard('profissional')->check() && Profissional::find(Auth::id())->eh_admin()){
             return $next($request);
