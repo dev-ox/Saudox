@@ -1,6 +1,7 @@
 <?php
 
 // Dentro do namespace (diretorio) Auth
+// Como já está dentro do namespace 'Profissional', fica: Profisisonal/Auth
 Route::namespace('Auth')->group(function(){
 
     Route::middleware('auth:profissional')->group(function() {
@@ -25,13 +26,14 @@ Route::namespace('Auth')->group(function(){
 
 });
 
-// TODO: Colocar aqui as rotas que precisam de autenticação do profissional
+// Rotas que precisam de autenticação do profissional
 Route::middleware('auth:profissional')->group(function() {
 
+    // Home do profissional
     Route::get('/home','ProfissionalController@home')->name('.home');
 
+    // Visualizar perfil de outros usuários
     Route::get('/ver/{id}', 'ProfissionalController@ver_profissional')->name('.ver');
-
 
 
 
@@ -49,12 +51,10 @@ Route::middleware('auth:profissional')->group(function() {
 
 
 
-    Route::middleware('ehadmin')->group(function() {
-        // Admin
-        Route::get('/admin', 'AdminController@adminHome')->name('.admin');
+
+    // Restringindo grupo de acesso para apenas profissionais admin
+    Route::middleware('ehadmin')->name('.admin')->group(function() {
+        require 'admin.php';
     });
-
-
-
 
 });
