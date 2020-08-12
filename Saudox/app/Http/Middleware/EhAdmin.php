@@ -22,6 +22,6 @@ class EhAdmin {
         if(Auth::guard('profissional')->check() && Profissional::find(Auth::id())->eh_admin()){
             return $next($request);
         }
-        return redirect('/');
+        return redirect()->route('erro', ['msg_erro' => "Você não é admin!!"]);
     }
 }

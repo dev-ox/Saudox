@@ -2,7 +2,7 @@
 
 Route::middleware('auth:paciente')->group(function() {
 
-	Route::get('/home', 'HomeController@index')->name('.home');
+	Route::get('/home', 'PacienteController@home')->name('.home');
 
 
 

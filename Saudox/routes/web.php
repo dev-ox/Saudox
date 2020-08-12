@@ -36,7 +36,8 @@ Route::prefix('paciente')->name('paciente')->group(function(){
 // Logout (Força logout de qualquer tipo de usuario)
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout')->middleware('alguemLogado');
 
-
+// Tela de erro (chamada: route('erro', ['msg_erro' => 'blablabla']))
+Route::get('/erro', 'HomeController@mostrar_erro')->name('erro');
 
 Route::get('/', function () {
     return view('welcome');

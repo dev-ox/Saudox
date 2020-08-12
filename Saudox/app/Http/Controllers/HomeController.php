@@ -6,15 +6,6 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
 
     /**
      * Show the application dashboard.
@@ -25,4 +16,11 @@ class HomeController extends Controller
     {
         return view('paciente.home');
     }
+
+    public function mostrar_erro(Request $req){
+        $msg = $req->msg_erro;
+        if(!$msg) {$msg = "no msg";}
+        return view('erro', ['msg_erro' => $msg]);
+    }
+
 }
