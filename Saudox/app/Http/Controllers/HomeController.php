@@ -4,20 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
-{
+class HomeController extends Controller {
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function index()
-    {
-        return view('paciente.home');
+    // Redireciona para a página inicial do site (/)
+    public function home() {
+        return view('welcome');
     }
 
-    public function mostrar_erro(Request $req){
+    // Redireciona para a página de erro (passando a mensagem de erro)
+    public function mostrar_erro(Request $req) {
         $msg = $req->msg_erro;
         if(!$msg) {$msg = "no msg";}
         return view('erro', ['msg_erro' => $msg]);

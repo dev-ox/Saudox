@@ -39,6 +39,4 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout')->middleware
 // Tela de erro (chamada: route('erro', ['msg_erro' => 'blablabla']))
 Route::get('/erro', 'HomeController@mostrar_erro')->name('erro');
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('padrao');
+Route::get('/', 'HomeController@home')->name('home');

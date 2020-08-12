@@ -6,8 +6,9 @@ use Illuminate\Http\Request;
 use \App\Paciente;
 use Auth;
 
-class PacienteAnamneseController extends Controller
-{
+class PacienteAnamneseController extends Controller {
+
+    // Redireciona para a página principal das anamneses
     public function home() {
         return view('paciente/anamneses');
     }
@@ -15,19 +16,18 @@ class PacienteAnamneseController extends Controller
     public function ver_fono() {
         $paciente = Paciente::find(Auth::id());
         $anamnese = $paciente->anamnese_fonoaudiologias;
-        //TODO: melhorar o erro
         if(!$anamnese) {
-            return "não tem essa anamnese";
+            return redirect()->route('erro', ['msg_erro' => "Essa anamnese não existe."])
         }
         return view('paciente/anamneses/fono')->with(["anamnese" => $anamnese]);
     }
 
     public function ver_pnp() {
         $paciente = Paciente::find(Auth::id());
+        // Repare que essa póxima chamada está com os parênteses
         $anamnese = $paciente->anamnese__psicopeda__neuro__psicomotos();
-        //TODO: melhorar o erro
         if(!$anamnese) {
-            return "não tem essa anamnese";
+            return redirect()->route('erro', ['msg_erro' => "Essa anamnese não existe."])
         }
         return view('paciente/anamneses/pnp')->with(["anamnese" => $anamnese]);
     }
@@ -35,10 +35,10 @@ class PacienteAnamneseController extends Controller
     public function ver_tocp() {
         $paciente = Paciente::find(Auth::id());
         $anamnese = $paciente->anamnese__terapia__ocupacionals;
-        //TODO: melhorar o erro
         if(!$anamnese) {
-            return "não tem essa anamnese";
+            return redirect()->route('erro', ['msg_erro' => "Essa anamnese não existe."])
         }
         return view('paciente/anamneses/tocp')->with(["anamnese" => $anamnese]);
     }
+
 }
