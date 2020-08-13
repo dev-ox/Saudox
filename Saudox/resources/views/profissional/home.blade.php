@@ -19,6 +19,15 @@
 </h2>
 
 
+<h3>
+<?php
+    echo("Profissões:");
+    foreach($profissoes as $p){
+        echo($p."\n");
+    }
+?>
+</h3>
+
 @if(Auth::guard('profissional')->check())
 	<a href="/profissional/logout">Deslogar</a>
 @endif

@@ -3,7 +3,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Paciente;
-use App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto;
+use App\AnamneseGigantePsicopedaNeuroPsicomoto;
 use App\Profissional;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
@@ -19,7 +19,7 @@ use Illuminate\Support\Str;
 |
 */
 
-$factory->define(Anamnese_Gigante_Psicopeda_Neuro_Psicomoto::class, function (Faker $faker),  {
+$factory->define(AnamneseGigantePsicopedaNeuroPsicomoto::class, function (Faker $faker),  {
     factory(AnamneseGigantePsicopedaNeuroPsicomotoPt1::class)->create([
         'id_tp' => 1,
         'id_paciente' => 1,

@@ -11,7 +11,7 @@ class EvolucaoFonoaudiologiaAutSeeds extends Seeder
 
       //Gerando evolução fonoaudiologia automaticamente
       for($i = 0; $i < $qtd_fonoaudiologia; $i++){
-        DB::table('evolucao_foneaudiologias')->insert([
+        DB::table('evolucao_fonoaudiologias')->insert([
           'id_paciente' => rand(1,$qtd_pacientes),
           'id_profissional' => rand(1,$qtd_profissionals),
           'id_evolucao_anterior' => null, //rand(1,$qtd_fonoaudiologia),

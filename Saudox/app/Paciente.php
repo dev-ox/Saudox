@@ -36,7 +36,7 @@ class Paciente extends Authenticatable {
     ];
 
     public function evolucao_foneaudiologias() {
-        return $this->hasMany('App\Evolucao_foneaudiologia', 'id_paciente');
+        return $this->hasMany('App\EvolucaoFonoaudiologia', 'id_paciente');
     }
 
     public function evolucao_judos() {
