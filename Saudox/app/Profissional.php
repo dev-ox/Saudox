@@ -35,4 +35,20 @@ class Profissional extends Authenticatable {
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+
+    // Retorna um vetor de string com todas as profissões daquele profissional
+    public function getProfissoes() {
+        // Faz o split e já transforma em array cada profissão
+        // As profissões são separadas por ';'
+        return preg_split('/;/', $this->profissao);
+    }
+
+
+    public function eh_admin() {
+        return in_array('admin', $this->getProfissoes());
+    }
+
+
 }

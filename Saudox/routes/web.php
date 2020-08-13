@@ -25,13 +25,13 @@ Auth::routes();
 // O namespace basicamente indica o local (diretório) dos métodos chamados
 Route::prefix('/profissional')->name('profissional')->namespace('Profissional')->group(function(){
 
-    require 'profissional.php';
+    require 'profissional/profissional.php';
 
 });
 
 Route::prefix('paciente')->name('paciente')->group(function(){
 
-    require 'paciente.php';
+    require 'paciente/paciente.php';
 
 });
 
