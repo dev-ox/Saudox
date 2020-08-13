@@ -4,7 +4,7 @@
 <!-- TODO: listar os href pros lugares certos de cada evolucao -->
 
 <div>
-Tem-se {{ sizeof(Auth::user()->evolucao_foneaudiologias) }} evoluções fono
+Tem-se {{ sizeof(Auth::user()->evolucao_fonoaudiologias) }} evoluções fono
 <a href="/paciente/evolucao/fonoaudiologia">Evolução fono</a>
 </div>
 
@@ -25,5 +25,3 @@ Tem-se {{ sizeof(Auth::user()->evolucao_psicologicas) }} evoluções psicologica
 Tem-se {{ sizeof(Auth::user()->evolucao_terapia_ocupacionals) }} evoluções terapia_ocupacional
 <a href="/paciente/evolucao/terapia_ocupacional">Evolução terapia_ocupacional</a>
 </div>
-
-

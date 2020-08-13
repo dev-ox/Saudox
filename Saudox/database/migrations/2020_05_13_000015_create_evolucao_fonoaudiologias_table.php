@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEvolucaoFoneaudiologiasTable extends Migration
+class CreateEvolucaoFonoaudiologiasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateEvolucaoFoneaudiologiasTable extends Migration
      */
     public function up()
     {
-        Schema::create('evolucao_foneaudiologias', function (Blueprint $table) {
+        Schema::create('evolucao_fonoaudiologias', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
 
@@ -22,7 +22,7 @@ class CreateEvolucaoFoneaudiologiasTable extends Migration
             $table->bigInteger('id_evolucao_anterior')->unsigned()->nullable(true);
             $table->foreign('id_paciente')->references('id')->on('pacientes');
             $table->foreign('id_profissional')->references('id')->on('profissionals');
-            $table->foreign('id_evolucao_anterior')->references('id')->on('evolucao_foneaudiologias')->nullable(true);
+            $table->foreign('id_evolucao_anterior')->references('id')->on('evolucao_fonoaudiologias')->nullable(true);
             $table->dateTime('data_evolucao');
             $table->string('processo_perceptual_visualizacao');
             $table->boolean('melhora_processo_perceptual_visualizacao');
@@ -117,6 +117,6 @@ class CreateEvolucaoFoneaudiologiasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('evolucao_foneaudiologias');
+        Schema::dropIfExists('evolucao_fonoaudiologias');
     }
 }
