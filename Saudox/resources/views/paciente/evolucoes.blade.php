@@ -25,5 +25,3 @@ Tem-se {{ sizeof(Auth::user()->evolucao_psicologicas) }} evoluções psicologica
 Tem-se {{ sizeof(Auth::user()->evolucao_terapia_ocupacionals) }} evoluções terapia_ocupacional
 <a href="/paciente/evolucao/terapia_ocupacional">Evolução terapia_ocupacional</a>
 </div>
-
-

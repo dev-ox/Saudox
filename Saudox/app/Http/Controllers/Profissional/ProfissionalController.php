@@ -32,7 +32,7 @@ class ProfissionalController extends Controller
         if($profissional){
             return view(route("profissional.ver"), ['profissional' => $profissional]);
         } else {
-            echo("Error, profissional inexistente");
+            return redirect()->route('erro', ['msg_erro' => "Profissional inexistente"]);
         }
     }
 

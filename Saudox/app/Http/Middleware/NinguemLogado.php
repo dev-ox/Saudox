@@ -13,6 +13,9 @@ class NinguemLogado {
      * @param  \Closure  $next
      * @return mixed
      */
+
+
+     // Verifica se algum usuário está logado, caso negativo, ele procede
      public function handle($request, Closure $next) {
         if(Auth::guard('profissional')->check()) {
             return redirect()->route('profissional.home');
