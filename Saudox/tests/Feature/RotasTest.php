@@ -6,84 +6,74 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class RotasTest extends TestCase
-{
+class RotasTest extends TestCase {
 
+    // TODO: Ajustar esses testes depois. Aqui podemos definir o padrão das
+    //      rotas que iremos utilizar nos demais testes.
     /* TODO: Aqui ainda falta colocar os testes de "novo alguma coisa"... */
 
     /** @test **/
-    public function anamnese_fono_rota()
-    {
+    public function anamneseFonoRota() {
         $response = $this->get('/anamnese/fonoaudiologia/teste');
         $response->assertStatus(200);
     }
 
     /** @test **/
-    public function anamnese_psicopedagogia_rota()
-    {
+    public function anamnesePsicopedagogiaRota() {
         $response = $this->get('/anamnese/psicopedagogia/teste');
         $response->assertStatus(200);
     }
 
     /** @test **/
-    public function anamnese_terapia_ocupacional_rota()
-    {
+    public function anamneseTerapiaOcupacionalRota() {
         $response = $this->get('/anamnese/terapia_ocupacional/teste');
         $response->assertStatus(200);
     }
 
     /** @test **/
-    public function avaliacao_fonoaudiologia_rota()
-    {
+    public function avaliacaoFonoaudiologiaRota() {
         $response = $this->get('/avaliacao/fonoaudiologia/teste');
         $response->assertStatus(200);
     }
 
     /** @test **/
-    public function avaliacao_judo_rota()
-    {
+    public function avaliacaoJudoRota() {
         $response = $this->get('/avaliacao/judo/teste');
         $response->assertStatus(200);
     }
 
     /** @test **/
-    public function avaliacao_neuropsicologia_rota()
-    {
+    public function avaliacaoNeuropsicologiaRota() {
         $response = $this->get('/avaliacao/neuropsicologia/teste');
         $response->assertStatus(200);
     }
 
     /** @test **/
-    public function avaliacao_terapia_ocupacional_rota()
-    {
+    public function avaliacaoTerapiaOcupacionalRota() {
         $response = $this->get('/avaliacao/terapia_ocupacional/teste');
         $response->assertStatus(200);
     }
 
     /** @test **/
-    public function evolucao_fonoaudiologia_rota()
-    {
+    public function evolucaoFonoaudiologiaRota() {
         $response = $this->get('/evolucao/fonoaudiologia/teste');
         $response->assertStatus(200);
     }
 
     /** @test **/
-    public function evolucao_judo_rota()
-    {
+    public function evolucaoJudoRota() {
         $response = $this->get('/evolucao/judo/teste');
         $response->assertStatus(200);
     }
 
     /** @test **/
-    public function evolucao_psicologica_rota()
-    {
+    public function evolucaoPsicologicaRota() {
         $response = $this->get('/evolucao/psicologica/teste');
         $response->assertStatus(200);
     }
 
     /** @test **/
-    public function evolucao_terapia_ocupacional_rota()
-    {
+    public function evolucaoTerapiaOcupacionalRota() {
         $response = $this->get('/evolucao/terapia_ocupacional/teste');
         $response->assertStatus(200);
     }

@@ -8,12 +8,9 @@ use App\Endereco;
 use App\Profissional;
 use App\Paciente;
 
-class CadastroClienteTest extends TestCase
-{
+class CadastroClienteTest extends TestCase {
     public $funcionario;
-
     private $endereco;
-
     private $paciente;
 
     public function setUp() : void {
@@ -56,7 +53,7 @@ class CadastroClienteTest extends TestCase
     private function loginFunc() : void {
         $func = $this->$funcionario;
 
-        $resposta = $this->post('/profissional/login', [
+        $resposta = $this->post(route('profissional.login'), [
             'login' => $func->login,
             'password' => $password,
         ]);
@@ -64,103 +61,102 @@ class CadastroClienteTest extends TestCase
 
 
     /** @test **/
-    public function admPodeAcessarCriacaoPaciente()
-    {
+    public function admPodeAcessarCriacaoPaciente() {
         $func = $this->$funcionario;
 
-        $resposta = $this->post('/profissional/login', [
+        $resposta = $this->post(route('profissional.login'), [
             'login' => $func->login,
             'password' => $password,
         ]);
 
-        $resposta->assertRedirect('/profissional/home');
+        $resposta->assertRedirect(route('profissional.home'));
         $this->assertAuthenticatedAs($funcionario);
 
 
-        $this->visit('/profissional/criarpaciente');
-        $this->seePageIs('/profissional/criarpaciente');
+        $this->visit(route('profissional.criarpaciente'));
+        $this->seePageIs(route('profissional.criarpaciente'));
     }
 
+
     /** @test **/
-    public function profissionalDaSaudePodeAcessarCriacaoPaciente()
-    {
+    public function profissionalDaSaudePodeAcessarCriacaoPaciente() {
 
         $func = $this->$funcionario;
 
-        $resposta = $this->post('/profissional/login', [
+        $resposta = $this->post(route('profissional.login'), [
             'login' => $func->login,
             'password' => $password,
         ]);
 
-        $resposta->assertRedirect('/profissional/home');
+        $resposta->assertRedirect(route('profissional.home'));
         $this->assertAuthenticatedAs($funcionario);
 
 
-        $this->visit('/profissional/criarpaciente');
-        $this->seePageIs('/profissional/criarpaciente');
+        $this->visit(route('profissional.criarpaciente'));
+        $this->seePageIs(route('profissional.criarpaciente'));
     }
 
+
     /** @test **/
-    public function pacienteNaoPodeAcessarCriacaoPaciente()
-    {
+    public function pacienteNaoPodeAcessarCriacaoPaciente() {
 
         $pac = $this->$paciente;
 
         $paciente = factory(Paciente::class)->create($pac);
 
-        $resposta = $this->post('/paciente/login', [
+        $resposta = $this->post(route('paciente.login'), [
             'login' => $paciente->login,
             'password' => $password,
         ]);
 
-        $resposta->assertRedirect('/paciente/home');
+        $resposta->assertRedirect(route('paciente.home'));
         $this->assertAuthenticatedAs($paciente);
 
 
-        $this->visit('/profissional/criarpaciente');
-        $this->seePageIs('/paciente/home');
+        $this->visit(route('profissional.criarpaciente'));
+        $this->seePageIs(route('paciente.home'));
     }
 
+
     /** @test **/
-    public function profissionalPodeCriarPaciente()
-    {
+    public function profissionalPodeCriarPaciente() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
         $resposta->assertOk();
         $this->assertCount(1, Paciente::all());
 
         $paciente = Paciente::first();
 
-        $this->post('/profissional/logout');
+        $this->post(route('profissional.logout'))
 
-        $respostaLog = $this->post('/paciente/login', [
+        $respostaLog = $this->post(route('paciente.login'), [
             'login' => $paciente->login,
             'password' => $password,
         ]);
 
         $respostaLog->assertOk();
         $this->assertAuthenticatedAs($paciente);
-        $this->seePageIs('/paciente/home');
+        $this->seePageIs(route('paciente.home'));
     }
 
+
     /** @test **/
-    public function loginPacienteNaoPodeFicarEmBranco()
-    {
+    public function loginPacienteNaoPodeFicarEmBranco() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $copiaPac['login'] = '';
+        $copia_pac['login'] = '';
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
         $resposta->assertSessionHasErrors('login');
         $this->assertCount(0, Paciente::all());
@@ -168,101 +164,66 @@ class CadastroClienteTest extends TestCase
 
 
     /** @test **/
-    public function senhaPacienteNaoPodeFicarEmBranco()
-    {
+    public function senhaPacienteNaoPodeFicarEmBranco() {
         $this->loginFunc();
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $copiaPac['password'] = '';
+        $copia_pac['password'] = '';
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
         $resposta->assertSessionHasErrors('password');
         $this->assertCount(0, Paciente::all());
     }
 
+
     /** @test **/
-    public function senhaPacienteNaoPodeTerPoucosCaracteres()
-    {
+    public function senhaPacienteNaoPodeTerPoucosCaracteres() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $copiaPac['password'] = '123';
+        $copia_pac['password'] = '123';
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
         $resposta->assertSessionHasErrors('password');
         $this->assertCount(0, Paciente::all());
     }
 
+
     /** @test **/
-    public function nomePacienteNaoPodeFicarEmBranco()
-    {
+    public function nomePacienteNaoPodeFicarEmBranco() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $copiaPac['nome_paciente'] = '';
+        $copia_pac['nome_paciente'] = '';
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
         $resposta->assertSessionHasErrors('nome');
         $this->assertCount(0, Paciente::all());
     }
 
+
     /** @test **/
-    public function cpfPacienteNaoPodeFicarEmBranco()
-    {
+    public function cpfPacienteNaoPodeFicarEmBranco() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $copiaPac['cpf'] = '';
+        $copia_pac['cpf'] = '';
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
-
-        $resposta->assertSessionHasErrors('cpf');
-        $this->assertCount(0, Paciente::all());
-    }
-
-    /** @test **/
-    public function cpfPacienteNaoPodeTerPoucosCaracteres()
-    {
-        $this->loginFunc();
-
-        $this->assertAuthenticatedAs($funcionario);
-
-        $copiaPac = $this->$paciente;
-
-        $copiaPac['cpf'] = '123456789';
-
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
-
-        $resposta->assertSessionHasErrors('cpf');
-        $this->assertCount(0, Paciente::all());
-    }
-
-    /** @test **/
-    public function cpfPacienteNaoPodeTerMuitosCaracteres()
-    {
-        $this->loginFunc();
-
-        $this->assertAuthenticatedAs($funcionario);
-
-        $copiaPac = $this->$paciente;
-
-        $copiaPac['cpf'] = '1234567891011';
-
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
         $resposta->assertSessionHasErrors('cpf');
         $this->assertCount(0, Paciente::all());
@@ -270,17 +231,16 @@ class CadastroClienteTest extends TestCase
 
 
     /** @test **/
-    public function cpfPacienteNaoPodeTerLetras()
-    {
+    public function cpfPacienteNaoPodeTerPoucosCaracteres() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $copiaPac['cpf'] = '123456789UM';
+        $copia_pac['cpf'] = '123456789';
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
         $resposta->assertSessionHasErrors('cpf');
         $this->assertCount(0, Paciente::all());
@@ -288,34 +248,50 @@ class CadastroClienteTest extends TestCase
 
 
     /** @test **/
-    public function sexoPacienteNaoPodeFicarEmBranco()
-    {
+    public function cpfPacienteNaoPodeTerMuitosCaracteres() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $copiaPac['sexo'] = '';
+        $copia_pac['cpf'] = '1234567891011';
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
-        $resposta->assertSessionHasErrors('sexo');
+        $resposta->assertSessionHasErrors('cpf');
         $this->assertCount(0, Paciente::all());
     }
 
+
     /** @test **/
-    public function sexoPacienteNaoPodeTerNumeros()
-    {
+    public function cpfPacienteNaoPodeTerLetras() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $copiaPac['sexo'] = 'Mascul1no';
+        $copia_pac['cpf'] = '123456789UM';
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
+
+        $resposta->assertSessionHasErrors('cpf');
+        $this->assertCount(0, Paciente::all());
+    }
+
+
+    /** @test **/
+    public function sexoPacienteNaoPodeFicarEmBranco() {
+        $this->loginFunc();
+
+        $this->assertAuthenticatedAs($funcionario);
+
+        $copia_pac = $this->$paciente;
+
+        $copia_pac['sexo'] = '';
+
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
         $resposta->assertSessionHasErrors('sexo');
         $this->assertCount(0, Paciente::all());
@@ -323,17 +299,16 @@ class CadastroClienteTest extends TestCase
 
 
     /** @test **/
-    public function sexoPacienteNaoPodeSerInvalido()
-    {
+    public function sexoPacienteNaoPodeTerNumeros() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $copiaPac['sexo'] = 'Genero do Tumblr';
+        $copia_pac['sexo'] = 'Mascul1no';
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
         $resposta->assertSessionHasErrors('sexo');
         $this->assertCount(0, Paciente::all());
@@ -341,17 +316,33 @@ class CadastroClienteTest extends TestCase
 
 
     /** @test **/
-    public function nascimentoPacienteNaoPodeFicarEmBranco()
-    {
+    public function sexoPacienteNaoPodeSerInvalido() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $copiaPac['data_nascimento'] = '';
+        $copia_pac['sexo'] = 'Genero do Tumblr';
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
+
+        $resposta->assertSessionHasErrors('sexo');
+        $this->assertCount(0, Paciente::all());
+    }
+
+
+    /** @test **/
+    public function nascimentoPacienteNaoPodeFicarEmBranco() {
+        $this->loginFunc();
+
+        $this->assertAuthenticatedAs($funcionario);
+
+        $copia_pac = $this->$paciente;
+
+        $copia_pac['data_nascimento'] = '';
+
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
         $resposta->assertSessionHasErrors('data_nascimento');
         $this->assertCount(0, Paciente::all());
@@ -359,17 +350,16 @@ class CadastroClienteTest extends TestCase
 
 
     /** @test **/
-    public function nascimentoPacienteNaoPodeTerLetras()
-    {
+    public function nascimentoPacienteNaoPodeTerLetras() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $copiaPac['data_nascimento'] = 'UM-05-1999';
+        $copia_pac['data_nascimento'] = 'UM-05-1999';
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
         $resposta->assertSessionHasErrors('data_nascimento');
         $this->assertCount(0, Paciente::all());
@@ -377,34 +367,33 @@ class CadastroClienteTest extends TestCase
 
 
     /** @test **/
-    public function nascimentoPacientePrecisaTerFormatoCerto()
-    {
+    public function nascimentoPacientePrecisaTerFormatoCerto() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $copiaPac['data_nascimento'] = '1999-10-05';
+        $copia_pac['data_nascimento'] = '1999-10-05';
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
         $resposta->assertSessionHasErrors('data_nascimento');
         $this->assertCount(0, Paciente::all());
     }
 
+
     /** @test **/
-    public function responsavelPacienteNaoPodeFicarEmBranco()
-    {
+    public function responsavelPacienteNaoPodeFicarEmBranco() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $copiaPac['responsavel'] = '';
+        $copia_pac['responsavel'] = '';
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
         $resposta->assertSessionHasErrors('responsavel');
         $this->assertCount(0, Paciente::all());
@@ -412,52 +401,51 @@ class CadastroClienteTest extends TestCase
 
 
     /** @test **/
-    public function numeroIrmaoPacienteNaoPodeFicarEmBranco()
-    {
+    public function numeroIrmaoPacienteNaoPodeFicarEmBranco() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $copiaPac['numero_irmaos'] = '';
+        $copia_pac['numero_irmaos'] = '';
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
         $resposta->assertSessionHasErrors('numero_irmaos');
         $this->assertCount(0, Paciente::all());
     }
 
+
     /** @test **/
-    public function numeroIrmaoPacienteNaoPodeTerLetras()
-    {
+    public function numeroIrmaoPacienteNaoPodeTerLetras() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $copiaPac['numero_irmaos'] = 'u';
+        $copia_pac['numero_irmaos'] = 'u';
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
 
         $resposta->assertSessionHasErrors('numero_irmaos');
         $this->assertCount(0, Paciente::all());
     }
 
+
     /** @test **/
-    public function nomePaiPacienteNaoPodeFicarEmBranco()
-    {
+    public function nomePaiPacienteNaoPodeFicarEmBranco() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $copiaPac['nome_pai'] = '';
+        $copia_pac['nome_pai'] = '';
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
 
         $resposta->assertSessionHasErrors('nome_pai');
@@ -466,17 +454,16 @@ class CadastroClienteTest extends TestCase
 
 
     /** @test **/
-    public function nomeMaePacienteNaoPodeFicarEmBranco()
-    {
+    public function nomeMaePacienteNaoPodeFicarEmBranco() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $copiaPac['nome_mae'] = '';
+        $copia_pac['nome_mae'] = '';
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
         $resposta->assertSessionHasErrors('nome_mae');
         $this->assertCount(0, Paciente::all());
@@ -484,35 +471,34 @@ class CadastroClienteTest extends TestCase
 
 
     /** @test **/
-    public function telefonePaiPacienteNaoPodeFicarEmBranco()
-    {
+    public function telefonePaiPacienteNaoPodeFicarEmBranco() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $copiaPac['telefone_pai'] = '';
+        $copia_pac['telefone_pai'] = '';
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
 
         $resposta->assertSessionHasErrors('telefone_pai');
         $this->assertCount(0, Paciente::all());
     }
 
+
     /** @test **/
-    public function telefoneMaePacienteNaoPodeFicarEmBranco()
-    {
+    public function telefoneMaePacienteNaoPodeFicarEmBranco() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $copiaPac['telefone_mae'] = '';
+        $copia_pac['telefone_mae'] = '';
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
 
         $resposta->assertSessionHasErrors('telefone_mae');
@@ -521,124 +507,123 @@ class CadastroClienteTest extends TestCase
 
 
     /** @test **/
-    public function telefoneMaePacienteNaoPodeTerLetras()
-    {
+    public function telefoneMaePacienteNaoPodeTerLetras() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $copiaPac['telefone_mae'] = 'UM111111111';
+        $copia_pac['telefone_mae'] = 'UM111111111';
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
 
         $resposta->assertSessionHasErrors('telefone_mae');
         $this->assertCount(0, Paciente::all());
     }
 
+
     /** @test **/
-    public function telefoneMaePacienteNaoPodeTerPoucosNumeros()
-    {
+    public function telefoneMaePacienteNaoPodeTerPoucosNumeros() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $copiaPac['telefone_mae'] = '111111111';
+        $copia_pac['telefone_mae'] = '111111111';
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
 
         $resposta->assertSessionHasErrors('telefone_mae');
         $this->assertCount(0, Paciente::all());
     }
 
+
     /** @test **/
-    public function telefoneMaePacienteNaoPodeTerMuitosNumeros()
-    {
+    public function telefoneMaePacienteNaoPodeTerMuitosNumeros() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $copiaPac['telefone_mae'] = '1111111111111111';
+        $copia_pac['telefone_mae'] = '1111111111111111';
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
         $resposta->assertSessionHasErrors('telefone_mae');
         $this->assertCount(0, Paciente::all());
     }
 
+
     /** @test **/
-    public function telefonePaiPacienteNaoPodeTerLetras()
-    {
+    public function telefonePaiPacienteNaoPodeTerLetras() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $copiaPac['telefone_pai'] = '666666666UM';
+        $copia_pac['telefone_pai'] = '666666666UM';
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
 
         $resposta->assertSessionHasErrors('telefone_pai');
         $this->assertCount(0, Paciente::all());
     }
 
+
     /** @test **/
-    public function telefonePaiPacienteNaoPodeTerPoucosNumeros()
-    {
+    public function telefonePaiPacienteNaoPodeTerPoucosNumeros() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $copiaPac['telefone_pai'] = '666666666';
+        $copia_pac['telefone_pai'] = '666666666';
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
 
         $resposta->assertSessionHasErrors('telefone_pai');
         $this->assertCount(0, Paciente::all());
     }
 
+
     /** @test **/
-    public function telefonePaiPacienteNaoPodeTerMuitosNumeros()
-    {
+    public function telefonePaiPacienteNaoPodeTerMuitosNumeros() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $copiaPac['telefone_pai'] = '66666666666666';
+        $copia_pac['telefone_pai'] = '66666666666666';
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
 
         $resposta->assertSessionHasErrors('telefone_pai');
         $this->assertCount(0, Paciente::all());
     }
 
+
     /** @test **/
-    public function emailPaiPacienteNaoPodeFicarEmBranco()
-    {
+    public function emailPaiPacienteNaoPodeFicarEmBranco() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $copiaPac['email_pai'] = '';
+        $copia_pac['email_pai'] = '';
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
 
         $resposta->assertSessionHasErrors('email_pai');
@@ -647,231 +632,230 @@ class CadastroClienteTest extends TestCase
 
 
     /** @test **/
-    public function emailPaiPacienteNaoPodeSerInvalido()
-    {
+    public function emailPaiPacienteNaoPodeSerInvalido() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $copiaPac['email_pai'] = 'satanasinferno.com';
+        $copia_pac['email_pai'] = 'satanasinferno.com';
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
 
         $resposta->assertSessionHasErrors('email_pai');
         $this->assertCount(0, Paciente::all());
     }
 
+
     /** @test **/
-    public function emailMaePacienteNaoPodeFicarEmBranco()
-    {
+    public function emailMaePacienteNaoPodeFicarEmBranco() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $copiaPac['email_mae'] = '';
+        $copia_pac['email_mae'] = '';
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
 
         $resposta->assertSessionHasErrors('email_mae');
         $this->assertCount(0, Paciente::all());
     }
 
+
     /** @test **/
-    public function emailMaePacienteNaoPodeSerInvalido()
-    {
+    public function emailMaePacienteNaoPodeSerInvalido() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $copiaPac['email_mae'] = 'emailtestegemail.com';
+        $copia_pac['email_mae'] = 'emailtestegemail.com';
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
 
         $resposta->assertSessionHasErrors('email_mae');
         $this->assertCount(0, Paciente::all());
     }
 
+
     /** @test **/
-    public function idadePaiPacienteNaoPodeFicarEmBranco()
-    {
+    public function idadePaiPacienteNaoPodeFicarEmBranco() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $copiaPac['idade_pai'] ='';
+        $copia_pac['idade_pai'] ='';
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
 
         $resposta->assertSessionHasErrors('idade_pai');
         $this->assertCount(0, Paciente::all());
     }
 
+
     /** @test **/
-    public function idadePaiPacienteNaoPodeTerLetras()
-    {
+    public function idadePaiPacienteNaoPodeTerLetras() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $copiaPac['idade_pai'] = 'U';
+        $copia_pac['idade_pai'] = 'U';
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
         $resposta->assertSessionHasErrors('idade_pai');
         $this->assertCount(0, Paciente::all());
     }
 
+
     /** @test **/
-    public function idadePaiPacienteNaoPodeSerGrande()
-    {
+    public function idadePaiPacienteNaoPodeSerGrande() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $copiaPac['idade_pai'] = 300;
+        $copia_pac['idade_pai'] = 300;
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
 
         $resposta->assertSessionHasErrors('idade_pai');
         $this->assertCount(0, Paciente::all());
     }
 
+
     /** @test **/
-    public function idadeMaePacienteNaoPodeFicarEmBranco()
-    {
+    public function idadeMaePacienteNaoPodeFicarEmBranco() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $copiaPac['idade_mae'] ='';
+        $copia_pac['idade_mae'] ='';
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
 
         $resposta->assertSessionHasErrors('idade_mae');
         $this->assertCount(0, Paciente::all());
     }
 
+
     /** @test **/
-    public function idadeMaePacienteNaoPodeTerLetras()
-    {
+    public function idadeMaePacienteNaoPodeTerLetras() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $copiaPac['idade_mae'] = 'U';
+        $copia_pac['idade_mae'] = 'U';
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
 
         $resposta->assertSessionHasErrors('idade_mae');
         $this->assertCount(0, Paciente::all());
     }
 
+
     /** @test **/
-    public function idadeMaePacienteNaoPodeSerGrande()
-    {
+    public function idadeMaePacienteNaoPodeSerGrande() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $copiaPac['idade_mae'] = 300;
+        $copia_pac['idade_mae'] = 300;
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
 
         $resposta->assertSessionHasErrors('idade_mae');
         $this->assertCount(0, Paciente::all());
     }
 
+
     /** @test **/
-    public function enderecoPacienteNaoPodeFicarEmBranco()
-    {
+    public function enderecoPacienteNaoPodeFicarEmBranco() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $copiaPac['id_endereco'] = '';
+        $copia_pac['id_endereco'] = '';
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
 
         $resposta->assertSessionHasErrors('id_endereco');
         $this->assertCount(0, Paciente::all());
     }
 
+
     /** @test **/
-    public function naturalidadePacienteNaoPodeFicarEmBranco()
-    {
+    public function naturalidadePacienteNaoPodeFicarEmBranco() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $copiaPac['naturalidade'] = '';
+        $copia_pac['naturalidade'] = '';
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
 
         $resposta->assertSessionHasErrors('naturalidade');
         $this->assertCount(0, Paciente::all());
     }
 
+
     /** @test **/
-    public function naturalidadePacienteNaoPodeTerNumeros()
-    {
+    public function naturalidadePacienteNaoPodeTerNumeros() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $copiaPac['naturalidade'] = 'Brasi131r0';
+        $copia_pac['naturalidade'] = 'Brasi131r0';
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
         $resposta->assertSessionHasErrors('naturalidade');
         $this->assertCount(0, Paciente::all());
     }
 
+
     /** @test **/
-    public function estadoCivilPaisPacienteNaoPodeFicarEmBranco()
-    {
+    public function estadoCivilPaisPacienteNaoPodeFicarEmBranco() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $copiaPac['pais_sao_casados'] = '';
+        $copia_pac['pais_sao_casados'] = '';
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
 
 
@@ -879,18 +863,18 @@ class CadastroClienteTest extends TestCase
         $this->assertCount(0, Paciente::all());
     }
 
+
     /** @test **/
-    public function estadoCivilPaisPacienteDivorciadosNaoPodeFicarEmBranco()
-    {
+    public function estadoCivilPaisPacienteDivorciadosNaoPodeFicarEmBranco() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $copiaPac['pais_sao_divorciados'] = '';
+        $copia_pac['pais_sao_divorciados'] = '';
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
 
 
@@ -898,31 +882,30 @@ class CadastroClienteTest extends TestCase
         $this->assertCount(0, Paciente::all());
     }
 
+
     /** @test **/
-    public function tipoDeFilhoPacienteNaoPodeFicarEmBranco()
-    {
+    public function tipoDeFilhoPacienteNaoPodeFicarEmBranco() {
         $this->loginFunc();
         $this->assertAuthenticatedAs($funcionario);
-        $copiaPac = $this->$paciente;
-        $copiaPac['tipo_filho_biologico_adotivo'] = '';
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $copia_pac = $this->$paciente;
+        $copia_pac['tipo_filho_biologico_adotivo'] = '';
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
         $resposta->assertSessionHasErrors('tipo_filho_biologico_adotivo');
         $this->assertCount(0, Paciente::all());
     }
 
 
     /** @test **/
-    public function clienteNaoPodeSerCadastradoDuasVezes()
-    {
+    public function clienteNaoPodeSerCadastradoDuasVezes() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $this->post('/profissional/criarpaciente', $copiaPac);
+        $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
         $resposta->assertSessionHasErrors();
         $this->assertCount(1, Paciente::all());
@@ -950,16 +933,16 @@ class CadastroClienteTest extends TestCase
 
     }
 
+
     /** @test **/
-    public function mensagemSucessoApareceAoCadastrarCliente()
-    {
+    public function mensagemSucessoApareceAoCadastrarCliente() {
         $this->loginFunc();
 
         $this->assertAuthenticatedAs($funcionario);
 
-        $copiaPac = $this->$paciente;
+        $copia_pac = $this->$paciente;
 
-        $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
         $value = 'sucesso';
         $tempo = 5; // Tempo em segundo até o fim da espera
@@ -969,28 +952,29 @@ class CadastroClienteTest extends TestCase
 
     }
 
+
     /** @test **/
-    public function funcionarioNaoPermitidoNaoPodeCriarPaciente()
-    {
+    public function funcionarioNaoPermitidoNaoPodeCriarPaciente() {
 
          $f = factory(Profissional::class)->create([
          'password' => bcrypt($password = '123123123'),
          'profissao' => 'Lutador',
          ]);
 
-         $this->post('/profissional/login', [
+         $this->post(route('profissional.login'), [
               'login' => $f->login,
               'password' => $password,
          ]);
 
          $this->assertAuthenticatedAs($funcionario);
 
-         $copiaPac = $this->$paciente;
+         $copia_pac = $this->$paciente;
 
-         $resposta = $this->post('/profissional/criarpaciente', $copiaPac);
+         $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
 
-         $this->seePageIs('/profissional/home');
+         $this->seePageIs(route('profissional.home'));
          $this->assertCount(0, Paciente::all());
     }
+
 
 }
