@@ -8,14 +8,6 @@ use Closure;
 use App\Profissional;
 
 class EhAdmin {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
-     */
-
 
     // Verifica se tem algum profissional logado e se esse profissional é admin
     public function handle($request, Closure $next) {
@@ -24,4 +16,5 @@ class EhAdmin {
         }
         return redirect()->route('erro', ['msg_erro' => "Você não é admin!!"]);
     }
+    
 }

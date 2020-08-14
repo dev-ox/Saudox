@@ -6,13 +6,6 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 
 class Authenticate extends Middleware {
-    /**
-     * Get the path the user should be redirected to when they are not authenticated.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return string|null
-     */
-
 
     // Para redirecionamento de uruários não autenticados
     protected function redirectTo($request) {
@@ -26,8 +19,8 @@ class Authenticate extends Middleware {
             if(Route::is('profissional.*')){
                 return route('profissional.login');
             }
-
             return route('login');
         }
     }
+
 }

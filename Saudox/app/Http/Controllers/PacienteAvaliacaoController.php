@@ -14,7 +14,7 @@ class PacienteAvaliacaoController extends Controller {
      * suficiente
      */
 
-    public function ver_fono() {
+    public function verFono() {
         $paciente = Paciente::find(Auth::id());
         $avaliacao = $paciente->avaliacao_fono;
         if(!$avaliacao) {
@@ -23,7 +23,7 @@ class PacienteAvaliacaoController extends Controller {
         return view('paciente/avaliacoes/fono')->with(["avaliacao" => $avaliacao]);
     }
 
-    public function ver_judo() {
+    public function verJudo() {
         $paciente = Paciente::find(Auth::id());
         $avaliacao = $paciente->avaliacao_judo;
         if(!$avaliacao) {
@@ -32,7 +32,7 @@ class PacienteAvaliacaoController extends Controller {
         return view('paciente/avaliacoes/judo')->with(["avaliacao" => $avaliacao]);
     }
 
-    public function ver_neuro() {
+    public function verNeuro() {
         $paciente = Paciente::find(Auth::id());
         $avaliacao = $paciente->avaliacao_neuro;
         if(!$avaliacao) {
@@ -41,7 +41,7 @@ class PacienteAvaliacaoController extends Controller {
         return view('paciente/avaliacoes/neuro')->with(["avaliacao" => $avaliacao]);
     }
 
-    public function ver_terapia_ocupacional() {
+    public function verTerapiaOcupacional() {
         $paciente = Paciente::find(Auth::id());
         $avaliacao = $paciente->avaliacao_terapia_ocupacional;
         if(!$avaliacao) {

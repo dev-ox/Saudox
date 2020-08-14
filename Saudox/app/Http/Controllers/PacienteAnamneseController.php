@@ -13,7 +13,7 @@ class PacienteAnamneseController extends Controller {
         return view('paciente/anamneses');
     }
 
-    public function ver_fono() {
+    public function verFono() {
         $paciente = Paciente::find(Auth::id());
         $anamnese = $paciente->anamnese_fonoaudiologias;
         if(!$anamnese) {
@@ -22,7 +22,7 @@ class PacienteAnamneseController extends Controller {
         return view('paciente/anamneses/fono')->with(["anamnese" => $anamnese]);
     }
 
-    public function ver_pnp() {
+    public function verPnp() {
         $paciente = Paciente::find(Auth::id());
         // Repare que essa póxima chamada está com os parênteses
         $anamnese = $paciente->anamnese__psicopeda__neuro__psicomotos();
@@ -32,7 +32,7 @@ class PacienteAnamneseController extends Controller {
         return view('paciente/anamneses/pnp')->with(["anamnese" => $anamnese]);
     }
 
-    public function ver_tocp() {
+    public function verTocp() {
         $paciente = Paciente::find(Auth::id());
         $anamnese = $paciente->anamnese__terapia__ocupacionals;
         if(!$anamnese) {

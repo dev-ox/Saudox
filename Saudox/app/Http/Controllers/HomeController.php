@@ -12,7 +12,7 @@ class HomeController extends Controller {
     }
 
     // Redireciona para a página de erro (passando a mensagem de erro)
-    public function mostrar_erro(Request $req) {
+    public function mostrarErro(Request $req) {
         $msg = $req->msg_erro;
         if(!$msg) {$msg = "no msg";}
         return view('erro', ['msg_erro' => $msg]);
