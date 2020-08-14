@@ -4,4 +4,4 @@ Route::get('teste', function () {
     return 'judo.php';
 });
 
-Route::get('ver', 'PacienteAvaliacaoController@ver_judo')->name('.ver');
+Route::get('ver', 'PacienteAvaliacaoController@verJudo')->name('.ver');
