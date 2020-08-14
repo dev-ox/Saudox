@@ -51,8 +51,8 @@ if(Auth::guard('profissional')->check() == 1) {
 
 <?php
     $anamnese_fono = $paciente->anamnese__terapia__ocupacionals;
-    $anamnese_pnps = $paciente->anamnese_fonoaudiologias;
-    $anamnese_tocp = $paciente->anamnese__psicopeda__neuro__psicomotos();
+    $anamnese_pnps = $paciente->anamneseFonoaudiologias;
+    $anamnese_tocp = $paciente->anamneseGigantePsicopedaNeuroPsicomotos();
 
     if($anamnese_fono) {
         echo "<a href='/paciente/anamnese/fonoaudiologia/ver'>Anamnese Fonoaudiologica</a><br>";
