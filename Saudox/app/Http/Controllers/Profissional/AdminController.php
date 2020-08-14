@@ -21,7 +21,7 @@ class AdminController extends Controller
     }
 
 	public function adminHome() {
-		return view('profissional/admin/home', ['pacientes' => Paciente::all(),'profissionais' => Profissional::all()]);
+		return view(route("profissional.admin.home"), ['pacientes' => Paciente::all(),'profissionais' => Profissional::all()]);
 	}
 
 }

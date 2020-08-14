@@ -4,8 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Anamnese_Terapia_Ocupacional extends Model
-{
+class AvaliacaoNeuropsicologica extends Model {
+    protected $table = 'avaliacao__neuropsicologicas';
+
     /**
      * The attributes that should be cast.
      *
@@ -20,9 +21,9 @@ class Anamnese_Terapia_Ocupacional extends Model
     /* TODO: Lembrar disso quando for criar/editar */
     /* Pra setar o acesso:
      * $arr é um array com os ids dos pacientes que podem ver;
-     * $anamnese->id_pode_ver["paciente"] = json_encode($arr);
+     * $avaliacao->id_pode_ver["paciente"] = json_encode($arr);
      * Pra verificar o acesso:
-     * $arr = json_decode($anamnese->id_pode_ver["paciente"]);
+     * $arr = json_decode($avaliacao->id_pode_ver["paciente"]);
      * E mesma coisa pra id_pode_editar.
      */
 }

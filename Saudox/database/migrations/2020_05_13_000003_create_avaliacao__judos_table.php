@@ -52,7 +52,6 @@ class CreateAvaliacaoJudosTable extends Migration
             $table->text('terapias');
             $table->string('objetivos');
             $table->string('tipo_da_aula');
-
             /* O responsavel_por_este_documento é o profissional que tem a
              * resposabilidade, então ele vai ta no json de pode ver e pode
              * editar.

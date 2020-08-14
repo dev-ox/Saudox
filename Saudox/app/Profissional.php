@@ -46,7 +46,7 @@ class Profissional extends Authenticatable {
     }
 
 
-    public function eh_admin() {
+    public function ehAdmin() {
         return in_array('admin', $this->getProfissoes());
     }
 

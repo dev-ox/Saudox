@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class AnamnesePsicopedaNeuroPsicomotosAutSeeds extends Seeder
+class AnamneseGigantePsicopedaNeuroPsicomotosAutSeeds extends Seeder
 {
     public function run()
     {
@@ -10,7 +10,7 @@ class AnamnesePsicopedaNeuroPsicomotosAutSeeds extends Seeder
 
       //Gerando anamnese psico neuro psicomotos automaticamente
       for($i = 0; $i < $qtd_anamnese_gigante; $i++){
-        $asd = new \App\Anamnese_Psicopeda_Neuro_Psicomoto;
+        $asd = new \App\AnamneseGigantePsicopedaNeuroPsicomoto;
         $asd->save();
       }
     }

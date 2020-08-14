@@ -80,7 +80,6 @@ class CreateAvaliacaoTerapiaOcupacionalsTable extends Migration
             $table->boolean('gosta_cortar_cabelos')->default(false);
             $table->boolean('gosta_cortar_unhas')->default(false);
             $table->text('info_extras_relevante')->nullable(true);
-
             /* O responsavel_por_este_documento é o profissional que tem a
              * resposabilidade, então ele vai ta no json de pode ver e pode
              * editar.

@@ -3,7 +3,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Paciente;
-use App\Anamnese_fonoaudiologia;
+use App\AnamneseFonoaudiologia;
 use App\Profissional;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;

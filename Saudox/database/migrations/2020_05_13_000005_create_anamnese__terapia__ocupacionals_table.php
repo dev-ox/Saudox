@@ -89,7 +89,6 @@ class CreateAnamneseTerapiaOcupacionalsTable extends Migration
             $table->text('acompanhamento_medico');
             $table->string('qual_medico_responsavel');
             $table->longText('diagnostico_medico');
-
             /* O responsavel_por_este_documento é o profissional que tem a
              * resposabilidade, então ele vai ta no json de pode ver e pode
              * editar.

@@ -3,7 +3,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Paciente;
-use App\Evolucao_psicologica;
+use App\EvolucaoPsicologica;
 use App\Profissional;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
@@ -19,7 +19,7 @@ use Illuminate\Support\Str;
 |
 */
 
-$factory->define(Evolucao_psicologica::class, function (Faker $faker),  {
+$factory->define(EvolucaoPsicologica::class, function (Faker $faker),  {
     return [
         'id_paciente' => 0,
         'id_profissional' => 0,

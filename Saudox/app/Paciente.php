@@ -35,29 +35,29 @@ class Paciente extends Authenticatable {
         'email_verified_at' => 'datetime',
     ];
 
-    public function evolucao_fonoaudiologias() {
-        return $this->hasMany('App\Evolucao_fonoaudiologia', 'id_paciente');
+    public function evolucaoFonoaudiologias() {
+        return $this->hasMany('App\EvolucaoFonoaudiologia', 'id_paciente');
     }
 
-    public function evolucao_judos() {
-        return $this->hasMany('App\Evolucao_judo', 'id_paciente');
+    public function evolucaoJudos() {
+        return $this->hasMany('App\EvolucaoJudo', 'id_paciente');
     }
 
-    public function evolucao_psicologicas() {
-        return $this->hasMany('App\Evolucao_psicologica', 'id_paciente');
+    public function evolucaoPsicologicas() {
+        return $this->hasMany('App\EvolucaoPsicologica', 'id_paciente');
     }
 
-    public function evolucao_terapia_ocupacionals() {
-        return $this->hasMany('App\Evolucao_terapia_ocupacional', 'id_paciente');
+    public function evolucaoTerapiaOcupacionals() {
+        return $this->hasMany('App\EvolucaoTerapiaOcupacional', 'id_paciente');
     }
 
 
-    public function anamnese__terapia__ocupacionals() {
-        return $this->hasOne('App\Anamnese_Terapia_Ocupacional', 'id_paciente');
+    public function anamneseTerapiaOcupacionals() {
+        return $this->hasOne('App\AnamneseTerapiaOcupacional', 'id_paciente');
     }
 
-    public function anamnese_fonoaudiologias() {
-        return $this->hasOne('App\Anamnese_fonoaudiologia', 'id_paciente');
+    public function anamneseFonoaudiologias() {
+        return $this->hasOne('App\AnamneseFonoaudiologia', 'id_paciente');
     }
 
     /*
@@ -66,24 +66,24 @@ class Paciente extends Authenticatable {
      * Certo: $user->anamnese__psicopeda__neuro__psicomotos();
      * Errado: $user->anamnese__psicopeda__neuro__psicomotos;
      */
-    public function anamnese__psicopeda__neuro__psicomotos() {
-        return \App\Anamnese_Psicopeda_Neuro_Psicomoto::pegar_por_id_paciente($this->id);
+    public function anamneseGigantePsicopedaNeuroPsicomotos() {
+        return \App\AnamneseGigantePsicopedaNeuroPsicomoto::pegarPorIdPaciente($this->id);
     }
 
-    public function avaliacao_fono() {
-        return $this->hasOne('App\Avaliacao_Fonoaudiologia', 'id_paciente');
+    public function avaliacaoFono() {
+        return $this->hasOne('App\AvaliacaoFonoaudiologia', 'id_paciente');
     }
 
-    public function avaliacao_judo() {
-        return $this->hasOne('App\Avaliacao_Judo', 'id_paciente');
+    public function avaliacaoJudo() {
+        return $this->hasOne('App\AvaliacaoJudo', 'id_paciente');
     }
 
-    public function avaliacao_neuro() {
-        return $this->hasOne('App\Avaliacao_Neuropsicologica', 'id_paciente');
+    public function avaliacaoNeuro() {
+        return $this->hasOne('App\AvaliacaoNeuropsicologica', 'id_paciente');
     }
 
-    public function avaliacao_terapia_ocupacional() {
-        return $this->hasOne('App\Avaliacao_Terapia_Ocupacional', 'id_paciente');
+    public function avaliacaoTerapiaOcupacional() {
+        return $this->hasOne('App\AvaliacaoTerapiaOcupacional', 'id_paciente');
     }
 
 

@@ -4,8 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Evolucao_judo extends Model
-{
+class AvaliacaoFonoaudiologia extends Model {
+    //
+    protected $table = 'avaliacao__fonoaudiologias';
+
     /**
      * The attributes that should be cast.
      *
@@ -20,9 +22,9 @@ class Evolucao_judo extends Model
     /* TODO: Lembrar disso quando for criar/editar */
     /* Pra setar o acesso:
      * $arr é um array com os ids dos pacientes que podem ver;
-     * $evolucao->id_pode_ver["paciente"] = json_encode($arr);
+     * $avaliacao->id_pode_ver["paciente"] = json_encode($arr);
      * Pra verificar o acesso:
-     * $arr = json_decode($evolucao->id_pode_ver["paciente"]);
+     * $arr = json_decode($avaliacao->id_pode_ver["paciente"]);
      * E mesma coisa pra id_pode_editar.
      */
 }

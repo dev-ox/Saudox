@@ -27,6 +27,7 @@ class CreateEvolucaoPsicologicasTable extends Migration
             $table->string('tipo_atendimento');
             $table->longText('texto');
 
+
             /* O responsavel_por_este_documento é o profissional que tem a
              * resposabilidade, então ele vai ta no json de pode ver e pode
              * editar.
@@ -41,7 +42,6 @@ class CreateEvolucaoPsicologicasTable extends Migration
             $table->unsignedInteger('responsavel_por_este_documento')->nullable();
             $table->json('id_pode_ver')->nullable();
             $table->json('id_pode_editar')->nullable();
-
 
         });
     }

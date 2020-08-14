@@ -22,7 +22,7 @@ class CreateAnamneseGigantePsicopedaNeuroPsicomotoPt1sTable extends Migration
             $table->bigInteger('id_tp')->unsigned();
             $table->bigInteger('id_paciente')->unsigned();
             $table->bigInteger('id_profissional')->unsigned();
-            $table->foreign('id_tp')->references('id')->on('anamnese__psicopeda__neuro__psicomotos');
+            $table->foreign('id_tp')->references('id')->on('anamnese__gigante__psicopeda__neuro__psicomotos');
             $table->foreign('id_paciente')->references('id')->on('pacientes');
             $table->foreign('id_profissional')->references('id')->on('profissionals');
             $table->string('compareceram_entrevista');

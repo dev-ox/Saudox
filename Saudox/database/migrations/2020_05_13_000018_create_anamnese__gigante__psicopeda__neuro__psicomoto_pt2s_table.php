@@ -18,7 +18,7 @@ class CreateAnamneseGigantePsicopedaNeuroPsicomotoPt2sTable extends Migration
             $table->timestamps();
 
             $table->bigInteger('id_tp')->unsigned();
-            $table->foreign('id_tp')->references('id')->on('anamnese__psicopeda__neuro__psicomotos');
+            $table->foreign('id_tp')->references('id')->on('anamnese__gigante__psicopeda__neuro__psicomotos');
             $table->string('teve_otite_infancia');
             $table->string('teve_adenoides_infancia');
             $table->string('teve_amigdalites_infancia');
