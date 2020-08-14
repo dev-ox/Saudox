@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class AnamnesePsicopedaNeuroPsicomotosPt2AutSeeds extends Seeder
+class AnamneseGigantePsicopedaNeuroPsicomotosPt2AutSeeds extends Seeder
 {
     public function run()
     {

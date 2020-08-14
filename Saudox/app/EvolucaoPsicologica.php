@@ -4,8 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Avaliacao_Terapia_Ocupacional extends Model
-{
+class EvolucaoPsicologica extends Model {
+    protected $table = 'evolucao_psicologicas';
     /**
      * The attributes that should be cast.
      *

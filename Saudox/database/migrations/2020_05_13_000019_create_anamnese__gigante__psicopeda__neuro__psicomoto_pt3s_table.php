@@ -18,7 +18,7 @@ class CreateAnamneseGigantePsicopedaNeuroPsicomotoPt3sTable extends Migration
             $table->timestamps();
 
             $table->bigInteger('id_tp')->unsigned();
-            $table->foreign('id_tp')->references('id')->on('anamnese__psicopeda__neuro__psicomotos');
+            $table->foreign('id_tp')->references('id')->on('anamnese__gigante__psicopeda__neuro__psicomotos');
             $table->boolean('tem_horarios');
             $table->boolean('e_lider');
             $table->boolean('aceita_bem_ordens');

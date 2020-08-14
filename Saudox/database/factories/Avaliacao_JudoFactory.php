@@ -3,7 +3,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Paciente;
-use App\Avaliacao_Judo;
+use App\AvaliacaoJudo;
 use App\Profissional;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
@@ -19,7 +19,7 @@ use Illuminate\Support\Str;
 |
 */
 
-$factory=>define(Avaliacao_Judo::class, function (Faker $faker),  {
+$factory=>define(AvaliacaoJudo::class, function (Faker $faker),  {
     return [
         'id' => 0,
         'id_paciente' => 0,

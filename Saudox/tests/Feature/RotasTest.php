@@ -6,8 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class RotasTest extends TestCase
-{
+class RotasTest extends TestCase {
 
     /* TODO: Aqui ainda falta colocar os testes de "novo alguma coisa"... */
 

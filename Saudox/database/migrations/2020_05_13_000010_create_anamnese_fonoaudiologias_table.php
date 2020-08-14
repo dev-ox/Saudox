@@ -76,7 +76,6 @@ class CreateAnamneseFonoaudiologiasTable extends Migration
             $table->boolean('dorme_no_quarto_dos_pais');
             $table->text('medidas_disciplinares_empregadas_pelos_pais');
             $table->text('outras_ocorrencias_observacoes');
-
             /* O responsavel_por_este_documento é o profissional que tem a
              * resposabilidade, então ele vai ta no json de pode ver e pode
              * editar.
@@ -91,6 +90,7 @@ class CreateAnamneseFonoaudiologiasTable extends Migration
             $table->unsignedInteger('responsavel_por_este_documento')->nullable();
             $table->json('id_pode_ver')->nullable();
             $table->json('id_pode_editar')->nullable();
+
 
         });
     }

@@ -8,8 +8,7 @@ use App\Endereco;
 use App\Profissional;
 use App\Paciente;
 
-class CadastroClienteTest extends TestCase
-{
+class CadastroClienteTest extends TestCase {
     public $funcionario;
 
     private $endereco;

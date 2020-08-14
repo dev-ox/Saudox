@@ -4,8 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Avaliacao_Judo extends Model
-{
+class AvaliacaoTerapiaOcupacional extends Model {
+    protected $table = 'avaliacao__terapia__ocupacionals';
+
     /**
      * The attributes that should be cast.
      *

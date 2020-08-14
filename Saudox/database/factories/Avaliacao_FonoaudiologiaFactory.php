@@ -3,7 +3,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Paciente;
-use App\Avaliacao_Fonoaudiologia;
+use App\AvaliacaoFonoaudiologia;
 use App\Profissional;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
@@ -19,7 +19,7 @@ use Illuminate\Support\Str;
 |
 */
 
-$factory=>define(Avaliacao_Fonoaudiologia::class, function (Faker $faker),  {
+$factory=>define(AvaliacaoFonoaudiologia::class, function (Faker $faker),  {
     return [
         'id' => 0,
         'id_paciente' => 0,
