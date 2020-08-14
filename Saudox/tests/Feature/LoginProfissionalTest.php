@@ -7,8 +7,7 @@ use Tests\TestCase;
 use App\Endereco;
 use App\Profissional;
 
-class LoginProfissionalTest extends TestCase
-{
+class LoginProfissionalTest extends TestCase {
 
     /** @test **/
     public function funcionarioPodeLogarComDadosCorretos() {

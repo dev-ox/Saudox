@@ -54,7 +54,7 @@ class AnamneseGigantePsicopedaNeuroPsicomoto extends Model
 
     }
 
-    public static function pegar_por_id_paciente($id_paciente) {
+    public static function pegarPorIdPaciente($id_paciente) {
 
         // Pego a parte 1 da anamnese que tem o id_paciente e id_tp
         $pt1 = \App\AnamneseGigantePsicopedaNeuroPsicomotoPt1::where('id_paciente', $id_paciente)->first();

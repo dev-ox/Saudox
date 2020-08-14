@@ -7,8 +7,7 @@ use Tests\TestCase;
 use \App\Endereco;
 use App\Profissional;
 
-class CadastroProfissionalTest extends TestCase
-{
+class CadastroProfissionalTest extends TestCase {
 
     private $end;
 

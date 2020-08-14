@@ -8,8 +8,7 @@ use App\Endereco;
 use App\Profissional;
 use App\Paciente;
 
-class AnamneseTest extends TestCase
-{
+class AnamneseTest extends TestCase {
     public $funcionario;
 
     private $endereco;

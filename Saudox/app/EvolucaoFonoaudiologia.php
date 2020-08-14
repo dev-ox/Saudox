@@ -4,8 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class EvolucaoFonoaudiologia extends Model
-{
+class EvolucaoFonoaudiologia extends Model {
   /**
    * The attributes that should be cast.
    *

@@ -4,8 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class EvolucaoJudo extends Model
-{
+class EvolucaoJudo extends Model {
   /**
    * The attributes that should be cast.
    *
