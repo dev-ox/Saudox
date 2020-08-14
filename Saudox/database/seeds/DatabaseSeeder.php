@@ -23,10 +23,10 @@ class DatabaseSeeder extends Seeder
         EvolucaoTerapiaOcupacionalsAutSeeds::class,
         EvolucaoTerapiaOcupacionalsAutSeeds::class,
         EvolucaoFonoaudiologiaAutSeeds::class,
-        AnamnesePsicopedaNeuroPsicomotosAutSeeds::class,
-        AnamnesePsicopedaNeuroPsicomotosPt1AutSeeds::class,
-        AnamnesePsicopedaNeuroPsicomotosPt2AutSeeds::class,
-        AnamnesePsicopedaNeuroPsicomotosPt3AutSeeds::class,
+        AnamneseGigantePsicopedaNeuroPsicomotosAutSeeds::class,
+        AnamneseGigantePsicopedaNeuroPsicomotosPt1AutSeeds::class,
+        AnamneseGigantePsicopedaNeuroPsicomotosPt2AutSeeds::class,
+        AnamneseGigantePsicopedaNeuroPsicomotosPt3AutSeeds::class,
         AvaliacaoNeuropsicologicasAutSeeds::class,
       ]);
     }

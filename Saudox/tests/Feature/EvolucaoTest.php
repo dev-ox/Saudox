@@ -8,8 +8,7 @@ use App\Endereco;
 use App\Profissional;
 use App\Paciente;
 
-class EvolucaoTest extends TestCase
-{
+class EvolucaoTest extends TestCase {
     public $funcionario;
 
     private $endereco;
@@ -53,541 +52,541 @@ class EvolucaoTest extends TestCase
     }
 
     /** @test **/
-    public function funcionarioPermitidoPodeAcessarEvolucaoPacienteExistente()
-    {
+    public function funcionarioPermitidoPodeAcessarEvolucaoPacienteExistente() {
+
         $func = factory(Profissional::class)->create([
             'password' => bcrypt($password = '123123123'),
             'profissao' => 'Administrador',
         ]);
 
-       $this->post('/profissional/login', [
+       $this->post(route("profissional.login"), [
             'login' => $func->login,
             'password' => $password,
        ]);
 
        $this->assertAuthenticatedAs($funcionario);
 
-       $copiaPac = factory(Paciente::class)->create($this->paciente);
+       $copia_paciente = factory(Paciente::class)->create($this->paciente);
 
        $pacie = Paciente::first();
 
-       $this->visit('/profissional/paciente/{$pacie->id}/evolucao');
-       $this->seePageIs('/profissional/paciente/{$pacie->id}/evolucao');
+       $this->visit(route("profissional.evolucao", ['id_paciente' -> $pacie->id]));
+       $this->seePageIs(route("profissional.evolucao", ['id_paciente' -> $pacie->id]));
        $resposta->assertOk();
     }
 
     /** @test **/
-    public function funcionarioPermitidoNaoPodeAcessarEvolucaoPacienteInexistente()
-    {
+    public function funcionarioPermitidoNaoPodeAcessarEvolucaoPacienteInexistente() {
+
         $func = factory(Profissional::class)->create([
             'password' => bcrypt($password = '123123123'),
             'profissao' => 'Administrador',
         ]);
 
-       $this->post('/profissional/login', [
+       $this->post(route("profissional.login"), [
             'login' => $func->login,
             'password' => $password,
        ]);
 
        $this->assertAuthenticatedAs($funcionario);
 
-       $this->visit('/profissional/paciente/0/evolucao');
-       $this->seePageIs('/profissional/home');
+       $this->visit(route("profissional.evolucao", ['id_paciente' -> 0]));
+       $this->seePageIs(route("profissional.home"));
     }
 
 
     /** @test **/
-    public function funcionarioNaoAutorizadoNaoPodeAcessarEvolucaoPacienteExistente()
-    {
+    public function funcionarioNaoAutorizadoNaoPodeAcessarEvolucaoPacienteExistente() {
+
 
        $func = $this->funcionario;
 
-       $this->post('/profissional/login', [
+       $this->post(route("profissional.login"), [
             'login' => $func->login,
             'password' => $password,
        ]);
 
        $this->assertAuthenticatedAs($funcionario);
 
-       $this->visit('/profissional/paciente/0/evolucao');
+       $this->visit(route("profissional.evolucao", ['id_paciente' -> 0]));
 
        $value = 'Você não possui privilégios para isso.';
        $tempo = 5; // Tempo em segundo até o fim da espera
        $res->waitForText($value, $tempo);
        $res->assertOk();
-       $this->seePageIs('/profissional/home');
+       $this->seePageIs(route("profissional.home"));
     }
 
     /** @test **/
-    public function pacientePodeVerPaginaEvolucaoPacienteSeEstiverLogado()
-    {
+    public function pacientePodeVerPaginaEvolucaoPacienteSeEstiverLogado() {
+
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $resposta = $this->post('/paciente/login', [
+        $resposta = $this->post(route("paciente.login"), [
             'login' => $paciente->login,
             'password' => $password,
         ]);
 
-        $resposta->assertRedirect('/paciente/home');
+        $resposta->assertRedirect(route("paciente.home"));
         $this->assertAuthenticatedAs($paciente);
 
-        $this->visit('/paciente/evolucao');
-        $this->seePageIs('/paciente/evolucao');
+        $this->visit(route("paciente.evolucao"));
+        $this->seePageIs(route("paciente.evolucao"));
     }
 
 
     /** @test **/
-    public function pacientePodeVerEvolucaoJudoPacienteSeEstiverLogado()
-    {
+    public function pacientePodeVerEvolucaoJudoPacienteSeEstiverLogado() {
+
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $evoluJudo = factory(Evolucao_judo::class)->create([
+        $evolucao_judo = factory(EvolucaoJudo::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->$funcionario->id,
         ]);
 
-        $resposta = $this->post('/paciente/login', [
+        $resposta = $this->post(route("paciente.login"), [
             'login' => $paciente->login,
             'password' => $password,
         ]);
 
-        $resposta->assertRedirect('/paciente/home');
+        $resposta->assertRedirect(route("paciente.home"));
         $this->assertAuthenticatedAs($paciente);
 
-        $this->visit('/paciente/evolucao/judo/{$evoluJudo->id}');
-        $this->seePageIs('/paciente/evolucao/judo/{$evoluJudo->id}');
+        $this->visit(route("paciente.evolucao.judo", ['id_evolucao_judo' -> $evolucao_judo->id]));
+        $this->seePageIs(route("paciente.evolucao.judo", ['id_evolucao_judo' -> $evolucao_judo->id]));
     }
 
     /** @test **/
-    public function pacientePodeVerEvolucaoPsicologiaPacienteSeEstiverLogado()
-    {
+    public function pacientePodeVerEvolucaoPsicologiaPacienteSeEstiverLogado() {
+
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $evoluPsi = factory(Evolucao_psicologica::class)->create([
+        $evolucao_psicologica = factory(EvolucaoPsicologica::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->$funcionario->id,
         ]);
 
-        $resposta = $this->post('/paciente/login', [
+        $resposta = $this->post(route("paciente.login"), [
             'login' => $paciente->login,
             'password' => $password,
         ]);
 
-        $resposta->assertRedirect('/paciente/home');
+        $resposta->assertRedirect(route("paciente.home"));
         $this->assertAuthenticatedAs($paciente);
 
-        $this->visit('/paciente/evolucao/psicologica/{$evoluPsi->id}');
-        $this->seePageIs('/paciente/evolucao/psicologica/{$evoluPsi->id}');
+        $this->visit(route("paciente.evolucao.psicologica", ['id_evolucao_psicologica' -> $evolucao_psicologica->id]));
+        $this->seePageIs(route("paciente.evolucao.psicologica", ['id_evolucao_psicologica' -> $evolucao_psicologica->id]));
     }
 
     /** @test **/
-    public function pacientePodeVerEvolucaoFonoaudiologicaPacienteSeEstiverLogado()
-    {
+    public function pacientePodeVerEvolucaoFonoaudiologicaPacienteSeEstiverLogado() {
+
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $evoluFono = factory(Evolucao_fonoaudiologia::class)->create([
+        $evolucao_fonoaudiologica = factory(EvolucaoFonoaudiologia::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->$funcionario->id,
         ]);
 
-        $resposta = $this->post('/paciente/login', [
+        $resposta = $this->post(route("paciente.login"), [
             'login' => $paciente->login,
             'password' => $password,
         ]);
 
-        $resposta->assertRedirect('/paciente/home');
+        $resposta->assertRedirect(route("paciente.home"));
         $this->assertAuthenticatedAs($paciente);
 
-        $this->visit('/paciente/evolucao/fonoaudiologia/{$evoluFono->id}');
-        $this->seePageIs('/paciente/evolucao/fonoaudiologia/{$evoluFono->id}');
+        $this->visit(route("paciente.evolucao.fonoaudiologica", ['id_evolucao_fonoaudiologica' -> $evolucao_fonoaudiologica->id]));
+        $this->seePageIs(route("paciente.evolucao.fonoaudiologica", ['id_evolucao_fonoaudiologica' -> $evolucao_fonoaudiologica->id]));
     }
 
     /** @test **/
-    public function pacientePodeVerEvolucaoTerapiaOcupacionalPacienteSeEstiverLogado()
-    {
+    public function pacientePodeVerEvolucaoTerapiaOcupacionalPacienteSeEstiverLogado() {
+
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $evoluTO = factory(Evolucao_terapia_ocupacional::class)->create([
+        $evolucao_to = factory(EvolucaoTerapiaOcupacional::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->$funcionario->id,
         ]);
 
-        $resposta = $this->post('/paciente/login', [
+        $resposta = $this->post(route("paciente.login"), [
             'login' => $paciente->login,
             'password' => $password,
         ]);
 
-        $resposta->assertRedirect('/paciente/home');
+        $resposta->assertRedirect(route("paciente.home"));
         $this->assertAuthenticatedAs($paciente);
 
-        $this->visit('/paciente/evolucao/terapiaOcupacional/{$evoluTO->id}');
-        $this->seePageIs('/paciente/evolucao/terapiaOcupacional/{$evoluTO->id}');
+        $this->visit(route("paciente.evolucao.terapia_ocupacional", ['id_evolucao_terapia_ocupacional' -> $evolucao_to->id]));
+        $this->seePageIs(route("paciente.evolucao.terapia_ocupacional", ['id_evolucao_terapia_ocupacional' -> $evolucao_to->id]));
     }
 
 
     /** @test **/
-    public function pacienteNaoPodeVerEvolucaoJudoPacienteSeNaoEstiverLogado()
-    {
+    public function pacienteNaoPodeVerEvolucaoJudoPacienteSeNaoEstiverLogado() {
+
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $resposta = $this->post('/paciente/login', [
+        $resposta = $this->post(route("paciente.login"), [
             'login' => $paciente->login,
             'password' => $password,
         ]);
 
-        $evoluJudo = factory(Evolucao_judo::class)->create([
+        $evolucao_judo = factory(EvolucaoJudo::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->$funcionario->id,
         ]);
 
-        $resposta->assertRedirect('/paciente/home');
+        $resposta->assertRedirect(route("paciente.home"));
         $this->assertAuthenticatedAs($paciente);
 
-        $this->post('/paciente/logout');
+        $this->post(route("paciente.logout"));
 
-        $this->visit('/paciente/evolucao/fonoaudiologia/{$evoluJudo->id}');
-        $this->seePageIs('/paciente/login');
+        $this->visit(route("paciente.evolucao.judo", ['id_evolucao_judo' -> $evolucao_judo->id]));
+        $this->seePageIs(route("paciente.login"));
     }
 
     /** @test **/
-    public function pacienteNaoPodeVerEvolucaoPsicologiaPacienteSeNaoEstiverLogado()
-    {
+    public function pacienteNaoPodeVerEvolucaoPsicologiaPacienteSeNaoEstiverLogado() {
+
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $resposta = $this->post('/paciente/login', [
+        $resposta = $this->post(route("paciente.login"), [
             'login' => $paciente->login,
             'password' => $password,
         ]);
 
-        $evoluPsi = factory(Evolucao_psicologica::class)->create([
+        $evolucao_psicologica = factory(EvolucaoPsicologica::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->$funcionario->id,
         ]);
 
-        $resposta->assertRedirect('/paciente/home');
+        $resposta->assertRedirect(route("paciente.home"));
         $this->assertAuthenticatedAs($paciente);
 
-        $this->post('/paciente/logout');
+        $this->post(route("paciente.logout"));
 
-        $this->visit('/paciente/evolucao/psicologica/{$evoluPsi->id}');
-        $this->seePageIs('/paciente/login');
+        $this->visit(route("paciente.evolucao.psicologica", ['id_evolucao_psicologica' -> $evolucao_psicologica->id]));
+        $this->seePageIs(route("paciente.login"));
     }
 
     /** @test **/
-    public function pacienteNaoPodeVerEvolucaoTerapiaOcupacionalPacienteSeNaoEstiverLogado()
-    {
+    public function pacienteNaoPodeVerEvolucaoTerapiaOcupacionalPacienteSeNaoEstiverLogado() {
+
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $resposta = $this->post('/paciente/login', [
+        $resposta = $this->post(route("paciente.login"), [
             'login' => $paciente->login,
             'password' => $password,
         ]);
 
-        $evoluTO = factory(Evolucao_terapia_ocupacional::class)->create([
+        $evolucao_to = factory(EvolucaoTerapiaOcupacional::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->$funcionario->id,
         ]);
 
-        $resposta->assertRedirect('/paciente/home');
+        $resposta->assertRedirect(route("paciente.home"));
         $this->assertAuthenticatedAs($paciente);
 
-        $this->post('/paciente/logout');
+        $this->post(route("paciente.logout"));
 
-        $this->visit('/paciente/evolucao/terapiaOcupacional/{$evoluTO->id}');
-        $this->seePageIs('/paciente/login');
+        $this->visit(route("paciente.evolucao.terapia_ocupacional", ['id_evolucao_terapia_ocupacional' -> $evolucao_to->id]));
+        $this->seePageIs(route("paciente.login"));
     }
 
 
 
     /** @test **/
-    public function pacienteNaoPodeVerEvolucaoFonoaudiologiaPacienteSeNaoEstiverLogado()
-    {
+    public function pacienteNaoPodeVerEvolucaoFonoaudiologiaPacienteSeNaoEstiverLogado() {
+
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $resposta = $this->post('/paciente/login', [
+        $resposta = $this->post(route("paciente.login"), [
             'login' => $paciente->login,
             'password' => $password,
         ]);
 
-        $evoluFono = factory(Evolucao_fonoaudiologia::class)->create([
+        $evolucao_fonoaudiologica = factory(EvolucaoFonoaudiologia::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->$funcionario->id,
         ]);
 
-        $resposta->assertRedirect('/paciente/home');
+        $resposta->assertRedirect(route("paciente.home"));
         $this->assertAuthenticatedAs($paciente);
 
-        $this->post('/paciente/logout');
+        $this->post(route("paciente.logout"));
 
-        $this->visit('/paciente/evolucao/judo/{$evoluFono->id}');
-        $this->seePageIs('/paciente/login');
+        $this->visit(route("paciente.evolucao.fonoaudiologica", ['id_evolucao_fonoaudiologica' -> $evolucao_fonoaudiologica->id]));
+        $this->seePageIs(route("paciente.login"));
     }
 
     /** @test **/
-    public function pacienteNaoPodeVerPaginaEvolucaoPacienteSeNaoEstiverLogado()
-    {
+    public function pacienteNaoPodeVerPaginaEvolucaoPacienteSeNaoEstiverLogado() {
+
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $resposta = $this->post('/paciente/login', [
+        $resposta = $this->post(route("paciente.login"), [
             'login' => $paciente->login,
             'password' => $password,
         ]);
 
-        $resposta->assertRedirect('/paciente/home');
+        $resposta->assertRedirect(route("paciente.home"));
         $this->assertAuthenticatedAs($paciente);
 
-        $this->post('/paciente/logout');
+        $this->post(route("paciente.logout"));
 
-        $this->visit('/paciente/evolucao');
-        $this->seePageIs('/paciente/login');
+        $this->visit(route("paciente.evolucao"));
+        $this->seePageIs(route("paciente.login"));
     }
 
     /** @test **/
-    public function profissionalNaoAutorizadoNaoPodeDeletarEvolucaoJudo()
-    {
+    public function profissionalNaoAutorizadoNaoPodeDeletarEvolucaoJudo() {
+
 
         $this->funcN = factory(Profissional::class)->create([
             'password' => bcrypt($password = '123123123'),
             'profissao' => 'Professor de Judô',
         ]);
 
-        $resposta = $this->post('/profissional/login', [
+        $resposta = $this->post(route("profissional.login"), [
             'login' => $funcionario->login,
             'password' => $funcionario->$password
         ]);
 
-        $resposta->assertRedirect('/profissional/home');
+        $resposta->assertRedirect(route("profissional.home"));
         $this->assertAuthenticatedAs($funcionario);
 
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $evoluJudo = factory(Evolucao_judo::class)->create([
+        $evolucao_judo = factory(EvolucaoJudo::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->$funcN->id,
         ]);
 
-        $this->assertCount(1, Evolucao_judo::all());
+        $this->assertCount(1, EvolucaoJudo::all() {);
 
-        $resposta->assertRedirect('/profissional/home');
+        $resposta->assertRedirect(route("profissional.home"));
         $this->assertAuthenticatedAs($funcionario);
 
-        $this->visit('/profissional/paciente/{$paciente->id}/evolucao/judo/{$evoluJudo->id}');
+        $this->visit(route("profissional.evolucao.judo", ['id_paciente' -> $paciente->id, 'id_evolucao_judo' -> $evolucao_judo->id]));
 
-        $res = $this->post('/profissional/paciente/{$paciente->id}/evolucao/judo/{$evoluJudo->id}/delete');
+        $res = $this->post(route("profissional.evolucao.judo.delete", ['id_paciente' -> $paciente->id, 'id_evolucao_judo' -> $evolucao_judo->id]));
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
         $res->assertOk();
 
-        $this->seePageIs('/profissional/paciente/{$paciente->id}/evolucao/judo/{$evoluJudo->id}');
+        $this->seePageIs(route("profissional.evolucao.judo", ['id_paciente' -> $paciente->id, 'id_evolucao_judo' -> $evolucao_judo->id]));
     }
 
     /** @test **/
-    public function profissionalNaoAutorizadoNaoPodeDeletarEvolucaoPsicologia()
-    {
+    public function profissionalNaoAutorizadoNaoPodeDeletarEvolucaoPsicologia() {
+
 
         $this->funcN = factory(Profissional::class)->create([
             'password' => bcrypt($password = '123123123'),
             'profissao' => 'Psicologo',
         ]);
 
-        $resposta = $this->post('/profissional/login', [
+        $resposta = $this->post(route("profissional.login"), [
             'login' => $funcionario->login,
             'password' => $funcionario->$password
         ]);
 
-        $resposta->assertRedirect('/profissional/home');
+        $resposta->assertRedirect(route("profissional.home"));
         $this->assertAuthenticatedAs($funcionario);
 
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $evoluPsi = factory(Evolucao_psicologica::class)->create([
+        $evolucao_psicologica = factory(EvolucaoPsicologica::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->$funcN->id,
         ]);
 
-        $this->assertCount(1, Evolucao_psicologica::all());
+        $this->assertCount(1, EvolucaoPsicologica::all() {);
 
-        $resposta->assertRedirect('/profissional/home');
+        $resposta->assertRedirect(route("profissional.home"));
         $this->assertAuthenticatedAs($funcionario);
 
-        $this->visit('/profissional/paciente/{$paciente->id}/evolucao/psicologica/{$evoluPsi->id}');
+        $this->visit(route("profissional.evolucao.psicologica", ['id_paciente' -> $paciente->id, 'id_evolucao_psicologica' -> $evolucao_psicologica->id]));
 
-        $res = $this->post('/paciente/evolucao/psicologica/{$evoluPsi->id}/delete');
+        $res = $this->post(route("profissional.evolucao.psicologica.delete", ['id_paciente' -> $paciente->id, 'id_evolucao_psicologica' -> $evolucao_psicologica->id]));
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
         $res->assertOk();
 
-        $this->seePageIs('/profissional/paciente/{$paciente->id}/evolucao/psicologica/{$evoluPsi->id}');
+        $this->seePageIs(route("profissional.evolucao.psicologica", ['id_paciente' -> $paciente->id, 'id_evolucao_psicologica' -> $evolucao_psicologica->id]));
     }
 
     /** @test **/
-    public function profissionalNaoAutorizadoNaoPodeDeletarEvolucaoFonoaudiologica()
-    {
+    public function profissionalNaoAutorizadoNaoPodeDeletarEvolucaoFonoaudiologica() {
+
 
         $this->funcN = factory(Profissional::class)->create([
             'password' => bcrypt($password = '123123123'),
             'profissao' => 'Fonoaudiologo',
         ]);
 
-        $resposta = $this->post('/profissional/login', [
+        $resposta = $this->post(route("profissional.login"), [
             'login' => $funcionario->login,
             'password' => $funcionario->$password
         ]);
 
-        $resposta->assertRedirect('/profissional/home');
+        $resposta->assertRedirect(route("profissional.home"));
         $this->assertAuthenticatedAs($funcionario);
 
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $evoluFono = factory(Evolucao_fonoaudiologia::class)->create([
+        $evolucao_fonoaudiologica = factory(EvolucaoFonoaudiologia::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->$funcN->id,
         ]);
 
-        $this->assertCount(1, Evolucao_fonoaudiologia::all());
+        $this->assertCount(1, EvolucaoFonoaudiologia::all() {);
 
-        $resposta->assertRedirect('/profissional/home');
+        $resposta->assertRedirect(route("profissional.home"));
         $this->assertAuthenticatedAs($funcionario);
 
-        $this->visit('/profissional/paciente/{$paciente->id}/evolucao/fonoaudiologia/{$evoluFono->id}');
+        $this->visit(route("profissional.evolucao.fonoaudiologica", ['id_paciente' -> $paciente->id, 'id_evolucao_fonoaudiologica' -> $evolucao_fonoaudiologica->id]));
 
-        $res = $this->post('/profissional/paciente/{$paciente->id}/evolucao/fonoaudiologia/{$evoluFono->id}/delete');
+        $res = $this->post(route("profissional.evolucao.fonoaudiologica.delete", ['id_paciente' -> $paciente->id, 'id_evolucao_fonoaudiologica' -> $evolucao_fonoaudiologica->id]));
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
         $res->assertOk();
 
-        $this->seePageIs('/profissional/paciente/{$paciente->id}/evolucao/fonoaudiologia/{$evoluFono->id}');
+        $this->seePageIs(route("profissional.evolucao.fonoaudiologica", ['id_paciente' -> $paciente->id, 'id_evolucao_fonoaudiologica' -> $evolucao_fonoaudiologica->id]));
     }
 
     /** @test **/
-    public function profissionalNaoAutorizadoNaoPodeDeletarEvolucaoTerapiaOcupacional()
-    {
+    public function profissionalNaoAutorizadoNaoPodeDeletarEvolucaoTerapiaOcupacional() {
+
 
         $this->funcN = factory(Profissional::class)->create([
             'password' => bcrypt($password = '123123123'),
             'profissao' => 'Terapeuta',
         ]);
 
-        $resposta = $this->post('/profissional/login', [
+        $resposta = $this->post(route("profissional.login"), [
             'login' => $funcionario->login,
             'password' => $funcionario->$password
         ]);
 
-        $resposta->assertRedirect('/profissional/home');
+        $resposta->assertRedirect(route("profissional.home"));
         $this->assertAuthenticatedAs($funcionario);
 
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $evoluTO = factory(Evolucao_terapia_ocupacional::class)->create([
+        $evolucao_to = factory(EvolucaoTerapiaOcupacional::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->$funcN->id,
         ]);
 
-        $this->assertCount(1, Evolucao_terapia_ocupacional::all());
+        $this->assertCount(1, EvolucaoTerapiaOcupacional::all() {);
 
-        $resposta->assertRedirect('/profisional/home');
+        $resposta->assertRedirect(route("profissional.home"));
         $this->assertAuthenticatedAs($funcionario);
 
-        $this->visit('/profissional/paciente/{$paciente->id}/evolucao/terapiaOcupacional/{$evoluTO->id}');
+        $this->visit(route("profissional.evolucao.terapia_ocupacional", ['id_paciente' -> $paciente->id, 'id_evolucao_terapia_ocupacional' -> $evolucao_to->id]));
 
-        $res = $this->post('/profissional/paciente/{$paciente->id}/evolucao/terapiaOcupacional/{$evoluTO->id}/delete');
+        $res = $this->post(route("profissional.evolucao.terapia_ocupacional.delete", ['id_paciente' -> $paciente->id, 'id_evolucao_terapia_ocupacional' -> $evolucao_to->id]));
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
         $res->assertOk();
 
-        $this->seePageIs('/profissional/paciente/{$paciente->id}/evolucao/terapiaOcupacional/{$evoluTO->id}');
+        $this->seePageIs(route("profissional.evolucao.terapia_ocupacional", ['id_paciente' -> $paciente->id, 'id_evolucao_terapia_ocupacional' -> $evolucao_to->id]));
     }
 
 
     /** @test **/
-    public function profissionalNaoAutorizadoNaoPodeEditarEvolucaoJudo()
-    {
+    public function profissionalNaoAutorizadoNaoPodeEditarEvolucaoJudo() {
+
 
         $this->funcN = factory(Profissional::class)->create([
             'password' => bcrypt($password = '123123123'),
             'profissao' => 'Professor de Judô',
         ]);
 
-        $resposta = $this->post('/profissional/login', [
+        $resposta = $this->post(route("profissional.login"), [
             'login' => $funcionario->login,
             'password' => $funcionario->$password
         ]);
 
-        $resposta->assertRedirect('/profissional/home');
+        $resposta->assertRedirect(route("profissional.home"));
         $this->assertAuthenticatedAs($funcionario);
 
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $evoluJudo = factory(Evolucao_judo::class)->create([
+        $evolucao_judo = factory(EvolucaoJudo::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->$funcN->id,
         ]);
 
-        $this->assertCount(1, Evolucao_judo::all());
+        $this->assertCount(1, EvolucaoJudo::all() {);
 
-        $resposta->assertRedirect('/profissional/home');
+        $resposta->assertRedirect(route("profissional.home"));
         $this->assertAuthenticatedAs($funcionario);
 
-        $this->visit('/profissional/paciente/{$paciente->id}/evolucao/judo/{$evoluJudo->id}');
+        $this->visit(route("profissional.evolucao.judo", ['id_paciente' -> $paciente->id, 'id_evolucao_judo' -> $evolucao_judo->id]));
 
-        $res = $this->post('/profissional/paciente/{$paciente->id}/evolucao/judo/{$evoluJudo->id}/edit');
+        $res = $this->post(route("profissional.evolucao.judo.edit", ['id_paciente' -> $paciente->id, 'id_evolucao_judo' -> $evolucao_judo->id]));
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
         $res->assertOk();
 
-        $this->seePageIs('/profissional/paciente/{$paciente->id}/evolucao/judo/{$evoluJudo->id}');
+        $this->seePageIs(route("profissional.evolucao.judo", ['id_paciente' -> $paciente->id, 'id_evolucao_judo' -> $evolucao_judo->id]));
     }
 
 
     /** @test **/
-    public function profissionalNaoAutorizadoNaoPodeEditarEvolucaoPsicologia()
-    {
+    public function profissionalNaoAutorizadoNaoPodeEditarEvolucaoPsicologia() {
+
         $this->funcN = factory(Profissional::class)->create([
             'password' => bcrypt($password = '123123123'),
             'profissao' => 'Psicologo',
         ]);
 
-        $resposta = $this->post('/profissional/login', [
+        $resposta = $this->post(route("profissional.login"), [
             'login' => $funcionario->login,
             'password' => $funcionario->$password
         ]);
 
-        $resposta->assertRedirect('/profissional/home');
+        $resposta->assertRedirect(route("profissional.home"));
         $this->assertAuthenticatedAs($funcionario);
 
 
@@ -596,41 +595,41 @@ class EvolucaoTest extends TestCase
         ]);
 
 
-        $evoluPsi = factory(Evolucao_psicologica::class)->create([
+        $evolucao_psicologica = factory(EvolucaoPsicologica::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->$funcN->id,
         ]);
 
-        $this->assertCount(1, Evolucao_psicologica::all());
+        $this->assertCount(1, EvolucaoPsicologica::all() {);
 
-        $resposta->assertRedirect('/profissional/home');
+        $resposta->assertRedirect(route("profissional.home"));
         $this->assertAuthenticatedAs($funcionario);
 
-        $this->visit('/profissional/paciente/{$paciente->id}/evolucao/psicologica/{$evoluPsi->id}');
+        $this->visit(route("profissional.evolucao.psicologica", ['id_paciente' -> $paciente->id, 'id_evolucao_psicologica' -> $evolucao_psicologica->id]));
 
-        $res = $this->post('/profissional/paciente/{$paciente->id}/evolucao/psicologica/{$evoluPsi->id}/edit');
+        $res = $this->post(route("profissional.evolucao.psicologica.edit", ['id_paciente' -> $paciente->id, 'id_evolucao_psicologica' -> $evolucao_psicologica->id]));
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
         $res->assertOk();
 
-        $this->seePageIs('/profissional/paciente/{$paciente->id}/evolucao/psicologica/{$evoluPsi->id}');
+        $this->seePageIs(route("profissional.evolucao.psicologica", ['id_paciente' -> $paciente->id, 'id_evolucao_psicologica' -> $evolucao_psicologica->id]));
     }
 
     /** @test **/
-    public function profissionalNaoAutorizadoNaoPodeEditarEvolucaoFonoaudiologica()
-    {
+    public function profissionalNaoAutorizadoNaoPodeEditarEvolucaoFonoaudiologica() {
+
         $this->funcN = factory(Profissional::class)->create([
             'password' => bcrypt($password = '123123123'),
             'profissao' => 'Fonoaudiologo',
         ]);
 
-        $resposta = $this->post('/profissional/login', [
+        $resposta = $this->post(route("profissional.login"), [
             'login' => $funcionario->login,
             'password' => $funcionario->$password
         ]);
 
-        $resposta->assertRedirect('/profissional/home');
+        $resposta->assertRedirect(route("profissional.home"));
         $this->assertAuthenticatedAs($funcionario);
 
 
@@ -639,149 +638,149 @@ class EvolucaoTest extends TestCase
         ]);
 
 
-        $evoluFono = factory(Evolucao_fonoaudiologia::class)->create([
+        $evolucao_fonoaudiologica = factory(EvolucaoFonoaudiologia::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->$funcN->id,
         ]);
 
-        $this->assertCount(1, Evolucao_fonoaudiologia::all());
+        $this->assertCount(1, EvolucaoFonoaudiologia::all() {);
 
         $resposta->assertRedirect('/profisional/home');
         $this->assertAuthenticatedAs($funcionario);
 
-        $this->visit('/profissional/paciente/{$paciente->id}/evolucao/fonoaudiologia/{$evoluFono->id}');
+        $this->visit(route("profissional.evolucao.fonoaudiologica", ['id_paciente' -> $paciente->id, 'id_evolucao_fonoaudiologica' -> $evolucao_fonoaudiologica->id]));
 
-        $res = $this->post('/profissional/paciente/{$paciente->id}/evolucao/fonoaudiologia/{$evoluFono->id}/edit');
+        $res = $this->post(route("profissional.evolucao.fonoaudiologica.edit", ['id_paciente' -> $paciente->id, 'id_evolucao_fonoaudiologica' -> $evolucao_fonoaudiologica->id]));
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
         $res->assertOk();
 
-        $this->seePageIs('/profissional/paciente/{$paciente->id}/evolucao/fonoaudiologia/{$evoluFono->id}');
+        $this->seePageIs(route("profissional.evolucao.fonoaudiologica", ['id_paciente' -> $paciente->id, 'id_evolucao_fonoaudiologica' -> $evolucao_fonoaudiologica->id]));
     }
 
     /** @test **/
-    public function profissionalNaoAutorizadoNaoPodeEditarEvolucaoTerapiaOcupacional()
-    {
+    public function profissionalNaoAutorizadoNaoPodeEditarEvolucaoTerapiaOcupacional() {
+
 
         $this->funcN = factory(Profissional::class)->create([
             'password' => bcrypt($password = '123123123'),
             'profissao' => 'Terapeuta',
         ]);
 
-        $resposta = $this->post('/profissional/login', [
+        $resposta = $this->post(route("profissional.login"), [
             'login' => $funcionario->login,
             'password' => $funcionario->$password
         ]);
 
-        $resposta->assertRedirect('/profissional/home');
+        $resposta->assertRedirect(route("profissional.home"));
         $this->assertAuthenticatedAs($funcionario);
 
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $evoluTO = factory(Evolucao_terapia_ocupacional::class)->create([
+        $evolucao_to = factory(EvolucaoTerapiaOcupacional::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->$funcN->id,
         ]);
 
-        $this->assertCount(1, Evolucao_terapia_ocupacional::all());
+        $this->assertCount(1, EvolucaoTerapiaOcupacional::all() {);
 
-        $resposta->assertRedirect('/profissional/home');
+        $resposta->assertRedirect(route("profissional.home"));
         $this->assertAuthenticatedAs($funcionario);
 
-        $this->visit('/profissional/paciente/{$paciente->id}/evolucao/terapiaOcupacional/{$evoluTO->id}');
+        $this->visit(route("profissional.evolucao.terapia_ocupacional", ['id_paciente' -> $paciente->id, 'id_evolucao_terapia_ocupacional' -> $evolucao_to->id]));
 
-        $res = $this->post('/profissional/paciente/{$paciente->id}/evolucao/terapiaOcupacional/{$evoluTO->id}/edit');
+        $res = $this->post(route("profissional.evolucao.terapia_ocupacional.edit", ['id_paciente' -> $paciente->id, 'id_evolucao_terapia_ocupacional' -> $evolucao_to->id]));
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
         $res->assertOk();
 
-        $this->seePageIs('/profissional/paciente/{$paciente->id}/evolucao/terapiaOcupacional/{$evoluTO->id}');
+        $this->seePageIs(route("profissional.evolucao.terapia_ocupacional", ['id_paciente' -> $paciente->id, 'id_evolucao_terapia_ocupacional' -> $evolucao_to->id]));
     }
 
 
 
 
     /** @test **/
-    public function pacienteNaoPodeVerEvolucaoJudoQueNaoExiste()
-    {
+    public function pacienteNaoPodeVerEvolucaoJudoQueNaoExiste() {
+
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $resposta = $this->post('/paciente/login', [
+        $resposta = $this->post(route("paciente.login"), [
             'login' => $paciente->login,
             'password' => $password,
         ]);
 
-        $resposta->assertRedirect('/paciente/home');
+        $resposta->assertRedirect(route("paciente.home"));
         $this->assertAuthenticatedAs($paciente);
 
-        $this->visit('/paciente/evolucao/judo/999');
-        $this->seePageIs('/paciente/evolucao/judo');
+        $this->visit(route("paciente.evolucao.judo", ['id_evolucao_judo' -> 999]));
+        $this->seePageIs(route("paciente.evolucao.judo"));
     }
 
     /** @test **/
-    public function pacienteNaoPodeVerEvolucaoPsicologiaQueNaoExiste()
-    {
+    public function pacienteNaoPodeVerEvolucaoPsicologiaQueNaoExiste() {
+
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $resposta = $this->post('/paciente/login', [
+        $resposta = $this->post(route("paciente.login"), [
             'login' => $paciente->login,
             'password' => $password,
         ]);
 
-        $resposta->assertRedirect('/paciente/home');
+        $resposta->assertRedirect(route("paciente.home"));
         $this->assertAuthenticatedAs($paciente);
 
-        $this->visit('/paciente/evolucao/neuroPsicomotora/999');
-        $this->seePageIs('/paciente/evolucao/neuroPsicomotora');
+        $this->visit(route("paciente.evolucao.psicologica", ['id_evolucao_psicologica' -> 999]));
+        $this->seePageIs(route("paciente.evolucao.psicologica"));
     }
 
     /** @test **/
-    public function pacienteNaoPodeVerEvolucaoTerapiaOcupacionalQueNaoExiste()
-    {
+    public function pacienteNaoPodeVerEvolucaoTerapiaOcupacionalQueNaoExiste() {
+
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $resposta = $this->post('/paciente/login', [
+        $resposta = $this->post(route("paciente.login"), [
             'login' => $paciente->login,
             'password' => $password,
         ]);
 
-        $resposta->assertRedirect('/paciente/home');
+        $resposta->assertRedirect(route("paciente.home"));
         $this->assertAuthenticatedAs($paciente);
 
-        $this->visit('/paciente/evolucao/terapiaOcupacional/999');
-        $this->seePageIs('/paciente/evolucao/terapiaOcupacional/');
+        $this->visit(route("paciente.evolucao.terapia_ocupacional", ['id_evolucao_terapia_ocupacional' -> 999]));
+        $this->seePageIs(route("paciente.evolucao.terapia_ocupacional"));
     }
 
 
 
     /** @test **/
-    public function pacienteNaoPodeVerEvolucaoFonoaudiologiaQueNaoExiste()
-    {
+    public function pacienteNaoPodeVerEvolucaoFonoaudiologiaQueNaoExiste() {
+
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $resposta = $this->post('/paciente/login', [
+        $resposta = $this->post(route("paciente.login"), [
             'login' => $paciente->login,
             'password' => $password,
         ]);
 
 
-        $resposta->assertRedirect('/paciente/home');
+        $resposta->assertRedirect(route("paciente.home"));
         $this->assertAuthenticatedAs($paciente);
 
-        $this->visit('/paciente/evolucao/fonoaudiologia/999');
-        $this->seePageIs('/paciente/evolucao/fonoaudiologia');
+        $this->visit(route("paciente.evolucao.fonoaudiologica", ['id_evolucao_fonoaudiologica' -> 999]));
+        $this->seePageIs(route("paciente.evolucao.fonoaudiologica"));
     }
 
 }

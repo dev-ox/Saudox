@@ -18,6 +18,7 @@
 ?>
 </h2>
 
+
 <h3>
 <?php
     echo("Profissões:");
@@ -26,7 +27,6 @@
     }
 ?>
 </h3>
-
 
 @if(Auth::guard('profissional')->check())
 	<a href="/profissional/logout">Deslogar</a>

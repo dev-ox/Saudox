@@ -33,18 +33,17 @@ class CreateAvaliacaoFonoaudiologiasTable extends Migration
             $table->float('menos_total_respostas_incorretoas_linguagem_global');
             $table->float('linguagem_global');
             $table->text('observacao_comportamento');
-
             /* O responsavel_por_este_documento é o profissional que tem a
-             * resposabilidade, então ele vai ta no json de pode ver e pode
-             * editar.
-             * Toda vez que um profissional ver ou editar este documento, seu
-             * id vai ser salvo no campo responsavel_por_este_documento.
-             */
+            * resposabilidade, então ele vai ta no json de pode ver e pode
+            * editar.
+            * Toda vez que um profissional ver ou editar este documento, seu
+            * id vai ser salvo no campo responsavel_por_este_documento.
+            */
 
             /* Cada json vai ter 2 arrays, o primeiro com os ids dos
-             * profissionais que vao ter o acesso de leitura,
-             * e o segundo de edição. Lembrar que é tudo em string.
-             */
+            * profissionais que vao ter o acesso de leitura,
+            * e o segundo de edição. Lembrar que é tudo em string.
+            */
             $table->unsignedInteger('responsavel_por_este_documento')->nullable();
             $table->json('id_pode_ver')->nullable();
             $table->json('id_pode_editar')->nullable();

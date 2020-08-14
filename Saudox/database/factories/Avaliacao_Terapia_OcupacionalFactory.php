@@ -3,7 +3,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Paciente;
-use App\Avaliacao_Terapia_Ocupacional;
+use App\AvaliacaoTerapiaOcupacional;
 use App\Profissional;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
@@ -19,7 +19,7 @@ use Illuminate\Support\Str;
 |
 */
 
-$factory->define(Avaliacao_Terapia_Ocupacional::class, function (Faker $faker),  {
+$factory->define(AvaliacaoTerapiaOcupacional::class, function (Faker $faker),  {
     return [
         'id_paciente' => 0,
         'id_profissional' => 0,

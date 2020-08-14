@@ -5,26 +5,29 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Schema;
 
+
 function getProtectedMember($class_object,$protected_member) {
      $array = (array)$class_object;      //Object typecast into (associative) array
      $prefix = chr(0).'*'.chr(0);           //Prefix which is prefixed to protected member
      return $array[$prefix.$protected_member];
 }
 
-class Anamnese_Psicopeda_Neuro_Psicomoto extends Model
+class AnamneseGigantePsicopedaNeuroPsicomoto extends Model
 {
+
+    protected $table = 'anamnese__gigante__psicopeda__neuro__psicomotos';
 
     public static function salvar($std_class_anamnese) {
 
         $id_tp = $std_class_anamnese->id_tp;
 
-        $pt1 = \App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt1::where('id_tp', $id_tp)->first();
-        $pt2 = \App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt2::where('id_tp', $id_tp)->first();
-        $pt3 = \App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt3::where('id_tp', $id_tp)->first();
+        $pt1 = \App\AnamneseGigantePsicopedaNeuroPsicomotoPt1::where('id_tp', $id_tp)->first();
+        $pt2 = \App\AnamneseGigantePsicopedaNeuroPsicomotoPt2::where('id_tp', $id_tp)->first();
+        $pt3 = \App\AnamneseGigantePsicopedaNeuroPsicomotoPt3::where('id_tp', $id_tp)->first();
 
-        $tabela_pt1 = app(\App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt1::class)->getTable();
-        $tabela_pt2 = app(\App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt2::class)->getTable();
-        $tabela_pt3 = app(\App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt3::class)->getTable();
+        $tabela_pt1 = app(\App\AnamneseGigantePsicopedaNeuroPsicomotoPt1::class)->getTable();
+        $tabela_pt2 = app(\App\AnamneseGigantePsicopedaNeuroPsicomotoPt2::class)->getTable();
+        $tabela_pt3 = app(\App\AnamneseGigantePsicopedaNeuroPsicomotoPt3::class)->getTable();
 
 
         // Qualquer classe php pode ser usada como um array associativo
@@ -51,10 +54,10 @@ class Anamnese_Psicopeda_Neuro_Psicomoto extends Model
 
     }
 
-    public static function pegar_por_id_paciente($id_paciente) {
+    public static function pegarPorIdPaciente($id_paciente) {
 
         // Pego a parte 1 da anamnese que tem o id_paciente e id_tp
-        $pt1 = \App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt1::where('id_paciente', $id_paciente)->first();
+        $pt1 = \App\AnamneseGigantePsicopedaNeuroPsicomotoPt1::where('id_paciente', $id_paciente)->first();
 
         // Verifica se tem aquela anamnese
         if(!$pt1) {
@@ -67,8 +70,8 @@ class Anamnese_Psicopeda_Neuro_Psicomoto extends Model
         // O id_tp = id de todas as tabelas, já que são criadas todas ao mesmo tempo
         // Ai pq ter o id_tp e o id? Clareza, eles são o mesmo numero com nomes convenientes
         // Pegar as partes 2 e 3, já que já tem a 1, sendo a parte 1 que tem o id do paciente
-        $pt2 = \App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt2::where('id_tp', $id_tp)->first();
-        $pt3 = \App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt3::where('id_tp', $id_tp)->first();
+        $pt2 = \App\AnamneseGigantePsicopedaNeuroPsicomotoPt2::where('id_tp', $id_tp)->first();
+        $pt3 = \App\AnamneseGigantePsicopedaNeuroPsicomotoPt3::where('id_tp', $id_tp)->first();
 
         // Pega os atributos de todas as partes
         $atributos_pt1 = getProtectedMember( (object) ((array)$pt1), "attributes");
@@ -103,22 +106,22 @@ class Anamnese_Psicopeda_Neuro_Psicomoto extends Model
             }
 
             public function __call($name, $arguments) {
-                $anamnese = \App\Anamnese_Psicopeda_Neuro_Psicomoto::where('id_tp', $this->id_tp)->first();
+                $anamnese = \App\AnamneseGigantePsicopedaNeuroPsicomoto::where('id_tp', $this->id_tp)->first();
                 return $anamnese->$name($arguments);
             }
 
             public function get_pt1() {
-                return \App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt1::where('id_tp', $this->id_tp)->first();
+                return \App\AnamneseGigantePsicopedaNeuroPsicomotoPt1::where('id_tp', $this->id_tp)->first();
             }
             public function get_pt2() {
-                return \App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt2::where('id_tp', $this->id_tp)->first();
+                return \App\AnamneseGigantePsicopedaNeuroPsicomotoPt2::where('id_tp', $this->id_tp)->first();
             }
             public function get_pt3() {
-                return \App\Anamnese_Gigante_Psicopeda_Neuro_Psicomoto_pt3::where('id_tp', $this->id_tp)->first();
+                return \App\AnamneseGigantePsicopedaNeuroPsicomotoPt3::where('id_tp', $this->id_tp)->first();
             }
 
             public function save() {
-                return \App\Anamnese_Psicopeda_Neuro_Psicomoto::salvar($this->anamnese_original);
+                return \App\AnamneseGigantePsicopedaNeuroPsicomoto::salvar($this->anamnese_original);
             }
         };
 
