@@ -61,10 +61,10 @@ class Paciente extends Authenticatable {
     }
 
     /*
-     * Essa função de anamnese__psicopeda__neuro__psicomotos só pode ser chamada usando () no final
+     * Essa função de anamneseGigantePsicopedaNeuroPsicomotos só pode ser chamada usando () no final
      * Se for chamada sem () vai dar erro
-     * Certo: $user->anamnese__psicopeda__neuro__psicomotos();
-     * Errado: $user->anamnese__psicopeda__neuro__psicomotos;
+     * Certo: $user->anamneseGigantePsicopedaNeuroPsicomotos();
+     * Errado: $user->anamneseGigantePsicopedaNeuroPsicomotos;
      */
     public function anamneseGigantePsicopedaNeuroPsicomotos() {
         return \App\AnamneseGigantePsicopedaNeuroPsicomoto::pegarPorIdPaciente($this->id);

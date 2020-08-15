@@ -6,14 +6,6 @@ use Auth;
 use Closure;
 
 class NinguemLogado {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
-     */
-
 
      // Verifica se algum usuário está logado, caso negativo, ele procede
      public function handle($request, Closure $next) {
@@ -24,4 +16,5 @@ class NinguemLogado {
         }
         return $next($request);
      }
+     
 }

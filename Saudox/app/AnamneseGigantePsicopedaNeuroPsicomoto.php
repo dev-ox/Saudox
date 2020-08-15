@@ -12,8 +12,7 @@ function getProtectedMember($class_object,$protected_member) {
      return $array[$prefix.$protected_member];
 }
 
-class AnamneseGigantePsicopedaNeuroPsicomoto extends Model
-{
+class AnamneseGigantePsicopedaNeuroPsicomoto extends Model {
 
     protected $table = 'anamnese__gigante__psicopeda__neuro__psicomotos';
 
