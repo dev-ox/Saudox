@@ -33,8 +33,10 @@ Route::middleware('auth:profissional')->group(function() {
     Route::get('/home','ProfissionalController@home')->name('.home');
 
     // Visualizar perfil de outros usuários
-    Route::get('/ver/{id}', 'ProfissionalController@ver_profissional')->name('.ver');
+    Route::get('/ver/{id}', 'ProfissionalController@verProfissional')->name('.ver');
 
+    // Visualizar perfil de pacientes
+    Route::get('/ver_paciente/{id}', 'ProfissionalController@verPaciente')->name('.ver_paciente');
 
 
     Route::prefix('anamnese')->name('.anamnese')->group(function () {
