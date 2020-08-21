@@ -7,18 +7,7 @@ use Illuminate\Http\Request;
 use App\Paciente;
 use App\Profissional;
 
-class AdminController extends Controller
-{
-    /**
-     * Handle the incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function __invoke(Request $request)
-    {
-        //
-    }
+class AdminController extends Controller {
 
 	public function adminHome() {
 		return view('profissional/admin/home', ['pacientes' => Paciente::all(),'profissionais' => Profissional::all()]);

@@ -21,7 +21,7 @@ _Para entender melhor, veja as rotas de teste no fim desse arquivo_
 
 Auth::routes();
 
-// Adiciona o prefixo para o profissional e um nome para usar como por
+// Adiciona o prefixo (/algo) para o profissional e um nome para usar como por
 // exemplo: 'profissional.home'
 // O namespace basicamente indica o local (diretório) dos métodos chamados
 Route::prefix('/profissional')->name('profissional')->namespace('Profissional')->group(function(){

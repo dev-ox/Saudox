@@ -181,8 +181,8 @@ class EvolucaoTest extends TestCase {
         $resposta->assertRedirect(route("paciente.home"));
         $this->assertAuthenticatedAs($paciente);
 
-        $this->visit(route("paciente.evolucao.psicologica", ['id_evolucao_psicologica' -> $evolucao_psicologica->id]));
-        $this->seePageIs(route("paciente.evolucao.psicologica", ['id_evolucao_psicologica' -> $evolucao_psicologica->id]));
+        $this->visit(route("paciente.evolucao.neuropsicologica", ['id_evolucao_psicologica' -> $evolucao_psicologica->id]));
+        $this->seePageIs(route("paciente.evolucao.neuropsicologica", ['id_evolucao_psicologica' -> $evolucao_psicologica->id]));
     }
 
     /** @test **/
@@ -282,7 +282,7 @@ class EvolucaoTest extends TestCase {
 
         $this->post(route("paciente.logout"));
 
-        $this->visit(route("paciente.evolucao.psicologica", ['id_evolucao_psicologica' -> $evolucao_psicologica->id]));
+        $this->visit(route("paciente.evolucao.neuropsicologica", ['id_evolucao_psicologica' -> $evolucao_psicologica->id]));
         $this->seePageIs(route("paciente.login"));
     }
 
@@ -434,15 +434,15 @@ class EvolucaoTest extends TestCase {
         $resposta->assertRedirect(route("profissional.home"));
         $this->assertAuthenticatedAs($funcionario);
 
-        $this->visit(route("profissional.evolucao.psicologica", ['id_paciente' -> $paciente->id, 'id_evolucao_psicologica' -> $evolucao_psicologica->id]));
+        $this->visit(route("profissional.evolucao.neuropsicologica", ['id_paciente' -> $paciente->id, 'id_evolucao_psicologica' -> $evolucao_psicologica->id]));
 
-        $res = $this->post(route("profissional.evolucao.psicologica.delete", ['id_paciente' -> $paciente->id, 'id_evolucao_psicologica' -> $evolucao_psicologica->id]));
+        $res = $this->post(route("profissional.evolucao.neuropsicologica.delete", ['id_paciente' -> $paciente->id, 'id_evolucao_psicologica' -> $evolucao_psicologica->id]));
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
         $res->assertOk();
 
-        $this->seePageIs(route("profissional.evolucao.psicologica", ['id_paciente' -> $paciente->id, 'id_evolucao_psicologica' -> $evolucao_psicologica->id]));
+        $this->seePageIs(route("profissional.evolucao.neuropsicologica", ['id_paciente' -> $paciente->id, 'id_evolucao_psicologica' -> $evolucao_psicologica->id]));
     }
 
     /** @test **/
@@ -605,15 +605,15 @@ class EvolucaoTest extends TestCase {
         $resposta->assertRedirect(route("profissional.home"));
         $this->assertAuthenticatedAs($funcionario);
 
-        $this->visit(route("profissional.evolucao.psicologica", ['id_paciente' -> $paciente->id, 'id_evolucao_psicologica' -> $evolucao_psicologica->id]));
+        $this->visit(route("profissional.evolucao.neuropsicologica", ['id_paciente' -> $paciente->id, 'id_evolucao_psicologica' -> $evolucao_psicologica->id]));
 
-        $res = $this->post(route("profissional.evolucao.psicologica.edit", ['id_paciente' -> $paciente->id, 'id_evolucao_psicologica' -> $evolucao_psicologica->id]));
+        $res = $this->post(route("profissional.evolucao.neuropsicologica.edit", ['id_paciente' -> $paciente->id, 'id_evolucao_psicologica' -> $evolucao_psicologica->id]));
         $value = 'Você não possui privilégios para isso.';
         $tempo = 5; // Tempo em segundo até o fim da espera
         $res->waitForText($value, $tempo);
         $res->assertOk();
 
-        $this->seePageIs(route("profissional.evolucao.psicologica", ['id_paciente' -> $paciente->id, 'id_evolucao_psicologica' -> $evolucao_psicologica->id]));
+        $this->seePageIs(route("profissional.evolucao.neuropsicologica", ['id_paciente' -> $paciente->id, 'id_evolucao_psicologica' -> $evolucao_psicologica->id]));
     }
 
     /** @test **/
@@ -738,8 +738,8 @@ class EvolucaoTest extends TestCase {
         $resposta->assertRedirect(route("paciente.home"));
         $this->assertAuthenticatedAs($paciente);
 
-        $this->visit(route("paciente.evolucao.psicologica", ['id_evolucao_psicologica' -> 999]));
-        $this->seePageIs(route("paciente.evolucao.psicologica"));
+        $this->visit(route("paciente.evolucao.neuropsicologica", ['id_evolucao_psicologica' -> 999]));
+        $this->seePageIs(route("paciente.evolucao.neuropsicologica"));
     }
 
     /** @test **/
