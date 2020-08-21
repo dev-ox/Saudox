@@ -10,8 +10,8 @@ Route::prefix('judo')->name('.judo')->group(function () {
     require 'judo.php';
 });
 
-Route::prefix('psicologica')->name('.psicologica')->group(function () {
-    require 'psicologica.php';
+Route::prefix('neuropsicologica')->name('.neuropsicologica')->group(function () {
+    require 'neuropsicologia.php';
 });
 
 Route::prefix('terapia_ocupacional')->name('.terapia_ocupacional')->group(function () {
