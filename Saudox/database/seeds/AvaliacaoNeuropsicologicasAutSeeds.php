@@ -29,7 +29,7 @@ class AvaliacaoNeuropsicologicasAutSeeds extends Seeder
           'humor_nos_dias_da_avalicao' => texto(5),
           'areas_preservadas' => texto(5),
           'areas_lesionadas' => texto(5),
-          'anexar_arquivos' => base64_encode(file_get_contents(addslashes("https://core.ac.uk/download/pdf/71362264.pdf"))),
+          'anexar_arquivos' => base64_encode(file_get_contents(addslashes(dirname(__FILE__) . "/pdf_seed.pdf"))),
           'hipotese_diagnostica' => texto(10),
           'dia_hora_devolutiva_aos_responsavel' => Carbon::now()->format('Y-m-d H:i:s'),
           'participantes' => texto(5),
