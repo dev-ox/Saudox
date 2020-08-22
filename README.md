@@ -20,7 +20,7 @@ php artisan db:seed
 ou
 ```bash
 composer dump-autoload
-php artisan migrate:fesh --seed
+php artisan migrate:fresh --seed
 ```
 _Para ambos os casos, se suas tabelas já estejam atualizadas e limpas, não
 precisa usar a tag fresh no comando de migrate._
