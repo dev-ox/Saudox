@@ -13,7 +13,7 @@ class ArquivosAvaliacaosAutSeeds extends Seeder
         DB::table('arquivos_avaliacaos')->insert([
           'tipo_da_avaliacao' => Str::random(100),
           'id_da_avaliacao' => rand(1,$qtd_arquivo_avaliacao),
-          'arquivo' => base64_encode(file_get_contents(addslashes("https://core.ac.uk/download/pdf/71362264.pdf"))),
+          'arquivo' => base64_encode(file_get_contents(addslashes(dirname(__FILE__) . "/pdf_seed.pdf"))),
         ]);
       }
     }
