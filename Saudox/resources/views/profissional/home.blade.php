@@ -1,54 +1,39 @@
-
-@include('layouts.layoutperfil')
-
-
-<body>
-  <div class="container">
-
-
-
-  </div>
-</body>
-
-
-
-
-
-<h1>Aloooo deve ser profissional</h1>
-<h2>Paciente?
-<?php
-    if(Auth::guard('paciente')->check() == 1) {
-        echo("Sou Paciente");
-    } else {
-        echo("Não sou Paciente");
-    }
-?>
-</h2>
-<h2>Profissional:?
-<?php
-    if(Auth::guard('profissional')->check() == 1) {
-        echo("Sou Profissional");
-    } else {
-        echo("Não sou Profissional");
-    }
-?>
-</h2>
-
-<?php $user = Auth::user(); ?>
-<?php echo($user);?>
+<h1>Home de: {{$profissional->nome}}</h1>
 
 <h3>
 <?php
-    echo("Profissões:");
+    echo("Profissões: ");
     foreach($profissoes as $p){
         echo($p."\n");
     }
 ?>
 </h3>
 
-@foreach ($pacientes as $paciente)
-    <a href="{{ route('profissional.ver_paciente', $paciente->id) }}">Ver paciente {{ $paciente->nome_paciente }}</a><br>
-@endforeach
+
+<h3>Agenda:</h3>
+@if (count($agenda) > 0)
+    <table><thead>
+      <tr>
+         <th>Paciente</th>
+         <th>Hora Entrada</th>
+      </tr>
+    </thead>
+
+    <tbody>
+    @foreach ($agenda as $ag)
+        <tr>
+            <td>
+                {{$ag->nome}}
+            </td>
+            <td>
+                {{$ag->data_entrada}}
+            </td>
+        </tr>
+    @endforeach
+    </tbody></table>
+@else
+    <p>Você não possui nenhum agendamento</p>
+@endif
 
 
 @if(Auth::guard('profissional')->check())

@@ -34,7 +34,7 @@ class PacienteAnamneseController extends Controller {
 
     public function verTocp() {
         $paciente = Paciente::find(Auth::id());
-        $anamnese = $paciente->anamnese__terapia__ocupacionals;
+        $anamnese = $paciente->anamneseTerapiaOcupacionals;
         if(!$anamnese) {
             return redirect()->route('erro', ['msg_erro' => "Essa anamnese não existe."]);
         }

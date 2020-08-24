@@ -3,3 +3,8 @@
 Route::get('teste', function () {
     return 'terapia_ocupacional.php';
 });
+
+
+Route::get('{id_paciente}/ver', 'ProfissionalAvaliacaoController@verTerapiaOcupacional')->name('.ver');
+Route::get('{id_paciente}/criar', 'ProfissionalAvaliacaoController@criarTerapiaOcupacional')->name('.criar');
+Route::get('{id_paciente}/editar', 'ProfissionalAvaliacaoController@editarTerapiaOcupacional')->name('.editar');

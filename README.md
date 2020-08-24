@@ -1,5 +1,8 @@
 # Saudóx
 ### Sistema referente a uma clínica de saúde
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/c2342cc77a644f1d950d36fcc7f0c17e)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=dev-ox/Saudox&amp;utm_campaign=Badge_Grade)
+<br/>
+![Laravel](https://github.com/dev-ox/Saudox/workflows/Laravel/badge.svg)
 ---
 
 
@@ -20,7 +23,7 @@ php artisan db:seed
 ou
 ```bash
 composer dump-autoload
-php artisan migrate:fesh --seed
+php artisan migrate:fresh --seed
 ```
 _Para ambos os casos, se suas tabelas já estejam atualizadas e limpas, não
 precisa usar a tag fresh no comando de migrate._
