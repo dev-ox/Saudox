@@ -14,13 +14,11 @@ class ProfissionalController extends Controller {
         $profissional = Profissional::find(Auth::id());
         $profissoes = $profissional->getProfissoes();
 
-        // TODO: A ideia é de alguma forma entregar só os pacientes que se tem interesse
-        $pacientes = Paciente::all();
-
         return view('profissional/home',
             [
+                'profissional' =>$profissional,
+                'agenda' =>$profissional->agendamentos,
                 'profissoes' => $profissoes,
-                'pacientes' => $pacientes
             ]);
 	}
 
