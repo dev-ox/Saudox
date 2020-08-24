@@ -1,5 +1,6 @@
 # Saudóx
 ### Sistema referente a uma clínica de saúde
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/c2342cc77a644f1d950d36fcc7f0c17e)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=dev-ox/Saudox&amp;utm_campaign=Badge_Grade)
 ---
 
 
