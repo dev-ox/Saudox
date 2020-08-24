@@ -1,6 +1,8 @@
 # Saudóx
 ### Sistema referente a uma clínica de saúde
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/c2342cc77a644f1d950d36fcc7f0c17e)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=dev-ox/Saudox&amp;utm_campaign=Badge_Grade)
+
+[![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fdev-ox%2FSaudox%2Fbadge%3Fref%3Dmaster%26token%3D02bb54b7a5798b63e7df6dadca50888123d00256&style=flat)](https://actions-badge.atrox.dev/dev-ox/Saudox/goto?ref=master&token=02bb54b7a5798b63e7df6dadca50888123d00256)
 ---
 
 
