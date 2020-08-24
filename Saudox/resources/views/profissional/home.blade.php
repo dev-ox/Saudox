@@ -1,3 +1,19 @@
+
+@include('layouts.layoutperfil')
+
+
+<body>
+  <div class="container">
+
+
+
+  </div>
+</body>
+
+
+
+
+
 <h1>Aloooo deve ser profissional</h1>
 <h2>Paciente?
 <?php
@@ -18,6 +34,8 @@
 ?>
 </h2>
 
+<?php $user = Auth::user(); ?>
+<?php echo($user);?>
 
 <h3>
 <?php
