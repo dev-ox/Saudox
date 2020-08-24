@@ -37,6 +37,12 @@ class Profissional extends Authenticatable {
     ];
 
 
+	// Coleta todos os agendamentos daquele profissional na ordem
+	// 		crescente referente ao tempo de entrada do paciente
+	public function agendamentos() {
+		return $this->hasMany('App\Agendamentos', 'id_profissional')->orderBy('data_entrada');
+	}
+
 
     // Retorna um vetor de string com todas as profissões daquele profissional
     public function getProfissoes() {
