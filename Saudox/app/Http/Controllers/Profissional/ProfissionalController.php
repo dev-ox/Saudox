@@ -13,12 +13,19 @@ class ProfissionalController extends Controller {
     public function home() {
         $profissional = Profissional::find(Auth::id());
         $profissoes = $profissional->getProfissoes();
+        $agendamentos = $profissional->agendamentos;
+
+        // TODO: Lembrar de quando implementar o sistema de marcar agendamentos
+        //      como concluído, alterar essa chamada para pegar agendamentes
+        //      pendentes apenas
+        $prox_paciente = Paciente::where('cpf', $agendamentos[0]->cpf)->first();
 
         return view('profissional/home',
             [
                 'profissional' =>$profissional,
-                'agenda' =>$profissional->agendamentos,
+                'agenda' =>$agendamentos,
                 'profissoes' => $profissoes,
+                'prox_paciente' => $prox_paciente,
             ]);
 	}
 
