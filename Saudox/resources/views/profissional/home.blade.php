@@ -1,5 +1,36 @@
-<h1>Home de: {{$profissional->nome}}</h1>
+ @include('layouts.layoutperfil')
 
+<head>
+  <div class="welcome">
+    <h1>Bem vindo! {{$profissional->nome}} </h1>
+    <body onload="startTime()">
+      <h1 id="txt"></h1>
+    </body>
+  </div>
+</head>
+
+<body>
+  <div class="container">
+    <div class="prox">
+      <h3> Próximo Cliente: </h3>
+
+      <td>
+      <?php
+      print($agenda[0]->nome);
+      ?>
+      </td>
+      <td>
+      <?php
+      print($agenda[0]->data_entrada)
+      ?>
+      </td>
+
+    </div>
+  </div>
+</body>
+
+
+<!--
 <h3>
 <?php
     echo("Profissões: ");
@@ -8,12 +39,13 @@
     }
 ?>
 </h3>
+-->
 
-
-<h3>Agenda:</h3>
+<div class="agenda">
+<h3 class="agnd">Agenda:</h3>
 @if (count($agenda) > 0)
-    <table><thead>
-      <tr>
+    <table class="ag table"><thead>
+      <tr class="ag  table-row">
          <th>Paciente</th>
          <th>Hora Entrada</th>
       </tr>
@@ -21,7 +53,7 @@
 
     <tbody>
     @foreach ($agenda as $ag)
-        <tr>
+        <tr class="corsim">
             <td>
                 {{$ag->nome}}
             </td>
@@ -34,8 +66,4 @@
 @else
     <p>Você não possui nenhum agendamento</p>
 @endif
-
-
-@if(Auth::guard('profissional')->check())
-    <a href="/profissional/logout">Deslogar</a>
-@endif
+</div>
