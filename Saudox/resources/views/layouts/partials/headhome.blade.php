@@ -1,26 +1,47 @@
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
 
 .welcome{
   margin-top: 100px;
   margin-left: 10px;
-  background-color: #d3d3d3;
-  width: 400px;
-  height: 50px;
+  width: 1515px;
+  height: 100px;
+  text-align: center;
+  border-style: solid;
+  border-color: #FFCC33;
+  color: white;
+  background-color: 424242;
+}
+
+h1 {
   text-align: center;
 }
 
 #txt {
-  margin-top: -65px;
-  margin-left: 410px;
-  background-color: #d3d3d3;
+  margin-top: 38px;
+  margin-left: 1370px;
   width: 140px;
   text-align: center;
-  height: 50px;
+  padding-top: 100px;
+  height: 150px;
+  border-style: solid;
+  border-color: #FFCC33;
+  color: white;
+  background-color: 424242;
 
 }
 
-</style>
+.empresa{
+  width:200px;
+  height: 200px;
+  margin-left: 50px;
+  margin-top: -425px;
+  border-radius: 50%;
+}
 
+
+
+</style>
 
 <script type="text/javascript">
 function startTime()
