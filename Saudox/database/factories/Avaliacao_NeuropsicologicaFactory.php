@@ -2,11 +2,9 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Paciente;
 use App\AvaliacaoNeuropsicologica;
-use App\Profissional;
 use Faker\Generator as Faker;
-use Illuminate\Support\Str;
+use Illuminate\Support\Carbon;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,13 +15,13 @@ use Illuminate\Support\Str;
 | your application. Factories provide a convenient way to generate new
 | model instances for testing / seeding your application's database.
 |
-*/
+ */
 
-$factory->define(AvaliacaoNeuropsicologica::class, function (Faker $faker),  {
+$factory->define(AvaliacaoNeuropsicologica::class, function (Faker $faker) {
     return [
-        'id_paciente' => 0,
-        'id_profissional' => 0,
-        'id_anaminese' => 0,
+        'id_paciente' => 1,
+        'id_profissional' => 1,
+        'id_anaminese' => 1,
         'queixa_principal' => 'Nao existe nenhuma queixa',
         'encaminhado_por' => 'asfosafohsahf',
         'participantes_durante_anaminese' => 'asfsafasf',
@@ -37,9 +35,9 @@ $factory->define(AvaliacaoNeuropsicologica::class, function (Faker $faker),  {
         'humor_nos_dias_da_avalicao' => 'ASFASFSAFASF',
         'areas_preservadas' => 'asfasfasfasfsa',
         'areas_lesionadas' => 'asfasfasfasfasf',
-        'anexar_arquivos' => base64_encode(file_get_contents(addslashes("https://core.ac.uk/download/pdf/71362264.pdf"))),
+        'anexar_arquivos' => base64_encode(file_get_contents(addslashes(dirname(__FILE__) . "/../seeds/pdf_seed.pdf"))),
         'hipotese_diagnostica' => 'asfasfasfasfas',
-        'dia_hora_devolutiva_aos_responsavel' => Carbon::now()->format('d-m-Y H:i:s'),
+        'dia_hora_devolutiva_aos_responsavel' => Carbon::now()->format('Y-m-d H:i:s'),
         'participantes' => 'safafasfasfasfa',
         'atividades_para_ser_feito_na_clinica' => "{}",
         'atividades_para_ser_feito_em_casa' => "{}",
