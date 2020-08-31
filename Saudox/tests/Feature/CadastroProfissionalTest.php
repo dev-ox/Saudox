@@ -2,7 +2,6 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use \App\Endereco;
 use App\Profissional;
@@ -33,7 +32,7 @@ class CadastroProfissionalTest extends TestCase {
             'password' => '123123123',
             'profissao' => 'Psicologo',
             'numero_conselho' => '123',
-            'id_endereco' => $end->id,
+            'id_endereco' => $this->end->id,
             'telefone_1' => '12345678910',
             'telefone_2'=> '12345678911',
             'email' => 'carlosaajunior.jp@gmail.com',
@@ -234,7 +233,7 @@ class CadastroProfissionalTest extends TestCase {
 
 
     /** @test **/
-    public function loginNaoPodeFicarEmBranco( {
+    public function loginNaoPodeFicarEmBranco() {
 
         $this->withoutExceptionHandling();
 
