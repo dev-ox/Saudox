@@ -112,7 +112,6 @@ form{
   margin-top: -100px;
   margin-left: 40px;
   position: relative;
-  text-transform:uppercase;
   font-size: 20px;
   display: block;
   font-weight: bold;

@@ -35,9 +35,65 @@ h1 {
   width:200px;
   height: 200px;
   margin-left: 50px;
-  margin-top: -425px;
+  margin-top: -540px;
   border-radius: 50%;
 }
+
+.btn-adm{
+  display: block;
+  width: 160px;
+  height: 40px;
+  background: #1C2934;
+  padding: 20px;
+  color: white;
+  font-size: 22px;
+  text-decoration: none;
+  text-align: center;
+  border-color: green;
+  border-style: solid;
+
+}
+
+
+.adm-bt{
+  margin-top: -665px;
+  margin-left: 45px;
+}
+
+
+.welcome-phone{
+  text-align: center;
+  border-style: solid;
+  border-color: #FFCC33;
+  color: white;
+  background-color: #424242;
+  margin-top: 80px;
+  margin-left: 10px;
+  max-width: 96%;
+  font-size: 12px;
+}
+
+
+.adm-bt-phone{
+  margin-left: 2%;
+  margin-right: 5px;
+  padding-bottom: 20px;
+}
+
+.btn-perfil-phone{
+  display: block;
+  width: 96%;
+  height: auto;
+  background: #1C2934;
+  padding: 5px;
+  color: white;
+  font-size: 11px;
+  text-decoration: none;
+  text-align: center;
+  border-style: solid;
+  margin-bottom: 10px;
+}
+
 
 
 

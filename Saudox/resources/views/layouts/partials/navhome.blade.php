@@ -154,13 +154,13 @@ h2 {
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      <a href="#">Acessibilidade</a>
-      <a href="#">Sobre</a>
       @if(Auth::guard('profissional')->check())
           <a href="/profissional/logout">Sair</a>
       @elseif(Auth::guard('paciente')->check())
           <a href="/paciente/logout">Sair</a>
       @endif
+      <a href="#">Acessibilidade</a>
+      <a href="#">Sobre</a>
     </div>
   </div>
   <a class="home" href="/profissional/home"> Home </a>
