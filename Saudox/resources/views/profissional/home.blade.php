@@ -53,6 +53,11 @@
 
 <div class="agenda">
 <h3 class="agnd">Agenda:</h3>
+<div class="search-agenda-home">
+  <label for="pac" class="search-label-agenda"> Buscar Paciente: </label>
+  <input id="pac" type="text" class="search-agenda" name="buscar">
+  <a class="bt-search-agenda" href="/"> buscar </a>
+</div>
 @if (count($agenda) > 0)
 <div class="table-wrapper">
     <table class="ag table">
@@ -63,7 +68,6 @@
          <th class="tag">Hora Saída:</th>
          <th class="tag">Local do atendimento:</th>
          <th class="tag">Tipo da Recorrência:</th>
-         <th class="tag">Recorrência do Agendamento:</th>
       </tr>
     </thead>
 
@@ -75,7 +79,7 @@
             <td class="corsim"> {{$ag->data_saida}} </td>
             <td class="corsim"> {{$ag->local_de_atendimento}} </td>
             <td class="corsim"> {{$ag->tipo_da_recorrencia}} </td>
-            <td class="corsim"> {{$ag->recorrencia_do_agendamento}} </td>
+            <td class="bt-acao-adm-tb"> <a class="bt-acao-adm-remover" href= {{route('profissional.ver', ['id' => $ag->id])}}> Remover </a> </td>
         </tr>
     @endforeach
     </tbody>
@@ -156,6 +160,11 @@
 
   <div class="agenda-phone">
     <h3 class="agnd-phone">Agenda:</h3>
+    <div class="search-agenda-home-phone">
+      <label for="pac" class="search-label-agenda-phone"> Buscar Paciente: </label>
+      <input id="pac" type="text" class="search-agenda-phone" name="buscar">
+      <a class="bt-search-agenda-phone" href="/"> buscar </a>
+    </div>
     @if (count($agenda) > 0)
     <div class="table-wrapper-phone">
         <table class="ag table-phone">
@@ -166,7 +175,6 @@
              <th class="tag-phone">Hora Saída:</th>
              <th class="tag-phone">Local do atendimento:</th>
              <th class="tag-phone">Tipo da Recorrência:</th>
-             <th class="tag-phone">Recorrência do Agendamento:</th>
           </tr>
         </thead>
 
@@ -178,7 +186,7 @@
                 <td class="corsim-phone"> {{$ag->data_saida}} </td>
                 <td class="corsim-phone"> {{$ag->local_de_atendimento}} </td>
                 <td class="corsim-phone"> {{$ag->tipo_da_recorrencia}} </td>
-                <td class="corsim-phone"> {{$ag->recorrencia_do_agendamento}} </td>
+                <td class="bt-acao-adm-tb"> <a class="bt-acao-adm-remover" href= {{route('profissional.ver', ['id' => $ag->id])}}> Remover </a> </td>
             </tr>
         @endforeach
         </tbody>

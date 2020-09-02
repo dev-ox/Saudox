@@ -35,7 +35,7 @@ h1 {
   width:200px;
   height: 200px;
   margin-left: 50px;
-  margin-top: -540px;
+  margin-top: -620px;
   border-radius: 50%;
 }
 
@@ -51,12 +51,11 @@ h1 {
   text-align: center;
   border-color: green;
   border-style: solid;
-
 }
 
 
 .adm-bt{
-  margin-top: -665px;
+  margin-top: -745px;
   margin-left: 45px;
 }
 

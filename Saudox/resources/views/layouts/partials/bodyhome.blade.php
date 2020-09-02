@@ -14,6 +14,10 @@ h3{
 
 }
 
+.desktop{
+  margin-left: -8px;
+}
+
 .prox{
   width: 1360px;
   height: 250px; /* Valor da Altura */
@@ -75,7 +79,7 @@ h3{
 .agenda{
   margin-left: 10px;
   width: 1515px;
-  height: 300px;
+  height: 380px;
   color: white;
   background-color: 424242;
   border-style: solid;
@@ -122,11 +126,99 @@ h3{
   width: 1700px;
   margin: 0px auto 0px auto;
   overflow: auto;
+  margin-left: -190px;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 
+.search-label-agenda{
+	font-size:30px;
+	transition: all 0.5s ease-in-out;
+  margin-left:0px;;
+  float: left;
+  margin-left: -370px;
+  margin-top: -10px;
 
+}
+
+.search-agenda{
+  border:0;
+  border-bottom:1px solid white;
+  background:transparent;
+  width:70%;
+  padding:8px 0 5px 0;
+  font-size:16px;
+  color: white;
+  margin-left: -190px;
+  margin-bottom: 5px;
+}
+
+
+.search-agenda-home{
+  margin-top: 20px;
+  margin-left: 700px;
+  margin-bottom: 5px;
+}
+
+.bt-search-agenda{
+  display: block;
+  width: 100px;
+  height: 20px;
+  background: #1C2934;
+  padding: 5px;
+  padding-top: 5px;
+  padding-bottom: 15px;
+  color: white;
+  font-size: 18px;
+  text-decoration: none;
+  text-align: center;
+  border-color: #FFCC33;
+  border-style: solid;
+  margin-top: -50px;
+  margin-left: 407px;
+}
+
+
+.search-label-agenda-phone{
+font-size: 2.3vw;
+
+}
+
+.search-agenda-phone{
+  border-bottom:1px solid white;
+  width:45%;
+  height: 3%;
+  padding:8px 0 5px 0;
+  font-size:11px;
+  color: black;
+  margin-bottom: 5px;
+}
+
+
+.search-agenda-home-phone{
+  margin-top: -10px;
+  margin-left: -15%;
+  margin-bottom: 5px;
+  font-size: 12px;
+}
+
+.bt-search-agenda-phone{
+  display: block;
+  width: 12.8%;
+  height: 20px;
+  background: #1C2934;
+  padding: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: white;
+  font-size: 12px;
+  text-decoration: none;
+  text-align: center;
+  border-color: #FFCC33;
+  border-style: solid;
+  margin-top: -42px;
+  margin-left: 82.5%;
+}
 
 th{
   border: solid;
@@ -470,9 +562,7 @@ th{
 .table-wrapper-adm-phone::-webkit-scrollbar {
   display: none;
 }
-.desktop{
-  margin-left: -5px;
-}
+
 
 
 </style>
