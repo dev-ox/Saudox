@@ -41,9 +41,9 @@
   </h4>
     <div class="btpc">
     @if($prox_paciente)
-      <a class="btn-paciente" href=<?php route('paciente.perfil', ['id' => $prox_paciente->id]) ?>> Ver perfil </a>
+      <a class="btn-paciente" href={{route('paciente.perfil', ['id' => $prox_paciente->id]) }}> Ver perfil </a>
     @else
-      <a class="btn-paciente"  href=<?php route('register') ?>> Registrar Cliente  </a>
+      <a class="btn-paciente"  href={{route('register') }}> Registrar Cliente  </a>
     @endif
     </div>
 
@@ -95,7 +95,7 @@
 </div>
 <div class="adm-bt">
 @if(in_array('Admin', $profissoes))
-  <a class="btn-adm" href=<?php route('profissional.admin.dashboard') ?>> Ir para administração </a>
+  <a class="btn-adm" href={{route('profissional.admin.dashboard') }}> Ir para administração </a>
 @endif
 </div>
 </div>
@@ -111,7 +111,7 @@
   <div class="adm-bt-phone">
     <a class="btn-perfil-phone" href="/profissional/perfil"> Ver Perfil </a>
   @if(in_array('Admin', $profissoes))
-    <a class="btn-perfil-phone" href=<?php route('profissional.admin.dashboard') ?>> Ir para administração </a>
+    <a class="btn-perfil-phone" href={{ route('profissional.admin.dashboard') }}> Ir para administração </a>
   @endif
   </div>
 </div>
@@ -150,9 +150,9 @@
 
   <div class="btpc-phone">
   @if($prox_paciente)
-    <a class="btn-paciente-phone" href=<?php route('paciente.perfil', ['id' => $prox_paciente->id]) ?>> Ver perfil </a>
+    <a class="btn-paciente-phone" href= {{route('paciente.perfil', ['id' => $prox_paciente->id])}}> Ver perfil </a>
   @else
-    <a class="btn-paciente-phone"  href=<?php route('register') ?>> Registrar Cliente  </a>
+    <a class="btn-paciente-phone"  href= {{route('register')}}> Registrar Cliente  </a>
   @endif
   </div>
 
