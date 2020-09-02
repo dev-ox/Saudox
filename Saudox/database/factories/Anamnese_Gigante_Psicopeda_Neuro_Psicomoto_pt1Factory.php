@@ -2,11 +2,8 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Paciente;
 use App\AnamneseGigantePsicopedaNeuroPsicomotoPt1;
-use App\Profissional;
 use Faker\Generator as Faker;
-use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,13 +14,13 @@ use Illuminate\Support\Str;
 | your application. Factories provide a convenient way to generate new
 | model instances for testing / seeding your application's database.
 |
-*/
+ */
 
-$factory->define(AnamneseGigantePsicopedaNeuroPsicomotoPt1::class, function (Faker $faker),  {
+$factory->define(AnamneseGigantePsicopedaNeuroPsicomotoPt1::class, function (Faker $faker) {
     return [
-        'id_tp' => 0,
-        'id_paciente' => 0,
-        'id_profissional' => 0,
+        'id_tp' => 1,
+        'id_paciente' => 1,
+        'id_profissional' => 1,
         'compareceram_entrevista' => '9',
         'queixa' =>'aspfhasfsafsaf',
         'escolaridade' => '9',
@@ -93,5 +90,5 @@ $factory->define(AnamneseGigantePsicopedaNeuroPsicomotoPt1::class, function (Fak
         'teve_coqueluche_infancia' => '9',
         'teve_meningite_infancia' => '9',
         'teve_desidratacao_infancia' => '9',
-        ];
-    });
+    ];
+});

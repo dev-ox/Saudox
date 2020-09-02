@@ -4,7 +4,6 @@
 
 use App\Profissional;
 use Faker\Generator as Faker;
-use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,14 +19,14 @@ use Illuminate\Support\Str;
 $factory->define(Profissional::class, function (Faker $faker) {
     return [
         'nome' => 'Carlos Antônio',
-        'cpf' => '12345678910',
-        'rg' => '12345678',
+        'cpf' => $faker->unique()->safeEmail,
+        'rg' => $faker->unique()->safeEmail,
         'status' => 'Ativo',
-        'login' => '12345678910',
+        'login' => $faker->unique()->safeEmail,
         'password' => '123123123',
         'profissao' => 'Psicologo',
         'numero_conselho' => '123',
-        'id_endereco' => 0,
+        'id_endereco' => 1,
         'telefone_1' => '12345678910',
         'telefone_2'=> '12345678911',
         'email' => 'carlosaajunior.jp@gmail.com',

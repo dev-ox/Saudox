@@ -2,9 +2,9 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\User;
+use App\Paciente;
 use Faker\Generator as Faker;
-use Illuminate\Support\Str;
+use Illuminate\Support\Carbon;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,12 +19,12 @@ use Illuminate\Support\Str;
 
 $factory->define(Paciente::class, function (Faker $faker) {
     return [
-        'login' => 'literalmentequalquercoisa',
+        'login' => $faker->unique()->safeEmail,
         'password' => '123123123',
         'nome_paciente' => 'Carlos Antonio Alves Junior',
-        'cpf' => '98765432110',
-        'sexo' => 'Masculino',
-        'data_nascimento' => '10-05-1999',
+        'cpf' => $faker->unique()->company,
+        'sexo' => 1,
+        'data_nascimento' => Carbon::now()->format('Y-m-d H:i:s'),
         'responsavel' => 'Maria Sueli',
         'numero_irmaos' => 1,
         'lista_irmaos' => 'Barbara Yorrana',
@@ -36,7 +36,7 @@ $factory->define(Paciente::class, function (Faker $faker) {
         'email_mae' => 'emailteste@gmail.com',
         'idade_pai' => 99,
         'idade_mae' => 45,
-        'id_endereco' => 0,
+        'id_endereco' => 1,
         'naturalidade' => 'Brasileiro',
         'pais_sao_casados' => false,
         'pais_sao_divorciados' => false,

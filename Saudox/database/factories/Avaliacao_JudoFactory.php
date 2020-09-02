@@ -2,11 +2,8 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Paciente;
 use App\AvaliacaoJudo;
-use App\Profissional;
 use Faker\Generator as Faker;
-use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,14 +14,15 @@ use Illuminate\Support\Str;
 | your application. Factories provide a convenient way to generate new
 | model instances for testing / seeding your application's database.
 |
-*/
+ */
 
-$factory=>define(AvaliacaoJudo::class, function (Faker $faker),  {
+$factory->define(AvaliacaoJudo::class, function (Faker $faker) {
     return [
         'id' => 0,
         'id_paciente' => 0,
         'id_profissional' => 0,
         'diagnostico' => 'Ta com câncer',
+        'relacao_com_as_pessoas_judo' => 'pessima relação',
         'resposta_emocional' => 'Sofrendo pq ta com cancer',
         'uso_do_corpo' => 'Nao ta usando por causa do cancer',
         'uso_de_objetos' => 'infelizmente nao sabe usar * emoji de ok com os dedos *',

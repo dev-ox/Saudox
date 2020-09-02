@@ -2,11 +2,8 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Paciente;
 use App\AnamneseGigantePsicopedaNeuroPsicomotoPt3;
-use App\Profissional;
 use Faker\Generator as Faker;
-use Illuminate\Support\Str;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +14,9 @@ use Illuminate\Support\Str;
 | your application. Factories provide a convenient way to generate new
 | model instances for testing / seeding your application's database.
 |
-*/
+ */
 
-$factory->define(AnamneseGigantePsicopedaNeuroPsicomotoPt3::class, function (Faker $faker),  {
+$factory->define(AnamneseGigantePsicopedaNeuroPsicomotoPt3::class, function (Faker $faker) {
     return [
         'id_tp' => 1,
         'tem_horarios' => 1,
@@ -89,5 +86,5 @@ $factory->define(AnamneseGigantePsicopedaNeuroPsicomotoPt3::class, function (Fak
         'com_que_frequencia_manipula_brinquedos_e_objetos' => '9',
         'ansioso_no_processo_de_mudanca_de_rotina_se_sim_voce_lembra' => 'asfuasufoahsufasf',
 
-        ];
-    });
+    ];
+});
