@@ -18,6 +18,8 @@ class LoginPacienteTest extends TestCase {
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638236 */
+    /* TA_01 */
     public function pacientePodeLogarComDadosCorretos() {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
@@ -34,6 +36,8 @@ class LoginPacienteTest extends TestCase {
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638236 */
+    /* TA_03 */
     public function pacienteNaoPodeLogarComSenhaIncorreta() {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt('123123123'),
@@ -53,6 +57,8 @@ class LoginPacienteTest extends TestCase {
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638236 */
+    /* TA_02 */
     public function pacienteNaoPodeLogarComloginIncorreto() {
 
         $login_t = 'carlosaajunio@gmail.com' . Carbon::now()->toString();
