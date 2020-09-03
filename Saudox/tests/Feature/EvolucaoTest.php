@@ -121,6 +121,8 @@ class EvolucaoTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638546 */
+    /* TA_01 */
     public function pacientePodeVerPaginaEvolucaoPacienteSeEstiverLogado() {
 
         $paciente = factory(Paciente::class)->create([
@@ -141,6 +143,8 @@ class EvolucaoTest extends TestCase {
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638546 */
+    /* TA_01 */
     public function pacientePodeVerEvolucaoJudoPacienteSeEstiverLogado() {
 
         $paciente = factory(Paciente::class)->create([
@@ -165,6 +169,8 @@ class EvolucaoTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638546 */
+    /* TA_01 */
     public function pacientePodeVerEvolucaoPsicologiaPacienteSeEstiverLogado() {
 
         $paciente = factory(Paciente::class)->create([
@@ -189,6 +195,8 @@ class EvolucaoTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638546 */
+    /* TA_01 */
     public function pacientePodeVerEvolucaoFonoaudiologicaPacienteSeEstiverLogado() {
 
         $paciente = factory(Paciente::class)->create([
@@ -213,6 +221,8 @@ class EvolucaoTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638546 */
+    /* TA_01 */
     public function pacientePodeVerEvolucaoTerapiaOcupacionalPacienteSeEstiverLogado() {
 
         $paciente = factory(Paciente::class)->create([
@@ -238,6 +248,8 @@ class EvolucaoTest extends TestCase {
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638546 */
+    /* TA_01 */
     public function pacienteNaoPodeVerEvolucaoJudoPacienteSeNaoEstiverLogado() {
 
         $paciente = factory(Paciente::class)->create([
@@ -264,6 +276,8 @@ class EvolucaoTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638546 */
+    /* TA_01 */
     public function pacienteNaoPodeVerEvolucaoPsicologiaPacienteSeNaoEstiverLogado() {
 
         $paciente = factory(Paciente::class)->create([
@@ -290,6 +304,8 @@ class EvolucaoTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638546 */
+    /* TA_01 */
     public function pacienteNaoPodeVerEvolucaoTerapiaOcupacionalPacienteSeNaoEstiverLogado() {
 
         $paciente = factory(Paciente::class)->create([
@@ -318,6 +334,8 @@ class EvolucaoTest extends TestCase {
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638546 */
+    /* TA_01 */
     public function pacienteNaoPodeVerEvolucaoFonoaudiologiaPacienteSeNaoEstiverLogado() {
 
         $paciente = factory(Paciente::class)->create([
@@ -344,6 +362,8 @@ class EvolucaoTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638546 */
+    /* TA_01 */
     public function pacienteNaoPodeVerPaginaEvolucaoPacienteSeNaoEstiverLogado() {
 
         $paciente = factory(Paciente::class)->create([
@@ -708,6 +728,8 @@ class EvolucaoTest extends TestCase {
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638546 */
+    /* TA_01 */
     public function pacienteNaoPodeVerEvolucaoJudoQueNaoExiste() {
 
         $paciente = factory(Paciente::class)->create([
@@ -727,6 +749,8 @@ class EvolucaoTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638546 */
+    /* TA_01 */
     public function pacienteNaoPodeVerEvolucaoPsicologiaQueNaoExiste() {
 
         $paciente = factory(Paciente::class)->create([
@@ -746,6 +770,8 @@ class EvolucaoTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638546 */
+    /* TA_01 */
     public function pacienteNaoPodeVerEvolucaoTerapiaOcupacionalQueNaoExiste() {
 
         $paciente = factory(Paciente::class)->create([
@@ -767,6 +793,8 @@ class EvolucaoTest extends TestCase {
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638546 */
+    /* TA_01 */
     public function pacienteNaoPodeVerEvolucaoFonoaudiologiaQueNaoExiste() {
 
         $paciente = factory(Paciente::class)->create([
