@@ -81,6 +81,8 @@ class LoginPacienteTest extends TestCase {
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174639028 */
+    /* TA_01 */
     public function pacientePodeFazerLogout() {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
