@@ -57,6 +57,8 @@ class AvaliacaoTest extends TestCase {
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174639133 */
+    /* TA_02 */
     public function funcionarioPermitidoPodeAcessarAvaliacaoPacienteExistente() {
         $func = factory(Profissional::class)->create([
             'password' => bcrypt($password = '123123123'),
@@ -81,6 +83,8 @@ class AvaliacaoTest extends TestCase {
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174639133 */
+    /* TA_02 */
     public function funcionarioPermitidoNaoPodeAcessarAvaliacaoPacienteInexistente() {
         $func = factory(Profissional::class)->create([
             'password' => bcrypt($password = '123123123'),
@@ -100,6 +104,8 @@ class AvaliacaoTest extends TestCase {
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174639133 */
+    /* TA_02 */
     public function funcionarioNaoAutorizadoNaoPodeAcessarAvaliacaoPacienteExistente() {
 
        $func = $this->funcionario;
@@ -122,6 +128,8 @@ class AvaliacaoTest extends TestCase {
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638552 */
+    /* TA_01 */
     public function pacientePodeVerPaginaAvalicaoPacienteSeEstiverLogado() {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
@@ -141,6 +149,8 @@ class AvaliacaoTest extends TestCase {
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638552 */
+    /* TA_01 */
     public function pacientePodeVerAvalicaoJudoPacienteSeEstiverLogado() {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
@@ -165,6 +175,8 @@ class AvaliacaoTest extends TestCase {
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638552 */
+    /* TA_01 */
     public function pacientePodeVerAvalicaoPsicologiaPacienteSeEstiverLogado() {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
@@ -189,6 +201,8 @@ class AvaliacaoTest extends TestCase {
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638552 */
+    /* TA_01 */
     public function pacientePodeVerAvalicaoFonoaudiologicaPacienteSeEstiverLogado() {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
@@ -213,6 +227,8 @@ class AvaliacaoTest extends TestCase {
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638552 */
+    /* TA_01 */
     public function pacientePodeVerAvalicaoTerapiaOcupacionalPacienteSeEstiverLogado() {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
@@ -237,6 +253,8 @@ class AvaliacaoTest extends TestCase {
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638552 */
+    /* TA_01 */
     public function pacienteNaoPodeVerAvalicaoJudoPacienteSeNaoEstiverLogado() {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
@@ -263,6 +281,8 @@ class AvaliacaoTest extends TestCase {
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638552 */
+    /* TA_01 */
     public function pacienteNaoPodeVerAvalicaoPsicologiaPacienteSeNaoEstiverLogado() {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
@@ -289,6 +309,8 @@ class AvaliacaoTest extends TestCase {
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638552 */
+    /* TA_01 */
     public function pacienteNaoPodeVerAvalicaoTerapiaOcupacionalPacienteSeNaoEstiverLogado() {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
@@ -315,6 +337,8 @@ class AvaliacaoTest extends TestCase {
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638552 */
+    /* TA_01 */
     public function pacienteNaoPodeVerAvalicaoFonoaudiologiaPacienteSeNaoEstiverLogado() {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
@@ -341,6 +365,8 @@ class AvaliacaoTest extends TestCase {
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638552 */
+    /* TA_01 */
     public function pacienteNaoPodeVerPaginaAvalicaoPacienteSeNaoEstiverLogado() {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
