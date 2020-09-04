@@ -563,6 +563,180 @@ th{
   display: none;
 }
 
+.perfil-prof{
+  width: 1215px;
+  height: 600px; /* Valor da Altura */
+  margin-top: 100px;
+  margin-left: 200px;
+  color: white;
+  background-color: #424242;
+  border-style: solid;
+  border-color: #FFCC33;
+}
 
+.pessoal{
+  text-align: center;
+  color: white;
+  margin-left: -100px;
+}
+
+.marker-label{
+  margin-left: 100px;
+  color: #FFCC33;
+}
+
+.lbinfo-static{
+  margin-left: 100px;
+  font-size: 20px;
+}
+
+.lbinfo-static-extra{
+  font-size: 20px;
+  margin-left: 160px;
+}
+
+.lbinfo-ntstatic{
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+
+.profissoes-table{
+  color: white;
+  font-size: 20px;
+  margin-left: 100px;
+}
+
+.profissoes-table-wrapper{
+  height: 100px;
+  width: 350px;
+  max-width: 400px;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.profissoes-table-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.descricao{
+  height: 100px;
+  width: 600px;
+  margin-left: 500px;
+  margin-top: -160px;
+}
+
+.descricao-wrapper{
+  max-width: 500px;
+  max-height: 150px;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.descricao-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.marker-label-phone{
+  color: #FFCC33;
+}
+
+.perfil-prof-phone{
+  margin-top: 80px;
+  margin-left: 7px;
+  color: white;
+  background-color: 424242;
+  border-style: solid;
+  border-color: #FFCC33;
+  max-width: 96%;
+  height: 135%;
+}
+
+.info-pessoal-phone{
+  margin-left: 5px;
+}
+
+.info-pessoal-phone-prof{
+  margin-left: 20px;
+}
+
+.lbinfo-static-phone{
+  margin-top: -10px;
+  font-size: 10px;
+}
+
+.lbinfo-ntstatic-phone{
+  margin-top: -10px;
+  font-size: 10px;
+}
+
+.incomplete-phone{
+  margin-top: 40px;
+}
+
+.complete-phone{
+  margin-left: 40%;
+  margin-top: -164px;
+}
+
+.contato-phone{
+  margin-left: 20px;
+}
+
+.complete-phone-contato{
+  margin-left: 40%;
+  margin-top: -75px;
+}
+
+.profissoes-phone{
+  margin-left: 20px;
+
+}
+
+.profissoes-table-phone{
+  color: white;
+  font-size: 12px;
+
+}
+
+.profissoes-table-wrapper-phone{
+  height: 10%;
+  width: 50%;
+  max-width: 50%;
+  margin-top: -3%;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.profissoes-table-wrapper-phone::-webkit-scrollbar {
+  display: none;
+}
+
+.tbcell-profissoes-phone{
+  font-weight: 200px;
+}
+
+.center-phone{
+  margin-left: 10%;
+}
+
+.descricao-phone{
+  margin-left: 20px;
+}
+
+.descricao-wrapper-phone{
+  max-width: 80%;
+  max-height: 150px;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.descricao-wrapper-phone::-webkit-scrollbar {
+  display: none;
+}
 
 </style>
