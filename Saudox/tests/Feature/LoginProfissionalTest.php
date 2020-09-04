@@ -16,6 +16,8 @@ class LoginProfissionalTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638091 */
+    /* TA_01 */
     public function funcionarioPodeLogarComDadosCorretos() {
         $funcionario = factory(Profissional::class)->create([
             'password' => bcrypt($password = '123123123'),
@@ -31,6 +33,8 @@ class LoginProfissionalTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638091 */
+    /* TA_03 */
     public function funcionarioNaoPodeLogarComSenhaIncorreta() {
         $funcionario = factory(Profissional::class)->create([
             'password' => bcrypt('123123123'),
@@ -50,6 +54,8 @@ class LoginProfissionalTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638091 */
+    /* TA_02 */
     public function funcionarioNaoPodeLogarComloginIncorreto() {
 
         $login_t = 'carlosaajunio@gmail.com' . Carbon::now()->toString();
