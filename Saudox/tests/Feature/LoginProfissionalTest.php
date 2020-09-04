@@ -72,6 +72,8 @@ class LoginProfissionalTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638207 */
+    /* TA_01 */
     public function funcionarioPodeFazerLogout() {
         $funcionario = factory(Profissional::class)->create([
             'password' => bcrypt($password = '123123123'),
