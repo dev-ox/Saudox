@@ -152,6 +152,8 @@ class LoginProfissionalTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638204 */
+    /* TA_01 */
     public function funcionarioPodeVerPerfil() {
         $funcionario = factory(Profissional::class)->create([
             'password' => bcrypt($password = '123123123'),
@@ -170,6 +172,8 @@ class LoginProfissionalTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638204 */
+    /* TA_01 */
     public function funcionarioNaoPodeVerPerfilSeNaoEstiverLogado() {
         $funcionario = factory(Profissional::class)->create([
             'password' => bcrypt($password = '123123123'),
