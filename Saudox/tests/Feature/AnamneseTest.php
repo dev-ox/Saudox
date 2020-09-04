@@ -58,7 +58,8 @@ class AnamneseTest extends TestCase {
     }
 
     /** @test **/
-
+    /* url: https://www.pivotaltracker.com/story/show/174639150 */
+    /* TA_02 */
     public function funcionarioPermitidoPodeAcessarAnamnesePacienteExistente() {
 
        $func = factory(Profissional::class)->create([
@@ -84,6 +85,8 @@ class AnamneseTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174639150 */
+    /* TA_02 */
     public function funcionarioPermitidoNaoPodeAcessarAnamnesePacienteInexistente() {
         $func = factory(Profissional::class)->create([
             'password' => bcrypt($password = '123123123'),
@@ -100,6 +103,8 @@ class AnamneseTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174639150 */
+    /* TA_02 */
     public function funcionarioNaoAutorizadoNaoPodeAcessarAnamnesePacienteExistente() {
        $func = $this->funcionario;
 
