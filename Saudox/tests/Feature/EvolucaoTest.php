@@ -55,6 +55,8 @@ class EvolucaoTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174639115 */
+    /* TA_02 */
     public function funcionarioPermitidoPodeAcessarEvolucaoPacienteExistente() {
 
         $func = factory(Profissional::class)->create([
@@ -62,7 +64,7 @@ class EvolucaoTest extends TestCase {
             'profissao' => 'Administrador',
         ]);
 
-       $this->post(route("profissional.login"), [
+       $resposta = $this->post(route("profissional.login"), [
             'login' => $func->login,
             'password' => $password,
        ]);
@@ -79,6 +81,8 @@ class EvolucaoTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174639115 */
+    /* TA_02 */
     public function funcionarioPermitidoNaoPodeAcessarEvolucaoPacienteInexistente() {
 
         $func = factory(Profissional::class)->create([
@@ -99,12 +103,14 @@ class EvolucaoTest extends TestCase {
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174639115 */
+    /* TA_02 */
     public function funcionarioNaoAutorizadoNaoPodeAcessarEvolucaoPacienteExistente() {
 
 
        $func = $this->funcionario;
 
-       $this->post(route("profissional.login"), [
+       $res = $this->post(route("profissional.login"), [
             'login' => $func->login,
             'password' => $func->password,
        ]);
@@ -407,7 +413,7 @@ class EvolucaoTest extends TestCase {
 
         $evolucao_judo = factory(EvolucaoJudo::class)->create([
             'id_paciente' => $paciente->id,
-            'id_profissional' => $this->$funcN->id,
+            'id_profissional' => $this->funcN->id,
         ]);
 
         $this->assertCount(1, EvolucaoJudo::all());
@@ -449,7 +455,7 @@ class EvolucaoTest extends TestCase {
 
         $evolucao_psicologica = factory(EvolucaoPsicologica::class)->create([
             'id_paciente' => $paciente->id,
-            'id_profissional' => $this->$funcN->id,
+            'id_profissional' => $this->funcN->id,
         ]);
 
         $this->assertCount(1, EvolucaoPsicologica::all());
@@ -491,7 +497,7 @@ class EvolucaoTest extends TestCase {
 
         $evolucao_fonoaudiologica = factory(EvolucaoFonoaudiologia::class)->create([
             'id_paciente' => $paciente->id,
-            'id_profissional' => $this->$funcN->id,
+            'id_profissional' => $this->funcN->id,
         ]);
 
         $this->assertCount(1, EvolucaoFonoaudiologia::all());
@@ -533,7 +539,7 @@ class EvolucaoTest extends TestCase {
 
         $evolucao_to = factory(EvolucaoTerapiaOcupacional::class)->create([
             'id_paciente' => $paciente->id,
-            'id_profissional' => $this->$funcN->id,
+            'id_profissional' => $this->funcN->id,
         ]);
 
         $this->assertCount(1, EvolucaoTerapiaOcupacional::all());
@@ -576,7 +582,7 @@ class EvolucaoTest extends TestCase {
 
         $evolucao_judo = factory(EvolucaoJudo::class)->create([
             'id_paciente' => $paciente->id,
-            'id_profissional' => $this->$funcN->id,
+            'id_profissional' => $this->funcN->id,
         ]);
 
         $this->assertCount(1, EvolucaoJudo::all());
@@ -620,7 +626,7 @@ class EvolucaoTest extends TestCase {
 
         $evolucao_psicologica = factory(EvolucaoPsicologica::class)->create([
             'id_paciente' => $paciente->id,
-            'id_profissional' => $this->$funcN->id,
+            'id_profissional' => $this->funcN->id,
         ]);
 
         $this->assertCount(1, EvolucaoPsicologica::all());
@@ -663,7 +669,7 @@ class EvolucaoTest extends TestCase {
 
         $evolucao_fonoaudiologica = factory(EvolucaoFonoaudiologia::class)->create([
             'id_paciente' => $paciente->id,
-            'id_profissional' => $this->$funcN->id,
+            'id_profissional' => $this->funcN->id,
         ]);
 
         $this->assertCount(1, EvolucaoFonoaudiologia::all());
@@ -705,7 +711,7 @@ class EvolucaoTest extends TestCase {
 
         $evolucao_to = factory(EvolucaoTerapiaOcupacional::class)->create([
             'id_paciente' => $paciente->id,
-            'id_profissional' => $this->$funcN->id,
+            'id_profissional' => $this->funcN->id,
         ]);
 
         $this->assertCount(1, EvolucaoTerapiaOcupacional::all());
