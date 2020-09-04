@@ -57,6 +57,8 @@ class AvaliacaoTest extends TestCase {
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174639133 */
+    /* TA_02 */
     public function funcionarioPermitidoPodeAcessarAvaliacaoPacienteExistente() {
         $func = factory(Profissional::class)->create([
             'password' => bcrypt($password = '123123123'),
@@ -81,6 +83,8 @@ class AvaliacaoTest extends TestCase {
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174639133 */
+    /* TA_02 */
     public function funcionarioPermitidoNaoPodeAcessarAvaliacaoPacienteInexistente() {
         $func = factory(Profissional::class)->create([
             'password' => bcrypt($password = '123123123'),
@@ -100,6 +104,8 @@ class AvaliacaoTest extends TestCase {
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174639133 */
+    /* TA_02 */
     public function funcionarioNaoAutorizadoNaoPodeAcessarAvaliacaoPacienteExistente() {
 
        $func = $this->funcionario;
