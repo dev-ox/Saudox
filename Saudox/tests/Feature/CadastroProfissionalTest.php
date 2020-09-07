@@ -57,6 +57,7 @@ class CadastroProfissionalTest extends TestCase {
 // TODO: Alterar as rotas de criação de funcionario
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638563 */
     public function funcionarioPodeSerAdicionado() {
 
         $this->withoutExceptionHandling();
@@ -73,6 +74,8 @@ class CadastroProfissionalTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638563 */
+    /* TA_03 */
     public function nomeNaoPodeFicarEmBranco() {
 
         $this->withoutExceptionHandling();
@@ -87,6 +90,8 @@ class CadastroProfissionalTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638563 */
+    /* TA_01 */
     public function cpfNaoPodeFicarEmBranco() {
 
         $this->withoutExceptionHandling();
@@ -102,6 +107,8 @@ class CadastroProfissionalTest extends TestCase {
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638563 */
+    /* TA_01 */
     public function cpfNaoPodeTerLetras() {
 
         $this->withoutExceptionHandling();
@@ -116,6 +123,8 @@ class CadastroProfissionalTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638563 */
+    /* TA_01 */
     public function cpfNaoPodeSerMenorQueOnzeNumeros() {
 
         $this->withoutExceptionHandling();
@@ -130,6 +139,8 @@ class CadastroProfissionalTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638563 */
+    /* TA_01 */
     public function cpfNaoPodeSerMaiorQueOnzeNumeros() {
 
         $this->withoutExceptionHandling();
@@ -142,10 +153,14 @@ class CadastroProfissionalTest extends TestCase {
         $this->assertCount(1, Profissional::all());
     }
 
+    //TODO: fazer validacao do cpf (modulo 11)
+
 
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638563 */
+    /* TA_03 */
     public function rgNaoPodeFicarEmBranco() {
 
         $this->withoutExceptionHandling();
@@ -160,6 +175,8 @@ class CadastroProfissionalTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638563 */
+    /* TA_04 */
     public function rgNaoPodeTerLetras() {
 
         $this->withoutExceptionHandling();
@@ -174,6 +191,8 @@ class CadastroProfissionalTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638563 */
+    /* TA_04 */
     public function rgNaoPodeTerMenosQueOitoNumeros() {
 
         $this->withoutExceptionHandling();
@@ -188,6 +207,8 @@ class CadastroProfissionalTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638563 */
+    /* TA_04 */
     public function rgNaoPodeTerMaisQueOitoNumeros() {
 
         $this->withoutExceptionHandling();
@@ -203,6 +224,8 @@ class CadastroProfissionalTest extends TestCase {
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638563 */
+    /* TA_03 */
     public function statusNaoPodeFicarEmBranco() {
 
         $this->withoutExceptionHandling();
@@ -217,6 +240,8 @@ class CadastroProfissionalTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638563 */
+    /* TA_04 */
     public function statusPrecisaSerValido() {
 
         $this->withoutExceptionHandling();
@@ -233,6 +258,8 @@ class CadastroProfissionalTest extends TestCase {
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638563 */
+    /* TA_03 */
     public function loginNaoPodeFicarEmBranco() {
 
         $this->withoutExceptionHandling();
@@ -248,6 +275,8 @@ class CadastroProfissionalTest extends TestCase {
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638563 */
+    /* TA_03 */
     public function passwordNaoPodeFicarEmBranco() {
 
         $this->withoutExceptionHandling();
@@ -262,6 +291,8 @@ class CadastroProfissionalTest extends TestCase {
    }
 
    /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638563 */
+    /* TA_02 */
    public function passwordNaoPodeTerPoucosCaracteres() {
 
        $this->withoutExceptionHandling();
@@ -276,6 +307,8 @@ class CadastroProfissionalTest extends TestCase {
    }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638563 */
+    /* TA_03 */
     public function profissaoNaoPodeFicarEmBranco() {
 
         $this->withoutExceptionHandling();
@@ -290,6 +323,8 @@ class CadastroProfissionalTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638563 */
+    /* TA_03 */
     public function enderecoNaoPodeFicarEmBranco() {
 
         $this->withoutExceptionHandling();
@@ -305,6 +340,8 @@ class CadastroProfissionalTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638563 */
+    /* TA_04 */
     public function enderecoPrecisaExistir() {
 
         $this->withoutExceptionHandling();
@@ -321,6 +358,8 @@ class CadastroProfissionalTest extends TestCase {
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638563 */
+    /* TA_03 */
     public function telefoneNaoPodeFicarEmBranco() {
 
         $this->withoutExceptionHandling();
@@ -335,6 +374,8 @@ class CadastroProfissionalTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638563 */
+    /* TA_04 */
     public function telefoneNaoPodeTerLetras() {
 
         $this->withoutExceptionHandling();
@@ -349,6 +390,8 @@ class CadastroProfissionalTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638563 */
+    /* TA_04 */
     public function telefoneNaoPodeTerPoucosNumeros() {
 
         $this->withoutExceptionHandling();
@@ -363,6 +406,8 @@ class CadastroProfissionalTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638563 */
+    /* TA_04 */
     public function telefoneNaoPodeTerMuitosNumeros() {
 
         $this->withoutExceptionHandling();
@@ -377,6 +422,8 @@ class CadastroProfissionalTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638563 */
+    /* TA_04 */
     public function telefone2NaoPodeTerLetras() {
 
         $this->withoutExceptionHandling();
@@ -391,6 +438,8 @@ class CadastroProfissionalTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638563 */
+    /* TA_04 */
     public function telefone2NaoPodeTerPoucosNumeros() {
 
         $this->withoutExceptionHandling();
@@ -405,6 +454,8 @@ class CadastroProfissionalTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638563 */
+    /* TA_04 */
     public function telefone2NaoPodeTerMuitosNumeros() {
 
         $this->withoutExceptionHandling();
@@ -419,6 +470,8 @@ class CadastroProfissionalTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638563 */
+    /* TA_03 */
     public function emailNaoPodeFicarEmBranco() {
 
         $this->withoutExceptionHandling();
@@ -434,6 +487,8 @@ class CadastroProfissionalTest extends TestCase {
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638563 */
+    /* TA_04 */
     public function emailPrecisaTerFormatoCorreto() {
 
         $this->withoutExceptionHandling();
@@ -448,6 +503,8 @@ class CadastroProfissionalTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638563 */
+    /* TA_03 */
     public function nacionalidadeNaoPodeFicarEmBranco() {
 
         $this->withoutExceptionHandling();
@@ -462,6 +519,8 @@ class CadastroProfissionalTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638563 */
+    /* TA_04 */
     public function nacionalidadeNaoPodeTerNumero() {
 
         $this->withoutExceptionHandling();
@@ -478,6 +537,8 @@ class CadastroProfissionalTest extends TestCase {
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638563 */
+    /* TA_03 */
     public function estadoCivilNaoPodeFicarEmBranco() {
 
         $this->withoutExceptionHandling();
@@ -493,6 +554,8 @@ class CadastroProfissionalTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638563 */
+    /* TA_04 */
     public function estadoCivilPrecisaSerValido() {
 
         $this->withoutExceptionHandling();
@@ -509,6 +572,8 @@ class CadastroProfissionalTest extends TestCase {
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638563 */
+    /* TA_04 */
     public function conselhoNaoPodeTerMaisDeSeteNumeros() {
 
         $this->withoutExceptionHandling();
@@ -525,6 +590,8 @@ class CadastroProfissionalTest extends TestCase {
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638563 */
+    /* TA_04 */
     public function conselhoNaoPodeTerMenosQueQuatroNumeros() {
 
         $this->withoutExceptionHandling();
@@ -540,6 +607,8 @@ class CadastroProfissionalTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638563 */
+    /* TA_04 */
     public function conselhoNaoPodeTerLetra() {
 
         $this->withoutExceptionHandling();

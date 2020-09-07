@@ -14,11 +14,20 @@
 <body>
   <div class="container">
     <div class="prox">
+<<<<<<< HEAD
       <h3 class="clien">Próximo Cliente:</h3>
       <h3 class="infosprox-nome">Nome:</h3>
       <h3 class="infosprox-hora">Hora de Entrada:</h3>
       <h3 class="infosprox-saida">Hora de Saída:</h3>
       <h3 class="infosprox-local">Local de atendimento:</h3>
+=======
+      <h3 class="clien"> Próximo Cliente: </h3>
+      @if(count($agenda) > 0)
+      <label class="infosprox"> Nome: </label>
+      <label class="infosprox"> Hora de Entrada: </label>
+      <label class="infosprox"> Hora de Saída: </label>
+      <label class="infosprox"> Local de atendimento: </label>
+>>>>>>> 9bc2c8a304d07791dec4af0c2008974fc6365450
       <h4 class="tdclien">
       {{$agenda[0]->nome}}
 
@@ -45,10 +54,19 @@
     @else
       <a class="btn-paciente"  href={{route('register') }}>Registrar Cliente</a>
     @endif
+<<<<<<< HEAD
    </div>
 
    </div>
  </div>
+=======
+    </div>
+    @else
+    <h3 class="clien"> Não há agendamentos para você! </h3>
+    @endif
+    </div>
+  </div>
+>>>>>>> 9bc2c8a304d07791dec4af0c2008974fc6365450
 </body>
 
 <div class="agenda">
@@ -58,7 +76,7 @@
   <input id="pac" type="text" class="search-agenda" name="buscar">
   <a class="bt-search-agenda" href="/">buscar</a>
 </div>
-@if (count($agenda) > 0)
+@if(count($agenda) > 0)
 <div class="table-wrapper">
     <table class="ag table">
     <thead>
@@ -86,7 +104,7 @@
    </table>
 </div>
     @else
-            <p>Você não possui nenhum agendamento</p>
+            <h3 class="agnd"> Não há agendamentos para você! </h3>
     @endif
 </div>
 
@@ -117,7 +135,12 @@
 </div>
 
   <div class="prox-phone">
+<<<<<<< HEAD
     <h3 class="clien-phone">Próximo Cliente:</h3>
+=======
+    <h3 class="clien-phone"> Próximo Cliente: </h3>
+    @if(count($agenda) > 0)
+>>>>>>> 9bc2c8a304d07791dec4af0c2008974fc6365450
     <div class="info-phone-prox">
     <label class="infosprox-phone">Nome:</label>
     <h4 class="tdclien-phone">
@@ -154,7 +177,14 @@
   @else
     <a class="btn-paciente-phone"  href= {{route('register')}}>Registrar Cliente </a>
   @endif
+<<<<<<< HEAD
  </div>
+=======
+  </div>
+  @else
+  <h3 class="clien-phone"> Você não possui agendamentos </h3>
+  @endif
+>>>>>>> 9bc2c8a304d07791dec4af0c2008974fc6365450
 
  </div>
 
@@ -163,9 +193,15 @@
     <div class="search-agenda-home-phone">
       <label for="pac" class="search-label-agenda-phone">Buscar Paciente:</label>
       <input id="pac" type="text" class="search-agenda-phone" name="buscar">
+<<<<<<< HEAD
       <a class="bt-search-agenda-phone" href="/">buscar</a>
    </div>
     @if (count($agenda) > 0)
+=======
+      <a class="bt-search-agenda-phone" href="/"> buscar </a>
+    </div>
+    @if(count($agenda) > 0)
+>>>>>>> 9bc2c8a304d07791dec4af0c2008974fc6365450
     <div class="table-wrapper-phone">
         <table class="ag table-phone">
         <thead>
@@ -193,7 +229,7 @@
        </table>
    </div>
         @else
-                <p>Você não possui nenhum agendamento</p>
+                <h3 class="agnd-phone"> Você não possui agendamentos </h3>
         @endif
  </div>
 </div>
