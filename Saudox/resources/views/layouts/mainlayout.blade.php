@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-   @include('layouts\partials\nav')
+   @include('layouts.partials.nav')
  <head>
-   @include('layouts\partials\head')
+   @include('layouts.partials.head')
  </head>
  <body>
 @include('layouts.partials.body')
 @yield('content')
-@include('layouts\partials\footer')
+@include('layouts.partials.footer')
  </body>
 </html>

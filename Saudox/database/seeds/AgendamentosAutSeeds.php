@@ -25,9 +25,9 @@ class AgendamentosAutSeeds extends Seeder
           'data_saida' => Carbon::now()->format('Y-m-d H:i:s'),
           'local_de_atendimento' => Str::random(10),
           'recorrencia_do_agendamento' => rand(0,1) >= 0.5,
-          'quantidade_de_recorrencia' => rand(1,7),
           'tipo_da_recorrencia' => Str::random(10),
           'observacoes' => texto(5),
+          'status' => rand(0,1) >= 0.3,
         ]);
       }
     }
