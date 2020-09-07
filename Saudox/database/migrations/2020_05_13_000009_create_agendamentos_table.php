@@ -18,9 +18,9 @@ class CreateAgendamentosTable extends Migration
             $table->timestamps();
 
             $table->bigInteger('id_convenio')->unsigned();
+            $table->foreign('id_convenio')->references('id')->on('convenios');
             $table->bigInteger('id_profissional')->unsigned();
             $table->foreign('id_profissional')->references('id')->on('profissionals');
-            $table->foreign('id_convenio')->references('id')->on('convenios');
             $table->string('nome');
             $table->string('cpf')->unique();
             $table->date('data_nascimento_paciente');
@@ -31,10 +31,13 @@ class CreateAgendamentosTable extends Migration
             $table->dateTime('data_entrada');
             $table->dateTime('data_saida');
             $table->string('local_de_atendimento');
+            // Se é a primeira vez ou não
             $table->boolean('recorrencia_do_agendamento');
-            $table->unsignedInteger('quantidade_de_recorrencia')->nullable(true);
             $table->string('tipo_da_recorrencia')->nullable(true);
             $table->text('observacoes')->nullable(true);
+            // O agendamento está ativo ou desativo
+            // (caso tenha sido concluído, cancelado...)
+            $table->boolean('status');
 
         });
     }
