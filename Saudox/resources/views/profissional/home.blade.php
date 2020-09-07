@@ -15,6 +15,7 @@
   <div class="container">
     <div class="prox">
       <h3 class="clien"> Próximo Cliente: </h3>
+      @if(count($agenda) > 0)
       <label class="infosprox"> Nome: </label>
       <label class="infosprox"> Hora de Entrada: </label>
       <label class="infosprox"> Hora de Saída: </label>
@@ -41,12 +42,14 @@
   </h4>
     <div class="btpc">
     @if($prox_paciente)
-      <a class="btn-paciente" href=<?php route('paciente.perfil', ['id' => $prox_paciente->id]) ?>> Ver perfil </a>
+      <a class="btn-paciente" href={{route('paciente.perfil', ['id' => $prox_paciente->id]) }}> Ver perfil </a>
     @else
-      <a class="btn-paciente"  href=<?php route('register') ?>> Registrar Cliente  </a>
+      <a class="btn-paciente"  href={{route('register') }}> Registrar Cliente  </a>
     @endif
     </div>
-
+    @else
+    <h3 class="clien"> Não há agendamentos para você! </h3>
+    @endif
     </div>
   </div>
 </body>
@@ -58,7 +61,7 @@
   <input id="pac" type="text" class="search-agenda" name="buscar">
   <a class="bt-search-agenda" href="/"> buscar </a>
 </div>
-@if (count($agenda) > 0)
+@if(count($agenda) > 0)
 <div class="table-wrapper">
     <table class="ag table">
     <thead>
@@ -86,7 +89,7 @@
     </table>
 </div>
     @else
-            <p>Você não possui nenhum agendamento</p>
+            <h3 class="agnd"> Não há agendamentos para você! </h3>
     @endif
 </div>
 
@@ -95,7 +98,7 @@
 </div>
 <div class="adm-bt">
 @if(in_array('Admin', $profissoes))
-  <a class="btn-adm" href=<?php route('profissional.admin.dashboard') ?>> Ir para administração </a>
+  <a class="btn-adm" href={{route('profissional.admin.dashboard') }}> Ir para administração </a>
 @endif
 </div>
 </div>
@@ -111,13 +114,14 @@
   <div class="adm-bt-phone">
     <a class="btn-perfil-phone" href="/profissional/perfil"> Ver Perfil </a>
   @if(in_array('Admin', $profissoes))
-    <a class="btn-perfil-phone" href=<?php route('profissional.admin.dashboard') ?>> Ir para administração </a>
+    <a class="btn-perfil-phone" href={{ route('profissional.admin.dashboard') }}> Ir para administração </a>
   @endif
   </div>
 </div>
 
   <div class="prox-phone">
     <h3 class="clien-phone"> Próximo Cliente: </h3>
+    @if(count($agenda) > 0)
     <div class="info-phone-prox">
     <label class="infosprox-phone"> Nome: </label>
     <h4 class="tdclien-phone">
@@ -150,11 +154,14 @@
 
   <div class="btpc-phone">
   @if($prox_paciente)
-    <a class="btn-paciente-phone" href=<?php route('paciente.perfil', ['id' => $prox_paciente->id]) ?>> Ver perfil </a>
+    <a class="btn-paciente-phone" href= {{route('paciente.perfil', ['id' => $prox_paciente->id])}}> Ver perfil </a>
   @else
-    <a class="btn-paciente-phone"  href=<?php route('register') ?>> Registrar Cliente  </a>
+    <a class="btn-paciente-phone"  href= {{route('register')}}> Registrar Cliente  </a>
   @endif
   </div>
+  @else
+  <h3 class="clien-phone"> Você não possui agendamentos </h3>
+  @endif
 
   </div>
 
@@ -165,7 +172,7 @@
       <input id="pac" type="text" class="search-agenda-phone" name="buscar">
       <a class="bt-search-agenda-phone" href="/"> buscar </a>
     </div>
-    @if (count($agenda) > 0)
+    @if(count($agenda) > 0)
     <div class="table-wrapper-phone">
         <table class="ag table-phone">
         <thead>
@@ -193,7 +200,7 @@
         </table>
     </div>
         @else
-                <p>Você não possui nenhum agendamento</p>
+                <h3 class="agnd-phone"> Você não possui agendamentos </h3>
         @endif
   </div>
 </div>
