@@ -4,7 +4,19 @@
 .welcome{
   margin-top: 100px;
   margin-left: 10px;
-  width: 1515px;
+  width: 98.8%;
+  height: 100px;
+  text-align: center;
+  border-style: solid;
+  border-color: #FFCC33;
+  color: white;
+  background-color: 424242;
+}
+
+.welcome-adm{
+  margin-top: 100px;
+  margin-left: 10px;
+  width: 98.8%;
   height: 100px;
   text-align: center;
   border-style: solid;
@@ -19,23 +31,24 @@ h1 {
 
 #txt {
   margin-top: 38px;
-  margin-left: 1370px;
-  width: 140px;
+  margin-left: 90.6%;
+  width: 9.2%;
   text-align: center;
   padding-top: 100px;
   height: 150px;
   border-style: solid;
   border-color: #FFCC33;
   color: white;
-  background-color: 424242;
+  background-color: #424242;
+  font-size: 2.5vw;
 
 }
 
 .empresa{
-  width:200px;
-  height: 200px;
-  margin-left: 50px;
-  margin-top: -620px;
+  width: 15%;
+  height: auto;
+  margin-left: 2%;
+  margin-top: -635px;
   border-radius: 50%;
 }
 
