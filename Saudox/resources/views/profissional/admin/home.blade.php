@@ -11,7 +11,7 @@
 <div class="profissionais-adm">
 <h3>Profissionais:</h3>
 <div class="adm-page">
-  <a class="bt-new-adm" href= {{route('profissional.home')}}>Cadastrar Novo Profissional</a>
+  <a class="bt-new-adm" href= {{route('profissional.admin.cadastro')}}>Cadastrar Novo Profissional</a>
   <div class="search-part">
   <label for="prof" class="search-label">Buscar profissional:</label>
   <input id="prof" type="text" class="search" name="buscar">
