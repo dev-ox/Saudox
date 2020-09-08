@@ -6,7 +6,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class Profissional extends Authenticatable {
-	use Notifiable;
+    use Notifiable;
+
+    const Trabalhando = "Trabalhando";
+    const Demitido = "Demitido";
 
     /**
      * The attributes that are mass assignable.

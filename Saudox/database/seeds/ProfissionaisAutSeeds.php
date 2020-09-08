@@ -1,6 +1,10 @@
 <?php
 
+use App\Profissional;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class ProfissionaisAutSeeds extends Seeder
 {
@@ -11,11 +15,11 @@ class ProfissionaisAutSeeds extends Seeder
 
         //Gerando profissionais automaticamente
         for($i = 0; $i < $qtd_profissionals; $i++){
-          DB::table('profissionals')->insert([
+            DB::table('profissionals')->insert([
             'nome' => Str::random(10),
             'cpf' => (string)rand(10000000000,99999999999),
             'rg' => (string)rand(1000000,9999999),
-            'status' => rand(0,1) >= 0.5,
+            'status' => rand(0,1) >= 0.5 ? Profissional::Trabalhando : Profissional::Demitido,
             'login' => "ProfissionalLogin" . rand(1, 10000),
             'password' => Hash::make("123123123"),
             'profissao' => Str::random(20),
