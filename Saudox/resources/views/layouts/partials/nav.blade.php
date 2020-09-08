@@ -6,6 +6,7 @@
   position: fixed; /* Set the navbar to fixed position */
   top: 0; /* Position the navbar at the top of the page */
   width: 100%; /* Full width */
+  z-index: 5;
 }
 
 .topnav a.bt {
@@ -61,28 +62,6 @@
   margin-top: 10px;
 }
 
-
-@media screen and (max-width: 600px) {
-  .topnav a:not(:first-child) {display: none;}
-  .topnav a.icon {
-    display: block;
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive a.icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-}
-
 img{
   width:65px;
   height: 65px;
@@ -103,7 +82,7 @@ h2 {
 
 <div class="topnav">
   <a class="home" href="/">Home</a>
-  <a class="bt" href="/profissional/login">Login Profissional</a>
+  <a class="bt" href={{route('profissional.login')}}>Login Profissional</a>
   <a class="bt" href="/paciente/login">Login Paciente</a>
   <a class="navbar-brand" href="/">
         <div class="logo-image">

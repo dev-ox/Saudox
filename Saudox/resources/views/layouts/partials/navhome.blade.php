@@ -62,26 +62,7 @@
 }
 
 
-@media screen and (max-width: 600px) {
-  .topnav a:not(:first-child) {display: none;}
-  .topnav a.icon {
-    display: block;
-  }
-}
 
-@media screen and (max-width: 600px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive a.icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-}
 
 img{
   width:65px;
@@ -145,32 +126,47 @@ h2 {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+.desktop{
+  display: block;
+}
+
+.celular {
+  display: none;
+}
+
+
+@media screen and (max-width: 600px) {
+  .desktop {display: none !important;}
+  .celular{display: block;}
+}
+
+
 </style>
 
-
+<div class="desktop">
 <div class="topnav">
   <div class="dropdown">
     <button class="dropbtn"> Opções
       <i class="fa fa-caret-down"></i>
     </button>
     <div class="dropdown-content">
-      @if(Auth::guard('profissional')->check())
-          <a href="/profissional/logout">Sair</a>
-      @elseif(Auth::guard('paciente')->check())
-          <a href="/paciente/logout">Sair</a>
-      @endif
-      <a href="#">Acessibilidade</a>
-      <a href="#">Sobre</a>
       @if(Auth::guard('profissional')->check() && App\Profissional::find(Auth::id())->ehAdmin())
-          <a href="{{route('profissional.admin.cadastro')}}">Criar Profissional</a>
+          <a href={{route('profissional.admin.cadastro')}}>Criar Profissional</a>
+      @endif
+      @if(Auth::guard('profissional')->check())
+          <a href={{route('profissional.logout')}}>Sair</a>
+      @elseif(Auth::guard('paciente')->check())
+          <a href={{route('paciente.logout')}}>Sair</a>
       @endif
     </div>
   </div>
-  <a class="home" href="/profissional/home"> Home </a>
-  @if(Auth::guard('paciente')->check())
-      <a class="bt" href="/paciente/perfil">Perfil</a>
+   @if(Auth::guard('paciente')->check())
+      <a class="home" href={{route('paciente.home')}}> Home </a>
+      <a class="bt" href="/">Perfil</a>
   @elseif(Auth::guard('profissional')->check())
-      <a class="bt" href="/profissional/perfil">Perfil</a>
+      <a class="home" href={{route('profissional.home')}}> Home </a>
+      <a class="bt" href={{route('profissional.ver', ['id' => Auth::id()])}}>Perfil</a>
   @endif
   <a class="navbar-brand" href="/">
         <div class="logo-image">
@@ -180,14 +176,38 @@ h2 {
   <h2> SAUDOX </h2>
 
 </div>
+</div>
 
-<script>
-function myFunction() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
-</script>
+
+<div class="celular">
+    <div class="topnav">
+      <div class="dropdown">
+        <button class="dropbtn"> Opções
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          @if(Auth::guard('profissional')->check() && App\Profissional::find(Auth::id())->ehAdmin())
+              <a href="{{route('profissional.admin.cadastro')}}">Criar Profissional</a>
+          @endif
+          @if(Auth::guard('paciente')->check())
+              <a href={{route("paciente.home")}}> Home </a>
+              <a href="/">Perfil</a>
+              <a href={{route('paciente.logout')}}>Sair</a>
+          @elseif(Auth::guard('profissional')->check())
+              <a href={{route('profissional.home')}}> Home </a>
+              <a href={{route('profissional.ver', ['id' => Auth::id()]) }}>Perfil</a>
+              <a href={{route('profissional.logout')}}>Sair</a>
+          @endif
+        </div>
+      </div>
+
+      <a class="navbar-brand" href="/">
+            <div class="logo-image">
+                  <img src="https://avatars3.githubusercontent.com/u/64805526?s=400&u=e4188ff9af3c0927962a181f241fbee79c506f4d&v=4">
+            </div>
+      </a>
+      <h2> SAUDOX </h2>
+
+    </div>
+
+</div>
