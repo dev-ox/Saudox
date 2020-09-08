@@ -146,6 +146,11 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'profissoes' => 'profissões',
+        'telefone_1' => 'Telefone',
+        'cpf' => 'CPF',
+        'rg' => 'RG',
+    ],
 
 ];
