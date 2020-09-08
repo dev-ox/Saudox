@@ -1,8 +1,8 @@
 <style>
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,400i,700,700i&subset=greek-ext');
 body {
- background-color: #ffffff;
-	color:#000000;
+  background-color: #ffffff;
+  color:#000000;
   font-family: 'Oswald', sans-serif;
   margin:0;
   padding:0;
@@ -19,7 +19,7 @@ h3{
 }
 
 .prox{
-  width: 1360px;
+  width: 89%;
   height: 250px; /* Valor da Altura */
   margin-top: 5px;
   margin-left: 10px;
@@ -32,12 +32,12 @@ h3{
 .btn-paciente{
   display: block;
   width: 160px;
-  height: 40px;
+  height: 12%;
   background: #1C2934;
   padding: 5px;
   color: white;
-  margin-left: 350px;
-  margin-top: -10px;
+  margin-left: 26%;
+  margin-top: -1%;
   font-size: 20px;
   text-decoration: none;
   text-align: center;
@@ -45,40 +45,56 @@ h3{
   border-style: solid;
 }
 
-.infosprox{
-  margin: -200px;
+.infosprox-nome{
   font-size: 23px;
-  margin-left: 350px;
+  margin-left: 25.8%;
+}
+
+.infosprox-hora{
+  font-size: 23px;
+  margin-left: 40.7%;
+  margin-top: -58px;
+}
+
+.infosprox-saida{
+  font-size: 23px;
+  margin-left: 61.8%;
+  margin-top: -57px;
+}
+
+.infosprox-local{
+  font-size: 23px;
+  margin-left: 81.5%;
+  margin-top: -57px;
 }
 
 .clien{
   text-align: center;
-  margin-left: 150px;
   font-size: 23px;
 }
 
 .tdclien{
-  margin-left: 350px;
+  margin-left: 25.8%;
 }
 
 .tdclien-hora{
-  margin-left: 555px;
+  margin-left: 40.7%;
   margin-top: -43px;
 }
 
 .tdclien-datasaida{
-  margin-left: 838px;
+  margin-left: 61.8%;
   margin-top: -45px;
 }
 
 .tdclien-local{
-  margin-left: 1107px;
+  margin-left: 81.5%;
   margin-top: -45px;
 }
 
 .agenda{
   margin-left: 10px;
-  width: 1515px;
+  width: 98.8%;
   height: 380px;
   color: white;
   background-color: 424242;
@@ -93,17 +109,8 @@ h3{
   color: white;
   font-size: 18px;
   text-align: center;
-  width: 300px;
-  max-width: 300px;
-}
-
-.corsim:before {
-  content: '';
-  top: 0;
-  left: 0;
-  right: 50%;
-  bottom: 0;
-  background: red;
+  width: 20%;
+  max-width: 20%;
 }
 
 .agnd{
@@ -113,7 +120,6 @@ h3{
 }
 
 .ag{
-  margin-left: 200px;
   color: white;
 }
 
@@ -123,21 +129,20 @@ h3{
 
 .table-wrapper{
   height: 250px;
-  width: 1700px;
+  max-width: 130%;
   margin: 0px auto 0px auto;
+  margin-left: 0.5%;
   overflow: auto;
-  margin-left: -190px;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 
 .search-label-agenda{
-	font-size:30px;
-	transition: all 0.5s ease-in-out;
-  margin-left:0px;;
+  font-size:2.2vw;
+  transition: all 0.5s ease-in-out;
   float: left;
-  margin-left: -370px;
-  margin-top: -10px;
+  margin-left: -45%;
+  margin-top: -1%;
 
 }
 
@@ -145,18 +150,18 @@ h3{
   border:0;
   border-bottom:1px solid white;
   background:transparent;
-  width:70%;
+  width:55%;
   padding:8px 0 5px 0;
   font-size:16px;
   color: white;
-  margin-left: -190px;
+  margin-left: -20%;
   margin-bottom: 5px;
 }
 
 
 .search-agenda-home{
   margin-top: 20px;
-  margin-left: 700px;
+  margin-left: 47%;
   margin-bottom: 5px;
 }
 
@@ -175,7 +180,7 @@ h3{
   border-color: #FFCC33;
   border-style: solid;
   margin-top: -50px;
-  margin-left: 407px;
+  margin-left: 44%;
 }
 
 
@@ -315,7 +320,7 @@ th{
 .profissionais-adm{
   margin-top: 10px;
   margin-left: 10px;
-  width: 750px;
+  width: 49%;
   height: 600px;
   text-align: center;
   border-style: solid;
@@ -326,14 +331,23 @@ th{
 
 .pacientes-adm{
   margin-top: -605px;
-  margin-left: 775px;
-  width: 750px;
+  margin-left: 50.5%;
+  width: 49%;
   height: 600px;
   text-align: center;
   border-style: solid;
   border-color: #FFCC33;
   background-color: 424242;
   color: white;
+}
+
+.corsim-adm{
+  background-color: gray;
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  max-width: 80%;
+  width: 80%;
 }
 
 .list-adm{
@@ -385,10 +399,9 @@ th{
 
 .table-wrapper-adm{
   height: 400px;
-  width: 500px;
-  max-width: 500px;
+  width: 80%;
   margin: 0px auto 0px auto;
-  margin-left: 125px;
+  margin-left: 10%;
   overflow: auto;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -404,27 +417,32 @@ th{
 
 .bt-new-adm {
   display: block;
-  width: 150px;
+  width: 20%;
   height: 50px;
   background: #1C2934;
   padding: 5px;
   padding-top: 10px;
   padding-bottom: 10px;
   color: white;
-  font-size: 18px;
+  font-size: 1.2vw;
   text-decoration: none;
   text-align: center;
   border-color: #FFCC33;
   border-style: solid;
-  margin-left: 127px;
-  margin-bottom: 5px;
+  margin-left: -10%;
+  margin-top: 40px;
+}
+
+.search-part{
+  margin-top: -6%;
 }
 
 .search-label{
-	font-size:16px;
-	transition: all 0.5s ease-in-out;
+  font-size:16px;
+  transition: all 0.5s ease-in-out;
   float: left;
-  margin-left: 150px;
+  margin-left: 16%;
+  margin-top: 1%;
 
 }
 
@@ -432,18 +450,18 @@ th{
   border:0;
   border-bottom:1px solid white;
   background:transparent;
-  width:130px;
+  width: 25%;
   padding:8px 0 5px 0;
   font-size:16px;
   color: white;
-  margin-left: -190px;
+  margin-left: -35%;
   margin-bottom: 5px;
 }
 
 
 .adm-page{
   margin-top: -37px;
-  margin-left: 150px;
+  margin-left: 20%;
   margin-bottom: 5px;
 }
 
@@ -462,7 +480,7 @@ th{
   border-color: #FFCC33;
   border-style: solid;
   margin-top: -50px;
-  margin-left: 407px;
+  margin-left: 70%;
 }
 
 .profissionais-adm-phone{
