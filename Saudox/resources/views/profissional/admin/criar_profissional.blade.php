@@ -3,6 +3,8 @@
 
 
 <script>
+
+    // Permitir apenas numeros nos campos com essa função
     function validar_apenas_numeros(evt) {
         var theEvent = evt || window.event;
 
@@ -39,7 +41,7 @@
                 </div>
             @endif
 
-            <form method="post" action="{{ route('profissional.admin.salvar.cadastro') }}">
+            <form method="post" action="{{ route('profissional.admin.cadastro.salvar') }}">
 
                 <!-- CROSS Site Request Forgery Protection -->
                 @csrf
@@ -99,12 +101,16 @@
 </div>
 
 <script>
+    // Pega a altura do topnav e coloca como a altura do espaçador, pra o topnav não ficar em cima do resto da pagina.
     document.getElementsByClassName("espacador_mesma_altura_top_nav")[0].style.height = document.getElementsByClassName("topnav")[0].getBoundingClientRect().height * 1.5;
-document.addEventListener("wheel", function(event){
-    if(document.activeElement.type === "number" &&
-       document.activeElement.classList.contains("noscroll"))
-    {
-        document.activeElement.blur();
-    }
-});
+
+    // Desabilida o scroll do mouse nos input de tipo number
+    document.addEventListener("wheel", function(event){
+        if(document.activeElement.type === "number" &&
+            document.activeElement.classList.contains("noscroll"))
+        {
+            document.activeElement.blur();
+        }
+    });
+
 </script>
