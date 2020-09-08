@@ -161,6 +161,9 @@ h2 {
       @endif
       <a href="#">Acessibilidade</a>
       <a href="#">Sobre</a>
+      @if(Auth::guard('profissional')->check() && App\Profissional::find(Auth::id())->ehAdmin())
+          <a href="{{route('profissional.admin.cadastro')}}">Criar Profissional</a>
+      @endif
     </div>
   </div>
   <a class="home" href="/profissional/home"> Home </a>
