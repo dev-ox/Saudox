@@ -28,6 +28,17 @@ php artisan migrate:fresh --seed
 _Para ambos os casos, se suas tabelas já estejam atualizadas e limpas, não
 precisa usar a tag fresh no comando de migrate._
 
+### Configurando o Banco de Dados
+__Primeiro configura-se o .env, com o nome do usuário do banco, o nome do banco e a senha__
+
+```
+CREATE DATABASE saudox;
+CREATE USER 'saudox'@'localhost' IDENTIFIED BY 'saudox';
+GRANT ALL PRIVILEGES ON saudox.* TO 'saudox'@'localhost';
+FLUSH PRIVILEGES;
+quit
+```
+
 ### Links:
 - Quadro do trello: [link](https://trello.com/b/JBiMYFBe/desenvolvimento)
 
