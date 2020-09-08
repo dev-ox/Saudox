@@ -9,6 +9,7 @@ use App\Paciente;
 use App\Profissional;
 use App\Endereco;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller {
 
@@ -78,7 +79,7 @@ class AdminController extends Controller {
             $str_profissoes .= $profissao . ";";
         }
         $profissional->profissao = $str_profissoes;
-
+        $profissional->password = Hash::make($entrada['password']);
         $profissional->save();
 
         return redirect()->route('profissional.ver', $profissional->id);
