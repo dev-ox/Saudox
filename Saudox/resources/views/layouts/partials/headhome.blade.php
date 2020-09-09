@@ -3,7 +3,7 @@
 
 .welcome{
   margin-top: 100px;
-  margin-left: 10px;
+  margin-left: 0.3%;
   width: 98.8%;
   height: 100px;
   text-align: center;
@@ -15,7 +15,7 @@
 
 .welcome-adm{
   margin-top: 100px;
-  margin-left: 10px;
+  margin-left: 0.3%;
   width: 98.8%;
   height: 100px;
   text-align: center;
@@ -80,7 +80,7 @@ h1 {
   color: white;
   background-color: #424242;
   margin-top: 80px;
-  margin-left: 10px;
+  margin-left: 0.3%;
   max-width: 96%;
   font-size: 12px;
 }

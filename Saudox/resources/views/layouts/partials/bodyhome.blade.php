@@ -14,15 +14,11 @@ h3{
 
 }
 
-.desktop{
-  margin-left: -8px;
-}
-
 .prox{
   width: 89%;
   height: 250px; /* Valor da Altura */
   margin-top: 5px;
-  margin-left: 10px;
+  margin-left: 0.3%;
   color: white;
   background-color: 424242;
   border-style: solid;
@@ -93,7 +89,7 @@ h3{
 }
 
 .agenda{
-  margin-left: 10px;
+  margin-left: 0.3%;
   width: 98.8%;
   height: 380px;
   color: white;
@@ -235,7 +231,7 @@ th{
 
 .prox-phone{
   margin-top: 5px;
-  margin-left: 10px;
+  margin-left: 0.3%;
   color: white;
   background-color: 424242;
   border-style: solid;
@@ -254,7 +250,7 @@ th{
 
 .info-phone-prox{
   text-align: left;
-  margin-left: 10px;
+  margin-left: 0.3%;
 }
 
 .tdclien-phone{
@@ -285,7 +281,7 @@ th{
 
 .agenda-phone{
   text-align: center;
-  margin-left: 10px;
+  margin-left: 0.3%;
   max-width: 96%;
   color: white;
   background-color: 424242;
@@ -295,7 +291,7 @@ th{
 }
 
 .table-phone{
-  margin-left: 5px;
+  margin-left: 0.15%;
   font-size: 8px;
 }
 
@@ -319,7 +315,7 @@ th{
 
 .profissionais-adm{
   margin-top: 10px;
-  margin-left: 10px;
+  margin-left: 0.3%;
   width: 49%;
   height: 600px;
   text-align: center;
@@ -485,7 +481,7 @@ th{
 
 .profissionais-adm-phone{
   margin-top: 5px;
-  margin-left: 10px;
+  margin-left: 0.3%;
   color: white;
   background-color: 424242;
   border-style: solid;
@@ -563,7 +559,7 @@ th{
 
 .pacientes-adm-phone{
   margin-top: 5px;
-  margin-left: 10px;
+  margin-left: 0.3%;
   color: white;
   background-color: 424242;
   border-style: solid;
@@ -582,10 +578,10 @@ th{
 }
 
 .perfil-prof{
-  width: 1215px;
+  width: 85%;
   height: 600px; /* Valor da Altura */
   margin-top: 100px;
-  margin-left: 200px;
+  margin-left: 7%;
   color: white;
   background-color: #424242;
   border-style: solid;
@@ -650,7 +646,7 @@ th{
   max-height: 150px;
   overflow: auto;
   -ms-overflow-style: none;
-  scrollbar-width: none;
+  /* scrollbar-width: none; */
 }
 
 .descricao-wrapper::-webkit-scrollbar {
