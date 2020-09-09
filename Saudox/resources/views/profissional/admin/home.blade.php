@@ -44,7 +44,7 @@
 <div class="pacientes-adm">
 <h3>Pacientes:</h3>
 <div class="adm-page">
-  <a class="bt-new-adm" href= {{route('profissional.home')}}>Cadastrar Novo Paciente</a>
+  <a class="bt-new-adm" href= {{route('profissional.criar_paciente')}}>Cadastrar Novo Paciente</a>
   <div class="search-part">
   <label for="pac" class="search-label">Buscar paciente:</label>
   <input id="pac" type="text" class="search" name="buscar">
