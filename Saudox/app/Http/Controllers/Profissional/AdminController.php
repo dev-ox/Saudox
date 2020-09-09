@@ -48,7 +48,7 @@ class AdminController extends Controller {
         $profissional = Profissional::find($id_profissional);
 
         if(!$profissional) {
-            return redirect()->route('erro', ['msg_erro' => "Profissional inexistente..."]);
+            return view('erro', ['msg_erro' => "Profissional inexistente..."]);
         }
 
         return view('profissional/admin/editar_profissional', ['profissional' => $profissional]);
@@ -62,7 +62,7 @@ class AdminController extends Controller {
         $profissional = Profissional::find($entrada['id']);
 
         if(!$profissional) {
-            return redirect()->route('erro', ['msg_erro' => "Profissional inexistente..."]);
+            return view('erro', ['msg_erro' => "Profissional inexistente..."]);
         }
 
 
