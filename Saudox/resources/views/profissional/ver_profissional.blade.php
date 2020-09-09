@@ -6,6 +6,7 @@
 <div class="desktop">
   <div class="perfil-prof">
     <h1 class="pessoal"> Perfil de {{$profissional->nome}} </h1>
+    <h3 class="pessoal"> <a href="{{ route('profissional.admin.editar', $profissional->id) }}">Editar</a> </h3>
     <div class="info-pessoal prof">
       <h3 class="marker-label"> Informações Pessoais: </h3>
         <label class="lbinfo-static"> Nome: </label>

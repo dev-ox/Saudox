@@ -8,10 +8,17 @@ use Illuminate\Support\Facades\Validator;
 use App\Paciente;
 use App\Profissional;
 use App\Endereco;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller {
+
+    private $mensagens = [
+        'required' => 'O campo :attribute é obrigatório.',
+        'min' => 'O campo :attribute é deve ter no minimo :min caracteres.',
+        'max' => 'O campo :attribute é deve ter no máximo :max caracteres.',
+        'password.required' => 'A senha é obrigatória.',
+    ];
+
 
     public function adminHome() {
 
@@ -37,25 +44,76 @@ class AdminController extends Controller {
         return view('profissional/admin/criar_profissional');
     }
 
+    public function editarProfissional($id_profissional) {
+        $profissional = Profissional::find($id_profissional);
+
+        if(!$profissional) {
+            return redirect()->route('erro', ['msg_erro' => "Profissional inexistente..."]);
+        }
+
+        return view('profissional/admin/editar_profissional', ['profissional' => $profissional]);
+    }
+
+    public function salvarEditarProfissional(Request $request) {
+
+
+        $entrada = $request->all();
+
+        $profissional = Profissional::find($entrada['id']);
+
+        if(!$profissional) {
+            return redirect()->route('erro', ['msg_erro' => "Profissional inexistente..."]);
+        }
+
+
+        $validator_endereco = Validator::make($entrada, Endereco::$regras_validacao, $this->mensagens);
+        if ($validator_endereco->fails()) {
+            return redirect()->back()
+                             ->withErrors($validator_endereco)
+                             ->with(['profissional' => $profissional]);
+        }
+
+        $validator_profissional = Validator::make($entrada, Profissional::$regras_validacao, $this->mensagens);
+        if ($validator_profissional->fails()) {
+            return redirect()->back()
+                             ->withErrors($validator_profissional)
+                             ->with(['profissional' => $profissional]);
+        }
+
+
+        $endereco = Endereco::find($entrada['id_endereco']);
+        $endereco->fill($entrada);
+        $endereco->save();
+
+
+        $profissional->fill($entrada);
+        $profissional->status = Profissional::Trabalhando;
+
+        $profisssoes = $entrada['profissoes'];
+        $str_profissoes = "";
+        foreach($profisssoes as $profissao) {
+            $str_profissoes .= $profissao . ";";
+        }
+        $profissional->profissao = $str_profissoes;
+        $profissional->password = Hash::make($entrada['password']);
+        $profissional->save();
+
+        return redirect()->route('profissional.ver', $profissional->id);
+    }
+
     public function salvarCadastrarProfissional(Request $request) {
 
         $entrada = $request->all();
 
-        $messages = [
-            'required' => 'O campo :attribute é obrigatório.',
-            'min' => 'O campo :attribute é deve ter no minimo :min caracteres.',
-            'max' => 'O campo :attribute é deve ter no máximo :max caracteres.',
-            'password.required' => 'A senha é obrigatória.',
-        ];
 
-        $validator_endereco = Validator::make($entrada, Endereco::$regras_validacao, $messages);
+        $validator_endereco = Validator::make($entrada, Endereco::$regras_validacao, $this->mensagens);
         if ($validator_endereco->fails()) {
             return redirect()->back()
                              ->withErrors($validator_endereco)
                              ->withInput();
         }
 
-        $validator_profissional = Validator::make($entrada, Profissional::$regras_validacao, $messages);
+        $validator_profissional = Validator::make($entrada, Profissional::$regras_validacao, $this->mensagens);
         if ($validator_profissional->fails()) {
             return redirect()->back()
                              ->withErrors($validator_profissional)
