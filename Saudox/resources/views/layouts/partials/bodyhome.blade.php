@@ -433,6 +433,7 @@ th{
   margin-top: 40px;
 }
 
+
 .search-part{
   margin-top: -6%;
 }
@@ -755,6 +756,36 @@ th{
 
 .descricao-wrapper-phone::-webkit-scrollbar {
   display: none;
+}
+
+.hidden{
+    display: none;
+}
+
+#crianca_sabe_se_adotivo{
+    display: none;
+}
+
+#reacao_quando_descobriu_se_adotivo{
+    display: none;
+}
+
+#vive_com_quem_caso_pais_divorciados{
+ display: none;
+}
+
+#reacao_sobre_a_relacao_pais_caso_divorciados {
+  display: none;
+}
+
+.command_hidden_extra:checked ~ #reacao_quando_descobriu_se_adotivo{
+    display: block;
+}
+
+.command_hidden:checked ~ .hidden,
+.command_hidden:checked ~ #vive_com_quem_caso_pais_divorciados,
+.command_hidden:checked ~ #reacao_sobre_a_relacao_pais_caso_divorciados{
+  display: block;
 }
 
 </style>
