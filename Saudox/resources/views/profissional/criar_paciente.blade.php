@@ -90,10 +90,16 @@
                 <input value="{{ old('idade_pai') }}" class="noscroll" onkeypress='validar_apenas_numeros(event)' placeholder="Idade do Pai (Número)" type="number"  name="idade_pai" id="idade_pai">
                 <input value="{{ old('idade_mae') }}" class="noscroll" onkeypress='validar_apenas_numeros(event)' placeholder="Idade da Mae (Número)" type="number"  name="idade_mae" id="idade_mae">
                 <h3>Situação Atual</h3>
-                <label for="masculino">Casados</label>
+                <h3>Casados?</h3>
+                <label for="pais_sao_casados">Sim</label>
                 <input value="0" type="radio" name="pais_sao_casados" id="pais_sao_casados">
-                <label for="feminino">Divorciados</label>
-                <input value="1" class="command_hidden" type="radio" name="pais_sao_casados" id="pais_sao_casados">
+                <label for="pais_sao_casados">Não</label>
+                <input value="1" type="radio" name="pais_sao_casados" id="pais_sao_casados">
+                <h3>Divorciados?</h3>
+                <label for="pais_sao_divorciados">Sim</label>
+                <input value="0" class="command_hidden" type="radio" name="pais_sao_divorciados" id="pais_sao_divorciados">
+                <label for="pais_sao_casados">Não</label>
+                <input value="1" type="radio" name="pais_sao_divorciados" id="pais_sao_divorciados">
                 <input value="{{ old('reacao_sobre_a_relacao_pais_caso_divorciados') }}" placeholder="Reação a relação dos pais" type="text" name="reacao_sobre_a_relacao_pais_caso_divorciados" id="reacao_sobre_a_relacao_pais_caso_divorciados">
                 <input value="{{ old('vive_com_quem_caso_pais_divorciados') }}" placeholder="Vive com quem?" type="text" name="vive_com_quem_caso_pais_divorciados" id="vive_com_quem_caso_pais_divorciados">
 

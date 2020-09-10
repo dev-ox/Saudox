@@ -106,7 +106,6 @@ class ProfissionalController extends Controller {
 
         $paciente = new Paciente;
         $paciente->fill($entrada);
-        $paciente->pais_sao_divorciados = false;
         $paciente->id_endereco = $endereco->id;
 
         $paciente->password = Hash::make($entrada['password']);
