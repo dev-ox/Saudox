@@ -2,7 +2,6 @@
 @include('layouts.form_css')
 
 <script>
-
     // Permitir apenas numeros nos campos com essa função
     function validar_apenas_numeros(evt) {
         var theEvent = evt || window.event;
@@ -21,15 +20,14 @@
             if(theEvent.preventDefault) theEvent.preventDefault();
         }
     }
-
 </script>
+
 
 <div class="desktop">
     <div class="espacador_mesma_altura_top_nav"></div>
     <div style="text-align: center;">
         <div class = "caixa_form">
             <h4>Cadastro de Paciente</h4>
-
 
             @if ($errors->any())
                 <div class="alert alert-danger">
@@ -77,8 +75,6 @@
                 <input value="{{ old('reacao_quando_descobriu_se_adotivo') }}" placeholder="Reação ao descobrir que era adotado (Opcional)" type="text" name="reacao_quando_descobriu_se_adotivo" id="reacao_quando_descobriu_se_adotivo">
                 </div>
 
-
-
                 <hr class="hr_form">
                 <h3>Informações dos Pais</h3>
                 <input value="{{ old('nome_pai') }}" placeholder="Nome do Pai" type="text" name="nome_pai" id="nome_pai">
@@ -102,11 +98,6 @@
                 <input value="0" type="radio" name="pais_sao_divorciados" id="pais_sao_divorciados">
                 <input value="{{ old('reacao_sobre_a_relacao_pais_caso_divorciados') }}" placeholder="Reação a relação dos pais" type="text" name="reacao_sobre_a_relacao_pais_caso_divorciados" id="reacao_sobre_a_relacao_pais_caso_divorciados">
                 <input value="{{ old('vive_com_quem_caso_pais_divorciados') }}" placeholder="Vive com quem?" type="text" name="vive_com_quem_caso_pais_divorciados" id="vive_com_quem_caso_pais_divorciados">
-
-
-
-
-
 
                 <hr class="hr_form">
                 <h3>Endereço</h3>
@@ -137,5 +128,4 @@
             document.activeElement.blur();
         }
     });
-
 </script>

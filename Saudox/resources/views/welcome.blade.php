@@ -1,21 +1,20 @@
 @include('layouts/mainlayout');
 <meta content="width=device-width, initial-scale=1" name="viewport" />
+
 <style>
 .desktop{
-  display: block;
+    display: block;
 }
 
 .celular {
-  display: none;
+    display: none;
 }
-
 
 @media screen and (max-width: 600px) {
-  .desktop {display: none !important;}
-  .celular{display: block;}
+    .desktop {display: none !important;}
+    .celular{display: block;}
 }
 </style>
-
 
 
 <div class="desktop">

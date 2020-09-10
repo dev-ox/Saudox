@@ -29,8 +29,6 @@
     width: 55%;
 }
 
-
-
 .caixa_form input[type = "radio"], .caixa_form input[type = "checkbox"]{
     background: none;
     display: inline;
@@ -60,30 +58,26 @@
     background-color: #FFCC33;
 }
 
-
 .hr_form {
     width: 70%;
 }
-
 
 .checkbox_container {
     text-align: left;
     margin-left: 43%;
 }
 
-
-
 /* Tirar as setinha de numero */
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 /* Firefox */
 input[type=number] {
-  -moz-appearance: textfield;
+    -moz-appearance: textfield;
 }
 
 </style>

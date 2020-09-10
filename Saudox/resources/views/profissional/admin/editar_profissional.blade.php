@@ -3,7 +3,6 @@
 
 
 <script>
-
     // Permitir apenas numeros nos campos com essa função
     function validar_apenas_numeros(evt) {
         var theEvent = evt || window.event;
@@ -30,7 +29,6 @@
         <div class = "caixa_form">
             <h4>Editar o profissional {{ $profissional->nome }}</h4>
 
-
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul style="padding: 0px;">
@@ -42,13 +40,11 @@
             @endif
 
             <form method="post" action="{{ route('profissional.admin.editar.salvar') }}">
-
                 <!-- CROSS Site Request Forgery Protection -->
                 @csrf
 
                 <input value="{{ $profissional->id }}" type="hidden"  name="id" id="id">
                 <input value="{{ $profissional->endereco->id }}" type="hidden"  name="id_endereco" id="id_endereco">
-
 
                 <input value="{{ $profissional->login }}" placeholder="Login" type="text"  name="login" id="login">
                 <input placeholder="Senha" type="password"  name="password" id="password">
@@ -75,11 +71,8 @@
                 <hr class="hr_form">
                 <h3>Profissão</h3>
                 <div class="checkbox_container">
-
-
                     <input type="checkbox" id="admin" name="profissoes[]" value="admin" {{ in_array('admin', $profissional->getProfissoes()) ? "checked" : "" }}>
                     <label>Administrador</label><br>
-
 
                     <input type="checkbox" id="fonoaudiologo" name="profissoes[]" value="fonoaudiologo" {{ in_array('fonoaudiologo', $profissional->getProfissoes()) ? "checked" : "" }}>
                     <label>Fonoaudiólogo</label><br>
@@ -95,8 +88,6 @@
 
                     <input type="checkbox" id="psicopedagogo" name="profissoes[]" value="psicopedagogo" {{ in_array('psicopedagogo', $profissional->getProfissoes()) ? "checked" : "" }}>
                     <label>Psicopedagogo</label><br>
-
-
                 </div>
 
                 <hr class="hr_form">
@@ -135,5 +126,4 @@
             document.activeElement.blur();
         }
     });
-
 </script>
