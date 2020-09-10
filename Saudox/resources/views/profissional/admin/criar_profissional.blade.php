@@ -3,7 +3,6 @@
 
 
 <script>
-
     // Permitir apenas numeros nos campos com essa função
     function validar_apenas_numeros(evt) {
         var theEvent = evt || window.event;
@@ -31,7 +30,7 @@
             <h4>Cadastrar um profissional</h4>
 
 
-            @if ($errors->any())
+            @if($errors->any())
                 <div class="alert alert-danger">
                     <ul style="padding: 0px;">
                         @foreach ($errors->all() as $error)
@@ -42,7 +41,6 @@
             @endif
 
             <form method="post" action="{{ route('profissional.admin.cadastro.salvar') }}">
-
                 <!-- CROSS Site Request Forgery Protection -->
                 @csrf
 

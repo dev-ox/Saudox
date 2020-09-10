@@ -1,27 +1,25 @@
 <style>
 
 .desktop{
-  display: block;
+    display: block;
 }
 
 .celular {
-  display: none;
+    display: none;
 }
 
-
 @media screen and (max-width: 600px) {
-  .desktop {display: none !important;}
-  .celular{display: block;}
+    .desktop {display: none !important;}
+    .celular{display: block;}
 }
 </style>
 
-
 <head>
- @include('layouts.partials.navhome')
- @include('layouts.partials.headhome')
+    @include('layouts.partials.navhome')
+    @include('layouts.partials.headhome')
 </head>
 
 <body>
-@include('layouts.partials.bodyhome')
-@yield('content')
+    @include('layouts.partials.bodyhome')
+    @yield('content')
 </body>
