@@ -31,7 +31,7 @@
 }
 
 .topnav a:hover {
-  background-color: #800080;
+  background-color: red;
   color: black;
 }
 
