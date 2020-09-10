@@ -117,4 +117,119 @@ form{
   font-weight: bold;
 }
 
+.infos-clinica{
+  margin-left: 5%;
+  width: 90%;
+  height: 200px;
+  color: white;
+  border-style: solid;
+  border-color: #FFCC33;
+  background-color: #424242;
+  margin-top: 5%;
+}
+
+.slides{
+  width: 12%;
+  height: auto;
+  margin-left: 2%;
+  margin-top: 1%;
+  border-radius: 50%;
+}
+
+.empresa{
+  width: 20%;
+  height: auto;
+  margin-left: 75%;
+  margin-top: -22%;
+  border-radius: 50%;
+}
+
+.mais-infos-clinica{
+  width: 90%;
+  height: 400px;
+  margin-left: 5%;
+  margin-top: 1%;
+  color: white;
+  background-color: #424242;
+  border-style: groove;
+  border-color: #FFCC33;
+}
+
+.nome-clinica{
+ margin-left: 2%;
+
+}
+
+.texto_clinica{
+  color: white;
+  margin-left: 7%;
+  border-style: solid;
+  border-color: #FFCC33;
+  width: 65%;
+}
+
+.info-slide-atual{
+  margin-left: 20%;
+}
+
+
+.infos-clinica-phone{
+  margin-left: 5%;
+  width: 90%;
+  height: 400px;
+  color: white;
+  border-style: solid;
+  border-color: #FFCC33;
+  background-color: #424242;
+  margin-top: 20%;
+}
+
+.slides-phone{
+  width: 30%;
+  height: auto;
+  margin-left: 35%;
+  margin-top: 1%;
+}
+
+.empresa-phone{
+  width: 30%;
+  height: auto;
+  margin-left: 35%;
+  margin-top: 3%;
+  border-radius: 50%;
+}
+
+.mais-infos-clinica-phone{
+  width: 90%;
+  height: 600px;
+  margin-left: 5%;
+  margin-top: 1%;
+  color: white;
+  background-color: #424242;
+  border-style: groove;
+  border-color: #FFCC33;
+}
+
+.nome-clinica-phone{
+ margin-left: 2%;
+
+}
+
+.texto_clinica-phone{
+  color: white;
+  margin-left: 7%;
+  border-style: solid;
+  border-color: #FFCC33;
+  width: 85%;
+}
+
+.info-slide-atual-phone{
+  margin-left: 3%;
+}
+
+.title-part{
+    color: yellow;
+}
+
+
 </style>

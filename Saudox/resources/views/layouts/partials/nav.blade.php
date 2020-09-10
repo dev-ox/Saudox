@@ -32,7 +32,7 @@
 }
 
 .topnav a:hover {
-  background-color: #800080;
+  background-color: red;
   color: black;
 }
 
@@ -81,7 +81,11 @@ h2 {
 
 
 <div class="topnav">
+  @if(Request::route()->getName() == 'home')
+  <a class="bt" href="#Rodape">Contato</a>
+  @else
   <a class="home" href="/">Home</a>
+  @endif
   <a class="bt" href={{route('profissional.login')}}>Login Profissional</a>
   <a class="bt" href="/paciente/login">Login Paciente</a>
   <a class="navbar-brand" href="/">
