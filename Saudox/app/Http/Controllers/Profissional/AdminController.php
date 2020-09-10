@@ -87,7 +87,7 @@ class AdminController extends Controller {
 
 
         $profissional->fill($entrada);
-        $profissional->status = Profissional::Trabalhando;
+        $profissional->status = $entrada['status'];
 
         $profisssoes = $entrada['profissoes'];
         $str_profissoes = "";

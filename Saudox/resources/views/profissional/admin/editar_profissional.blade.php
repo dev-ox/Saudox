@@ -77,52 +77,23 @@
                 <div class="checkbox_container">
 
 
-                    @if(in_array('admin', $profissional->getProfissoes()))
-                        <input type="checkbox" id="admin" name="profissoes[]" value="admin" checked>
-                    @else
-                        <input type="checkbox" id="admin" name="profissoes[]" value="admin">
-                    @endif
+                    <input type="checkbox" id="admin" name="profissoes[]" value="admin" {{ in_array('admin', $profissional->getProfissoes()) ? "checked" : "" }}>
                     <label>Administrador</label><br>
 
 
-                    @if(in_array('fonoaudiologo', $profissional->getProfissoes()))
-                        <input type="checkbox" id="fonoaudiologo" name="profissoes[]" value="fonoaudiologo" checked>
-                    @else
-                        <input type="checkbox" id="fonoaudiologo" name="profissoes[]" value="fonoaudiologo">
-                    @endif
+                    <input type="checkbox" id="fonoaudiologo" name="profissoes[]" value="fonoaudiologo" {{ in_array('fonoaudiologo', $profissional->getProfissoes()) ? "checked" : "" }}>
                     <label>Fonoaudiólogo</label><br>
 
-
-                    @if(in_array('terapeuta_ocupacional', $profissional->getProfissoes()))
-                        <input type="checkbox" id="terapeuta_ocupacional" name="profissoes[]" value="terapeuta_ocupacional">
-                    @else
-                        <input type="checkbox" id="terapeuta_ocupacional" name="profissoes[]" value="terapeuta_ocupacional">
-                    @endif
+                    <input type="checkbox" id="terapeuta_ocupacional" name="profissoes[]" value="terapeuta_ocupacional" {{ in_array('terapeuta_ocupacional', $profissional->getProfissoes()) ? "checked" : "" }}>
                     <label>Terapeuta Ocupacional</label><br>
 
-
-                    @if(in_array('neuropsicologo', $profissional->getProfissoes()))
-                        <input type="checkbox" id="neuropsicologo" name="profissoes[]" value="neuropsicologo">
-                    @else
-                        <input type="checkbox" id="neuropsicologo" name="profissoes[]" value="neuropsicologo">
-                    @endif
+                    <input type="checkbox" id="neuropsicologo" name="profissoes[]" value="neuropsicologo" {{ in_array('neuropsicologo', $profissional->getProfissoes()) ? "checked" : "" }}>
                     <label>Neuropsicólogo</label><br>
 
-
-                    @if(in_array('psicologo', $profissional->getProfissoes()))
-                        <input type="checkbox" id="psicologo" name="profissoes[]" value="psicologo">
-                    @else
-                        <input type="checkbox" id="psicologo" name="profissoes[]" value="psicologo">
-                    @endif
+                    <input type="checkbox" id="psicologo" name="profissoes[]" value="psicologo" {{ in_array('psicologo', $profissional->getProfissoes()) ? "checked" : "" }}>
                     <label>Psicologo</label><br>
 
-
-                    <!-- TODO: fazer o checked como em estado_civil e status -->
-                    @if(in_array('psicopedagogo', $profissional->getProfissoes()))
-                        <input type="checkbox" id="psicopedagogo" name="profissoes[]" value="psicopedagogo">
-                    @else
-                        <input type="checkbox" id="psicopedagogo" name="profissoes[]" value="psicopedagogo">
-                    @endif
+                    <input type="checkbox" id="psicopedagogo" name="profissoes[]" value="psicopedagogo" {{ in_array('psicopedagogo', $profissional->getProfissoes()) ? "checked" : "" }}>
                     <label>Psicopedagogo</label><br>
 
 
@@ -131,18 +102,11 @@
                 <hr class="hr_form">
                 <h3>Estado Civil</h3>
                 <label for="solteiro">Solteiro</label>
-                @if($profissional->estado_civil == "solteiro")
-                    <input value="solteiro" type="radio" name="estado_civil" id="estado_civil" checked>
-                @else
-                    <input value="solteiro" type="radio" name="estado_civil" id="estado_civil">
-                @endif
+                <input value="solteiro" type="radio" name="estado_civil" id="estado_civil"  {{ $profissional->estado_civil == "solteiro" ? "checked" : "" }}>
                 <br>
                 <label for="casado">Casado</label>
-                @if($profissional->estado_civil == "casado")
-                    <input value="casado" type="radio" name="estado_civil" id="estado_civil" checked>
-                @else
-                    <input value="casado" type="radio" name="estado_civil" id="estado_civil">
-                @endif
+                <input value="casado" type="radio" name="estado_civil" id="estado_civil"  {{ $profissional->estado_civil == "casado" ? "checked" : "" }}>
+
 
                 <hr class="hr_form">
                 <h3>Estado Trabalhista</h3>
