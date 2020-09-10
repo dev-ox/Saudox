@@ -26,11 +26,16 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <tr>
+                        <td class="corsim-adm">Nome</td>
+                        <td class="corsim-adm">CPF</td>
+                        <td class="corsim-adm">Editar</td>
+                    </tr>
                     @foreach($profissionais as $pro)
                         <tr>
                             <td class="corsim-adm"> <a class="corsim-adm" href= {{route('profissional.ver', ['id' => $pro->id])}}>{{$pro->nome}}</a> </td>
-                            <td class="bt-acao-adm-tb"> <a class="bt-acao-adm-editar" href= {{route('profissional.ver', ['id' => $pro->id])}}>Editar</a> </td>
-                            <td class="bt-acao-adm-tb"> <a class="bt-acao-adm-remover" href= {{route('profissional.ver', ['id' => $pro->id])}}>Remover</a> </td>
+                            <td class="corsim-adm"> <a class="corsim-adm">{{$pro->cpf}}</a> </td>
+                            <td class="bt-acao-adm-tb"> <a class="bt-acao-adm-editar" href= {{route('profissional.admin.editar', ['id_profissional' => $pro->id])}}>Editar</a> </td>
                         </tr>
                     @endforeach
                 </tbody>

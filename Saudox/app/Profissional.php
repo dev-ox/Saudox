@@ -50,9 +50,40 @@ class Profissional extends Authenticatable {
     ];
 
 
-    public static $regras_validacao = [
+    public static $regras_validacao_criar = [
         'login' => 'required|max:255',
         'password' => 'required|max:255|min:6',
+        'nome' => 'required|max:255',
+        'cpf' => 'required|numeric',
+        'rg' => 'required|numeric',
+        'numero_conselho' => 'nullable|numeric',
+        'telefone_1' => 'required',
+        'telefone_2' => 'nullable',
+        'email' => 'required|email',
+        'nacionalidade' => 'required|min:2',
+        'descricao_de_conhecimento_e_experiencia' => 'required',
+        'profissoes' => 'required',
+        'estado_civil' => 'required',
+    ];
+
+    public static $regras_validacao_editar_com_senha = [
+        'login' => 'required|max:255',
+        'password' => 'required|max:255|min:6',
+        'nome' => 'required|max:255',
+        'cpf' => 'required|numeric',
+        'rg' => 'required|numeric',
+        'numero_conselho' => 'nullable|numeric',
+        'telefone_1' => 'required',
+        'telefone_2' => 'nullable',
+        'email' => 'required|email',
+        'nacionalidade' => 'required|min:2',
+        'descricao_de_conhecimento_e_experiencia' => 'required',
+        'profissoes' => 'required',
+        'estado_civil' => 'required',
+    ];
+
+    public static $regras_validacao_editar_sem_senha = [
+        'login' => 'required|max:255',
         'nome' => 'required|max:255',
         'cpf' => 'required|numeric',
         'rg' => 'required|numeric',
