@@ -72,6 +72,11 @@ h1 {
   margin-left: 45px;
 }
 
+.profissional-bt{
+    margin-top: -25.3%;
+    margin-left: 85%;
+}
+
 
 .welcome-phone{
   text-align: center;

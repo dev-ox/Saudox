@@ -29,7 +29,6 @@ class Profissional extends Authenticatable {
         'nacionalidade',
         'descricao_de_conhecimento_e_experiencia',
         'estado_civil',
-
     ];
 
     /**

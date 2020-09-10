@@ -51,7 +51,10 @@ Route::middleware('auth:profissional')->group(function() {
         require 'evolucao/evolucao_geral.php';
     });
 
-
+    Route::prefix('cadastro_paciente')->name('.criar_paciente')->group(function () {
+        Route::get('/', 'ProfissionalController@cadastroPaciente');
+        Route::post('/salvar', 'ProfissionalController@salvarCadastrarPaciente')->name('.salvar');
+    });
 
 
     // Restringindo grupo de acesso para apenas profissionais admin

@@ -8,6 +8,11 @@
     <body onload="startTime()">
       <h1 id="txt"></h1>
    </body>
+   <div class="profissional-bt">
+
+     <!-- todo: Fazer com que a home envie as infos do agendamento para o cadastro de novo paciente -->
+    <a class="btn-adm" href={{route('profissional.criar_paciente') }}>Novo Paciente</a>
+   </div>
  </div>
 </head>
 
@@ -96,7 +101,7 @@
       <img class="empresa" src="https://avatars3.githubusercontent.com/u/64805526?s=400&u=e4188ff9af3c0927962a181f241fbee79c506f4d&v=4">
 </div>
 <div class="adm-bt">
-@if(in_array('Admin', $profissoes))
+@if(in_array('admin', $profissoes))
   <a class="btn-adm" href={{route('profissional.admin.dashboard') }}>Ir para administração</a>
 @endif
 </div>
@@ -111,8 +116,9 @@
 <div class="welcome-phone">
   <h1>Bem vindo! {{$profissional->nome}}</h1>
   <div class="adm-bt-phone">
-    <a class="btn-perfil-phone" href="/profissional/perfil">Ver Perfil</a>
-  @if(in_array('Admin', $profissoes))
+    <a class="btn-perfil-phone" href={{route('profissional.ver', ['id' => $profissional->id])}}>Ver Perfil</a>
+    <a class="btn-perfil-phone" href={{route('profissional.criar_paciente') }}>Novo Paciente</a>
+  @if(in_array('admin', $profissoes))
     <a class="btn-perfil-phone" href={{ route('profissional.admin.dashboard') }}>Ir para administração</a>
   @endif
  </div>
