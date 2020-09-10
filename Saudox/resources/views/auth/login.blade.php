@@ -16,15 +16,11 @@
                 }
                 ?>
 
-
                 @if (session('status'))
                     <div class="alert alert-success">
                         {{ session('status') }}
                     </div>
                 @endif
-
-
-
 
                 <div class="card-body">
                     <div class="card-header">{{ $title }}</div>
@@ -32,16 +28,9 @@
                         @csrf
 
                         <div class="form-group row-start">
-
                             <div class="col md-6">
                                 <input id="login" type="login" class="form-control @error('login') is-invalid @enderror" name="login" value="{{ old('login') }}" required autocomplete="login" autofocus>
                                 <label> Login </label>
-
-                                @error('login')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
                         </div>
 
@@ -50,12 +39,6 @@
                             <div class="col md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                                 <label> Password </label>
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
                             </div>
                         </div>
 
