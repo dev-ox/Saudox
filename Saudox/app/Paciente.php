@@ -108,6 +108,7 @@ class Paciente extends Authenticatable {
         'idade_pai' => 'required|numeric|gt:0',
         'idade_mae' => 'required|numeric|gt:0',
         'pais_sao_casados' => 'required',
+        'pais_sao_divorciados' => 'required',
         'reacao_sobre_a_relacao_pais_caso_divorciados' => 'nullable',
         'vive_com_quem_caso_pais_divorciados' => 'nullable|max:255',
         'tipo_filho_biologico_adotivo' => 'required',

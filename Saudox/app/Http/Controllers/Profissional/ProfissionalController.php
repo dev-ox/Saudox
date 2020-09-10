@@ -54,7 +54,7 @@ class ProfissionalController extends Controller {
     }
 
     public function verPaciente($id) {
-        $paciente = Profissional::find($id);
+        $paciente = Paciente::find($id);
         if($paciente){
             return view('profissional/ver_paciente', ['paciente' => $paciente]);
         } else {
