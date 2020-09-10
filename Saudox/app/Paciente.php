@@ -98,7 +98,7 @@ class Paciente extends Authenticatable {
         'data_nascimento' => 'required',
         'responsavel' => 'required|min:3|max:15',
         'numero_irmaos' => 'required|numeric',
-        'lista_irmaos' => 'nullable|max:255',
+        'lista_irmaos' => 'max:255',
         'nome_pai' => 'required|min:2|max:50',
         'nome_mae' => 'required|min:2|max:50',
         'telefone_pai' => 'required',

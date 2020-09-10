@@ -78,9 +78,12 @@ class ProfissionalController extends Controller {
             'gt' => 'A campo :attribute deve ser maior que :gt'
         ];
 
-        //// TODO: TEM QUEM ARRANJAR UM JEITO DE "UNIFICAR" OS FORMATOS DE DATA PARA DIFERETES NAVEGADORES
-        $time = strtotime('10/16/2003');
+        $time = strtotime($entrada['data_nascimento']);
         $entrada['data_nascimento'] = date('Y-m-d',$time);
+
+        if($entrada['lista_irmaos'] == "") {
+            $entrada['lista_irmaos'] = "Nenhum";
+        }
 
         $validator_endereco = Validator::make($entrada, Endereco::$regras_validacao, $messages);
         if ($validator_endereco->fails()) {

@@ -60,9 +60,9 @@
                 <input value="1" type="radio" name="sexo" id="sexo">
                 <input value="{{ old('naturalidade') }}" placeholder="Naturalidade" type="text" name="naturalidade" id="naturalidade">
                 <input value="{{ old('data_nascimento') }}" class="noscroll" type="date"  name="data_nascimento" id="data_nascimento">
-                <input value="{{ old('responsavel') }}" placeholder="Responsavel" type="text" name="responsavel" id="responsavel">
-                <input value="{{ old('numero_irmaos') }}" class="noscroll" onkeypress='validar_apenas_numeros(event)' placeholder="Numero de Irmão (apenas números)" type="number"  name="numero_irmaos" id="numero_irmaos">
-                <input value="{{ old('lista_irmaos') }}" placeholder="Nome dos Irmãos (caso não haja nenhum, digite 'nenhum')" type="text" name="lista_irmaos" id="lista_irmaos">
+                <input value="{{ old('responsavel') }}" placeholder="Responsável" type="text" name="responsavel" id="responsavel">
+                <input value="{{ old('numero_irmaos') }}" class="noscroll" onkeypress='validar_apenas_numeros(event)' placeholder="Número de Irmãos" type="number"  name="numero_irmaos" id="numero_irmaos">
+                <input value="{{ old('lista_irmaos') }}" placeholder="Nome dos Irmãos" type="text" name="lista_irmaos" id="lista_irmaos">
                 <h3>Filho Biológico ou Adotivo?</h3>
                 <label for="biologico">Biológico</label>
                 <input value="0" type="radio" name="tipo_filho_biologico_adotivo" id="tipo_filho_biologico_adotivo">
@@ -71,9 +71,9 @@
                 <div class="hidden">
                 <h3>Filho sabe que é Adotado?</h3>
                 <label for="sim">Sim</label>
-                <input value="0" class="command_hidden_extra" type="radio" name="'crianca_sabe_se_adotivo'" id="'crianca_sabe_se_adotivo'">
+                <input value="1" class="command_hidden_extra" type="radio" name="'crianca_sabe_se_adotivo'" id="'crianca_sabe_se_adotivo'">
                 <label for="nao">Não</label>
-                <input value="1" type="radio" name="'crianca_sabe_se_adotivo'" id="'crianca_sabe_se_adotivo'">
+                <input value="0" type="radio" name="'crianca_sabe_se_adotivo'" id="'crianca_sabe_se_adotivo'">
                 <input value="{{ old('reacao_quando_descobriu_se_adotivo') }}" placeholder="Reação ao descobrir que era adotado (Opcional)" type="text" name="reacao_quando_descobriu_se_adotivo" id="reacao_quando_descobriu_se_adotivo">
                 </div>
 
@@ -83,8 +83,8 @@
                 <h3>Informações dos Pais</h3>
                 <input value="{{ old('nome_pai') }}" placeholder="Nome do Pai" type="text" name="nome_pai" id="nome_pai">
                 <input value="{{ old('nome_mae') }}" placeholder="Nome da Mãe" type="text" name="nome_mae" id="nome_mae">
-                <input value="{{ old('telefone_pai') }}" placeholder="Telefone do Pai (Sem caracteres especiais)" type="text" name="telefone_pai" id="telefone_pai">
-                <input value="{{ old('telefone_mae') }}" placeholder="Telefone da Mãe (Sem caracteres especiais)" type="text" name="telefone_mae" id="telefone_mae">
+                <input value="{{ old('telefone_pai') }}" placeholder="Telefone do Pai (Apenas números)" type="text" name="telefone_pai" id="telefone_pai">
+                <input value="{{ old('telefone_mae') }}" placeholder="Telefone da Mãe (Apenas números)" type="text" name="telefone_mae" id="telefone_mae">
                 <input value="{{ old('email_pai') }}" placeholder="E-Mail do Pai" type="text" name="email_pai" id="email_pai">
                 <input value="{{ old('email_mae') }}" placeholder="E-Mail da Mãe" type="text" name="email_mae" id="email_mae">
                 <input value="{{ old('idade_pai') }}" class="noscroll" onkeypress='validar_apenas_numeros(event)' placeholder="Idade do Pai (Número)" type="number"  name="idade_pai" id="idade_pai">
@@ -92,14 +92,14 @@
                 <h3>Situação Atual</h3>
                 <h3>Casados?</h3>
                 <label for="pais_sao_casados">Sim</label>
-                <input value="0" type="radio" name="pais_sao_casados" id="pais_sao_casados">
-                <label for="pais_sao_casados">Não</label>
                 <input value="1" type="radio" name="pais_sao_casados" id="pais_sao_casados">
+                <label for="pais_sao_casados">Não</label>
+                <input value="0" type="radio" name="pais_sao_casados" id="pais_sao_casados">
                 <h3>Divorciados?</h3>
                 <label for="pais_sao_divorciados">Sim</label>
-                <input value="0" class="command_hidden" type="radio" name="pais_sao_divorciados" id="pais_sao_divorciados">
+                <input value="1" class="command_hidden" type="radio" name="pais_sao_divorciados" id="pais_sao_divorciados">
                 <label for="pais_sao_casados">Não</label>
-                <input value="1" type="radio" name="pais_sao_divorciados" id="pais_sao_divorciados">
+                <input value="0" type="radio" name="pais_sao_divorciados" id="pais_sao_divorciados">
                 <input value="{{ old('reacao_sobre_a_relacao_pais_caso_divorciados') }}" placeholder="Reação a relação dos pais" type="text" name="reacao_sobre_a_relacao_pais_caso_divorciados" id="reacao_sobre_a_relacao_pais_caso_divorciados">
                 <input value="{{ old('vive_com_quem_caso_pais_divorciados') }}" placeholder="Vive com quem?" type="text" name="vive_com_quem_caso_pais_divorciados" id="vive_com_quem_caso_pais_divorciados">
 

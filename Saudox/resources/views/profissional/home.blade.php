@@ -9,6 +9,8 @@
       <h1 id="txt"></h1>
    </body>
    <div class="profissional-bt">
+
+     <!-- todo: Fazer com que a home envie as infos do agendamento para o cadastro de novo paciente -->
     <a class="btn-adm" href={{route('profissional.criar_paciente') }}>Novo Paciente</a>
    </div>
  </div>
