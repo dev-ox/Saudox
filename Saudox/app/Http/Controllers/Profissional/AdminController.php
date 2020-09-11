@@ -30,8 +30,7 @@ class AdminController extends Controller {
             ->take(50)
             ->get();
 
-        $lista_profissionais = Profissional::where('status', Profissional::Trabalhando)
-            ->select('id', 'nome', 'cpf')
+        $lista_profissionais = Profissional::select('id', 'nome', 'cpf')
             ->orderBy('updated_at', 'desc')
             ->take(50)
             ->get();
@@ -73,7 +72,11 @@ class AdminController extends Controller {
                              ->with(['profissional' => $profissional]);
         }
 
-        $validator_profissional = Validator::make($entrada, Profissional::$regras_validacao, $this->mensagens);
+        $regra_validacao_aux = Profissional::$regras_validacao_editar_com_senha;
+        if($entrada['password'] == "" || !isset($entrada['password'])) {
+            $regra_validacao_aux = Profissional::$regras_validacao_editar_sem_senha;
+        }
+        $validator_profissional = Validator::make($entrada, $regra_validacao_aux, $this->mensagens);
         if ($validator_profissional->fails()) {
             return redirect()->back()
                              ->withErrors($validator_profissional)
@@ -95,7 +98,9 @@ class AdminController extends Controller {
             $str_profissoes .= $profissao . ";";
         }
         $profissional->profissao = $str_profissoes;
-        $profissional->password = Hash::make($entrada['password']);
+        if($entrada['password'] == "" || !isset($entrada['password'])) {
+            $profissional->password = Hash::make($entrada['password']);
+        }
         $profissional->save();
 
         return redirect()->route('profissional.ver', $profissional->id);
@@ -113,7 +118,7 @@ class AdminController extends Controller {
                              ->withInput();
         }
 
-        $validator_profissional = Validator::make($entrada, Profissional::$regras_validacao, $this->mensagens);
+        $validator_profissional = Validator::make($entrada, Profissional::$regras_validacao_criar, $this->mensagens);
         if ($validator_profissional->fails()) {
             return redirect()->back()
                              ->withErrors($validator_profissional)
