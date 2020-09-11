@@ -142,5 +142,12 @@ class Paciente extends Authenticatable {
         return $this->hasOne('App\AvaliacaoTerapiaOcupacional', 'id_paciente');
     }
 
+    // Fora do padrao porque isso não é um metodo, é um atributo
+    public function endereco() {
+        // Esse model tem um endereco de chave primaria id que é referenciado pelo id_endereco deste model
+        return $this->hasOne('\App\Endereco', 'id', 'id_endereco');
+    }
+
+
 
 }
