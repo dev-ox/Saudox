@@ -56,6 +56,13 @@ Route::middleware('auth:profissional')->group(function() {
         Route::post('/salvar', 'ProfissionalController@salvarCadastrarPaciente')->name('.salvar');
     });
 
+    Route::prefix('agendar')->name('.agendamento')->group(function() {
+        Route::get('/{id_paciente?}', 'ProfissionalController@agendarPaciente');
+        Route::get('/ver/{id_agendamento}', 'ProfissionalController@verAgendamentoPaciente')->name('.ver');
+        Route::get('/concluir/{id_agendamento}', 'ProfissionalController@marcarAgendamentoConcluido')->name('.marcar_concluida');
+        Route::post('/salvar', 'ProfissionalController@salvarAgendarPaciente')->name('.salvar');
+    });
+
 
     // Restringindo grupo de acesso para apenas profissionais admin
     Route::middleware('ehadmin')->name('.admin')->group(function() {

@@ -17,12 +17,12 @@ class CreateAgendamentosTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
 
-            $table->bigInteger('id_convenio')->unsigned();
+            $table->bigInteger('id_convenio')->unsigned()->nullable(true);
             $table->foreign('id_convenio')->references('id')->on('convenios');
             $table->bigInteger('id_profissional')->unsigned();
             $table->foreign('id_profissional')->references('id')->on('profissionals');
             $table->string('nome');
-            $table->string('cpf')->unique();
+            $table->string('cpf');
             $table->date('data_nascimento_paciente');
             $table->string('telefone');
             $table->string('email')->nullable(true);
