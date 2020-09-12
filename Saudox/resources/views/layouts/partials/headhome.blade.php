@@ -46,6 +46,7 @@ h1 {
 
 .empresa{
     width: 15%;
+    max-width: 230px;
     height: auto;
     margin-left: 2%;
     margin-top: -635px;
@@ -68,12 +69,12 @@ h1 {
 
 .adm-bt{
     margin-top: -745px;
-    margin-left: 45px;
+    margin-left:  45px;
 }
 
-.profissional-bt{
-    margin-top: -25.3%;
-    margin-left: 85%;
+#ir-adm{
+    margin-left: 210px;
+    margin-top: -85px;
 }
 
 .welcome-phone{

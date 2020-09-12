@@ -387,6 +387,7 @@ th{
     width: 80%;
     margin: 0px auto 0px auto;
     margin-left: 10%;
+    margin-top: 20px;
     overflow: auto;
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -407,7 +408,7 @@ th{
     background: #1C2934;
     padding: 5px;
     padding-top: 10px;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
     color: white;
     font-size: 1.2vw;
     text-decoration: none;
@@ -415,7 +416,7 @@ th{
     border-color: #FFCC33;
     border-style: solid;
     margin-left: -10%;
-    margin-top: 40px;
+    margin-top: 35px;
 }
 
 

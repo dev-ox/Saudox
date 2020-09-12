@@ -4,6 +4,9 @@
 <style>
 .desktop{
     display: block;
+    margin-left:auto;
+    margin-right:auto;
+    width:1360px;
 }
 
 .celular {
@@ -42,9 +45,7 @@
             <h3> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</h3>
             <h3> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</h3>
         </div>
-        <div class="logo-image">
-              <img class="empresa" src="https://avatars3.githubusercontent.com/u/64805526?s=400&u=e4188ff9af3c0927962a181f241fbee79c506f4d&v=4">
-        </div>
+        <img class="lg-emp" src="https://avatars3.githubusercontent.com/u/64805526?s=400&u=e4188ff9af3c0927962a181f241fbee79c506f4d&v=4">
     </div>
 </div>
 
