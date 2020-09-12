@@ -167,17 +167,6 @@ h2 {
             <a class="bt" href={{route('profissional.agendamento')}}> Novo Agendamento </a>
             <a class="bt" href={{route('profissional.ver', ['id' => Auth::id()])}}>Perfil</a>
         @endif
-        <a class="navbar-brand" href="/">
-            <div class="logo-image">
-                <img src="https://avatars3.githubusercontent.com/u/64805526?s=400&u=e4188ff9af3c0927962a181f241fbee79c506f4d&v=4">
-            </div>
-            @if(Auth::guard('paciente')->check())
-                <a class="home" href={{route('paciente.home')}}>Home</a>
-                <a class="bt" href="/">Perfil</a>
-            @elseif(Auth::guard('profissional')->check())
-                <a class="home" href={{route('profissional.home')}}>Home</a>
-                <a class="bt" href={{route('profissional.ver', ['id' => Auth::id()])}}>Perfil</a>
-            @endif
             <a class="navbar-brand" href="/">
                 <div class="logo-image">
                     <img src="https://avatars3.githubusercontent.com/u/64805526?s=400&u=e4188ff9af3c0927962a181f241fbee79c506f4d&v=4">
