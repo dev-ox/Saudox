@@ -59,8 +59,10 @@ Route::middleware('auth:profissional')->group(function() {
     Route::prefix('agendar')->name('.agendamento')->group(function() {
         Route::get('/{id_paciente?}', 'ProfissionalController@agendarPaciente');
         Route::get('/ver/{id_agendamento}', 'ProfissionalController@verAgendamentoPaciente')->name('.ver');
+        Route::get('/editar/{id_agendamento}', 'ProfissionalController@editarAgendamentoPaciente')->name('.editar');
         Route::get('/concluir/{id_agendamento}', 'ProfissionalController@marcarAgendamentoConcluido')->name('.marcar_concluida');
         Route::post('/salvar', 'ProfissionalController@salvarAgendarPaciente')->name('.salvar');
+        Route::post('/salvar_editar', 'ProfissionalController@salvarEditarAgendarPaciente')->name('.editar.salvar');
     });
 
 

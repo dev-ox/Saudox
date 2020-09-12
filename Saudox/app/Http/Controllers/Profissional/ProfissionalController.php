@@ -228,5 +228,93 @@ class ProfissionalController extends Controller {
         }
     }
 
+    public function editarAgendamentoPaciente($id_agendamento) {
+        $agendamento = Agendamentos::find($id_agendamento);
+        $convenios = Convenios::all();
+        $profissionais = Profissional::all();
+
+        if($agendamento) {
+            return view('profissional/editar_agendamento', [
+                'agendamento' => $agendamento,
+                'convenios' => $convenios,
+                'profissionais' => $profissionais,
+
+            ]);
+        } else {
+            return view('erro', ['msg_erro' => "Agendamento inexistente"]);
+        }
+    }
+
+
+    public function salvarEditarAgendarPaciente(Request $request) {
+
+        $entrada = $request->all();
+        $agendamento = Agendamentos::find($entrada['id']);
+        $convenios = Convenios::all();
+        $profissionais = Profissional::all();
+
+        if(!$agendamento) {
+            return view('erro', ['msg_erro' => "Agendamento inexistente"]);
+        }
+
+        $messages = [
+            'required' => 'O campo :attribute é obrigatório.',
+            'min' => 'O campo :attribute é deve ter no minimo :min caracteres.',
+            'max' => 'O campo :attribute é deve ter no máximo :max caracteres.',
+        ];
+
+
+        $validator_endereco = Validator::make($entrada, Endereco::$regras_validacao, $messages);
+        if ($validator_endereco->fails()) {
+            return view('profissional/editar_agendamento', [
+                'agendamento' => $agendamento,
+                'convenios' => $convenios,
+                'profissionais' => $profissionais,
+
+            ])->withErrors($validator_endereco->errors());
+        }
+
+        $validator_agendamento = Validator::make($entrada, Agendamentos::$regras_validacao, $messages);
+        if ($validator_agendamento->fails()) {
+            return view('profissional/editar_agendamento', [
+                'agendamento' => $agendamento,
+                'convenios' => $convenios,
+                'profissionais' => $profissionais,
+
+            ])->withErrors($validator_endereco->errors());
+        }
+
+
+
+        $agendamento->fill($entrada);
+        $agendamento->endereco->fill($entrada);
+
+        if($entrada['id_convenio'] != "0") {
+            $agendamento->id_convenio = $entrada['id_convenio'];
+        } else {
+            $agendamento->id_convenio = NULL;
+        }
+
+        $data_entrada = $entrada['dia_da_consulta'] . " " . $entrada['hora_entrada'];
+        $data_saida = $entrada['dia_da_consulta'] . " " . $entrada['hora_saida'];
+
+        $agendamento->data_entrada = $data_entrada;
+        $agendamento->data_saida = $data_saida;
+
+        if(isset($entrada['recorrencia_do_agendamento'])) {
+            $agendamento->recorrencia_do_agendamento = true;
+            $agendamento->tipo_da_recorrencia = $entrada['tipo_da_recorrencia'];
+        } else {
+            $agendamento->recorrencia_do_agendamento = false;
+            $agendamento->tipo_da_recorrencia = NULL;
+        }
+
+        $agendamento->status = true;
+        $agendamento->save();
+
+        return redirect()->route('profissional.agendamento.ver', $agendamento->id);
+
+    }
+
 
 }

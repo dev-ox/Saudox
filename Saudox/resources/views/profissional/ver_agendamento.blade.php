@@ -44,7 +44,10 @@
 
         <div class="caixa">
             <h1>Agendamento</h1>
-            <a style="margin: auto; height: auto;" class="bt-acao-adm-editar" href="{{ route('profissional.agendamento.marcar_concluida', $agendamento->id) }}">Marcar como concluida</a>
+            <span style="display: inline-flex; margin-left: -8%;">
+                <a style="margin: auto; width: auto; height: auto;" class="bt-acao-adm-editar" href="{{ route('profissional.agendamento.marcar_concluida', $agendamento->id) }}">Marcar como concluida</a>
+                <a style="margin: auto; width: auto; height: auto; margin-right: -20%;" class="bt-acao-adm-editar" href="{{ route('profissional.agendamento.editar', $agendamento->id) }}">Editar</a>
+            </span>
             <div id="conteudo_agendamento">
 
                 <table style="margin: auto;">
@@ -101,6 +104,11 @@
                     <tr class="agendamento_tr">
                         <td class="agendamento_td">Status:</td>
                         <td class="agendamento_td">{{ $agendamento->status == 1 ? "Pedente" : "Concluido/Cancelado" }}</td>
+                    </tr>
+
+                    <tr class="agendamento_tr">
+                        <td class="agendamento_td">Medico responsavel:</td>
+                        <td class="agendamento_td">{{ App\Profissional::find($agendamento->id_profissional)->nome ?? '' }}</td>
                     </tr>
 
                 </table>

@@ -1,0 +1,161 @@
+@include('layouts.layoutperfil')
+@include('layouts.form_css')
+
+
+@php
+    date_default_timezone_set('America/Recife');
+@endphp
+
+
+<style>
+    .textareas_form {
+        color: white;
+        background: #424242;
+        border: 2px solid #FFCC33;
+        border-radius: 24px;
+        width: 50%;
+        padding: 1%;
+    }
+
+    .tipo_da_recorrencia {
+        display: none;
+    }
+
+    #recorrencia_do_agendamento:checked ~ .tipo_da_recorrencia {
+        display: inline;
+    }
+
+
+</style>
+
+<script>
+
+    // Permitir apenas numeros nos campos com essa função
+    function validar_apenas_numeros(evt) {
+        var theEvent = evt || window.event;
+
+        // Handle paste
+        if (theEvent.type === 'paste') {
+            key = event.clipboardData.getData('text/plain');
+        } else {
+            // Handle key press
+            var key = theEvent.keyCode || theEvent.which;
+            key = String.fromCharCode(key);
+        }
+        var regex = /[0-9]|\./;
+        if( !regex.test(key) ) {
+            theEvent.returnValue = false;
+            if(theEvent.preventDefault) theEvent.preventDefault();
+        }
+    }
+</script>
+
+<div class="desktop">
+    <div class="espacador_mesma_altura_top_nav"></div>
+    <div style="text-align: center;">
+        <div class = "caixa_form">
+            <h4>Editar agendamento para o paciente {{ $agendamento->nome_paciente }}</h4>
+
+
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul style="padding: 0px;">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            <form method="post" action="{{ route('profissional.agendamento.editar.salvar') }}">
+
+                <!-- CROSS Site Request Forgery Protection -->
+                @csrf
+
+                <input value="{{ $agendamento->id                       }}" type="hidden"  name="id" id="id">
+                <input value="{{ $agendamento->nome                     }}" placeholder="Nome Completo" type="text" name="nome" id="nome">
+                <input value="{{ $agendamento->cpf                      }}" class="noscroll" onkeypress='validar_apenas_numeros(event)' placeholder="CPF (apenas números)" type="number"  name="cpf" id="cpf">
+                <label>Data de nascimento</label><br>
+                <input value="{{ $agendamento->data_nascimento_paciente }}" placeholder="" type="date" name="data_nascimento_paciente" id="data_nascimento_paciente">
+                <input value="{{ $agendamento->telefone                 }}" placeholder="Telefone" type="text" name="telefone" id="telefone">
+                <input value="{{ $agendamento->email                    }}" placeholder="E-Mail" type="text" name="email" id="email">
+
+                <hr class="hr_form">
+                <h3>Endereço</h3>
+                <input value="{{ $agendamento->endereco->estado           }}" placeholder="Estado" type="text" name="estado" id="estado">
+                <input value="{{ $agendamento->endereco->cidade           }}" placeholder="Cidade" type="text" name="cidade" id="cidade">
+                <input value="{{ $agendamento->endereco->bairro           }}" placeholder="Bairro" type="text" name="bairro" id="bairro">
+                <input value="{{ $agendamento->endereco->nome_rua         }}" placeholder="Rua" type="text" name="nome_rua" id="nome_rua">
+                <input value="{{ $agendamento->endereco->numero_casa      }}" class="noscroll" onkeypress='validar_apenas_numeros(event)' placeholder="Número" type="number" name="numero_casa" id="numero_casa">
+                <input value="{{ $agendamento->endereco->descricao        }}" placeholder="Descrição" type="text" name="descricao" id="descricao">
+                <input value="{{ $agendamento->endereco->ponto_referencia }}" placeholder="Ponto de referência" type="text" name="ponto_referencia" id="ponto_referencia">
+
+
+
+                <hr class="hr_form">
+                <h3>Dados do agendamento</h3>
+                <label>Local de atendimento</label><br>
+                <input value="{{ $agendamento->local_de_atendimento }}" type="text" name="local_de_atendimento" id="local_de_atendimento">
+
+                <label>Dia da consulta</label><br>
+                <input value="{{ Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $agendamento->data_entrada)->toDateString() }}" type="date" name="dia_da_consulta" id="dia_da_consulta" min="{{ date('Y-m-d H:i:s') }}">
+                <label>Hora de Entrada</label><br>
+                <input value="{{ Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $agendamento->data_entrada)->toTimeString() }}" type="time" name="hora_entrada" id="hora_entrada">
+                <label>Hora de Saída</label><br>
+                <input value="{{ Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $agendamento->data_saida)->toTimeString() }}" type="time" name="hora_saida" id="hora_saida">
+
+                <hr class="hr_form">
+                <h3>Sobre a volta</h3>
+
+                <input type="checkbox" id="recorrencia_do_agendamento" name="recorrencia_do_agendamento" style="margin-left: -2%;" {{ $agendamento->recorrencia_do_agendamento ? "checked" : "" }}>
+                <label>É volta?</label><br>
+
+                <label class="tipo_da_recorrencia">Motivo da volta</label><br>
+                <textarea class="textareas_form tipo_da_recorrencia" id="tipo_da_recorrencia" name="tipo_da_recorrencia" rows="4" cols="50" style=""> {{ $agendamento->tipo_da_recorrencia }} </textarea>
+
+                <hr class="hr_form">
+                <h3>Observações</h3>
+                <textarea class="textareas_form" id="observacoes" name="observacoes" rows="4" cols="50" style=""> {{$agendamento->observacoes}} </textarea>
+
+                <hr class="hr_form">
+                <h3>Profissional Responsável</h3>
+
+                <select name="id_profissional">
+                    @foreach($profissionais as $profissional)
+                        <option value="{{ $profissional->id }}" {{ $agendamento->id_profissional == $profissional->id ? "selected" : "" }}> {{ $profissional->nome }} </option>
+                    @endforeach
+                </select>
+
+
+
+                <hr class="hr_form">
+                <h3>Convênio</h3>
+                <select name="id_convenio">
+                    <option value="0" {{ !$agendamento->id_convenio ? "selected" : "" }}> Nenhum </option>
+                    @foreach($convenios as $convenio)
+                        <option value="{{ $convenio->id }}"  {{ $agendamento->id_convenio == $convenio->id ? "selected" : "" }}> {{ $convenio->nome_convenio }} </option>
+                    @endforeach
+                </select>
+
+
+                <input type="submit" value="Salvar">
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Pega a altura do topnav e coloca como a altura do espaçador, pra o topnav não ficar em cima do resto da pagina.
+    document.getElementsByClassName("espacador_mesma_altura_top_nav")[0].style.height = document.getElementsByClassName("topnav")[0].getBoundingClientRect().height * 1.5;
+
+    // Desabilida o scroll do mouse nos input de tipo number
+    document.addEventListener("wheel", function(event){
+        if(document.activeElement.type === "number" &&
+            document.activeElement.classList.contains("noscroll"))
+        {
+            document.activeElement.blur();
+        }
+    });
+
+</script>
