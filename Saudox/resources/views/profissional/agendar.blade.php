@@ -67,7 +67,7 @@
                 </div>
             @endif
 
-            <form method="post" action="{{ route('profissional.agendamento.salvar') }}">
+            <form method="post" action="{{ route('agendamento.salvar') }}">
 
                 <!-- CROSS Site Request Forgery Protection -->
                 @csrf

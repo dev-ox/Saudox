@@ -3,4 +3,4 @@
 {{$paciente->nome_paciente}}
 
 
-<a href="{{ route('profissional.agendamento', $paciente->id) }}">Agendar pra esse paciente</a>
+<a href="{{ route('agendamento.criar', $paciente->id) }}">Agendar pra esse paciente</a>
