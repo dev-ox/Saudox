@@ -164,7 +164,7 @@ h2 {
             <a class="bt" href="/">Perfil</a>
         @elseif(Auth::guard('profissional')->check())
             <a class="home" href={{route('profissional.home')}}> Home </a>
-            <a class="bt" href={{route('profissional.agendamento')}}> Novo Agendamento </a>
+            <a class="bt" href={{route('agendamento.criar')}}> Novo Agendamento </a>
             <a class="bt" href={{route('profissional.ver', ['id' => Auth::id()])}}>Perfil</a>
         @endif
             <a class="navbar-brand" href="/">

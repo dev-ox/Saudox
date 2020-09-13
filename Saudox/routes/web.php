@@ -33,6 +33,9 @@ Route::prefix('paciente')->name('paciente')->group(function(){
     require 'paciente/paciente.php';
 });
 
+
+require 'agendamentos.php';
+
 // Logout (Força logout de qualquer tipo de usuario)
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout')->middleware('alguemLogado');
 
