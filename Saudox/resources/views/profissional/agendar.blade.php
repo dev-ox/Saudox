@@ -72,6 +72,8 @@
                 <!-- CROSS Site Request Forgery Protection -->
                 @csrf
 
+
+                <input value="{{ $paciente->id ? $paciente->id : -1}}" type="hidden"  name="id_paciente" id="id_paciente">
                 <input value="{{ $paciente->nome_paciente == "" ? old('nome') : $paciente->nome_paciente }}" placeholder="Nome Completo" type="text" name="nome" id="nome">
                 <input value="{{ $paciente->cpf == "" ? old('cpf') : $paciente->cpf }}" class="noscroll" onkeypress='validar_apenas_numeros(event)' placeholder="CPF (apenas números)" type="number"  name="cpf" id="cpf">
                 <label>Data de nascimento</label><br>

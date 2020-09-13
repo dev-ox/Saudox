@@ -109,12 +109,12 @@
                     </tr>
 
                     <tr class="agendamento_tr">
-                        <td class="agendamento_td">Medico responsavel:</td>
+                        <td class="agendamento_td">Médico responsável:</td>
                         <td class="agendamento_td">{{ App\Profissional::find($agendamento->id_profissional)->nome ?? '' }}</td>
                     </tr>
 
                     <tr class="agendamento_tr">
-                        <td class="agendamento_td">Convenio:</td>
+                        <td class="agendamento_td">Convênio:</td>
                         <td class="agendamento_td">{{ App\Convenios::find($agendamento->id_convenio)->nome_convenio ?? 'Nenhum' }}</td>
                     </tr>
 

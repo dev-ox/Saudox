@@ -39,7 +39,7 @@ class AgendamentosController extends Controller
 
     }
 
-    public function salvarAgendarPaciente(Request $request) {
+    public function salvarAgendar(Request $request) {
 
         $entrada = $request->all();
 
@@ -66,8 +66,12 @@ class AgendamentosController extends Controller
 
 
 
-        //TODO: tratar duplicação de endereço
-        $endereco = new Endereco;
+        if($entrada['id_paciente'] != "-1") {
+            $endereco = Paciente::find($entrada['id_paciente'])->endereco;
+        } else {
+            $endereco = new Endereco;
+        }
+
         $endereco->fill($entrada);
         $endereco->save();
 
@@ -99,7 +103,7 @@ class AgendamentosController extends Controller
 
     }
 
-    public function verAgendamentoPaciente($id_agendamento) {
+    public function verAgendamento($id_agendamento) {
         $agendamento = Agendamentos::find($id_agendamento);
 
         if($agendamento) {
@@ -122,7 +126,7 @@ class AgendamentosController extends Controller
         }
     }
 
-    public function editarAgendamentoPaciente($id_agendamento) {
+    public function editarAgendamento($id_agendamento) {
         $agendamento = Agendamentos::find($id_agendamento);
         $convenios = Convenios::all();
         $profissionais = Profissional::all();
@@ -140,7 +144,7 @@ class AgendamentosController extends Controller
     }
 
 
-    public function salvarEditarAgendarPaciente(Request $request) {
+    public function salvarEditarAgendar(Request $request) {
 
         $entrada = $request->all();
         $agendamento = Agendamentos::find($entrada['id']);
