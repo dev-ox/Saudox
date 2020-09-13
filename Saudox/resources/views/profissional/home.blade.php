@@ -11,7 +11,7 @@
             <div class="profissional-bt">
 
                 <!-- TODO: Fazer com que a home envie as infos do agendamento para o cadastro de novo paciente -->
-                <a class="btn-adm" href={{route('profissional.criar_paciente') }}>Novo Paciente</a>
+
             </div>
         </div>
     </head>
@@ -93,8 +93,9 @@
         <img class="empresa" src="https://avatars3.githubusercontent.com/u/64805526?s=400&u=e4188ff9af3c0927962a181f241fbee79c506f4d&v=4">
     </div>
     <div class="adm-bt">
+        <a class="btn-adm" id="novo-paciente-home" href={{route('profissional.criar_paciente') }}>Novo Paciente</a>
         @if(in_array('admin', $profissoes))
-            <a class="btn-adm" href={{route('profissional.admin.dashboard') }}>Ir para administração</a>
+            <a class="btn-adm" id="ir-adm" href={{route('profissional.admin.dashboard') }}>Ir para administração</a>
         @endif
     </div>
 </div>

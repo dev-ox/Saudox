@@ -119,6 +119,8 @@ form{
     margin-left: 5%;
     width: 90%;
     height: 200px;
+    max-height: 200px;
+    min-height: 200px;
     color: white;
     border-style: solid;
     border-color: #FFCC33;
@@ -134,23 +136,26 @@ form{
     border-radius: 50%;
 }
 
-.empresa{
-    width: 20%;
-    height: auto;
-    margin-left: 75%;
-    margin-top: -22%;
-    border-radius: 50%;
-}
 
 .mais-infos-clinica{
     width: 90%;
     height: 400px;
+    max-height: 400px;
+    min-height: 400px;
     margin-left: 5%;
     margin-top: 1%;
     color: white;
     background-color: #424242;
     border-style: groove;
     border-color: #FFCC33;
+}
+
+.lg-emp{
+    width: auto;
+    height: 60%;
+    border-radius: 50%;
+    margin-left: 75%;
+    margin-top: -280px;
 }
 
 .nome-clinica{
@@ -161,9 +166,8 @@ form{
 .texto_clinica{
     color: white;
     margin-left: 7%;
-    border-style: solid;
-    border-color: #FFCC33;
-    width: 65%;
+    max-width: 70%;
+    max-height: 500px;
 }
 
 .info-slide-atual{
@@ -228,5 +232,6 @@ form{
 .title-part{
     color: yellow;
 }
+
 
 </style>
