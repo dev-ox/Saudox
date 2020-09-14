@@ -1,204 +1,128 @@
-@include('layouts.layoutperfil')
-<meta content="width=device-width, initial-scale=1" name="viewport" />
+@extends('layouts.mainlayout')
+@section('content')
 
-<div class="desktop">
-    <head>
-        <div class="welcome">
-            <h1>Bem vindo! {{$profissional->nome}}</h1>
-            <body onload="startTime()">
-                <h1 id="txt"></h1>
-            </body>
-            <div class="profissional-bt">
+    <div class="container">
+        <div id="welcome_div" class="row bordas_amarelas bg-padrao">
+            <div class="col-md">
+                <h1 style="margin-top: 1%;">Bem vindo! {{$profissional->nome}}</h1>
+                <div id="timer_container" class="bg-padrao">
+                    <body onload="startTime2()">
+                        <h1 id="txt2"></h1>
+                    </body>
+                </div>
+                <div class="profissional-bt">
 
-                <!-- TODO: Fazer com que a home envie as infos do agendamento para o cadastro de novo paciente -->
+                    <!-- TODO: Fazer com que a home envie as infos do agendamento para o cadastro de novo paciente -->
 
+                </div>
             </div>
         </div>
-    </head>
 
-    <body>
-        <div class="container">
-            <div class="prox">
+        <div style="height: 5px;"></div>
+
+
+        <div id="prox_paciente_div" class="row bordas_amarelas bg-padrao">
+            <div class="col-md">
                 @if(count($agenda) > 0)
-                    <h3 class="infosprox-nome">Nome:</h3>
-                    <h3 class="infosprox-hora">Hora de Entrada:</h3>
-                    <h3 class="infosprox-saida">Hora de Saída:</h3>
-                    <h3 class="infosprox-local">Local de atendimento:</h3>
-                    <h4 class="tdclien">
-                        {{$agenda[0]->nome}}
-                    </h4>
-                    <h4 class="tdclien-hora">
-                        {{$agenda[0]->data_entrada}}
-                    </h4>
-                    <h4 class="tdclien-datasaida">
-                        {{$agenda[0]->data_saida}}
-                    </h4>
-                    <h4 class="tdclien-local">
-                        {{$agenda[0]->local_de_atendimento}}
-                    </h4>
+
+                    <table class="table table-borderless bg-padrao" style="text-align: center;">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nome:</th>
+                                <th scope="col">Hora de Entrada:</th>
+                                <th scope="col">Hora de Saída:</th>
+                                <th scope="col">Local de atendimento:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{$agenda[0]->nome}}</td>
+                                <td>{{$agenda[0]->data_entrada}}</td>
+                                <td>{{$agenda[0]->data_saida}}</td>
+                                <td>{{$agenda[0]->local_de_atendimento}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
                     <div class="btpc">
                         @if($prox_paciente)
-                            <a class="btn-paciente" href={{route('paciente.perfil', ['id' => $prox_paciente->id]) }}>Ver perfil</a>
+                            <a class="btn-paciente bordas_amarelas" href={{route('paciente.perfil', ['id' => $prox_paciente->id]) }}>Ver perfil</a>
                         @else
-                            <a class="btn-paciente"  href={{route('register') }}>Registrar Cliente</a>
+                            <a class="btn-paciente bordas_amarelas"  href={{route('profissional.criar_paciente') }}>Registrar Cliente</a>
                         @endif
                     </div>
+
                 @else
-                    <h3 class="clien">Não há agendamentos para você!</h3>
+                    <h3>Não há agendamentos para você!</h3>
                 @endif
             </div>
         </div>
-    </body>
 
-    <div class="agenda">
-        <h3 class="agnd">Agenda:</h3>
-        <div class="search-agenda-home">
-            <label for="pac" class="search-label-agenda">Buscar Paciente:</label>
-            <input id="pac" type="text" class="search-agenda" name="buscar">
-            <a class="bt-search-agenda" href="/">buscar</a>
-        </div>
-        @if(count($agenda) > 0)
-            <div class="table-wrapper">
-                <table class="ag table">
-                    <thead>
-                        <tr class="ag table-row">
-                            <th class="tag">Paciente:</th>
-                            <th class="tag">Hora Entrada:</th>
-                            <th class="tag">Hora Saída:</th>
-                            <th class="tag">Local do atendimento:</th>
-                            <th class="tag">Tipo da Recorrência:</th>
-                        </tr>
-                    </thead>
 
-                    <tbody>
-                        @foreach ($agenda as $ag)
-                            <tr>
-                                <td class="corsim">{{$ag->nome}}</td>
-                                <td class="corsim">{{$ag->data_entrada}}</td>
-                                <td class="corsim">{{$ag->data_saida}}</td>
-                                <td class="corsim">{{$ag->local_de_atendimento}}</td>
-                                <td class="corsim">{{$ag->tipo_da_recorrencia}}</td>
-                                <td class="bt-acao-adm-tb"><a class="bt-acao-adm-remover" href= {{route('profissional.ver', ['id' => $ag->id])}}>Remover</a></td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+
+        <div style="height: 5px;"></div>
+
+        <div id="agenda_div" class="row bordas_amarelas bg-padrao">
+            <div class="col-md">
+                <h3 style="text-align: center; margin-top: 1%;">Agenda</h3>
+                <form class="search-agenda-home">
+                    <label for="pac" class="search-label-agenda">Buscar Paciente:</label>
+                    <input id="pac" type="text" class="search-agenda" name="buscar">
+                    <input value="Buscar" type="submit" class="bt-search-agenda_r" href="/">
+                </form>
+
+
+
+                @if(count($agenda) > 0)
+                    <div class="table-wrapper">
+                        <table class="ag table">
+                            <thead>
+                                <tr class="ag table-row">
+                                    <th class="tag">Paciente:</th>
+                                    <th class="tag">Hora Entrada:</th>
+                                    <th class="tag">Hora Saída:</th>
+                                    <th class="tag">Local do atendimento:</th>
+                                    <th class="tag">Tipo da Recorrência:</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @foreach ($agenda as $ag)
+                                    <tr>
+                                        <td class="corsim">{{$ag->nome}}</td>
+                                        <td class="corsim">{{$ag->data_entrada}}</td>
+                                        <td class="corsim">{{$ag->data_saida}}</td>
+                                        <td class="corsim">{{$ag->local_de_atendimento}}</td>
+                                        <td class="corsim">{{$ag->tipo_da_recorrencia}}</td>
+                                        <td class="bt-acao-adm-tb"><a class="bt-acao-adm-remover" href= {{ route('agendamento.ver', $ag->id) }}>Ver</a></td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                @else
+                    <h3 class="agnd">Não há agendamentos para você!</h3>
+                @endif
+
+
+
+
             </div>
-        @else
-            <h3 class="agnd">Não há agendamentos para você!</h3>
-        @endif
-    </div>
-
-    <div class="logo-image">
-        <img class="empresa" src="https://avatars3.githubusercontent.com/u/64805526?s=400&u=e4188ff9af3c0927962a181f241fbee79c506f4d&v=4">
-    </div>
-    <div class="adm-bt">
-        <a class="btn-adm" id="novo-paciente-home" href={{route('profissional.criar_paciente') }}>Novo Paciente</a>
-        @if(in_array('admin', $profissoes))
-            <a class="btn-adm" id="ir-adm" href={{route('profissional.admin.dashboard') }}>Ir para administração</a>
-        @endif
-    </div>
-</div>
+        </div>
 
 
 
 
-
-<div class="celular">
-
-    <div class="welcome-phone">
-        <h1>Bem vindo! {{$profissional->nome}}</h1>
-        <div class="adm-bt-phone">
-            <a class="btn-perfil-phone" href={{route('profissional.ver', ['id' => $profissional->id])}}>Ver Perfil</a>
-            <a class="btn-perfil-phone" href={{route('profissional.criar_paciente') }}>Novo Paciente</a>
+        <!--
+            <div class="logo-image">
+            <img class="empresa" src="https://avatars3.githubusercontent.com/u/64805526?s=400&u=e4188ff9af3c0927962a181f241fbee79c506f4d&v=4">
+            </div>
+            <div class="adm-bt">
+            <a class="btn-adm" id="novo-paciente-home" href={{route('profissional.criar_paciente') }}>Novo Paciente</a>
             @if(in_array('admin', $profissoes))
-                <a class="btn-perfil-phone" href={{ route('profissional.admin.dashboard') }}>Ir para administração</a>
+                <a class="btn-adm" id="ir-adm" href={{route('profissional.admin.dashboard') }}>Ir para administração</a>
             @endif
-        </div>
-    </div>
-
-    <div class="prox-phone">
-        <h3 class="clien-phone"> Próximo Cliente: </h3>
-        @if(count($agenda) > 0)
-            <div class="info-phone-prox">
-                <label class="infosprox-phone">Nome:</label>
-                <h4 class="tdclien-phone">
-
-                    {{ $agenda[0]->nome }}
-
-                </h4>
-
-                <label class="infosprox-phone">Hora de Entrada:</label>
-                <h4 class="tdclien-phone">
-
-                    {{ $agenda[0]->data_entrada }}
-
-                </h4>
-
-                <label class="infosprox-phone">Hora de Saída:</label>
-                <h4 class="tdclien-phone">
-
-                    {{ $agenda[0]->data_saida }}
-
-                </h4>
-
-                <label class="infosprox-phone">Local de atendimento:</label>
-                <h4 class="tdclien-phone">
-
-                    {{ $agenda[0]->local_de_atendimento }}
-
-                </h4>
             </div>
-
-            <div class="btpc-phone">
-                @if($prox_paciente)
-                    <a class="btn-paciente-phone" href= {{route('paciente.perfil', ['id' => $prox_paciente->id])}}>Ver perfil</a>
-                @else
-                    <a class="btn-paciente-phone"  href= {{route('register')}}>Registrar Cliente </a>
-                @endif
-            </div>
-        @else
-            <h3 class="clien-phone"> Você não possui agendamentos </h3>
-        @endif
-
+        -->
     </div>
-
-    <div class="agenda-phone">
-        <h3 class="agnd-phone">Agenda:</h3>
-        <div class="search-agenda-home-phone">
-            <label for="pac" class="search-label-agenda-phone">Buscar Paciente:</label>
-            <input id="pac" type="text" class="search-agenda-phone" name="buscar">
-            <a class="bt-search-agenda-phone" href="/">buscar</a>
-        </div>
-        @if (count($agenda) > 0)
-            <div class="table-wrapper-phone">
-                <table class="ag table-phone">
-                    <thead>
-                        <tr class="ag table-row-phone">
-                            <th class="tag-phone">Paciente:</th>
-                            <th class="tag-phone">Hora Entrada:</th>
-                            <th class="tag-phone">Hora Saída:</th>
-                            <th class="tag-phone">Local do atendimento:</th>
-                            <th class="tag-phone">Tipo da Recorrência:</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        @foreach ($agenda as $ag)
-                            <tr>
-                                <td class="corsim-phone">{{$ag->nome}}</td>
-                                <td class="corsim-phone">{{$ag->data_entrada}}</td>
-                                <td class="corsim-phone">{{$ag->data_saida}}</td>
-                                <td class="corsim-phone">{{$ag->local_de_atendimento}}</td>
-                                <td class="corsim-phone">{{$ag->tipo_da_recorrencia}}</td>
-                                <td class="bt-acao-adm-tb"><a class="bt-acao-adm-remover" href= {{route('profissional.ver', ['id' => $ag->id])}}>Remover</a></td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-        @else
-            <h3 class="agnd-phone"> Você não possui agendamentos </h3>
-        @endif
-    </div>
-</div>
+@endsection
