@@ -22,13 +22,14 @@
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('css/refator.css') }}" rel="stylesheet">
 </head>
+
 <body class="bg-claro">
     <div id="app">
         <div id="espacador_top_nav_global"></div>
         <nav id="topnav_global" class="navbar navbar-expand-md navbar-light bg-amarelo shadow-sm" style="position: fixed; width: 100%; z-index: 9999;">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}" style="display: contents;">
-                    <img src="https://avatars3.githubusercontent.com/u/64805526?s=400&u=e4188ff9af3c0927962a181f241fbee79c506f4d&v=4">
+                    <img style="margin-left: -13%;" src="https://avatars3.githubusercontent.com/u/64805526?s=400&u=e4188ff9af3c0927962a181f241fbee79c506f4d&v=4">
                     <span style="margin-left: 2%;">{{config('app.name')}}</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

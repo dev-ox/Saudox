@@ -10,7 +10,7 @@
 
 
 .container {
-    max-width: 1225px;
+
 }
 
 .bg-amarelo {
@@ -30,11 +30,12 @@
 
 .bt {
     color: var(--cor_branco);
+    width: 150px;
     height: auto;
-    width: auto;
     border: 2px solid var(--cor_amarelo);
     padding: 10px;
     background-color: var(--cor_azul);
+    text-align: center;
 }
 
 .bt:hover {
@@ -44,20 +45,60 @@
     text-decoration: none;
 }
 
+.bt-new-adm {
+    display: block;
+    width: 20%;
+    height: auto;
+    background: #1C2934;
+    color: white;
+    font-size: 1.2vw;
+    text-decoration: none;
+    text-align: center;
+    border-color: #FFCC33;
+    border-style: solid;
+    margin-left: -10%;
+    margin-top: 35px;
+}
+
+.adm-page{
+    margin-top: 3%;
+    margin-left: 20%;
+    margin-bottom: 5px;
+}
+
+.bt-new-adm:hover{
+    background-color: var(--cor_vermelho) !important;
+    color: var(--cor_branco) !important;
+    height: auto;
+    text-decoration: none;
+}
+
 .bordas_amarelas {
     border: 2px solid var(--cor_amarelo);
 }
 
-#timer_container {
-    color: var(--cor_branco);
-    margin: auto;
-    margin-top: 2%;
-    margin-bottom: 2%;
-    padding-top: 1%;
-
+.bordas_vermelhas {
+    border: 2px solid var(--cor_vermelho);
 }
 
+#timer_container {
+    color: var(--cor_branco);
+    background-color: var(--cor_preto);
+    margin: auto;
+    margin-top: 1%;
+    margin-bottom: 2%;
+    padding-top: 4%;
+    border-width: 5px;
+}
 
+#nav-extra {
+    height: auto;
+}
+
+#adm-welcome {
+    padding-bottom: 3%;
+    margin-top: 3%;
+}
 
 .btn-paciente {
     display: block;
@@ -72,6 +113,12 @@
     text-align: center;
 }
 
+.btn-paciente:hover{
+    background-color: var(--cor_vermelho) !important;
+    color: var(--cor_branco) !important;
+    height: auto;
+    text-decoration: none;
+}
 
 .search-agenda-home {
     margin-top: 20px;
@@ -116,18 +163,77 @@
     scrollbar-width: none;
 }
 
+#home-profissional{
+    text-align: center;
+
+}
+
+th.tag{
+    border-color: #FFCC33;
+    border-style: solid;
+    border-width: 3px;
+    margin-left: 1px;
+    color: white;
+}
+
+.btn-full{
+    background-color: var(--cor_azul);
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 0.5%;
+    margin-bottom: 0.5%;
+    font-size: 18px;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+}
+
+.btn-full:hover{
+    background-color: var(--cor_vermelho) !important;
+    color: var(--cor_branco) !important;
+    text-decoration: none;
+}
+
+.bt-acao-adm:hover{
+    background-color: var(--cor_vermelho) !important;
+    color: var(--cor_branco) !important;
+    text-decoration: none;
+}
+
+.corsim-intern:hover{
+    color: var(--cor_amarelo) !important;
+    text-decoration: none;
+}
 
 .corsim {
-    background-color: var(--cor_fundo);
+    background-color: gray;
     color: white;
     font-size: 18px;
     text-align: center;
     width: 20%;
     max-width: 20%;
+    border: 3px solid var(--cor_fundo);
+}
+
+.corsim-adm{
+    background-color: gray;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    max-width: 80%;
+    width: 80%;
+    border: 3px solid var(--cor_fundo);
+}
+
+.corsim-intern{
+    border: none;
+    text-decoration: none;
+    color: white;
 }
 
 
-.bt-acao-adm-remover {
+
+.bt-acao-adm {
     display: block;
     width: 80px;
     height: auto;
@@ -142,7 +248,6 @@
     border-color: #FFCC33;
     border-style: solid;
 }
-
 
 .pessoal {
     text-align: center;
@@ -166,7 +271,7 @@
     height: auto;
     width: 600px;
     margin-left: 45%;
-    margin-bottom: 5%;
+    margin-bottom: 7%;
 }
 
 
@@ -176,7 +281,7 @@
     top: 79%;
     left: 87.5%;
     width: 12%;
-    background-color: var(--cor_amarelo);
+    background-color: var(--cor_branco);
 }
 
 .dropdown:hover {
@@ -187,6 +292,9 @@
     display: block;
 }
 
+.navbar-nav ml-auto{
+    margin-left: 10%;
+}
 
 
 .dropdown-item {
@@ -234,4 +342,9 @@
     margin-left: auto;
     margin-right: auto;
     width: 100%;
+}
+
+.logo-image{
+    position: relative;
+    margin-left: 10%;
 }

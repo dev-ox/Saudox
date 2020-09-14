@@ -5,13 +5,7 @@
         <div id="welcome_div" class="row bordas_amarelas bg-padrao">
             <div class="col-md">
                 <h1 style="margin-top: 1%;">Bem vindo! {{$profissional->nome}}</h1>
-                <div id="timer_container" class="bg-padrao">
-                    <body onload="startTime2()">
-                        <h1 id="txt2"></h1>
-                    </body>
-                </div>
                 <div class="profissional-bt">
-
                     <!-- TODO: Fazer com que a home envie as infos do agendamento para o cadastro de novo paciente -->
 
                 </div>
@@ -20,9 +14,18 @@
 
         <div style="height: 5px;"></div>
 
+        <div id="nav-extra" class="row bordas_amarelas bg-padrao">
+            @if(in_array('admin', $profissoes))
+                <a class="btn-full bordas_vermelhas" href={{route('profissional.admin.dashboard') }}>Ir para administração</a>
+            @endif
+            <a class="btn-full bordas_vermelhas" href={{route('profissional.criar_paciente') }}>Novo Paciente</a>
+        </div>
+
+        <div style="height: 5px;"></div>
+
 
         <div id="prox_paciente_div" class="row bordas_amarelas bg-padrao">
-            <div class="col-md">
+            <div class="col-xl-8">
                 @if(count($agenda) > 0)
 
                     <table class="table table-borderless bg-padrao" style="text-align: center;">
@@ -56,6 +59,12 @@
                     <h3>Não há agendamentos para você!</h3>
                 @endif
             </div>
+
+            <div class="col-sm-3 bordas_amarelas" id="timer_container">
+                <body onload="startTime2()">
+                    <h1 id="txt2"></h1>
+                </body>
+            </div>
         </div>
 
 
@@ -76,7 +85,7 @@
                 @if(count($agenda) > 0)
                     <div class="table-wrapper">
                         <table class="ag table">
-                            <thead>
+                            <thead id="home-profissional">
                                 <tr class="ag table-row">
                                     <th class="tag">Paciente:</th>
                                     <th class="tag">Hora Entrada:</th>
@@ -94,7 +103,7 @@
                                         <td class="corsim">{{$ag->data_saida}}</td>
                                         <td class="corsim">{{$ag->local_de_atendimento}}</td>
                                         <td class="corsim">{{$ag->tipo_da_recorrencia}}</td>
-                                        <td class="bt-acao-adm-tb"><a class="bt-acao-adm-remover" href= {{ route('agendamento.ver', $ag->id) }}>Ver</a></td>
+                                        <td class="bt-acao-adm-tb"><a class="bt-acao-adm" href= {{ route('agendamento.ver', $ag->id) }}>Ver</a></td>
                                     </tr>
                                 @endforeach
                             </tbody>
