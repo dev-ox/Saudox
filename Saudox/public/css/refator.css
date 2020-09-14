@@ -1,0 +1,237 @@
+:root {
+    --cor_amarelo: #FFCC33;
+    --cor_azul: #1C2934;
+    --cor_vermelho: #f00;
+    --cor_roxo: #AA00FF;
+    --cor_fundo: #424242;
+    --cor_branco: #FFF;
+    --cor_preto: #000;
+}
+
+
+.container {
+    max-width: 1225px;
+}
+
+.bg-amarelo {
+    background-color: var(--cor_amarelo) !important;
+}
+
+.bg-padrao {
+    background-color: var(--cor_fundo) !important;
+    color: var(--cor_branco) !important;
+}
+
+.bg-claro {
+    background-color: #FFF !important;
+    color: #000 !important;
+}
+
+
+.bt {
+    color: var(--cor_branco);
+    height: auto;
+    width: auto;
+    border: 2px solid var(--cor_amarelo);
+    padding: 10px;
+    background-color: var(--cor_azul);
+}
+
+.bt:hover {
+    background-color: var(--cor_roxo) !important;
+    color: var(--cor_branco) !important;
+    height: auto;
+    text-decoration: none;
+}
+
+.bordas_amarelas {
+    border: 2px solid var(--cor_amarelo);
+}
+
+#timer_container {
+    color: var(--cor_branco);
+    margin: auto;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    padding-top: 1%;
+
+}
+
+
+
+.btn-paciente {
+    display: block;
+    width: 160px;
+    height: 12%;
+    padding: 5px;
+    color: white;
+    margin: auto;
+    margin-bottom: 2%;
+    font-size: 20px;
+    text-decoration: none;
+    text-align: center;
+}
+
+
+.search-agenda-home {
+    margin-top: 20px;
+    margin-left: 42%;
+    margin-bottom: 5px;
+}
+
+
+.search-agenda {
+    border: 0;
+    border-bottom: 1px solid white;
+    background: transparent;
+    width: 55%;
+    padding: 8px 0 5px 0;
+    font-size: 16px;
+    color: white;
+    margin-left: -7%;
+    margin-bottom: 5px;
+}
+
+
+.bt-search-agenda_r {
+    background: var(--cor_azul);
+    padding: 5px;
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    text-align: center;
+    border-color: #FFCC33;
+    border-style: solid;
+}
+
+
+.table-wrapper {
+    height: auto;
+    max-width: 130%;
+    margin: 0px auto 0px auto;
+    margin-left: 0.5%;
+    margin-top: 3%;
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+
+.corsim {
+    background-color: var(--cor_fundo);
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    width: 20%;
+    max-width: 20%;
+}
+
+
+.bt-acao-adm-remover {
+    display: block;
+    width: 80px;
+    height: auto;
+    background: #1C2934;
+    padding: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    text-align: center;
+    border-color: #FFCC33;
+    border-style: solid;
+}
+
+
+.pessoal {
+    text-align: center;
+    color: white;
+    margin-left: 0px;
+    margin-top: 2%;
+}
+
+
+.profissoes-table-wrapper {
+    height: 100px;
+    width: 100%;
+    max-width: 400px;
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+
+.descricao {
+    height: auto;
+    width: 600px;
+    margin-left: 45%;
+    margin-bottom: 5%;
+}
+
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 79%;
+    left: 87.5%;
+    width: 12%;
+    background-color: var(--cor_amarelo);
+}
+
+.dropdown:hover {
+    display: block;
+}
+
+.dropdown_controller:hover ~ .dropdown {
+    display: block;
+}
+
+
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 0.25rem 1.5rem;
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+}
+
+.dropdown-item:hover {
+    background-color: var(--cor_fundo) !important;
+}
+
+
+.perigo:hover {
+    background-color: var(--cor_vermelho) !important;
+}
+
+.caixa_form {
+    border: 2px solid #FFCC33;
+    width: 100%;
+    margin: auto;
+    color: white;
+    background: #424242;
+    text-align: center;
+}
+.caixa {
+    border: 2px solid #FFCC33;
+    width: 100%;
+    margin: auto;
+    color: white;
+    background: #424242;
+    text-align: center;
+}
+
+
+.desktop {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
