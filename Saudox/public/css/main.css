@@ -785,6 +785,13 @@ h3{
     text-align: center;
 }
 
+.marker-label-2{
+    font-size: 26px;
+    font-weight: bold;
+    color: #FFCC33;
+    margin-left: 100px;
+}
+
 .lbinfo-static{
     margin-left: 100px;
     font-size: 24px;
