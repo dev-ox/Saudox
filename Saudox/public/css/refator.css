@@ -349,3 +349,20 @@ th.tag{
     position: relative;
     margin-left: 10%;
 }
+
+
+
+.table-dark {
+    color: #fff;
+    background-color: var(--cor_fundo);
+}
+
+.table-dark th, .table-dark td, .table-dark thead th {
+    border-color: var(--cor_branco);
+}
+
+
+*[data-href] {
+  cursor: pointer;
+}
+
