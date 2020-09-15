@@ -116,4 +116,72 @@ class ProfissionalController extends Controller {
         return redirect()->route('profissional.ver_paciente', $paciente->id);
     }
 
+
+    public function editarPaciente($id_paciente) {
+
+        $paciente = Paciente::find($id_paciente);
+
+        if($paciente){
+            return view('profissional/editar_paciente', ['paciente' => $paciente]);
+        } else {
+            return view('erro', ['msg_erro' => "Paciente inexistente"]);
+        }
+
+    }
+
+
+
+    public function salvarEditarPaciente(Request $request) {
+
+        $entrada = $request->all();
+        $paciente = Paciente::find($entrada['id']);
+
+        if(!$paciente) {
+            return view('erro', ['msg_erro' => "Paciente inexistente..."]);
+        }
+
+        $messages = [
+            'required' => 'O campo :attribute é obrigatório.',
+            'min' => 'O campo :attribute é deve ter no minimo :min caracteres.',
+            'max' => 'O campo :attribute é deve ter no máximo :max caracteres.',
+            'password.required' => 'A senha é obrigatória.',
+            'gt' => 'A campo :attribute deve ser maior que :gt'
+        ];
+
+        $validator_endereco = Validator::make($entrada, Endereco::$regras_validacao, $messages);
+        if ($validator_endereco->fails()) {
+            return redirect()->back()
+                             ->withErrors($validator_endereco)
+                             ->withInput();
+        }
+
+
+        $regra_validacao_aux = Paciente::$regras_validacao_editar_com_senha;
+        if($entrada['password'] == "" || !isset($entrada['password'])) {
+            $regra_validacao_aux = Paciente::$regras_validacao_editar_sem_senha;
+        }
+
+
+        $validator_paciente = Validator::make($entrada, $regra_validacao_aux, $messages);
+        if ($validator_paciente->fails()) {
+            return redirect()->back()
+                             ->withErrors($validator_paciente)
+                             ->withInput();
+        }
+
+        $endereco = Endereco::find($paciente->endereco->id);
+        $endereco->fill($entrada);
+        $endereco->save();
+
+        $paciente->fill($entrada);
+
+        //Se existe o campo password, e o campo password não está vazio (foi modificado)
+        if(isset($entrada['password']) && $entrada['password'] != "") {
+            $paciente->password = Hash::make($entrada['password']);
+        }
+
+        $paciente->save();
+        return redirect()->route('profissional.ver_paciente', $paciente->id);
+    }
+
 }
