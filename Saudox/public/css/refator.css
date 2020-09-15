@@ -252,6 +252,7 @@ th.tag{
 .pessoal {
     text-align: center;
     color: white;
+    font-weight: bold;
     margin-left: 0px;
     margin-top: 2%;
 }
