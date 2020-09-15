@@ -98,7 +98,8 @@ class AdminController extends Controller {
             $str_profissoes .= $profissao . ";";
         }
         $profissional->profissao = $str_profissoes;
-        if($entrada['password'] == "" || !isset($entrada['password'])) {
+        //Se existe o campo password, e o campo password não está vazio (foi modificado)
+        if(isset($entrada['password']) && $entrada['password'] != "") {
             $profissional->password = Hash::make($entrada['password']);
         }
         $profissional->save();

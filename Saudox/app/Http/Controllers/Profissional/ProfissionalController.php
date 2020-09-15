@@ -175,7 +175,8 @@ class ProfissionalController extends Controller {
 
         $paciente->fill($entrada);
 
-        if($entrada['password'] == "" || !isset($entrada['password'])) {
+        //Se existe o campo password, e o campo password não está vazio (foi modificado)
+        if(isset($entrada['password']) && $entrada['password'] != "") {
             $paciente->password = Hash::make($entrada['password']);
         }
 
