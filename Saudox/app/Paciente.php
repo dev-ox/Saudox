@@ -116,6 +116,62 @@ class Paciente extends Authenticatable {
         'reacao_quando_descobriu_se_adotivo' => 'nullable',
     ];
 
+    public static $regras_validacao_editar_com_senha =  [
+        'login' => 'required|max:255',
+        'password' => 'required|max:255|min:6',
+        'nome_paciente' => 'required|max:255',
+        'cpf' => 'required|numeric',
+        'sexo' => 'required',
+        'naturalidade' => 'required|min:2',
+        'data_nascimento' => 'required',
+        'responsavel' => 'required|min:3|max:15',
+        'numero_irmaos' => 'required|numeric',
+        'lista_irmaos' => 'max:255',
+        'nome_pai' => 'required|min:2|max:50',
+        'nome_mae' => 'required|min:2|max:50',
+        'telefone_pai' => 'required',
+        'telefone_mae' => 'required',
+        'email_pai' => 'required|email',
+        'email_mae' => 'required|email',
+        'idade_pai' => 'required|numeric|gt:0',
+        'idade_mae' => 'required|numeric|gt:0',
+        'pais_sao_casados' => 'required',
+        'pais_sao_divorciados' => 'required',
+        'reacao_sobre_a_relacao_pais_caso_divorciados' => 'nullable',
+        'vive_com_quem_caso_pais_divorciados' => 'nullable|max:255',
+        'tipo_filho_biologico_adotivo' => 'required',
+        'crianca_sabe_se_adotivo' => 'nullable',
+        'reacao_quando_descobriu_se_adotivo' => 'nullable',
+    ];
+
+
+    public static $regras_validacao_editar_sem_senha =  [
+        'login' => 'required|max:255',
+        'nome_paciente' => 'required|max:255',
+        'cpf' => 'required|numeric',
+        'sexo' => 'required',
+        'naturalidade' => 'required|min:2',
+        'data_nascimento' => 'required',
+        'responsavel' => 'required|min:3|max:15',
+        'numero_irmaos' => 'required|numeric',
+        'lista_irmaos' => 'max:255',
+        'nome_pai' => 'required|min:2|max:50',
+        'nome_mae' => 'required|min:2|max:50',
+        'telefone_pai' => 'required',
+        'telefone_mae' => 'required',
+        'email_pai' => 'required|email',
+        'email_mae' => 'required|email',
+        'idade_pai' => 'required|numeric|gt:0',
+        'idade_mae' => 'required|numeric|gt:0',
+        'pais_sao_casados' => 'required',
+        'pais_sao_divorciados' => 'required',
+        'reacao_sobre_a_relacao_pais_caso_divorciados' => 'nullable',
+        'vive_com_quem_caso_pais_divorciados' => 'nullable|max:255',
+        'tipo_filho_biologico_adotivo' => 'required',
+        'crianca_sabe_se_adotivo' => 'nullable',
+        'reacao_quando_descobriu_se_adotivo' => 'nullable',
+    ];
+
     /*
      * Essa função de anamneseGigantePsicopedaNeuroPsicomotos só pode ser chamada usando () no final
      * Se for chamada sem () vai dar erro
