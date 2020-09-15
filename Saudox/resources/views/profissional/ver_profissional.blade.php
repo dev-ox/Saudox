@@ -21,36 +21,36 @@
                     <div class="row">
 
                         <div class="col-md-3">
-                            <label class="lbinfo-static">Nome: <br>{{$profissional->nome}}</label>
+                            <label class="lbinfo-static">Nome:<br><label class="lbinfo-ntstatic">{{$profissional->nome}}</label></label>
                             <br>
                             <br>
-                            <label class="lbinfo-static">CPF: {{$profissional->cpf}}</label>
+                            <label class="lbinfo-static">CPF:<br><label class="lbinfo-ntstatic">{{$profissional->cpf}}</label></label>
                         </div>
 
                         <div class="col-md-3">
-                            <label class="lbinfo-static">RG: <br>{{$profissional->rg}}</label>
+                            <label class="lbinfo-static">RG:<br><label class="lbinfo-ntstatic">{{$profissional->rg}}</label></label>
                             <br>
                             <br>
-                            <label class="lbinfo-static"> Nacionalidade: {{$profissional->nacionalidade}}</label>
+                            <label class="lbinfo-static">Nacionalidade:<br><label class="lbinfo-ntstatic">{{$profissional->nacionalidade}}</label></label>
                         </div>
 
                         <div class="col-md-3">
-                            <label class="lbinfo-static">Status: <br>
+                            <label class="lbinfo-static">Status:<br><label class="lbinfo-ntstatic">
                                 @if($profissional->status == 1)
                                     Ativo
                                 @else
                                     Inativo
                                 @endif
-                            </label>
+                            </label></label>
                             <br>
                             <br>
                             @if($profissional->numero_conselho)
-                                <label class="lbinfo-static">Numero Conselho: {{$profissional->numero_conselho}}</label>
+                                <label class="lbinfo-static">Numero Conselho:<br><label class="lbinfo-ntstatic">{{$profissional->numero_conselho}}</label></label>
                             @endif
                         </div>
 
                         <div class="col-md-3">
-                            <label class="lbinfo-static">Estado Civil: {{$profissional->estado_civil}}</label>
+                            <label class="lbinfo-static">Estado Civil:<br><label class="lbinfo-ntstatic">{{$profissional->estado_civil}}</label></label>
                         </div>
                     </div>
 
@@ -60,8 +60,8 @@
 
                 <div class="Contato">
                     <h3 class="marker-label">Contato:</h3>
-                    <label class="lbinfo-static">Email:</label>
-                    <label class="lbinfo-ntstatic"><a href="mailto:{{$profissional->email}}">{{$profissional->email}}</a></label>
+                    <label class="lbinfo-static">Email:</label></label>
+                    <label class="lbinfo-ntstatic"><a href="mailto:{{$profissional->email}}"><br><label class="lbinfo-ntstatic">{{$profissional->email}}</a></label></label>
                     <br>
                     <br>
                     <label class="lbinfo-static">Telefone 1:</label>
@@ -76,7 +76,8 @@
 
 
                 <div class="profissoes">
-                    <h3 class="marker-label">Profissões:</h3>
+                    <h3 class="marker-label-2">Profissões:</h3>
+                    <div class="row">
                     <div class="profissoes-table-wrapper">
                         <table class="profissoes-table">
                             <tbody>
@@ -89,6 +90,7 @@
                         </table>
                     </div>
                 </div>
+                </div>
                 <br>
                 <br>
 
@@ -96,10 +98,12 @@
 
 
                 <div class="descricao">
-                    <h3 class="marker-label">Conhecimento e Experiencia:</h3>
+                    <h3 class="marker-label-2">Conhecimento e Experiencia:</h3>
+                    <div class="row">
                     <div class="descricao-wrapper">
                         {{$profissional->descricao_de_conhecimento_e_experiencia}}
                     </div>
+                </div>
                 </div>
 
 
