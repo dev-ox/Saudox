@@ -57,7 +57,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="bt" href="/paciente/login">Login Paciente</a>
+                                <a class="bt" href="/login">Login Paciente</a>
                             </li>
 
 

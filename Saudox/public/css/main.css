@@ -23,15 +23,14 @@ body {
     text-align: center;
     font-weight: bold;
     font-size: 24px;
+    background-color: #fefefe;
 }
 
 .card-body {
     background-color: #fefefe;
-    position: relative;
-    margin: auto;
-    margin-top: 70px; /* Metade da valor da Altura */
-    width: 500px;
-    height:600px; /* Valor da Altura */
+    margin-left: 15%;
+    width: 60%;
+    height:700px; /* Valor da Altura */
     padding: 20px;
     border-style: solid;
     border-color: #FFCC33;
@@ -351,7 +350,6 @@ h3{
     max-width: 20%;
 }
 
-
 .agnd{
     text-align: center;
     padding-top: 20px;
@@ -545,8 +543,8 @@ h3{
 }
 
 .pacientes-adm{
-    margin-top: -600px;
-    margin-left: 50%;
+    margin-top: -605px;
+    margin-left: 50.5%;
     width: 49%;
     height: 600px;
     text-align: center;
@@ -623,7 +621,7 @@ h3{
 
 
 .search-part{
-    margin-top: -7%;
+    margin-top: -10%;
 }
 
 .search-label{
@@ -679,7 +677,7 @@ h3{
 .bt-new-adm-phone{
     display: block;
     width: 65px;
-    height: auto;
+    height: 40px;
     background: #1C2934;
     padding: 5px;
     color: white;
@@ -715,8 +713,8 @@ h3{
 
 .bt-search-phone{
     display: block;
-    width: 9%;
-    height: auto;
+    width: 30px;
+    height: 20px;
     background: #1C2934;
     padding: 5px;
     padding-top: 10px;
@@ -728,16 +726,15 @@ h3{
     border-color: #FFCC33;
     border-style: solid;
     margin-top: -42px;
-    margin-left: 82.2%;
+    margin-left: 85.2%;
 }
 
 .table-wrapper-adm-phone{
+    height: 60%;
     width: 90%;
     max-width: 90%;
-    max-height: 500px;
     margin: 0px auto 0px auto;
     margin-left: 5%;
-    margin-top: 5%;
     overflow: auto;
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -1060,6 +1057,7 @@ h1 {
     border-color: #FFCC33;
     color: white;
     background-color: #424242;
+    margin-top: 80px;
     margin-left: 0.3%;
     max-width: 96%;
     font-size: 12px;
