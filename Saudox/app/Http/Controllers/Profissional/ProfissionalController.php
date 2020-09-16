@@ -41,11 +41,14 @@ class ProfissionalController extends Controller {
     public function verProfissional($id) {
         $profissional = Profissional::find($id);
         $profissoes = $profissional->getProfissoes();
+        $agenda = $profissional->agendamentos;
+
         if($profissional){
             return view('profissional/ver_profissional',
             [
               'profissional' => $profissional,
               'profissoes' => $profissoes,
+              'agenda' => $agenda,
             ]);
         } else {
             return redirect()->route('erro', ['msg_erro' => "Profissional inexistente"]);
