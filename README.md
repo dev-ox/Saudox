@@ -1,5 +1,6 @@
 # Saudox
 ### Sistema referente a uma clínica de saúde
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a942144fb30c4366922b69d63e6cf743)](https://app.codacy.com/gh/dev-ox/Saudox?utm_source=github.com&utm_medium=referral&utm_content=dev-ox/Saudox&utm_campaign=Badge_Grade_Dashboard)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/c2342cc77a644f1d950d36fcc7f0c17e)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=dev-ox/Saudox&amp;utm_campaign=Badge_Grade)
 <br/>
 ![Laravel](https://github.com/dev-ox/Saudox/workflows/Laravel/badge.svg)
