@@ -10,6 +10,7 @@ use App\Profissional;
 use App\Endereco;
 use Auth;
 use Illuminate\Support\Facades\Hash;
+use DB;
 
 
 class ProfissionalController extends Controller {
@@ -185,6 +186,84 @@ class ProfissionalController extends Controller {
 
         $paciente->save();
         return redirect()->route('profissional.ver_paciente', $paciente->id);
+    }
+
+    public function buscarUsuario(Request $request) {
+        $req = $request->all();
+
+        $buscou = false; // true/false indicando se buscou ou não
+        $tipo_user = ''; // paciente ou profissional
+        $tipo_busca = ''; // cpf ou nome
+        $info = ''; // String buscada
+        $pacientes_array = array();
+        $profissionais_array = array();
+        $busca_ok = false;
+
+        if(count($req) > 0) {
+            // Se a busca foi realizada, ele seta os valores recebidos via post
+            $buscou = $req['buscou'];
+            $tipo_user = $req['tipo_user'];
+            $tipo_busca = $req['tipo_busca'];
+            $info = $req['info'];
+
+            // Se o usuário do sistema fez uma busca
+            if($buscou) {
+                // Se o tipo de usuário que ele está buscando for paciente
+                if($tipo_user == 'paciente') {
+                    // Coleta apenas informações necessárias
+                    $pacientes_aux = Paciente::select('id', 'nome_paciente', 'cpf')->get();
+
+                    // Verifica se algum usuário possui no seu cpf ou nome a string buscada
+                    if($tipo_busca == 'cpf') {
+                        $busca_ok = true; // Indicativo que a o conteúdo do request está ok
+                        foreach ($pacientes_aux as $pac) {
+                            // Se a string contém a substring
+                            if(str_contains($pac->cpf, $info)) {
+                                // Adiciona aquele paciente um vetor de resultados
+                                array_push($pacientes_array, $pac);
+                            }
+                        }
+                    } else if($tipo_busca == 'nome') {
+                        $busca_ok = true;
+                        foreach ($pacientes_aux as $pac) {
+                            if(str_contains($pac->nome_paciente, $info)) {
+                                array_push($pacientes_array, $pac);
+                            }
+                        }
+                    }
+                // Se o tipo de usuário que ele está buscando for paciente
+                } else if($tipo_user == 'profissional') {
+                    $profissional_aux = Profissional::select('id', 'nome', 'cpf')->get();
+                    if($tipo_busca == 'cpf') {
+                        $busca_ok = true;
+                        foreach ($profissional_aux as $prof) {
+                            if(str_contains($prof->cpf, $info)) {
+                                array_push($profissionais_array, $prof);
+                            }
+                        }
+                    } else if($tipo_busca == 'nome') {
+                        $busca_ok = true;
+                        foreach ($profissional_aux as $prof) {
+                            if(str_contains($prof->nome, $info)) {
+                                array_push($profissionais_array, $prof);
+                            }
+                        }
+                    }
+                }
+            }
+            if(!$busca_ok) {
+                return view('erro', ['msg_erro' => "Por favor, informe dados válidos para a busca."]);
+            }
+        }
+
+        return view('profissional/buscar', [
+            'buscou' => $buscou,
+            'tipo_user' => $tipo_user,
+            'tipo_busca' => $tipo_busca,
+            'info' => $info,
+            'pacientes' => $pacientes_array,
+            'profissionais' => $profissionais_array
+        ]);
     }
 
 }
