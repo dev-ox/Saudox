@@ -21,10 +21,7 @@
         <!-- TODO: implementar buscar -->
         <div class="row justify-content-center ">
             <div class="col-md-3 text-center justify-content-center" style="display: flex;">
-                <a class="bt" style="margin: 5px;">Buscar Paciente</a>
-            </div>
-            <div class="col-md-3 text-center justify-content-center" style="display: flex;">
-                <a class="bt" style="margin: 5px;">Buscar Profissional</a>
+                <a class="bt" style="margin: 5px;" href="{{route('profissional.buscar')}}">Buscar Paciente ou Profissional</a>
             </div>
         </div>
 
