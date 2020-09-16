@@ -98,7 +98,7 @@
 
 
                 <div class="descricao">
-                    <h3 class="marker-label-2">Conhecimento e Experiencia:</h3>
+                    <h3 class="marker-label-2">Conhecimento e Experiência:</h3>
                     <div class="row">
                         <div class="descricao-wrapper">
                             {{$profissional->descricao_de_conhecimento_e_experiencia}}
@@ -135,12 +135,14 @@
                     </thead>
                     <tbody>
                         @foreach($agenda as $agendamento)
-                            <tr data-href="{{ route('agendamento.ver', $agendamento->id) }}" onclick="verAgendamento(this)">
-                                <th style="width: 20%;" scope="row">{{ date('H:m - d-m-Y', strtotime($agendamento->data_entrada)) }}</th>
-                                <td>{{ $agendamento->nome }}</td>
-                                <td>{{ $agendamento->cpf }}</td>
-                                <td>{{ $agendamento->telefone }}</td>
-                            </tr>
+                            @if($agendamento->status == '1')
+                                <tr data-href="{{ route('agendamento.ver', $agendamento->id) }}" onclick="verAgendamento(this)">
+                                    <th style="width: 20%;" scope="row">{{ date('H:m - d-m-Y', strtotime($agendamento->data_entrada)) }}</th>
+                                    <td>{{ $agendamento->nome }}</td>
+                                    <td>{{ $agendamento->cpf }}</td>
+                                    <td>{{ $agendamento->telefone }}</td>
+                                </tr>
+                            @endif
                         @endforeach
                     </tbody>
                 </table>
