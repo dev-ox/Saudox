@@ -61,9 +61,9 @@
                         @foreach($pacientes as $pac)
                             {{$pac->nome}}
                             <tr>
-                                <td class="corsim-adm"> <a class="corsim-adm" href={{route('profissional.ver_paciente', ['id' => $pac->id])}}>{{$pac->nome_paciente}}</a> </td>
-                                <td class="bt-acao-adm-tb"> <a class="bt-acao-adm-editar" href= {{route('profissional.criar_paciente.editar', $pac->id)}}>Editar</a> </td>
-                                <td class="bt-acao-adm-tb"> <a class="bt-acao-adm-remover" href= {{route('profissional.ver', ['id' => $pac->id])}}>Remover</a> </td>
+                                <td class="corsim-adm"> <a class="corsim-intern" href={{route('profissional.ver_paciente', ['id' => $pac->id])}}>{{$pac->nome_paciente}}</a> </td>
+                                <td class="bt-acao-adm-tb"> <a class="bt-acao-adm" href= {{route('profissional.criar_paciente.editar', $pac->id)}}>Editar</a> </td>
+                                <td class="bt-acao-adm-tb"> <a class="bt-acao-adm" href= {{route('profissional.ver', ['id' => $pac->id])}}>Remover</a> </td>
                             </tr>
                         @endforeach
                     </tbody>
