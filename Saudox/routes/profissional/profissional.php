@@ -38,6 +38,9 @@ Route::middleware('auth:profissional')->group(function() {
     // Visualizar perfil de pacientes
     Route::get('/ver_paciente/{id}', 'ProfissionalController@verPaciente')->name('.ver_paciente');
 
+    Route::prefix('recepcao')->name('.recepcao')->group(function () {
+        require 'recepcao.php';
+    });
 
     Route::prefix('anamnese')->name('.anamnese')->group(function () {
         require 'anamnese/anamnese_geral.php';

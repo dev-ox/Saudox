@@ -214,3 +214,8 @@ function temaEscuro() {
         bd.className = "bg-claro";
     }
 }
+
+
+function verAgendamento(linha_tabela) {
+    window.location = linha_tabela.attributes["data-href"].nodeValue;
+}
