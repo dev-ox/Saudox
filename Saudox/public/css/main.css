@@ -545,8 +545,8 @@ h3{
 }
 
 .pacientes-adm{
-    margin-top: -605px;
-    margin-left: 50.5%;
+    margin-top: -600px;
+    margin-left: 50%;
     width: 49%;
     height: 600px;
     text-align: center;
@@ -623,7 +623,7 @@ h3{
 
 
 .search-part{
-    margin-top: -10%;
+    margin-top: -7%;
 }
 
 .search-label{
@@ -679,7 +679,7 @@ h3{
 .bt-new-adm-phone{
     display: block;
     width: 65px;
-    height: 40px;
+    height: auto;
     background: #1C2934;
     padding: 5px;
     color: white;
@@ -715,8 +715,8 @@ h3{
 
 .bt-search-phone{
     display: block;
-    width: 30px;
-    height: 20px;
+    width: 9%;
+    height: auto;
     background: #1C2934;
     padding: 5px;
     padding-top: 10px;
@@ -728,15 +728,16 @@ h3{
     border-color: #FFCC33;
     border-style: solid;
     margin-top: -42px;
-    margin-left: 85.2%;
+    margin-left: 82.2%;
 }
 
 .table-wrapper-adm-phone{
-    height: 60%;
     width: 90%;
     max-width: 90%;
+    max-height: 500px;
     margin: 0px auto 0px auto;
     margin-left: 5%;
+    margin-top: 5%;
     overflow: auto;
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -1059,7 +1060,6 @@ h1 {
     border-color: #FFCC33;
     color: white;
     background-color: #424242;
-    margin-top: 80px;
     margin-left: 0.3%;
     max-width: 96%;
     font-size: 12px;
