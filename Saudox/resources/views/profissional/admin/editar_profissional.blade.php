@@ -52,42 +52,48 @@
                         <h3>Profissão</h3>
                         <div class="checkbox_container">
                             <input type="checkbox" id="admin" name="profissoes[]" value="admin" {{ in_array('admin', $profissional->getProfissoes()) ? "checked" : "" }}>
-                    <label>Administrador</label><br>
+                            <label>Administrador</label><br>
 
-                    <input type="checkbox" id="fonoaudiologo" name="profissoes[]" value="fonoaudiologo" {{ in_array('fonoaudiologo', $profissional->getProfissoes()) ? "checked" : "" }}>
-                    <label>Fonoaudiólogo</label><br>
+                            <input type="checkbox" id="fonoaudiologo" name="profissoes[]" value="fonoaudiologo" {{ in_array('fonoaudiologo', $profissional->getProfissoes()) ? "checked" : "" }}>
+                            <label>Fonoaudiólogo</label><br>
 
-                    <input type="checkbox" id="terapeuta_ocupacional" name="profissoes[]" value="terapeuta_ocupacional" {{ in_array('terapeuta_ocupacional', $profissional->getProfissoes()) ? "checked" : "" }}>
-                    <label>Terapeuta Ocupacional</label><br>
+                            <input type="checkbox" id="terapeuta_ocupacional" name="profissoes[]" value="terapeuta_ocupacional" {{ in_array('terapeuta_ocupacional', $profissional->getProfissoes()) ? "checked" : "" }}>
+                            <label>Terapeuta Ocupacional</label><br>
 
-                    <input type="checkbox" id="neuropsicologo" name="profissoes[]" value="neuropsicologo" {{ in_array('neuropsicologo', $profissional->getProfissoes()) ? "checked" : "" }}>
-                    <label>Neuropsicólogo</label><br>
+                            <input type="checkbox" id="neuropsicologo" name="profissoes[]" value="neuropsicologo" {{ in_array('neuropsicologo', $profissional->getProfissoes()) ? "checked" : "" }}>
+                            <label>Neuropsicólogo</label><br>
 
-                    <input type="checkbox" id="psicologo" name="profissoes[]" value="psicologo" {{ in_array('psicologo', $profissional->getProfissoes()) ? "checked" : "" }}>
-                    <label>Psicologo</label><br>
+                            <input type="checkbox" id="psicologo" name="profissoes[]" value="psicologo" {{ in_array('psicologo', $profissional->getProfissoes()) ? "checked" : "" }}>
+                            <label>Psicologo</label><br>
 
-                    <input type="checkbox" id="psicopedagogo" name="profissoes[]" value="psicopedagogo" {{ in_array('psicopedagogo', $profissional->getProfissoes()) ? "checked" : "" }}>
-                    <label>Psicopedagogo</label><br>
+                            <input type="checkbox" id="psicopedagogo" name="profissoes[]" value="psicopedagogo" {{ in_array('psicopedagogo', $profissional->getProfissoes()) ? "checked" : "" }}>
+                            <label>Psicopedagogo</label><br>
                         </div>
 
                         <hr class="hr_form">
                         <h3>Estado Civil</h3>
                         <label for="solteiro">Solteiro</label>
                         <input value="solteiro" type="radio" name="estado_civil" id="estado_civil"  {{ $profissional->estado_civil == "solteiro" ? "checked" : "" }}>
-                <br>
-                <label for="casado">Casado</label>
-                <input value="casado" type="radio" name="estado_civil" id="estado_civil"  {{ $profissional->estado_civil == "casado" ? "checked" : "" }}>
+
+                        <br>
+                        <label for="casado">Casado</label>
+                        <input value="casado" type="radio" name="estado_civil" id="estado_civil"  {{ $profissional->estado_civil == "casado" ? "checked" : "" }}>
 
 
-                <hr class="hr_form">
-                <h3>Estado Trabalhista</h3>
-                <label for="{{ \App\Profissional::Trabalhando }}">{{ \App\Profissional::Trabalhando }}</label>
-                <input value="{{ \App\Profissional::Trabalhando }}" type="radio" name="status" id="status" {{ $profissional->status == \App\Profissional::Trabalhando ? "checked" : "" }}>
-                <br>
-                <label for="{{ \App\Profissional::Demitido }}">{{ \App\Profissional::Demitido }}</label>
-                <input value="{{ \App\Profissional::Demitido }}" type="radio" name="status" id="status" {{ $profissional->status == \App\Profissional::Demitido ? "checked" : "" }}>
+                        <hr class="hr_form">
+                        <h3>Estado Trabalhista</h3>
+                        <label for="{{ \App\Profissional::Trabalhando }}">{{ \App\Profissional::Trabalhando }}</label>
+                        <input value="{{ \App\Profissional::Trabalhando }}" type="radio" name="status" id="status" {{ $profissional->status == \App\Profissional::Trabalhando ? "checked" : "" }}>
+                        <br>
+                        <label for="{{ \App\Profissional::Demitido }}">{{ \App\Profissional::Demitido }}</label>
+                        <input value="{{ \App\Profissional::Demitido }}" type="radio" name="status" id="status" {{ $profissional->status == \App\Profissional::Demitido ? "checked" : "" }}>
 
-                <input type="submit" value="Salvar">
+                        <hr class="hr_form">
+                        <h3>Aviso</h3>
+                        <input value="{{ $profissional->aviso }}" placeholder="Aviso" type="text" name="aviso" id="aviso">
+
+
+                        <input type="submit" value="Salvar">
 
                     </form>
                 </div>

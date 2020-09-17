@@ -74,6 +74,9 @@ Route::middleware('auth:profissional')->group(function() {
         Route::post('/salvar_editar', 'ProfissionalController@salvarEditarAgendarPaciente')->name('.editar.salvar');
     });
 
+
+    Route::post('editar_aviso', 'ProfissionalController@editarAviso')->name('.aviso.editar.salvar');
+
     Route::prefix('buscar')->name('.buscar')->group(function() {
         Route::get('/', 'ProfissionalController@buscarUsuario');
         Route::post('/', 'ProfissionalController@buscarUsuario');
