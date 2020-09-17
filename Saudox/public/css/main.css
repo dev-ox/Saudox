@@ -23,15 +23,14 @@ body {
     text-align: center;
     font-weight: bold;
     font-size: 24px;
+    background-color: #fefefe;
 }
 
 .card-body {
     background-color: #fefefe;
-    position: relative;
-    margin: auto;
-    margin-top: 70px; /* Metade da valor da Altura */
-    width: 500px;
-    height:600px; /* Valor da Altura */
+    margin-left: 15%;
+    width: 60%;
+    height:700px; /* Valor da Altura */
     padding: 20px;
     border-style: solid;
     border-color: #FFCC33;

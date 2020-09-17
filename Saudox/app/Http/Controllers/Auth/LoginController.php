@@ -35,7 +35,7 @@ class LoginController extends Controller {
     // Para carregar página de login baseada no login de paciente
     public function showLoginForm() {
         return view('auth.login',[
-            'title' => 'User Login',
+            'title' => 'Login de Paciente',
             'loginRoute' => 'login',
             'forgotPasswordRoute' => 'password.request',
         ]);

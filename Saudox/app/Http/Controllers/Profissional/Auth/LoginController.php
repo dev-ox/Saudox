@@ -20,7 +20,7 @@ class LoginController extends Controller {
 	// Para carregar página de login baseada no login de profissionais
 	public function showLoginForm() {
 		return view('auth.login',[
-			'title' => 'Profissional Login',
+			'title' => 'Login de Profissional',
 			'loginRoute' => 'profissional.efetuarLogin',
 			'forgotPasswordRoute' => 'profissional.password.request',
 		]);

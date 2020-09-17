@@ -1,6 +1,7 @@
 @extends('layouts.mainlayout')
 @section('content')
 
+
     <div class="desktop">
         <head>
             <div class="welcome-adm bg-padrao">
@@ -61,9 +62,9 @@
                         @foreach($pacientes as $pac)
                             {{$pac->nome}}
                             <tr>
-                                <td class="corsim-adm"> <a class="corsim-adm" href={{route('profissional.ver_paciente', ['id' => $pac->id])}}>{{$pac->nome_paciente}}</a> </td>
-                                <td class="bt-acao-adm-tb"> <a class="bt-acao-adm-editar" href= {{route('profissional.criar_paciente.editar', $pac->id)}}>Editar</a> </td>
-                                <td class="bt-acao-adm-tb"> <a class="bt-acao-adm-remover" href= {{route('profissional.ver', ['id' => $pac->id])}}>Remover</a> </td>
+                                <td class="corsim-adm"> <a class="corsim-intern" href={{route('profissional.ver_paciente', ['id' => $pac->id])}}>{{$pac->nome_paciente}}</a> </td>
+                                <td class="bt-acao-adm-tb"> <a class="bt-acao-adm" href= {{route('profissional.criar_paciente.editar', $pac->id)}}>Editar</a> </td>
+                                <td class="bt-acao-adm-tb"> <a class="bt-acao-adm" href= {{route('profissional.ver', ['id' => $pac->id])}}>Remover</a> </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -80,16 +81,16 @@
             </div>
         </head>
 
-        <div class="profissionais-adm-phone">
+        <div class="profissionais-adm-phone bg-padrao">
             <h3>Profissionais:</h3>
-            <a class="bt-new-adm-phone" href= {{route('profissional.home')}}>Cadastrar Novo Profissional</a>
+            <a class="bt-new-adm-phone" href= {{route('profissional.home')}}>Novo Profissional</a>
             <div class="adm-page-phone">
                 <label for="prof" class="search-label-phone">Buscar profissional</label>
                 <input id="prof" type="text" class="search-phone" name="buscar">
                 <a class="bt-search-phone" href="/">buscar</a>
             </div>
             <div class="table-wrapper-adm-phone">
-                <table class="adm-table-phone">
+                <table class="adm table-phone">
                     <thead>
                         <tr class="adm table-row">
                             <th class="tag-adm" colspan="3">Profissional:</th>
@@ -98,9 +99,9 @@
                     <tbody>
                         @foreach($profissionais as $pro)
                             <tr>
-                                <td class="corsim-adm"> <a class="corsim-adm" href={{route('profissional.ver', ['id' => $pro->id])}}> {{$pro->nome}} </a> </td>
-                                <td class="bt-acao-adm-tb"> <a class="bt-acao-adm-editar" href={{route('profissional.ver', ['id' => $pro->id])}}>Editar</a> </td>
-                                <td class="bt-acao-adm-tb"> <a class="bt-acao-adm-remover" href={{route('profissional.ver', ['id' => $pro->id])}}>Remover</a> </td>
+                                <td class="corsim-adm"> <a class="corsim-intern" href={{route('profissional.ver', ['id' => $pro->id])}}> {{$pro->nome}} </a> </td>
+                                <td class="bt-acao-adm-tb"> <a class="bt-acao-adm" href={{route('profissional.ver', ['id' => $pro->id])}}>Editar</a> </td>
+                                <td class="bt-acao-adm-tb"> <a class="bt-acao-adm" href={{route('profissional.ver', ['id' => $pro->id])}}>Remover</a> </td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -108,16 +109,16 @@
             </div>
         </div>
 
-        <div class="pacientes-adm-phone">
+        <div class="pacientes-adm-phone bg-padrao">
             <h3>Pacientes:</h3>
-            <a class="bt-new-adm-phone" href= {{route('profissional.home')}}>Cadastrar Novo Paciente</a>
+            <a class="bt-new-adm-phone" href= {{route('profissional.home')}}>Novo Paciente</a>
             <div class="adm-page-phone">
                 <label for="pac" class="search-label-phone">Buscar paciente</label>
                 <input id="pac" type="text" class="search-phone" name="buscar">
                 <a class="bt-search-phone" href="/">buscar</a>
             </div>
             <div class="table-wrapper-adm-phone">
-                <table class="adm-table-´hone">
+                <table class="adm table-phone">
                     <thead>
                         <tr class="adm table-row">
                             <th class="tag-adm" colspan="3">Paciente:</th>
@@ -127,9 +128,9 @@
                         @foreach($pacientes as $pac)
                             {{$pac->nome}}
                             <tr>
-                                <td class="corsim-adm"> <a class="corsim-adm" href={{route('profissional.ver_paciente', ['id' => $pac->id])}}> {{$pac->nome_paciente}} </a> </td>
-                                <td class="bt-acao-adm-tb"> <a class="bt-acao-adm-editar" href={{route('profissional.ver', ['id' => $pac->id])}}>Editar</a></td>
-                                <td class="bt-acao-adm-tb"> <a class="bt-acao-adm-remover" href={{route('profissional.ver', ['id' => $pac->id])}}>Remover</a></td>
+                                <td class="corsim-adm"> <a class="corsim-intern" href={{route('profissional.ver_paciente', ['id' => $pac->id])}}> {{$pac->nome_paciente}} </a> </td>
+                                <td class="bt-acao-adm-tb"> <a class="bt-acao-adm" href={{route('profissional.ver', ['id' => $pac->id])}}>Editar</a></td>
+                                <td class="bt-acao-adm-tb"> <a class="bt-acao-adm" href={{route('profissional.ver', ['id' => $pac->id])}}>Remover</a></td>
                             </tr>
                         @endforeach
                     </tbody>

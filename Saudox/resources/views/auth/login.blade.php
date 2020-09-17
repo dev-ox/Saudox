@@ -5,16 +5,13 @@
 <body>
 <div class="container">
     <div class="row-justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-
-
-                <?php // TODO: arrumar isso, claro! ?>
-                <?php
-                if($errors) {
-                    echo($errors);
-                }
-                ?>
+        <div class="col-md-12">
+            <?php // TODO: arrumar isso, claro! ?>
+            <?php
+            if($errors) {
+                echo($errors);
+            }
+            ?>
 
                 @if (session('status'))
                     <div class="alert alert-success">
@@ -61,7 +58,6 @@
                             </div>
                         </div>
                     </form>
-                </div>
             </div>
         </div>
     </div>
