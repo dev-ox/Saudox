@@ -219,3 +219,15 @@ function temaEscuro() {
 function verAgendamento(linha_tabela) {
     window.location = linha_tabela.attributes["data-href"].nodeValue;
 }
+
+
+
+function buscarPacientePorNome() {
+    let busca = (document.getElementById('pac').value);
+    window.location = "/profissional/buscar?buscou=true&tipo_user=paciente&tipo_busca=nome&info=" + busca;
+}
+
+function buscarProfissionalPorNome() {
+    let busca = (document.getElementById('prof').value);
+    window.location = "/profissional/buscar?buscou=true&tipo_user=profissional&tipo_busca=nome&info=" + busca;
+}
