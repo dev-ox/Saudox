@@ -76,11 +76,11 @@
         <div id="agenda_div" class="row bordas_amarelas bg-padrao">
             <div class="col-md">
                 <h3 style="text-align: center; margin-top: 1%;">Agenda</h3>
-                <form class="search-agenda-home">
+                <div class="search-agenda-home">
                     <label for="pac" class="search-label-agenda">Buscar Paciente:</label>
-                    <input id="pac" type="text" class="search-agenda" name="buscar">
-                    <input value="Buscar" type="submit" class="bt-search-agenda_r" href="/">
-                </form>
+                    <input placeholder="Nome do paciente" id="pac" type="text" class="search-agenda" name="buscar">
+                    <input value="Buscar" type="submit" class="bt-search-agenda_r" href="#" onclick="buscarPacientePorNome()">
+                </div>
 
 
 
