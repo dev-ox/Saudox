@@ -54,6 +54,12 @@ class Paciente extends Authenticatable {
     ];
 
 
+    public function dataNascimentoFormatada(){
+        $time = strtotime($this->data_nascimento);
+        return date('d-m-Y',$time);
+    }
+
+
     /**
      * The attributes that should be cast to native types.
      *

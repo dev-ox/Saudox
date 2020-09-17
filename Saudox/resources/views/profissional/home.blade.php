@@ -42,8 +42,8 @@
                         <tbody>
                             <tr>
                                 <td>{{$agenda[0]->nome}}</td>
-                                <td>{{$agenda[0]->data_entrada}}</td>
-                                <td>{{$agenda[0]->data_saida}}</td>
+                                <td>{{$agenda[0]->dataEntradaFormatada()}}</td>
+                                <td>{{$agenda[0]->dataSaidaFormatada()}}</td>
                                 <td>{{$agenda[0]->local_de_atendimento}}</td>
                             </tr>
                         </tbody>
@@ -101,8 +101,8 @@
                                 @foreach ($agenda as $ag)
                                     <tr>
                                         <td class="corsim">{{$ag->nome}}</td>
-                                        <td class="corsim">{{$ag->data_entrada}}</td>
-                                        <td class="corsim">{{$ag->data_saida}}</td>
+                                        <td class="corsim">{{$ag->dataEntradaFormatada()}}</td>
+                                        <td class="corsim">{{$ag->dataSaidaFormatada()}}</td>
                                         <td class="corsim">{{$ag->local_de_atendimento}}</td>
                                         <td class="corsim">{{$ag->tipo_da_recorrencia}}</td>
                                         <td class="bt-acao-adm-tb"><a class="bt-acao-adm" href= {{ route('agendamento.ver', $ag->id) }}>Ver</a></td>

@@ -12,6 +12,31 @@
                 @endif
 
 
+                @if($profissional->aviso != "")
+                    <br>
+                    <div class="row justify-content-center text-center">
+                        <div class="col-md-5 bordas_vermelhas">
+                            <br>
+                            <h3 class="marker-label">Aviso:</h3>
+                            <p style="font-size: 25px;"> {{ $profissional->aviso }} </p>
+                        </div>
+                    </div>
+                    <br>
+                @endif
+
+                @if($profissional->id == Auth::id() || App\Profissional::find(Auth::id())->ehAdmin())
+                    <div class="caixa_form" style="width: 43%;">
+                        <h3>Edite seu aviso (deixe em branco para remover)</h3>
+                        <form method="post" action="{{ route('profissional.aviso.editar.salvar') }}" style="margin-top: 0px;">
+                            @csrf
+                            <input value="{{ $profissional->id }}" type="hidden"  name="id" id="id">
+                            <input value="{{ $profissional->aviso }}" placeholder="Aviso (em branco para remover)" type="text"  name="aviso" id="aviso" style="width: 70%;">
+                            <input type="submit" value="Salvar">
+                        </form>
+                    </div>
+                    <br>
+                @endif
+
 
                 <div class="info-pessoal prof">
                     <h3 class="marker-label">Informações Pessoais:</h3>
@@ -35,13 +60,7 @@
                         </div>
 
                         <div class="col-md-3">
-                            <label class="lbinfo-static">Status:<br><label class="lbinfo-ntstatic">
-                                    @if($profissional->status == 1)
-                                        Ativo
-                                    @else
-                                        Inativo
-                                    @endif
-                                </label></label>
+                            <label class="lbinfo-static">Status:<br><label class="lbinfo-ntstatic">{{$profissional->status}}</label></label>
                                 <br>
                                 <br>
                                 @if($profissional->numero_conselho)
@@ -137,7 +156,7 @@
                         @foreach($agenda as $agendamento)
                             @if($agendamento->status == '1')
                                 <tr data-href="{{ route('agendamento.ver', $agendamento->id) }}" onclick="verAgendamento(this)">
-                                    <th style="width: 20%;" scope="row">{{ date('H:m - d-m-Y', strtotime($agendamento->data_entrada)) }}</th>
+                                    <th style="width: 20%;" scope="row">{{ $agendamento->dataEntradaFormatada()}}</th>
                                     <td>{{ $agendamento->nome }}</td>
                                     <td>{{ $agendamento->cpf }}</td>
                                     <td>{{ $agendamento->telefone }}</td>

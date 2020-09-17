@@ -62,6 +62,11 @@
                             </label></label>
                             @endif
                         </div>
+
+                        <div class="col-md-3">
+                            <label class="lbinfo-static">Nascimento:<br><label class="lbinfo-ntstatic">{{$paciente->dataNascimentoFormatada()}}</label></label>
+                            <br>
+                        </div>
                     </div>
 
                 </div>

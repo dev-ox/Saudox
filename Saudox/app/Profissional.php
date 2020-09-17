@@ -29,6 +29,7 @@ class Profissional extends Authenticatable {
         'nacionalidade',
         'descricao_de_conhecimento_e_experiencia',
         'estado_civil',
+        'aviso',
     ];
 
     /**
@@ -64,6 +65,7 @@ class Profissional extends Authenticatable {
         'descricao_de_conhecimento_e_experiencia' => 'required',
         'profissoes' => 'required',
         'estado_civil' => 'required',
+        'aviso' => 'nullable',
     ];
 
     public static $regras_validacao_editar_com_senha = [
@@ -80,6 +82,7 @@ class Profissional extends Authenticatable {
         'descricao_de_conhecimento_e_experiencia' => 'required',
         'profissoes' => 'required',
         'estado_civil' => 'required',
+        'aviso' => 'nullable',
     ];
 
     public static $regras_validacao_editar_sem_senha = [
@@ -95,6 +98,7 @@ class Profissional extends Authenticatable {
         'descricao_de_conhecimento_e_experiencia' => 'required',
         'profissoes' => 'required',
         'estado_civil' => 'required',
+        'aviso' => 'nullable',
     ];
 
 
