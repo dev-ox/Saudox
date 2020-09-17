@@ -34,5 +34,20 @@ class Agendamentos extends Model {
         return $this->hasOne('\App\Endereco', 'id', 'id_endereco');
     }
 
+    public function dataEntradaFormatada(){
+        $time = strtotime($this->data_entrada);
+        $today = date('d-m-Y',$time);
+        if($today == date('d-m-Y')){
+            return date('H:m',$time);
+        }else{
+            return date('H:m d-m-Y',$time);
+        }
+    }
+
+    public function dataSaidaFormatada(){
+        $time = strtotime($this->data_saida);
+        return date('H:m',$time);
+    }
+
 
 }

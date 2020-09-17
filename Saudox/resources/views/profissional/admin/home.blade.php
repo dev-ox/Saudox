@@ -14,8 +14,7 @@
             <div class="adm-page">
                 <a class="bt-new-adm" href= {{route('profissional.admin.cadastro')}}>Cadastrar Novo Profissional</a>
                 <div class="search-part">
-                    <label for="prof" class="search-label">Buscar profissional:</label>
-                    <input id="prof" type="text" class="search" name="buscar">
+                    <input value="Digite o CPF do profissional" id="prof" type="text" class="search" name="buscar">
                     <input value="Buscar" type="submit" class="bt-search-agenda_r" href="/">
                 </div>
             </div>
@@ -45,9 +44,8 @@
             <h3>Pacientes:</h3>
             <div class="adm-page">
                 <a class="bt-new-adm" href= {{route('profissional.criar_paciente')}}>Cadastrar Novo Paciente</a>
-                <div class="search-part">
-                    <label for="pac" class="search-label">Buscar paciente:</label>
-                    <input id="pac" type="text" class="search" name="buscar">
+                <div class="search-part-2">
+                    <input value="Digite o CPF do Paciente" id="pac" type="text" class="search" name="buscar">
                     <input value="Buscar" type="submit" class="bt-search-agenda_r" href="/">
                 </div>
             </div>
