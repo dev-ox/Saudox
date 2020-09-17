@@ -9,21 +9,8 @@
 }
 
 
-.desktop{
-    display: block;
-}
-
-.celular {
-    display: none;
-}
-
-@media screen and (max-width: 600px) {
-    .desktop {display: none !important;}
-    .celular{display: block;}
-}
-
 .container {
-    width: 1360px;
+
 }
 
 .bg-amarelo {
@@ -39,6 +26,7 @@
     background-color: #FFF !important;
     color: #000 !important;
 }
+
 
 
 .bt {
@@ -60,22 +48,23 @@
 
 .bt-new-adm {
     display: block;
-    width: 19%;
+    width: 20%;
     height: auto;
     background: #1C2934;
     color: white;
-    font-size: 18px;
+    font-size: 1.2vw;
     text-decoration: none;
     text-align: center;
     border-color: #FFCC33;
     border-style: solid;
     margin-left: -10%;
+    margin-top: 2%;
 }
 
 .adm-page{
     margin-top: 3%;
     margin-left: 20%;
-    margin-bottom: 4%;
+    margin-bottom: 5px;
 }
 
 .bt-new-adm:hover{

@@ -542,6 +542,7 @@ h3{
     color: white;
 }
 
+
 .pacientes-adm{
     margin-top: -605px;
     margin-left: 50.5%;
@@ -605,7 +606,7 @@ h3{
     width: 80%;
     margin: 0px auto 0px auto;
     margin-left: 10%;
-    margin-top: 20px;
+    margin-top: 4%;
     overflow: auto;
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -621,6 +622,10 @@ h3{
 
 
 .search-part{
+    margin-top: -10%;
+}
+
+.search-part-2{
     margin-top: -10%;
 }
 
@@ -687,7 +692,7 @@ h3{
     border-color: #FFCC33;
     border-style: solid;
     margin-left: 5%;
-    margin-bottom: 15px;
+
 }
 
 .adm-page-phone{
