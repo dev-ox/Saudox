@@ -1,17 +1,15 @@
-@include('layouts/mainlayout');
+@include('layouts/mainlayout')
 
 
 
 <body>
 <div class="container">
-    <div class="row-justify-content-center">
+    <div class="row justify-content-center">
         <div class="col-md-12">
             <?php // TODO: arrumar isso, claro! ?>
-            <?php
-            if($errors) {
-                echo($errors);
-            }
-            ?>
+            @if($errors->count() > 0)
+                {{ $errors }}
+            @endif
 
                 @if (session('status'))
                     <div class="alert alert-success">
@@ -19,7 +17,7 @@
                     </div>
                 @endif
 
-                <div class="card-body">
+                <div class="card-body" style="margin-left: 20%;">
                     <div class="card-header">{{ $title }}</div>
                     <form method="POST" action="{{ route($loginRoute) }}">
                         @csrf

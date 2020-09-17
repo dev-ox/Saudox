@@ -33,6 +33,7 @@ class CreateProfissionalsTable extends Migration
             $table->string('estado_civil');
             $table->string('nacionalidade');
             $table->text('descricao_de_conhecimento_e_experiencia')->nullable(true);
+            $table->string('aviso')->nullable(true);
 
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();

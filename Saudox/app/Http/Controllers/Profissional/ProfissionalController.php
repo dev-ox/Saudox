@@ -8,9 +8,8 @@ use Illuminate\Support\Facades\Validator;
 use App\Paciente;
 use App\Profissional;
 use App\Endereco;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use DB;
 
 
 class ProfissionalController extends Controller {
@@ -264,6 +263,32 @@ class ProfissionalController extends Controller {
             'pacientes' => $pacientes_array,
             'profissionais' => $profissionais_array
         ]);
+    }
+
+    public function editarAviso(Request $request) {
+
+        $entrada = $request->all();
+
+        //Se quem tentou editar não for a pessoa do perfil, nem admin, então temos problema
+        if($entrada['id'] != Auth::id() && !Profissional::find(Auth::id())->ehAdmin()) {
+            return view('erro', ['msg_erro' => "Tentando editar o aviso de outra pessoa?"]);
+        }
+
+        $profissional = Profissional::find($entrada['id']);
+        if(!$profissional) {
+            return view('erro', ['msg_erro' => "Profissional não encontrado..."]);
+        }
+
+        //Se tiver em branco, deixa null no bd
+        if(isset($entrada['aviso']) && $entrada['aviso'] != "") {
+            $profissional->aviso = $entrada['aviso'];
+        } else {
+            $profissional->aviso = NULL;
+        }
+
+        $profissional->save();
+        return redirect()->back();
+
     }
 
 }
