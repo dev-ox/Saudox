@@ -36,7 +36,12 @@ class Agendamentos extends Model {
 
     public function dataEntradaFormatada(){
         $time = strtotime($this->data_entrada);
-        return date('H:m d-m-Y',$time);
+        $today = date('d-m-Y',$time);
+        if($today == date('d-m-Y')){
+            return date('H:m',$time);
+        }else{
+            return date('H:m d-m-Y',$time);
+        }
     }
 
     public function dataSaidaFormatada(){
