@@ -55,7 +55,7 @@ Route::middleware('auth:profissional')->group(function() {
     });
 
     Route::prefix('cadastro_paciente')->name('.criar_paciente')->group(function () {
-        Route::get('/', 'ProfissionalController@cadastroPaciente');
+        Route::get('/{id_agendamento?}', 'ProfissionalController@cadastroPaciente');
         Route::post('/salvar', 'ProfissionalController@salvarCadastrarPaciente')->name('.salvar');
 
         Route::prefix('editar')->name('.editar')->group(function () {

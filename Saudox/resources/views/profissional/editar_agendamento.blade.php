@@ -36,7 +36,7 @@
                         <label>Data de nascimento</label><br>
                         <input value="{{ $agendamento->data_nascimento_paciente }}" placeholder="" type="date" name="data_nascimento_paciente" id="data_nascimento_paciente">
                         <input value="{{ $agendamento->telefone                 }}" placeholder="Telefone" type="text" name="telefone" id="telefone">
-                        <input value="{{ $agendamento->email                    }}" placeholder="E-Mail" type="text" name="email" id="email">
+                        <input value="{{ $agendamento->email                    }}" placeholder="E-Mail (Opcional)" type="text" name="email" id="email">
 
                         <hr class="hr_form">
                         <h3>Endereço</h3>
@@ -72,7 +72,7 @@
                 <textarea class="textareas_form tipo_da_recorrencia" id="tipo_da_recorrencia" name="tipo_da_recorrencia" rows="4" cols="50" style=""> {{ $agendamento->tipo_da_recorrencia }} </textarea>
 
                 <hr class="hr_form">
-                <h3>Observações</h3>
+                <h3>Observações (Opcional)</h3>
                 <textarea class="textareas_form" id="observacoes" name="observacoes" rows="4" cols="50" style=""> {{$agendamento->observacoes}} </textarea>
 
                 <hr class="hr_form">
