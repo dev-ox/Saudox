@@ -17,11 +17,8 @@ class ProfissionalController extends Controller {
     public function home() {
         $profissional = Profissional::find(Auth::id());
         $profissoes = $profissional->getProfissoes();
-        $agendamentos = $profissional->agendamentos;
+        $agendamentos = $profissional->agendamentos->where('status', '1');
 
-        // TODO: Lembrar de quando implementar o sistema de marcar agendamentos
-        //      como concluído, alterar essa chamada para pegar agendamentes
-        //      pendentes apenas
         $prox_paciente = NULL;
 
         if(count($agendamentos) > 0){
