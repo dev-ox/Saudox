@@ -52,11 +52,11 @@ class Profissional extends Authenticatable {
 
 
     public static $regras_validacao_criar = [
-        'login' => 'required|max:255',
+        'login' => 'required|max:255|unique:profissionals,login',
         'password' => 'required|max:255|min:6',
         'nome' => 'required|max:255',
-        'cpf' => 'required|numeric',
-        'rg' => 'required|numeric',
+        'cpf' => 'required|numeric|unique:profissionals,cpf',
+        'rg' => 'required|numeric|unique:profissionals,rg',
         'numero_conselho' => 'nullable|numeric',
         'telefone_1' => 'required',
         'telefone_2' => 'nullable',
@@ -69,11 +69,11 @@ class Profissional extends Authenticatable {
     ];
 
     public static $regras_validacao_editar_com_senha = [
-        'login' => 'required|max:255',
+        'login' => 'required|max:255|unique:profissionals,login',
         'password' => 'required|max:255|min:6',
         'nome' => 'required|max:255',
-        'cpf' => 'required|numeric',
-        'rg' => 'required|numeric',
+        'cpf' => 'required|numeric|unique:profissionals,cpf',
+        'rg' => 'required|numeric|unique:profissionals,rg',
         'numero_conselho' => 'nullable|numeric',
         'telefone_1' => 'required',
         'telefone_2' => 'nullable',
@@ -86,10 +86,10 @@ class Profissional extends Authenticatable {
     ];
 
     public static $regras_validacao_editar_sem_senha = [
-        'login' => 'required|max:255',
+        'login' => 'required|max:255|unique:profissionals,login',
         'nome' => 'required|max:255',
-        'cpf' => 'required|numeric',
-        'rg' => 'required|numeric',
+        'cpf' => 'required|numeric|unique:profissionals,cpf',
+        'rg' => 'required|numeric|unique:profissionals,rg',
         'numero_conselho' => 'nullable|numeric',
         'telefone_1' => 'required',
         'telefone_2' => 'nullable',

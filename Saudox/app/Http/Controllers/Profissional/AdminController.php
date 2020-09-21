@@ -12,11 +12,12 @@ use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller {
 
-    private $mensagens = [
+    private $mensagens =  [
         'required' => 'O campo :attribute é obrigatório.',
         'min' => 'O campo :attribute é deve ter no minimo :min caracteres.',
         'max' => 'O campo :attribute é deve ter no máximo :max caracteres.',
         'password.required' => 'A senha é obrigatória.',
+        'unique' => 'O :attribute já está cadastrado',
     ];
 
 
