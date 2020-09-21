@@ -88,6 +88,13 @@ class AdminController extends Controller {
         $endereco->fill($entrada);
         $endereco->save();
 
+        $validar_cpf = Controller::validaCPF($entrada['cpf']);
+        if (!$validar_cpf) {
+            return redirect()->back()
+                             ->withErrors(['errors'=>'Cpf inválido!'])
+                             ->withInput();
+        }
+
 
         $profissional->fill($entrada);
         $profissional->status = $entrada['status'];
@@ -130,6 +137,13 @@ class AdminController extends Controller {
         $endereco = new Endereco;
         $endereco->fill($entrada);
         $endereco->save();
+
+        $validar_cpf = Controller::validaCPF($entrada['cpf']);
+        if (!$validar_cpf) {
+            return redirect()->back()
+                             ->withErrors(['errors'=>'Cpf inválido!'])
+                             ->withInput();
+        }
 
 
         $profissional = new Profissional;

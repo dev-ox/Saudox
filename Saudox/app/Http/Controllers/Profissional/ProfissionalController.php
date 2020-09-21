@@ -111,7 +111,12 @@ class ProfissionalController extends Controller {
         $endereco->fill($entrada);
         $endereco->save();
 
-
+        $validar_cpf = Controller::validaCPF($entrada['cpf']);
+        if (!$validar_cpf) {
+            return redirect()->back()
+                             ->withErrors(['errors'=>'Cpf inválido!'])
+                             ->withInput();
+        }
 
         $paciente = new Paciente;
         $paciente->fill($entrada);
@@ -155,6 +160,17 @@ class ProfissionalController extends Controller {
             'gt' => 'A campo :attribute deve ser maior que :gt'
         ];
 
+        $time = strtotime($entrada['data_nascimento']);
+        $entrada['data_nascimento'] = date('Y-m-d',$time);
+
+        if($entrada['lista_irmaos'] == "") {
+            $entrada['lista_irmaos'] = "Nenhum";
+        }
+
+        if($entrada['pais_sao_casados'] == 1){
+            $entrada['pais_sao_divorciados'] = 0;
+        }
+
         $validator_endereco = Validator::make($entrada, Endereco::$regras_validacao, $messages);
         if ($validator_endereco->fails()) {
             return redirect()->back()
@@ -179,6 +195,13 @@ class ProfissionalController extends Controller {
         $endereco = Endereco::find($paciente->endereco->id);
         $endereco->fill($entrada);
         $endereco->save();
+
+        $validar_cpf = Controller::validaCPF($entrada['cpf']);
+        if (!$validar_cpf) {
+            return redirect()->back()
+                             ->withErrors(['errors'=>'Cpf inválido!'])
+                             ->withInput();
+        }
 
         $paciente->fill($entrada);
 
