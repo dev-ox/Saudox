@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use App\Endereco;
 use Tests\TestCase;
 use App\Http\Controllers\Profissional\AdminController;
 use App\Profissional;
@@ -22,6 +23,7 @@ class AdminControllerTest extends TestCase {
     }
 
     public function testEditarProfissionalRetornaView() {
+        $profissional = factory(Endereco::class)->create();
         $profissional = factory(Profissional::class)->create();
         $controller = new AdminController;
         $view = $controller->editarProfissional($profissional->id);
