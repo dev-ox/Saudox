@@ -22,7 +22,6 @@ class AnamneseTest extends TestCase {
     private $paciente;
 
     public function setUp() : void {
-        fwrite(STDERR, "\nTestes de Anamnese desligados...\n"); return;
         parent::setUp();
 
         $this->endereco = factory(Endereco::class)->create();

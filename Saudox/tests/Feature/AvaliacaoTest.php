@@ -20,7 +20,6 @@ class AvaliacaoTest extends TestCase {
     private $paciente;
 
     public function setUp() : void {
-        fwrite(STDERR, "\nTestes de Avaliação desligados...\n"); return;
         parent::setUp();
 
         $this->endereco = factory(Endereco::class)->create();
