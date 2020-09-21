@@ -114,6 +114,11 @@
     text-align: center;
 }
 
+.required:after {
+  content:" *";
+  color: red;
+}
+
 .btn-paciente:hover{
     background-color: var(--cor_vermelho) !important;
     color: var(--cor_branco) !important;

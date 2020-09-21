@@ -87,6 +87,10 @@ class ProfissionalController extends Controller {
             $entrada['lista_irmaos'] = "Nenhum";
         }
 
+        if($entrada['pais_sao_casados'] == 1){
+            $entrada['pais_sao_divorciados'] = 0;
+        }
+
         $validator_endereco = Validator::make($entrada, Endereco::$regras_validacao, $messages);
         if ($validator_endereco->fails()) {
             return redirect()->back()
