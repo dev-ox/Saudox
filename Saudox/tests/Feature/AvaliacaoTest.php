@@ -19,21 +19,9 @@ class AvaliacaoTest extends TestCase {
 
     private $paciente;
 
-    protected static $db_ok = false;
-
     public function setUp() : void {
+        fwrite(STDERR, "\nTestes de Avaliação desligados...\n"); return;
         parent::setUp();
-
-        if(!self::$db_ok) {
-            fwrite(STDERR, "Migrando sqlite...");
-            $this->artisan('migrate:fresh');
-            fwrite(STDERR, "Feito.\n");
-            fwrite(STDERR, "Fazendo seed no sqlite...");
-            $this->artisan('db:seed');
-            fwrite(STDERR, "Feito.\n");
-            self::$db_ok = true;
-        }
-
 
         $this->endereco = factory(Endereco::class)->create();
         $this->funcionario = factory(Profissional::class)->create([
@@ -69,7 +57,7 @@ class AvaliacaoTest extends TestCase {
     }
 
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174639133 */
     /* TA_02 */
     public function funcionarioPermitidoPodeAcessarAvaliacaoPacienteExistente() {
@@ -95,7 +83,7 @@ class AvaliacaoTest extends TestCase {
     }
 
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174639133 */
     /* TA_02 */
     public function funcionarioPermitidoNaoPodeAcessarAvaliacaoPacienteInexistente() {
@@ -116,7 +104,7 @@ class AvaliacaoTest extends TestCase {
     }
 
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174639133 */
     /* TA_02 */
     public function funcionarioNaoAutorizadoNaoPodeAcessarAvaliacaoPacienteExistente() {
@@ -140,7 +128,7 @@ class AvaliacaoTest extends TestCase {
     }
 
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638552 */
     /* TA_01 */
     public function pacientePodeVerPaginaAvalicaoPacienteSeEstiverLogado() {
@@ -161,7 +149,7 @@ class AvaliacaoTest extends TestCase {
     }
 
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638552 */
     /* TA_01 */
     public function pacientePodeVerAvalicaoJudoPacienteSeEstiverLogado() {
@@ -187,7 +175,7 @@ class AvaliacaoTest extends TestCase {
     }
 
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638552 */
     /* TA_01 */
     public function pacientePodeVerAvalicaoPsicologiaPacienteSeEstiverLogado() {
@@ -213,7 +201,7 @@ class AvaliacaoTest extends TestCase {
     }
 
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638552 */
     /* TA_01 */
     public function pacientePodeVerAvalicaoFonoaudiologicaPacienteSeEstiverLogado() {
@@ -239,7 +227,7 @@ class AvaliacaoTest extends TestCase {
     }
 
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638552 */
     /* TA_01 */
     public function pacientePodeVerAvalicaoTerapiaOcupacionalPacienteSeEstiverLogado() {
@@ -265,7 +253,7 @@ class AvaliacaoTest extends TestCase {
     }
 
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638552 */
     /* TA_01 */
     public function pacienteNaoPodeVerAvalicaoJudoPacienteSeNaoEstiverLogado() {
@@ -293,7 +281,7 @@ class AvaliacaoTest extends TestCase {
     }
 
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638552 */
     /* TA_01 */
     public function pacienteNaoPodeVerAvalicaoPsicologiaPacienteSeNaoEstiverLogado() {
@@ -321,7 +309,7 @@ class AvaliacaoTest extends TestCase {
     }
 
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638552 */
     /* TA_01 */
     public function pacienteNaoPodeVerAvalicaoTerapiaOcupacionalPacienteSeNaoEstiverLogado() {
@@ -349,7 +337,7 @@ class AvaliacaoTest extends TestCase {
     }
 
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638552 */
     /* TA_01 */
     public function pacienteNaoPodeVerAvalicaoFonoaudiologiaPacienteSeNaoEstiverLogado() {
@@ -377,7 +365,7 @@ class AvaliacaoTest extends TestCase {
     }
 
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638552 */
     /* TA_01 */
     public function pacienteNaoPodeVerPaginaAvalicaoPacienteSeNaoEstiverLogado() {
@@ -400,7 +388,7 @@ class AvaliacaoTest extends TestCase {
     }
 
 
-    /** @test **/
+    /** @ test **/
     public function pacienteNaoPodeDeletarAvalicaoJudo() {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
@@ -441,7 +429,7 @@ class AvaliacaoTest extends TestCase {
     }
 
 
-    /** @test **/
+    /** @ test **/
     public function profissionalNaoAutorizadoNaoPodeDeletarAvalicaoPsicologia() {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
@@ -482,7 +470,7 @@ class AvaliacaoTest extends TestCase {
     }
 
 
-    /** @test **/
+    /** @ test **/
     public function profissionalNaoAutorizadoNaoPodeDeletarAvalicaoFonoaudiologica() {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
@@ -523,7 +511,7 @@ class AvaliacaoTest extends TestCase {
     }
 
 
-    /** @test **/
+    /** @ test **/
     public function profissionalNaoAutorizadoNaoPodeDeletarAvalicaoTerapiaOcupacional() {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
@@ -563,7 +551,7 @@ class AvaliacaoTest extends TestCase {
     }
 
 
-    /** @test **/
+    /** @ test **/
     public function profissionalNaoAutorizadoNaoPodeEditarAvalicaoJudo() {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
@@ -604,7 +592,7 @@ class AvaliacaoTest extends TestCase {
     }
 
 
-    /** @test **/
+    /** @ test **/
     public function profissionalNaoAutorizadoNaoPodeEditarAvalicaoPsicologia() {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
@@ -645,7 +633,7 @@ class AvaliacaoTest extends TestCase {
     }
 
 
-    /** @test **/
+    /** @ test **/
     public function profissionalNaoAutorizadoNaoPodeEditarAvalicaoFonoaudiologica() {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
@@ -685,7 +673,7 @@ class AvaliacaoTest extends TestCase {
     }
 
 
-    /** @test **/
+    /** @ test **/
     public function profissionalNaoAutorizadoNaoPodeEditarAvalicaoTerapiaOcupacional() {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),

@@ -21,21 +21,9 @@ class AnamneseTest extends TestCase {
 
     private $paciente;
 
-    protected static $db_ok = false;
-
     public function setUp() : void {
+        fwrite(STDERR, "\nTestes de Anamnese desligados...\n"); return;
         parent::setUp();
-
-        if(!self::$db_ok) {
-            fwrite(STDERR, "Migrando sqlite...");
-            $this->artisan('migrate:fresh');
-            fwrite(STDERR, "Feito.\n");
-            fwrite(STDERR, "Fazendo seed no sqlite...");
-            $this->artisan('db:seed');
-            fwrite(STDERR, "Feito.\n");
-            self::$db_ok = true;
-        }
-
 
         $this->endereco = factory(Endereco::class)->create();
         $this->funcionario = factory(Profissional::class)->create([
@@ -70,7 +58,7 @@ class AnamneseTest extends TestCase {
         ];
     }
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174639150 */
     /* TA_02 */
     public function funcionarioPermitidoPodeAcessarAnamnesePacienteExistente() {
@@ -97,7 +85,7 @@ class AnamneseTest extends TestCase {
        $resposta->assertOk();
     }
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174639150 */
     /* TA_02 */
     public function funcionarioPermitidoNaoPodeAcessarAnamnesePacienteInexistente() {
@@ -115,7 +103,7 @@ class AnamneseTest extends TestCase {
        //$this->seePageIs(route("profissional.home"));
     }
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174639150 */
     /* TA_02 */
     public function funcionarioNaoAutorizadoNaoPodeAcessarAnamnesePacienteExistente() {
@@ -139,7 +127,7 @@ class AnamneseTest extends TestCase {
     }
 
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638550 */
     /* TA_01 */
     public function pacientePodeVerPaginaAnamnesePacienteSeEstiverLogado() {
@@ -162,7 +150,7 @@ class AnamneseTest extends TestCase {
     }
 
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638550 */
     /* TA_01 */
     public function pacientePodeVerAnamnesePsicoNeuroMotoPacienteSeEstiverLogado() {
@@ -186,7 +174,7 @@ class AnamneseTest extends TestCase {
         //$this->seePageIs(route("paciente.anamnese.neuropsicomotora"));
     }
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638550 */
     /* TA_01 */
     public function pacientePodeVerAnamneseFonoaudiologicaPacienteSeEstiverLogado() {
@@ -210,7 +198,7 @@ class AnamneseTest extends TestCase {
         //$this->seePageIs(route("paciente.anamnese.fonoaudiologia"));
     }
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638550 */
     /* TA_01 */
     public function pacientePodeVerAnamneseTerapiaOcupacionalPacienteSeEstiverLogado() {
@@ -236,7 +224,7 @@ class AnamneseTest extends TestCase {
     }
 
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638550 */
     /* TA_01 */
     public function pacienteNaoPodeVerAnamnesePsicologiaPacienteSeNaoEstiverLogado() {
@@ -264,7 +252,7 @@ class AnamneseTest extends TestCase {
         //$this->seePageIs(route("login"));
     }
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638550 */
     /* TA_01 */
     public function pacienteNaoPodeVerAnamneseTerapiaOcupacionalPacienteSeNaoEstiverLogado() {
@@ -292,7 +280,7 @@ class AnamneseTest extends TestCase {
 
 
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638550 */
     /* TA_01 */
     public function pacienteNaoPodeVerAnamneseFonoaudiologiaPacienteSeNaoEstiverLogado() {
@@ -319,7 +307,7 @@ class AnamneseTest extends TestCase {
         //$this->seePageIs(route("login"));
     }
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638550 */
     /* TA_01 */
     public function pacienteNaoPodeVerPaginaAnamnesePacienteSeNaoEstiverLogado() {
@@ -342,7 +330,7 @@ class AnamneseTest extends TestCase {
     }
 
 
-    /** @test **/
+    /** @ test **/
     public function profissionalNaoAutorizadoNaoPodeDeletarAnamnesePsicologia() {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
@@ -381,7 +369,7 @@ class AnamneseTest extends TestCase {
         //$this->seePageIs(route("profissional.anamnese.neuropsicomotora", ['id_paciente' => $paciente->id]));
     }
 
-    /** @test **/
+    /** @ test **/
     public function profissionalNaoAutorizadoNaoPodeDeletarAnamneseFonoaudiologica() {
 
         $paciente = factory(Paciente::class)->create([
@@ -421,7 +409,7 @@ class AnamneseTest extends TestCase {
         //$this->seePageIs(route("profissional.anamnese.fonoaudiologia", ['id_paciente' => $paciente->id]));
     }
 
-    /** @test **/
+    /** @ test **/
     public function profissionalNaoAutorizadoNaoPodeDeletarAnamneseTerapiaOcupacional() {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
@@ -462,7 +450,7 @@ class AnamneseTest extends TestCase {
 
 
 
-    /** @test **/
+    /** @ test **/
     public function profissionalNaoAutorizadoNaoPodeEditarAnamneseNeuroPsicoMoto() {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
@@ -502,7 +490,7 @@ class AnamneseTest extends TestCase {
         //$this->seePageIs(route("profissional.anamnese.neuropsicomotora", ['id_paciente' => $paciente->id]));
     }
 
-    /** @test **/
+    /** @ test **/
     public function profissionalNaoAutorizadoNaoPodeEditarAnamneseFonoaudiologica() {
 
         $paciente = factory(Paciente::class)->create([
@@ -541,7 +529,7 @@ class AnamneseTest extends TestCase {
         //$this->seePageIs(route("profissional.anamnese.fonoaudiologia", ['id_paciente' => $paciente->id]));
     }
 
-    /** @test **/
+    /** @ test **/
     public function profissionalNaoAutorizadoNaoPodeEditarAnamneseTerapiaOcupacional() {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),

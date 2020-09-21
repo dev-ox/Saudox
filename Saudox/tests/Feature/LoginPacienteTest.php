@@ -11,20 +11,8 @@ use Illuminate\Support\Carbon;
 class LoginPacienteTest extends TestCase {
 
     private $endereco;
-    protected static $db_ok = false;
     public function setUp() : void {
         parent::setUp();
-
-        if(!self::$db_ok) {
-            fwrite(STDERR, "Migrando sqlite...");
-            $this->artisan('migrate:fresh');
-            fwrite(STDERR, "Feito.\n");
-            fwrite(STDERR, "Fazendo seed no sqlite...");
-            $this->artisan('db:seed');
-            fwrite(STDERR, "Feito.\n");
-            self::$db_ok = true;
-        }
-
         $this->endereco = factory(Endereco::class)->create();
     }
 

@@ -10,31 +10,18 @@ use Illuminate\Support\Carbon;
 
 class CadastroClienteTest extends TestCase {
     public $funcionario;
-    private $endereco;
     private $paciente;
     private $password;
-    protected static $db_ok = false;
 
     public function setUp() : void {
         parent::setUp();
-
-        if(!self::$db_ok) {
-            fwrite(STDERR, "Migrando sqlite...");
-            $this->artisan('migrate:fresh');
-            fwrite(STDERR, "Feito.\n");
-            fwrite(STDERR, "Fazendo seed no sqlite...");
-            $this->artisan('db:seed');
-            fwrite(STDERR, "Feito.\n");
-            self::$db_ok = true;
-        }
-
 
         $this->password = '123123123';
 
         $this->endereco = factory(Endereco::class)->create();
         $this->funcionario = factory(Profissional::class)->create([
             'password' => bcrypt($this->password),
-            'profissao' => 'Administrador',
+            'profissao' => 'psicologo;',
         ]);
 
 
@@ -56,12 +43,20 @@ class CadastroClienteTest extends TestCase {
             'email_mae' => 'emailteste@gmail.com',
             'idade_pai' => 99,
             'idade_mae' => 45,
-            'id_endereco' => $this->endereco->id,
             'naturalidade' => 'Brasileiro',
             'pais_sao_casados' => false,
             'pais_sao_divorciados' => false,
             'tipo_filho_biologico_adotivo' => false,
+            'estado' => 'PE',
+            'cidade' => 'Garanhuns',
+            'bairro' => 'Boa Vista',
+            'nome_rua' => 'Rua Antonio carlos souto',
+            'numero_casa' => '857',
+            'descricao' => 'ali',
+            'ponto_referencia' => 'lá',
         ];
+
+        $this->loginFunc();
     }
 
 
@@ -72,63 +67,46 @@ class CadastroClienteTest extends TestCase {
             'login' => $func->login,
             'password' => $this->password,
         ]);
+
+        $resposta->assertRedirect('/profissional/home');
     }
 
-
-    /** @test **/
-    /* url: https://www.pivotaltracker.com/story/show/174638924 */
-    public function admPodeAcessarCriacaoPaciente() {
-        $func = $this->funcionario;
-
-        $resposta = $this->post(route('profissional.login'), [
-            'login' => $func->login,
-            'password' => $this->password,
-        ]);
-
-        $resposta->assertRedirect(route('profissional.home'));
-        $this->assertAuthenticatedAs($func);
-
-
-        //$this->visit(route('profissional.criarpaciente'));
-        //$this->seePageIs(route('profissional.criarpaciente'));
+    private function logoutFunc() {
+        $this->post(route('profissional.logout'), []);
     }
-
 
     /** @test **/
     /* url: https://www.pivotaltracker.com/story/show/174638924 */
     public function profissionalDaSaudePodeAcessarCriacaoPaciente() {
-
-        $func = $this->funcionario;
-
-        $resposta = $this->post(route('profissional.login'), [
-            'login' => $func->login,
-            'password' => $this->password,
-        ]);
-
-        $resposta->assertRedirect(route('profissional.home'));
-        $this->assertAuthenticatedAs($this->funcionario);
-
-
-        //$this->visit(route('profissional.criarpaciente'));
-        //$this->seePageIs(route('profissional.criarpaciente'));
+        $resposta = $this->get(route('profissional.criar_paciente'));
+        $resposta->assertOk();
+        $resposta->assertSee("Cadastro de Paciente");
     }
 
 
+    /* TODO: arrumar esse login de paciente */
     /** @test **/
     public function pacienteNaoPodeAcessarCriacaoPaciente() {
 
-        $pac = $this->paciente;
+        $this->logoutFunc();
 
-        $paciente = factory(Paciente::class)->create($pac);
-
-        $resposta = $this->post(route('login'), [
-            'login' => $paciente->login,
-            'password' => $this->password,
+        $paciente = factory(Paciente::class)->create([
+            'login' => "loginus",
+            'password' => bcrypt("123123123"),
         ]);
 
+        $resposta = $this->post(route('login'), [
+            'login' => "loginus",
+            'password' => "123123123",
+        ]);
+
+        $resposta->assertSessionHasNoErrors();
         $resposta->assertRedirect(route('paciente.home'));
         $this->assertAuthenticatedAs($paciente);
 
+        $resposta = $this->get(route('profissional.criar_paciente'));
+        $resposta->assertOk();
+        $resposta->assertSee("Cadastro de Paciente");
 
         //$this->visit(route('profissional.criarpaciente'));
         //$this->seePageIs(route('paciente.home'));
@@ -138,14 +116,9 @@ class CadastroClienteTest extends TestCase {
     /** @test **/
     /* url: https://www.pivotaltracker.com/story/show/174638924 */
     public function profissionalPodeCriarPaciente() {
-        $this->loginFunc();
-
-        $this->assertAuthenticatedAs($this->funcionario);
-
         $copia_pac = $this->paciente;
 
-        $resposta = $this->post(route('profissional.criarpaciente'), ['paciente' => $copia_pac]);
-
+        $resposta = $this->post(route('profissional.criar_paciente.salvar'), ['paciente' => $copia_pac]);
         $resposta->assertOk();
         $this->assertCount(1, Paciente::all());
 
@@ -338,7 +311,7 @@ class CadastroClienteTest extends TestCase {
 
     //TODO: esse teste não funciona, o sexo é um inteiro, e não uma string
     // isso vai ser tratado na view, então fica pro teste de browser
-    /** @ test **/
+    /** @test **/
     public function sexoPacienteNaoPodeTerNumeros() {
         $this->loginFunc();
 

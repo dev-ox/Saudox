@@ -17,21 +17,10 @@ class EvolucaoTest extends TestCase {
     private $endereco;
 
     private $paciente;
-    protected static $db_ok = false;
 
     public function setUp() : void {
+        fwrite(STDERR, "Testes de Evolução desligados..."); return;
         parent::setUp();
-
-        if(!self::$db_ok) {
-            fwrite(STDERR, "Migrando sqlite...");
-            $this->artisan('migrate:fresh');
-            fwrite(STDERR, "Feito.\n");
-            fwrite(STDERR, "Fazendo seed no sqlite...");
-            $this->artisan('db:seed');
-            fwrite(STDERR, "Feito.\n");
-            self::$db_ok = true;
-        }
-
 
         $this->endereco = factory(Endereco::class)->create();
         $this->funcionario = factory(Profissional::class)->create([
@@ -66,7 +55,7 @@ class EvolucaoTest extends TestCase {
         ];
     }
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174639115 */
     /* TA_02 */
     public function funcionarioPermitidoPodeAcessarEvolucaoPacienteExistente() {
@@ -92,7 +81,7 @@ class EvolucaoTest extends TestCase {
        $resposta->assertOk();
     }
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174639115 */
     /* TA_02 */
     public function funcionarioPermitidoNaoPodeAcessarEvolucaoPacienteInexistente() {
@@ -114,7 +103,7 @@ class EvolucaoTest extends TestCase {
     }
 
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174639115 */
     /* TA_02 */
     public function funcionarioNaoAutorizadoNaoPodeAcessarEvolucaoPacienteExistente() {
@@ -138,7 +127,7 @@ class EvolucaoTest extends TestCase {
        //$this->seePageIs(route("profissional.home"));
     }
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638546 */
     /* TA_01 */
     public function pacientePodeVerPaginaEvolucaoPacienteSeEstiverLogado() {
@@ -160,7 +149,7 @@ class EvolucaoTest extends TestCase {
     }
 
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638546 */
     /* TA_01 */
     public function pacientePodeVerEvolucaoJudoPacienteSeEstiverLogado() {
@@ -186,7 +175,7 @@ class EvolucaoTest extends TestCase {
         //$this->seePageIs(route("paciente.evolucao.judo", ['id_evolucao_judo' => $evolucao_judo->id]));
     }
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638546 */
     /* TA_01 */
     public function pacientePodeVerEvolucaoPsicologiaPacienteSeEstiverLogado() {
@@ -212,7 +201,7 @@ class EvolucaoTest extends TestCase {
         //$this->seePageIs(route("paciente.evolucao.neuropsicologica", ['id_evolucao_psicologica' => $evolucao_psicologica->id]));
     }
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638546 */
     /* TA_01 */
     public function pacientePodeVerEvolucaoFonoaudiologicaPacienteSeEstiverLogado() {
@@ -238,7 +227,7 @@ class EvolucaoTest extends TestCase {
         //$this->seePageIs(route("paciente.evolucao.fonoaudiologica", ['id_evolucao_fonoaudiologica' => $evolucao_fonoaudiologica->id]));
     }
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638546 */
     /* TA_01 */
     public function pacientePodeVerEvolucaoTerapiaOcupacionalPacienteSeEstiverLogado() {
@@ -265,7 +254,7 @@ class EvolucaoTest extends TestCase {
     }
 
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638546 */
     /* TA_01 */
     public function pacienteNaoPodeVerEvolucaoJudoPacienteSeNaoEstiverLogado() {
@@ -293,7 +282,7 @@ class EvolucaoTest extends TestCase {
         //$this->seePageIs(route("login"));
     }
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638546 */
     /* TA_01 */
     public function pacienteNaoPodeVerEvolucaoPsicologiaPacienteSeNaoEstiverLogado() {
@@ -321,7 +310,7 @@ class EvolucaoTest extends TestCase {
         //$this->seePageIs(route("login"));
     }
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638546 */
     /* TA_01 */
     public function pacienteNaoPodeVerEvolucaoTerapiaOcupacionalPacienteSeNaoEstiverLogado() {
@@ -351,7 +340,7 @@ class EvolucaoTest extends TestCase {
 
 
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638546 */
     /* TA_01 */
     public function pacienteNaoPodeVerEvolucaoFonoaudiologiaPacienteSeNaoEstiverLogado() {
@@ -379,7 +368,7 @@ class EvolucaoTest extends TestCase {
         //$this->seePageIs(route("login"));
     }
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638546 */
     /* TA_01 */
     public function pacienteNaoPodeVerPaginaEvolucaoPacienteSeNaoEstiverLogado() {
@@ -402,7 +391,7 @@ class EvolucaoTest extends TestCase {
         //$this->seePageIs(route("login"));
     }
 
-    /** @test **/
+    /** @ test **/
     public function profissionalNaoAutorizadoNaoPodeDeletarEvolucaoJudo() {
 
 
@@ -444,7 +433,7 @@ class EvolucaoTest extends TestCase {
         //$this->seePageIs(route("profissional.evolucao.judo", ['id_paciente' => $paciente->id, 'id_evolucao_judo' => $evolucao_judo->id]));
     }
 
-    /** @test **/
+    /** @ test **/
     public function profissionalNaoAutorizadoNaoPodeDeletarEvolucaoPsicologia() {
 
 
@@ -486,7 +475,7 @@ class EvolucaoTest extends TestCase {
         //$this->seePageIs(route("profissional.evolucao.neuropsicologica", ['id_paciente' => $paciente->id, 'id_evolucao_psicologica' => $evolucao_psicologica->id]));
     }
 
-    /** @test **/
+    /** @ test **/
     public function profissionalNaoAutorizadoNaoPodeDeletarEvolucaoFonoaudiologica() {
 
 
@@ -528,7 +517,7 @@ class EvolucaoTest extends TestCase {
         //$this->seePageIs(route("profissional.evolucao.fonoaudiologica", ['id_paciente' => $paciente->id, 'id_evolucao_fonoaudiologica' => $evolucao_fonoaudiologica->id]));
     }
 
-    /** @test **/
+    /** @ test **/
     public function profissionalNaoAutorizadoNaoPodeDeletarEvolucaoTerapiaOcupacional() {
 
 
@@ -571,7 +560,7 @@ class EvolucaoTest extends TestCase {
     }
 
 
-    /** @test **/
+    /** @ test **/
     public function profissionalNaoAutorizadoNaoPodeEditarEvolucaoJudo() {
 
 
@@ -614,7 +603,7 @@ class EvolucaoTest extends TestCase {
     }
 
 
-    /** @test **/
+    /** @ test **/
     public function profissionalNaoAutorizadoNaoPodeEditarEvolucaoPsicologia() {
 
         $this->funcN = factory(Profissional::class)->create([
@@ -657,7 +646,7 @@ class EvolucaoTest extends TestCase {
         //$this->seePageIs(route("profissional.evolucao.neuropsicologica", ['id_paciente' => $paciente->id, 'id_evolucao_psicologica' => $evolucao_psicologica->id]));
     }
 
-    /** @test **/
+    /** @ test **/
     public function profissionalNaoAutorizadoNaoPodeEditarEvolucaoFonoaudiologica() {
 
         $this->funcN = factory(Profissional::class)->create([
@@ -700,7 +689,7 @@ class EvolucaoTest extends TestCase {
         //$this->seePageIs(route("profissional.evolucao.fonoaudiologica", ['id_paciente' => $paciente->id, 'id_evolucao_fonoaudiologica' => $evolucao_fonoaudiologica->id]));
     }
 
-    /** @test **/
+    /** @ test **/
     public function profissionalNaoAutorizadoNaoPodeEditarEvolucaoTerapiaOcupacional() {
 
 
@@ -745,7 +734,7 @@ class EvolucaoTest extends TestCase {
 
 
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638546 */
     /* TA_01 */
     public function pacienteNaoPodeVerEvolucaoJudoQueNaoExiste() {
@@ -766,7 +755,7 @@ class EvolucaoTest extends TestCase {
         //$this->seePageIs(route("paciente.evolucao.judo"));
     }
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638546 */
     /* TA_01 */
     public function pacienteNaoPodeVerEvolucaoPsicologiaQueNaoExiste() {
@@ -787,7 +776,7 @@ class EvolucaoTest extends TestCase {
         //$this->seePageIs(route("paciente.evolucao.neuropsicologica"));
     }
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638546 */
     /* TA_01 */
     public function pacienteNaoPodeVerEvolucaoTerapiaOcupacionalQueNaoExiste() {
@@ -810,7 +799,7 @@ class EvolucaoTest extends TestCase {
 
 
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638546 */
     /* TA_01 */
     public function pacienteNaoPodeVerEvolucaoFonoaudiologiaQueNaoExiste() {
