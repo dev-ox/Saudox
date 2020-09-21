@@ -98,11 +98,6 @@ class CadastroClienteTest extends TestCase {
 
     }
 
-    private function logoutFunc() {
-        $resposta = $this->post(route('profissional.logout'));
-        $resposta = $this->post(route('logout'));
-    }
-
     /** @test **/
     /* url: https://www.pivotaltracker.com/story/show/174638924 */
     public function profissionalDaSaudePodeAcessarCriacaoPaciente() {

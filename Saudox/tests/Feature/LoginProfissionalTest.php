@@ -113,9 +113,8 @@ class LoginProfissionalTest extends TestCase {
         ]);
 
 
-        $nome_agedamento = "aopa";
         $agendamento = factory(Agendamentos::class)->create([
-            'nome' => $nome_agedamento,
+            'nome' => "aopa",
             'id_profissional' => "1",
         ]);
 
@@ -127,7 +126,7 @@ class LoginProfissionalTest extends TestCase {
         $resposta->assertRedirect(route("profissional.home"));
 
         $resposta = $this->get(route('profissional.home'));
-        $resposta->assertSee($nome_agedamento);
+        $resposta->assertSee($agendamento->nome);
 
     }
 
