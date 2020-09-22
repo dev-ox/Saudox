@@ -10,21 +10,8 @@ use Illuminate\Support\Carbon;
 
 class LoginPacienteTest extends TestCase {
 
-    private $endereco;
-    protected static $db_ok = false;
     public function setUp() : void {
         parent::setUp();
-
-        if(!self::$db_ok) {
-            fwrite(STDERR, "Migrando sqlite...");
-            $this->artisan('migrate:fresh');
-            fwrite(STDERR, "Feito.\n");
-            fwrite(STDERR, "Fazendo seed no sqlite...");
-            $this->artisan('db:seed');
-            fwrite(STDERR, "Feito.\n");
-            self::$db_ok = true;
-        }
-
         $this->endereco = factory(Endereco::class)->create();
     }
 
@@ -61,7 +48,7 @@ class LoginPacienteTest extends TestCase {
         ]);
 
         $resposta->assertRedirect(route('login'));
-        $resposta->assertSessionHasErrors('password');
+        $resposta->assertSessionHasErrors();
         $this->assertTrue(session()->hasOldInput('login'));
         $this->assertFalse(session()->hasOldInput('password'));
         $this->assertGuest();
@@ -86,8 +73,7 @@ class LoginPacienteTest extends TestCase {
 
         $resposta->assertRedirect(route('login'));
         $resposta->assertSessionHasErrors('login');
-        $this->assertTrue(session()->hasOldInput('password'));
-        $this->assertFalse(session()->hasOldInput('login'));
+        $this->assertTrue(session()->hasOldInput('login'));
         $this->assertGuest();
     }
 
@@ -107,9 +93,8 @@ class LoginPacienteTest extends TestCase {
 
         $resposta->assertRedirect(route('paciente.home'));
         $this->assertAuthenticatedAs($paciente);
-        $this->post(route('paciente.logout'));
-        //$this->visit(route('paciente.home'));
-        //$this->seePageIs(route('login'));
+        $this->post(route('logout'));
+        $this->assertGuest();
     }
 
 
@@ -127,8 +112,7 @@ class LoginPacienteTest extends TestCase {
         $resposta->assertRedirect(route('paciente.home'));
         $this->assertAuthenticatedAs($paciente);
 
-        //$this->visit(route('paciente.perfil'));
-        //$this->seePageIs(route('paciente.perfil'));
+        /* TODO: acho que vai mais coisa aqui */
     }
 
 
@@ -143,13 +127,19 @@ class LoginPacienteTest extends TestCase {
             'password' => $password,
         ]);
 
+        /* TODO: mudar pra rota de ter perfil quando existir */
         $resposta->assertRedirect(route('paciente.home'));
         $this->assertAuthenticatedAs($paciente);
 
-        $this->post(route('paciente.logout'));
+        $resposta = $this->post(route('logout'));
+        $this->assertGuest();
+        $resposta->assertRedirect(route('login'));
 
-        //$this->visit(route('paciente.perfil'));
-        //$this->seePageIs(route('login'));
+        $resposta = $this->get(route('paciente.home'));
+        $resposta->assertRedirect(route('login'));
+
+
+
     }
 
 }
