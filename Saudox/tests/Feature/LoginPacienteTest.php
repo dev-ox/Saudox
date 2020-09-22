@@ -134,6 +134,12 @@ class LoginPacienteTest extends TestCase {
         $resposta = $this->post(route('logout'));
         $this->assertGuest();
         $resposta->assertRedirect(route('login'));
+
+        $resposta = $this->get(route('paciente.home'));
+        $resposta->assertRedirect(route('login'));
+
+
+
     }
 
 }
