@@ -84,15 +84,17 @@ class ProfissionalController extends Controller {
             'min' => 'O campo :attribute é deve ter no minimo :min caracteres.',
             'max' => 'O campo :attribute é deve ter no máximo :max caracteres.',
             'password.required' => 'A senha é obrigatória.',
-            'gt' => 'A campo :attribute deve ser maior que :gt'
+            'gt' => 'O campo :attribute deve ser maior que 18.',
+            'lt' => 'O campo :attribute deve ser menor que 100.',
+            'unique' => 'O :attribute já está cadastrado',
         ];
-
         $time = strtotime($entrada['data_nascimento']);
         $entrada['data_nascimento'] = date('Y-m-d',$time);
 
         if($entrada['lista_irmaos'] == "") {
             $entrada['lista_irmaos'] = "Nenhum";
         }
+
 
         $validator_endereco = Validator::make($entrada, Endereco::$regras_validacao, $messages);
         if ($validator_endereco->fails()) {
@@ -114,10 +116,18 @@ class ProfissionalController extends Controller {
         $endereco->fill($entrada);
         $endereco->save();
 
-
+        $validar_cpf = Controller::validaCPF($entrada['cpf']);
+        if (!$validar_cpf) {
+            return redirect()->back()
+                             ->withErrors(['errors'=>'Cpf inválido!'])
+                             ->withInput();
+        }
 
         $paciente = new Paciente;
         $paciente->fill($entrada);
+        if($entrada['pais_sao_casados'] == 1){
+            $paciente->pais_sao_divorciados = 0;
+        }
         $paciente->id_endereco = $endereco->id;
 
         $paciente->password = Hash::make($entrada['password']);
@@ -155,8 +165,17 @@ class ProfissionalController extends Controller {
             'min' => 'O campo :attribute é deve ter no minimo :min caracteres.',
             'max' => 'O campo :attribute é deve ter no máximo :max caracteres.',
             'password.required' => 'A senha é obrigatória.',
-            'gt' => 'A campo :attribute deve ser maior que :gt'
+            'gt' => 'O campo :attribute deve ser maior que 18.',
+            'lt' => 'O campo :attribute deve ser menor que 100.',
+            'unique' => 'O :attribute já está cadastrado',
         ];
+
+        $time = strtotime($entrada['data_nascimento']);
+        $entrada['data_nascimento'] = date('Y-m-d',$time);
+
+        if($entrada['lista_irmaos'] == "") {
+            $entrada['lista_irmaos'] = "Nenhum";
+        }
 
         $validator_endereco = Validator::make($entrada, Endereco::$regras_validacao, $messages);
         if ($validator_endereco->fails()) {
@@ -183,7 +202,17 @@ class ProfissionalController extends Controller {
         $endereco->fill($entrada);
         $endereco->save();
 
+        $validar_cpf = Controller::validaCPF($entrada['cpf']);
+        if (!$validar_cpf) {
+            return redirect()->back()
+                             ->withErrors(['errors'=>'Cpf inválido!'])
+                             ->withInput();
+        }
+
         $paciente->fill($entrada);
+        if($entrada['pais_sao_casados'] == 1){
+            $paciente->pais_sao_divorciados = 0;
+        }
 
         //Se existe o campo password, e o campo password não está vazio (foi modificado)
         if(isset($entrada['password']) && $entrada['password'] != "") {

@@ -12,11 +12,12 @@ use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller {
 
-    private $mensagens = [
+    private $mensagens =  [
         'required' => 'O campo :attribute é obrigatório.',
         'min' => 'O campo :attribute é deve ter no minimo :min caracteres.',
         'max' => 'O campo :attribute é deve ter no máximo :max caracteres.',
         'password.required' => 'A senha é obrigatória.',
+        'unique' => 'O :attribute já está cadastrado',
     ];
 
 
@@ -88,6 +89,13 @@ class AdminController extends Controller {
         $endereco->fill($entrada);
         $endereco->save();
 
+        $validar_cpf = Controller::validaCPF($entrada['cpf']);
+        if (!$validar_cpf) {
+            return redirect()->back()
+                             ->withErrors(['errors'=>'Cpf inválido!'])
+                             ->withInput();
+        }
+
 
         $profissional->fill($entrada);
         $profissional->status = $entrada['status'];
@@ -130,6 +138,13 @@ class AdminController extends Controller {
         $endereco = new Endereco;
         $endereco->fill($entrada);
         $endereco->save();
+
+        $validar_cpf = Controller::validaCPF($entrada['cpf']);
+        if (!$validar_cpf) {
+            return redirect()->back()
+                             ->withErrors(['errors'=>'Cpf inválido!'])
+                             ->withInput();
+        }
 
 
         $profissional = new Profissional;

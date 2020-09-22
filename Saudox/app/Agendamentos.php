@@ -15,7 +15,6 @@ class Agendamentos extends Model {
         'dia_da_consulta' => 'required',
     ];
 
-
     protected $fillable = [
         'nome',
         'cpf',
