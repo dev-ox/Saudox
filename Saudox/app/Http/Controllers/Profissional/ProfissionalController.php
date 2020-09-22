@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\Profissional;
 
+use App\Agendamentos;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -17,11 +18,8 @@ class ProfissionalController extends Controller {
     public function home() {
         $profissional = Profissional::find(Auth::id());
         $profissoes = $profissional->getProfissoes();
-        $agendamentos = $profissional->agendamentos;
+        $agendamentos = $profissional->agendamentos->where('status', '1');
 
-        // TODO: Lembrar de quando implementar o sistema de marcar agendamentos
-        //      como concluído, alterar essa chamada para pegar agendamentes
-        //      pendentes apenas
         $prox_paciente = NULL;
 
         if(count($agendamentos) > 0){
@@ -65,8 +63,17 @@ class ProfissionalController extends Controller {
     }
 
 
-    public function cadastroPaciente() {
-        return view('profissional/criar_paciente');
+    public function cadastroPaciente($id_agendamento = 0) {
+
+        $agendamento = Agendamentos::find($id_agendamento);
+
+        //Entrega um agendamento em branco, só pra facilitar
+        if(!$agendamento) {
+            $agendamento = new Agendamentos;
+            $agendamento->endereco = new Endereco;
+        }
+
+        return view('profissional/criar_paciente', ['agendamento' => $agendamento]);
     }
 
     public function salvarCadastrarPaciente(Request $request) {

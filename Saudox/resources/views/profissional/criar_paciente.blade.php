@@ -34,10 +34,11 @@
                         <hr class="hr_form">
                         <h3>Informação Pessoal</h3>
                         <label class="required">Nome do Paciente:</label><br>
-                        <input value="{{ old('nome_paciente') }}" placeholder="Nome Completo" type="text" name="nome_paciente" id="nome_paciente">
+                        <input value="{{ old('nome_paciente', $agendamento->nome) }}" placeholder="Nome Completo" type="text" name="nome_paciente" id="nome_paciente">
                         <label class="required">Cpf do Paciente:</label><br>
-                        <input value="{{ old('cpf') }}" class="noscroll" onkeypress='validar_apenas_numeros(event)' placeholder="CPF (apenas números)" type="number"  name="cpf" id="cpf">
+                        <input value="{{ old('cpf', $agendamento->cpf) }}" class="noscroll" onkeypress='validar_apenas_numeros(event)' placeholder="CPF (apenas números)" type="number"  name="cpf" id="cpf">
                         <label class="required">Sexo:</label><br>
+
                         <label for="masculino">Masculino</label>
                         <input value="0" type="radio" name="sexo" id="sexo">
                         <label for="feminino">Feminino</label>
@@ -46,7 +47,7 @@
                         <label class="required">Naturalidade:</label><br>
                         <input value="{{ old('naturalidade') }}" placeholder="Naturalidade" type="text" name="naturalidade" id="naturalidade">
                         <label class="required">Data de nascimento:</label><br>
-                        <input value="{{ old('data_nascimento') }}" class="noscroll" type="date"  name="data_nascimento" id="data_nascimento">
+                        <input value="{{ old('data_nascimento', $agendamento->data_nascimento_paciente) }}" class="noscroll" type="date"  name="data_nascimento" id="data_nascimento">
                         <label class="required">Responsável:</label><br>
                         <input value="{{ old('responsavel') }}" placeholder="Responsável" type="text" name="responsavel" id="responsavel">
                         <label class="required">Número de irmãos:</label><br>
@@ -76,7 +77,7 @@
                         <label class="required">Telefone do pai:</label><br>
                         <input value="{{ old('telefone_pai') }}" placeholder="Telefone do Pai (Apenas números)" type="text" name="telefone_pai" id="telefone_pai">
                         <label class="required">Telefone da mãe:</label><br>
-                        <input value="{{ old('telefone_mae') }}" placeholder="Telefone da Mãe (Apenas números)" type="text" name="telefone_mae" id="telefone_mae">
+                        <input value="{{ old('telefone_mae, $agendamento->telefone') }}" placeholder="Telefone da Mãe (Apenas números)" type="text" name="telefone_mae" id="telefone_mae">
                         <label class="required">Email do pai:</label><br>
                         <input value="{{ old('email_pai') }}" placeholder="E-Mail do Pai" type="text" name="email_pai" id="email_pai">
                         <label class="required">Email da mãe:</label><br>
@@ -105,19 +106,19 @@
                         <hr class="hr_form">
                         <h3>Endereço</h3>
                         <label class="required">Estado:</label><br>
-                        <input value="{{ old('estado') }}" placeholder="Estado" type="text" name="estado" id="estado">
+                        <input value="{{ old('estado', $agendamento->endereco->estado) }}" placeholder="Estado" type="text" name="estado" id="estado">
                         <label class="required">Cidade:</label><br>
-                        <input value="{{ old('cidade') }}" placeholder="Cidade" type="text" name="cidade" id="cidade">
+                        <input value="{{ old('cidade', $agendamento->endereco->cidade) }}" placeholder="Cidade" type="text" name="cidade" id="cidade">
                         <label>Bairro:</label><br>
-                        <input value="{{ old('bairro') }}" placeholder="Bairro" type="text" name="bairro" id="bairro">
+                        <input value="{{ old('bairro', $agendamento->endereco->bairro) }}" placeholder="Bairro" type="text" name="bairro" id="bairro">
                         <label>Rua:</label><br>
-                        <input value="{{ old('nome_rua') }}" placeholder="Rua" type="text" name="nome_rua" id="nome_rua">
+                        <input value="{{ old('nome_rua', $agendamento->endereco->nome_rua) }}" placeholder="Rua" type="text" name="nome_rua" id="nome_rua">
                         <label>Nº:</label><br>
-                        <input value="{{ old('numero_casa') }}" class="noscroll" onkeypress='validar_apenas_numeros(event)' placeholder="Número da casa" type="number" name="numero_casa" id="numero_casa">
+                        <input value="{{ old('numero_casa', $agendamento->endereco->numero_casa) }}" class="noscroll" onkeypress='validar_apenas_numeros(event)' placeholder="Número da casa" type="number" name="numero_casa" id="numero_casa">
                         <label>Complemento:</label><br>
-                        <input value="{{ old('descricao') }}" placeholder="Descrição do local" type="text" name="descricao" id="descricao">
+                        <input value="{{ old('descricao', $agendamento->endereco->descricao) }}" placeholder="Descrição do local" type="text" name="descricao" id="descricao">
                         <label class="required">Ponto de referência:</label><br>
-                        <input value="{{ old('ponto_referencia') }}" placeholder="Ponto de referência" type="text" name="ponto_referencia" id="ponto_referencia">
+                        <input value="{{ old('ponto_referencia', $agendamento->endereco->descricao) }}" placeholder="Ponto de referência" type="text" name="ponto_referencia" id="ponto_referencia">
 
                         <input type="submit" value="Cadastrar">
 

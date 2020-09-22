@@ -5,29 +5,16 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use \App\Endereco;
 use App\Profissional;
+use Illuminate\Support\Facades\Auth;
 
 class CadastroProfissionalTest extends TestCase {
 
-    private $end;
-
     private $array_funcionario;
-
     private $funcionario_logado;
-    protected static $db_ok = false;
+    private $password;
 
     public function setUp() : void {
         parent::setUp();
-
-        if(!self::$db_ok) {
-            fwrite(STDERR, "Migrando sqlite...");
-            $this->artisan('migrate:fresh');
-            fwrite(STDERR, "Feito.\n");
-            fwrite(STDERR, "Fazendo seed no sqlite...");
-            $this->artisan('db:seed');
-            fwrite(STDERR, "Feito.\n");
-            self::$db_ok = true;
-        }
-
 
         $this->end = factory(Endereco::class)->create([
             'estado' => 'MG',
@@ -40,49 +27,51 @@ class CadastroProfissionalTest extends TestCase {
             'cpf' => '12345678910',
             'rg' => '12345678',
             'status' => 'Ativo',
-            'login' => '12345678910',
+            'login' => 'loooogin',
             'password' => '123123123',
             'profissao' => 'Psicologo',
             'numero_conselho' => '123',
-            'id_endereco' => $this->end->id,
             'telefone_1' => '12345678910',
             'telefone_2'=> '12345678911',
             'email' => 'carlosaajunior.jp@gmail.com',
             'estado_civil' => 'Solteiro',
             'nacionalidade' => 'Brasileiro',
+            'estado' => 'PE',
+            'cidade' => 'Garanhuns',
+            'bairro' => 'Boa Vista',
+            'nome_rua' => 'Rua Antonio carlos souto',
+            'numero_casa' => '857',
+            'descricao' => 'ali',
+            'ponto_referencia' => 'lá',
+            'profissoes' => ['fonocoiso', 'admin'],
+            'descricao_de_conhecimento_e_experiencia' => 'descricao_de_conhecimento_e_experiencia',
         ];
 
         $this->funcionario_logado = factory(Profissional::class)->create([
-             'password' => bcrypt($password = '123123123'),
-             'profissao' => 'Administrador',
-         ]);
+            'password' => bcrypt($this->password = '123123123'),
+            'profissao' => 'admin;asdasd;',
+        ]);
 
-
-         $this->post('/profissional/login', [
-              'login' => $this->funcionario_logado->login,
-              'password' => $this->funcionario_logado->$password,
-          ]);
-
-
+        $this->login();
     }
 
-// TODO: Alterar as rotas de criação de funcionario
+    private function login() {
+
+        $resposta = $this->post(route('profissional.efetuarLogin'), [
+            'login' => $this->funcionario_logado->login,
+            'password' => $this->password,
+        ]);
+        $resposta->assertRedirect('/profissional/home');
+    }
 
     /** @test **/
     /* url: https://www.pivotaltracker.com/story/show/174638563 */
     public function funcionarioPodeSerAdicionado() {
-
         $this->withoutExceptionHandling();
-
-        $copia_funcionario = $this->array_funcionario;
-
-        $resposta = $this->post(route("profissional.cadastro"), $copia_funcionario);
-
-        $resposta->assertOk();
-        $this->assertCount(2, Profissional::all());
-
-        $profissional = Profissional::first();
-        $resposta->assertRedirect($profissional->path());
+        $num_funcionarios = Profissional::all()->count();
+        $resposta = $this->post(route("profissional.admin.cadastro.salvar"), $this->array_funcionario);
+        $resposta->assertSessionHasNoErrors();
+        $this->assertCount($num_funcionarios + 1, Profissional::all());
     }
 
     /** @test **/
@@ -91,30 +80,25 @@ class CadastroProfissionalTest extends TestCase {
     public function nomeNaoPodeFicarEmBranco() {
 
         $this->withoutExceptionHandling();
-
         $copia_funcionario = $this->array_funcionario;
         $copia_funcionario['nome'] = '';
-
-        $resposta = $this->post(route("profissional.cadastro"), $copia_funcionario);
-
+        $num_funcionarios = Profissional::all()->count();
+        $resposta = $this->post(route("profissional.admin.cadastro.salvar"), $copia_funcionario);
         $resposta->assertSessionHasErrors('nome');
-        $this->assertCount(1, Profissional::all());
+        $this->assertCount($num_funcionarios, Profissional::all());
     }
 
     /** @test **/
     /* url: https://www.pivotaltracker.com/story/show/174638563 */
     /* TA_01 */
     public function cpfNaoPodeFicarEmBranco() {
-
         $this->withoutExceptionHandling();
-
         $copia_funcionario = $this->array_funcionario;
         $copia_funcionario['cpf'] = '';
-
-        $resposta = $this->post(route("profissional.cadastro"), $copia_funcionario);
-
+        $num_funcionarios = Profissional::all()->count();
+        $resposta = $this->post(route("profissional.admin.cadastro.salvar"), $copia_funcionario);
         $resposta->assertSessionHasErrors('cpf');
-        $this->assertCount(1, Profissional::all());
+        $this->assertCount($num_funcionarios, Profissional::all());
     }
 
 
@@ -128,10 +112,11 @@ class CadastroProfissionalTest extends TestCase {
         $copia_funcionario = $this->array_funcionario;
         $copia_funcionario['cpf'] = '123456789AO';
 
-        $resposta = $this->post(route("profissional.cadastro"), $copia_funcionario);
+        $num_funcionarios = Profissional::all()->count();
+        $resposta = $this->post(route("profissional.admin.cadastro.salvar"), $copia_funcionario);
 
         $resposta->assertSessionHasErrors('cpf');
-        $this->assertCount(1, Profissional::all());
+        $this->assertCount($num_funcionarios, Profissional::all());
     }
 
     /** @test **/
@@ -144,7 +129,7 @@ class CadastroProfissionalTest extends TestCase {
         $copia_funcionario = $this->array_funcionario;
         $copia_funcionario['cpf'] = '123456789';
 
-        $resposta = $this->post(route("profissional.cadastro"), $copia_funcionario);
+        $resposta = $this->post(route("profissional.admin.cadastro.salvar"), $copia_funcionario);
 
         $resposta->assertSessionHasErrors('cpf');
         $this->assertCount(1, Profissional::all());
@@ -160,7 +145,7 @@ class CadastroProfissionalTest extends TestCase {
         $copia_funcionario = $this->array_funcionario;
         $copia_funcionario['cpf'] = '1234567891011';
 
-        $resposta = $this->post(route("profissional.cadastro"), $copia_funcionario);
+        $resposta = $this->post(route("profissional.admin.cadastro.salvar"), $copia_funcionario);
         $resposta->assertSessionHasErrors('cpf');
         $this->assertCount(1, Profissional::all());
     }
@@ -180,7 +165,7 @@ class CadastroProfissionalTest extends TestCase {
         $copia_funcionario = $this->array_funcionario;
         $copia_funcionario['rg'] = '';
 
-        $resposta = $this->post(route("profissional.cadastro"), $copia_funcionario);
+        $resposta = $this->post(route("profissional.admin.cadastro.salvar"), $copia_funcionario);
 
         $resposta->assertSessionHasErrors('rg');
         $this->assertCount(1, Profissional::all());
@@ -196,7 +181,7 @@ class CadastroProfissionalTest extends TestCase {
         $copia_funcionario = $this->array_funcionario;
         $copia_funcionario['rg'] = '123456SE';
 
-        $resposta = $this->post(route("profissional.cadastro"), $copia_funcionario);
+        $resposta = $this->post(route("profissional.admin.cadastro.salvar"), $copia_funcionario);
 
         $resposta->assertSessionHasErrors('rg');
         $this->assertCount(1, Profissional::all());
@@ -212,7 +197,7 @@ class CadastroProfissionalTest extends TestCase {
         $copia_funcionario = $this->array_funcionario;
         $copia_funcionario['rg'] = '1234567';
 
-        $resposta = $this->post(route("profissional.cadastro"), $copia_funcionario);
+        $resposta = $this->post(route("profissional.admin.cadastro.salvar"), $copia_funcionario);
 
         $resposta->assertSessionHasErrors('rg');
         $this->assertCount(1, Profissional::all());
@@ -228,42 +213,8 @@ class CadastroProfissionalTest extends TestCase {
         $copia_funcionario = $this->array_funcionario;
         $copia_funcionario['rg'] = '123456789';
 
-        $resposta = $this->post(route("profissional.cadastro"), $copia_funcionario);
+        $resposta = $this->post(route("profissional.admin.cadastro.salvar"), $copia_funcionario);
         $resposta->assertSessionHasErrors('rg');
-        $this->assertCount(1, Profissional::all());
-    }
-
-
-
-    /** @test **/
-    /* url: https://www.pivotaltracker.com/story/show/174638563 */
-    /* TA_03 */
-    public function statusNaoPodeFicarEmBranco() {
-
-        $this->withoutExceptionHandling();
-
-        $copia_funcionario = $this->array_funcionario;
-        $copia_funcionario['status'] = '';
-
-        $resposta = $this->post(route("profissional.cadastro"), $copia_funcionario);
-
-        $resposta->assertSessionHasErrors('status');
-        $this->assertCount(1, Profissional::all());
-    }
-
-    /** @test **/
-    /* url: https://www.pivotaltracker.com/story/show/174638563 */
-    /* TA_04 */
-    public function statusPrecisaSerValido() {
-
-        $this->withoutExceptionHandling();
-
-        $copia_funcionario = $this->array_funcionario;
-        $copia_funcionario['status'] = 'status_invalido.png';
-
-        $resposta = $this->post(route("profissional.cadastro"), $copia_funcionario);
-
-        $resposta->assertSessionHasErrors('status');
         $this->assertCount(1, Profissional::all());
     }
 
@@ -279,7 +230,7 @@ class CadastroProfissionalTest extends TestCase {
         $copia_funcionario = $this->array_funcionario;
         $copia_funcionario['login'] = '';
 
-        $resposta = $this->post(route("profissional.cadastro"), $copia_funcionario);
+        $resposta = $this->post(route("profissional.admin.cadastro.salvar"), $copia_funcionario);
 
         $resposta->assertSessionHasErrors('login');
         $this->assertCount(1, Profissional::all());
@@ -296,27 +247,27 @@ class CadastroProfissionalTest extends TestCase {
         $copia_funcionario = $this->array_funcionario;
         $copia_funcionario['password'] = '';
 
-        $resposta = $this->post(route("profissional.cadastro"), $copia_funcionario);
+        $resposta = $this->post(route("profissional.admin.cadastro.salvar"), $copia_funcionario);
 
         $resposta->assertSessionHasErrors('password');
         $this->assertCount(1, Profissional::all());
-   }
+    }
 
-   /** @test **/
+    /** @test **/
     /* url: https://www.pivotaltracker.com/story/show/174638563 */
     /* TA_02 */
-   public function passwordNaoPodeTerPoucosCaracteres() {
+    public function passwordNaoPodeTerPoucosCaracteres() {
 
-       $this->withoutExceptionHandling();
+        $this->withoutExceptionHandling();
 
-       $copia_funcionario = $this->array_funcionario;
-       $copia_funcionario['password'] = '123';
+        $copia_funcionario = $this->array_funcionario;
+        $copia_funcionario['password'] = '123';
 
-       $resposta = $this->post(route("profissional.cadastro"), $copia_funcionario);
+        $resposta = $this->post(route("profissional.admin.cadastro.salvar"), $copia_funcionario);
 
-       $resposta->assertSessionHasErrors('password');
-       $this->assertCount(1, Profissional::all());
-   }
+        $resposta->assertSessionHasErrors('password');
+        $this->assertCount(1, Profissional::all());
+    }
 
     /** @test **/
     /* url: https://www.pivotaltracker.com/story/show/174638563 */
@@ -326,15 +277,17 @@ class CadastroProfissionalTest extends TestCase {
         $this->withoutExceptionHandling();
 
         $copia_funcionario = $this->array_funcionario;
-        $copia_funcionario['profissao'] = '';
+        $copia_funcionario['profissoes'] = '';
 
-        $resposta = $this->post(route("profissional.cadastro"), $copia_funcionario);
+        $resposta = $this->post(route("profissional.admin.cadastro.salvar"), $copia_funcionario);
 
-        $resposta->assertSessionHasErrors('profissao');
+        $resposta->assertSessionHasErrors('profissoes');
         $this->assertCount(1, Profissional::all());
     }
 
-    /** @test **/
+
+    /* TODO: esse teste vai ter que ser quebrado em varios, um pra cada campo... */
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638563 */
     /* TA_03 */
     public function enderecoNaoPodeFicarEmBranco() {
@@ -345,29 +298,11 @@ class CadastroProfissionalTest extends TestCase {
         $copia_funcionario = $this->array_funcionario;
         $copia_funcionario['id_endereco'] = '';
 
-        $resposta = $this->post(route("profissional.cadastro"), $copia_funcionario);
+        $resposta = $this->post(route("profissional.admin.cadastro.salvar"), $copia_funcionario);
 
         $resposta->assertSessionHasErrors('id_endereco');
         $this->assertCount(1, Profissional::all());
     }
-
-    /** @test **/
-    /* url: https://www.pivotaltracker.com/story/show/174638563 */
-    /* TA_04 */
-    public function enderecoPrecisaExistir() {
-
-        $this->withoutExceptionHandling();
-
-
-        $copia_funcionario = $this->array_funcionario;
-        $copia_funcionario['id_endereco'] = 666;
-
-        $resposta = $this->post(route("profissional.cadastro"), $copia_funcionario);
-
-        $resposta->assertSessionHasErrors('id_endereco');
-        $this->assertCount(1, Profissional::all());
-    }
-
 
     /** @test **/
     /* url: https://www.pivotaltracker.com/story/show/174638563 */
@@ -379,7 +314,7 @@ class CadastroProfissionalTest extends TestCase {
         $copia_funcionario = $this->array_funcionario;
         $copia_funcionario['telefone_1'] = '';
 
-        $resposta = $this->post(route("profissional.cadastro"), $copia_funcionario);
+        $resposta = $this->post(route("profissional.admin.cadastro.salvar"), $copia_funcionario);
 
         $resposta->assertSessionHasErrors('telefone_1');
         $this->assertCount(1, Profissional::all());
@@ -395,7 +330,7 @@ class CadastroProfissionalTest extends TestCase {
         $copia_funcionario = $this->array_funcionario;
         $copia_funcionario['telefone_1'] = '123456789DE';
 
-        $resposta = $this->post(route("profissional.cadastro"), $copia_funcionario);
+        $resposta = $this->post(route("profissional.admin.cadastro.salvar"), $copia_funcionario);
 
         $resposta->assertSessionHasErrors('telefone_1');
         $this->assertCount(1, Profissional::all());
@@ -411,7 +346,7 @@ class CadastroProfissionalTest extends TestCase {
         $copia_funcionario = $this->array_funcionario;
         $copia_funcionario['telefone_1'] = '1234567891';
 
-        $resposta = $this->post(route("profissional.cadastro"), $copia_funcionario);
+        $resposta = $this->post(route("profissional.admin.cadastro.salvar"), $copia_funcionario);
 
         $resposta->assertSessionHasErrors('telefone_1');
         $this->assertCount(1, Profissional::all());
@@ -427,7 +362,7 @@ class CadastroProfissionalTest extends TestCase {
         $copia_funcionario = $this->array_funcionario;
         $copia_funcionario['telefone_1'] = '1234567890101112';
 
-        $resposta = $this->post(route("profissional.cadastro"), $copia_funcionario);
+        $resposta = $this->post(route("profissional.admin.cadastro.salvar"), $copia_funcionario);
 
         $resposta->assertSessionHasErrors('telefone_1');
         $this->assertCount(1, Profissional::all());
@@ -443,7 +378,7 @@ class CadastroProfissionalTest extends TestCase {
         $copia_funcionario = $this->array_funcionario;
         $copia_funcionario['telefone_2'] = '123456789DE';
 
-        $resposta = $this->post(route("profissional.cadastro"), $copia_funcionario);
+        $resposta = $this->post(route("profissional.admin.cadastro.salvar"), $copia_funcionario);
 
         $resposta->assertSessionHasErrors('telefone_2');
         $this->assertCount(1, Profissional::all());
@@ -459,7 +394,7 @@ class CadastroProfissionalTest extends TestCase {
         $copia_funcionario = $this->array_funcionario;
         $copia_funcionario['telefone_2'] = '123456789';
 
-        $resposta = $this->post(route("profissional.cadastro"), $copia_funcionario);
+        $resposta = $this->post(route("profissional.admin.cadastro.salvar"), $copia_funcionario);
 
         $resposta->assertSessionHasErrors('telefone_2');
         $this->assertCount(1, Profissional::all());
@@ -475,7 +410,7 @@ class CadastroProfissionalTest extends TestCase {
         $copia_funcionario = $this->array_funcionario;
         $copia_funcionario['telefone_2'] = '12345678910111213';
 
-        $resposta = $this->post(route("profissional.cadastro"), $copia_funcionario);
+        $resposta = $this->post(route("profissional.admin.cadastro.salvar"), $copia_funcionario);
 
         $resposta->assertSessionHasErrors('telefone_2');
         $this->assertCount(1, Profissional::all());
@@ -491,7 +426,7 @@ class CadastroProfissionalTest extends TestCase {
         $copia_funcionario = $this->array_funcionario;
         $copia_funcionario['email'] = '';
 
-        $resposta = $this->post(route("profissional.cadastro"), $copia_funcionario);
+        $resposta = $this->post(route("profissional.admin.cadastro.salvar"), $copia_funcionario);
 
         $resposta->assertSessionHasErrors('email');
         $this->assertCount(1, Profissional::all());
@@ -508,7 +443,7 @@ class CadastroProfissionalTest extends TestCase {
         $copia_funcionario = $this->array_funcionario;
         $copia_funcionario['email'] = 'juniorgmail.com';
 
-        $resposta = $this->post(route("profissional.cadastro"), $copia_funcionario);
+        $resposta = $this->post(route("profissional.admin.cadastro.salvar"), $copia_funcionario);
 
         $resposta->assertSessionHasErrors('email');
         $this->assertCount(1, Profissional::all());
@@ -524,7 +459,7 @@ class CadastroProfissionalTest extends TestCase {
         $copia_funcionario = $this->array_funcionario;
         $copia_funcionario['nacionalidade'] = '';
 
-        $resposta = $this->post(route("profissional.cadastro"), $copia_funcionario);
+        $resposta = $this->post(route("profissional.admin.cadastro.salvar"), $copia_funcionario);
 
         $resposta->assertSessionHasErrors('nacionalidade');
         $this->assertCount(1, Profissional::all());
@@ -540,7 +475,7 @@ class CadastroProfissionalTest extends TestCase {
         $copia_funcionario = $this->array_funcionario;
         $copia_funcionario['nacionalidade'] = 'Brasi131r0';
 
-        $resposta = $this->post(route("profissional.cadastro"), $copia_funcionario);
+        $resposta = $this->post(route("profissional.admin.cadastro.salvar"), $copia_funcionario);
 
 
         $resposta->assertSessionHasErrors('nacionalidade');
@@ -558,7 +493,7 @@ class CadastroProfissionalTest extends TestCase {
         $copia_funcionario = $this->array_funcionario;
         $copia_funcionario['estado_civil'] = '';
 
-        $resposta = $this->post(route("profissional.cadastro"), $copia_funcionario);
+        $resposta = $this->post(route("profissional.admin.cadastro.salvar"), $copia_funcionario);
 
 
         $resposta->assertSessionHasErrors('estado_civil');
@@ -575,7 +510,7 @@ class CadastroProfissionalTest extends TestCase {
         $copia_funcionario = $this->array_funcionario;
         $copia_funcionario['estado_civil'] = 'Na Pista';
 
-        $resposta = $this->post(route("profissional.cadastro"), $copia_funcionario);
+        $resposta = $this->post(route("profissional.admin.cadastro.salvar"), $copia_funcionario);
 
 
         $resposta->assertSessionHasErrors('estado_civil');
@@ -583,7 +518,8 @@ class CadastroProfissionalTest extends TestCase {
     }
 
 
-    /** @test **/
+    /* TODO: verificar esses 7 numeros... */
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638563 */
     /* TA_04 */
     public function conselhoNaoPodeTerMaisDeSeteNumeros() {
@@ -593,7 +529,7 @@ class CadastroProfissionalTest extends TestCase {
         $copia_funcionario = $this->array_funcionario;
         $copia_funcionario['numero_conselho'] = '12345678';
 
-        $resposta = $this->post(route("profissional.cadastro"), $copia_funcionario);
+        $resposta = $this->post(route("profissional.admin.cadastro.salvar"), $copia_funcionario);
 
 
         $resposta->assertSessionHasErrors('numero_conselho');
@@ -601,7 +537,8 @@ class CadastroProfissionalTest extends TestCase {
     }
 
 
-    /** @test **/
+    /* TODO: verificar esses 4 numeros... */
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638563 */
     /* TA_04 */
     public function conselhoNaoPodeTerMenosQueQuatroNumeros() {
@@ -611,14 +548,15 @@ class CadastroProfissionalTest extends TestCase {
         $copia_funcionario = $this->array_funcionario;
         $copia_funcionario['numero_conselho'] = '123';
 
-        $resposta = $this->post(route("profissional.cadastro"), $copia_funcionario);
+        $resposta = $this->post(route("profissional.admin.cadastro.salvar"), $copia_funcionario);
 
 
         $resposta->assertSessionHasErrors('numero_conselho');
         $this->assertCount(1, Profissional::all());
     }
 
-    /** @test **/
+    /* TODO: verificar se é isso mesmo... */
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638563 */
     /* TA_04 */
     public function conselhoNaoPodeTerLetra() {
@@ -628,7 +566,7 @@ class CadastroProfissionalTest extends TestCase {
         $copia_funcionario = $this->array_funcionario;
         $copia_funcionario['numero_conselho'] = 'Abacate';
 
-        $resposta = $this->post(route("profissional.cadastro"), $copia_funcionario);
+        $resposta = $this->post(route("profissional.admin.cadastro.salvar"), $copia_funcionario);
 
 
         $resposta->assertSessionHasErrors('numero_conselho');

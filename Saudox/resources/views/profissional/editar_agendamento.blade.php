@@ -83,7 +83,7 @@
                 <textarea class="textareas_form tipo_da_recorrencia" id="tipo_da_recorrencia" name="tipo_da_recorrencia" rows="4" cols="50" style=""> {{ $agendamento->tipo_da_recorrencia }} </textarea>
 
                 <hr class="hr_form">
-                <h3>Observações</h3>
+                <h3>Observações (Opcional)</h3>
                 <textarea class="textareas_form" id="observacoes" name="observacoes" rows="4" cols="50" style=""> {{$agendamento->observacoes}} </textarea>
 
                 <hr class="hr_form">

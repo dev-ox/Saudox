@@ -42,7 +42,7 @@
                         <input value="{{ $paciente->telefone_mae == "" ? old('telefone') : $paciente->telefone_mae }}" placeholder="Telefone" type="text" name="telefone" id="telefone">
                         <label>Email da mãe:</label><br>
                         <input value="{{ $paciente->email_mae == "" ?  old('email') : $paciente->email_mae }}" placeholder="E-Mail" type="text" name="email" id="email">
-
+                        
                         <hr class="hr_form">
                         <h3>Endereço</h3>
                         <label class="required">Estado:</label><br>
@@ -86,7 +86,7 @@
                         <textarea class="textareas_form tipo_da_recorrencia" id="tipo_da_recorrencia" name="tipo_da_recorrencia" rows="4" cols="50" style=""></textarea>
 
                         <hr class="hr_form">
-                        <h3>Observações</h3>
+                        <h3>Observações (Opcional)</h3>
                         <textarea class="textareas_form" id="observacoes" name="observacoes" rows="4" cols="50" style=""></textarea>
 
                         <hr class="hr_form">
