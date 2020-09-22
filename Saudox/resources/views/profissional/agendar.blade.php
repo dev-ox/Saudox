@@ -42,7 +42,7 @@
                         <input value="{{ $paciente->telefone_mae == "" ? old('telefone') : $paciente->telefone_mae }}" placeholder="Telefone" type="text" name="telefone" id="telefone">
                         <label>Email da mãe:</label><br>
                         <input value="{{ $paciente->email_mae == "" ?  old('email') : $paciente->email_mae }}" placeholder="E-Mail" type="text" name="email" id="email">
-                        
+
                         <hr class="hr_form">
                         <h3>Endereço</h3>
                         <label class="required">Estado:</label><br>
@@ -80,7 +80,7 @@
                         <h3>Sobre a volta</h3>
 
                         <input type="checkbox" id="recorrencia_do_agendamento" name="recorrencia_do_agendamento" style="margin-left: -2%;">
-                        <label class="required">É volta?</label><br>
+                        <label class="">É volta?</label><br>
 
                         <label class="tipo_da_recorrencia">Motivo da volta</label><br>
                         <textarea class="textareas_form tipo_da_recorrencia" id="tipo_da_recorrencia" name="tipo_da_recorrencia" rows="4" cols="50" style=""></textarea>
