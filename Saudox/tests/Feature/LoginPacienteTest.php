@@ -127,12 +127,19 @@ class LoginPacienteTest extends TestCase {
             'password' => $password,
         ]);
 
+        /* TODO: mudar pra rota de ter perfil quando existir */
         $resposta->assertRedirect(route('paciente.home'));
         $this->assertAuthenticatedAs($paciente);
 
-        $this->post(route('logout'));
+        $resposta = $this->post(route('logout'));
         $this->assertGuest();
-        /* TODO: acho que vai mais coisa aqui */
+        $resposta->assertRedirect(route('login'));
+
+        $resposta = $this->get(route('paciente.home'));
+        $resposta->assertRedirect(route('login'));
+
+
+
     }
 
 }
