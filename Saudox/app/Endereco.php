@@ -21,10 +21,6 @@ class Endereco extends Model {
     public static $regras_validacao = [
         'estado' => 'required',
         'cidade' => 'required',
-        'bairro' => 'required',
-        'nome_rua' => 'required',
-        'numero_casa' => 'required|numeric',
-        'descricao' => 'required',
         'ponto_referencia' => 'required',
     ];
 }

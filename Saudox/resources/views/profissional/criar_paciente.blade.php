@@ -108,13 +108,13 @@
                         <input value="{{ old('estado') }}" placeholder="Estado" type="text" name="estado" id="estado">
                         <label class="required">Cidade:</label><br>
                         <input value="{{ old('cidade') }}" placeholder="Cidade" type="text" name="cidade" id="cidade">
-                        <label class="required">Bairro:</label><br>
+                        <label>Bairro:</label><br>
                         <input value="{{ old('bairro') }}" placeholder="Bairro" type="text" name="bairro" id="bairro">
-                        <label class="required">Rua:</label><br>
+                        <label>Rua:</label><br>
                         <input value="{{ old('nome_rua') }}" placeholder="Rua" type="text" name="nome_rua" id="nome_rua">
-                        <label class="required">Nº:</label><br>
+                        <label>Nº:</label><br>
                         <input value="{{ old('numero_casa') }}" class="noscroll" onkeypress='validar_apenas_numeros(event)' placeholder="Número da casa" type="number" name="numero_casa" id="numero_casa">
-                        <label class="required">Complemento:</label><br>
+                        <label>Complemento:</label><br>
                         <input value="{{ old('descricao') }}" placeholder="Descrição do local" type="text" name="descricao" id="descricao">
                         <label class="required">Ponto de referência:</label><br>
                         <input value="{{ old('ponto_referencia') }}" placeholder="Ponto de referência" type="text" name="ponto_referencia" id="ponto_referencia">

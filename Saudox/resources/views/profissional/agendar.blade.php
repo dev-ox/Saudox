@@ -40,7 +40,7 @@
                         <input value="{{ $paciente->data_nascimento == "" ? old('data_nascimento_paciente') : $paciente->data_nascimento }}" placeholder="" type="date" name="data_nascimento_paciente" id="data_nascimento_paciente">
                         <label class="required">Telefone da mãe:</label><br>
                         <input value="{{ $paciente->telefone_mae == "" ? old('telefone') : $paciente->telefone_mae }}" placeholder="Telefone" type="text" name="telefone" id="telefone">
-                        <label class="required">Email da mãe:</label><br>
+                        <label>Email da mãe:</label><br>
                         <input value="{{ $paciente->email_mae == "" ?  old('email') : $paciente->email_mae }}" placeholder="E-Mail" type="text" name="email" id="email">
 
                         <hr class="hr_form">
@@ -49,13 +49,13 @@
                         <input value="{{ $paciente->endereco->estado           == "" ? old('estado')           : $paciente->endereco->estado }}" placeholder="Estado" type="text" name="estado" id="estado">
                         <label class="required">Cidade:</label><br>
                         <input value="{{ $paciente->endereco->cidade           == "" ? old('cidade')           : $paciente->endereco->cidade }}" placeholder="Cidade" type="text" name="cidade" id="cidade">
-                        <label class="required">Bairro:</label><br>
+                        <label>Bairro:</label><br>
                         <input value="{{ $paciente->endereco->bairro           == "" ? old('bairro')           : $paciente->endereco->bairro }}" placeholder="Bairro" type="text" name="bairro" id="bairro">
-                        <label class="required">Rua:</label><br>
+                        <label>Rua:</label><br>
                         <input value="{{ $paciente->endereco->nome_rua         == "" ? old('nome_rua')         : $paciente->endereco->nome_rua }}" placeholder="Rua" type="text" name="nome_rua" id="nome_rua">
-                        <label class="required">Nº:</label><br>
+                        <label>Nº:</label><br>
                         <input value="{{ $paciente->endereco->numero_casa      == "" ? old('numero_casa')      : $paciente->endereco->numero_casa }}" class="noscroll" onkeypress='validar_apenas_numeros(event)' placeholder="Número" type="number" name="numero_casa" id="numero_casa">
-                        <label class="required">Complemento:</label><br>
+                        <label>Complemento:</label><br>
                         <input value="{{ $paciente->endereco->descricao        == "" ? old('descricao')        : $paciente->endereco->descricao }}" placeholder="Descrição" type="text" name="descricao" id="descricao">
                         <label class="required">Ponto de referência:</label><br>
                         <input value="{{ $paciente->endereco->ponto_referencia == "" ? old('ponto_referencia') : $paciente->endereco->ponto_referencia }}" placeholder="Ponto de referência" type="text" name="ponto_referencia" id="ponto_referencia">

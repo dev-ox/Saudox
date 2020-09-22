@@ -39,7 +39,7 @@
                         <input value="{{ $agendamento->data_nascimento_paciente }}" placeholder="" type="date" name="data_nascimento_paciente" id="data_nascimento_paciente">
                         <label class="required">Telefone:</label><br>
                         <input value="{{ $agendamento->telefone                 }}" placeholder="Telefone" type="text" name="telefone" id="telefone">
-                        <label class="required">Email:</label><br>
+                        <label>Email:</label><br>
                         <input value="{{ $agendamento->email                    }}" placeholder="E-Mail" type="text" name="email" id="email">
 
                         <hr class="hr_form">
@@ -48,13 +48,13 @@
                         <input value="{{ $agendamento->endereco->estado           }}" placeholder="Estado" type="text" name="estado" id="estado">
                         <label class="required">Cidade:</label><br>
                         <input value="{{ $agendamento->endereco->cidade           }}" placeholder="Cidade" type="text" name="cidade" id="cidade">
-                        <label class="required">Bairro:</label><br>
+                        <label>Bairro:</label><br>
                         <input value="{{ $agendamento->endereco->bairro           }}" placeholder="Bairro" type="text" name="bairro" id="bairro">
-                        <label class="required">Rua:</label><br>
+                        <label>Rua:</label><br>
                         <input value="{{ $agendamento->endereco->nome_rua         }}" placeholder="Rua" type="text" name="nome_rua" id="nome_rua">
-                        <label class="required">Nº:</label><br>
+                        <label>Nº:</label><br>
                         <input value="{{ $agendamento->endereco->numero_casa      }}" class="noscroll" onkeypress='validar_apenas_numeros(event)' placeholder="Número" type="number" name="numero_casa" id="numero_casa">
-                        <label class="required">Complemento:</label><br>
+                        <label>Complemento:</label><br>
                         <input value="{{ $agendamento->endereco->descricao        }}" placeholder="Descrição" type="text" name="descricao" id="descricao">
                         <label class="required">Ponto de referência:</label><br>
                         <input value="{{ $agendamento->endereco->ponto_referencia }}" placeholder="Ponto de referência" type="text" name="ponto_referencia" id="ponto_referencia">

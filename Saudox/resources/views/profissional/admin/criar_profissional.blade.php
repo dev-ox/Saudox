@@ -40,15 +40,15 @@
                         <input value="{{ old('rg') }}" class="noscroll" onkeypress='validar_apenas_numeros(event)' placeholder="RG (apenas números)" type="number"  name="rg" id="rg">
                         <label>CRM:</label><br>
                         <input value="{{ old('numero_conselho') }}" class="noscroll" onkeypress='validar_apenas_numeros(event)' placeholder="Número do CRM (apenas números)" type="number"  name="numero_conselho" id="numero_conselho">
-                        <label class="required">Telefone 1:</label><br>
+                        <label class="required">Telefone Primário:</label><br>
                         <input value="{{ old('telefone_1') }}" placeholder="Telefone" type="text" name="telefone_1" id="telefone_1">
-                        <label>Telefone 2:</label><br>
+                        <label>Telefone Secundário:</label><br>
                         <input value="{{ old('telefone_2') }}" placeholder="Segundo Telefone (opcional)" type="text" name="telefone_2" id="telefone_2">
                         <label class="required">Email:</label><br>
                         <input value="{{ old('email') }}" placeholder="E-Mail" type="text" name="email" id="email">
                         <label class="required">Nacionalidade:</label><br>
                         <input value="{{ old('nacionalidade') }}" placeholder="Nacionalidade" type="text" name="nacionalidade" id="nacionalidade">
-                        <label class="required">Descrição do conhecimento e experiência:</label><br>
+                        <label>Descrição do conhecimento e experiência:</label><br>
                         <input value="{{ old('descricao_de_conhecimento_e_experiencia') }}" placeholder="Descrição do conhecimento e experiência" type="text" name="descricao_de_conhecimento_e_experiencia" id="descricao_de_conhecimento_e_experiencia">
 
                         <hr class="hr_form">
@@ -57,13 +57,13 @@
                         <input value="{{ old('estado') }}" placeholder="Estado" type="text" name="estado" id="estado">
                         <label class="required">Cidade:</label><br>
                         <input value="{{ old('cidade') }}" placeholder="Cidade" type="text" name="cidade" id="cidade">
-                        <label class="required">Bairro:</label><br>
+                        <label>Bairro:</label><br>
                         <input value="{{ old('bairro') }}" placeholder="Bairro" type="text" name="bairro" id="bairro">
-                        <label class="required">Rua:</label><br>
+                        <label>Rua:</label><br>
                         <input value="{{ old('nome_rua') }}" placeholder="Rua" type="text" name="nome_rua" id="nome_rua">
-                        <label class="required">Nº:</label><br>
+                        <label>Nº:</label><br>
                         <input value="{{ old('numero_casa') }}" class="noscroll" onkeypress='validar_apenas_numeros(event)' placeholder="Número" type="number" name="numero_casa" id="numero_casa">
-                        <label class="required">Complemento:</label><br>
+                        <label>Complemento:</label><br>
                         <input value="{{ old('descricao') }}" placeholder="Descrição" type="text" name="descricao" id="descricao">
                         <label class="required">Ponto de referência:</label><br>
                         <input value="{{ old('ponto_referencia') }}" placeholder="Ponto de referência" type="text" name="ponto_referencia" id="ponto_referencia">
