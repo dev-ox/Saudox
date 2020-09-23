@@ -11,6 +11,7 @@ class RotasTest extends TestCase {
     // TODO: Ajustar esses testes depois. Aqui podemos definir o padrão das
     //      rotas que iremos utilizar nos demais testes.
     /* TODO: Aqui ainda falta colocar os testes de "novo alguma coisa"... */
+    /* TODO: Tirar esses testes de vez...? */
 
     /** @ test **/
     public function anamneseFonoRota() {
@@ -76,6 +77,12 @@ class RotasTest extends TestCase {
     public function evolucaoTerapiaOcupacionalRota() {
         $response = $this->get('/evolucao/terapia_ocupacional/teste');
         $response->assertStatus(200);
+    }
+
+
+    /** @test */
+    public function funcaoTesteSoPraNaoFicarWarning() {
+        $this->assertTrue(true);
     }
 
 }

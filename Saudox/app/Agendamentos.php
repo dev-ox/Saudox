@@ -13,6 +13,8 @@ class Agendamentos extends Model {
         'email' => 'nullable|email',
         'local_de_atendimento' => 'required',
         'dia_da_consulta' => 'required',
+        'hora_entrada' => 'required',
+        'hora_saida' => 'required',
     ];
 
     protected $fillable = [

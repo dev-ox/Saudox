@@ -322,7 +322,7 @@ class AgendamentosTest extends TestCase {
         $agendamento_incompleto = $this->agendamento_completo;
         $agendamento_incompleto['hora_entrada'] = '';
         $resposta = $this->post(route('agendamento.salvar'), $agendamento_incompleto);
-        $resposta->assertSessionHasErrors();
+        $resposta->assertSessionHasErrors('hora_entrada');
         $this->assertCount(0, Agendamentos::all());
     }
 
@@ -333,7 +333,7 @@ class AgendamentosTest extends TestCase {
         $agendamento_incompleto = $this->agendamento_completo;
         $agendamento_incompleto['hora_saida'] = '';
         $resposta = $this->post(route('agendamento.salvar'), $agendamento_incompleto);
-        $resposta->assertSessionHasErrors();
+        $resposta->assertSessionHasErrors('hora_saida');
         $this->assertCount(0, Agendamentos::all());
     }
 

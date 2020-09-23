@@ -98,7 +98,7 @@
                             <label for="pais_sao_divorciados">Sim</label>
                             <input value="1" class="command_hidden" type="radio" name="pais_sao_divorciados" id="pais_sao_divorciados">
                             <label for="pais_sao_casados">Não</label>
-                            <input value="0" type="radio" name="pais_sao_divorciados" id="pais_sao_divorciados">
+                            <input value="0" type="radio" name="pais_sao_divorciados" id="pais_sao_divorciados" checked>
                             <input value="{{ old('reacao_sobre_a_relacao_pais_caso_divorciados') }}" placeholder="Reação a relação dos pais" type="text" name="reacao_sobre_a_relacao_pais_caso_divorciados" id="reacao_sobre_a_relacao_pais_caso_divorciados">
                             <input value="{{ old('vive_com_quem_caso_pais_divorciados') }}" placeholder="Vive com quem?" type="text" name="vive_com_quem_caso_pais_divorciados" id="vive_com_quem_caso_pais_divorciados">
                         </div>

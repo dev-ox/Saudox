@@ -43,11 +43,11 @@ class ProfissionalController extends Controller {
 
         if($profissional){
             return view('profissional/ver_profissional',
-            [
-              'profissional' => $profissional,
-              'profissoes' => $profissoes,
-              'agenda' => $agenda,
-            ]);
+                [
+                    'profissional' => $profissional,
+                    'profissoes' => $profissoes,
+                    'agenda' => $agenda,
+                ]);
         } else {
             return redirect()->route('erro', ['msg_erro' => "Profissional inexistente"]);
         }
@@ -88,12 +88,48 @@ class ProfissionalController extends Controller {
             'lt' => 'O campo :attribute deve ser menor que 100.',
             'unique' => 'O :attribute já está cadastrado',
         ];
-        $time = strtotime($entrada['data_nascimento']);
-        $entrada['data_nascimento'] = date('Y-m-d',$time);
 
         if($entrada['lista_irmaos'] == "") {
             $entrada['lista_irmaos'] = "Nenhum";
         }
+
+        $rota_erro = "profissional.criar_paciente";
+
+        if(!isset($entrada["data_nascimento"])
+            || $entrada["data_nascimento"] == ""
+            || $entrada["data_nascimento"] == NULL
+            || !strtotime($entrada["data_nascimento"])
+            || !$this->validatarData($entrada["data_nascimento"])
+        ) {
+
+            return redirect()->route($rota_erro)
+                             ->withErrors(['data_nascimento'=>'Data de nascimento inválida!'])
+                             ->withInput();
+        }
+
+        $time = strtotime($entrada['data_nascimento']);
+        $entrada['data_nascimento'] = date('Y-m-d',$time);
+
+        if($entrada["sexo"] != "0" && $entrada["sexo"] != "1") {
+            return redirect()->route($rota_erro)
+                             ->withErrors(['sexo'=>'Sexo inválido!'])
+                             ->withInput();
+        }
+
+
+        if(!$this->validarTelefone($entrada["telefone_mae"])) {
+            return redirect()->route($rota_erro)
+                             ->withErrors(['telefone_mae'=>'Telefone da mãe inválido!'])
+                             ->withInput();
+        }
+
+        if(!$this->validarTelefone($entrada["telefone_pai"])) {
+            return redirect()->route($rota_erro)
+                             ->withErrors(['telefone_pai'=>'Telefone do pai inválido!'])
+                             ->withInput();
+        }
+
+
 
 
         $validator_endereco = Validator::make($entrada, Endereco::$regras_validacao, $messages);
@@ -111,23 +147,26 @@ class ProfissionalController extends Controller {
         }
 
 
-
         $endereco = new Endereco;
         $endereco->fill($entrada);
         $endereco->save();
 
-        $validar_cpf = Controller::validaCPF($entrada['cpf']);
+        $validar_cpf = $this->validaCPF($entrada['cpf']);
         if (!$validar_cpf) {
             return redirect()->back()
-                             ->withErrors(['errors'=>'Cpf inválido!'])
+                             ->withErrors(['cpf'=>'Cpf inválido!'])
                              ->withInput();
         }
 
         $paciente = new Paciente;
         $paciente->fill($entrada);
-        if($entrada['pais_sao_casados'] == 1){
-            $paciente->pais_sao_divorciados = 0;
+        $paciente->pais_sao_casados= $entrada['pais_sao_casados'] == "1";
+        $paciente->pais_sao_divorciados = false;
+
+        if(isset($entrada["pais_sao_divorciados"]) && ($entrada["pais_sao_divorciados"] == "1")) {
+            $paciente->pais_sao_divorciados = true;
         }
+
         $paciente->id_endereco = $endereco->id;
 
         $paciente->password = Hash::make($entrada['password']);
@@ -170,12 +209,48 @@ class ProfissionalController extends Controller {
             'unique' => 'O :attribute já está cadastrado',
         ];
 
-        $time = strtotime($entrada['data_nascimento']);
-        $entrada['data_nascimento'] = date('Y-m-d',$time);
-
         if($entrada['lista_irmaos'] == "") {
             $entrada['lista_irmaos'] = "Nenhum";
         }
+
+        $rota_erro = "profissional.criar_paciente.editar";
+
+
+        if(!isset($entrada["data_nascimento"])
+            || $entrada["data_nascimento"] == ""
+            || $entrada["data_nascimento"] == NULL
+            || !strtotime($entrada["data_nascimento"])
+            || !$this->validatarData($entrada["data_nascimento"])
+        ) {
+
+            return redirect()->route($rota_erro)
+                             ->withErrors(['data_nascimento'=>'Data de nascimento inválida!'])
+                             ->withInput();
+        }
+
+        $time = strtotime($entrada['data_nascimento']);
+        $entrada['data_nascimento'] = date('Y-m-d',$time);
+
+        if($entrada["sexo"] != "0" && $entrada["sexo"] != "1") {
+            return redirect()->route($rota_erro)
+                             ->withErrors(['sexo'=>'Sexo inválido!'])
+                             ->withInput();
+        }
+
+
+        if(!$this->validarTelefone($entrada["telefone_mae"])) {
+            return redirect()->route($rota_erro)
+                             ->withErrors(['telefone_mae'=>'Telefone da mãe inválido!'])
+                             ->withInput();
+        }
+
+        if(!$this->validarTelefone($entrada["telefone_pai"])) {
+            return redirect()->route($rota_erro)
+                             ->withErrors(['telefone_pai'=>'Telefone do pai inválido!'])
+                             ->withInput();
+        }
+
+
 
         $validator_endereco = Validator::make($entrada, Endereco::$regras_validacao, $messages);
         if ($validator_endereco->fails()) {
@@ -202,17 +277,15 @@ class ProfissionalController extends Controller {
         $endereco->fill($entrada);
         $endereco->save();
 
-        $validar_cpf = Controller::validaCPF($entrada['cpf']);
+        $validar_cpf = $this->validaCPF($entrada['cpf']);
         if (!$validar_cpf) {
             return redirect()->back()
-                             ->withErrors(['errors'=>'Cpf inválido!'])
+                             ->withErrors(['cpf'=>'Cpf inválido!'])
                              ->withInput();
         }
 
         $paciente->fill($entrada);
-        if($entrada['pais_sao_casados'] == 1){
-            $paciente->pais_sao_divorciados = 0;
-        }
+        $paciente->pais_sao_casados= $entrada['pais_sao_casados'] == "1";
 
         //Se existe o campo password, e o campo password não está vazio (foi modificado)
         if(isset($entrada['password']) && $entrada['password'] != "") {
@@ -266,7 +339,7 @@ class ProfissionalController extends Controller {
                             }
                         }
                     }
-                // Se o tipo de usuário que ele está buscando for paciente
+                    // Se o tipo de usuário que ele está buscando for paciente
                 } else if($tipo_user == 'profissional') {
                     $profissional_aux = Profissional::select('id', 'nome', 'cpf')->get();
                     if($tipo_busca == 'cpf') {

@@ -24,7 +24,8 @@ class CadastroProfissionalTest extends TestCase {
 
         $this->array_funcionario = [
             'nome' => 'Carlos Antônio',
-            'cpf' => '12345678910',
+            //CPF precisa ser valido aqui...
+            'cpf' => '90653263163',
             'rg' => '12345678',
             'status' => 'Ativo',
             'login' => 'loooogin',
@@ -34,7 +35,7 @@ class CadastroProfissionalTest extends TestCase {
             'telefone_1' => '12345678910',
             'telefone_2'=> '12345678911',
             'email' => 'carlosaajunior.jp@gmail.com',
-            'estado_civil' => 'Solteiro',
+            'estado_civil' => 'solteiro',
             'nacionalidade' => 'Brasileiro',
             'estado' => 'PE',
             'cidade' => 'Garanhuns',
@@ -187,38 +188,6 @@ class CadastroProfissionalTest extends TestCase {
         $this->assertCount(1, Profissional::all());
     }
 
-    /** @test **/
-    /* url: https://www.pivotaltracker.com/story/show/174638563 */
-    /* TA_04 */
-    public function rgNaoPodeTerMenosQueOitoNumeros() {
-
-        $this->withoutExceptionHandling();
-
-        $copia_funcionario = $this->array_funcionario;
-        $copia_funcionario['rg'] = '1234567';
-
-        $resposta = $this->post(route("profissional.admin.cadastro.salvar"), $copia_funcionario);
-
-        $resposta->assertSessionHasErrors('rg');
-        $this->assertCount(1, Profissional::all());
-    }
-
-    /** @test **/
-    /* url: https://www.pivotaltracker.com/story/show/174638563 */
-    /* TA_04 */
-    public function rgNaoPodeTerMaisQueOitoNumeros() {
-
-        $this->withoutExceptionHandling();
-
-        $copia_funcionario = $this->array_funcionario;
-        $copia_funcionario['rg'] = '123456789';
-
-        $resposta = $this->post(route("profissional.admin.cadastro.salvar"), $copia_funcionario);
-        $resposta->assertSessionHasErrors('rg');
-        $this->assertCount(1, Profissional::all());
-    }
-
-
 
     /** @test **/
     /* url: https://www.pivotaltracker.com/story/show/174638563 */
@@ -344,7 +313,7 @@ class CadastroProfissionalTest extends TestCase {
         $this->withoutExceptionHandling();
 
         $copia_funcionario = $this->array_funcionario;
-        $copia_funcionario['telefone_1'] = '1234567891';
+        $copia_funcionario['telefone_1'] = '123456789';
 
         $resposta = $this->post(route("profissional.admin.cadastro.salvar"), $copia_funcionario);
 
