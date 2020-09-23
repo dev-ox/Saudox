@@ -10,32 +10,36 @@ use App\Profissional;
 class AdminControllerTest extends TestCase {
 
 
+    private $controller;
+    private $endereco;
+    private $profissional;
     protected function setUp(): void {
         parent::setUp();
+        $this->endereco = factory(Endereco::class)->create();
+        $this->profissional = factory(Profissional::class)->create();
+        $this->controller = new AdminController;
     }
 
 
+    public function testAdminHome() {
+        $view = $this->controller->adminHome();
+        $this->assertEquals($view->getName(), "profissional.admin.home");
+    }
+
 
     public function testCadastroProfissionalRetornaView() {
-        $controller = new AdminController;
-        $view = $controller->cadastroProfissional();
+        $view = $this->controller->cadastroProfissional();
         $this->assertEquals($view->getName(), "profissional.admin.criar_profissional");
     }
 
     public function testEditarProfissionalRetornaView() {
-        $profissional = factory(Endereco::class)->create();
-        $profissional = factory(Profissional::class)->create();
-        $controller = new AdminController;
-        $view = $controller->editarProfissional($profissional->id);
+        $view = $this->controller->editarProfissional($this->profissional->id);
         $this->assertEquals($view->getName(), "profissional.admin.editar_profissional");
     }
 
     public function testEditarProfissionalRetornaViewSeIdNaoExiste() {
-        $controller = new AdminController;
-        $view = $controller->editarProfissional(-1);
+        $view = $this->controller->editarProfissional(-1);
         $this->assertEquals($view->getName(), "erro");
     }
-
-    //TODO: testes unitarios enviando requests
 
 }

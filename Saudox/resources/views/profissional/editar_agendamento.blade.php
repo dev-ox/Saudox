@@ -77,7 +77,7 @@
                         <h3>Sobre a volta</h3>
 
                         <input type="checkbox" id="recorrencia_do_agendamento" name="recorrencia_do_agendamento" style="margin-left: -2%;" {{ $agendamento->recorrencia_do_agendamento ? "checked" : "" }}>
-                <label class="required">É volta?</label><br>
+                <label class="">É volta?</label><br>
 
                 <label class="tipo_da_recorrencia">Motivo da volta</label><br>
                 <textarea class="textareas_form tipo_da_recorrencia" id="tipo_da_recorrencia" name="tipo_da_recorrencia" rows="4" cols="50" style=""> {{ $agendamento->tipo_da_recorrencia }} </textarea>

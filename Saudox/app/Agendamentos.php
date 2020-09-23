@@ -10,7 +10,7 @@ class Agendamentos extends Model {
         'cpf' => 'required|numeric',
         'data_nascimento_paciente' => 'required',
         'telefone' => 'required',
-        'email' => 'email',
+        'email' => 'nullable|email',
         'local_de_atendimento' => 'required',
         'dia_da_consulta' => 'required',
     ];
