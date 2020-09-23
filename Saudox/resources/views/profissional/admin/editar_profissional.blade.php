@@ -72,6 +72,9 @@
                             <input type="checkbox" id="admin" name="profissoes[]" value="admin" {{ in_array('admin', $profissional->getProfissoes()) ? "checked" : "" }}>
                             <label>Administrador</label><br>
 
+                            <input type="checkbox" id="recepcionista" name="profissoes[]" value="recepcionista" {{ in_array('recepcionista', $profissional->getProfissoes()) ? "checked" : "" }}>
+                            <label>Recepcionista</label><br>
+
                             <input type="checkbox" id="fonoaudiologo" name="profissoes[]" value="fonoaudiologo" {{ in_array('fonoaudiologo', $profissional->getProfissoes()) ? "checked" : "" }}>
                             <label>Fonoaudiólogo</label><br>
 

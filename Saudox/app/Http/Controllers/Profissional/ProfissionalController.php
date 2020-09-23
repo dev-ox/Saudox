@@ -240,6 +240,9 @@ class ProfissionalController extends Controller {
             $tipo_user = $req['tipo_user'];
             $tipo_busca = $req['tipo_busca'];
             $info = $req['info'];
+            if(!$info || $info == '') {
+                return view('erro', ['msg_erro' => "Por favor, informe dados válidos para a busca. (Você não indicou o o que de fato quer buscar.)"]);
+            }
 
             // Se o usuário do sistema fez uma busca
             if($buscou) {

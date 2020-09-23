@@ -73,6 +73,8 @@
                         <div class="checkbox_container">
                             <input type="checkbox" id="admin" name="profissoes[]" value="admin">
                             <label>Administrador</label><br>
+                            <input type="checkbox" id="recepcionista" name="profissoes[]" value="recepcionista">
+                            <label>Recepcionista</label><br>
                             <input type="checkbox" id="fonoaudiologo" name="profissoes[]" value="fonoaudiologo">
                             <label>Fonoaudiólogo</label><br>
                             <input type="checkbox" id="terapeuta_ocupacional" name="profissoes[]" value="terapeuta_ocupacional">
