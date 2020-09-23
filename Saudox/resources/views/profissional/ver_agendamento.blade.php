@@ -12,6 +12,7 @@
                     @if(Auth::guard('profissional'))
                         <span style="display: inline-flex; margin-left: -8%;">
                             <a style="margin: auto; width: auto; height: auto;" class="bt-acao-adm-editar" href="{{ route('agendamento.marcar_concluida', $agendamento->id) }}">Marcar como concluida</a>
+                            <a style="margin: auto; width: auto; height: auto;" class="bt-acao-adm-editar" href="{{ route('profissional.criar_paciente', $agendamento->id) }}">Cadastrar paciente</a>
                             <a style="margin: auto; width: auto; height: auto; margin-right: -20%;" class="bt-acao-adm-editar" href="{{ route('agendamento.editar', $agendamento->id) }}">Editar</a>
                         </span>
                     @endif

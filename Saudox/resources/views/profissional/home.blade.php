@@ -53,7 +53,7 @@
                         @if($prox_paciente)
                             <a class="btn-paciente bordas_amarelas" href={{route('paciente.perfil', ['id' => $prox_paciente->id]) }}>Ver perfil</a>
                         @else
-                            <a class="btn-paciente bordas_amarelas"  href={{route('profissional.criar_paciente') }}>Registrar Cliente</a>
+                            <a class="btn-paciente bordas_amarelas"  href={{route('profissional.criar_paciente', $agenda[0]->id) }}>Registrar Cliente</a>
                         @endif
                     </div>
 
