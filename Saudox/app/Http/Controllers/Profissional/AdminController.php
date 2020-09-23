@@ -66,6 +66,24 @@ class AdminController extends Controller {
         }
 
 
+        if(!$this->validarTelefone($entrada["telefone_1"])) {
+            return redirect()->back()
+                             ->withErrors(['telefone_1'=>'Telefone 1 inválido!'])
+                             ->withInput();
+        }
+
+        if(!$this->validarTelefone($entrada["telefone_2"])) {
+            return redirect()->back()
+                             ->withErrors(['telefone_2'=>'Telefone 2 inválido!'])
+                             ->withInput();
+        }
+
+        if($entrada["estado_civil"] != "solteiro" && $entrada["estado_civil"] != "casado") {
+            return redirect()->back()
+                             ->withErrors(['estado_civil'=>'Estado Civil inválido!'])
+                             ->withInput();
+        }
+
         $validator_endereco = Validator::make($entrada, Endereco::$regras_validacao, $this->mensagens);
         if ($validator_endereco->fails()) {
             return redirect()->back()
@@ -89,10 +107,10 @@ class AdminController extends Controller {
         $endereco->fill($entrada);
         $endereco->save();
 
-        $validar_cpf = Controller::validaCPF($entrada['cpf']);
+        $validar_cpf = $this->validaCPF($entrada['cpf']);
         if (!$validar_cpf) {
             return redirect()->back()
-                             ->withErrors(['errors'=>'Cpf inválido!'])
+                             ->withErrors(['cpf'=>'Cpf inválido!'])
                              ->withInput();
         }
 
@@ -119,6 +137,23 @@ class AdminController extends Controller {
 
         $entrada = $request->all();
 
+        if(!$this->validarTelefone($entrada["telefone_1"])) {
+            return redirect()->back()
+                             ->withErrors(['telefone_1'=>'Telefone 1 inválido!'])
+                             ->withInput();
+        }
+
+        if(!$this->validarTelefone($entrada["telefone_2"])) {
+            return redirect()->back()
+                             ->withErrors(['telefone_2'=>'Telefone 2 inválido!'])
+                             ->withInput();
+        }
+
+        if($entrada["estado_civil"] != "solteiro" && $entrada["estado_civil"] != "casado") {
+            return redirect()->back()
+                             ->withErrors(['estado_civil'=>'Estado Civil inválido!'])
+                             ->withInput();
+        }
 
         $validator_endereco = Validator::make($entrada, Endereco::$regras_validacao, $this->mensagens);
         if ($validator_endereco->fails()) {
@@ -139,10 +174,10 @@ class AdminController extends Controller {
         $endereco->fill($entrada);
         $endereco->save();
 
-        $validar_cpf = Controller::validaCPF($entrada['cpf']);
+        $validar_cpf = $this->validaCPF($entrada['cpf']);
         if (!$validar_cpf) {
             return redirect()->back()
-                             ->withErrors(['errors'=>'Cpf inválido!'])
+                             ->withErrors(['cpf'=>'Cpf inválido!'])
                              ->withInput();
         }
 
