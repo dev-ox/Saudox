@@ -9,3 +9,4 @@ Route::get('{id_paciente}/ver', 'ProfissionalAnamneseController@verFonoaudiologi
 Route::get('{id_paciente}/criar', 'ProfissionalAnamneseController@criarFonoaudiologia')->name('.criar');
 Route::post('/salvar', 'ProfissionalAnamneseController@salvarFonoaudiologia')->name('.salvar');
 Route::get('{id_paciente}/editar', 'ProfissionalAnamneseController@editarFonoaudiologia')->name('.editar');
+Route::post('/salvar_editar', 'ProfissionalAnamneseController@salvarEditarFonoaudiologia')->name('.salvar_editar');
