@@ -15,12 +15,14 @@
         <div style="height: 5px;"></div>
 
         <div id="nav-extra" class="row bordas_amarelas bg-padrao">
-            @if(in_array('admin', $profissoes))
+            @if($profissional->ehAdmin())
                 <a class="btn-full bordas_vermelhas" href={{route('profissional.admin.dashboard') }}>Ir para administração</a>
             @endif
 
             <a class="btn-full bordas_vermelhas" href={{route('profissional.recepcao.home') }}>Ir para recepção</a>
-            <a class="btn-full bordas_vermelhas" href={{route('profissional.criar_paciente') }}>Novo Paciente</a>
+            @if($profissional->podeCriarPaciente())
+                <a class="btn-full bordas_vermelhas" href={{route('profissional.criar_paciente') }}>Novo Paciente</a>
+            @endif
         </div>
 
         <div style="height: 5px;"></div>

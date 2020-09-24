@@ -265,12 +265,11 @@ th.tag{
 
 
 .profissoes-table-wrapper {
-    height: 100px;
+    height: 105px;
     width: 100%;
     max-width: 400px;
     overflow: auto;
     -ms-overflow-style: none;
-    scrollbar-width: none;
 }
 
 

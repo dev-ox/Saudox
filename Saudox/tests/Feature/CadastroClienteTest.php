@@ -21,7 +21,6 @@ class CadastroClienteTest extends TestCase {
         $this->endereco = factory(Endereco::class)->create();
         $this->funcionario = factory(Profissional::class)->create([
             'password' => bcrypt($this->password),
-            'profissao' => 'psicologo;',
         ]);
 
 

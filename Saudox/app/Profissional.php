@@ -11,6 +11,37 @@ class Profissional extends Authenticatable {
     const Trabalhando = "Trabalhando";
     const Demitido = "Demitido";
 
+
+    const Adm = "Administrador";
+    const Recepcionista = "Recepcionista";
+    const Fonoaudiologo = "Fonoaudiólogo";
+    const TerapeutaOcupacional = "Terapeuta Ocupacional";
+    const Neuropsicologo = "Neuropsicólogo";
+    const Psicologo = "Psicólogo";
+    const Psicopedagogo = "Psicopedagogo";
+
+
+    const TodasProfissoes = [
+        self::Adm,
+        self::Recepcionista,
+        self::Fonoaudiologo,
+        self::TerapeutaOcupacional,
+        self::Neuropsicologo,
+        self::Psicologo,
+        self::Psicopedagogo,
+    ];
+
+    const ProfissoesQuePodemCriarPacientes = [
+        self::Adm,
+        self::Recepcionista,
+        self::Fonoaudiologo,
+        self::TerapeutaOcupacional,
+        self::Neuropsicologo,
+        self::Psicologo,
+        self::Psicopedagogo,
+    ];
+
+
     /**
      * The attributes that are mass assignable.
      *
@@ -121,7 +152,18 @@ class Profissional extends Authenticatable {
 
 
     public function ehAdmin() {
-        return in_array('admin', $this->getProfissoes());
+        return in_array(self::Adm, $this->getProfissoes());
+    }
+
+
+
+    public function podeCriarPaciente() {
+        foreach($this->getProfissoes() as $profissao) {
+            if(in_array($profissao, Profissional::ProfissoesQuePodemCriarPacientes)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 

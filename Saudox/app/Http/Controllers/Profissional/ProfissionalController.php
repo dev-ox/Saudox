@@ -15,6 +15,18 @@ use Illuminate\Support\Facades\Hash;
 
 class ProfissionalController extends Controller {
 
+
+    private function profissionalLogadoPodeCriarPaciente() {
+        $profissional = Profissional::find(Auth::id());
+
+        if(!$profissional) {
+            return false;
+        }
+
+        return $profissional->podeCriarPaciente();
+
+    }
+
     public function home() {
         $profissional = Profissional::find(Auth::id());
         $profissoes = $profissional->getProfissoes();
@@ -65,6 +77,10 @@ class ProfissionalController extends Controller {
 
     public function cadastroPaciente($id_agendamento = 0) {
 
+        if(!$this->profissionalLogadoPodeCriarPaciente()) {
+            return view("erro", ["msg_erro" => "Você não tem permissão"]);
+        }
+
         $agendamento = Agendamentos::find($id_agendamento);
 
         //Entrega um agendamento em branco, só pra facilitar
@@ -77,6 +93,11 @@ class ProfissionalController extends Controller {
     }
 
     public function salvarCadastrarPaciente(Request $request) {
+
+        if(!$this->profissionalLogadoPodeCriarPaciente()) {
+            return view("erro", ["msg_erro" => "Você não tem permissão"]);
+        }
+
         $entrada = $request->all();
 
         $messages = [
@@ -95,13 +116,7 @@ class ProfissionalController extends Controller {
 
         $rota_erro = "profissional.criar_paciente";
 
-        if(!isset($entrada["data_nascimento"])
-            || $entrada["data_nascimento"] == ""
-            || $entrada["data_nascimento"] == NULL
-            || !strtotime($entrada["data_nascimento"])
-            || !$this->validatarData($entrada["data_nascimento"])
-        ) {
-
+        if(!$this->validatarData($entrada["data_nascimento"])) {
             return redirect()->route($rota_erro)
                              ->withErrors(['data_nascimento'=>'Data de nascimento inválida!'])
                              ->withInput();
@@ -177,6 +192,9 @@ class ProfissionalController extends Controller {
 
 
     public function editarPaciente($id_paciente) {
+        if(!$this->profissionalLogadoPodeCriarPaciente()) {
+            return view("erro", ["msg_erro" => "Você não tem permissão"]);
+        }
 
         $paciente = Paciente::find($id_paciente);
 
@@ -191,6 +209,9 @@ class ProfissionalController extends Controller {
 
 
     public function salvarEditarPaciente(Request $request) {
+        if(!$this->profissionalLogadoPodeCriarPaciente()) {
+            return view("erro", ["msg_erro" => "Você não tem permissão"]);
+        }
 
         $entrada = $request->all();
         $paciente = Paciente::find($entrada['id']);
@@ -216,13 +237,7 @@ class ProfissionalController extends Controller {
         $rota_erro = "profissional.criar_paciente.editar";
 
 
-        if(!isset($entrada["data_nascimento"])
-            || $entrada["data_nascimento"] == ""
-            || $entrada["data_nascimento"] == NULL
-            || !strtotime($entrada["data_nascimento"])
-            || !$this->validatarData($entrada["data_nascimento"])
-        ) {
-
+        if(!$this->validatarData($entrada["data_nascimento"])) {
             return redirect()->route($rota_erro)
                              ->withErrors(['data_nascimento'=>'Data de nascimento inválida!'])
                              ->withInput();
@@ -286,6 +301,11 @@ class ProfissionalController extends Controller {
 
         $paciente->fill($entrada);
         $paciente->pais_sao_casados= $entrada['pais_sao_casados'] == "1";
+        $paciente->pais_sao_divorciados = false;
+
+        if(isset($entrada["pais_sao_divorciados"]) && ($entrada["pais_sao_divorciados"] == "1")) {
+            $paciente->pais_sao_divorciados = true;
+        }
 
         //Se existe o campo password, e o campo password não está vazio (foi modificado)
         if(isset($entrada['password']) && $entrada['password'] != "") {

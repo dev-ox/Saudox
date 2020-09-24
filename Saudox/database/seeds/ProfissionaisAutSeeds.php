@@ -10,7 +10,7 @@ class ProfissionaisAutSeeds extends Seeder {
 
     public function run() {
         // Possíveis profissões
-        $profissoes = ['admin', 'recepcionista', 'fonoaudiologo', 'terapeuta_ocupacional', 'neuropsicologo', 'psicologo', 'psicopedagogo'];
+        $profissoes = Profissional::TodasProfissoes;
 
         include('database/seeds/SeedsConfig.php');
         include_once('database/seeds/FuncoesAuxuliaresSeeds.php');

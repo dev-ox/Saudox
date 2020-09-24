@@ -24,7 +24,7 @@ $factory->define(Profissional::class, function (Faker $faker) {
         'status' => 'Ativo',
         'login' => $faker->unique()->safeEmail,
         'password' => '123123123',
-        'profissao' => 'Psicologo',
+        'profissao' => 'Administrador;Psicopedagogo;',
         'numero_conselho' => '123',
         'id_endereco' => 1,
         'telefone_1' => '12345678910',
