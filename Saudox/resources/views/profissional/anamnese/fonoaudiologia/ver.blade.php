@@ -9,6 +9,9 @@
 
 
                 <h1 class="pessoal"> Anamnese Fonoaudiologica de {{$paciente->nome_paciente}} </h1>
+                @if(Auth::guard('profissional')->check())
+                    <h3 class="pessoal"> <a href="{{ route('profissional.anamnese.fonoaudiologia.editar', $anamnese->id) }}">Editar</a> </h3>
+                @endif
 
                 <!--
                 BOTÃOD E EDITAR PACIENTE!!!!
