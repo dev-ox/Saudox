@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Profissional;
 use App\Paciente;
 use App\AnamneseTerapiaOcupacional;
+use App\AnamneseFonoaudiologia;
 use Auth;
 
 class ProfissionalAnamneseController extends Controller {
@@ -23,7 +24,10 @@ class ProfissionalAnamneseController extends Controller {
         if(!$anamnese){
             return redirect()->route('erro', ['msg_erro' => "Anamnese do paciente " .$id_paciente. " não existe"]);
         }
-        return view('profissional/anamnese/fonoaudiologia/ver', ['anamnese' => $anamnese]);
+        return view('profissional/anamnese/fonoaudiologia/ver', [
+            'anamnese' => $anamnese,
+            'paciente' => $paciente,
+        ]);
     }
 
     public function criarFonoaudiologia($id_paciente) {
@@ -32,6 +36,159 @@ class ProfissionalAnamneseController extends Controller {
             return redirect()->route('erro', ['msg_erro' => "Paciente " .$id_paciente. " inexistente"]);
         }
         return view('profissional/anamnese/fonoaudiologia/criar', ['paciente' => $paciente]);
+    }
+
+
+    public function salvarFonoaudiologia(Request $request) {
+        $entrada = $request->all();
+        $paciente = Paciente::find($entrada['id_paciente']);
+
+        $responsavel_pelo_paciente = $paciente->responsavel;
+        $numero_de_irmaos = $paciente->numero_irmaos;
+        if ($paciente->pais_sao_casados == 1) {
+            $status_relacao_pais = "Casados";
+            $se_pais_separados_paciente_vive_com_quem = "Pais casados";
+        } else {
+            $status_relacao_pais = "Separados/Divorciados";
+            $se_pais_separados_paciente_vive_com_quem = $paciente->se_pais_separados_paciente_vive_com_quem;
+        }
+        $idade_mae = $paciente->idade_mae;
+        $idade_pai = $paciente->idade_pai;
+
+        if (isset($entrada['letras_ou_fonemas_trocados-adicional'])) {
+            $entrada['letras_ou_fonemas_trocados'] .= ', ' . $entrada['letras_ou_fonemas_trocados-adicional'];
+        }
+        if (isset($entrada['dificuldades_na_fala-adicional'])) {
+            $entrada['dificuldades_na_fala'] .= ', ' . $entrada['dificuldades_na_fala-adicional'];
+        }
+        if (isset($entrada['dificuldades_na_visao-adicional'])) {
+            $entrada['dificuldades_na_visao'] .= ', ' . $entrada['dificuldades_na_visao-adicional'];
+        }
+        if (isset($entrada['dificuldades_na_locomocao-adicional'])) {
+            $entrada['dificuldades_na_locomocao'] .= ', ' . $entrada['dificuldades_na_locomocao-adicional'];
+        }
+        if (isset($entrada['tem_resistencia_ao_toque-adicional'])) {
+            $entrada['tem_resistencia_ao_toque'] .= ', ' . $entrada['tem_resistencia_ao_toque-adicional'];
+        }
+        if (isset($entrada['adapta_se_facilmente_ao_meio-adicional'])) {
+            $entrada['adapta_se_facilmente_ao_meio'] .= ', ' . $entrada['adapta_se_facilmente_ao_meio-adicional'];
+        }
+
+
+        $messages = [
+            'required' => 'O campo :attribute é obrigatório.',
+            'min' => 'O campo :attribute é deve ter no minimo :min caracteres.',
+            'max' => 'O campo :attribute é deve ter no máximo :max caracteres.',
+            'password.required' => 'A senha é obrigatória.',
+            'gt' => 'O campo :attribute deve ser maior que 18.',
+            'lt' => 'O campo :attribute deve ser menor que 100.',
+            'unique' => 'O :attribute já está cadastrado',
+        ];
+
+        $validator_fonoaudiologia = Validator::make($entrada, AnamneseFonoaudiologia::$regras_validacao, $messages);
+        if ($validator_fonoaudiologia->fails()) {
+            return redirect()->back()
+                ->withErrors($validator_fonoaudiologia)
+                ->withInput();
+        }
+
+        $anamnese_fono = new AnamneseFonoaudiologia;
+        $anamnese_fono->fill($entrada);
+        $anamnese_fono->responsavel_pelo_paciente = $responsavel_pelo_paciente;
+        $anamnese_fono->numero_irmaos = $numero_irmaos;
+        $anamnese_fono->status_relacao_pais = $status_relacao_pais;
+        $anamnese_fono->se_pais_separados_paciente_vive_com_quem = $se_pais_separados_paciente_vive_com_quem;
+        $anamnese_fono->idade_mae = $idade_mae;
+        $anamnese_fono->idade_pai = $idade_pai;
+
+
+        if (isset($entrada['foi_necessario_utilizar_algum_recurso'])) {
+            $anamnese_fono->foi_necessario_utilizar_algum_recurso = "Nenhum";
+        } else{
+            $grupos = $entrada['foi_necessario_utilizar_algum_recurso'];
+            $str_grupo = "";
+            foreach($grupos as $grupo) {
+                $str_grupo .= $grupo . ",";
+            }
+            $anamnese_fono->foi_necessario_utilizar_algum_recurso =  $str_grupo;
+        }
+
+        if (isset($entrada['mae_apresentou_algum_problema_durante_gravidez'])) {
+            $anamnese_fono->mae_apresentou_algum_problema_durante_gravidez = "Nenhum";
+        } else{
+            $grupos = $entrada['mae_apresentou_algum_problema_durante_gravidez'];
+            $str_grupo = "";
+            foreach($grupos as $grupo) {
+                $str_grupo .= $grupo . ",";
+            }
+            $anamnese_fono->mae_apresentou_algum_problema_durante_gravidez =  $str_grupo;
+        }
+
+        if (isset($entrada['companheiros_da_crianca_nas_brincadeiras'])) {
+            $anamnese_fono->companheiros_da_crianca_nas_brincadeiras = "Nenhum";
+        } else{
+            $grupos = $entrada['companheiros_da_crianca_nas_brincadeiras'];
+            $str_grupo = "";
+            foreach($grupos as $grupo) {
+                $str_grupo .= $grupo . ",";
+            }
+            $anamnese_fono->companheiros_da_crianca_nas_brincadeiras =  $str_grupo;
+        }
+
+        if (isset($entrada['distracoes_preferidas'])) {
+            $anamnese_fono->distracoes_preferidas = "Nenhuma";
+        } else{
+            $distracoes = $entrada['distracoes_preferidas'];
+            $str_dist = "";
+            foreach($distracoes as $dist) {
+                $str_dist .= $dist . ",";
+            }
+            $anamnese_fono->distracoes_preferidas = $str_dist;
+            if (isset($entrada['distracoes_preferidas-adicional'])) {
+                $anamnese_fono->distracoes_preferidas .= ', ' . $entrada['distracoes_preferidas-adicional'];
+            }
+        }
+
+        if (isset($entrada['atitudes_sociais_predominantes'])) {
+            $anamnese_fono->atitudes_sociais_predominantes = "Nenhum";
+        } else{
+            $grupos = $entrada['atitudes_sociais_predominantes'];
+            $str_grupo = "";
+            foreach($grupos as $grupo) {
+                $str_grupo .= $grupo . ",";
+            }
+            $anamnese_fono->atitudes_sociais_predominantes =  $str_grupo;
+        }
+
+        if (isset($entrada['comportamento_emocional'])) {
+            $anamnese_fono->comportamento_emocional = "Nenhum";
+        } else{
+            $grupos = $entrada['comportamento_emocional'];
+            $str_grupo = "";
+            foreach($grupos as $grupo) {
+                $str_grupo .= $grupo . ",";
+            }
+            $anamnese_fono->comportamento_emocional =  $str_grupo;
+        }
+
+        if (isset($entrada['comportamento_sono'])) {
+            $anamnese_fono->comportamento_sono = "Nenhum";
+        } else{
+            $grupos = $entrada['comportamento_sono'];
+            $str_grupo = "";
+            foreach($grupos as $grupo) {
+                $str_grupo .= $grupo . ",";
+            }
+            $anamnese_fono->comportamento_sono =  $str_grupo;
+        }
+
+
+        $anamnese_fono->save();
+        return view('profissional/anamnese/fonoaudiologia/ver', [
+            'id_paciente' => $paciente->id,
+            'anamnese' => $anamnese_fono,
+        ]);
+
     }
 
     public function editarFonoaudiologia($id_paciente) {
@@ -43,7 +200,168 @@ class ProfissionalAnamneseController extends Controller {
         if(!$anamnese){
             return redirect()->route('erro', ['msg_erro' => "Anamnese do paciente " .$id_paciente. " não existe"]);
         }
-        return view('profissional/anamnese/fonoaudiologia/editar', ['anamnese' => $anamnese]);
+        return view('profissional/anamnese/fonoaudiologia/editar', [
+            'anamnese' => $anamnese,
+            'paciente' => $paciente,
+        ]);
+    }
+
+    public function salvarEditarFonoaudiologia(Request $request) {
+        $entrada = $request->all();
+
+        $anamnese_fono = AnamneseFonoaudiologia::find($entrada['id']);
+        $paciente_id = $entrada['id_paciente'];
+        $paciente = Paciente::find($paciente_id);
+
+        if(!$anamnese_fono) {
+            return view('erro', ['msg_erro' => "Anamnese inexistente..."]);
+        }
+
+        $responsavel_pelo_paciente = $paciente->responsavel;
+        $numero_de_irmaos = $paciente->numero_irmaos;
+        if ($paciente->pais_sao_casados == 1) {
+            $status_relacao_pais = "Casados";
+            $se_pais_separados_paciente_vive_com_quem = "Pais casados";
+        } else {
+            $status_relacao_pais = "Separados/Divorciados";
+            $se_pais_separados_paciente_vive_com_quem = $paciente->se_pais_separados_paciente_vive_com_quem;
+        }
+        $idade_mae = $paciente->idade_mae;
+        $idade_pai = $paciente->idade_pai;
+
+        if (isset($entrada['letras_ou_fonemas_trocados-adicional'])) {
+            $entrada['letras_ou_fonemas_trocados'] .= ', ' . $entrada['letras_ou_fonemas_trocados-adicional'];
+        }
+        if (isset($entrada['dificuldades_na_fala-adicional'])) {
+            $entrada['dificuldades_na_fala'] .= ', ' . $entrada['dificuldades_na_fala-adicional'];
+        }
+        if (isset($entrada['dificuldades_na_visao-adicional'])) {
+            $entrada['dificuldades_na_visao'] .= ', ' . $entrada['dificuldades_na_visao-adicional'];
+        }
+        if (isset($entrada['dificuldades_na_locomocao-adicional'])) {
+            $entrada['dificuldades_na_locomocao'] .= ', ' . $entrada['dificuldades_na_locomocao-adicional'];
+        }
+        if (isset($entrada['tem_resistencia_ao_toque-adicional'])) {
+            $entrada['tem_resistencia_ao_toque'] .= ', ' . $entrada['tem_resistencia_ao_toque-adicional'];
+        }
+        if (isset($entrada['adapta_se_facilmente_ao_meio-adicional'])) {
+            $entrada['adapta_se_facilmente_ao_meio'] .= ', ' . $entrada['adapta_se_facilmente_ao_meio-adicional'];
+        }
+
+
+        $messages = [
+            'required' => 'O campo :attribute é obrigatório.',
+            'min' => 'O campo :attribute é deve ter no minimo :min caracteres.',
+            'max' => 'O campo :attribute é deve ter no máximo :max caracteres.',
+            'password.required' => 'A senha é obrigatória.',
+            'gt' => 'O campo :attribute deve ser maior que 18.',
+            'lt' => 'O campo :attribute deve ser menor que 100.',
+            'unique' => 'O :attribute já está cadastrado',
+        ];
+
+        $validator_fonoaudiologia = Validator::make($entrada, AnamneseFonoaudiologia::$regras_validacao, $messages);
+        if ($validator_fonoaudiologia->fails()) {
+            return redirect()->back()
+                ->withErrors($validator_fonoaudiologia)
+                ->withInput();
+        }
+
+        $anamnese_fono->fill($entrada);
+        $anamnese_fono->responsavel_pelo_paciente = $responsavel_pelo_paciente;
+        $anamnese_fono->numero_irmaos = $numero_irmaos;
+        $anamnese_fono->status_relacao_pais = $status_relacao_pais;
+        $anamnese_fono->se_pais_separados_paciente_vive_com_quem = $se_pais_separados_paciente_vive_com_quem;
+        $anamnese_fono->idade_mae = $idade_mae;
+        $anamnese_fono->idade_pai = $idade_pai;
+
+
+        if (isset($entrada['foi_necessario_utilizar_algum_recurso'])) {
+            $anamnese_fono->foi_necessario_utilizar_algum_recurso = "Nenhum";
+        } else{
+            $grupos = $entrada['foi_necessario_utilizar_algum_recurso'];
+            $str_grupo = "";
+            foreach($grupos as $grupo) {
+                $str_grupo .= $grupo . ",";
+            }
+            $anamnese_fono->foi_necessario_utilizar_algum_recurso =  $str_grupo;
+        }
+
+        if (isset($entrada['mae_apresentou_algum_problema_durante_gravidez'])) {
+            $anamnese_fono->mae_apresentou_algum_problema_durante_gravidez = "Nenhum";
+        } else{
+            $grupos = $entrada['mae_apresentou_algum_problema_durante_gravidez'];
+            $str_grupo = "";
+            foreach($grupos as $grupo) {
+                $str_grupo .= $grupo . ",";
+            }
+            $anamnese_fono->mae_apresentou_algum_problema_durante_gravidez =  $str_grupo;
+        }
+
+        if (isset($entrada['companheiros_da_crianca_nas_brincadeiras'])) {
+            $anamnese_fono->companheiros_da_crianca_nas_brincadeiras = "Nenhum";
+        } else{
+            $grupos = $entrada['companheiros_da_crianca_nas_brincadeiras'];
+            $str_grupo = "";
+            foreach($grupos as $grupo) {
+                $str_grupo .= $grupo . ",";
+            }
+            $anamnese_fono->companheiros_da_crianca_nas_brincadeiras =  $str_grupo;
+        }
+
+        if (isset($entrada['distracoes_preferidas'])) {
+            $anamnese_fono->distracoes_preferidas = "Nenhuma";
+        } else{
+            $distracoes = $entrada['distracoes_preferidas'];
+            $str_dist = "";
+            foreach($distracoes as $dist) {
+                $str_dist .= $dist . ",";
+            }
+            $anamnese_fono->distracoes_preferidas = $str_dist;
+            if (isset($entrada['distracoes_preferidas-adicional'])) {
+                $anamnese_fono->distracoes_preferidas .= ', ' . $entrada['distracoes_preferidas-adicional'];
+            }
+        }
+
+        if (isset($entrada['atitudes_sociais_predominantes'])) {
+            $anamnese_fono->atitudes_sociais_predominantes = "Nenhum";
+        } else{
+            $grupos = $entrada['atitudes_sociais_predominantes'];
+            $str_grupo = "";
+            foreach($grupos as $grupo) {
+                $str_grupo .= $grupo . ",";
+            }
+            $anamnese_fono->atitudes_sociais_predominantes =  $str_grupo;
+        }
+
+        if (isset($entrada['comportamento_emocional'])) {
+            $anamnese_fono->comportamento_emocional = "Nenhum";
+        } else{
+            $grupos = $entrada['comportamento_emocional'];
+            $str_grupo = "";
+            foreach($grupos as $grupo) {
+                $str_grupo .= $grupo . ",";
+            }
+            $anamnese_fono->comportamento_emocional =  $str_grupo;
+        }
+
+        if (isset($entrada['comportamento_sono'])) {
+            $anamnese_fono->comportamento_sono = "Nenhum";
+        } else{
+            $grupos = $entrada['comportamento_sono'];
+            $str_grupo = "";
+            foreach($grupos as $grupo) {
+                $str_grupo .= $grupo . ",";
+            }
+            $anamnese_fono->comportamento_sono =  $str_grupo;
+        }
+
+
+        $anamnese_fono->save();
+        return view('profissional/anamnese/fonoaudiologia/ver', [
+            'id_paciente' => $paciente->id,
+            'anamnese' => $anamnese_fono,
+        ]);
+
     }
 
 
