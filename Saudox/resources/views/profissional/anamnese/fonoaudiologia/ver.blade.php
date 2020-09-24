@@ -21,11 +21,29 @@
                         <div class="col-md-12">
                             <label class="lbinfo-static">Posição no bloco familiar:<br><label class="lbinfo-ntstatic">{{$anamnese->posicao_bloco_familiar}}</label></label>
                             <br>
-                            <label class="lbinfo-static">Criança desejada:<br><label class="lbinfo-ntstatic">{{$anamnese->crianca_desejada}}</label></label>
+                            <label class="lbinfo-static">Criança desejada:<br><label class="lbinfo-ntstatic">
+                                @if($anamnese->crianca_desejada == 1)
+                                Não
+                                @else
+                                Sim
+                                @endif
+                            </label></label>
                             <br>
-                            <label class="lbinfo-static">Desenvolvimento motor no tempo certo:<br><label class="lbinfo-ntstatic">{{$anamnese->desenvolvimento_motor_no_tempo_esperado}}</label></label>
+                            <label class="lbinfo-static">Desenvolvimento motor no tempo certo:<br><label class="lbinfo-ntstatic">
+                                @if($anamnese->desenvolvimento_motor_no_tempo_esperado == 1)
+                                Não
+                                @else
+                                Sim
+                                @endif
+                            </label></label>
                             <br>
-                            <label class="lbinfo-static">Amamentação:<br><label class="lbinfo-ntstatic">{{$anamnese->amamentacao_natural}}</label></label>
+                            <label class="lbinfo-static">Amamentação:<br><label class="lbinfo-ntstatic">
+                                @if($anamnese->amamentacao_natural == 1)
+                                Materna
+                                @else
+                                Artificial
+                                @endif
+                            </label></label>
                             <br>
                             <label class="lbinfo-static">Fatos que afetaram o desenvolvimento do(a) paciente (a) (acidentes, operações, traumas etc.) ou outras ocorrências:<br><label class="lbinfo-ntstatic">{{$anamnese->fatos_que_afetaram_o_desenvolvimento_do_paciente}}</label></label>
                         </div>
@@ -35,11 +53,29 @@
                             <br>
                             <label class="lbinfo-static">Existiam expectativas em relação ao sexo da criança?<br><label class="lbinfo-ntstatic">{{$anamnese->tinha_expectativa_em_relacao_ao_sexo_da_crianca}}</label></label>
                             <br>
-                            <label class="lbinfo-static">Troca letras ou fonemas?<br><label class="lbinfo-ntstatic">{{$anamnese->letras_ou_fonemas_trocados}}</label></label>
+                            <label class="lbinfo-static">Troca letras ou fonemas?<br><label class="lbinfo-ntstatic">
+                                @if($anamnese->letras_ou_fonemas_trocados == 1)
+                                Não
+                                @else
+                                Sim
+                                @endif
+                            </label></label>
                             <br>
-                            <label class="lbinfo-static">Atraso ou problema na fala?<br><label class="lbinfo-ntstatic">{{$anamnese->atraso_ou_problema_na_fala}}</label></label>
+                            <label class="lbinfo-static">Atraso ou problema na fala?<br><label class="lbinfo-ntstatic">
+                                @if($anamnese->atraso_ou_problema_na_fala == 1)
+                                Não
+                                @else
+                                Sim
+                                @endif
+                            </label></label>
                             <br>
-                            <label class="lbinfo-static">Até que idade usou chupeta?<br><label class="lbinfo-ntstatic">{{$anamnese->ate_quantos_anos_usou_chupetas}}</label></label>
+                            <label class="lbinfo-static">Até que idade usou chupeta?<br><label class="lbinfo-ntstatic">
+                                @if($anamnese->atraso_ou_problema_na_fala == 1)
+                                Não
+                                @else
+                                Sim
+                                @endif
+                            </label></label>
                         </div>
 
                         <div class="col-md-12">
@@ -49,9 +85,21 @@
                             <br>
                             <label class="lbinfo-static">Mãe apresentou algum problema durante a gestação?<br><label class="lbinfo-ntstatic">{{$anamnese->mae_apresentou_algum_problema_durante_gravidez}}</label></label>
                             <br>
-                            <label class="lbinfo-static">Tem enurese noturna?<br><label class="lbinfo-ntstatic">{{$anamnese->tem_enurese_noturna}}</label></label>
+                            <label class="lbinfo-static">Tem enurese noturna?<br><label class="lbinfo-ntstatic">
+                                @if($anamnese->tem_enurese_noturna == 1)
+                                Não
+                                @else
+                                Sim
+                                @endif
+                            </label></label>
                             <br>
-                            <label class="lbinfo-static">A criança faz ou já fez algum tipo de tratamento fonoaudiológico?<br><label class="lbinfo-ntstatic">{{$anamnese->ja_fez_tratamento_fonoaudiologo}}</label></label>
+                            <label class="lbinfo-static">A criança faz ou já fez algum tipo de tratamento fonoaudiológico?<br><label class="lbinfo-ntstatic">
+                                @if($anamnese->ja_fez_tratamento_fonoaudiologo == 1)
+                                Não
+                                @else
+                                Sim
+                                @endif
+                            </label></label>
                             <br>
                             <label class="lbinfo-static">Onde fez tratamento fonoaudiológico?<br><label class="lbinfo-ntstatic">{{$anamnese->se_sim_tratamento_fono_anterior_onde}}</label></label>
                             <br>
@@ -65,7 +113,13 @@
                             <br>
                             <label class="lbinfo-static">Foi necessário algum recurso?<br><label class="lbinfo-ntstatic">{{$anamnese->foi_necessario_utilizar_algum_recurso}}</label></label>
                             <br>
-                            <label class="lbinfo-static">Perturbações (pesadelos, sonambulismo, agitação, etc.):<br><label class="lbinfo-ntstatic">{{$anamnese->perturbacoes_como_pesadelos_sonambulismo_agitacao_etc}}</label></label>
+                            <label class="lbinfo-static">Perturbações (pesadelos, sonambulismo, agitação, etc.):<br><label class="lbinfo-ntstatic">
+                                @if($anamnese->perturbacoes_como_pesadelos_sonambulismo_agitacao_etc == 1)
+                                Não
+                                @else
+                                Sim
+                                @endif
+                            </label></label>
                         </div>
                     </div>
 
@@ -97,19 +151,43 @@
                     <br>
                     <div class="row">
                         <div class="col-md-12">
-                            <label class="lbinfo-static">Toma banho sozinho?<br><label class="lbinfo-ntstatic">{{$anamnese->toma_banho_sozinho}}</label></label>
+                            <label class="lbinfo-static">Toma banho sozinho?<br><label class="lbinfo-ntstatic">
+                                @if($anamnese->toma_banho_sozinho == 1)
+                                Não
+                                @else
+                                Sim
+                                @endif
+                            </label></label>
                         </div>
 
                         <div class="col-md-12">
-                            <label class="lbinfo-static">Escova os dentes sozinho:<br><label class="lbinfo-ntstatic">{{$anamnese->escova_os_dentes_sozinho}}</label></label>
+                            <label class="lbinfo-static">Escova os dentes sozinho:<br><label class="lbinfo-ntstatic">
+                                @if($anamnese->escova_os_dentes_sozinho == 1)
+                                Não
+                                @else
+                                Sim
+                                @endif
+                            </label></label>
                         </div>
 
                         <div class="col-md-12">
-                            <label class="lbinfo-static">Usa o banheiro sozinho:<br><label class="lbinfo-ntstatic">{{$anamnese->usa_o_banheiro_sozinho}}</label></label>
+                            <label class="lbinfo-static">Usa o banheiro sozinho:<br><label class="lbinfo-ntstatic">
+                                @if($anamnese->usa_o_banheiro_sozinho == 1)
+                                Não
+                                @else
+                                Sim
+                                @endif
+                            </label></label>
                         </div>
 
                         <div class="col-md-12">
-                            <label class="lbinfo-static">Necessita auxílio para se vestir/despir:<br><label class="lbinfo-ntstatic">{{$anamnese->necessita_auxilio_para_se_vestir_ou_despir}}</label></label>
+                            <label class="lbinfo-static">Necessita auxílio para se vestir/despir:<br><label class="lbinfo-ntstatic">
+                                @if($anamnese->necessita_de_auxilio_para_se_vestir_ou_despir == 1)
+                                Não
+                                @else
+                                Sim
+                                @endif
+                            </label></label>
                         </div>
                     </div>
                 </div>
@@ -119,15 +197,33 @@
                     <br>
                     <div class="row">
                         <div class="col-md-12">
-                            <label class="lbinfo-static">Atende intervenções quando está desobedecendo:<br><label class="lbinfo-ntstatic">{{$anamnese->atende_as_intervencoes_quando_esta_desobedecendo}}</label></label>
+                            <label class="lbinfo-static">Atende intervenções quando está desobedecendo:<br><label class="lbinfo-ntstatic">
+                                @if($anamnese->atende_as_intervencoes_quando_esta_desobedecendo == 1)
+                                Não
+                                @else
+                                Sim
+                                @endif
+                            </label></label>
                         </div>
 
                         <div class="col-md-12">
-                            <label class="lbinfo-static">Chora fácil:<br><label class="lbinfo-ntstatic">{{$anamnese->chora_facil}}</label></label>
+                            <label class="lbinfo-static">Chora fácil:<br><label class="lbinfo-ntstatic">
+                                @if($anamnese->chora_facil == 1)
+                                Não
+                                @else
+                                Sim
+                                @endif
+                            </label></label>
                         </div>
 
                         <div class="col-md-12">
-                            <label class="lbinfo-static">Recusa auxílio:<br><label class="lbinfo-ntstatic">{{$anamnese->recusa_auxílio}}</label></label>
+                            <label class="lbinfo-static">Recusa auxílio:<br><label class="lbinfo-ntstatic">
+                                @if($anamnese->recusa_auxílio == 1)
+                                Não
+                                @else
+                                Sim
+                                @endif
+                            </label></label>
                         </div>
 
                         <div class="col-md-12">
@@ -143,14 +239,26 @@
                         <div class="col-md-12">
                             <label class="lbinfo-static">Série atual:<br><label class="lbinfo-ntstatic">{{$anamnese->serie_atual_na_escola}}</label></label>
                             <br>
-                            <label class="lbinfo-static">Alfabetizada?<br><label class="lbinfo-ntstatic">{{$anamnese->alfabetizada}}</label></label>
+                            <label class="lbinfo-static">Alfabetizada?<br><label class="lbinfo-ntstatic">
+                                @if($anamnese->alfabetizada == 1)
+                                Não
+                                @else
+                                Sim
+                                @endif
+                            </label></label>
                             <br>
                         </div>
 
                         <div class="col-md-12">
                             <label class="lbinfo-static">Possui dificuldades de aprendizagem?<br><label class="lbinfo-ntstatic">{{$anamnese->tem_dificuldades_de_aprendizagem}}</label></label>
                             <br>
-                            <label class="lbinfo-static">Já repetiu alguma série?<br><label class="lbinfo-ntstatic">{{$anamnese->repetiu_algum_ano}}</label></label>
+                            <label class="lbinfo-static">Já repetiu alguma série?<br><label class="lbinfo-ntstatic">
+                                @if($anamnese->repetiu_algum_ano == 1)
+                                Não
+                                @else
+                                Sim
+                                @endif
+                            </label></label>
                             <br>
                         </div>
                     </div>
@@ -164,6 +272,22 @@
                             <label class="lbinfo-static">Faz amigos com facilidade?<br><label class="lbinfo-ntstatic">{{$anamnese->faz_amigos_com_facilidade}}</label></label>
                             <br>
                             <label class="lbinfo-static">Distrações preferidas:<br><label class="lbinfo-ntstatic">{{$anamnese->distracoes_preferidas}}</label></label>
+                            <br>
+                            <label class="lbinfo-static">Dorme sozinho?<br><label class="lbinfo-ntstatic">
+                                @if($anamnese->dorme_sozinho == 1)
+                                Não
+                                @else
+                                Sim
+                                @endif
+                            </label></label>
+                            <br>
+                            <label class="lbinfo-static">Dorme no quarto dos pais?<br><label class="lbinfo-ntstatic">
+                                @if($anamnese->dorme_no_quarto_dos_pais == 1)
+                                Não
+                                @else
+                                Sim
+                                @endif
+                            </label></label>
                         </div>
 
                         <div class="col-md-12">

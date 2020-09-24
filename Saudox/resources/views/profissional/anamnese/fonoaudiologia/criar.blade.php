@@ -34,9 +34,9 @@
 
                         <label class="required">Criança desejada?</label><br>
                         <label for="crianca_desejada">Sim</label>
-                        <input value="Sim" type="radio" name="crianca_desejada" id="crianca_desejada">
+                        <input value="0" type="radio" name="crianca_desejada" id="crianca_desejada">
                         <label for="crianca_desejada">Não</label>
-                        <input value="Não" type="radio" name="crianca_desejada" id="crianca_desejada"><br>
+                        <input value="1" type="radio" name="crianca_desejada" id="crianca_desejada"><br>
 
                         <label class="required">Reação da criança em relação ao status da relação dos pais:</label><br>
                         <input value="{{ old('reacao_crianca_status_relacao_pais') }}" placeholder="Reação da criança" type="text" name="reacao_crianca_status_relacao_pais" id="reacao_crianca_status_relacao_pais">
@@ -91,33 +91,33 @@
 
                         <label class="required">Amamentação:</label><br>
                         <label for="amamentacao_natural">Materna</label>
-                        <input value="Materna" type="radio" name="amamentacao_natural" id="amamentacao_natural">
+                        <input value="1" type="radio" name="amamentacao_natural" id="amamentacao_natural">
                         <label for="amamentacao_natural">Artificial</label>
-                        <input value="Artificial" type="radio" name="amamentacao_natural" id="amamentacao_natural"><br>
+                        <input value="0" type="radio" name="amamentacao_natural" id="amamentacao_natural"><br>
 
                         <label class="required">Atraso ou problema na fala:</label><br>
                         <label for="atraso_ou_problema_na_fala">Sim</label>
-                        <input value="Sim" type="radio" name="atraso_ou_problema_na_fala" id="atraso_ou_problema_na_fala">
+                        <input value="0" type="radio" name="atraso_ou_problema_na_fala" id="atraso_ou_problema_na_fala">
                         <label for="atraso_ou_problema_na_fala">Não</label>
-                        <input value="Não" type="radio" name="atraso_ou_problema_na_fala" id="atraso_ou_problema_na_fala"><br>
+                        <input value="1" type="radio" name="atraso_ou_problema_na_fala" id="atraso_ou_problema_na_fala"><br>
 
                         <label class="required">Tem enurese noturna?</label><br>
                         <label for="tem_enurese_noturna">Sim</label>
-                        <input value="Sim" type="radio" name="tem_enurese_noturna" id="tem_enurese_noturna">
+                        <input value="0" type="radio" name="tem_enurese_noturna" id="tem_enurese_noturna">
                         <label for="tem_enurese_noturna">Não</label>
-                        <input value="Não" type="radio" name="tem_enurese_noturna" id="tem_enurese_noturna"><br>
+                        <input value="1" type="radio" name="tem_enurese_noturna" id="tem_enurese_noturna"><br>
 
                         <label class="required">Desenvolvimento motor no tempo esperado:</label><br>
                         <label for="desenvolvimento_motor_no_tempo_esperado">Sim</label>
-                        <input value="Sim" type="radio" name="desenvolvimento_motor_no_tempo_esperado" id="desenvolvimento_motor_no_tempo_esperado">
+                        <input value="0" type="radio" name="desenvolvimento_motor_no_tempo_esperado" id="desenvolvimento_motor_no_tempo_esperado">
                         <label for="desenvolvimento_motor_no_tempo_esperado">Não</label>
-                        <input value="Não" type="radio" name="desenvolvimento_motor_no_tempo_esperado" id="desenvolvimento_motor_no_tempo_esperado"><br>
+                        <input value="1" type="radio" name="desenvolvimento_motor_no_tempo_esperado" id="desenvolvimento_motor_no_tempo_esperado"><br>
 
                         <label class="required">Perturbações (pesadelos, sonambulismo, agitação, etc.):</label><br>
                         <label for="perturbacoes_como_pesadelos_sonambulismo_agitacao_etc">Sim</label>
-                        <input value="Sim" type="radio" name="perturbacoes_como_pesadelos_sonambulismo_agitacao_etc" id="perturbacoes_como_pesadelos_sonambulismo_agitacao_etc">
+                        <input value="0" type="radio" name="perturbacoes_como_pesadelos_sonambulismo_agitacao_etc" id="perturbacoes_como_pesadelos_sonambulismo_agitacao_etc">
                         <label for="perturbacoes_como_pesadelos_sonambulismo_agitacao_etc">Não</label>
-                        <input value="Não" type="radio" name="perturbacoes_como_pesadelos_sonambulismo_agitacao_etc" id="perturbacoes_como_pesadelos_sonambulismo_agitacao_etc"><br>
+                        <input value="1" type="radio" name="perturbacoes_como_pesadelos_sonambulismo_agitacao_etc" id="perturbacoes_como_pesadelos_sonambulismo_agitacao_etc"><br>
 
                         <label class="required">Troca letras ou fonemas?</label><br>
                         <label for="letras_ou_fonemas_trocados">Sim</label>
@@ -134,9 +134,9 @@
 
                         <label class="required">A criança faz ou já fez algum tipo de tratamento fonoaudiológico?</label><br>
                         <label for="ja_fez_tratamento_fonoaudiologo">Sim</label>
-                        <input value="Sim" type="radio" name="ja_fez_tratamento_fonoaudiologo" id="ja_fez_tratamento_fonoaudiologo">
+                        <input value="0" type="radio" name="ja_fez_tratamento_fonoaudiologo" id="ja_fez_tratamento_fonoaudiologo">
                         <label for="ja_fez_tratamento_fonoaudiologo">Não</label>
-                        <input value="Não" type="radio" name="ja_fez_tratamento_fonoaudiologo" id="ja_fez_tratamento_fonoaudiologo"><br>
+                        <input value="1" type="radio" name="ja_fez_tratamento_fonoaudiologo" id="ja_fez_tratamento_fonoaudiologo"><br>
 
                         <label class="required">Onde fez o tratamento fonoaudiológico?</label><br>
                         <input value="{{ old('se_sim_tratamento_fono_anterior_onde') }}" placeholder="Onde?" type="text" name="se_sim_tratamento_fono_anterior_onde" id="se_sim_tratamento_fono_anterior_onde">
@@ -179,48 +179,48 @@
                         <h3>É dependente em quais nas AVDs (atividades de vida diária)?</h3><br>
                         <label class="required">Toma banho sozinho:</label><br>
                         <label for="toma_banho_sozinho">Sim</label>
-                        <input value="Sim" type="radio" name="toma_banho_sozinho" id="toma_banho_sozinho">
+                        <input value="0" type="radio" name="toma_banho_sozinho" id="toma_banho_sozinho">
                         <label for="toma_banho_sozinho">Não</label>
-                        <input value="Não" type="radio" name="toma_banho_sozinho" id="toma_banho_sozinho"><br>
+                        <input value="1" type="radio" name="toma_banho_sozinho" id="toma_banho_sozinho"><br>
 
                         <label class="required">Escova os dentes sozinho:</label><br>
                         <label for="escova_os_dentes_sozinho">Sim</label>
-                        <input value="Sim" type="radio" name="escova_os_dentes_sozinho" id="escova_os_dentes_sozinho">
+                        <input value="0" type="radio" name="escova_os_dentes_sozinho" id="escova_os_dentes_sozinho">
                         <label for="escova_os_dentes_sozinho">Não</label>
-                        <input value="Não" type="radio" name="escova_os_dentes_sozinho" id="escova_os_dentes_sozinho"><br>
+                        <input value="1" type="radio" name="escova_os_dentes_sozinho" id="escova_os_dentes_sozinho"><br>
 
                         <label class="required">Usa o banheiro sozinho:</label><br>
                         <label for="usa_o_banheiro_sozinho">Sim</label>
-                        <input value="Sim" type="radio" name="usa_o_banheiro_sozinho" id="usa_o_banheiro_sozinho">
+                        <input value="0" type="radio" name="usa_o_banheiro_sozinho" id="usa_o_banheiro_sozinho">
                         <label for="usa_o_banheiro_sozinho">Não</label>
-                        <input value="Não" type="radio" name="usa_o_banheiro_sozinho" id="usa_o_banheiro_sozinho"><br>
+                        <input value="1" type="radio" name="usa_o_banheiro_sozinho" id="usa_o_banheiro_sozinho"><br>
 
                         <label class="required">Necessita auxílio para se vestir ou despir:</label><br>
                         <label for="necessita_de_auxilio_para_se_vestir_ou_despir">Sim</label>
-                        <input value="Sim" type="radio" name="necessita_de_auxilio_para_se_vestir_ou_despir" id="necessita_de_auxilio_para_se_vestir_ou_despir">
+                        <input value="0" type="radio" name="necessita_de_auxilio_para_se_vestir_ou_despir" id="necessita_de_auxilio_para_se_vestir_ou_despir">
                         <label for="necessita_de_auxilio_para_se_vestir_ou_despir">Não</label>
-                        <input value="Não" type="radio" name="necessita_de_auxilio_para_se_vestir_ou_despir" id="necessita_de_auxilio_para_se_vestir_ou_despir"><br>
+                        <input value="1" type="radio" name="necessita_de_auxilio_para_se_vestir_ou_despir" id="necessita_de_auxilio_para_se_vestir_ou_despir"><br>
 
 
                         <hr class="hr_form">
                         <h3>Tendencias próprias</h3><br>
                         <label class="required">Atende intervenções quando está desobedecendo:</label><br>
                         <label for="atende_as_intervencoes_quando_esta_desobedecendo">Sim</label>
-                        <input value="Sim" type="radio" name="atende_as_intervencoes_quando_esta_desobedecendo" id="atende_as_intervencoes_quando_esta_desobedecendo">
+                        <input value="0" type="radio" name="atende_as_intervencoes_quando_esta_desobedecendo" id="atende_as_intervencoes_quando_esta_desobedecendo">
                         <label for="atende_as_intervencoes_quando_esta_desobedecendo">Não</label>
-                        <input value="Não" type="radio" name="atende_as_intervencoes_quando_esta_desobedecendo" id="atende_as_intervencoes_quando_esta_desobedecendo"><br>
+                        <input value="1" type="radio" name="atende_as_intervencoes_quando_esta_desobedecendo" id="atende_as_intervencoes_quando_esta_desobedecendo"><br>
 
                         <label class="required">Chora fácil:</label><br>
                         <label for="chora_facil">Sim</label>
-                        <input value="Sim" type="radio" name="chora_facil" id="chora_facil">
+                        <input value="0" type="radio" name="chora_facil" id="chora_facil">
                         <label for="chora_facil">Não</label>
-                        <input value="Não" type="radio" name="chora_facil" id="chora_facil"><br>
+                        <input value="1" type="radio" name="chora_facil" id="chora_facil"><br>
 
                         <label class="required">Recusa auxílio:</label><br>
                         <label for="recusa_auxílio">Sim</label>
-                        <input value="Sim" type="radio" name="recusa_auxílio" id="recusa_auxílio">
+                        <input value="0" type="radio" name="recusa_auxílio" id="recusa_auxílio">
                         <label for="recusa_auxílio">Não</label>
-                        <input value="Não" type="radio" name="recusa_auxílio" id="recusa_auxílio"><br>
+                        <input value="1" type="radio" name="recusa_auxílio" id="recusa_auxílio"><br>
 
                         <label class="required">Resistência ao toque (Afago, carinho):</label><br>
                         <label for="tem_resistencia_ao_toque">Sim</label>
@@ -236,18 +236,18 @@
 
                         <label class="required">Alfabetizada?</label><br>
                         <label for="alfabetizada">Sim</label>
-                        <input value="Sim" type="radio" name="alfabetizada" id="alfabetizada">
+                        <input value="0" type="radio" name="alfabetizada" id="alfabetizada">
                         <label for="alfabetizada">Não</label>
-                        <input value="Não" type="radio" name="alfabetizada" id="alfabetizada"><br><br>
+                        <input value="1" type="radio" name="alfabetizada" id="alfabetizada"><br><br>
 
                         <label class="required">Possui dificuldades de aprendizagem?</label><br><br>
                         <textarea class="textareas_form" id="tem_dificuldades_de_aprendizagem" name="tem_dificuldades_de_aprendizagem" rows="4" cols="50" style=""></textarea><br><br>
 
                         <label class="required">Já repetiu alguma série?</label><br>
                         <label for="repetiu_algum_ano">Sim</label>
-                        <input value="Sim" type="radio" name="repetiu_algum_ano" id="repetiu_algum_ano">
+                        <input value="0" type="radio" name="repetiu_algum_ano" id="repetiu_algum_ano">
                         <label for="repetiu_algum_ano">Não</label>
-                        <input value="Não" type="radio" name="repetiu_algum_ano" id="repetiu_algum_ano"><br>
+                        <input value="1" type="radio" name="repetiu_algum_ano" id="repetiu_algum_ano"><br>
 
                         <hr class="hr_form">
                         <h3>Sociabilidade</h3><br>
@@ -332,10 +332,19 @@
                         <input value="Pesadelos" type="checkbox" name="comportamento_sono[2]" id="pesadelos">
                         <label for="comportamento_sono">Hipersonia</label>
                         <input value="Hipersonia" type="checkbox" name="comportamento_sono[3]" id="hipersonia"><br>
-                        <label for="comportamento_sono">Dorme sozinho</label>
-                        <input value="Dorme sozinho" type="checkbox" name="comportamento_sono[4]" id="dorme_so">
-                        <label for="comportamento_sono">Dorme no quarto dos pais</label>
-                        <input value="Dorme no quarto dos pais" type="checkbox" name="comportamento_sono[5]" id="dorme_com_pais"><br><br>
+
+
+                        <label class="required" for="dorme_sozinho">Dorme sozinho</label>
+                        <label for="dorme_sozinho">Sim</label>
+                        <input value="0" type="radio" name="dorme_sozinho" id="dorme_sozinho">
+                        <label for="dorme_sozinho">Não</label>
+                        <input value="1" type="radio" name="dorme_sozinho" id="dorme_sozinho">
+
+                        <label class="required" for="dorme_no_quarto_dos_pais">Dorme no quarto dos pais</label>
+                        <label for="dorme_no_quarto_dos_pais">Sim</label>
+                        <input value="0" type="radio" name="dorme_no_quarto_dos_pais" id="dorme_no_quarto_dos_pais">
+                        <label for="dorme_no_quarto_dos_pais">Não</label>
+                        <input value="1" type="radio" name="dorme_no_quarto_dos_pais" id="dorme_no_quarto_dos_pais">
 
                         <hr class="hr_form">
                         <h3 class="required">Medidas disciplinares empregadas pelos pais:</h3><br>
