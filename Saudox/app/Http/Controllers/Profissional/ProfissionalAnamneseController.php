@@ -24,7 +24,10 @@ class ProfissionalAnamneseController extends Controller {
         if(!$anamnese){
             return redirect()->route('erro', ['msg_erro' => "Anamnese do paciente " .$id_paciente. " não existe"]);
         }
-        return view('profissional/anamnese/fonoaudiologia/ver', ['anamnese' => $anamnese]);
+        return view('profissional/anamnese/fonoaudiologia/ver', [
+            'anamnese' => $anamnese,
+            'paciente' => $paciente,
+        ]);
     }
 
     public function criarFonoaudiologia($id_paciente) {
