@@ -15,7 +15,7 @@
         <div style="height: 5px;"></div>
 
         <div id="nav-extra" class="row bordas_amarelas bg-padrao">
-            @if(in_array('admin', $profissoes))
+            @if($profissional->ehAdmin())
                 <a class="btn-full bordas_vermelhas" href={{route('profissional.admin.dashboard') }}>Ir para administração</a>
             @endif
 

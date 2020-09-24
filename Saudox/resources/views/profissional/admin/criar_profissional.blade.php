@@ -71,20 +71,10 @@
                         <hr class="hr_form">
                         <h3 class="required">Profissão</h3>
                         <div class="checkbox_container">
-                            <input type="checkbox" id="admin" name="profissoes[]" value="admin">
-                            <label>Administrador</label><br>
-                            <input type="checkbox" id="recepcionista" name="profissoes[]" value="recepcionista">
-                            <label>Recepcionista</label><br>
-                            <input type="checkbox" id="fonoaudiologo" name="profissoes[]" value="fonoaudiologo">
-                            <label>Fonoaudiólogo</label><br>
-                            <input type="checkbox" id="terapeuta_ocupacional" name="profissoes[]" value="terapeuta_ocupacional">
-                            <label>Terapeuta Ocupacional</label><br>
-                            <input type="checkbox" id="neuropsicologo" name="profissoes[]" value="neuropsicologo">
-                            <label>Neuropsicólogo</label><br>
-                            <input type="checkbox" id="psicologo" name="profissoes[]" value="psicologo">
-                            <label>Psicologo</label><br>
-                            <input type="checkbox" id="psicopedagogo" name="profissoes[]" value="psicopedagogo">
-                            <label>Psicopedagogo</label><br>
+                            @foreach(App\Profissional::TodasProfissoes as $profissoes_arr)
+                                <input type="checkbox" id="{{$profissoes_arr}}" name="profissoes[]" value="{{$profissoes_arr}}">
+                                <label>{{$profissoes_arr}}</label><br>
+                            @endforeach
                         </div>
 
                         <hr class="hr_form">

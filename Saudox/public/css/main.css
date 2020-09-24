@@ -825,7 +825,6 @@ h3{
     max-width: 400px;
     overflow: auto;
     -ms-overflow-style: none;
-    scrollbar-width: none;
 }
 
 .profissoes-table-wrapper::-webkit-scrollbar {

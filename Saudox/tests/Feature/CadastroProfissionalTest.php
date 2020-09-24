@@ -30,7 +30,7 @@ class CadastroProfissionalTest extends TestCase {
             'status' => 'Ativo',
             'login' => 'loooogin',
             'password' => '123123123',
-            'profissao' => 'Psicologo',
+            'profissao' => ['Administrador', 'Psicopedagogo'],
             'numero_conselho' => '123',
             'telefone_1' => '12345678910',
             'telefone_2'=> '12345678911',
@@ -50,7 +50,6 @@ class CadastroProfissionalTest extends TestCase {
 
         $this->funcionario_logado = factory(Profissional::class)->create([
             'password' => bcrypt($this->password = '123123123'),
-            'profissao' => 'admin;asdasd;',
         ]);
 
         $this->login();

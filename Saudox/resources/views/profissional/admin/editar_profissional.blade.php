@@ -68,27 +68,13 @@
 
                         <hr class="hr_form">
                         <h3 class="required">Profissão</h3>
+
+
                         <div class="checkbox_container">
-                            <input type="checkbox" id="admin" name="profissoes[]" value="admin" {{ in_array('admin', $profissional->getProfissoes()) ? "checked" : "" }}>
-                            <label>Administrador</label><br>
-
-                            <input type="checkbox" id="recepcionista" name="profissoes[]" value="recepcionista" {{ in_array('recepcionista', $profissional->getProfissoes()) ? "checked" : "" }}>
-                            <label>Recepcionista</label><br>
-
-                            <input type="checkbox" id="fonoaudiologo" name="profissoes[]" value="fonoaudiologo" {{ in_array('fonoaudiologo', $profissional->getProfissoes()) ? "checked" : "" }}>
-                            <label>Fonoaudiólogo</label><br>
-
-                            <input type="checkbox" id="terapeuta_ocupacional" name="profissoes[]" value="terapeuta_ocupacional" {{ in_array('terapeuta_ocupacional', $profissional->getProfissoes()) ? "checked" : "" }}>
-                            <label>Terapeuta Ocupacional</label><br>
-
-                            <input type="checkbox" id="neuropsicologo" name="profissoes[]" value="neuropsicologo" {{ in_array('neuropsicologo', $profissional->getProfissoes()) ? "checked" : "" }}>
-                            <label>Neuropsicólogo</label><br>
-
-                            <input type="checkbox" id="psicologo" name="profissoes[]" value="psicologo" {{ in_array('psicologo', $profissional->getProfissoes()) ? "checked" : "" }}>
-                            <label>Psicologo</label><br>
-
-                            <input type="checkbox" id="psicopedagogo" name="profissoes[]" value="psicopedagogo" {{ in_array('psicopedagogo', $profissional->getProfissoes()) ? "checked" : "" }}>
-                            <label>Psicopedagogo</label><br>
+                            @foreach(App\Profissional::TodasProfissoes as $profissoes_arr)
+                                <input type="checkbox" id="{{$profissoes_arr}}" name="profissoes[]" value="{{$profissoes_arr}}"  {{ in_array($profissoes_arr, $profissional->getProfissoes()) ? "checked" : "" }}>
+                                <label>{{$profissoes_arr}}</label><br>
+                            @endforeach
                         </div>
 
                         <hr class="hr_form">
