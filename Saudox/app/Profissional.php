@@ -156,4 +156,15 @@ class Profissional extends Authenticatable {
     }
 
 
+
+    public function podeCriarPaciente() {
+        foreach($this->getProfissoes() as $profissao) {
+            if(in_array($profissao, Profissional::ProfissoesQuePodemCriarPacientes)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
 }

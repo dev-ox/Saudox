@@ -20,7 +20,9 @@
             @endif
 
             <a class="btn-full bordas_vermelhas" href={{route('profissional.recepcao.home') }}>Ir para recepção</a>
-            <a class="btn-full bordas_vermelhas" href={{route('profissional.criar_paciente') }}>Novo Paciente</a>
+            @if($profissional->podeCriarPaciente())
+                <a class="btn-full bordas_vermelhas" href={{route('profissional.criar_paciente') }}>Novo Paciente</a>
+            @endif
         </div>
 
         <div style="height: 5px;"></div>

@@ -23,12 +23,7 @@ class ProfissionalController extends Controller {
             return false;
         }
 
-        foreach($profissional->getProfissoes() as $profissao) {
-            if(in_array($profissao, Profissional::ProfissoesQuePodemCriarPacientes)) {
-                return true;
-            }
-        }
-        return false;
+        return $profissional->podeCriarPaciente();
 
     }
 
@@ -306,6 +301,11 @@ class ProfissionalController extends Controller {
 
         $paciente->fill($entrada);
         $paciente->pais_sao_casados= $entrada['pais_sao_casados'] == "1";
+        $paciente->pais_sao_divorciados = false;
+
+        if(isset($entrada["pais_sao_divorciados"]) && ($entrada["pais_sao_divorciados"] == "1")) {
+            $paciente->pais_sao_divorciados = true;
+        }
 
         //Se existe o campo password, e o campo password não está vazio (foi modificado)
         if(isset($entrada['password']) && $entrada['password'] != "") {
