@@ -312,7 +312,7 @@
                         <input value="1" type="radio" name="dependente" id="dependente">
                         <label for="dependente">Não</label>
                         <input value="0" type="radio" name="dependente" id="dependente"><br>
-                        <input value="{{ old('descricao_se_sim_dependente') }}" placeholder="Informações adicionais: Dependente" type="text" name="descricao_se_sim_dependente-adicional" id="descricao_se_sim_dependente"> <br>
+                        <input value="{{ old('descricao_se_sim_dependente') }}" placeholder="Informações adicionais: Dependente" type="text" name="descricao_se_sim_dependente" id="descricao_se_sim_dependente"> <br>
 
                         <label class="required">Independente:</label>
                         <br>
@@ -320,7 +320,7 @@
                         <input value="1" type="radio" name="independente" id="independente">
                         <label for="independente">Não</label>
                         <input value="0" type="radio" name="independente" id="independente"><br>
-                        <input value="{{ old('descricao_se_sim_indepedente') }}" placeholder="Informações adicionais: Independente" type="text" name="descricao_se_sim_indepedente-adicional" id="descricao_se_sim_indepedente"><br>
+                        <input value="{{ old('descricao_se_sim_indepedente') }}" placeholder="Informações adicionais: Independente" type="text" name="descricao_se_sim_indepedente" id="descricao_se_sim_indepedente"><br>
 
                         <label class="required">Comunicativo:</label>
                         <br>
@@ -335,7 +335,7 @@
                         <input value="1" type="radio" name="agressivo" id="agressivo">
                         <label for="agressivo">Não</label>
                         <input value="0" type="radio" name="agressivo" id="agressivo"><br>
-                        <input value="{{ old('descricao_se_sim_agressivo') }}" placeholder="Informações adicionais: Agressivo" type="text" name="descricao_se_sim_agressivo-adicional" id="descricao_se_sim_agressivo">
+                        <input value="{{ old('descricao_se_sim_agressivo') }}" placeholder="Informações adicionais: Agressivo" type="text" name="descricao_se_sim_agressivo" id="descricao_se_sim_agressivo">
 
                         <label class="required">Cooperativo:</label>
                         <br>
@@ -343,7 +343,7 @@
                         <input value="1" type="radio" name="cooperativo" id="cooperativo">
                         <label for="cooperativo">Não</label>
                         <input value="0" type="radio" name="cooperativo" id="cooperativo"><br>
-                        <input value="{{ old('descricao_se_sim_cooperador') }}" placeholder="Informações adicionais: Cooperativo" type="text" name="descricao_se_sim_cooperador-adicional" id="descricao_se_sim_cooperador">
+                        <input value="{{ old('descricao_se_sim_cooperador') }}" placeholder="Informações adicionais: Cooperativo" type="text" name="descricao_se_sim_cooperador" id="descricao_se_sim_cooperador">
 
 
                         <hr class="hr_form">
