@@ -74,7 +74,7 @@
                         <label class="required">Desenvolvimento motor no tempo certo:</label><br>
                         <label for="desenvolvimento_motor_no_tempo_certo">Sim</label>
                         <input value="Sim" type="radio" name="desenvolvimento_motor_no_tempo_certo" id="desenvolvimento_motor_no_tempo_certo">
-                        <label for="dificuldade_ou_atraso_no_controle_do_esfincter">Não</label>
+                        <label for="desenvolvimento_motor_no_tempo_certo">Não</label>
                         <input value="Não" type="radio" name="desenvolvimento_motor_no_tempo_certo" id="desenvolvimento_motor_no_tempo_certo">
                         <input value="{{ old('desenvolvimento_motor_no_tempo_certo') }}" placeholder="(Sim? Não? Quanto tempo?)" type="text" name="desenvolvimento_motor_no_tempo_certo-adicional" id="desenvolvimento_motor_no_tempo_certo">
 
