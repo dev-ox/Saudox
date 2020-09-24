@@ -952,6 +952,10 @@ h3{
     display: none;
 }
 
+.hidden-extra{
+    display: none;
+}
+
 #crianca_sabe_se_adotivo{
     display: none;
 }
@@ -968,7 +972,13 @@ h3{
     display: none;
 }
 
-.command_hidden_extra:checked ~ #reacao_quando_descobriu_se_adotivo{
+#hidden-extra{
+    display: none;
+}
+
+.command_hidden_extra:checked ~ #reacao_quando_descobriu_se_adotivo,
+.command_hidden_extra:checked ~ .hidden_extra,
+{
     display: block;
 }
 
