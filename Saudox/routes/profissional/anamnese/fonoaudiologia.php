@@ -7,4 +7,5 @@ Route::get('teste', function () {
 
 Route::get('{id_paciente}/ver', 'ProfissionalAnamneseController@verFonoaudiologia')->name('.ver');
 Route::get('{id_paciente}/criar', 'ProfissionalAnamneseController@criarFonoaudiologia')->name('.criar');
+Route::post('/salvar', 'ProfissionalAnamneseController@salvarFonoaudiologia')->name('.salvar');
 Route::get('{id_paciente}/editar', 'ProfissionalAnamneseController@editarFonoaudiologia')->name('.editar');
