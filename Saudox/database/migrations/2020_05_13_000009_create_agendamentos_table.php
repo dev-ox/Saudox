@@ -4,15 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAgendamentosTable extends Migration
-{
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
+class CreateAgendamentosTable extends Migration {
+
+    public function up() {
         Schema::create('agendamentos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
@@ -38,17 +32,10 @@ class CreateAgendamentosTable extends Migration
             // O agendamento está ativo ou desativo
             // (caso tenha sido concluído, cancelado...)
             $table->boolean('status');
-
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists('agendamentos');
     }
 }

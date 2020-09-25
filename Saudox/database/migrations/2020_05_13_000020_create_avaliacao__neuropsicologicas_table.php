@@ -4,15 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAvaliacaoNeuropsicologicasTable extends Migration
-{
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
+class CreateAvaliacaoNeuropsicologicasTable extends Migration {
+
+    public function up() {
         Schema::create('avaliacao__neuropsicologicas', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
@@ -59,18 +53,10 @@ class CreateAvaliacaoNeuropsicologicasTable extends Migration
             $table->unsignedInteger('responsavel_por_este_documento')->nullable();
             $table->json('id_pode_ver')->nullable();
             $table->json('id_pode_editar')->nullable();
-
-
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists('avaliacao__neuropsicologicas');
     }
 }

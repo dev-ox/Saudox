@@ -4,15 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAnamneseGigantePsicopedaNeuroPsicomotoPt2sTable extends Migration
-{
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
+class CreateAnamneseGigantePsicopedaNeuroPsicomotoPt2sTable extends Migration {
+
+    public function up() {
         Schema::create('anamnese__pnp__pt2s', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
@@ -91,17 +85,10 @@ class CreateAnamneseGigantePsicopedaNeuroPsicomotoPt2sTable extends Migration
             $table->string('prefere_brincar_sozinho_ou_em_grupos');
             $table->string('estranha_mudancas_de_ambiente');
             $table->boolean('adaptase_facilmente_ao_meio');
-
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists('anamnese__gigante__psicopeda__neuro__psicomoto_pt2s');
     }
 }
