@@ -146,7 +146,11 @@ class AgendamentosTest extends TestCase {
     }
 
 
+
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638205 */
+    /* TA_02 */
+
     public function nomeAgendamentoNaoPodeSerVazio() {
         $this->loginProfisssional();
         $this->assertCount(0, Agendamentos::all());
@@ -158,6 +162,8 @@ class AgendamentosTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638205 */
+    /* TA_02 */
     public function cpfAgendamentoNaoPodeSerVazio() {
         $this->loginProfisssional();
         $this->assertCount(0, Agendamentos::all());
@@ -169,6 +175,8 @@ class AgendamentosTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638205 */
+    /* TA_02 */
     public function dataNascimentoAgendamentoNaoPodeSerVazio() {
         $this->loginProfisssional();
         $this->assertCount(0, Agendamentos::all());
@@ -181,6 +189,8 @@ class AgendamentosTest extends TestCase {
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638205 */
+    /* TA_02 */
     public function telefoneAgendamentoNaoPodeSerVazio() {
         $this->loginProfisssional();
         $this->assertCount(0, Agendamentos::all());
@@ -207,6 +217,8 @@ class AgendamentosTest extends TestCase {
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638205 */
+    /* TA_02 */
     public function estadoAgendamentoNaoPodeSerVazio() {
         $this->loginProfisssional();
         $this->assertCount(0, Agendamentos::all());
@@ -219,6 +231,8 @@ class AgendamentosTest extends TestCase {
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638205 */
+    /* TA_02 */
     public function cidadeAgendamentoNaoPodeSerVazio() {
         $this->loginProfisssional();
         $this->assertCount(0, Agendamentos::all());
@@ -281,6 +295,8 @@ class AgendamentosTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638205 */
+    /* TA_02 */
     public function pontoReferenciaAgendamentoNaoPodeSerVazio() {
         $this->loginProfisssional();
         $this->assertCount(0, Agendamentos::all());
@@ -293,6 +309,8 @@ class AgendamentosTest extends TestCase {
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638205 */
+    /* TA_02 */
     public function localAtendimentoAgendamentoNaoPodeSerVazio() {
         $this->loginProfisssional();
         $this->assertCount(0, Agendamentos::all());
@@ -304,6 +322,8 @@ class AgendamentosTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638205 */
+    /* TA_02 */
     public function dataConsultaAtendimentoAgendamentoNaoPodeSerVazio() {
         $this->loginProfisssional();
         $this->assertCount(0, Agendamentos::all());
@@ -316,6 +336,8 @@ class AgendamentosTest extends TestCase {
 
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638205 */
+    /* TA_02 */
     public function horaEntradaAtendimentoAgendamentoNaoPodeSerVazio() {
         $this->loginProfisssional();
         $this->assertCount(0, Agendamentos::all());
@@ -327,6 +349,8 @@ class AgendamentosTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638205 */
+    /* TA_02 */
     public function horaSaidaAtendimentoAgendamentoNaoPodeSerVazio() {
         $this->loginProfisssional();
         $this->assertCount(0, Agendamentos::all());
@@ -350,6 +374,8 @@ class AgendamentosTest extends TestCase {
     }
 
     /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638205 */
+    /* TA_02 */
     public function profissioalAgendamentoNaoPodeSerVazio() {
         $this->loginProfisssional();
         $this->assertCount(0, Agendamentos::all());
@@ -372,5 +398,165 @@ class AgendamentosTest extends TestCase {
     }
 
     /* TODO: testes de validar datas e horarios, e emails, e telefones */
+
+    /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638205 */
+    /* TA_03 */
+    public function emailAgendamentoNaoPodeSerInvalido() {
+        $this->loginProfisssional();
+        $this->assertCount(0, Agendamentos::all());
+        $agendamento_incompleto = $this->agendamento_completo;
+        $agendamento_incompleto['email'] = 'email.teste.gmail.com';
+        $resposta = $this->post(route('agendamento.salvar'), $agendamento_incompleto);
+        $resposta->assertSessionHasErrors('email');
+        $this->assertCount(0, Agendamentos::all());
+    }
+
+    /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638205 */
+    /* TA_03 */
+    public function dataAgendamentoNaoPodeConterLetras() {
+        $this->loginProfisssional();
+        $this->assertCount(0, Agendamentos::all());
+        $agendamento_incompleto = $this->agendamento_completo;
+        $agendamento_incompleto['dia_da_consulta'] = 'UM-05-2021';
+        $resposta = $this->post(route('agendamento.salvar'), $agendamento_incompleto);
+        $resposta->assertSessionHasErrors('dia_da_consulta');
+        $this->assertCount(0, Agendamentos::all());
+    }
+
+    /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638205 */
+    /* TA_03 */
+    public function dataAgendamentoPrecisaTerFormatoCorreto() {
+        $this->loginProfisssional();
+        $this->assertCount(0, Agendamentos::all());
+        $agendamento_incompleto = $this->agendamento_completo;
+        $agendamento_incompleto['dia_da_consulta'] = '1999-10-05';
+        $resposta = $this->post(route('agendamento.salvar'), $agendamento_incompleto);
+        $resposta->assertSessionHasErrors('dia_da_consulta');
+        $this->assertCount(0, Agendamentos::all());
+
+    }
+
+    /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638205 */
+    /* TA_03 */
+    public function dataNascPacienteAgendamentoNaoPodeConterLetras() {
+        $this->loginProfisssional();
+        $this->assertCount(0, Agendamentos::all());
+        $agendamento_incompleto = $this->agendamento_completo;
+        $agendamento_incompleto['data_nascimento_paciente'] = 'UM-05-2021';
+        $resposta = $this->post(route('agendamento.salvar'), $agendamento_incompleto);
+        $resposta->assertSessionHasErrors('data_nascimento_paciente');
+        $this->assertCount(0, Agendamentos::all());
+    }
+
+    /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638205 */
+    /* TA_03 */
+    public function dataNascPacienteAgendamentoPrecisaTerFormatoCorreto() {
+        $this->loginProfisssional();
+        $this->assertCount(0, Agendamentos::all());
+        $agendamento_incompleto = $this->agendamento_completo;
+        $agendamento_incompleto['data_nascimento_paciente'] = '1999-10-05';
+        $resposta = $this->post(route('agendamento.salvar'), $agendamento_incompleto);
+        $resposta->assertSessionHasErrors('data_nascimento_paciente');
+        $this->assertCount(0, Agendamentos::all());
+
+    }
+
+    /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638205 */
+    /* TA_03 */
+    public function telefoneAgendamentoNaoPodeConterLetras() {
+        $this->loginProfisssional();
+        $this->assertCount(0, Agendamentos::all());
+        $agendamento_incompleto = $this->agendamento_completo;
+        $agendamento_incompleto['telefone'] = '3762A157';
+        $resposta = $this->post(route('agendamento.salvar'), $agendamento_incompleto);
+        $resposta->assertSessionHasErrors();
+        $this->assertCount(0, Agendamentos::all());
+
+    }
+    /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638205 */
+    /* TA_03 */
+    public function telefoneAgendamentoNaoPodeConterPoucosNumeros() {
+        $this->loginProfisssional();
+        $this->assertCount(0, Agendamentos::all());
+        $agendamento_incompleto = $this->agendamento_completo;
+        $agendamento_incompleto['telefone'] = '3762';
+        $resposta = $this->post(route('agendamento.salvar'), $agendamento_incompleto);
+        $resposta->assertSessionHasErrors();
+        $this->assertCount(0, Agendamentos::all());
+
+    }
+
+    /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638205 */
+    /* TA_03 */
+    public function telefoneAgendamentoNaoPodeConterMuitosNumeros() {
+        $this->loginProfisssional();
+        $this->assertCount(0, Agendamentos::all());
+        $agendamento_incompleto = $this->agendamento_completo;
+        $agendamento_incompleto['telefone'] = '3762777888999666';
+        $resposta = $this->post(route('agendamento.salvar'), $agendamento_incompleto);
+        $resposta->assertSessionHasErrors();
+        $this->assertCount(0, Agendamentos::all());
+
+    }
+    /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638205 */
+    /* TA_03 */
+    public function horaEntradaAgendamentoNaoPodeSerInvalida() {
+        $this->loginProfisssional();
+        $this->assertCount(0, Agendamentos::all());
+        $agendamento_incompleto = $this->agendamento_completo;
+        $agendamento_incompleto['hora_entrada'] = '27:44:44';
+        $resposta = $this->post(route('agendamento.salvar'), $agendamento_incompleto);
+        $resposta->assertSessionHasErrors('hora_entrada');
+        $this->assertCount(0, Agendamentos::all());
+
+    }
+    /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638205 */
+    /* TA_03 */
+    public function horaEntradaAgendamentoNaoPodeConterLetras() {
+        $this->loginProfisssional();
+        $this->assertCount(0, Agendamentos::all());
+        $agendamento_incompleto = $this->agendamento_completo;
+        $agendamento_incompleto['hora_entrada'] = '1E:45:41';
+        $resposta = $this->post(route('agendamento.salvar'), $agendamento_incompleto);
+        $resposta->assertSessionHasErrors('hora_entrada');
+        $this->assertCount(0, Agendamentos::all());
+
+    }
+    /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638205 */
+    /* TA_03 */
+    public function horaSaidaAgendamentoNaoPodeSerInvalida() {
+        $this->loginProfisssional();
+        $this->assertCount(0, Agendamentos::all());
+        $agendamento_incompleto = $this->agendamento_completo;
+        $agendamento_incompleto['hora_saida'] = '27:44:44';
+        $resposta = $this->post(route('agendamento.salvar'), $agendamento_incompleto);
+        $resposta->assertSessionHasErrors('hora_saida');
+        $this->assertCount(0, Agendamentos::all());
+
+    }
+    /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174638205 */
+    /* TA_03 */
+    public function horaSaidaAgendamentoNaoPodeConterLetras() {
+        $this->loginProfisssional();
+        $this->assertCount(0, Agendamentos::all());
+        $agendamento_incompleto = $this->agendamento_completo;
+        $agendamento_incompleto['hora_saida'] = '1E:45:41';
+        $resposta = $this->post(route('agendamento.salvar'), $agendamento_incompleto);
+        $resposta->assertSessionHasErrors('hora_saida');
+        $this->assertCount(0, Agendamentos::all());
+
+    }
 
 }
