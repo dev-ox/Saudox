@@ -360,7 +360,7 @@ class AgendamentosTest extends TestCase {
     }
 
     /** @test **/
-    public function conevioAgendamentoPodeSerVazio() {
+    public function convenioAgendamentoPodeSerVazio() {
         $this->loginProfisssional();
         $this->assertCount(0, Agendamentos::all());
         $agendamento_incompleto = $this->agendamento_completo;
