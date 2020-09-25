@@ -4,15 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAvaliacaoDeFonoaudiologiaQuestionariosTable extends Migration
-{
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
+class CreateAvaliacaoDeFonoaudiologiaQuestionariosTable extends Migration {
+
+    public function up() {
         Schema::create('avaliacao_de_fonoaudiologia_questionarios', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
@@ -23,17 +17,10 @@ class CreateAvaliacaoDeFonoaudiologiaQuestionariosTable extends Migration
             $table->foreign('ava_fono')->references('id')->on('avaliacao__fonoaudiologias');
             $table->longText('respostas_questionario');
             $table->string('idade_referente_respostas_questionario');
-
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists('avaliacao_de_fonoaudiologia_questionarios');
     }
 }

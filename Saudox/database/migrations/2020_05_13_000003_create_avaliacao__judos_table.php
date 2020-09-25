@@ -4,15 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAvaliacaoJudosTable extends Migration
-{
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
+class CreateAvaliacaoJudosTable extends Migration {
+
+    public function up() {
         Schema::create('avaliacao__judos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
@@ -66,18 +60,10 @@ class CreateAvaliacaoJudosTable extends Migration
             $table->unsignedInteger('responsavel_por_este_documento')->nullable();
             $table->json('id_pode_ver')->nullable();
             $table->json('id_pode_editar')->nullable();
-
-
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists('avaliacao__judos');
     }
 }
