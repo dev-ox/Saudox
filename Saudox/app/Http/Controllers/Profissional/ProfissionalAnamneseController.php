@@ -568,10 +568,10 @@ class ProfissionalAnamneseController extends Controller {
         }
 
 
+        $anamnese_to->id_paciente = $entrada["id_paciente"];
+        $anamnese_to->id_profissional = $entrada["id_profissional"];
         $anamnese_to->save();
-        return view('profissional/anamnese/terapia_ocupacional/ver', [
-            'anamnese' => $anamnese_to,
-        ]);
+        return redirect()->route('profissional.anamnese.terapia_ocupacional.ver', $entrada["id_paciente"]);
     }
 
 

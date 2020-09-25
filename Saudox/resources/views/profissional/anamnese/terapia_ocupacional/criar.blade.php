@@ -278,6 +278,7 @@
                         <label for="escolha_de_grupo">Nenhum</label>
                         <input value="Nenhum" type="checkbox" name="escolha_de_grupo[6]" id="escolha_de_grupo"><br>
 
+                        <hr class="hr_form">
                         <label class="required">Distrações preferidas:</label><br>
                         <label for="distracoes_preferidas">Televisão</label>
                         <input value="Televisão" type="checkbox" name="distracoes_preferidas[1]" id="distracoes_preferidas">
