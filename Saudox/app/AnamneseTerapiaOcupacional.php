@@ -89,6 +89,7 @@ class AnamneseTerapiaOcupacional extends Model {
           'acompanhamento_medico',
           'qual_medico_responsavel',
           'diagnostico_medico',
+          'quem_orienta_os_deveres_em_casa_se_sim_orientacao_deveres',
       ];
 
 
@@ -112,7 +113,7 @@ class AnamneseTerapiaOcupacional extends Model {
           'escova_os_dentes_sozinho' => 'required|max:255',
           'usa_o_banheiro_sozinho' => 'required|max:255',
           'necessita_auxilio_para_se_vestir_ou_despir' => 'required|max:255',
-          'idade_da_retirada_das_fraldas' => 'required|numeric',
+          'idade_da_retirada_das_fraldas' => 'required',
           'atende_intervencoes_quando_esta_desobedecendo' => 'required|max:255',
           'chora_facil' => 'required|max:255',
           'recusa_auxílio' => 'required|max:255',
@@ -144,6 +145,8 @@ class AnamneseTerapiaOcupacional extends Model {
           'acompanhamento_medico' => 'required',
           'qual_medico_responsavel' => 'required|max:255',
           'diagnostico_medico' => 'required',
+          'motivo_transferencia_escola_se_estudou_em_outra_antes' => 'required_if:ja_estudou_antes_em_outra_escola,Sim',
+          'quem_orienta_os_deveres_em_casa_se_sim_orientacao_deveres' => 'required_if:recebe_orientacao_aos_deveres_em_casa,Sim',
       ];
 
 
