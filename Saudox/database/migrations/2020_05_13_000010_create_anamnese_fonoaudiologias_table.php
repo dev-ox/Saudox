@@ -46,8 +46,8 @@ class CreateAnamneseFonoaudiologiasTable extends Migration
             $table->text('fatos_que_afetaram_o_desenvolvimento_do_paciente');
             $table->string('ate_quantos_anos_usou_chupetas');
             $table->boolean('ja_fez_tratamento_fonoaudiologo');
-            $table->text('se_sim_tratamento_fono_anterior_onde');
-            $table->text('se_sim_tratamento_fono_anterior_quando');
+            $table->text('se_sim_tratamento_fono_anterior_onde')->default("Não fez");
+            $table->text('se_sim_tratamento_fono_anterior_quando')->default("Não fez");
             $table->text('dificuldades_na_fala');
             $table->text('dificuldades_na_visao');
             $table->text('dificuldades_na_locomocao');
