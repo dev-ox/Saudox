@@ -23,11 +23,14 @@
 }
 
 .bg-claro {
-    background-color: #FFF !important;
-    color: #000 !important;
+    background-color: var(--cor_branco) !important;
+    color: var(--cor_preto) !important;
 }
 
-
+.bg-azul {
+    background-color: var(--cor_azul) !important;
+    color: var(--cor_branco) !important;
+}
 
 .bt {
     color: var(--cor_branco);
@@ -369,4 +372,18 @@ th.tag{
 
 *[data-href] {
   cursor: pointer;
+}
+
+
+
+.bt_ana_ava_evo {
+    width: 20%;
+    height: 100%;
+}
+
+
+.bt_ana_ava_evo:hover {
+    background-color: var(--cor_roxo) !important;
+    color: var(--cor_branco) !important;
+    text-decoration: none;
 }

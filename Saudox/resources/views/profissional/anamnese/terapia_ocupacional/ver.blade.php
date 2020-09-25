@@ -412,7 +412,7 @@
                     <h3 class="marker-label">Medidas disciplinares empregadas pelos pais</h3>
                     <br>
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12 text-center justify-content-center">
                             <label class="lbinfo-ntstatic">{{$anamnese->medidas_disciplinares_empregadas_pelos_pais}}</label>
                         </div>
                     </div>
@@ -422,7 +422,7 @@
                     <h3 class="marker-label">Reação do filho ao ser contráriado</h3>
                     <br>
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12 text-center justify-content-center">
                             <label class="lbinfo-ntstatic">{{$anamnese->reação_do_filho_ao_ser_contrariado}}</label>
                         </div>
                     </div>
@@ -432,7 +432,7 @@
                     <h3 class="marker-label">Atitude dos pais à reação do filho ao ser contráriado</h3>
                     <br>
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12 text-center justify-content-center">
                             <label class="lbinfo-ntstatic">{{$anamnese->atitude_dos_pais_a_reacao_filho_contrareado}}</label>
                         </div>
                     </div>
@@ -457,21 +457,11 @@
                     <h3 class="marker-label">Diagnostico médico</h3>
                     <br>
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-12 text-center justify-content-center">
                             <label class="lbinfo-ntstatic">{{$anamnese->diagnostico_medico}}</label>
                         </div>
                     </div>
                 </div>
-
-
-
-
-
-
-
-
-
-
 
             </div>
         </div>
