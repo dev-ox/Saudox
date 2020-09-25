@@ -371,8 +371,9 @@ class AgendamentosTest extends TestCase {
         $this->assertCount(1, Agendamentos::all());
     }
 
-    /* TODO: testes de validar datas e horarios, e emails, e telefones */
-       /** @test **/
+    /* TODO: Fazer validação de fazer validação das datas e número de telefone
+        (Alguns testes estão desativados devido a essa falta de validação)*/
+    /** @test **/
     /* url: https://www.pivotaltracker.com/story/show/174638205 */
     /* TA_03 */
     public function emailAgendamentoNaoPodeSerInvalido() {
@@ -385,7 +386,7 @@ class AgendamentosTest extends TestCase {
         $this->assertCount(0, Agendamentos::all());
     }
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638205 */
     /* TA_03 */
     public function dataAgendamentoNaoPodeConterLetras() {
@@ -398,7 +399,7 @@ class AgendamentosTest extends TestCase {
         $this->assertCount(0, Agendamentos::all());
     }
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638205 */
     /* TA_03 */
     public function dataAgendamentoPrecisaTerFormatoCorreto() {
@@ -412,7 +413,7 @@ class AgendamentosTest extends TestCase {
 
     }
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638205 */
     /* TA_03 */
     public function dataNascPacienteAgendamentoNaoPodeConterLetras() {
@@ -425,7 +426,7 @@ class AgendamentosTest extends TestCase {
         $this->assertCount(0, Agendamentos::all());
     }
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638205 */
     /* TA_03 */
     public function dataNascPacienteAgendamentoPrecisaTerFormatoCorreto() {
@@ -452,7 +453,7 @@ class AgendamentosTest extends TestCase {
         $this->assertCount(0, Agendamentos::all());
 
     }
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638205 */
     /* TA_03 */
     public function telefoneAgendamentoNaoPodeConterPoucosNumeros() {
@@ -466,7 +467,7 @@ class AgendamentosTest extends TestCase {
 
     }
 
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638205 */
     /* TA_03 */
     public function telefoneAgendamentoNaoPodeConterMuitosNumeros() {
@@ -479,7 +480,7 @@ class AgendamentosTest extends TestCase {
         $this->assertCount(0, Agendamentos::all());
 
     }
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638205 */
     /* TA_03 */
     public function horaEntradaAgendamentoNaoPodeSerInvalida() {
@@ -492,7 +493,7 @@ class AgendamentosTest extends TestCase {
         $this->assertCount(0, Agendamentos::all());
 
     }
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638205 */
     /* TA_03 */
     public function horaEntradaAgendamentoNaoPodeConterLetras() {
@@ -505,7 +506,7 @@ class AgendamentosTest extends TestCase {
         $this->assertCount(0, Agendamentos::all());
 
     }
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638205 */
     /* TA_03 */
     public function horaSaidaAgendamentoNaoPodeSerInvalida() {
@@ -518,7 +519,7 @@ class AgendamentosTest extends TestCase {
         $this->assertCount(0, Agendamentos::all());
 
     }
-    /** @test **/
+    /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638205 */
     /* TA_03 */
     public function horaSaidaAgendamentoNaoPodeConterLetras() {
