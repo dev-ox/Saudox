@@ -7,4 +7,5 @@ Route::get('teste', function () {
 
 Route::get('{id_paciente}/ver', 'ProfissionalAvaliacaoController@verJudo')->name('.ver');
 Route::get('{id_paciente}/criar', 'ProfissionalAvaliacaoController@criarJudo')->name('.criar');
+Route::post('salvar', 'ProfissionalAvaliacaoController@salvarJudo')->name('.criar.salvar');
 Route::get('{id_paciente}/editar', 'ProfissionalAvaliacaoController@editarJudo')->name('.editar');

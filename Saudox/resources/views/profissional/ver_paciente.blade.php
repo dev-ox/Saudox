@@ -7,6 +7,8 @@
 
     <div class="container">
 
+
+
         @if($profissional->podeCriarAnamnese())
             <div id="linha_anamneses" class="row justify-content-center text-center">
                 <div class="col-md-10">
@@ -40,9 +42,32 @@
 
             <br>
             <br>
-
-
         @endif
+
+
+        @if($profissional->podeCriarAvaliacao())
+            <div id="linha_anamneses" class="row justify-content-center text-center">
+                <div class="col-md-10">
+
+
+                    @if($profissional->temProfissao(App\Profissional::TerapeutaOcupacional))
+                        @if(!$paciente->avaliacaoJudo)
+                            <a style="padding-top: 2%;" class="btn bordas_amarelas bg-azul bt_ana_ava_evo" href="{{ route("profissional.avaliacao.judo.criar", $paciente->id) }}">Criar Avaliação de Judô</a>
+                        @else
+                            <a style="padding-top: 2%;" class="btn bordas_amarelas bg-azul bt_ana_ava_evo" href="{{ route("profissional.avaliacao.judo.ver", $paciente->id) }}">Ver Avaliação de Judô</a>
+                        @endif
+                    @endif
+
+
+
+                </div>
+            </div>
+
+            <br>
+            <br>
+        @endif
+
+
 
         <div class="row bordas_amarelas bg-padrao">
             <div class="col-md">

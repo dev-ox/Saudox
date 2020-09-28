@@ -49,6 +49,13 @@ class Profissional extends Authenticatable {
         self::Psicopedagogo,
     ];
 
+    const ProfissoesQuePodemCriarAvaliacoes = [
+        self::Adm,
+        self::Fonoaudiologo,
+        self::TerapeutaOcupacional,
+        self::Neuropsicologo,
+    ];
+
 
     /**
      * The attributes that are mass assignable.
@@ -179,6 +186,16 @@ class Profissional extends Authenticatable {
     public function podeCriarAnamnese() {
         foreach($this->getProfissoes() as $profissao) {
             if(in_array($profissao, Profissional::ProfissoesQuePodemCriarAnamneses)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    public function podeCriarAvaliacao() {
+        foreach($this->getProfissoes() as $profissao) {
+            if(in_array($profissao, Profissional::ProfissoesQuePodemCriarAvaliacoes)) {
                 return true;
             }
         }

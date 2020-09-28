@@ -1,12 +1,14 @@
 <?php
 namespace App\Http\Controllers\Profissional;
 
+use App\AvaliacaoJudo;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Profissional;
 use App\Paciente;
 use Auth;
+use Illuminate\Support\Facades\Validator;
 
 class ProfissionalAvaliacaoController extends Controller {
 
@@ -63,6 +65,35 @@ class ProfissionalAvaliacaoController extends Controller {
             return redirect()->route('erro', ['msg_erro' => "Paciente " .$id_paciente. " inexistente"]);
         }
         return view('profissional/avaliacao/judo/criar', ['paciente' => $paciente]);
+    }
+
+    public function salvarJudo(Request $request) {
+
+        $messages = [
+            'required' => 'O campo :attribute é obrigatório.',
+            'numeric' => 'O campo :attribute deve ser um número.',
+            'id_paciente.exists' => 'O paciente não existe',
+            'id_profissional.exists' => 'O paciente não existe',
+        ];
+
+        $entrada = $request->all();
+
+
+        $validator_judo = Validator::make($entrada, AvaliacaoJudo::$regras_validacao, $messages);
+        if ($validator_judo->fails()) {
+            return redirect()->back()
+                ->withErrors($validator_judo)
+                ->withInput();
+        }
+
+        $avaliacao_judo = new AvaliacaoJudo;
+        $avaliacao_judo->fill($entrada);
+        $avaliacao_judo->save();
+        return redirect()->route("profissional.avaliacao.judo.ver", $entrada["id_paciente"]);
+
+
+
+
     }
 
     public function editarJudo($id_paciente) {
