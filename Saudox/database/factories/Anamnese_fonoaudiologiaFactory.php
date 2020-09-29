@@ -43,7 +43,7 @@ $factory->define(AnamneseFonoaudiologia::class, function (Faker $faker) {
         'perturbacoes_como_pesadelos_sonambulismo_agitacao_etc' => 1,
         'letras_ou_fonemas_trocados' => 'Sim, troca asd por qwe',
         'fatos_que_afetaram_o_desenvolvimento_do_paciente' => 'Fome por açúcar!',
-        'ate_quantos_anos_usou_chupetas' =>'saifhsaifhsaoifhasiof',
+        'ate_quantos_anos_usou_chupetas' =>'Até os 3 anos',
         'ja_fez_tratamento_fonoaudiologo' => 1,
         'se_sim_tratamento_fono_anterior_onde' => 'Não',
         'se_sim_tratamento_fono_anterior_quando' => 'Não',

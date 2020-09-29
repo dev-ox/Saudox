@@ -51,7 +51,7 @@ class AnamneseTest extends TestCase {
         // Concatenação das profissões com ';'
         $str_profissoes = '';
         foreach($profissoes as $p) {
-            $str_profissoes = $str_profissoes . ";";
+            $str_profissoes = $str_profissoes . $p . ";";
         }
         // Criação do profissional
         $prof_aux = factory(Profissional::class)->create([
@@ -120,7 +120,6 @@ class AnamneseTest extends TestCase {
                 Profissional::Adm,
                 Profissional::Fonoaudiologo
             ), $this->password);
-        $prof_aux = $criarProf_Logar['profissional'];
 
         $resposta_ver_fono = $this->get(route("profissional.anamnese.fonoaudiologia.ver", ['id_paciente' => $this->paciente->id]));
         $resposta_ver_fono->assertSee("Posição no bloco familiar");
@@ -155,7 +154,7 @@ class AnamneseTest extends TestCase {
         $copia_anamnese['id_profissional'] = $prof_aux->id;
 
         // Cria a Anamnese
-        $resposta_ver_terapiaOcupacional = $this->post(route("profissional.anamnese.terapia_ocupacional.salvar", $copia_anamnese));
+        $this->post(route("profissional.anamnese.terapia_ocupacional.salvar", $copia_anamnese));
 
         // Verifica se a anamnese agora existe
         $resposta_ver_fono = $this->get(route("profissional.anamnese.terapia_ocupacional.ver", ['id_paciente' => $this->paciente->id]));
@@ -171,7 +170,6 @@ class AnamneseTest extends TestCase {
                 Profissional::Adm,
                 Profissional::TerapeutaOcupacional
             ), $this->password);
-        $prof_aux = $criarProf_Logar['profissional'];
 
         $resposta_ver_fono = $this->get(route("profissional.anamnese.terapia_ocupacional.ver", ['id_paciente' => $this->paciente->id]));
         $resposta_ver_fono->assertSee("Gestação");
