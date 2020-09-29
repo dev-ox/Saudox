@@ -90,22 +90,46 @@ class ProfissionalAvaliacaoController extends Controller {
         $avaliacao_judo->fill($entrada);
         $avaliacao_judo->save();
         return redirect()->route("profissional.avaliacao.judo.ver", $entrada["id_paciente"]);
-
-
-
-
     }
 
     public function editarJudo($id_paciente) {
         $paciente = Paciente::find($id_paciente);
         if(!$paciente){
-            return redirect()->route('erro', ['msg_erro' => "Paciente " .$id_paciente. " inexistente"]);
+            return view('erro', ['msg_erro' => "Paciente " .$id_paciente. " inexistente"]);
         }
         $avaliacao = $paciente->avaliacaoJudo;
         if(!$avaliacao){
-            return redirect()->route('erro', ['msg_erro' => "Avaliação do paciente " .$id_paciente. " não existe"]);
+            return view('erro', ['msg_erro' => "Avaliação do paciente " .$id_paciente. " não existe"]);
         }
-        return view('profissional/avaliacao/judo/editar', ['avaliacao' => $avaliacao]);
+        return view('profissional/avaliacao/judo/editar', [
+            'avaliacao' => $avaliacao,
+            'paciente' => $paciente,
+        ]);
+    }
+
+    public function salvarEditarJudo(Request $request) {
+
+        $messages = [
+            'required' => 'O campo :attribute é obrigatório.',
+            'numeric' => 'O campo :attribute deve ser um número.',
+            'id_paciente.exists' => 'O paciente não existe',
+            'id_profissional.exists' => 'O paciente não existe',
+        ];
+
+        $entrada = $request->all();
+
+
+        $validator_judo = Validator::make($entrada, AvaliacaoJudo::$regras_validacao, $messages);
+        if ($validator_judo->fails()) {
+            return redirect()->back()
+                ->withErrors($validator_judo)
+                ->withInput();
+        }
+
+        $avaliacao_judo = AvaliacaoJudo::find($entrada["id_avaliacao"]);
+        $avaliacao_judo->fill($entrada);
+        $avaliacao_judo->save();
+        return redirect()->route("profissional.avaliacao.judo.ver", $entrada["id_paciente"]);
     }
 
 
