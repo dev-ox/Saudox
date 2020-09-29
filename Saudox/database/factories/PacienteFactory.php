@@ -38,8 +38,8 @@ $factory->define(Paciente::class, function (Faker $faker) {
         'idade_mae' => 45,
         'id_endereco' => 1,
         'naturalidade' => 'Brasileiro',
-        'pais_sao_casados' => false,
-        'pais_sao_divorciados' => false,
-        'tipo_filho_biologico_adotivo' => false,
+        'pais_sao_casados' => 1,
+        'pais_sao_divorciados' => 0,
+        'tipo_filho_biologico_adotivo' => 1,
     ];
 });
