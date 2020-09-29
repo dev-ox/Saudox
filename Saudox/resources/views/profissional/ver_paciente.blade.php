@@ -13,7 +13,7 @@
             <div id="linha_anamneses" class="row justify-content-center text-center">
                 <div class="col-md-10">
 
-                    @if($profissional->temProfissao(App\Profissional::Fonoaudiologo))
+                    @if($profissional->temProfissao(App\Profissional::Fonoaudiologo) || $profissional->ehAdmin())
                         @if(!$paciente->anamneseFonoaudiologias)
                             <a style="padding-top: 2%;" class="btn bordas_amarelas bg-azul bt_ana_ava_evo" href="{{ route("profissional.anamnese.fonoaudiologia.criar", $paciente->id) }}">Criar Anamnese de Fonoaudiologia</a>
                         @else
@@ -21,7 +21,7 @@
                         @endif
                     @endif
 
-                    @if($profissional->temProfissao(App\Profissional::Psicopedagogo) || $profissional->temProfissao(App\Profissional::Neuropsicologo))
+                    @if($profissional->temProfissao(App\Profissional::Psicopedagogo) || $profissional->temProfissao(App\Profissional::Neuropsicologo) || $profissional->ehAdmin())
                         @if(!$paciente->anamneseGigantePsicopedaNeuroPsicomotos())
                             <a style="padding-top: 1%;" class="btn bordas_amarelas bg-azul bt_ana_ava_evo" href="{{ route("profissional.anamnese.psicopedagogia.criar", $paciente->id) }}">Criar Anamnese de Psicopedagia/Neuropsicologia/Psicomotricidade</a>
                         @else
@@ -29,7 +29,7 @@
                         @endif
                     @endif
 
-                    @if($profissional->temProfissao(App\Profissional::TerapeutaOcupacional))
+                    @if($profissional->temProfissao(App\Profissional::TerapeutaOcupacional) || $profissional->ehAdmin())
                         @if(!$paciente->anamneseTerapiaOcupacionals)
                             <a style="padding-top: 2%;" class="btn bordas_amarelas bg-azul bt_ana_ava_evo" href="{{ route("profissional.anamnese.terapia_ocupacional.criar", $paciente->id) }}">Criar Anamnese de Terapia Ocupacional</a>
                         @else
@@ -50,7 +50,7 @@
                 <div class="col-md-10">
 
 
-                    @if($profissional->temProfissao(App\Profissional::TerapeutaOcupacional))
+                    @if($profissional->temProfissao(App\Profissional::TerapeutaOcupacional) || $profissional->ehAdmin())
                         @if(!$paciente->avaliacaoJudo)
                             <a style="padding-top: 2%;" class="btn bordas_amarelas bg-azul bt_ana_ava_evo" href="{{ route("profissional.avaliacao.judo.criar", $paciente->id) }}">Criar Avaliação de Judô</a>
                         @else
