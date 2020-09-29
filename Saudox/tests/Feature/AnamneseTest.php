@@ -7,6 +7,8 @@ use App\Endereco;
 use App\Profissional;
 use App\Paciente;
 
+use Illuminate\Support\Facades\Auth;
+
 use App\AnamneseFonoaudiologia;
 use App\AnamneseTerapiaOcupacional;
 use App\AnamneseGigantePsicopedaNeuroPsicomoto;
@@ -15,115 +17,166 @@ use App\AnamneseGigantePsicopedaNeuroPsicomotoPt2;
 use App\AnamneseGigantePsicopedaNeuroPsicomotoPt3;
 
 class AnamneseTest extends TestCase {
-    public $funcionario;
-
+    public $profissional;
     private $endereco;
-
     private $paciente;
+
+    private $password = '123123123';
 
     public function setUp() : void {
         parent::setUp();
 
         $this->endereco = factory(Endereco::class)->create();
-        $this->funcionario = factory(Profissional::class)->create([
-            'password' => bcrypt($password = '123123123'),
-            'profissao' => 'Atendente',
-        ]);
-
-
-        $this->paciente = [
-            'login' => 'literalmentequalquercoisa',
-            'password' => '123123123',
-            'nome_paciente' => 'Carlos Antonio Alves Junior',
-            'cpf' => '98765432110',
-            'sexo' => 1,
-            'data_nascimento' => '1999-05-10',
-            'responsavel' => 'Maria Sueli',
-            'numero_irmaos' => 1,
-            'lista_irmaos' => 'Barbara Yorrana',
-            'nome_pai' => 'Tenho Pai Nao',
-            'nome_mae' => 'Maria Sueli de Melo',
-            'telefone_pai' => '66666666666',
-            'telefone_mae' => '11111111111',
-            'email_pai' => 'satanas@inferno.com',
-            'email_mae' => 'emailteste@gmail.com',
-            'idade_pai' => 99,
-            'idade_mae' => 45,
+        $this->paciente = factory(Paciente::class)->create([
+            'password' => bcrypt($this->password),
             'id_endereco' => $this->endereco->id,
-            'naturalidade' => 'Brasileiro',
-            'pais_sao_casados' => false,
-            'pais_sao_divorciados' => false,
-            'tipo_filho_biologico_adotivo' => false,
-        ];
-    }
-
-    /** @ test **/
-    /* url: https://www.pivotaltracker.com/story/show/174639150 */
-    /* TA_02 */
-    public function funcionarioPermitidoPodeAcessarAnamnesePacienteExistente() {
-
-       $func = factory(Profissional::class)->create([
-           'password' => bcrypt($password = '123123123'),
-           'profissao' => 'Administrador',
-       ]);
-       $resposta = $this->post(route("profissional.login"), [
-
-            'login' => $func->login,
-            'password' => $password,
-       ]);
-
-       $this->assertAuthenticatedAs($this->funcionario);
-
-
-       $copia_pac = factory(Paciente::class)->create($this->paciente);
-
-       $pacie = Paciente::first();
-
-       //$this->visit(route("profissional.anamnese", ['id_paciente' => $pacie->id]));
-       //$this->seePageIs(route("profissional.anamnese", ['id_paciente' => $pacie->id]));
-       $resposta->assertOk();
-    }
-
-    /** @ test **/
-    /* url: https://www.pivotaltracker.com/story/show/174639150 */
-    /* TA_02 */
-    public function funcionarioPermitidoNaoPodeAcessarAnamnesePacienteInexistente() {
-        $func = factory(Profissional::class)->create([
-            'password' => bcrypt($password = '123123123'),
-            'profissao' => 'Administrador',
         ]);
-       $this->post(route("profissional.login"), [
-            'login' => $func->login,
-            'password' => $password,
-       ]);
-
-       $this->assertAuthenticatedAs($this->funcionario);
-       //$this->visit(route("profissional.anamnese", ['id_paciente' => 0]));
-       //$this->seePageIs(route("profissional.home"));
+        $this->profissional = factory(Profissional::class)->create([
+            'password' => bcrypt($this->password),
+            'profissao' => Profissional::Adm,
+        ]);
+        $this->anamnese_fono = factory(AnamneseFonoaudiologia::class)->create([
+            'id_paciente' => $this->paciente->id,
+            'id_profissional' => $this->profissional->id,
+        ]);
+        $this->anamnese_terapiaOcupacional = factory(AnamneseTerapiaOcupacional::class)->create([
+            'id_paciente' => $this->paciente->id,
+            'id_profissional' => $this->profissional->id,
+        ]);
     }
 
-    /** @ test **/
+    // Função que cria um profissional e já loga ele.
+    // O parametro $profissoes é um array de profissoes
+    public function criarProfELogar($profissoes, $password) {
+        // Concatenação das profissões com ';'
+        $str_profissoes = '';
+        foreach($profissoes as $p) {
+            $str_profissoes = $str_profissoes . ";";
+        }
+        // Criação do profissional
+        $prof_aux = factory(Profissional::class)->create([
+            'password' => bcrypt($password),
+            'profissao' => $str_profissoes,
+        ]);
+
+        // Login
+        $resposta_login = $this->post(route("profissional.login"), [
+             'login' => $prof_aux->login,
+             'password' => $password,
+        ]);
+        // Login teste
+        Auth::login($prof_aux, true);
+        $this->assertTrue(Auth::check());
+        // Ao fazer login ele é redirecionado para a home (fazendo verificação)
+        $resposta_login->assertRedirect(route("profissional.home"));
+
+        // Retorna o profissional criado e o resultado do login
+        return ['profissional' => $prof_aux, 'resposta_login' => $resposta_login];
+    }
+
+
+
+    /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174639150 */
+    /* TA_01 */
+    public function profissionalPodeCriarAnamneseFonoaudiologia() {
+        // Gera um profissional com as profissões indicadas e realiza o login
+        $criarProf_Logar = $this->criarProfELogar(
+            array(
+                Profissional::Adm,
+                Profissional::Fonoaudiologo
+            ), $this->password);
+        $prof_aux = $criarProf_Logar['profissional'];
+
+        // Gera um novo paciente (sem anamnese)
+        $paciente_aux = factory(Paciente::class)->create([
+            'password' => bcrypt($this->password),
+            'id_endereco' => $this->endereco->id,
+        ]);
+
+        // Verifica se pode acessar a área de criação de anamnse de fonoaudiologia
+        $resposta_ver_terapiaOcupacional = $this->get(route("profissional.anamnese.fonoaudiologia.criar", ['id_paciente' => $paciente_aux->id]));
+        $resposta_ver_terapiaOcupacional->assertSee("Posição no bloco familiar");
+
+        // Gera uma cópia da anamnese da Factory, indicando os ids
+        $copia_anamnese = array($this->anamnese_fono);
+        $copia_anamnese['id_paciente'] = $paciente_aux->id;
+        $copia_anamnese['id_profissional'] = $prof_aux->id;
+
+        // Cria a Anamnese
+        $resposta_ver_terapiaOcupacional = $this->post(route("profissional.anamnese.fonoaudiologia.salvar", $copia_anamnese));
+
+        // Verifica se a anamnese agora existe
+        $resposta_ver_fono = $this->get(route("profissional.anamnese.fonoaudiologia.ver", ['id_paciente' => $this->paciente->id]));
+        $resposta_ver_fono->assertSee("Posição no bloco familiar");
+    }
+
+    /** @test **/
     /* url: https://www.pivotaltracker.com/story/show/174639150 */
     /* TA_02 */
-    public function funcionarioNaoAutorizadoNaoPodeAcessarAnamnesePacienteExistente() {
-       $func = $this->funcionario;
+    public function profissionalPodeAcessarAnamneseFonoaudiologia() {
+        $criarProf_Logar = $this->criarProfELogar(
+            array(
+                Profissional::Adm,
+                Profissional::Fonoaudiologo
+            ), $this->password);
+        $prof_aux = $criarProf_Logar['profissional'];
 
-       $res = $this->post(route("profissional.login"), [
-
-            'login' => $func->login,
-            'password' => $this->funcionario->password,
-       ]);
-
-       $this->assertAuthenticatedAs($this->funcionario);
-
-
-       //$this->visit(route("profissional.anamnese", ['id_paciente' => 0]));
-       $value = 'Você não possui privilégios para isso.';
-       $tempo = 5; // Tempo em segundo até o fim da espera
-       //$res->waitForText($value, $tempo);
-       $res->assertOk();
-       //$this->seePageIs(route("profissional.home"));
+        $resposta_ver_fono = $this->get(route("profissional.anamnese.fonoaudiologia.ver", ['id_paciente' => $this->paciente->id]));
+        $resposta_ver_fono->assertSee("Posição no bloco familiar");
     }
+
+    /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174990176 */
+    /* TA_01 */
+    public function profissionalPodeCriarAnamneseTerapiaOcupacional() {
+        // Gera um profissional com as profissões indicadas e realiza o login
+        $criarProf_Logar = $this->criarProfELogar(
+            array(
+                Profissional::Fonoaudiologo,
+                Profissional::TerapeutaOcupacional,
+            ), $this->password);
+        $prof_aux = $criarProf_Logar['profissional'];
+
+        // Gera um novo paciente (sem anamnese)
+        $paciente_aux = factory(Paciente::class)->create([
+            'password' => bcrypt($this->password),
+            'id_endereco' => $this->endereco->id,
+        ]);
+
+        // Verifica se pode acessar a área de criação de anamnse de fonoaudiologia
+        //TODO: @sekva (erro no old, na view _pendência_)
+        // $resposta_ver_terapiaOcupacional = $this->get(route("profissional.anamnese.terapia_ocupacional.criar", ['id_paciente' => $paciente_aux->id]));
+        // $resposta_ver_terapiaOcupacional->assertSee("gestação");
+
+        // Gera uma cópia da anamnese da Factory, indicando os ids
+        $copia_anamnese = array($this->anamnese_terapiaOcupacional);
+        $copia_anamnese['id_paciente'] = $paciente_aux->id;
+        $copia_anamnese['id_profissional'] = $prof_aux->id;
+
+        // Cria a Anamnese
+        $resposta_ver_terapiaOcupacional = $this->post(route("profissional.anamnese.terapia_ocupacional.salvar", $copia_anamnese));
+
+        // Verifica se a anamnese agora existe
+        $resposta_ver_fono = $this->get(route("profissional.anamnese.terapia_ocupacional.ver", ['id_paciente' => $this->paciente->id]));
+        $resposta_ver_fono->assertSee("Gestação");
+    }
+
+    /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174990176 */
+    /* TA_02 */
+    public function profissionalPodeAcessarAnamneseTerapiaOcupacional() {
+        $criarProf_Logar = $this->criarProfELogar(
+            array(
+                Profissional::Adm,
+                Profissional::TerapeutaOcupacional
+            ), $this->password);
+        $prof_aux = $criarProf_Logar['profissional'];
+
+        $resposta_ver_fono = $this->get(route("profissional.anamnese.terapia_ocupacional.ver", ['id_paciente' => $this->paciente->id]));
+        $resposta_ver_fono->assertSee("Gestação");
+    }
+
 
 
     /** @ test **/
@@ -183,7 +236,7 @@ class AnamneseTest extends TestCase {
         ]);
         $anamne_fono = factory(AnamneseFonoaudiologia::class)->create([
             'id_paciente' => $paciente->id,
-            'id_profissional' => $this->funcionario->id,
+            'id_profissional' => $this->profissional->id,
         ]);
 
         $resposta = $this->post(route("login"), [
@@ -206,7 +259,7 @@ class AnamneseTest extends TestCase {
         ]);
         $anamne_to = factory(AnamneseTerapiaOcupacional::class)->create([
             'id_paciente' => $paciente->id,
-            'id_profissional' => $this->funcionario->id,
+            'id_profissional' => $this->profissional->id,
         ]);
 
         $resposta = $this->post(route("login"), [
@@ -264,7 +317,7 @@ class AnamneseTest extends TestCase {
         ]);
         $anamne_to = factory(AnamneseTerapiaOcupacional::class)->create([
             'id_paciente' => $paciente->id,
-            'id_profissional' => $this->funcionario->id,
+            'id_profissional' => $this->profissional->id,
         ]);
 
         $resposta->assertRedirect(route("paciente.home"));
@@ -294,7 +347,7 @@ class AnamneseTest extends TestCase {
 
         $anamne_fonoaudiologia = factory(AnamneseFonoaudiologia::class)->create([
             'id_paciente' => $paciente->id,
-            'id_profissional' => $this->funcionario->id,
+            'id_profissional' => $this->profissional->id,
         ]);
 
         $resposta->assertRedirect(route("paciente.home"));
@@ -340,11 +393,11 @@ class AnamneseTest extends TestCase {
         ]);
 
         $resposta = $this->post(route("profissional.login"), [
-            'login' => $this->funcionario->login,
-            'password' => $this->funcionario->password
+            'login' => $this->profissional->login,
+            'password' => $this->profissional->password
         ]);
         $resposta->assertRedirect(route("profissional.home"));
-        $this->assertAuthenticatedAs($this->funcionario);
+        $this->assertAuthenticatedAs($this->profissional);
 
 
         $anamne_psi = factory(AnamneseGigantePsicopedaNeuroPsicomoto::class)->create();
@@ -355,7 +408,7 @@ class AnamneseTest extends TestCase {
         $this->assertCount(1, AnamneseGigantePsicopedaNeuroPsicomoto::all());
 
         $resposta->assertRedirect(route("profissional.home"));
-        $this->assertAuthenticatedAs($this->funcionario);
+        $this->assertAuthenticatedAs($this->profissional);
 
         //$this->visit(route("profissional.anamnese.neuropsicomotora", ['id_paciente' => $paciente->id]));
 
@@ -382,12 +435,12 @@ class AnamneseTest extends TestCase {
         ]);
 
         $resposta = $this->post(route("profissional.login"), [
-            'login' => $this->funcionario->login,
-            'password' => $this->funcionario->password
+            'login' => $this->profissional->login,
+            'password' => $this->profissional->password
         ]);
 
         $resposta->assertRedirect(route("profissional.home"));
-        $this->assertAuthenticatedAs($this->funcionario);
+        $this->assertAuthenticatedAs($this->profissional);
 
         $anamne_fono = factory(AnamneseFonoaudiologia::class)->create([
             'id_paciente' => $paciente->id,
@@ -396,7 +449,7 @@ class AnamneseTest extends TestCase {
 
         $this->assertCount(1, AnamneseFonoaudiologia::all());
         $resposta->assertRedirect(route("profissional.home"));
-        $this->assertAuthenticatedAs($this->funcionario);
+        $this->assertAuthenticatedAs($this->profissional);
 
         //$this->visit(route("profissional.anamnese.fonoaudiologia", ['id_paciente' => $paciente->id]));
 
@@ -419,11 +472,11 @@ class AnamneseTest extends TestCase {
         ]);
 
         $resposta = $this->post(route("profissional.login"), [
-            'login' => $this->funcionario->login,
-            'password' => $this->funcionario->password
+            'login' => $this->profissional->login,
+            'password' => $this->profissional->password
         ]);
         $resposta->assertRedirect(route("profissional.home"));
-        $this->assertAuthenticatedAs($this->funcionario);
+        $this->assertAuthenticatedAs($this->profissional);
 
 
         $anamne_to = factory(AnamneseTerapiaOcupacional::class)->create([
@@ -434,7 +487,7 @@ class AnamneseTest extends TestCase {
         $this->assertCount(1, AnamneseTerapiaOcupacional::all());
 
         $resposta->assertRedirect(route("profissional.home"));
-        $this->assertAuthenticatedAs($this->funcionario);
+        $this->assertAuthenticatedAs($this->profissional);
 
         //$this->visit(route("profissional.anamnese.terapia_ocupacional", ['id_paciente' => $paciente->id]));
 
@@ -461,12 +514,12 @@ class AnamneseTest extends TestCase {
         ]);
 
         $resposta = $this->post(route("profissional.login"), [
-            'login' => $this->funcionario->login,
-            'password' => $this->funcionario->password
+            'login' => $this->profissional->login,
+            'password' => $this->profissional->password
         ]);
 
         $resposta->assertRedirect(route("profissional.home"));
-        $this->assertAuthenticatedAs($this->funcionario);
+        $this->assertAuthenticatedAs($this->profissional);
 
 
         $anamne_psi = factory(AnamneseGigantePsicopedaNeuroPsicomoto::class)->create();
@@ -476,7 +529,7 @@ class AnamneseTest extends TestCase {
         $this->assertCount(1, AnamneseGigantePsicopedaNeuroPsicomoto::all());
 
         $resposta->assertRedirect(route("profissional.home"));
-        $this->assertAuthenticatedAs($this->funcionario);
+        $this->assertAuthenticatedAs($this->profissional);
 
         //$this->visit(route("profissional.anamnese.neuropsicomotora", ['id_paciente' => $paciente->id]));
 
@@ -502,12 +555,12 @@ class AnamneseTest extends TestCase {
         ]);
 
         $resposta = $this->post(route("profissional.login"), [
-            'login' => $this->funcionario->login,
-            'password' => $this->funcionario->password
+            'login' => $this->profissional->login,
+            'password' => $this->profissional->password
         ]);
 
         $resposta->assertRedirect(route("profissional.home"));
-        $this->assertAuthenticatedAs($this->funcionario);
+        $this->assertAuthenticatedAs($this->profissional);
 
         $anamne_fono = factory(AnamneseFonoaudiologia::class)->create([
             'id_paciente' => $paciente->id,
@@ -516,7 +569,7 @@ class AnamneseTest extends TestCase {
 
         $this->assertCount(1, AnamneseFonoaudiologia::all());
         $resposta->assertRedirect(route("profissional.home"));
-        $this->assertAuthenticatedAs($this->funcionario);
+        $this->assertAuthenticatedAs($this->profissional);
 
         //$this->visit(route("profissional.anamnese.fonoaudiologia", ['id_paciente' => $paciente->id]));
 
@@ -538,12 +591,12 @@ class AnamneseTest extends TestCase {
             'profissao' => 'Terapeuta',
         ]);
         $resposta = $this->post(route("profissional.login"), [
-            'login' => $this->funcionario->login,
-            'password' => $this->funcionario->password
+            'login' => $this->profissional->login,
+            'password' => $this->profissional->password
         ]);
 
         $resposta->assertRedirect(route("profissional.home"));
-        $this->assertAuthenticatedAs($this->funcionario);
+        $this->assertAuthenticatedAs($this->profissional);
 
         $anamne_to = factory(AnamneseTerapiaOcupacional::class)->create([
             'id_paciente' => $paciente->id,
@@ -553,7 +606,7 @@ class AnamneseTest extends TestCase {
         $this->assertCount(1, AnamneseTerapiaOcupacional::all());
 
         $resposta->assertRedirect(route("profissional.home"));
-        $this->assertAuthenticatedAs($this->funcionario);
+        $this->assertAuthenticatedAs($this->profissional);
 
         //$this->visit(route("profissional.anamnese.terapia_ocupacional", ['id_paciente' => $paciente->id]));
 
@@ -568,7 +621,7 @@ class AnamneseTest extends TestCase {
 
     }
 
-    /** @test */
+    /** @ test */
     public function funcaoTesteSoPraNaoFicarWarning() {
         $this->assertTrue(true);
     }
