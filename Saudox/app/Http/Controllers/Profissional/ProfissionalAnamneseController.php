@@ -63,8 +63,8 @@ class ProfissionalAnamneseController extends Controller {
         $validator_fonoaudiologia = Validator::make($entrada, AnamneseFonoaudiologia::$regras_validacao, $messages);
         if ($validator_fonoaudiologia->fails()) {
             return redirect()->back()
-                ->withErrors($validator_fonoaudiologia)
-                ->withInput();
+                             ->withErrors($validator_fonoaudiologia)
+                             ->withInput();
         }
 
         $anamnese_fono = new AnamneseFonoaudiologia;
@@ -169,8 +169,8 @@ class ProfissionalAnamneseController extends Controller {
         $validator_fonoaudiologia = Validator::make($entrada, AnamneseFonoaudiologia::$regras_validacao, $messages);
         if ($validator_fonoaudiologia->fails()) {
             return redirect()->back()
-                ->withErrors($validator_fonoaudiologia)
-                ->withInput();
+                             ->withErrors($validator_fonoaudiologia)
+                             ->withInput();
         }
 
         $anamnese_fono = $paciente->anamneseFonoaudiologias;
@@ -312,8 +312,8 @@ class ProfissionalAnamneseController extends Controller {
         $validator_terapia_ocupacional = Validator::make($entrada, AnamneseTerapiaOcupacional::$regras_validacao, $messages);
         if ($validator_terapia_ocupacional->fails()) {
             return redirect()->back()
-                ->withErrors($validator_terapia_ocupacional)
-                ->withInput();
+                             ->withErrors($validator_terapia_ocupacional)
+                             ->withInput();
         }
 
 
@@ -331,7 +331,7 @@ class ProfissionalAnamneseController extends Controller {
             $anamnese_to->escolha_de_grupo =  $str_grupo;
         }
 
-         if (!isset($entrada['quais_linguas_estrangeiras_fala'])) {
+        if (!isset($entrada['quais_linguas_estrangeiras_fala'])) {
             $anamnese_to->quais_linguas_estrangeiras_fala = "Nenhuma";
         }
         if (!isset($entrada['quais_intrumentos_toca'])) {
@@ -372,13 +372,6 @@ class ProfissionalAnamneseController extends Controller {
     public function salvarEditarTerapiaOcupacional(Request $request) {
         $entrada = $request->all();
 
-        $anamnese_to = AnamneseTerapiaOcupacional::find($entrada['id']);
-        $paciente_id = $entrada['id_paciente'];
-
-        if(!$anamnese_to) {
-            return view('erro', ['msg_erro' => "Profissional inexistente..."]);
-        }
-
         $messages = [
             'required' => 'O campo :attribute é obrigatório.',
             'min' => 'O campo :attribute é deve ter no minimo :min caracteres.',
@@ -392,88 +385,19 @@ class ProfissionalAnamneseController extends Controller {
         $validator_terapia_ocupacional = Validator::make($entrada, AnamneseTerapiaOcupacional::$regras_validacao, $messages);
         if ($validator_terapia_ocupacional->fails()) {
             return redirect()->back()
-                ->withErrors($validator_terapia_ocupacional)
-                ->withInput();
+                             ->withErrors($validator_terapia_ocupacional)
+                             ->withInput();
         }
 
+        $paciente = Paciente::find($entrada["id_paciente"]);
 
-        if (isset($entrada['gestacao-adicional'])) {
-            $entrada['gestacao'] .= ', ' . $entrada['gestacao-adicional'];
-        }
-        if (isset($entrada['parto-adicional'])) {
-            $entrada['parto'] .= ', ' . $entrada['parto-adicional'];
-        }
-        if (isset($entrada['amamentacao_natural-adicional'])) {
-            $entrada['amamentacao_natural'] .= ', ' . $entrada['amamentacao_natural-adicional'];
-        }
-        if (isset($entrada['dificuldade_ou_atraso_no_controle_do_esfincter-adicional'])) {
-            $entrada['dificuldade_ou_atraso_no_controle_do_esfincter'] .= ', ' . $entrada['dificuldade_ou_atraso_no_controle_do_esfincter-adicional'];
-        }
-        if (isset($entrada['desenvolvimento_motor_no_tempo_certo-adicional'])) {
-            $entrada['desenvolvimento_motor_no_tempo_certo'] .= ', ' . $entrada['desenvolvimento_motor_no_tempo_certo-adicional'];
-        }
-        if (isset($entrada['dificuldade_na_fala-adicional'])) {
-            $entrada['dificuldade_na_fala'] .= ', ' . $entrada['dificuldade_na_fala-adicional'];
-        }
-        if (isset($entrada['dificuldade_na_visao-adicional'])) {
-            $entrada['dificuldade_na_visao'] .= ', ' . $entrada['dificuldade_na_visao-adicional'];
-        }
-        if (isset($entrada['dificuldade_na_locomocao-adicional'])) {
-            $entrada['dificuldade_na_locomocao'] .= ', ' . $entrada['dificuldade_na_locomocao-adicional'];
-        }
-        if (isset($entrada['toma_banho_sozinho-adicional'])) {
-            $entrada['toma_banho_sozinho'] .= ', ' . $entrada['toma_banho_sozinho-adicional'];
-        }
-        if (isset($entrada['escova_os_dentes_sozinho-adicional'])) {
-            $entrada['escova_os_dentes_sozinho'] .= ', ' . $entrada['escova_os_dentes_sozinho-adicional'];
-        }
-        if (isset($entrada['usa_o_banheiro_sozinho-adicional'])) {
-            $entrada['usa_o_banheiro_sozinho'] .= ', ' . $entrada['usa_o_banheiro_sozinho-adicional'];
-        }
-        if (isset($entrada['necessita_auxilio_para_se_vestir_ou_despir-adicional'])) {
-            $entrada['necessita_auxilio_para_se_vestir_ou_despir'] .= ', ' . $entrada['necessita_auxilio_para_se_vestir_ou_despir-adicional'];
-        }
-        if (isset($entrada['atende_intervencoes_quando_esta_desobedecendo-adicional'])) {
-            $entrada['atende_intervencoes_quando_esta_desobedecendo'] .= ', ' . $entrada['atende_intervencoes_quando_esta_desobedecendo-adicional'];
-        }
-        if (isset($entrada['chora_facil-adicional'])) {
-            $entrada['chora_facil'] .= ', ' . $entrada['chora_facil-adicional'];
-        }
-        if (isset($entrada['recusa_auxílio-adicional'])) {
-            $entrada['recusa_auxílio'] .= ', ' . $entrada['recusa_auxílio-adicional'];
-        }
-        if (isset($entrada['resistencia_ao_toque-adicional'])) {
-            $entrada['resistencia_ao_toque'] .= ', ' . $entrada['resistencia_ao_toque-adicional'];
-        }
-        if (isset($entrada['ja_estudou_antes_em_outra_escola-adicional'])) {
-            $entrada['ja_estudou_antes_em_outra_escola'] .= ', ' . $entrada['ja_estudou_antes_em_outra_escola-adicional'];
-        }
-        if (isset($entrada['ja_repetiu_alguma_serie-adicional'])) {
-            $entrada['ja_repetiu_alguma_serie'] .= ', ' . $entrada['ja_repetiu_alguma_serie-adicional'];
-        }
-        if (isset($entrada['possui_acompanhante_terapeutico_em_sala-adicional'])) {
-            $entrada['possui_acompanhante_terapeutico_em_sala'] .= ', ' . $entrada['possui_acompanhante_terapeutico_em_sala-adicional'];
-        }
-        if (isset($entrada['recebe_orientacao_aos_deveres_em_casa-adicional'])) {
-            $entrada['recebe_orientacao_aos_deveres_em_casa'] .= ', ' . $entrada['recebe_orientacao_aos_deveres_em_casa-adicional'];
-        }
-        if (isset($entrada['faz_amigos_com_facilidade-adicional'])) {
-            $entrada['faz_amigos_com_facilidade'] .= ', ' . $entrada['faz_amigos_com_facilidade-adicional'];
-        }
-        if (isset($entrada['adaptase_facilmente_ao_meio-adicional'])) {
-            $entrada['adaptase_facilmente_ao_meio'] .= ', ' . $entrada['adaptase_facilmente_ao_meio-adicional'];
-        }
-        if (isset($entrada['ja_estudou_antes_em_outra_escola-adicional'])) {
-            $entrada['ja_estudou_antes_em_outra_escola'] .= ', ' . $entrada['ja_estudou_antes_em_outra_escola-adicional'];
-        }
-        if (isset($entrada['ja_repetiu_alguma_serie-adicional'])) {
-            $entrada['ja_repetiu_alguma_serie'] .= ', ' . $entrada['ja_repetiu_alguma_serie-adicional'];
-        }
-        if (isset($entrada['divide_quarto_com_alguem-adicional'])) {
-            $entrada['divide_quarto_com_alguem'] .= ', ' . $entrada['divide_quarto_com_alguem-adicional'];
+        if(!$paciente) {
+            return redirect()->back()
+                             ->withErrors(["paciente" => "Paciente inexistente!"])
+                             ->withInput();
         }
 
-
+        $anamnese_to = $paciente->anamneseTerapiaOcupacionals;
         $anamnese_to->fill($entrada);
 
         if (!isset($entrada['escolha_de_grupo'])) {
@@ -485,20 +409,6 @@ class ProfissionalAnamneseController extends Controller {
                 $str_grupo .= $grupo . ",";
             }
             $anamnese_to->escolha_de_grupo =  $str_grupo;
-        }
-
-        if (!isset($entrada['distracoes_preferidas'])) {
-            $anamnese_to->distracoes_preferidas = "Nenhuma";
-        } else{
-            $distracoes = $entrada['distracoes_preferidas'];
-            $str_dist = "";
-            foreach($distracoes as $dist) {
-                $str_dist .= $dist . ",";
-            }
-            $anamnese_to->distracoes_preferidas = $str_dist;
-            if (isset($entrada['distracoes_preferidas-adicional'])) {
-                $anamnese_to->distracoes_preferidas .= ', ' . $entrada['distracoes_preferidas-adicional'];
-            }
         }
 
         if (!isset($entrada['quais_linguas_estrangeiras_fala'])) {
@@ -514,8 +424,7 @@ class ProfissionalAnamneseController extends Controller {
             $anamnese_to->outras_atividades_que_pratica = "Nenhuma";
         }
 
-
         $anamnese_to->save();
-        return redirect()->route('profissional.anamnese.terapia_ocupacional.ver', $paciente_id);
+        return redirect()->route('profissional.anamnese.terapia_ocupacional.ver', $entrada["id_paciente"]);
     }
 }

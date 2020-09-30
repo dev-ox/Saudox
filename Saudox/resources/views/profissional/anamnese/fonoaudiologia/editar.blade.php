@@ -325,7 +325,7 @@
 
 
 
-                        <input type="submit" value="Cadastrar">
+                        <input type="submit" value="Salvar">
 
                     </form>
                 </div>
