@@ -57,6 +57,7 @@ class CreateAnamneseTerapiaOcupacionalsTable extends Migration {
             $table->string('escolha_de_grupo');
             $table->string('distracoes_preferidas');
             $table->boolean('obediente')->default(false);
+            $table->boolean('independente')->default(false);
             $table->boolean('dependente')->default(false);
             $table->boolean('comunicativo')->default(false);
             $table->boolean('agressivo')->default(false);

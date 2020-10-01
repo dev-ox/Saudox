@@ -10,7 +10,7 @@
 
                 <h1 class="pessoal"> Anamnese de Terapia Ocupacional do {{$paciente->nome_paciente}} </h1>
                 @if(Auth::guard('profissional')->check())
-                    <h3 class="pessoal"> <a href="{{ route('profissional.anamnese.terapia_ocupacional.editar', $anamnese->id) }}">Editar</a> </h3>
+                    <h3 class="pessoal"> <a href="{{ route('profissional.anamnese.terapia_ocupacional.editar', $paciente->id) }}">Editar</a> </h3>
                 @endif
 
 
