@@ -16,7 +16,9 @@
                 <div class="col-xl-3 bg-padrao box">
                     <div class="col-md-12">
                         <br>
-                        <h4 class="paciente-nav-titles">Anamneses</h4>
+                        @if($id_anamnese_fono != -1 || $id_anamnese_pnps != -1 || $id_anamnese_tocp != -1)
+                            <h4 class="paciente-nav-titles">Anamneses</h4>
+                        @endif
                         @if($id_anamnese_fono != -1)
                             <a href={{route('paciente.anamnese.fonoaudiologia.ver') }} class="bt paciente-bt">Fonoaudiologica</a>
                         @endif
@@ -27,7 +29,9 @@
                             <a href={{route('paciente.anamnese.terapia_ocupacional.ver')}} class="bt paciente-bt">Terapia Ocupacional</a>
                         @endif
                         <br>
-                        <h4 class="paciente-nav-titles">Avaliações</h4>
+                        @if($id_ava_fono != -1 || $id_ava_judo != -1 || $id_ava_neur != -1 || $id_ava_tocp != -1)
+                            <h4 class="paciente-nav-titles">Avaliações</h4>
+                        @endif
                         @if($id_ava_fono != -1)
                             <a href={{route('paciente.avaliacao.fonoaudiologia.ver')}} class="bt paciente-bt">Fonoaudiologica</a>
                         @endif
@@ -52,6 +56,8 @@
 
                 <div class="col-xl-9 bordas_amarelas bg-padrao">
                     <div class="col-xl-12">
+                        <br>
+                        <br>
                         <h3 class="marker-label">Próximas Consultas:</h3>
                         @if(count($agendamentos) > 0)
                             <table class="table table-borderless bg-padrao" style="text-align: center;">
@@ -74,7 +80,6 @@
                             </table>
 
                         @else
-                            {{$agendamentos}}
                             <h3>Não há agendamentos para você!</h3>
                         @endif
                     </div>
@@ -103,7 +108,7 @@
                                                         @endif
                                                             </label></label>
                                                             <br>
-                                                            <label class="lbinfo-static">Irmãos:<br><label class="lbinfo-ntstatic">{{$paciente->lista_irmaos}}</label></label>
+                                                            <label class="lbinfo-static">Nascimento:<br><label class="lbinfo-ntstatic">{{$paciente->dataNascimentoFormatada()}}</label></label>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label class="lbinfo-static">Responsavel:<br><label class="lbinfo-ntstatic">{{$paciente->responsavel}}</label></label>
@@ -128,7 +133,7 @@
                                                 </div>
 
                                                 <div class="col-md-3">
-                                                    <label class="lbinfo-static">Nascimento:<br><label class="lbinfo-ntstatic">{{$paciente->dataNascimentoFormatada()}}</label></label>
+                                                    <label class="lbinfo-static">Irmãos:<br><label class="lbinfo-ntstatic">{{$paciente->lista_irmaos}}</label></label>
                                                     <br>
                                                 </div>
                                             </div>
@@ -150,6 +155,11 @@
                                                                     <br><label class="lbinfo-ntstatic">Não
                                                                 @endif
                                                                     </label></label>
+                                                                    <br>
+                                                                @if($paciente->pais_sao_divorciados == 1)
+                                                                    <label class="lbinfo-static">Criança vive com quem?<br><label class="lbinfo-ntstatic">{{$paciente->vive_com_quem_caso_pais_divorciados}}</label></label>
+                                                                    <br>
+                                                                @endif
 
                                                         </div>
 
@@ -183,10 +193,6 @@
                                                             <br>
                                                             <label class="lbinfo-static">Idade da Mãe:<br><label class="lbinfo-ntstatic">{{$paciente->idade_mae}}</label></label>
                                                             <br>
-                                                            @if($paciente->pais_sao_divorciados == 1)
-                                                                <label class="lbinfo-static">Criança vive com quem?<br><label class="lbinfo-ntstatic">{{$paciente->vive_com_quem_caso_pais_divorciados}}</label></label>
-                                                                <br>
-                                                            @endif
                                                         </div>
                                                     </div>
                                                 </div>
@@ -210,11 +216,11 @@
                                                         <div class="col-md-3">
                                                             <label class="lbinfo-static">Bairro:<br><label class="lbinfo-ntstatic">{{$paciente->endereco->bairro}}</label></label>
                                                             <br>
-                                                            <label class="lbinfo-static">Descricao:<br><label class="lbinfo-ntstatic">{{$paciente->endereco->descricao}}</label></label>
+                                                            <label class="lbinfo-static">Ponto de Referência:<br><label class="lbinfo-ntstatic">{{$paciente->endereco->ponto_referencia}}</label></label>
                                                         </div>
 
                                                         <div class="col-md-3">
-                                                            <label class="lbinfo-static">Ponto de Referência:<br><label class="lbinfo-ntstatic">{{$paciente->endereco->ponto_referencia}}</label></label>
+                                                            <label class="lbinfo-static">Descricao:<br><label class="lbinfo-ntstatic">{{$paciente->endereco->descricao}}</label></label>
                                                         </div>
                                                     </div>
 
