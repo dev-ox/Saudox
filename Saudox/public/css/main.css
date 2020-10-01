@@ -813,6 +813,11 @@ h3{
     font-weight: normal;
 }
 
+.perfil-pac{
+    margin-left: -90px;
+    width: 105%;
+}
+
 .profissoes-table{
     color: white;
     font-size: 20px;

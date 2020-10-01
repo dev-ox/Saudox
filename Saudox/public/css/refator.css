@@ -64,6 +64,35 @@
     margin-top: 2%;
 }
 
+.paciente-bt{
+    display: block;
+    width: 200px;
+    height: auto;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    border-style: solid;
+    border-width: 2px;
+}
+
+.paciente-nav-titles{
+    text-align: center;
+    font-weight: bold;
+}
+
+.box{
+  border-right: 10px solid transparent;
+  border: 5px solid transparent;
+  background-clip:padding-box;
+}
+
+
+
+.hidden-div{
+    visibility:hidden;
+}
+
 .adm-page{
     margin-top: 3%;
     margin-left: 20%;
@@ -83,6 +112,14 @@
 
 .bordas_vermelhas {
     border: 2px solid var(--cor_vermelho);
+}
+
+.bordas_pretas {
+    border: 2px solid var(--cor_preto);
+}
+
+.bordas_pretas-bot {
+    border-bottom: 2px solid var(--cor_preto);
 }
 
 #timer_container {
@@ -293,6 +330,10 @@ th.tag{
     background-color: var(--cor_branco);
 }
 
+.dropdown-new {
+    overflow: hidden;
+}
+
 .dropdown:hover {
     display: block;
 }
@@ -386,4 +427,10 @@ th.tag{
     background-color: var(--cor_roxo) !important;
     color: var(--cor_branco) !important;
     text-decoration: none;
+}
+
+.hr_home{
+    width: 70%;
+    border-top: 1px solid var(--cor_preto) !important;
+    background-color: var(--cor_fundo) !important;
 }
