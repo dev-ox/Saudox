@@ -19,14 +19,14 @@ class PacienteController extends Controller {
     public function home(){
         $paciente = Paciente::find(Auth::id());
 
-        $ava_fono = $paciente->avaliacao_fono;
-        $ava_judo = $paciente->avaliacao_judo;
-        $ava_neur = $paciente->avaliacao_neuro;
-        $ava_tocp = $paciente->avaliacao_terapia_ocupacional;
+        $id_ava_fono = $paciente->avaliacao_fono ? $paciente->avaliacao_fono['id'] : -1;
+        $id_ava_judo = $paciente->avaliacao_judo ? $paciente->avaliacao_judo['id'] : -1;
+        $id_ava_neur = $paciente->avaliacao_neuro ? $paciente->avaliacao_neuro['id'] : -1;
+        $id_ava_tocp = $paciente->avaliacao_terapia_ocupacional ? $paciente->avaliacao_terapia_ocupacional['id'] : -1;
 
-        $anamnese_fono = $paciente->anamnese__terapia__ocupacionals;
-        $anamnese_pnps = $paciente->anamneseFonoaudiologias;
-        $anamnese_tocp = $paciente->anamneseGigantePsicopedaNeuroPsicomotos();
+        $id_anamnese_fono = $paciente->anamnese__terapia__ocupacionals ? $paciente->anamnese__terapia__ocupacionals['id'] : -1;
+        $id_anamnese_pnps = $paciente->anamneseFonoaudiologias ? $paciente->anamneseFonoaudiologias['id'] : -1;
+        $id_anamnese_tocp = $paciente->anamneseGigantePsicopedaNeuroPsicomotos() ?  $paciente->anamneseGigantePsicopedaNeuroPsicomotos()->id : -1;
 
         $agendamentos = Agendamentos::where('status', '1')
             ->where('cpf', $paciente->cpf)
@@ -38,13 +38,13 @@ class PacienteController extends Controller {
             return view('paciente.home', [
                 'paciente' => $paciente,
                 'agendamentos' => $agendamentos,
-                'ava_fono' => $ava_fono,
-                'ava_judo' => $ava_judo,
-                'ava_neur' => $ava_neur,
-                'ava_tocp' => $ava_tocp,
-                'anamnese_fono' => $anamnese_fono,
-                'anamnese_pnps' => $anamnese_pnps,
-                'anamnese_tocp' => $anamnese_tocp,
+                'id_ava_fono' => $id_ava_fono,
+                'id_ava_judo' => $id_ava_judo,
+                'id_ava_tocp' => $id_ava_tocp,
+                'id_ava_neur' => $id_ava_neur,
+                'id_anamnese_fono' => $id_anamnese_fono,
+                'id_anamnese_pnps' => $id_anamnese_pnps,
+                'id_anamnese_tocp' => $id_anamnese_tocp,
             ]);
         } else {
             return redirect()->route('erro', ['msg_erro' => "Paciente inexistente"]);

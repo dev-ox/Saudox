@@ -17,27 +17,27 @@
                     <div class="col-md-12">
                         <br>
                         <h4 class="paciente-nav-titles">Anamneses</h4>
-                        @if($anamnese_fono)
+                        @if($id_anamnese_fono != -1)
                             <a href={{route('paciente.anamnese.fonoaudiologia.ver') }} class="bt paciente-bt">Fonoaudiologica</a>
                         @endif
-                        @if($anamnese_pnps)
+                        @if($id_anamnese_pnps != -1)
                             <a href={{route('paciente.anamnese.pnp.ver')}} class="bt paciente-bt">Psicomotricidade</a>
                         @endif
-                        @if($anamnese_tocp)
+                        @if($id_anamnese_tocp != -1)
                             <a href={{route('paciente.anamnese.terapia_ocupacional.ver')}} class="bt paciente-bt">Terapia Ocupacional</a>
                         @endif
                         <br>
                         <h4 class="paciente-nav-titles">Avaliações</h4>
-                        @if($ava_fono)
+                        @if($id_ava_fono != -1)
                             <a href={{route('paciente.avaliacao.fonoaudiologia.ver')}} class="bt paciente-bt">Fonoaudiologica</a>
                         @endif
-                        @if($ava_judo)
+                        @if($id_ava_judo != -1)
                             <a href={{route('paciente.avaliacao.judo.ver')}} class="bt paciente-bt">Judô</a>
                         @endif
-                        @if($ava_neur)
+                        @if($id_ava_neur != -1)
                             <a href={{route('paciente.avaliacao.neuropsicologia.ver')}} class="bt paciente-bt">Neuropsicologica</a>
                         @endif
-                        @if($ava_tocp)
+                        @if($id_ava_tocp != -1)
                             <a href={{route('paciente.avaliacao.terapia_ocupacional.ver')}} class="bt paciente-bt">Terapia Ocupacional</a>
                         @endif
                         <br>
