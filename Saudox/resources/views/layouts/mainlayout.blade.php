@@ -89,8 +89,9 @@
                                 </li>
 
                                 <div class="dropdown">
-
+                                    @if(Auth::guard('profissional')->check())
                                     <a class="dropdown-item" href={{route('profissional.admin.cadastro')}}>Criar Profissional</a>
+                                    @endif
 
                                     <a class="dropdown-item perigo" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
