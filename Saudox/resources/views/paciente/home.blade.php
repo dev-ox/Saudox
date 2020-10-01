@@ -80,7 +80,6 @@
                             </table>
 
                         @else
-                            {{$agendamentos}}
                             <h3>Não há agendamentos para você!</h3>
                         @endif
                     </div>
