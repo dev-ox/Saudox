@@ -18,8 +18,8 @@ use Faker\Generator as Faker;
 
 $factory->define(AnamneseFonoaudiologia::class, function (Faker $faker) {
     return [
-        'id_paciente' => 0,
-        'id_profissional' => 0,
+        'id_paciente' => 1,
+        'id_profissional' => 1,
         'responsavel_pelo_paciente' =>'Paulo Almeida',
         'numero_de_irmaos' => rand(0,5),
         'posicao_bloco_familiar' =>'Somente Alguma Coisa',
