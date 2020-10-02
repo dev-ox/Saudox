@@ -18,8 +18,8 @@ use Faker\Generator as Faker;
 
 $factory->define(AnamneseTerapiaOcupacional::class, function (Faker $faker)  {
     return [
-        'id_paciente' => 0,
-        'id_profissional' => 0,
+        'id_paciente' => 1,
+        'id_profissional' => 1,
         'gestacao' => '9',
         'doencas_da_mae_na_gravidez' => '9',
         'inquietacoes_da_mae_na_gravidez' => 'asfiasfsafaf',

@@ -18,9 +18,9 @@ use Faker\Generator as Faker;
 
 $factory->define(AvaliacaoJudo::class, function (Faker $faker) {
     return [
-        'id' => 0,
-        'id_paciente' => 0,
-        'id_profissional' => 0,
+        'id' => 1,
+        'id_paciente' => 1,
+        'id_profissional' => 1,
         'diagnostico' => 'Ta com câncer',
         'relacao_com_as_pessoas_judo' => 'pessima relação',
         'resposta_emocional' => 'Sofrendo pq ta com cancer',
