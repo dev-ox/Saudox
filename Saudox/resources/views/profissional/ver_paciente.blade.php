@@ -23,9 +23,9 @@
 
                     @if($profissional->temProfissao(App\Profissional::Psicopedagogo) || $profissional->temProfissao(App\Profissional::Neuropsicologo) || $profissional->ehAdmin())
                         @if(!$paciente->anamneseGigantePsicopedaNeuroPsicomotos())
-                            <a style="padding-top: 1%;" class="btn bordas_amarelas bg-azul bt_ana_ava_evo" href="{{ route("profissional.anamnese.psicopedagogia.criar", $paciente->id) }}">Criar Anamnese de Psicopedagia/Neuropsicologia/Psicomotricidade</a>
+                            <!-- <a style="padding-top: 1%;" class="btn bordas_amarelas bg-azul bt_ana_ava_evo" href="{{ route("profissional.anamnese.psicopedagogia.criar", $paciente->id) }}">Criar Anamnese de Psicopedagia/Neuropsicologia/Psicomotricidade</a> -->
                         @else
-                            <a style="padding-top: 1%;" class="btn bordas_amarelas bg-azul bt_ana_ava_evo" href="{{ route("profissional.anamnese.psicopedagogia.ver", $paciente->id) }}">Ver Anamnese de Psicopedagia/Neuropsicologia/Psicomotricidade</a>
+                            <!-- <a style="padding-top: 1%;" class="btn bordas_amarelas bg-azul bt_ana_ava_evo" href="{{ route("profissional.anamnese.psicopedagogia.ver", $paciente->id) }}">Ver Anamnese de Psicopedagia/Neuropsicologia/Psicomotricidade</a> -->
                         @endif
                     @endif
 
