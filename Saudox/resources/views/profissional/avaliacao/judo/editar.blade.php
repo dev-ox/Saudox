@@ -7,7 +7,7 @@
             <div style="text-align: center; width: 100%;">
                 <div class = "caixa_form">
                     <br>
-                    <h1>Edição da avaliação de Judo de {{$paciente->nome_paciente}}</h1>
+                    <h1>Edição da avaliação de Judô de {{$paciente->nome_paciente}}</h1>
                     <h3>Notas de 0 à 10</h3>
 
                     <form method="post" action="{{route('profissional.avaliacao.judo.editar.salvar')}}">
