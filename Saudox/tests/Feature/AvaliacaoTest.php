@@ -14,45 +14,25 @@ use App\AvaliacaoNeuropsicologica;
 
 class AvaliacaoTest extends TestCase {
     public $funcionario;
-
     private $endereco;
-
     private $paciente;
+
+    private $password;
 
     public function setUp() : void {
         parent::setUp();
 
+        $this->password = bcrypt('123123123');
+
         $this->endereco = factory(Endereco::class)->create();
         $this->funcionario = factory(Profissional::class)->create([
-            'password' => bcrypt($password = '123123123'),
-            'profissao' => 'Atendente',
+            'password' => $this->password,
+            'profissao' => Profissional::Recepcionista,
         ]);
-
-
-        $this->paciente = [
-            'login' => 'literalmentequalquercoisa',
-            'password' => '123123123',
-            'nome_paciente' => 'Carlos Antonio Alves Junior',
-            'cpf' => '98765432110',
-            'sexo' => 1,
-            'data_nascimento' => '1999-05-10',
-            'responsavel' => 'Maria Sueli',
-            'numero_irmaos' => 1,
-            'lista_irmaos' => 'Barbara Yorrana',
-            'nome_pai' => 'Tenho Pai Nao',
-            'nome_mae' => 'Maria Sueli de Melo',
-            'telefone_pai' => '66666666666',
-            'telefone_mae' => '11111111111',
-            'email_pai' => 'satanas@inferno.com',
-            'email_mae' => 'emailteste@gmail.com',
-            'idade_pai' => 99,
-            'idade_mae' => 45,
-            'id_endereco' => $this->endereco->id,
-            'naturalidade' => 'Brasileiro',
-            'pais_sao_casados' => false,
-            'pais_sao_divorciados' => false,
-            'tipo_filho_biologico_adotivo' => false,
-        ];
+        $this->paciente = factory(Paciente::class)->create([
+            'login' => 'login_teste',
+            'password' => $this->password,
+        ]);
     }
 
 
