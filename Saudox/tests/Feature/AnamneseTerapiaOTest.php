@@ -115,4 +115,43 @@ class AnamneseTerapiaOTest extends TestCase {
         $resposta_ver_fono->assertSee("Gestação");
     }
 
+    /** @test **/
+    public function duracaoGestacaoAnamneseTerapiaOcupNaoPodeSerVazio() {
+        $criarProf_Logar = $this->criarProfELogar(
+            array(
+                Profissional::TerapeutaOcupacional
+            ), $this->password);
+
+        $copia_anamnese = array($this->anamnese_terapiaOcupacional);
+        $copia_anamnese['gestacao'] = '';
+        $resposta = $this->post(route('profissional.anamnese.terapia_ocupacional.salvar'), $copia_anamnese);
+        $resposta->assertSessionHasErrors('gestacao');
+    }
+
+    /** @test **/
+    public function movimentosEsterotipadosAnamneseTerapiaOcupNaoPodeSerVazio() {
+        $criarProf_Logar = $this->criarProfELogar(
+            array(
+                Profissional::TerapeutaOcupacional
+            ), $this->password);
+
+        $copia_anamnese = array($this->anamnese_terapiaOcupacional);
+        $copia_anamnese['movimentos_estereotipados'] = '';
+        $resposta = $this->post(route('profissional.anamnese.terapia_ocupacional.salvar'), $copia_anamnese);
+        $resposta->assertSessionHasErrors('movimentos_estereotipados');
+    }
+
+    /** @test **/
+    public function escolhaDeGrupoAnamneseTerapiaOcupNaoPodeSerVazio() {
+        $criarProf_Logar = $this->criarProfELogar(
+            array(
+                Profissional::TerapeutaOcupacional
+            ), $this->password);
+
+        $copia_anamnese = array($this->anamnese_terapiaOcupacional);
+        $copia_anamnese['escolha_de_grupo'] = '';
+        $resposta = $this->post(route('profissional.anamnese.terapia_ocupacional.salvar'), $copia_anamnese);
+        $resposta->assertSessionHasErrors('escolha_de_grupo');
+    }
+
 }
