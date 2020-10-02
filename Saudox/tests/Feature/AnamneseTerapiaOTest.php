@@ -81,7 +81,7 @@ class AnamneseTerapiaOTest extends TestCase {
 
         // Gera um novo paciente (sem anamnese)
         $paciente_aux = factory(Paciente::class)->create([
-            'password' => $this->password,
+            'password' => $this->password_encrypt,
             'id_endereco' => $this->endereco->id,
         ]);
 
