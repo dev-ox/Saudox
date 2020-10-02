@@ -2,6 +2,8 @@
 
 namespace Tests\Feature;
 
+use App\AnamneseTerapiaOcupacional;
+use Illuminate\Support\Facades\Auth;
 use Tests\TestCase;
 use App\Endereco;
 use App\Profissional;
@@ -19,40 +21,54 @@ class AvaliacaoTest extends TestCase {
 
     private $paciente;
 
+    private $password = '123123123';
+
     public function setUp() : void {
         parent::setUp();
 
+
         $this->endereco = factory(Endereco::class)->create();
-        $this->funcionario = factory(Profissional::class)->create([
-            'password' => bcrypt($password = '123123123'),
-            'profissao' => 'Atendente',
+        $this->paciente = factory(Paciente::class)->create([
+            'password' => bcrypt($this->password),
+            'id_endereco' => $this->endereco->id,
+        ]);
+        $this->profissional = factory(Profissional::class)->create([
+            'password' => bcrypt($this->password),
+            'profissao' => Profissional::Adm,
+        ]);
+        $this->avaliacao_judo = factory(AvaliacaoJudo::class)->create([
+            'id_paciente' => $this->paciente->id,
+            'id_profissional' => $this->profissional->id,
+        ]);
+    }
+
+    // Função que cria um profissional e já loga ele.
+    // O parametro $profissoes é um array de profissoes
+    public function criarProfELogar($profissoes, $password) {
+        // Concatenação das profissões com ';'
+        $str_profissoes = '';
+        foreach($profissoes as $p) {
+            $str_profissoes = $str_profissoes . $p . ";";
+        }
+        // Criação do profissional
+        $prof_aux = factory(Profissional::class)->create([
+            'password' => bcrypt($password),
+            'profissao' => $str_profissoes,
         ]);
 
+        // Login
+        $resposta_login = $this->post(route("profissional.login"), [
+            'login' => $prof_aux->login,
+            'password' => $password,
+        ]);
+        // Login teste
+        Auth::login($prof_aux, true);
+        $this->assertTrue(Auth::check());
+        // Ao fazer login ele é redirecionado para a home (fazendo verificação)
+        $resposta_login->assertRedirect(route("profissional.home"));
 
-        $this->paciente = [
-            'login' => 'literalmentequalquercoisa',
-            'password' => '123123123',
-            'nome_paciente' => 'Carlos Antonio Alves Junior',
-            'cpf' => '98765432110',
-            'sexo' => 1,
-            'data_nascimento' => '1999-05-10',
-            'responsavel' => 'Maria Sueli',
-            'numero_irmaos' => 1,
-            'lista_irmaos' => 'Barbara Yorrana',
-            'nome_pai' => 'Tenho Pai Nao',
-            'nome_mae' => 'Maria Sueli de Melo',
-            'telefone_pai' => '66666666666',
-            'telefone_mae' => '11111111111',
-            'email_pai' => 'satanas@inferno.com',
-            'email_mae' => 'emailteste@gmail.com',
-            'idade_pai' => 99,
-            'idade_mae' => 45,
-            'id_endereco' => $this->endereco->id,
-            'naturalidade' => 'Brasileiro',
-            'pais_sao_casados' => false,
-            'pais_sao_divorciados' => false,
-            'tipo_filho_biologico_adotivo' => false,
-        ];
+        // Retorna o profissional criado e o resultado do login
+        return ['profissional' => $prof_aux, 'resposta_login' => $resposta_login];
     }
 
 
@@ -715,6 +731,19 @@ class AvaliacaoTest extends TestCase {
     /** @test */
     public function funcaoTesteSoPraNaoFicarWarning() {
         $this->assertTrue(true);
+    }
+
+    /** @test **/
+    public function respostaEmocionalAvaliacaoJudoNaoPodeSerVazio() {
+        $criarProf_Logar = $this->criarProfELogar(
+            array(
+                Profissional::TerapeutaOcupacional
+            ), $this->password);
+
+        $copia_anamnese = array($this->avaliacao_judo);
+        $copia_anamnese['resposta_emocional'] = '';
+        $resposta = $this->post(route('profissional.avaliacao.judo.criar.salvar'), $copia_anamnese);
+        $resposta->assertSessionHasErrors('resposta_emocional');
     }
 
 
