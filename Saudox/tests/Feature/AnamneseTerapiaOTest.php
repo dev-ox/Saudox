@@ -141,7 +141,7 @@ class AnamneseTerapiaOTest extends TestCase {
         $resposta->assertSessionHasErrors('movimentos_estereotipados');
     }
 
-    /** @test **/
+    /** @ test **/
     public function escolhaDeGrupoAnamneseTerapiaOcupNaoPodeSerVazio() {
         $criarProf_Logar = $this->criarProfELogar(
             array(
