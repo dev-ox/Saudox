@@ -18,19 +18,21 @@ use Faker\Generator as Faker;
 
 $factory->define(Profissional::class, function (Faker $faker) {
     return [
-        'nome' => 'Carlos Antônio',
-        'cpf' => $faker->unique()->safeEmail,
-        'rg' => $faker->unique()->safeEmail,
+        'login' => $faker->unique()->name,
+        'password' => bcrypt('123123123'),
+        'nome' => 'Carlos Antônio Alves',
+        'cpf' => random_int(11111111111, 99999999999),
+        'rg' => random_int(1111111, 9999999),
         'status' => 'Ativo',
-        'login' => $faker->unique()->safeEmail,
-        'password' => '123123123',
-        'profissao' => 'Administrador;Psicopedagogo;',
-        'numero_conselho' => '123',
+        'profissao' => Profissional::Adm,
+        'numero_conselho' => '123345',
         'id_endereco' => 1,
         'telefone_1' => '12345678910',
         'telefone_2'=> '12345678911',
-        'email' => 'carlosaajunior.jp@gmail.com',
+        'email' => $faker->unique()->safeEmail,
         'estado_civil' => 'Solteiro',
         'nacionalidade' => 'Brasileiro',
+        'descricao_de_conhecimento_e_experiencia' => 'Tem Pós em alguma área médica',
+        'aviso' => 'Aviso que não estarei disponível no dia 2',
     ];
 });

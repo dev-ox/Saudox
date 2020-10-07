@@ -57,7 +57,10 @@ class ProfissionalAvaliacaoController extends Controller {
         if(!$avaliacao){
             return redirect()->route('erro', ['msg_erro' => "Avaliação do paciente " .$id_paciente. " não existe"]);
         }
-        return view('profissional/avaliacao/judo/ver', ['avaliacao' => $avaliacao]);
+        return view('profissional/avaliacao/judo/ver', [
+            'avaliacao' => $avaliacao,
+            'paciente' => $paciente,
+        ]);
     }
 
     public function criarJudo($id_paciente) {
@@ -96,11 +99,11 @@ class ProfissionalAvaliacaoController extends Controller {
     public function editarJudo($id_paciente) {
         $paciente = Paciente::find($id_paciente);
         if(!$paciente){
-            return view('erro', ['msg_erro' => "Paciente " .$id_paciente. " inexistente"]);
+            return redirect()->route('erro', ['msg_erro' => "Paciente " .$id_paciente. " inexistente"]);
         }
         $avaliacao = $paciente->avaliacaoJudo;
         if(!$avaliacao){
-            return view('erro', ['msg_erro' => "Avaliação do paciente " .$id_paciente. " não existe"]);
+            return redirect()->route('erro', ['msg_erro' => "Avaliação do paciente " .$id_paciente. " não existe"]);
         }
         return view('profissional/avaliacao/judo/editar', [
             'avaliacao' => $avaliacao,

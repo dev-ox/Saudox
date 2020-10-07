@@ -10,14 +10,11 @@ use Illuminate\Support\Facades\Auth;
 use Tests\TestCase;
 
 class AgendamentosTest extends TestCase {
-
-
     private $profissional;
     private $paciente;
     private $senha;
 
     private $agendamento_completo;
-
 
     public function setUp() : void {
         parent::setUp();
@@ -59,10 +56,7 @@ class AgendamentosTest extends TestCase {
             'descricao' => "casa engraçada não tinha teto não tinha nada",
             'ponto_referencia' => "ali lá",
         ];
-
     }
-
-
 
     private function loginProfisssional() {
         $resposta = $this->post(route('profissional.efetuarLogin'), [
@@ -77,7 +71,6 @@ class AgendamentosTest extends TestCase {
         $this->assertTrue(Auth::check());
         $this->assertAuthenticated();
     }
-
 
     private function loginPaciente() {
         $resposta = $this->post(route('login'), [
@@ -96,10 +89,8 @@ class AgendamentosTest extends TestCase {
         $resposta = $this->get("/paciente/home");
         $resposta->assertOk();
 
-        /* TODO: mudar isso quando a view tiver pronta */
-        $resposta->assertSee("Sou Paciente");
+        $resposta->assertSee("Informações Pessoais");
     }
-
 
     private function logout() {
         $this->post(route('logout'));
@@ -124,7 +115,6 @@ class AgendamentosTest extends TestCase {
         $respota->assertSee("Agendar para o paciente");
     }
 
-
     /** @test **/
     public function pacienteNaoPodeEnviarAgendamento() {
         $this->loginPaciente();
@@ -144,7 +134,6 @@ class AgendamentosTest extends TestCase {
         $resposta->assertRedirect(route("agendamento.ver", 1));
         $this->assertCount(1, Agendamentos::all());
     }
-
 
     /** @test **/
     public function nomeAgendamentoNaoPodeSerVazio() {
@@ -179,7 +168,6 @@ class AgendamentosTest extends TestCase {
         $this->assertCount(0, Agendamentos::all());
     }
 
-
     /** @test **/
     public function telefoneAgendamentoNaoPodeSerVazio() {
         $this->loginProfisssional();
@@ -190,7 +178,6 @@ class AgendamentosTest extends TestCase {
         $resposta->assertSessionHasErrors('telefone');
         $this->assertCount(0, Agendamentos::all());
     }
-
 
     /** @test **/
     public function emailAgendamentoPodeSerVazio() {
@@ -204,8 +191,6 @@ class AgendamentosTest extends TestCase {
         $this->assertCount(1, Agendamentos::all());
     }
 
-
-
     /** @test **/
     public function estadoAgendamentoNaoPodeSerVazio() {
         $this->loginProfisssional();
@@ -217,7 +202,6 @@ class AgendamentosTest extends TestCase {
         $this->assertCount(0, Agendamentos::all());
     }
 
-
     /** @test **/
     public function cidadeAgendamentoNaoPodeSerVazio() {
         $this->loginProfisssional();
@@ -228,7 +212,6 @@ class AgendamentosTest extends TestCase {
         $resposta->assertSessionHasErrors('cidade');
         $this->assertCount(0, Agendamentos::all());
     }
-
 
     /** @test **/
     public function bairroAgendamentoPodeSerVazio() {
@@ -266,8 +249,6 @@ class AgendamentosTest extends TestCase {
         $this->assertCount(1, Agendamentos::all());
     }
 
-
-
     /** @test **/
     public function complementoAgendamentoPodeSerVazio() {
         $this->loginProfisssional();
@@ -291,7 +272,6 @@ class AgendamentosTest extends TestCase {
         $this->assertCount(0, Agendamentos::all());
     }
 
-
     /** @test **/
     public function localAtendimentoAgendamentoNaoPodeSerVazio() {
         $this->loginProfisssional();
@@ -313,7 +293,6 @@ class AgendamentosTest extends TestCase {
         $resposta->assertSessionHasErrors();
         $this->assertCount(0, Agendamentos::all());
     }
-
 
     /** @test **/
     public function horaEntradaAtendimentoAgendamentoNaoPodeSerVazio() {
@@ -410,7 +389,6 @@ class AgendamentosTest extends TestCase {
         $resposta = $this->post(route('agendamento.salvar'), $agendamento_incompleto);
         $resposta->assertSessionHasErrors('dia_da_consulta');
         $this->assertCount(0, Agendamentos::all());
-
     }
 
     /** @ test **/
@@ -493,6 +471,7 @@ class AgendamentosTest extends TestCase {
         $this->assertCount(0, Agendamentos::all());
 
     }
+
     /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638205 */
     /* TA_03 */
@@ -506,6 +485,7 @@ class AgendamentosTest extends TestCase {
         $this->assertCount(0, Agendamentos::all());
 
     }
+
     /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638205 */
     /* TA_03 */
@@ -519,6 +499,7 @@ class AgendamentosTest extends TestCase {
         $this->assertCount(0, Agendamentos::all());
 
     }
+
     /** @ test **/
     /* url: https://www.pivotaltracker.com/story/show/174638205 */
     /* TA_03 */
