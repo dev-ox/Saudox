@@ -365,6 +365,18 @@ h3{
     scrollbar-width: none;
 }
 
+.c-wrapper{
+    max-height: 200px;
+    overflow: auto;
+    -ms-overflow-style: none;
+}
+
+.d-wrapper{
+    max-height: 100px;
+    overflow: auto;
+    -ms-overflow-style: none;
+}
+
 .search-label-agenda{
     font-size:2.2vw;
     transition: all 0.5s ease-in-out;
