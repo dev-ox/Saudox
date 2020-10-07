@@ -530,17 +530,15 @@
                     <br>
                     <br>
                     <h3 class="marker-label">Outras informações importantes:</h3>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-12">
-                                <label class="lbinfo-static"><br>
-                                    <div class="c-wrapper">
-                                        <label class="lbinfo-ntstatic">{{$avaliacao->info_extras_relevante}}</label>
-                                    </div>
-                                </label>
-                        </div>
-
+                    <div class="col-md-12">
+                            <label class="lbinfo-static">
+                                <div class="c-wrapper">
+                                    <label class="lbinfo-ntstatic">{{$avaliacao->info_extras_relevante}}</label>
+                                </div>
+                            </label>
                     </div>
+                    <br>
+                    <br>
 
                 </div>
 
