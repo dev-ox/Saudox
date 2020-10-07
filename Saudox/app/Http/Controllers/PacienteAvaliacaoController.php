@@ -47,7 +47,7 @@ class PacienteAvaliacaoController extends Controller {
         if(!$avaliacao) {
             return redirect()->route('erro', ['msg_erro' => "Essa avaliação não existe."]);
         }
-        return view('paciente/avaliacoes/terapia_ocupacional')->with(["avaliacao" => $avaliacao]);
+        return view('paciente/avaliacoes/terapia_ocupacional')->with(["avaliacao" => $avaliacao,]);
     }
 
 }

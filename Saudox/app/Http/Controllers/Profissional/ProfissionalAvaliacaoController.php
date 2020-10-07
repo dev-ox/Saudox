@@ -181,7 +181,10 @@ class ProfissionalAvaliacaoController extends Controller {
         if(!$avaliacao){
             return redirect()->route('erro', ['msg_erro' => "Avaliação do paciente " .$id_paciente. " não existe"]);
         }
-        return view('profissional/avaliacao/terapia_ocupacional/ver', ['avaliacao' => $avaliacao]);
+        return view('profissional/avaliacao/terapia_ocupacional/ver', [
+            'avaliacao' => $avaliacao,
+            'paciente' => $paciente,
+        ]);
     }
 
     public function criarTerapiaOcupacional($id_paciente) {
