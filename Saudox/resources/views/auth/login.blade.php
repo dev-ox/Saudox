@@ -7,7 +7,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <?php // TODO: arrumar isso, claro! ?>
-            @if($errors->count() > 0)
+            @if(count($errors) > 0)
                 {{ $errors }}
             @endif
 
