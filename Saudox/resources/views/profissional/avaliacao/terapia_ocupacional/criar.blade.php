@@ -213,7 +213,7 @@
                         <input value="0" type="radio" name="ajuda_a_colocar_a_mesa" id="ajuda_a_colocar_a_mesa" {{ old_checked("ajuda_a_colocar_a_mesa", "0") }}><br>
 
                         <label class="required">Qual o tipo de alimentação usada?</label><br><br>
-                        <textarea class="textareas_form" id="tipo_alimentacao" name="tipo_alimentacao" rows="4" cols="50" style=""></textarea><br><br>
+                        <textarea class="textareas_form" id="tipo_alimentacao" name="tipo_alimentacao" rows="4" cols="50" style="">{{old("tipo_alimentacao")}}</textarea><br><br>
 
                         <label class="required">Tem bom apetite?</label><br>
                         <label for="tem_bom_apetite">Sim</label>
@@ -222,10 +222,10 @@
                         <input value="0" type="radio" name="tem_bom_apetite" id="tem_bom_apetite" {{ old_checked("tem_bom_apetite", "0") }}><br>
 
                         <label class="required">O que mais gosta de comer?</label><br><br>
-                        <textarea class="textareas_form" id="o_que_gosta_de_comer" name="o_que_gosta_de_comer" rows="4" cols="50" style=""></textarea><br><br>
+                        <textarea class="textareas_form" id="o_que_gosta_de_comer" name="o_que_gosta_de_comer" rows="4" cols="50" style="">{{old("o_que_gosta_de_comer")}}</textarea><br><br>
 
                         <label class="required">O que não gosta de comer?</label><br><br>
-                        <textarea class="textareas_form" id="nao_gosta_de_comer" name="nao_gosta_de_comer" rows="4" cols="50" style=""></textarea><br><br>
+                        <textarea class="textareas_form" id="nao_gosta_de_comer" name="nao_gosta_de_comer" rows="4" cols="50" style="">{{old("nao_gosta_de_comer")}}</textarea><br><br>
 
                         <label class="required">Teve dificuldade de passar de pastoso para sólido?</label><br>
                         <label for="houve_dificuldade_transicao_pastoso_solido">Sim</label>
