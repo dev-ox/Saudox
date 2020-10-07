@@ -57,6 +57,14 @@
                             <a style="padding-top: 2%;" class="btn bordas_amarelas bg-azul bt_ana_ava_evo" href="{{ route("profissional.avaliacao.judo.ver", $paciente->id) }}">Ver Avaliação de Judô</a>
                         @endif
                     @endif
+                    @if($profissional->temProfissao(App\Profissional::TerapeutaOcupacional) || $profissional->ehAdmin())
+                        @if(!$paciente->avaliacaoTerapiaOcupacional)
+                            <a style="padding-top: 2%;" class="btn bordas_amarelas bg-azul bt_ana_ava_evo" href="{{ route("profissional.avaliacao.terapia_ocupacional.criar", $paciente->id) }}">Criar Avaliação de Terapia Ocupacional</a>
+                        @else
+                            <a style="padding-top: 2%;" class="btn bordas_amarelas bg-azul bt_ana_ava_evo" href="{{ route("profissional.avaliacao.terapia_ocupacional.ver", $paciente->id) }}">Ver Avaliação de Terapia Ocupacional</a>
+                        @endif
+                    @endif
+
 
 
 

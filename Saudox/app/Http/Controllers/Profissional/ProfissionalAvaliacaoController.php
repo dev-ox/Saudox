@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Profissional;
 
 use App\AvaliacaoJudo;
+use App\AvaliacaoTerapiaOcupacional;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -189,6 +190,31 @@ class ProfissionalAvaliacaoController extends Controller {
             return redirect()->route('erro', ['msg_erro' => "Paciente " .$id_paciente. " inexistente"]);
         }
         return view('profissional/avaliacao/terapia_ocupacional/criar', ['paciente' => $paciente]);
+    }
+
+    public function salvarTerapiaOcupacional(Request $request){
+        $messages = [
+            'required' => 'O campo :attribute é obrigatório.',
+            'numeric' => 'O campo :attribute deve ser um número.',
+            'id_paciente.exists' => 'O paciente não existe',
+            'id_profissional.exists' => 'O profissional não existe',
+            'max' => 'O campo :attribute é deve ter no maximo :max caracteres.',
+        ];
+
+        $entrada = $request->all();
+
+
+        $validator_to = Validator::make($entrada, AvaliacaoTerapiaOcupacional::$regras_validacao, $messages);
+        if ($validator_to->fails()) {
+            return redirect()->back()
+                ->withErrors($validator_to)
+                ->withInput();
+        }
+        $avaliacao_terapia_ocupacional = new AvaliacaoTerapiaOcupacional;
+        $avaliacao_terapia_ocupacional->fill($entrada);
+        $avaliacao_terapia_ocupacional->responsavel_por_este_documento = $entrada['id_profissional'];
+        $avaliacao_terapia_ocupacional->save();
+        return redirect()->route("profissional.avaliacao.terapia_ocupacional.ver", $entrada["id_paciente"]);
     }
 
     public function editarTerapiaOcupacional($id_paciente) {
