@@ -35,16 +35,15 @@
                         @csrf
                         <input value="{{$paciente->id}}" type="hidden"  name="id_paciente" id="id_paciente">
                         <input value="{{Auth::id()}}" type="hidden"  name="id_profissional" id="id_profissional">
+                        <input type="hidden" name="data_avaliacao" id="data_avaliacao" value='<?php echo date('Y-m-d');?>'>
 
                         <h2 style="margin: auto; color: var(--cor_amarelo)">Avaliação Geral</h2>
 
                         <hr class="hr_form">
                         <h3>Informações Iniciais</h3>
-                        <label class="required">Data da avaliação:</label><br>
-                        <input type="date" name="data_avaliacao" id="data_avaliacao" min="{{ date('Y-m-d') }}">
 
                         <label class="required">Entrevistado:</label><br>
-                        <input value="{{ old('entrevistado') }}" placeholder="Entrevustado" type="text" name="entrevistado" id="entrevistado">
+                        <input value="{{ old('entrevistado') }}" placeholder="Entrevistado" type="text" name="entrevistado" id="entrevistado">
 
                         <label class="required">Queixa Principal:</label><br>
                         <input value="{{ old('queixa_principal') }}" placeholder="Queixa" type="text" name="queixa_principal" id="posicao_bloco_familiar">
@@ -55,45 +54,45 @@
                         <br>
 
                         <label class="required">Quais as brincadeiras favoritas de sua criança?</label><br>
-                        <label>(Brinquedos, Animais, Materiais e outros) Separar por vírgula</label><br><br>
-                        <textarea class="textareas_form" id="brincadeiras_favoritas" name="brincadeiras_favoritas" rows="4" cols="50" style=""></textarea><br><br>
+                        <label>(Brinquedos, Animais, Materiais e outros)</label><br><br>
+                        <textarea class="textareas_form" id="brincadeiras_favoritas" name="brincadeiras_favoritas" rows="4" cols="50" style="">{{old("brincadeiras_favoritas")}}</textarea><br><br>
 
                         <label class="required">Onde sua criança brinca?</label><br>
-                        <label>(Em casa, Na comunidade – parque, escola,...) Separar por vírgula</label><br><br>
-                        <textarea class="textareas_form" id="onde_brinca" name="onde_brinca" rows="4" cols="50" style=""></textarea><br><br>
+                        <label>(Em casa, Na comunidade – parque, escola,...)</label><br><br>
+                        <textarea class="textareas_form" id="onde_brinca" name="onde_brinca" rows="4" cols="50" style="">{{old("onde_brinca")}}</textarea><br><br>
 
                         <label class="required">Com quem sua criança prefere brincar?</label><br><br>
-                        <textarea class="textareas_form" id="com_quem_prefere_brincar" name="com_quem_prefere_brincar" rows="4" cols="50" style=""></textarea><br><br>
+                        <textarea class="textareas_form" id="com_quem_prefere_brincar" name="com_quem_prefere_brincar" rows="4" cols="50" style="">{{old("com_quem_prefere_brincar")}}</textarea><br><br>
 
                         <label class="required">O que faz sua criança sorrir e dar gargalhada?</label><br><br>
-                        <textarea class="textareas_form" id="o_que_faz_rir" name="o_que_faz_rir" rows="4" cols="50" style=""></textarea><br><br>
+                        <textarea class="textareas_form" id="o_que_faz_rir" name="o_que_faz_rir" rows="4" cols="50" style="">{{old("o_que_faz_rir")}}</textarea><br><br>
 
                         <label class="required">Que tipo de brincadeira é evitada?</label><br><br>
-                        <textarea class="textareas_form" id="brincadeiras_evitadas" name="brincadeiras_evitadas" rows="4" cols="50" style=""></textarea><br><br>
+                        <textarea class="textareas_form" id="brincadeiras_evitadas" name="brincadeiras_evitadas" rows="4" cols="50" style="">{{old("brincadeiras_evitadas")}}</textarea><br><br>
 
                         <label class="required">Você tem que dar muita atenção à criança quando ela brinca ou ela brinca sozinha?</label><br><br>
-                        <textarea class="textareas_form" id="brinca_sozinho_ou_precisa_de_atencao" name="brinca_sozinho_ou_precisa_de_atencao" rows="4" cols="50" style=""></textarea><br><br>
+                        <textarea class="textareas_form" id="brinca_sozinho_ou_precisa_de_atencao" name="brinca_sozinho_ou_precisa_de_atencao" rows="4" cols="50" style="">{{old("brinca_sozinho_ou_precisa_de_atencao")}}</textarea><br><br>
 
                         <label class="required">Qual a postura mais frequente quando sua criança está brincando?</label><br><br>
-                        <textarea class="textareas_form" id="postura_crianca_quando_brinca" name="postura_crianca_quando_brinca" rows="4" cols="50" style=""></textarea><br><br>
+                        <textarea class="textareas_form" id="postura_crianca_quando_brinca" name="postura_crianca_quando_brinca" rows="4" cols="50" style="">{{old("postura_crianca_quando_brinca")}}</textarea><br><br>
 
                         <label class="required">O que sua criança faz quando está com raiva ou frustrada?</label><br><br>
-                        <textarea class="textareas_form" id="reacao_ao_ser_frustrada_ou_raiva" name="reacao_ao_ser_frustrada_ou_raiva" rows="4" cols="50" style=""></textarea><br><br>
+                        <textarea class="textareas_form" id="reacao_ao_ser_frustrada_ou_raiva" name="reacao_ao_ser_frustrada_ou_raiva" rows="4" cols="50" style="">{{old("reacao_ao_ser_frustrada_ou_raiva")}}</textarea><br><br>
 
                         <label class="required">Quem geralmente disciplina a criança?</label><br><br>
-                        <textarea class="textareas_form" id="quem_disciplina_a_crianca" name="quem_disciplina_a_crianca" rows="4" cols="50" style=""></textarea><br><br>
+                        <textarea class="textareas_form" id="quem_disciplina_a_crianca" name="quem_disciplina_a_crianca" rows="4" cols="50" style="">{{old("quem_disciplina_a_crianca")}}</textarea><br><br>
 
                         <label class="required">Como a criança reage às orientações dos pais?</label><br><br>
-                        <textarea class="textareas_form" id="como_reage_a_orientacao_dos_pais" name="como_reage_a_orientacao_dos_pais" rows="4" cols="50" style=""></textarea><br><br>
+                        <textarea class="textareas_form" id="como_reage_a_orientacao_dos_pais" name="como_reage_a_orientacao_dos_pais" rows="4" cols="50" style="">{{old("como_reage_a_orientacao_dos_pais")}}</textarea><br><br>
 
                         <label class="required">Como reage à abraços e carinho?</label><br><br>
-                        <textarea class="textareas_form" id="reacao_a_abracos_carinhos" name="reacao_a_abracos_carinhos" rows="4" cols="50" style=""></textarea><br><br>
+                        <textarea class="textareas_form" id="reacao_a_abracos_carinhos" name="reacao_a_abracos_carinhos" rows="4" cols="50" style="">{{old("reacao_a_abracos_carinhos")}}</textarea><br><br>
 
                         <label class="required">Áreas de maior habilidade?</label><br><br>
-                        <textarea class="textareas_form" id="areas_maior_habilidade" name="areas_maior_habilidade" rows="4" cols="50" style=""></textarea><br><br>
+                        <textarea class="textareas_form" id="areas_maior_habilidade" name="areas_maior_habilidade" rows="4" cols="50" style="">{{old("areas_maior_habilidade")}}</textarea><br><br>
 
                         <label class="required">Áreas de maior dificuldade?</label><br><br>
-                        <textarea class="textareas_form" id="areas_maior_dificuldade" name="areas_maior_dificuldade" rows="4" cols="50" style=""></textarea><br><br>
+                        <textarea class="textareas_form" id="areas_maior_dificuldade" name="areas_maior_dificuldade" rows="4" cols="50" style="">{{old("areas_maior_dificuldade")}}</textarea><br><br>
 
                         <hr class="hr_form">
                         <h3>Rotina Diária</h3><br>
@@ -112,10 +111,10 @@
                         <input value="{{ old('hora_almoco') }}" placeholder="Ex:. Após escola, ao 12:00 h" type="text" name="hora_almoco" id="hora_almoco">
 
                         <label class="required">Janta:</label><br>
-                        <input value="{{ old('hora_janta') }}" placeholder="Ex:. Após escola, ao 12:00 h" type="text" name="hora_janta" id="hora_janta">
+                        <input value="{{ old('hora_janta') }}" placeholder="Ex:. Após escola, ás 20:00 h" type="text" name="hora_janta" id="hora_janta">
 
                         <label class="required">Dormir:</label><br>
-                        <input value="{{ old('hora_dormir') }}" placeholder="Ex:. Após janta, ao 12:00 h" type="text" name="hora_dormir" id="hora_dormir">
+                        <input value="{{ old('hora_dormir') }}" placeholder="Ex:. Após janta, ás 22:00 h" type="text" name="hora_dormir" id="hora_dormir">
 
                         <hr class="hr_form">
                         <h3>Sono</h3><br>
@@ -126,7 +125,7 @@
                         <label for="dorme_durante_dia">Não</label>
                         <input value="0" type="radio" name="dorme_durante_dia" id="dorme_durante_dia" {{ old_checked("dorme_durante_dia", "0") }}><br>
 
-                        <label class="required">Quando vai dormir, ela dorme com facilidade?</label><br>
+                        <label class="required">Dorme com facilidade?</label><br>
                         <label for="dorme_com_facilidade">Sim</label>
                         <input value="1" type="radio" name="dorme_com_facilidade" id="dorme_com_facilidade" {{ old_checked("dorme_com_facilidade", "1") }}>
                         <label for="dorme_com_facilidade">Não</label>
@@ -324,7 +323,7 @@
 
                         <hr class="hr_form">
                         <h3>Outras informações importantes:</h3><br>
-                        <textarea class="textareas_form" id="info_extras_relevante" name="info_extras_relevante" rows="4" cols="50" style=""></textarea><br><br>
+                        <textarea class="textareas_form" id="info_extras_relevante" name="info_extras_relevante" rows="4" cols="50" style="">{{old("info_extras_relevante")}}</textarea><br><br>
 
 
                         <input type="submit" value="Salvar avaliação">
