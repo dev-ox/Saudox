@@ -78,7 +78,6 @@ class AvaliacaoTerapiaOcupacional extends Model {
     public static $regras_validacao = [
             'id_paciente' => 'required|numeric|exists:pacientes,id',
             'id_profissional' => 'required|numeric|exists:profissionals,id',
-            'data_avaliacao' => 'required',
             'entrevistado' => 'required|max:191',
             'queixa_principal' => 'required|max:191',
             'brincadeiras_favoritas' => 'required' ,
