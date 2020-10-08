@@ -35,7 +35,6 @@
                         @csrf
                         <input value="{{$paciente->id}}" type="hidden"  name="id_paciente" id="id_paciente">
                         <input value="{{Auth::id()}}" type="hidden"  name="id_profissional" id="id_profissional">
-                        <input type="hidden" name="data_avaliacao" id="data_avaliacao" value='<?php echo date('Y-m-d');?>'>
 
                         <h2 style="margin: auto; color: var(--cor_amarelo)">Avaliação Geral</h2>
 
