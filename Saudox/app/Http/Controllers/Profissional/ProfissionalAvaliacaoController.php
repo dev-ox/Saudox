@@ -216,6 +216,7 @@ class ProfissionalAvaliacaoController extends Controller {
         $avaliacao_terapia_ocupacional = new AvaliacaoTerapiaOcupacional;
         $avaliacao_terapia_ocupacional->fill($entrada);
         $avaliacao_terapia_ocupacional->responsavel_por_este_documento = $entrada['id_profissional'];
+        $avaliacao_terapia_ocupacional->data_avaliacao = date("Y-m-d");
         $avaliacao_terapia_ocupacional->save();
         return redirect()->route("profissional.avaliacao.terapia_ocupacional.ver", $entrada["id_paciente"]);
     }
@@ -229,7 +230,35 @@ class ProfissionalAvaliacaoController extends Controller {
         if(!$avaliacao){
             return redirect()->route('erro', ['msg_erro' => "Avaliação do paciente " .$id_paciente. " não existe"]);
         }
-        return view('profissional/avaliacao/terapia_ocupacional/editar', ['avaliacao' => $avaliacao]);
+        return view('profissional/avaliacao/terapia_ocupacional/editar', [
+            'avaliacao' => $avaliacao,
+            'paciente' => $paciente,
+        ]);
+    }
+
+    public function salvarEditarTerapiaOcupacional(Request $request){
+        $messages = [
+            'required' => 'O campo :attribute é obrigatório.',
+            'numeric' => 'O campo :attribute deve ser um número.',
+            'id_paciente.exists' => 'O paciente não existe',
+            'id_profissional.exists' => 'O profissional não existe',
+            'max' => 'O campo :attribute é deve ter no maximo :max caracteres.',
+        ];
+
+        $entrada = $request->all();
+
+
+        $validator_to = Validator::make($entrada, AvaliacaoTerapiaOcupacional::$regras_validacao, $messages);
+        if ($validator_to->fails()) {
+            return redirect()->back()
+                ->withErrors($validator_to)
+                ->withInput();
+        }
+        $avaliacao_terapia_ocupacional = AvaliacaoTerapiaOcupacional::find($entrada["id_avaliacao"]);
+        $avaliacao_terapia_ocupacional->fill($entrada);
+        $avaliacao_terapia_ocupacional->save();
+        return redirect()->route("profissional.avaliacao.terapia_ocupacional.ver", $entrada["id_paciente"]);
+
     }
 
 }
