@@ -87,157 +87,170 @@
                             BOTÃOD E EDITAR PACIENTE!!!!
                         -->
                         <br>
-                        <div class="info-pessoal">
-                            <h3 class="marker-label">Informações Pessoais:</h3>
+                        <div class="row bg-padrao">
                             <br>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <label class="lbinfo-static">Nome:<br><label class="lbinfo-ntstatic">{{$paciente->nome_paciente}}</label></label>
-                                    <br>
-                                    <label class="lbinfo-static">CPF:<br><label class="lbinfo-ntstatic">{{$paciente->cpf}}</label></label>
-                                    <br>
-                                    <label class="lbinfo-static">Numero de Irmãos:<br><label class="lbinfo-ntstatic">{{$paciente->numero_irmaos}}</label></label>
-                                </div>
-
-                                <div class="col-md-3">
+                            <div class="info-pessoal">
+                                <h3 class="marker-label">Informações Pessoais:</h3>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <label class="lbinfo-static">Nome:<br><label class="lbinfo-ntstatic">{{$paciente->nome_paciente}}</label></label>
+                                        <br>
+                                        <label class="lbinfo-static">CPF:<br><label class="lbinfo-ntstatic">{{$paciente->cpf}}</label></label>
+                                        <br>
+                                        <label class="lbinfo-static">Numero de Irmãos:<br><label class="lbinfo-ntstatic">{{$paciente->numero_irmaos}}</label></label>
+                                    </div>
+                                <div class="col-md-4">
                                     <label class="lbinfo-static">Naturalidade:<br><label class="lbinfo-ntstatic">{{$paciente->naturalidade}}</label></label>
                                     <br>
                                     <label class="lbinfo-static">Sexo:
                                         @if($paciente->sexo == 0)
-                                            <br><label class="lbinfo-ntstatic">Masculino
-                                        @else
+                                        <br><label class="lbinfo-ntstatic">Masculino
+                                            @else
                                             <br><label class="lbinfo-ntstatic">Feminino
-                                        @endif
+                                                @endif
                                             </label></label>
                                             <br>
-                                            <label class="lbinfo-static">Irmãos:<br><label class="lbinfo-ntstatic">{{$paciente->lista_irmaos}}</label></label>
-                                </div>
-
-                                <div class="col-md-3">
+                                            <label class="lbinfo-static">Nascimento:<br><label class="lbinfo-ntstatic">{{$paciente->dataNascimentoFormatada()}}</label></label>
+                                        </div>
+                                <div class="col-md-4">
                                     <label class="lbinfo-static">Responsavel:<br><label class="lbinfo-ntstatic">{{$paciente->responsavel}}</label></label>
                                     <br>
                                     <label class="lbinfo-static">Filho Biológico:
                                         @if($paciente->tipo_filho_biologico_adotivo == 0)
-                                            <br><label class="lbinfo-ntstatic">Sim
-                                        @else
+                                        <br><label class="lbinfo-ntstatic">Sim
+                                            @else
                                             <br><label class="lbinfo-ntstatic">Adotado
-                                        @endif
+                                                @endif
                                             </label></label>
                                             <br>
                                             @if($paciente->tipo_filho_biologico_adotivo == 1)
-                                                <label class="lbinfo-static">Paciente sabe que é adotado:
-                                                    @if($paciente->crianca_sabe_se_adotivo == 0)
-                                                        <br><label class="lbinfo-ntstatic">Não
-                                                    @else
-                                                        <br><label class="lbinfo-ntstatic">Sim
+                                            <label class="lbinfo-static">Paciente sabe que é adotado:
+                                                @if($paciente->crianca_sabe_se_adotivo == 0)
+                                                <br><label class="lbinfo-ntstatic">Não
+                                                @else
+                                                <br><label class="lbinfo-ntstatic">Sim
                                                     @endif
+                                                </label></label>
+                                                @endif
+                                </div>
+
+                                                <div class="col-md-12">
+                                                    <label class="lbinfo-static">Irmãos:<br>
+                                                        <div class="b-wrapper">
+                                                            <label class="lbinfo-ntstatic">{{$paciente->lista_irmaos}}</label></label>
+                                                        </div>
+                                                        <br>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="info-pais">
+                                                <h3 class="marker-label">Informações sobre os pais:</h3>
+                                                <br>
+                                                <div class="row">
+                                                    <label style="margin-left: 115px;" class="lbinfo-static"> Pai: </label>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <label class="lbinfo-static">Nome:<br><label class="lbinfo-ntstatic">{{$paciente->nome_pai}}</label></label>
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <label class="lbinfo-static">Telefone:<br><label class="lbinfo-ntstatic">{{$paciente->telefone_pai}}</label></label>
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <label class="lbinfo-static">Email:<br><label class="lbinfo-ntstatic">{{$paciente->email_pai}}</label></label>
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <label class="lbinfo-static">Idade:<br><label class="lbinfo-ntstatic">{{$paciente->idade_pai}}</label></label>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="row">
+                                                    <label style="margin-left: 115px;" class="lbinfo-static"> Mãe: </label>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <label class="lbinfo-static">Nome:<br><label class="lbinfo-ntstatic">{{$paciente->nome_mae}}</label></label>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <label class="lbinfo-static">Telefone:<br><label class="lbinfo-ntstatic">{{$paciente->telefone_mae}}</label></label>
+                                                        <br>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <label class="lbinfo-static">Email:<br><label class="lbinfo-ntstatic">{{$paciente->email_mae}}</label></label>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <label class="lbinfo-static">Idade:<br><label class="lbinfo-ntstatic">{{$paciente->idade_mae}}</label></label>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label class="lbinfo-static">Pais São casados?
+                                                            @if($paciente->pais_sao_casados == 1)
+                                                            <br><label class="lbinfo-ntstatic">Sim
+                                                            @else
+                                                            <br><label class="lbinfo-ntstatic">Não
+                                                            @endif
                                                         </label></label>
-                                                    @endif
-                                </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <label class="lbinfo-static">Pais São divorciados?
+                                                            @if($paciente->pais_sao_divorciados == 1)
+                                                            <br><label class="lbinfo-ntstatic">Sim
+                                                            @else
+                                                            <br><label class="lbinfo-ntstatic">Não
+                                                            @endif
+                                                        </label></label>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        @if($paciente->pais_sao_divorciados == 1)
+                                                        <label class="lbinfo-static">Criança vive com quem?<br><label class="lbinfo-ntstatic">{{$paciente->vive_com_quem_caso_pais_divorciados}}</label></label>
+                                                        @endif
+                                                    </div>
+                                                </div>
 
-                                <div class="col-md-3">
-                                    <label class="lbinfo-static">Nascimento:<br><label class="lbinfo-ntstatic">{{$paciente->dataNascimentoFormatada()}}</label></label>
-                                    <br>
-                                </div>
-                            </div>
+                                            </div>
 
-                        </div>
+                                            <div class="info-localizacao">
+                                                <h3 class="marker-label">Endereço:</h3>
+                                                <br>
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <label class="lbinfo-static">Rua:<br><label class="lbinfo-ntstatic">{{$paciente->endereco->nome_rua}}</label></label>
+                                                        <br>
+                                                        <label class="lbinfo-static">Cidade:<br><label class="lbinfo-ntstatic">{{$paciente->endereco->cidade}}</label></label>
+                                                    </div>
 
-                        <div class="info-pais">
-                            <h3 class="marker-label">Informações sobre os pais:</h3>
-                            <br>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <label class="lbinfo-static">Nome do Pai:<br><label class="lbinfo-ntstatic">{{$paciente->nome_pai}}</label></label>
-                                    <br>
-                                    <label class="lbinfo-static">Nome da Mãe:<br><label class="lbinfo-ntstatic">{{$paciente->nome_mae}}</label></label>
-                                    <br>
-                                    <label class="lbinfo-static">Pais São casados?
-                                        @if($paciente->pais_sao_casados == 1)
-                                            <br><label class="lbinfo-ntstatic">Sim
-                                        @else
-                                            <br><label class="lbinfo-ntstatic">Não
-                                        @endif
-                                            </label></label>
+                                                    <div class="col-md-4">
+                                                        <label class="lbinfo-static">Nº:<br><label class="lbinfo-ntstatic">{{$paciente->endereco->numero_casa}}</label></label>
+                                                        <br>
+                                                        <label class="lbinfo-static">Estado:<br><label class="lbinfo-ntstatic">{{$paciente->endereco->estado}}</label></label>
+                                                    </div>
 
-                                </div>
+                                                    <div class="col-md-4">
+                                                        <label class="lbinfo-static">Bairro:<br><label class="lbinfo-ntstatic">{{$paciente->endereco->bairro}}</label></label>
+                                                        <br>
+                                                        <label class="lbinfo-static">Ponto de Referência:<br><label class="lbinfo-ntstatic">{{$paciente->endereco->ponto_referencia}}</label></label>
+                                                    </div>
 
-                                <div class="col-md-3">
-                                    <label class="lbinfo-static">Telefone do Pai:<br><label class="lbinfo-ntstatic">{{$paciente->telefone_pai}}</label></label>
-                                    <br>
-                                    <label class="lbinfo-static">Telefone da Mãe:<br><label class="lbinfo-ntstatic">{{$paciente->telefone_mae}}</label></label>
-                                    <br>
-                                    <label class="lbinfo-static">Pais São divorciados?
-                                        @if($paciente->pais_sao_divorciados == 1)
-                                            <br><label class="lbinfo-ntstatic">Sim
-                                        @else
-                                            <br><label class="lbinfo-ntstatic">Não
-                                        @endif
-                                            </label></label>
-                                </div>
+                                                    <div class="col-md-12">
+                                                        <label class="lbinfo-static">Descricao:<br>
+                                                            <div class="b-wrapper">
+                                                                <label class="lbinfo-ntstatic">{{$paciente->endereco->descricao}}</label></label>
+                                                            </div>
+                                                            <br>
 
-                                <div class="col-md-3">
-                                    <label class="lbinfo-static">Email do Pai:<br><label class="lbinfo-ntstatic">{{$paciente->email_pai}}</label></label>
-                                    <br>
-                                    <label class="lbinfo-static">Email da Mãe:<br><label class="lbinfo-ntstatic">{{$paciente->email_mae}}</label></label>
-                                    <br>
-                                    @if($paciente->pais_sao_divorciados == 1)
-                                        <label class="lbinfo-static">Reação da criança ao divorcio:<br><label class="lbinfo-ntstatic">{{$paciente->reacao_sobre_a_relacao_pais_caso_divorciados}}</label></label>
-                                        <br>
-                                    @endif
-                                </div>
+                                                    </div>
+                                                </div>
 
-                                <div class="col-md-3">
-                                    <label class="lbinfo-static">Idade do Pai:<br><label class="lbinfo-ntstatic">{{$paciente->idade_pai}}</label></label>
-                                    <br>
-                                    <label class="lbinfo-static">Idade da Mãe:<br><label class="lbinfo-ntstatic">{{$paciente->idade_mae}}</label></label>
-                                    <br>
-                                    @if($paciente->pais_sao_divorciados == 1)
-                                        <label class="lbinfo-static">Criança vive com quem?<br><label class="lbinfo-ntstatic">{{$paciente->vive_com_quem_caso_pais_divorciados}}</label></label>
-                                        <br>
-                                    @endif
-                                </div>
+                                            </div>
 
-                            </div>
-
-                            <div class="info-localizacao">
-                                <h3 class="marker-label">Endereço:</h3>
-                                <br>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <label class="lbinfo-static">Rua:<br><label class="lbinfo-ntstatic">{{$paciente->endereco->nome_rua}}</label></label>
-                                        <br>
-                                        <label class="lbinfo-static">Cidade:<br><label class="lbinfo-ntstatic">{{$paciente->endereco->cidade}}</label></label>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <label class="lbinfo-static">Nº:<br><label class="lbinfo-ntstatic">{{$paciente->endereco->numero_casa}}</label></label>
-                                        <br>
-                                        <label class="lbinfo-static">Estado:<br><label class="lbinfo-ntstatic">{{$paciente->endereco->estado}}</label></label>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <label class="lbinfo-static">Bairro:<br><label class="lbinfo-ntstatic">{{$paciente->endereco->bairro}}</label></label>
-                                        <br>
-                                        <label class="lbinfo-static">Descricao:<br><label class="lbinfo-ntstatic">{{$paciente->endereco->descricao}}</label></label>
-                                    </div>
-
-                                    <div class="col-md-3">
-                                        <label class="lbinfo-static">Ponto de Referência:<br><label class="lbinfo-ntstatic">{{$paciente->endereco->ponto_referencia}}</label></label>
-                                    </div>
-                                </div>
-
-                            </div>
-
-
-
-
-
-
-
-
-
-
+                                        </div>
 
                         </div>
             </div>

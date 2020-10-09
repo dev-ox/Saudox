@@ -365,6 +365,13 @@ h3{
     scrollbar-width: none;
 }
 
+.b-wrapper{
+    max-height: 200px;
+    max-width: 90%;
+    overflow: auto;
+    -ms-overflow-style: none;
+}
+
 .c-wrapper{
     max-height: 200px;
     overflow: auto;
