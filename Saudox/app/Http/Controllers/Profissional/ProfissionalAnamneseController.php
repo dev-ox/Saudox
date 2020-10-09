@@ -1,4 +1,4 @@
-<?php
+<?Php
 namespace App\Http\Controllers\Profissional;
 
 use App\Http\Controllers\Controller;
@@ -9,6 +9,10 @@ use App\Profissional;
 use App\Paciente;
 use App\AnamneseTerapiaOcupacional;
 use App\AnamneseFonoaudiologia;
+use App\AnamneseGigantePsicopedaNeuroPsicomoto;
+use App\AnamneseGigantePsicopedaNeuroPsicomotoPt1;
+use App\AnamneseGigantePsicopedaNeuroPsicomotoPt2;
+use App\AnamneseGigantePsicopedaNeuroPsicomotoPt3;
 use Illuminate\Support\Facades\Auth;
 
 class ProfissionalAnamneseController extends Controller {
@@ -252,8 +256,80 @@ class ProfissionalAnamneseController extends Controller {
         if(!$paciente){
             return redirect()->route('erro', ['msg_erro' => "Paciente " .$id_paciente. " inexistente"]);
         }
-        return view('profissional/anamnese/psicopedagogia/criar', ['paciente' => $paciente]);
+        return view('profissional/anamnese/psicopedagogia/criar', [
+            'paciente' => $paciente,
+            'anamnese' => NULL,
+        ]);
     }
+
+
+    public function salvarPsicopedagogia(Request $request) {
+
+        $entrada = $request->all();
+
+        $messages = [
+            'required' => 'O campo :attribute é obrigatório.',
+            'min' => 'O campo :attribute é deve ter no minimo :min caracteres.',
+            'max' => 'O campo :attribute é deve ter no máximo :max caracteres.',
+            'password.required' => 'A senha é obrigatória.',
+            'gt' => 'O campo :attribute deve ser maior que 18.',
+            'lt' => 'O campo :attribute deve ser menor que 100.',
+            'unique' => 'O :attribute já está cadastrado',
+        ];
+
+        $conhecimentos = "";
+        foreach($entrada["conhece_tais_coisas"] as $coisas) {
+            $conhecimentos .= $coisas . ", ";
+        }
+
+        $conhecimentos = preg_replace("/, $/", "", $conhecimentos);
+        $entrada["conhece_tais_coisas"] = $conhecimentos;
+
+        $validator_anamnese_gigante_1 = Validator::make($entrada, AnamneseGigantePsicopedaNeuroPsicomotoPt1::$regras_validacao, $messages);
+        $validator_anamnese_gigante_2 = Validator::make($entrada, AnamneseGigantePsicopedaNeuroPsicomotoPt2::$regras_validacao, $messages);
+        $validator_anamnese_gigante_3 = Validator::make($entrada, AnamneseGigantePsicopedaNeuroPsicomotoPt3::$regras_validacao, $messages);
+
+        // Tem que rodar as 3, pra ter todos os erros
+        // Se rodasse tudo num ||, aconteceria curto circiuto, e não teria todos os erros
+        $validator_check_1 = $validator_anamnese_gigante_1->fails();
+        $validator_check_2 = $validator_anamnese_gigante_2->fails();
+        $validator_check_3 = $validator_anamnese_gigante_3->fails();
+
+        // Agora sim pode ser avaliado em curto circuito
+        $validator_check = $validator_check_1 || $validator_check_2 || $validator_check_3;
+
+        if ($validator_check) {
+
+            $erros1 = $validator_anamnese_gigante_1->errors()->all();
+            $erros2 = $validator_anamnese_gigante_2->errors()->all();
+            $erros3 = $validator_anamnese_gigante_3->errors()->all();
+
+            $erros = array_merge($erros1, $erros2, $erros3);
+            return redirect()->back()
+                             ->withErrors($erros)
+                             ->withInput();
+        }
+
+        $anamneses_arr = AnamneseGigantePsicopedaNeuroPsicomoto::nova();
+
+        $anamneses_arr["pt1"]->fill($entrada);
+        $anamneses_arr["pt2"]->fill($entrada);
+        $anamneses_arr["pt3"]->fill($entrada);
+
+        $anamneses_arr["pt1"]->id_profissional = Auth::id();
+
+        $anamneses_arr["cabeca"]->save();
+        $anamneses_arr["pt1"]->id_tp = $anamneses_arr["cabeca"]->id;
+        $anamneses_arr["pt1"]->save();
+        $anamneses_arr["pt2"]->id_tp = $anamneses_arr["cabeca"]->id;
+        $anamneses_arr["pt2"]->save();
+        $anamneses_arr["pt3"]->id_tp = $anamneses_arr["cabeca"]->id;
+        $anamneses_arr["pt3"]->save();
+
+        return redirect()->route("profissional.ver_paciente", $entrada["id_paciente"]);
+
+    }
+
 
     public function editarPsicopedagogia($id_paciente) {
         $paciente = Paciente::find($id_paciente);

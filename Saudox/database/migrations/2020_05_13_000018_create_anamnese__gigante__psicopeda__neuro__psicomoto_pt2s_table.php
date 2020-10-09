@@ -25,8 +25,6 @@ class CreateAnamneseGigantePsicopedaNeuroPsicomotoPt2sTable extends Migration {
             $table->boolean('quedas_e_traumatismos');
             $table->string('teve_complicacao_com_vacina_se_sim_qual');
             $table->string('audicao_e_visao');
-            $table->boolean('usa_oculos');
-            $table->boolean('se_usa_oculos_leva_para_escola')->nullable(true);
             $table->text('sono_tranquilo_se_for_agitado_quando_e_qual_frequencia');
             $table->boolean('range_dentes');
             $table->boolean('terror_noturno');
@@ -37,6 +35,7 @@ class CreateAnamneseGigantePsicopedaNeuroPsicomotoPt2sTable extends Migration {
             $table->string('ate_quando_dormiu_com_os_pais');
             $table->string('como_foi_a_separacao_dormida_com_os_pais')->nullable(true);
             $table->string('habitos_especiais_sono');
+
             $table->string('com_que_idade_sustentou_a_cabeca');
             $table->string('com_que_idade_sentou');
             $table->string('com_que_idade_engatinhou');
@@ -46,9 +45,11 @@ class CreateAnamneseGigantePsicopedaNeuroPsicomotoPt2sTable extends Migration {
             $table->string('deixa_cair_as_coisas');
             $table->string('esbarra_muito');
             $table->string('acredita_que_apresenta_alguma_dificuldade_motora');
+
             $table->string('controle_vesical_bexiga');
             $table->string('controle_anal_fezes');
             $table->text('foi_difícil_tranquilo_ou_houve_algum_a_pressao_da_família');
+
             $table->string('balbucios');
             $table->string('quando_comecou_a_falar');
             $table->string('como_os_pais_reagiram_fala');
@@ -57,19 +58,19 @@ class CreateAnamneseGigantePsicopedaNeuroPsicomotoPt2sTable extends Migration {
             $table->string('presenca_de_bilinguismo_em_casa');
             $table->string('como_a_crianca_se_comunica');
             $table->string('apresenta_salivacao_no_canto_da_boca');
+
             $table->string('idade_entrou_na_escola');
             $table->string('adaptouse_bem');
             $table->string('metodo_alfabetizacao');
             $table->string('mudou_de_escola_se_sim_em_qual_serie_e_idade');
             $table->string('escola_atual')->nullable(true);
             $table->string('metodo_alfabetizacao_atual')->nullable(true);
-            $table->string('serie')->nullable(true);
-            $table->string('turno')->nullable(true);
+            $table->string('serie_e_turno')->nullable(true);
             $table->string('professor')->nullable(true);
             $table->string('faz_as_tarefaz_sozinho_se_nao_com_quem_faz')->nullable(true);
             $table->string('descricao_momento_licoes')->nullable(true);
-            $table->string('opniao_paterna_sobre_escola')->nullable(true);
-            $table->string('opniao_materna_sobre_tarefas')->nullable(true);
+            $table->string('opniao_dos_pais_sobre_escola')->nullable(true);
+            $table->string('opniao_dos_pais_sobre_tarefas')->nullable(true);
             $table->string('fato_importante_vida_escolar')->nullable(true);
             $table->text('queixas_frequentes');
             $table->text('tem_dificuldades_para');

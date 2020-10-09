@@ -7,4 +7,5 @@ Route::get('teste', function () {
 
 Route::get('{id_paciente}/ver', 'ProfissionalAnamneseController@verPsicopedagogia')->name('.ver');
 Route::get('{id_paciente}/criar', 'ProfissionalAnamneseController@criarPsicopedagogia')->name('.criar');
+Route::post('/salvar', 'ProfissionalAnamneseController@salvarPsicopedagogia')->name('.criar.salvar');
 Route::get('{id_paciente}/editar', 'ProfissionalAnamneseController@editarPsicopedagogia')->name('.editar');

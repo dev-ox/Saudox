@@ -38,10 +38,12 @@ class CreateAnamneseGigantePsicopedaNeuroPsicomotoPt3sTable extends Migration {
             $table->string('em_que_horario_brincam_ou_fazem_alguma_atividade_de_lazer');
             $table->string('como_se_relaciona_com_irmaos');
             $table->string('como_se_relaciona_com_colegas_e_professores');
+
             $table->string('apresenta_curiosidade_sexual_se_sim_quando_comecou');
             $table->string('tipos_de_perguntas_fase_sexual');
             $table->string('fase_de_masturbacao');
             $table->string('atitude_da_família');
+
             $table->string('se_veste_so_a_partir_de_qual_idade');
             $table->string('se_abotoa_so_a_partir_de_qual_idade');
             $table->string('fecha_roupa_so_a_partir_de_qual_idade');
@@ -51,6 +53,7 @@ class CreateAnamneseGigantePsicopedaNeuroPsicomotoPt3sTable extends Migration {
             $table->string('escova_os_dentes_so_a_partir_de_qual_idade');
             $table->string('come_so_a_partir_de_qual_idade');
             $table->string('se_calca_so_a_partir_de_qual_idade');
+
             $table->boolean('roi_unhas');
             $table->string('tem_tiques_nervosos_se_sim_quais');
             $table->string('alguma_mania_repetitiva_se_sim_qual');
@@ -58,6 +61,7 @@ class CreateAnamneseGigantePsicopedaNeuroPsicomotoPt3sTable extends Migration {
             $table->boolean('chupa_dedo_ou_bico');
             $table->string('temObjetoComoCheirinhoOuOutroParaDormirLevarParaEscolaSeSimQual');
             $table->string('outros_habitos')->nullable(true);
+
             $table->string('como_a_familia_ve_o_problema');
             $table->string('como_o_casal_age_em_funcao_da_crianca');
             $table->text('comoOsPaisSeVeemPermissivosAutoritariosEquilibradosEPorque');
@@ -79,6 +83,10 @@ class CreateAnamneseGigantePsicopedaNeuroPsicomotoPt3sTable extends Migration {
             $table->string('com_que_frequencia_ignora_estimulos');
             $table->string('com_que_frequencia_manipula_brinquedos_e_objetos');
             $table->text('ansioso_no_processo_de_mudanca_de_rotina_se_sim_voce_lembra');
+
+            $table->text('analise_da_entrevista');
+            $table->text('encaminhamentos');
+
         });
     }
 
