@@ -79,53 +79,54 @@
 
                 <div class="Contato">
                     <h3 class="marker-label">Contato:</h3>
-                    <label class="lbinfo-static">Email:</label></label>
-                <label class="lbinfo-ntstatic"><a href="mailto:{{$profissional->email}}"><br><label class="lbinfo-ntstatic">{{$profissional->email}}</a></label></label>
-                <br>
-                <br>
-                <label class="lbinfo-static">Telefone 1:</label>
-                <label class="lbinfo-ntstatic">{{$profissional->telefone_1}}</label>
-                @if($profissional->telefone_2)
-                    <label class="lbinfo-static">Telefone 2:</label>
-                    <label class="lbinfo-ntstatic">{{$profissional->telefone_2}}</label>
-                @endif
-                </div>
-                <br>
-                <br>
-
-
-                <div class="profissoes">
-                    <h3 class="marker-label-2">Profissões:</h3>
                     <div class="row">
-                        <div class="profissoes-table-wrapper">
-                            <table class="profissoes-table">
-                                <tbody>
-                                    @foreach($profissoes as $pr)
-                                        <tr>
-                                            <td>{{$pr}}</td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                        <div class="col-md-4">
+                            <label class="lbinfo-static">Email:<br>
+                            <label class="lbinfo-ntstatic"><a href="mailto:{{$profissional->email}}">{{$profissional->email}}</a></label></label>
                         </div>
+                        <div class="col-md-4">
+                            <label class="lbinfo-static">Telefone 1:<br>
+                            <label class="lbinfo-ntstatic">{{$profissional->telefone_1}}</label></label>
+                        </div>
+                        <div class="col-md-4">
+                            @if($profissional->telefone_2)
+                                <label class="lbinfo-static">Telefone 2:<br>
+                                <label class="lbinfo-ntstatic">{{$profissional->telefone_2}}</label></label>
+                            @endif
+                        </div>
+
                     </div>
                 </div>
                 <br>
                 <br>
 
-
-
-
-                <div class="descricao">
-                    <h3 class="marker-label-2">Conhecimento e Experiência:</h3>
+                <div class="final-perfil">
                     <div class="row">
-                        <div class="descricao-wrapper">
-                            {{$profissional->descricao_de_conhecimento_e_experiencia}}
+                        <div class="col-md-6">
+                            <h3 class="marker-label-2">Profissões:</h3>
+                            <br>
+                            <div class="profissoes-table-wrapper">
+                                <table class="profissoes-table">
+                                    <tbody>
+                                        @foreach($profissoes as $pr)
+                                            <tr>
+                                                <td>{{$pr}}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h3 class="marker-label-2">Conhecimento e Experiência:</h3>
+                            <div class="descricao-wrapper">
+                                {{$profissional->descricao_de_conhecimento_e_experiencia}}
+                            </div>
                         </div>
                     </div>
                 </div>
-
-
+                <br>
+                <br>
 
             </div>
         </div>
