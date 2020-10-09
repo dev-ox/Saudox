@@ -76,18 +76,20 @@
     border-width: 2px;
 }
 
+@media screen and (max-width: 1200px) {
+    .paciente-bt {width: 100% !important;}
+}
+
 .paciente-nav-titles{
     text-align: center;
     font-weight: bold;
 }
 
 .box{
-  border-right: 10px solid transparent;
-  border: 5px solid transparent;
-  background-clip:padding-box;
+  border-right: 10px solid transparent !important;
+  border: solid var(--cor_amarelo);
+  background-clip:padding-box !important;
 }
-
-
 
 .hidden-div{
     visibility:hidden;
