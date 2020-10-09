@@ -2,11 +2,11 @@
 @section('content')
 
     @php
-        function old_checked($valor, $teste) {
+        function old_checked_ana_fono_criar($valor, $teste) {
             return old($valor) == $teste ? "checked" : "";
         }
 
-        function in_array_old($valor, $arr) {
+        function in_array_old_ana_fono_criar($valor, $arr) {
 
             if(!old($arr)) { return ""; }
             return in_array($valor, old($arr)) ? "checked" : "";
@@ -46,9 +46,9 @@
 
                         <label class="required">Criança desejada?</label><br>
                         <label for="crianca_desejada">Sim</label>
-                        <input value="1" type="radio" name="crianca_desejada" id="crianca_desejada" {{ old_checked("crianca_desejada", "1") }}>
+                        <input value="1" type="radio" name="crianca_desejada" id="crianca_desejada" {{ old_checked_ana_fono_criar("crianca_desejada", "1") }}>
                         <label for="crianca_desejada">Não</label>
-                        <input value="0" type="radio" name="crianca_desejada" id="crianca_desejada" {{ old_checked("crianca_desejada", "0") }}><br>
+                        <input value="0" type="radio" name="crianca_desejada" id="crianca_desejada" {{ old_checked_ana_fono_criar("crianca_desejada", "0") }}><br>
 
                         <label class="required">Reação da criança em relação ao status da relação dos pais:</label><br>
                         <input value="{{ old('reacao_crianca_status_relacao_pais') }}" placeholder="Reação da criança" type="text" name="reacao_crianca_status_relacao_pais" id="reacao_crianca_status_relacao_pais">
@@ -64,11 +64,11 @@
 
                         <label class="required">Tipo de parto:</label><br>
                         <label for="tipo_parto">Normal</label>
-                        <input value="Normal" type="radio" name="tipo_parto" id="tipo_parto" {{ old_checked("tipo_parto", "Normal") }}>
+                        <input value="Normal" type="radio" name="tipo_parto" id="tipo_parto" {{ old_checked_ana_fono_criar("tipo_parto", "Normal") }}>
                         <label for="tipo_parto">Cesariana</label>
-                        <input value="Cesariana" type="radio" name="tipo_parto" id="tipo_parto" {{ old_checked("tipo_parto", "Cesariana") }}>
+                        <input value="Cesariana" type="radio" name="tipo_parto" id="tipo_parto" {{ old_checked_ana_fono_criar("tipo_parto", "Cesariana") }}>
                         <label for="tipo_parto">Fórceps</label>
-                        <input value="Fórceps" type="radio" name="tipo_parto" id="tipo_parto" {{ old_checked("tipo_parto", "Fórceps") }}><br>
+                        <input value="Fórceps" type="radio" name="tipo_parto" id="tipo_parto" {{ old_checked_ana_fono_criar("tipo_parto", "Fórceps") }}><br>
 
                         <label class="required">Houveram complicações durante o parto?</label><br>
                         <input value="{{ old('complicacao_durante_parto') }}" placeholder="Sim? Não? Informações adicionais" type="text" name="complicacao_durante_parto" id="complicacao_durante_parto">
@@ -83,37 +83,37 @@
                         <hr class="hr_form">
                         <label class="required">Amamentação:</label><br>
                         <label for="amamentacao_natural">Materna</label>
-                        <input value="1" type="radio" name="amamentacao_natural" id="amamentacao_natural" {{ old_checked("amamentacao_natural", "1") }}>
+                        <input value="1" type="radio" name="amamentacao_natural" id="amamentacao_natural" {{ old_checked_ana_fono_criar("amamentacao_natural", "1") }}>
                         <label for="amamentacao_natural">Artificial</label>
-                        <input value="0" type="radio" name="amamentacao_natural" id="amamentacao_natural" {{ old_checked("amamentacao_natural", "0") }}><br>
+                        <input value="0" type="radio" name="amamentacao_natural" id="amamentacao_natural" {{ old_checked_ana_fono_criar("amamentacao_natural", "0") }}><br>
 
                         <hr class="hr_form">
                         <label class="required">Atraso ou problema na fala:</label><br>
                         <label for="atraso_ou_problema_na_fala">Sim</label>
-                        <input value="1" type="radio" name="atraso_ou_problema_na_fala" id="atraso_ou_problema_na_fala" {{ old_checked("atraso_ou_problema_na_fala", "1") }}>
+                        <input value="1" type="radio" name="atraso_ou_problema_na_fala" id="atraso_ou_problema_na_fala" {{ old_checked_ana_fono_criar("atraso_ou_problema_na_fala", "1") }}>
                         <label for="atraso_ou_problema_na_fala">Não</label>
-                        <input value="0" type="radio" name="atraso_ou_problema_na_fala" id="atraso_ou_problema_na_fala" {{ old_checked("atraso_ou_problema_na_fala", "0") }}>
+                        <input value="0" type="radio" name="atraso_ou_problema_na_fala" id="atraso_ou_problema_na_fala" {{ old_checked_ana_fono_criar("atraso_ou_problema_na_fala", "0") }}>
 
                         <hr class="hr_form">
                         <label class="required">Tem enurese noturna?</label><br>
                         <label for="tem_enurese_noturna">Sim</label>
-                        <input value="1" type="radio" name="tem_enurese_noturna" id="tem_enurese_noturna" {{ old_checked("tem_enurese_noturna", "1") }}>
+                        <input value="1" type="radio" name="tem_enurese_noturna" id="tem_enurese_noturna" {{ old_checked_ana_fono_criar("tem_enurese_noturna", "1") }}>
                         <label for="tem_enurese_noturna">Não</label>
-                        <input value="0" type="radio" name="tem_enurese_noturna" id="tem_enurese_noturna" {{ old_checked("tem_enurese_noturna", "0") }}><br>
+                        <input value="0" type="radio" name="tem_enurese_noturna" id="tem_enurese_noturna" {{ old_checked_ana_fono_criar("tem_enurese_noturna", "0") }}><br>
 
                         <hr class="hr_form">
                         <label class="required">Desenvolvimento motor no tempo esperado:</label><br>
                         <label for="desenvolvimento_motor_no_tempo_esperado">Sim</label>
-                        <input value="1" type="radio" name="desenvolvimento_motor_no_tempo_esperado" id="desenvolvimento_motor_no_tempo_esperado" {{ old_checked("desenvolvimento_motor_no_tempo_esperado", "1") }}>
+                        <input value="1" type="radio" name="desenvolvimento_motor_no_tempo_esperado" id="desenvolvimento_motor_no_tempo_esperado" {{ old_checked_ana_fono_criar("desenvolvimento_motor_no_tempo_esperado", "1") }}>
                         <label for="desenvolvimento_motor_no_tempo_esperado">Não</label>
-                        <input value="0" type="radio" name="desenvolvimento_motor_no_tempo_esperado" id="desenvolvimento_motor_no_tempo_esperado" {{ old_checked("desenvolvimento_motor_no_tempo_esperado", "0") }}><br>
+                        <input value="0" type="radio" name="desenvolvimento_motor_no_tempo_esperado" id="desenvolvimento_motor_no_tempo_esperado" {{ old_checked_ana_fono_criar("desenvolvimento_motor_no_tempo_esperado", "0") }}><br>
 
                         <hr class="hr_form">
                         <label class="required">Perturbações (pesadelos, sonambulismo, agitação, etc.):</label><br>
                         <label for="perturbacoes_como_pesadelos_sonambulismo_agitacao_etc">Sim</label>
-                        <input value="1" type="radio" name="perturbacoes_como_pesadelos_sonambulismo_agitacao_etc" id="perturbacoes_como_pesadelos_sonambulismo_agitacao_etc" {{ old_checked("perturbacoes_como_pesadelos_sonambulismo_agitacao_etc", "1") }}>
+                        <input value="1" type="radio" name="perturbacoes_como_pesadelos_sonambulismo_agitacao_etc" id="perturbacoes_como_pesadelos_sonambulismo_agitacao_etc" {{ old_checked_ana_fono_criar("perturbacoes_como_pesadelos_sonambulismo_agitacao_etc", "1") }}>
                         <label for="perturbacoes_como_pesadelos_sonambulismo_agitacao_etc">Não</label>
-                        <input value="0" type="radio" name="perturbacoes_como_pesadelos_sonambulismo_agitacao_etc" id="perturbacoes_como_pesadelos_sonambulismo_agitacao_etc" {{ old_checked("perturbacoes_como_pesadelos_sonambulismo_agitacao_etc", "0") }}><br>
+                        <input value="0" type="radio" name="perturbacoes_como_pesadelos_sonambulismo_agitacao_etc" id="perturbacoes_como_pesadelos_sonambulismo_agitacao_etc" {{ old_checked_ana_fono_criar("perturbacoes_como_pesadelos_sonambulismo_agitacao_etc", "0") }}><br>
 
                         <hr class="hr_form">
                         <label class="required">Troca letras ou fonemas? Se sim, quais?</label><br>
@@ -127,9 +127,9 @@
 
                         <label class="required">A criança faz ou já fez algum tipo de tratamento fonoaudiológico?</label><br>
                         <label for="ja_fez_tratamento_fonoaudiologo">Sim</label>
-                        <input value="1" type="radio" name="ja_fez_tratamento_fonoaudiologo" id="ja_fez_tratamento_fonoaudiologo" {{ old_checked("ja_fez_tratamento_fonoaudiologo", "1") }}>
+                        <input value="1" type="radio" name="ja_fez_tratamento_fonoaudiologo" id="ja_fez_tratamento_fonoaudiologo" {{ old_checked_ana_fono_criar("ja_fez_tratamento_fonoaudiologo", "1") }}>
                         <label for="ja_fez_tratamento_fonoaudiologo">Não</label>
-                        <input value="0" type="radio" name="ja_fez_tratamento_fonoaudiologo" id="ja_fez_tratamento_fonoaudiologo" {{ old_checked("ja_fez_tratamento_fonoaudiologo", "0") }}><br>
+                        <input value="0" type="radio" name="ja_fez_tratamento_fonoaudiologo" id="ja_fez_tratamento_fonoaudiologo" {{ old_checked_ana_fono_criar("ja_fez_tratamento_fonoaudiologo", "0") }}><br>
 
                         <label class="required">Onde fez o tratamento fonoaudiológico?</label><br>
                         <input value="{{ old('se_sim_tratamento_fono_anterior_onde') }}" placeholder="Onde?" type="text" name="se_sim_tratamento_fono_anterior_onde" id="se_sim_tratamento_fono_anterior_onde">
@@ -159,48 +159,48 @@
                         <h3>É dependente em quais nas AVDs (atividades de vida diária)?</h3><br>
                         <label class="required">Toma banho sozinho:</label><br>
                         <label for="toma_banho_sozinho">Sim</label>
-                        <input value="1" type="radio" name="toma_banho_sozinho" id="toma_banho_sozinho" {{ old_checked("toma_banho_sozinho", "1") }}>
+                        <input value="1" type="radio" name="toma_banho_sozinho" id="toma_banho_sozinho" {{ old_checked_ana_fono_criar("toma_banho_sozinho", "1") }}>
                         <label for="toma_banho_sozinho">Não</label>
-                        <input value="0" type="radio" name="toma_banho_sozinho" id="toma_banho_sozinho" {{ old_checked("toma_banho_sozinho", "0") }}><br>
+                        <input value="0" type="radio" name="toma_banho_sozinho" id="toma_banho_sozinho" {{ old_checked_ana_fono_criar("toma_banho_sozinho", "0") }}><br>
 
                         <label class="required">Escova os dentes sozinho:</label><br>
                         <label for="escova_os_dentes_sozinho">Sim</label>
-                        <input value="1" type="radio" name="escova_os_dentes_sozinho" id="escova_os_dentes_sozinho" {{old_checked("escova_os_dentes_sozinho", "1")}}>
+                        <input value="1" type="radio" name="escova_os_dentes_sozinho" id="escova_os_dentes_sozinho" {{old_checked_ana_fono_criar("escova_os_dentes_sozinho", "1")}}>
                         <label for="escova_os_dentes_sozinho">Não</label>
-                        <input value="0" type="radio" name="escova_os_dentes_sozinho" id="escova_os_dentes_sozinho" {{ old_checked("escova_os_dentes_sozinho", "0") }}><br>
+                        <input value="0" type="radio" name="escova_os_dentes_sozinho" id="escova_os_dentes_sozinho" {{ old_checked_ana_fono_criar("escova_os_dentes_sozinho", "0") }}><br>
 
                         <label class="required">Usa o banheiro sozinho:</label><br>
                         <label for="usa_o_banheiro_sozinho">Sim</label>
-                        <input value="1" type="radio" name="usa_o_banheiro_sozinho" id="usa_o_banheiro_sozinho" {{ old_checked("usa_o_banheiro_sozinho", "1") }}>
+                        <input value="1" type="radio" name="usa_o_banheiro_sozinho" id="usa_o_banheiro_sozinho" {{ old_checked_ana_fono_criar("usa_o_banheiro_sozinho", "1") }}>
                         <label for="usa_o_banheiro_sozinho">Não</label>
-                        <input value="0" type="radio" name="usa_o_banheiro_sozinho" id="usa_o_banheiro_sozinho" {{ old_checked("usa_o_banheiro_sozinho", "0") }}><br>
+                        <input value="0" type="radio" name="usa_o_banheiro_sozinho" id="usa_o_banheiro_sozinho" {{ old_checked_ana_fono_criar("usa_o_banheiro_sozinho", "0") }}><br>
 
                         <label class="required">Necessita auxílio para se vestir ou despir:</label><br>
                         <label for="necessita_de_auxilio_para_se_vestir_ou_despir">Sim</label>
-                        <input value="1" type="radio" name="necessita_de_auxilio_para_se_vestir_ou_despir" id="necessita_de_auxilio_para_se_vestir_ou_despir" {{ old_checked("necessita_de_auxilio_para_se_vestir_ou_despir", "1") }}>
+                        <input value="1" type="radio" name="necessita_de_auxilio_para_se_vestir_ou_despir" id="necessita_de_auxilio_para_se_vestir_ou_despir" {{ old_checked_ana_fono_criar("necessita_de_auxilio_para_se_vestir_ou_despir", "1") }}>
                         <label for="necessita_de_auxilio_para_se_vestir_ou_despir">Não</label>
-                        <input value="0" type="radio" name="necessita_de_auxilio_para_se_vestir_ou_despir" id="necessita_de_auxilio_para_se_vestir_ou_despir" {{ old_checked("necessita_de_auxilio_para_se_vestir_ou_despir", "0") }}><br>
+                        <input value="0" type="radio" name="necessita_de_auxilio_para_se_vestir_ou_despir" id="necessita_de_auxilio_para_se_vestir_ou_despir" {{ old_checked_ana_fono_criar("necessita_de_auxilio_para_se_vestir_ou_despir", "0") }}><br>
 
 
                         <hr class="hr_form">
                         <h3>Tendencias próprias</h3><br>
                         <label class="required">Atende intervenções quando está desobedecendo:</label><br>
                         <label for="atende_as_intervencoes_quando_esta_desobedecendo">Sim</label>
-                        <input value="1" type="radio" name="atende_as_intervencoes_quando_esta_desobedecendo" id="atende_as_intervencoes_quando_esta_desobedecendo" {{ old_checked("atende_as_intervencoes_quando_esta_desobedecendo", "1") }}>
+                        <input value="1" type="radio" name="atende_as_intervencoes_quando_esta_desobedecendo" id="atende_as_intervencoes_quando_esta_desobedecendo" {{ old_checked_ana_fono_criar("atende_as_intervencoes_quando_esta_desobedecendo", "1") }}>
                         <label for="atende_as_intervencoes_quando_esta_desobedecendo">Não</label>
-                        <input value="0" type="radio" name="atende_as_intervencoes_quando_esta_desobedecendo" id="atende_as_intervencoes_quando_esta_desobedecendo" {{ old_checked("atende_as_intervencoes_quando_esta_desobedecendo", "0") }}><br>
+                        <input value="0" type="radio" name="atende_as_intervencoes_quando_esta_desobedecendo" id="atende_as_intervencoes_quando_esta_desobedecendo" {{ old_checked_ana_fono_criar("atende_as_intervencoes_quando_esta_desobedecendo", "0") }}><br>
 
                         <label class="required">Chora fácil:</label><br>
                         <label for="chora_facil">Sim</label>
-                        <input value="1" type="radio" name="chora_facil" id="chora_facil" {{ old_checked("chora_facil", "1") }}>
+                        <input value="1" type="radio" name="chora_facil" id="chora_facil" {{ old_checked_ana_fono_criar("chora_facil", "1") }}>
                         <label for="chora_facil">Não</label>
-                        <input value="0" type="radio" name="chora_facil" id="chora_facil" {{ old_checked("chora_facil", "0") }}><br>
+                        <input value="0" type="radio" name="chora_facil" id="chora_facil" {{ old_checked_ana_fono_criar("chora_facil", "0") }}><br>
 
                         <label class="required">Recusa auxílio:</label><br>
                         <label for="recusa_auxilio">Sim</label>
-                        <input value="1" type="radio" name="recusa_auxilio" id="recusa_auxilio" {{ old_checked("recusa_auxilio", "1") }}>
+                        <input value="1" type="radio" name="recusa_auxilio" id="recusa_auxilio" {{ old_checked_ana_fono_criar("recusa_auxilio", "1") }}>
                         <label for="recusa_auxilio">Não</label>
-                        <input value="0" type="radio" name="recusa_auxilio" id="recusa_auxilio" {{ old_checked("recusa_auxilio", "0") }}><br>
+                        <input value="0" type="radio" name="recusa_auxilio" id="recusa_auxilio" {{ old_checked_ana_fono_criar("recusa_auxilio", "0") }}><br>
 
                         <label class="required">Resistência ao toque (Afago, carinho):</label><br>
                         <input value="{{ old('tem_resistencia_ao_toque') }}" placeholder="Se sim, quais?" type="text" name="tem_resistencia_ao_toque" id="tem_resistencia_ao_toque">
@@ -212,18 +212,18 @@
 
                         <label class="required">Alfabetizada?</label><br>
                         <label for="alfabetizada">Sim</label>
-                        <input value="1" type="radio" name="alfabetizada" id="alfabetizada" {{ old_checked("alfabetizada", "1") }}>
+                        <input value="1" type="radio" name="alfabetizada" id="alfabetizada" {{ old_checked_ana_fono_criar("alfabetizada", "1") }}>
                         <label for="alfabetizada">Não</label>
-                        <input value="0" type="radio" name="alfabetizada" id="alfabetizada" {{ old_checked("alfabetizada", "0") }}><br><br>
+                        <input value="0" type="radio" name="alfabetizada" id="alfabetizada" {{ old_checked_ana_fono_criar("alfabetizada", "0") }}><br><br>
 
                         <label class="required">Possui dificuldades de aprendizagem?</label><br><br>
                         <textarea class="textareas_form" id="tem_dificuldades_de_aprendizagem" name="tem_dificuldades_de_aprendizagem" rows="4" cols="50" style="">{{ old("tem_dificuldades_de_aprendizagem") }}</textarea><br><br>
 
                         <label class="required">Já repetiu alguma série?</label><br>
                         <label for="repetiu_algum_ano">Sim</label>
-                        <input value="1" type="radio" name="repetiu_algum_ano" id="repetiu_algum_ano" {{ old_checked("repetiu_algum_ano", "1") }}>
+                        <input value="1" type="radio" name="repetiu_algum_ano" id="repetiu_algum_ano" {{ old_checked_ana_fono_criar("repetiu_algum_ano", "1") }}>
                         <label for="repetiu_algum_ano">Não</label>
-                        <input value="0" type="radio" name="repetiu_algum_ano" id="repetiu_algum_ano" {{ old_checked("repetiu_algum_ano", "0") }}><br>
+                        <input value="0" type="radio" name="repetiu_algum_ano" id="repetiu_algum_ano" {{ old_checked_ana_fono_criar("repetiu_algum_ano", "0") }}><br>
 
                         <hr class="hr_form">
                         <h3>Sociabilidade</h3><br>
@@ -235,15 +235,15 @@
 
                         <label class="required">Companheiros da criança nas brincadeiras:</label><br>
                         <label for="companheiros_da_crianca_nas_brincadeiras">Mesmo Sexo</label>
-                        <input value="Mesmo Sexo" type="checkbox" name="companheiros_da_crianca_nas_brincadeiras[1]" id="mesmo_sexo" {{ in_array_old("Mesmo Sexo", "companheiros_da_crianca_nas_brincadeiras") }}>
+                        <input value="Mesmo Sexo" type="checkbox" name="companheiros_da_crianca_nas_brincadeiras[1]" id="mesmo_sexo" {{ in_array_old_ana_fono_criar("Mesmo Sexo", "companheiros_da_crianca_nas_brincadeiras") }}>
                         <label for="companheiros_da_crianca_nas_brincadeiras">Sexo Oposto</label>
-                        <input value="Sexo Oposto" type="checkbox" name="companheiros_da_crianca_nas_brincadeiras[2]" id="sexo_oposto"  {{ in_array_old("Sexo Oposto", "companheiros_da_crianca_nas_brincadeiras") }} >
+                        <input value="Sexo Oposto" type="checkbox" name="companheiros_da_crianca_nas_brincadeiras[2]" id="sexo_oposto"  {{ in_array_old_ana_fono_criar("Sexo Oposto", "companheiros_da_crianca_nas_brincadeiras") }} >
                         <label for="companheiros_da_crianca_nas_brincadeiras">Criança da Mesma Idade</label>
-                        <input value="Criança da Mesma Idade" type="checkbox" name="companheiros_da_crianca_nas_brincadeiras[3]" id="mesma_idade"{{ in_array_old("Criança da Mesma Idade", "companheiros_da_crianca_nas_brincadeiras") }} ><br>
+                        <input value="Criança da Mesma Idade" type="checkbox" name="companheiros_da_crianca_nas_brincadeiras[3]" id="mesma_idade"{{ in_array_old_ana_fono_criar("Criança da Mesma Idade", "companheiros_da_crianca_nas_brincadeiras") }} ><br>
                         <label for="companheiros_da_crianca_nas_brincadeiras">Criança Mais Nova</label>
-                        <input value="Criança Mais Nova" type="checkbox" name="companheiros_da_crianca_nas_brincadeiras[4]" id="mais_nova"{{ in_array_old("Criança Mais Nova", "companheiros_da_crianca_nas_brincadeiras") }} >
+                        <input value="Criança Mais Nova" type="checkbox" name="companheiros_da_crianca_nas_brincadeiras[4]" id="mais_nova"{{ in_array_old_ana_fono_criar("Criança Mais Nova", "companheiros_da_crianca_nas_brincadeiras") }} >
                         <label for="companheiros_da_crianca_nas_brincadeiras">Criança Mais Velha</label>
-                        <input value="Criança Mais Velha" type="checkbox" name="companheiros_da_crianca_nas_brincadeiras[5]" id="mais_velha"{{ in_array_old("Criança Mais Velha", "companheiros_da_crianca_nas_brincadeiras") }} >
+                        <input value="Criança Mais Velha" type="checkbox" name="companheiros_da_crianca_nas_brincadeiras[5]" id="mais_velha"{{ in_array_old_ana_fono_criar("Criança Mais Velha", "companheiros_da_crianca_nas_brincadeiras") }} >
                         <br>
 
                         <label for="distracoes_preferidas" class="required">Distrações preferidas:</label><br>
@@ -252,52 +252,52 @@
 
                         <label class="required">Atitudes sociais predominantes:</label><br>
                         <label for="atitudes_sociais_predominantes">Obediente</label>
-                        <input value="Obediente" type="checkbox" name="atitudes_sociais_predominantes[1]" id="obediente" {{ in_array_old("Obediente", "atitudes_sociais_predominantes") }}>
+                        <input value="Obediente" type="checkbox" name="atitudes_sociais_predominantes[1]" id="obediente" {{ in_array_old_ana_fono_criar("Obediente", "atitudes_sociais_predominantes") }}>
                         <label for="atitudes_sociais_predominantes">Independente</label>
-                        <input value="Independente" type="checkbox" name="atitudes_sociais_predominantes[2]" id="independente" {{ in_array_old("Independente", "atitudes_sociais_predominantes") }}>
+                        <input value="Independente" type="checkbox" name="atitudes_sociais_predominantes[2]" id="independente" {{ in_array_old_ana_fono_criar("Independente", "atitudes_sociais_predominantes") }}>
                         <label for="atitudes_sociais_predominantes">Comunicativo</label>
-                        <input value="Comunicativo" type="checkbox" name="atitudes_sociais_predominantes[3]" id="comunicativo" {{ in_array_old("Comunicativo", "atitudes_sociais_predominantes") }}><br>
+                        <input value="Comunicativo" type="checkbox" name="atitudes_sociais_predominantes[3]" id="comunicativo" {{ in_array_old_ana_fono_criar("Comunicativo", "atitudes_sociais_predominantes") }}><br>
                         <label for="atitudes_sociais_predominantes">Agressivo</label>
-                        <input value="Agressivo" type="checkbox" name="atitudes_sociais_predominantes[4]" id="agressivo" {{ in_array_old("Agressivo", "atitudes_sociais_predominantes") }}>
+                        <input value="Agressivo" type="checkbox" name="atitudes_sociais_predominantes[4]" id="agressivo" {{ in_array_old_ana_fono_criar("Agressivo", "atitudes_sociais_predominantes") }}>
                         <label for="atitudes_sociais_predominantes">Cooperador</label>
-                        <input value="Cooperador" type="checkbox" name="atitudes_sociais_predominantes[5]" id="cooperador" {{ in_array_old("Cooperador", "atitudes_sociais_predominantes") }}><br><br>
+                        <input value="Cooperador" type="checkbox" name="atitudes_sociais_predominantes[5]" id="cooperador" {{ in_array_old_ana_fono_criar("Cooperador", "atitudes_sociais_predominantes") }}><br><br>
 
                         <label class="required">Emocionais:</label><br>
                         <label for="comportamento_emocional">Tranquilo</label>
-                        <input value="Tranquilo" type="checkbox" name="comportamento_emocional[1]" id="tranquilo" {{ in_array_old("Tranquilo", "comportamento_emocional") }}>
+                        <input value="Tranquilo" type="checkbox" name="comportamento_emocional[1]" id="tranquilo" {{ in_array_old_ana_fono_criar("Tranquilo", "comportamento_emocional") }}>
                         <label for="comportamento_emocional">Seguro</label>
-                        <input value="Seguro" type="checkbox" name="comportamento_emocional[2]" id="seguro" {{ in_array_old("Seguro", "comportamento_emocional") }}>
+                        <input value="Seguro" type="checkbox" name="comportamento_emocional[2]" id="seguro" {{ in_array_old_ana_fono_criar("Seguro", "comportamento_emocional") }}>
                         <label for="comportamento_emocional">Ansioso</label>
-                        <input value="Ansioso" type="checkbox" name="comportamento_emocional[3]" id="ansioso" {{ in_array_old("Ansioso", "comportamento_emocional") }}><br>
+                        <input value="Ansioso" type="checkbox" name="comportamento_emocional[3]" id="ansioso" {{ in_array_old_ana_fono_criar("Ansioso", "comportamento_emocional") }}><br>
                         <label for="comportamento_emocional">Alegre</label>
-                        <input value="Alegre" type="checkbox" name="comportamento_emocional[4]" id="alegre" {{ in_array_old("Alegre", "comportamento_emocional") }}>
+                        <input value="Alegre" type="checkbox" name="comportamento_emocional[4]" id="alegre" {{ in_array_old_ana_fono_criar("Alegre", "comportamento_emocional") }}>
                         <label for="comportamento_emocional">Emotivo</label>
-                        <input value="Emotivo" type="checkbox" name="comportamento_emocional[5]" id="emotivo" {{ in_array_old("Emotivo", "comportamento_emocional") }}>
+                        <input value="Emotivo" type="checkbox" name="comportamento_emocional[5]" id="emotivo" {{ in_array_old_ana_fono_criar("Emotivo", "comportamento_emocional") }}>
                         <label for="comportamento_emocional">Queixoso</label>
-                        <input value="Queixoso" type="checkbox" name="comportamento_emocional[6]" id="queixoso" {{ in_array_old("Queixoso", "comportamento_emocional") }}><br><br>
+                        <input value="Queixoso" type="checkbox" name="comportamento_emocional[6]" id="queixoso" {{ in_array_old_ana_fono_criar("Queixoso", "comportamento_emocional") }}><br><br>
 
                         <label class="required">Sono:</label><br>
                         <label for="comportamento_sono">Insônia</label>
-                        <input value="Insônia" type="checkbox" name="comportamento_sono[1]" id="insonia" {{ in_array_old("Insônia", "comportamento_sono") }}>
+                        <input value="Insônia" type="checkbox" name="comportamento_sono[1]" id="insonia" {{ in_array_old_ana_fono_criar("Insônia", "comportamento_sono") }}>
                         <label for="comportamento_sono">Pesadelos</label>
-                        <input value="Pesadelos" type="checkbox" name="comportamento_sono[2]" id="pesadelos" {{ in_array_old("Pesadelos", "comportamento_sono") }}>
+                        <input value="Pesadelos" type="checkbox" name="comportamento_sono[2]" id="pesadelos" {{ in_array_old_ana_fono_criar("Pesadelos", "comportamento_sono") }}>
                         <label for="comportamento_sono">Hipersonia</label>
-                        <input value="Hipersonia" type="checkbox" name="comportamento_sono[3]" id="hipersonia" {{ in_array_old("Hipersonia", "comportamento_sono") }}><br>
+                        <input value="Hipersonia" type="checkbox" name="comportamento_sono[3]" id="hipersonia" {{ in_array_old_ana_fono_criar("Hipersonia", "comportamento_sono") }}><br>
 
 
                         <label class="required" for="dorme_sozinho">Dorme sozinho</label>
                         <label for="dorme_sozinho">Sim</label>
-                        <input value="1" type="radio" name="dorme_sozinho" id="dorme_sozinho" {{ old_checked("dorme_sozinho", "1") }}>
+                        <input value="1" type="radio" name="dorme_sozinho" id="dorme_sozinho" {{ old_checked_ana_fono_criar("dorme_sozinho", "1") }}>
                         <label for="dorme_sozinho">Não</label>
-                        <input value="0" type="radio" name="dorme_sozinho" id="dorme_sozinho" {{ old_checked("dorme_sozinho", "0") }}>
+                        <input value="0" type="radio" name="dorme_sozinho" id="dorme_sozinho" {{ old_checked_ana_fono_criar("dorme_sozinho", "0") }}>
 
                         <br>
 
                         <label class="required" for="dorme_no_quarto_dos_pais">Dorme no quarto dos pais</label>
                         <label for="dorme_no_quarto_dos_pais">Sim</label>
-                        <input value="1" type="radio" name="dorme_no_quarto_dos_pais" id="dorme_no_quarto_dos_pais" {{ old_checked("dorme_no_quarto_dos_pais", "1") }}>
+                        <input value="1" type="radio" name="dorme_no_quarto_dos_pais" id="dorme_no_quarto_dos_pais" {{ old_checked_ana_fono_criar("dorme_no_quarto_dos_pais", "1") }}>
                         <label for="dorme_no_quarto_dos_pais">Não</label>
-                        <input value="0" type="radio" name="dorme_no_quarto_dos_pais" id="dorme_no_quarto_dos_pais" {{ old_checked("dorme_no_quarto_dos_pais", "0") }}>
+                        <input value="0" type="radio" name="dorme_no_quarto_dos_pais" id="dorme_no_quarto_dos_pais" {{ old_checked_ana_fono_criar("dorme_no_quarto_dos_pais", "0") }}>
 
                         <hr class="hr_form">
                         <h3 class="required">Medidas disciplinares empregadas pelos pais:</h3><br>

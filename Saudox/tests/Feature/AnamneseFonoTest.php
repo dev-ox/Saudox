@@ -140,8 +140,7 @@ class AnamneseFonoTest extends TestCase {
 
         // Verifica se a anamnese foi editada
         $resposta_ver_anamnese_editada = $this->get(route("profissional.anamnese.fonoaudiologia.ver", ['id_paciente' => $paciente_aux->id]));
-        // TODO: fazer isso pegar
-        // $resposta_ver_anamnese_editada->assertSee($str_valor_comparacao_depois);
+        $resposta_ver_anamnese_editada->assertSee($str_valor_comparacao_depois);
     }
 
     /** @test **/

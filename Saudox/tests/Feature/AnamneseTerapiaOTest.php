@@ -86,9 +86,8 @@ class AnamneseTerapiaOTest extends TestCase {
         ]);
 
         // Verifica se pode acessar a área de criação de anamnse de fonoaudiologia
-        //TODO: @sekva (erro no old, na view _pendência_)
-        // $resposta_ver_terapiaOcupacional = $this->get(route("profissional.anamnese.terapia_ocupacional.criar", ['id_paciente' => $paciente_aux->id]));
-        // $resposta_ver_terapiaOcupacional->assertSee("gestação");
+        $resposta_ver_terapiaOcupacional = $this->get(route("profissional.anamnese.terapia_ocupacional.criar", ['id_paciente' => $paciente_aux->id]));
+        $resposta_ver_terapiaOcupacional->assertSee("gestação");
 
         // Gera uma cópia da anamnese da Factory, indicando os ids
         $copia_anamnese = array($this->anamnese_terapiaOcupacional);
