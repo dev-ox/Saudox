@@ -1,22 +1,6 @@
 @extends('layouts.mainlayout')
 @section('content')
 
-
-    @php
-        function old_checked_ana_TO_criar($valor, $teste) {
-            return old($valor) == $teste ? "checked" : "";
-        }
-
-        function in_array_old_ana_TO_criar($valor, $arr) {
-
-            if(!old($arr)) { return ""; }
-            return in_array($valor, old($arr)) ? "checked" : "";
-        }
-    @endphp
-
-
-
-
     <div class="container">
         <div class="row">
             <div class="espacador_mesma_altura_top+nav"></div>
@@ -92,15 +76,15 @@
 
                         <label class="required">Movimentos estereotipados:</label><br>
                         <label for="movimentos_estereotipados">Sim</label>
-                        <input value="1" type="radio" name="movimentos_estereotipados" id="movimentos_estereotipados" {{old_checked_ana_TO_criar("movimentos_estereotipados", "1")}}>
+                        <input value="1" type="radio" name="movimentos_estereotipados" id="movimentos_estereotipados" {{g_old_checked(NULL, "movimentos_estereotipados", "1")}}>
                         <label for="movimentos_estereotipados">Não</label>
-                        <input value="0" type="radio" name="movimentos_estereotipados" id="movimentos_estereotipados" {{ old_checked_ana_TO_criar("movimentos_estereotipados", "0") }}><br>
+                        <input value="0" type="radio" name="movimentos_estereotipados" id="movimentos_estereotipados" {{ g_old_checked(NULL, "movimentos_estereotipados", "0") }}><br>
 
                         <label class="required">Ecolalias:</label><br>
                         <label for="ecolalias">Sim</label>
-                        <input value="1" type="radio" name="ecolalias" id="ecolalias" {{ old_checked_ana_TO_criar("ecolalias", "1") }}>
+                        <input value="1" type="radio" name="ecolalias" id="ecolalias" {{ g_old_checked(NULL, "ecolalias", "1") }}>
                         <label for="ecolalias">Não</label>
-                        <input value="0" type="radio" name="ecolalias" id="ecolalias" {{ old_checked_ana_TO_criar("ecolalias", "0") }}><br>
+                        <input value="0" type="radio" name="ecolalias" id="ecolalias" {{ g_old_checked(NULL, "ecolalias", "0") }}><br>
 
 
 
@@ -141,9 +125,9 @@
                         <h3>Escolaridade</h3><br>
                         <label class="required">Criança estuda?</label><br>
                         <label for="crianca_estuda">Sim</label>
-                        <input value="1" type="radio" name="crianca_estuda" id="crianca_estuda" {{ old_checked_ana_TO_criar("crianca_estuda", "1") }}>
+                        <input value="1" type="radio" name="crianca_estuda" id="crianca_estuda" {{ g_old_checked(NULL, "crianca_estuda", "1") }}>
                         <label for="crianca_estuda">Não</label>
-                        <input value="0" type="radio" name="crianca_estuda" id="crianca_estuda" {{ old_checked_ana_TO_criar("crianca_estuda", "0") }}><br>
+                        <input value="0" type="radio" name="crianca_estuda" id="crianca_estuda" {{ g_old_checked(NULL, "crianca_estuda", "0") }}><br>
                         <label class="required">Já estudou antes em outra escola?</label><br>
                         <input value="{{ old('ja_estudou_antes_em_outra_escola') }}" placeholder="(Sim? Não? Descreva)" type="text" name="ja_estudou_antes_em_outra_escola" id="ja_estudou_antes_em_outra_escola">
                         <label class="">Motivo da transferência escolar:</label><br>
@@ -157,9 +141,9 @@
 
                         <label class="required">Recebe orientação para fazer deveres escolares em casa?</label><br>
                         <label for="recebe_orientacao_aos_deveres_em_casa">Sim</label>
-                        <input value="Sim" type="radio" name="recebe_orientacao_aos_deveres_em_casa" id="recebe_orientacao_aos_deveres_em_casa" {{ old_checked_ana_TO_criar("recebe_orientacao_aos_deveres_em_casa", "Sim") }}>
+                        <input value="Sim" type="radio" name="recebe_orientacao_aos_deveres_em_casa" id="recebe_orientacao_aos_deveres_em_casa" {{ g_old_checked(NULL, "recebe_orientacao_aos_deveres_em_casa", "Sim") }}>
                         <label for="recebe_orientacao_aos_deveres_em_casa">Não</label>
-                        <input value="Não" type="radio" name="recebe_orientacao_aos_deveres_em_casa" id="recebe_orientacao_aos_deveres_em_casa" {{ old_checked_ana_TO_criar("recebe_orientacao_aos_deveres_em_casa", "Não") }}>
+                        <input value="Não" type="radio" name="recebe_orientacao_aos_deveres_em_casa" id="recebe_orientacao_aos_deveres_em_casa" {{ g_old_checked(NULL, "recebe_orientacao_aos_deveres_em_casa", "Não") }}>
 
                         <label class="required">Quem orienta nos deveres em casa?</label><br>
                         <input value="{{ old('quem_orienta_os_deveres_em_casa_se_sim_orientacao_deveres') }}" placeholder="Se é orientado, quem orienta?" type="text" name="quem_orienta_os_deveres_em_casa_se_sim_orientacao_deveres" id="quem_orienta_os_deveres_em_casa_se_sim_orientacao_deveres">
@@ -192,15 +176,15 @@
 
                         <label class="">Escolha de grupo:</label><br>
                         <label for="escolha_de_grupo">Mesmo Sexo</label>
-                        <input value="Mesmo Sexo" type="checkbox" name="escolha_de_grupo[1]" id="mesmo_sexo" {{ in_array_old_ana_TO_criar("Mesmo Sexo", "escolha_de_grupo") }}>
+                        <input value="Mesmo Sexo" type="checkbox" name="escolha_de_grupo[1]" id="mesmo_sexo" {{ g_in_array_old(NULL, "Mesmo Sexo", "escolha_de_grupo") }}>
                         <label for="escolha_de_grupo">Sexo Oposto</label>
-                        <input value="Sexo Oposto" type="checkbox" name="escolha_de_grupo[2]" id="sexo_oposto"  {{ in_array_old_ana_TO_criar("Sexo Oposto", "escolha_de_grupo") }} >
+                        <input value="Sexo Oposto" type="checkbox" name="escolha_de_grupo[2]" id="sexo_oposto"  {{ g_in_array_old(NULL, "Sexo Oposto", "escolha_de_grupo") }} >
                         <label for="escolha_de_grupo">Criança da Mesma Idade</label>
-                        <input value="Criança da Mesma Idade" type="checkbox" name="escolha_de_grupo[3]" id="mesma_idade"{{ in_array_old_ana_TO_criar("Criança da Mesma Idade", "escolha_de_grupo") }} ><br>
+                        <input value="Criança da Mesma Idade" type="checkbox" name="escolha_de_grupo[3]" id="mesma_idade"{{ g_in_array_old(NULL, "Criança da Mesma Idade", "escolha_de_grupo") }} ><br>
                         <label for="escolha_de_grupo">Criança Mais Nova</label>
-                        <input value="Criança Mais Nova" type="checkbox" name="escolha_de_grupo[4]" id="mais_nova"{{ in_array_old_ana_TO_criar("Criança Mais Nova", "escolha_de_grupo") }} >
+                        <input value="Criança Mais Nova" type="checkbox" name="escolha_de_grupo[4]" id="mais_nova"{{ g_in_array_old(NULL, "Criança Mais Nova", "escolha_de_grupo") }} >
                         <label for="escolha_de_grupo">Criança Mais Velha</label>
-                        <input value="Criança Mais Velha" type="checkbox" name="escolha_de_grupo[5]" id="mais_velha"{{ in_array_old_ana_TO_criar("Criança Mais Velha", "escolha_de_grupo") }} >
+                        <input value="Criança Mais Velha" type="checkbox" name="escolha_de_grupo[5]" id="mais_velha"{{ g_in_array_old(NULL, "Criança Mais Velha", "escolha_de_grupo") }} >
                         <br>
 
                         <hr class="hr_form">
@@ -214,47 +198,47 @@
                         <label class="required">Obediente:</label>
                         <br>
                         <label for="obediente">Sim</label>
-                        <input value="1" type="radio" name="obediente" id="obediente" {{old_checked_ana_TO_criar("obediente", "1")}}>
+                        <input value="1" type="radio" name="obediente" id="obediente" {{g_old_checked(NULL, "obediente", "1")}}>
                         <label for="obediente">Não</label>
-                        <input value="0" type="radio" name="obediente" id="obediente" {{ old_checked_ana_TO_criar("obediente", "0") }}><br>
+                        <input value="0" type="radio" name="obediente" id="obediente" {{ g_old_checked(NULL, "obediente", "0") }}><br>
 
                         <label class="required">Dependente:</label>
                         <br>
                         <label for="dependente">Sim</label>
-                        <input value="1" type="radio" name="dependente" id="dependente" {{ old_checked_ana_TO_criar("dependente", "1") }}>
+                        <input value="1" type="radio" name="dependente" id="dependente" {{ g_old_checked(NULL, "dependente", "1") }}>
                         <label for="dependente">Não</label>
-                        <input value="0" type="radio" name="dependente" id="dependente" {{ old_checked_ana_TO_criar("dependente", "0") }}><br>
+                        <input value="0" type="radio" name="dependente" id="dependente" {{ g_old_checked(NULL, "dependente", "0") }}><br>
                         <input value="{{ old('descricao_se_sim_dependente') }}" placeholder="Informações adicionais: Dependente" type="text" name="descricao_se_sim_dependente" id="descricao_se_sim_dependente"> <br>
 
                         <label class="required">Independente:</label>
                         <br>
                         <label for="independente">Sim</label>
-                        <input value="1" type="radio" name="independente" id="independente" {{ old_checked_ana_TO_criar("independente", "1") }}>
+                        <input value="1" type="radio" name="independente" id="independente" {{ g_old_checked(NULL, "independente", "1") }}>
                         <label for="independente">Não</label>
-                        <input value="0" type="radio" name="independente" id="independente" {{ old_checked_ana_TO_criar("independente", "0") }}><br>
+                        <input value="0" type="radio" name="independente" id="independente" {{ g_old_checked(NULL, "independente", "0") }}><br>
                         <input value="{{ old('descricao_se_sim_indepedente') }}" placeholder="Informações adicionais: Independente" type="text" name="descricao_se_sim_indepedente" id="descricao_se_sim_indepedente"><br>
 
                         <label class="required">Comunicativo:</label>
                         <br>
                         <label for="comunicativo">Sim</label>
-                        <input value="1" type="radio" name="comunicativo" id="comunicativo" {{ old_checked_ana_TO_criar("comunicativo", "1") }}>
+                        <input value="1" type="radio" name="comunicativo" id="comunicativo" {{ g_old_checked(NULL, "comunicativo", "1") }}>
                         <label for="comunicativo">Não</label>
-                        <input value="0" type="radio" name="comunicativo" id="comunicativo" {{ old_checked_ana_TO_criar("comunicativo", "0") }}><br>
+                        <input value="0" type="radio" name="comunicativo" id="comunicativo" {{ g_old_checked(NULL, "comunicativo", "0") }}><br>
 
                         <label class="required">Agressivo:</label>
                         <br>
                         <label for="agressivo">Sim</label>
-                        <input value="1" type="radio" name="agressivo" id="agressivo" {{ old_checked_ana_TO_criar("agressivo", "1") }}>
+                        <input value="1" type="radio" name="agressivo" id="agressivo" {{ g_old_checked(NULL, "agressivo", "1") }}>
                         <label for="agressivo">Não</label>
-                        <input value="0" type="radio" name="agressivo" id="agressivo" {{ old_checked_ana_TO_criar("agressivo", "0") }}><br>
+                        <input value="0" type="radio" name="agressivo" id="agressivo" {{ g_old_checked(NULL, "agressivo", "0") }}><br>
                         <input value="{{ old('descricao_se_sim_agressivo') }}" placeholder="Informações adicionais: Agressivo" type="text" name="descricao_se_sim_agressivo" id="descricao_se_sim_agressivo">
 
                         <label class="required">Cooperativo:</label>
                         <br>
                         <label for="cooperativo">Sim</label>
-                        <input value="1" type="radio" name="cooperativo" id="cooperativo" {{ old_checked_ana_TO_criar("cooperativo", "1") }}>
+                        <input value="1" type="radio" name="cooperativo" id="cooperativo" {{ g_old_checked(NULL, "cooperativo", "1") }}>
                         <label for="cooperativo">Não</label>
-                        <input value="0" type="radio" name="cooperativo" id="cooperativo" {{ old_checked_ana_TO_criar("cooperativo", "0") }}><br>
+                        <input value="0" type="radio" name="cooperativo" id="cooperativo" {{ g_old_checked(NULL, "cooperativo", "0") }}><br>
                         <input value="{{ old('descricao_se_sim_cooperador') }}" placeholder="Informações adicionais: Cooperativo" type="text" name="descricao_se_sim_cooperador" id="descricao_se_sim_cooperador">
 
 
@@ -262,72 +246,72 @@
                         <h3>Emocionais</h3><br>
                         <label class="required">Trânquilo</label><br>
                         <label for="tranquilo">Sim</label>
-                        <input value="1" type="radio" name="tranquilo" id="tranquilo" {{ old_checked_ana_TO_criar("tranquilo", "1") }}>
+                        <input value="1" type="radio" name="tranquilo" id="tranquilo" {{ g_old_checked(NULL, "tranquilo", "1") }}>
                         <label for="tranquilo">Não</label>
-                        <input value="0" type="radio" name="tranquilo" id="tranquilo" {{ old_checked_ana_TO_criar("tranquilo", "0") }}><br>
+                        <input value="0" type="radio" name="tranquilo" id="tranquilo" {{ g_old_checked(NULL, "tranquilo", "0") }}><br>
 
                         <label class="required">Seguro</label><br>
                         <label for="seguro">Sim</label>
-                        <input value="1" type="radio" name="seguro" id="seguro" {{ old_checked_ana_TO_criar("seguro", "1") }}>
+                        <input value="1" type="radio" name="seguro" id="seguro" {{ g_old_checked(NULL, "seguro", "1") }}>
                         <label for="seguro">Não</label>
-                        <input value="0" type="radio" name="seguro" id="seguro" {{ old_checked_ana_TO_criar("seguro", "0") }}><br>
+                        <input value="0" type="radio" name="seguro" id="seguro" {{ g_old_checked(NULL, "seguro", "0") }}><br>
 
                         <label class="required">Ansioso</label><br>
                         <label for="ansioso">Sim</label>
-                        <input value="1" type="radio" name="ansioso" id="ansioso" {{ old_checked_ana_TO_criar("ansioso", "1") }}>
+                        <input value="1" type="radio" name="ansioso" id="ansioso" {{ g_old_checked(NULL, "ansioso", "1") }}>
                         <label for="ansioso">Não</label>
-                        <input value="0" type="radio" name="ansioso" id="ansioso" {{ old_checked_ana_TO_criar("ansioso", "0") }}><br>
+                        <input value="0" type="radio" name="ansioso" id="ansioso" {{ g_old_checked(NULL, "ansioso", "0") }}><br>
 
                         <label class="required">Emotivo</label><br>
                         <label for="emotivo">Sim</label>
-                        <input value="1" type="radio" name="emotivo" id="emotivo" {{ old_checked_ana_TO_criar("emotivo", "1") }}>
+                        <input value="1" type="radio" name="emotivo" id="emotivo" {{ g_old_checked(NULL, "emotivo", "1") }}>
                         <label for="emotivo">Não</label>
-                        <input value="0" type="radio" name="emotivo" id="emotivo" {{ old_checked_ana_TO_criar("emotivo", "0") }}><br>
+                        <input value="0" type="radio" name="emotivo" id="emotivo" {{ g_old_checked(NULL, "emotivo", "0") }}><br>
 
                         <label class="required">Alegre</label><br>
                         <label for="alegre">Sim</label>
-                        <input value="1" type="radio" name="alegre" id="alegre" {{ old_checked_ana_TO_criar("alegre", "1") }}>
+                        <input value="1" type="radio" name="alegre" id="alegre" {{ g_old_checked(NULL, "alegre", "1") }}>
                         <label for="alegre">Não</label>
-                        <input value="0" type="radio" name="alegre" id="alegre" {{ old_checked_ana_TO_criar("alegre", "0") }}><br>
+                        <input value="0" type="radio" name="alegre" id="alegre" {{ g_old_checked(NULL, "alegre", "0") }}><br>
 
                         <label class="required">Queixoso</label><br>
                         <label for="queixoso">Sim</label>
-                        <input value="1" type="radio" name="queixoso" id="queixoso" {{ old_checked_ana_TO_criar("queixoso", "1") }}>
+                        <input value="1" type="radio" name="queixoso" id="queixoso" {{ g_old_checked(NULL, "queixoso", "1") }}>
                         <label for="queixoso">Não</label>
-                        <input value="0" type="radio" name="queixoso" id="queixoso" {{ old_checked_ana_TO_criar("queixoso", "0") }}><br>
+                        <input value="0" type="radio" name="queixoso" id="queixoso" {{ g_old_checked(NULL, "queixoso", "0") }}><br>
 
 
                         <hr class="hr_form">
                         <h3>Sono:</h3><br>
                         <label class="required">Insônia</label><br>
                         <label for="insonia">Sim</label>
-                        <input value="1" type="radio" name="insonia" id="insonia" {{ old_checked_ana_TO_criar("insonia", "1") }}>
+                        <input value="1" type="radio" name="insonia" id="insonia" {{ g_old_checked(NULL, "insonia", "1") }}>
                         <label for="insonia">Não</label>
-                        <input value="0" type="radio" name="insonia" id="insonia" {{ old_checked_ana_TO_criar("insonia", "0") }}><br>
+                        <input value="0" type="radio" name="insonia" id="insonia" {{ g_old_checked(NULL, "insonia", "0") }}><br>
 
                         <label class="required">Pesadelos</label><br>
                         <label for="pesadelos">Sim</label>
-                        <input value="1" type="radio" name="pesadelos" id="pesadelos" {{ old_checked_ana_TO_criar("pesadelos", "1") }}>
+                        <input value="1" type="radio" name="pesadelos" id="pesadelos" {{ g_old_checked(NULL, "pesadelos", "1") }}>
                         <label for="pesadelos">Não</label>
-                        <input value="0" type="radio" name="pesadelos" id="pesadelos" {{ old_checked_ana_TO_criar("pesadelos", "0") }}><br>
+                        <input value="0" type="radio" name="pesadelos" id="pesadelos" {{ g_old_checked(NULL, "pesadelos", "0") }}><br>
 
                         <label class="required">Hipersonia</label><br>
                         <label for="hipersonia">Sim</label>
-                        <input value="1" type="radio" name="hipersonia" id="hipersonia" {{ old_checked_ana_TO_criar("hipersonia", "1") }}>
+                        <input value="1" type="radio" name="hipersonia" id="hipersonia" {{ g_old_checked(NULL, "hipersonia", "1") }}>
                         <label for="hipersonia">Não</label>
-                        <input value="0" type="radio" name="hipersonia" id="hipersonia" {{ old_checked_ana_TO_criar("hipersonia", "0") }}><br>
+                        <input value="0" type="radio" name="hipersonia" id="hipersonia" {{ g_old_checked(NULL, "hipersonia", "0") }}><br>
 
                         <label class="required">Dorme sozinho?</label><br>
                         <label for="dorme_sozinho">Sim</label>
-                        <input value="1" type="radio" name="dorme_sozinho" id="dorme_sozinho" {{ old_checked_ana_TO_criar("dorme_sozinho", "1") }}>
+                        <input value="1" type="radio" name="dorme_sozinho" id="dorme_sozinho" {{ g_old_checked(NULL, "dorme_sozinho", "1") }}>
                         <label for="dorme_sozinho">Não</label>
-                        <input value="0" type="radio" name="dorme_sozinho" id="dorme_sozinho" {{ old_checked_ana_TO_criar("dorme_sozinho", "0") }}><br>
+                        <input value="0" type="radio" name="dorme_sozinho" id="dorme_sozinho" {{ g_old_checked(NULL, "dorme_sozinho", "0") }}><br>
 
                         <label class="required">Dorme no quarto dos pais?</label><br>
                         <label for="dorme_no_quarto_dos_pais">Sim</label>
-                        <input value="1" type="radio" name="dorme_no_quarto_dos_pais" id="dorme_no_quarto_dos_pais" {{ old_checked_ana_TO_criar("dorme_no_quarto_dos_pais", "1") }}>
+                        <input value="1" type="radio" name="dorme_no_quarto_dos_pais" id="dorme_no_quarto_dos_pais" {{ g_old_checked(NULL, "dorme_no_quarto_dos_pais", "1") }}>
                         <label for="dorme_no_quarto_dos_pais">Não</label>
-                        <input value="0" type="radio" name="dorme_no_quarto_dos_pais" id="dorme_no_quarto_dos_pais" {{ old_checked_ana_TO_criar("dorme_no_quarto_dos_pais", "0") }}><br>
+                        <input value="0" type="radio" name="dorme_no_quarto_dos_pais" id="dorme_no_quarto_dos_pais" {{ g_old_checked(NULL, "dorme_no_quarto_dos_pais", "0") }}><br>
 
                         <label class="required">Divide quarto com alguem?</label><br>
                         <input value="{{ old('divide_quarto_com_alguem') }}" placeholder="(Sim? Não? Descreva)" type="text" name="divide_quarto_com_alguem" id="divide_quarto_com_alguem">
