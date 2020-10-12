@@ -1,5 +1,7 @@
 @extends('layouts.mainlayout')
 @section('content')
+
+<!-- todo: Mover essas funções para o arquivo do JS -->
 @php
 
     function old_checked($obj, $valor, $teste) {
@@ -58,10 +60,10 @@
                         <h3>Informações Iniciais</h3>
 
                         <label class="required">Entrevistado:</label><br>
-                        <input value="{{ $avaliacao->entrevistado}}" placeholder="Entrevistado" type="text" name="entrevistado" id="entrevistado">
+                        <input value="{{ old2($avaliacao, "entrevistado") }}" placeholder="Entrevistado" type="text" name="entrevistado" id="entrevistado">
 
                         <label class="required">Queixa Principal:</label><br>
-                        <input value="{{ $avaliacao->queixa_principal}}" placeholder="Queixa" type="text" name="queixa_principal" id="posicao_bloco_familiar">
+                        <input value="{{ old2($avaliacao, "queixa_principal")}}" placeholder="Queixa" type="text" name="queixa_principal" id="posicao_bloco_familiar">
 
                         <hr class="hr_form">
                         <h3>Brincar</h3>
@@ -70,66 +72,66 @@
 
                         <label class="required">Quais as brincadeiras favoritas de sua criança?</label><br>
                         <label>(Brinquedos, Animais, Materiais e outros)</label><br><br>
-                        <textarea class="textareas_form" id="brincadeiras_favoritas" name="brincadeiras_favoritas" rows="4" cols="50" style="">{{$avaliacao->brincadeiras_favoritas}}</textarea><br><br>
+                        <textarea class="textareas_form" id="brincadeiras_favoritas" name="brincadeiras_favoritas" rows="4" cols="50" style="">{{ old2($avaliacao, "brincadeiras_favoritas") }}</textarea><br><br>
 
                         <label class="required">Onde sua criança brinca?</label><br>
                         <label>(Em casa, Na comunidade – parque, escola,...)</label><br><br>
-                        <textarea class="textareas_form" id="onde_brinca" name="onde_brinca" rows="4" cols="50" style="">{{$avaliacao->onde_brinca}}</textarea><br><br>
+                        <textarea class="textareas_form" id="onde_brinca" name="onde_brinca" rows="4" cols="50" style="">{{ old2($avaliacao, "onde_brinca") }}</textarea><br><br>
 
                         <label class="required">Com quem sua criança prefere brincar?</label><br><br>
-                        <textarea class="textareas_form" id="com_quem_prefere_brincar" name="com_quem_prefere_brincar" rows="4" cols="50" style="">{{$avaliacao->com_quem_prefere_brincar}}</textarea><br><br>
+                        <textarea class="textareas_form" id="com_quem_prefere_brincar" name="com_quem_prefere_brincar" rows="4" cols="50" style="">{{ old2($avaliacao, "com_quem_prefere_brincar") }}</textarea><br><br>
 
                         <label class="required">O que faz sua criança sorrir e dar gargalhada?</label><br><br>
-                        <textarea class="textareas_form" id="o_que_faz_rir" name="o_que_faz_rir" rows="4" cols="50" style="">{{$avaliacao->o_que_faz_rir}}</textarea><br><br>
+                        <textarea class="textareas_form" id="o_que_faz_rir" name="o_que_faz_rir" rows="4" cols="50" style="">{{ old2($avaliacao, "o_que_faz_rir") }}</textarea><br><br>
 
                         <label class="required">Que tipo de brincadeira é evitada?</label><br><br>
-                        <textarea class="textareas_form" id="brincadeiras_evitadas" name="brincadeiras_evitadas" rows="4" cols="50" style="">{{$avaliacao->brincadeiras_evitadas}}</textarea><br><br>
+                        <textarea class="textareas_form" id="brincadeiras_evitadas" name="brincadeiras_evitadas" rows="4" cols="50" style="">{{ old2($avaliacao, "brincadeiras_evitadas") }}</textarea><br><br>
 
                         <label class="required">Você tem que dar muita atenção à criança quando ela brinca ou ela brinca sozinha?</label><br><br>
-                        <textarea class="textareas_form" id="brinca_sozinho_ou_precisa_de_atencao" name="brinca_sozinho_ou_precisa_de_atencao" rows="4" cols="50" style="">{{$avaliacao->brinca_sozinho_ou_precisa_de_atencao}}</textarea><br><br>
+                        <textarea class="textareas_form" id="brinca_sozinho_ou_precisa_de_atencao" name="brinca_sozinho_ou_precisa_de_atencao" rows="4" cols="50" style="">{{ old2($avaliacao, "brinca_sozinho_ou_precisa_de_atencao") }}</textarea><br><br>
 
                         <label class="required">Qual a postura mais frequente quando sua criança está brincando?</label><br><br>
-                        <textarea class="textareas_form" id="postura_crianca_quando_brinca" name="postura_crianca_quando_brinca" rows="4" cols="50" style="">{{$avaliacao->postura_crianca_quando_brinca}}</textarea><br><br>
+                        <textarea class="textareas_form" id="postura_crianca_quando_brinca" name="postura_crianca_quando_brinca" rows="4" cols="50" style="">{{ old2($avaliacao, "postura_crianca_quando_brinca") }}</textarea><br><br>
 
                         <label class="required">O que sua criança faz quando está com raiva ou frustrada?</label><br><br>
-                        <textarea class="textareas_form" id="reacao_ao_ser_frustrada_ou_raiva" name="reacao_ao_ser_frustrada_ou_raiva" rows="4" cols="50" style="">{{$avaliacao->reacao_ao_ser_frustrada_ou_raiva}}</textarea><br><br>
+                        <textarea class="textareas_form" id="reacao_ao_ser_frustrada_ou_raiva" name="reacao_ao_ser_frustrada_ou_raiva" rows="4" cols="50" style="">{{ old2($avaliacao, "reacao_ao_ser_frustrada_ou_raiva") }}</textarea><br><br>
 
                         <label class="required">Quem geralmente disciplina a criança?</label><br><br>
-                        <textarea class="textareas_form" id="quem_disciplina_a_crianca" name="quem_disciplina_a_crianca" rows="4" cols="50" style="">{{$avaliacao->quem_disciplina_a_crianca}}</textarea><br><br>
+                        <textarea class="textareas_form" id="quem_disciplina_a_crianca" name="quem_disciplina_a_crianca" rows="4" cols="50" style="">{{ old2($avaliacao, "quem_disciplina_a_crianca") }}</textarea><br><br>
 
                         <label class="required">Como a criança reage às orientações dos pais?</label><br><br>
-                        <textarea class="textareas_form" id="como_reage_a_orientacao_dos_pais" name="como_reage_a_orientacao_dos_pais" rows="4" cols="50" style="">{{$avaliacao->como_reage_a_orientacao_dos_pais}}</textarea><br><br>
+                        <textarea class="textareas_form" id="como_reage_a_orientacao_dos_pais" name="como_reage_a_orientacao_dos_pais" rows="4" cols="50" style="">{{ old2($avaliacao, "como_reage_a_orientacao_dos_pais") }}</textarea><br><br>
 
                         <label class="required">Como reage à abraços e carinho?</label><br><br>
-                        <textarea class="textareas_form" id="reacao_a_abracos_carinhos" name="reacao_a_abracos_carinhos" rows="4" cols="50" style="">{{$avaliacao->reacao_a_abracos_carinhos}}</textarea><br><br>
+                        <textarea class="textareas_form" id="reacao_a_abracos_carinhos" name="reacao_a_abracos_carinhos" rows="4" cols="50" style="">{{ old2($avaliacao, "reacao_a_abracos_carinhos") }}</textarea><br><br>
 
                         <label class="required">Áreas de maior habilidade?</label><br><br>
-                        <textarea class="textareas_form" id="areas_maior_habilidade" name="areas_maior_habilidade" rows="4" cols="50" style="">{{$avaliacao->areas_maior_habilidade}}</textarea><br><br>
+                        <textarea class="textareas_form" id="areas_maior_habilidade" name="areas_maior_habilidade" rows="4" cols="50" style="">{{ old2($avaliacao, "areas_maior_habilidade") }}</textarea><br><br>
 
                         <label class="required">Áreas de maior dificuldade?</label><br><br>
-                        <textarea class="textareas_form" id="areas_maior_dificuldade" name="areas_maior_dificuldade" rows="4" cols="50" style="">{{$avaliacao->areas_maior_dificuldade}}</textarea><br><br>
+                        <textarea class="textareas_form" id="areas_maior_dificuldade" name="areas_maior_dificuldade" rows="4" cols="50" style="">{{ old2($avaliacao, "areas_maior_dificuldade") }}</textarea><br><br>
 
                         <hr class="hr_form">
                         <h3>Rotina Diária</h3><br>
 
                         <h4>Horário de:</h4>
                         <label class="required">Levantar:</label><br>
-                        <input value="{{ $avaliacao->hora_de_levantar}}" placeholder="Ex:. Ao amanhecer, ás 6:00 h" type="text" name="hora_de_levantar" id="hora_de_levantar">
+                        <input value="{{ old2($avaliacao, "hora_de_levantar") }}" placeholder="Ex:. Ao amanhecer, ás 6:00 h" type="text" name="hora_de_levantar" id="hora_de_levantar">
 
                         <label class="required">Café da manhã:</label><br>
-                        <input value="{{ $avaliacao->hora_cafe_da_manha}}" placeholder="Ex:. Após escola, ao 12:00 h" type="text" name="hora_cafe_da_manha" id="hora_cafe_da_manha">
+                        <input value="{{ old2($avaliacao, "hora_cafe_da_manha") }}" placeholder="Ex:. Após escola, ao 12:00 h" type="text" name="hora_cafe_da_manha" id="hora_cafe_da_manha">
 
                         <label class="required">Escola:</label><br>
-                        <input value="{{ $avaliacao->hora_da_escola}}" placeholder="Ex:. Após almoço, ao 12:00 h" type="text" name="hora_da_escola" id="hora_da_escola">
+                        <input value="{{ old2($avaliacao, "hora_da_escola") }}" placeholder="Ex:. Após almoço, ao 12:00 h" type="text" name="hora_da_escola" id="hora_da_escola">
 
                         <label class="required">Almoço:</label><br>
-                        <input value="{{ $avaliacao->hora_almoco}}" placeholder="Ex:. Após escola, ao 12:00 h" type="text" name="hora_almoco" id="hora_almoco">
+                        <input value="{{ old2($avaliacao, "hora_almoco") }}" placeholder="Ex:. Após escola, ao 12:00 h" type="text" name="hora_almoco" id="hora_almoco">
 
                         <label class="required">Janta:</label><br>
-                        <input value="{{ $avaliacao->hora_janta}}" placeholder="Ex:. Após escola, ás 20:00 h" type="text" name="hora_janta" id="hora_janta">
+                        <input value="{{ old2($avaliacao, "hora_janta") }}" placeholder="Ex:. Após escola, ás 20:00 h" type="text" name="hora_janta" id="hora_janta">
 
                         <label class="required">Dormir:</label><br>
-                        <input value="{{ $avaliacao->hora_dormir}}" placeholder="Ex:. Após janta, ás 22:00 h" type="text" name="hora_dormir" id="hora_dormir">
+                        <input value="{{ old2($avaliacao, "hora_dormir") }}" placeholder="Ex:. Após janta, ás 22:00 h" type="text" name="hora_dormir" id="hora_dormir">
 
                         <hr class="hr_form">
                         <h3>Sono</h3><br>
@@ -153,7 +155,7 @@
                         <input value="0" type="radio" name="sono_tranqulo" id="sono_tranqulo" {{ old_checked($avaliacao, "sono_tranqulo", "0") }}><br>
 
                         <label class="required">Acorda à noite?</label><br>
-                        <input value="{{ $avaliacao->acorda_noite}}" placeholder="Acorda durante a noite? Quando? Quantas vezes?" type="text" name="acorda_noite" id="acorda_noite">
+                        <input value="{{ old2($avaliacao, "acorda_noite") }}" placeholder="Acorda durante a noite? Quando? Quantas vezes?" type="text" name="acorda_noite" id="acorda_noite">
 
                         <label class="required">Tem pesadelos?</label><br>
                         <label for="pesadelos">Sim</label>
@@ -219,7 +221,7 @@
                         <input value="0" type="radio" name="usa_canudo" id="usa_canudo" {{ old_checked($avaliacao, "usa_canudo", "0") }}><br>
 
                         <label class="required">Segura o copo ou garrafa com uma mão? ou Com as duas mãos?</label><br>
-                        <input value="{{ $avaliacao->segura_copo_garrafa_com_uma_ou_duas_maos}}" placeholder="Segura? Com uma ou duas?" type="text" name="segura_copo_garrafa_com_uma_ou_duas_maos" id="segura_copo_garrafa_com_uma_ou_duas_maos">
+                        <input value="{{ old2($avaliacao, "segura_copo_garrafa_com_uma_ou_duas_maos") }}" placeholder="Segura? Com uma ou duas?" type="text" name="segura_copo_garrafa_com_uma_ou_duas_maos" id="segura_copo_garrafa_com_uma_ou_duas_maos">
 
                         <label class="required">Ajuda a colocar a mesa, pratos?</label><br>
                         <label for="ajuda_a_colocar_a_mesa">Sim</label>
@@ -228,7 +230,7 @@
                         <input value="0" type="radio" name="ajuda_a_colocar_a_mesa" id="ajuda_a_colocar_a_mesa" {{ old_checked($avaliacao, "ajuda_a_colocar_a_mesa", "0") }}><br>
 
                         <label class="required">Qual o tipo de alimentação usada?</label><br><br>
-                        <textarea class="textareas_form" id="tipo_alimentacao" name="tipo_alimentacao" rows="4" cols="50" style="">{{$avaliacao->tipo_alimentacao}}</textarea><br><br>
+                        <textarea class="textareas_form" id="tipo_alimentacao" name="tipo_alimentacao" rows="4" cols="50" style="">{{ old2($avaliacao, "tipo_alimentacao") }}</textarea><br><br>
 
                         <label class="required">Tem bom apetite?</label><br>
                         <label for="tem_bom_apetite">Sim</label>
@@ -237,10 +239,10 @@
                         <input value="0" type="radio" name="tem_bom_apetite" id="tem_bom_apetite" {{ old_checked($avaliacao, "tem_bom_apetite", "0") }}><br>
 
                         <label class="required">O que mais gosta de comer?</label><br><br>
-                        <textarea class="textareas_form" id="o_que_gosta_de_comer" name="o_que_gosta_de_comer" rows="4" cols="50" style="">{{$avaliacao->o_que_gosta_de_comer}}</textarea><br><br>
+                        <textarea class="textareas_form" id="o_que_gosta_de_comer" name="o_que_gosta_de_comer" rows="4" cols="50" style="">{{ old2($avaliacao, "o_que_gosta_de_comer") }}</textarea><br><br>
 
                         <label class="required">O que não gosta de comer?</label><br><br>
-                        <textarea class="textareas_form" id="nao_gosta_de_comer" name="nao_gosta_de_comer" rows="4" cols="50" style="">{{$avaliacao->nao_gosta_de_comer}}</textarea><br><br>
+                        <textarea class="textareas_form" id="nao_gosta_de_comer" name="nao_gosta_de_comer" rows="4" cols="50" style="">{{ old2($avaliacao, "nao_gosta_de_comer") }}</textarea><br><br>
 
                         <label class="required">Teve dificuldade de passar de pastoso para sólido?</label><br>
                         <label for="houve_dificuldade_transicao_pastoso_solido">Sim</label>
@@ -253,13 +255,13 @@
 
                         <label class="required">Gosta de vestir roupa?</label><br>
                         <label>Descreva tipo de roupa preferida? (tecido, vestido, short,...)</label><br>
-                        <input value="{{ $avaliacao->gosta_de_vestir_roupa}}" placeholder="Gosta de se vestir? Descreva" type="text" name="gosta_de_vestir_roupa" id="gosta_de_vestir_roupa">
+                        <input value="{{ old2($avaliacao, "gosta_de_vestir_roupa") }}" placeholder="Gosta de se vestir? Descreva" type="text" name="gosta_de_vestir_roupa" id="gosta_de_vestir_roupa">
 
                         <label class="required">Veste roupa sozinha? Quais peças?</label><br>
-                        <input value="{{ $avaliacao->veste_roupa_sozinho_quais_pecas}}" placeholder="Se veste só? Quais roupas?" type="text" name="veste_roupa_sozinho_quais_pecas" id="veste_roupa_sozinho_quais_pecas">
+                        <input value="{{ old2($avaliacao, "veste_roupa_sozinho_quais_pecas") }}" placeholder="Se veste só? Quais roupas?" type="text" name="veste_roupa_sozinho_quais_pecas" id="veste_roupa_sozinho_quais_pecas">
 
                         <label class="required">Tira a roupa sozinha? Quais peças?</label><br>
-                        <input value="{{ $avaliacao->tira_roupa_sozinho_quais_pecas}}" placeholder="Se despe só? Quais peças?" type="text" name="tira_roupa_sozinho_quais_pecas" id="tira_roupa_sozinho_quais_pecas">
+                        <input value="{{ old2($avaliacao, "tira_roupa_sozinho_quais_pecas") }}" placeholder="Se despe só? Quais peças?" type="text" name="tira_roupa_sozinho_quais_pecas" id="tira_roupa_sozinho_quais_pecas">
 
                         <label class="required">Já abotoa?</label><br>
                         <label for="abotoa">Sim</label>
@@ -338,7 +340,7 @@
 
                         <hr class="hr_form">
                         <h3>Outras informações importantes:</h3><br>
-                        <textarea class="textareas_form" id="info_extras_relevante" name="info_extras_relevante" rows="4" cols="50" style="">{{$avaliacao->info_extras_relevante}}</textarea><br><br>
+                        <textarea class="textareas_form" id="info_extras_relevante" name="info_extras_relevante" rows="4" cols="50" style="">{{ old2($avaliacao, "info_extras_relevante") }}</textarea><br><br>
 
 
                         <input type="submit" value="Salvar avaliação">
