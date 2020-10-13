@@ -82,6 +82,16 @@ class ProfissionalAvaliacaoController extends Controller {
 
         $entrada = $request->all();
 
+        $paciente = Paciente::find($entrada['id_paciente']);
+        if(!$paciente) {
+            return redirect()->route('erro', ['msg_erro' => "Paciente " .$entrada['id_paciente']. " inexistente"]);
+        }
+
+        $avaliacao_t = $paciente->avaliacaoJudo;
+        if($avaliacao_t){
+            return redirect()->route('erro', ['msg_erro' => "Avaliação do paciente " .$entrada['id_paciente']. " já existe"]);
+        }
+
 
         $validator_judo = Validator::make($entrada, AvaliacaoJudo::$regras_validacao, $messages);
         if ($validator_judo->fails()) {
@@ -205,6 +215,17 @@ class ProfissionalAvaliacaoController extends Controller {
         ];
 
         $entrada = $request->all();
+
+        $paciente = Paciente::find($entrada['id_paciente']);
+        if(!$paciente) {
+            return redirect()->route('erro', ['msg_erro' => "Paciente " .$entrada['id_paciente']. " inexistente"]);
+        }
+
+        $avaliacao_t = $paciente->avaliacaoTerapiaOcupacional;
+        if($avaliacao_t){
+            return redirect()->route('erro', ['msg_erro' => "Avaliação do paciente " .$entrada['id_paciente']. " já existe"]);
+        }
+
 
 
         $validator_to = Validator::make($entrada, AvaliacaoTerapiaOcupacional::$regras_validacao, $messages);

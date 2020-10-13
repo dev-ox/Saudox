@@ -1,4 +1,4 @@
-<?Php
+<?php
 namespace App\Http\Controllers\Profissional;
 
 use App\Http\Controllers\Controller;
@@ -46,6 +46,16 @@ class ProfissionalAnamneseController extends Controller {
     public function salvarFonoaudiologia(Request $request) {
         $entrada = $request->all();
         $paciente = Paciente::find($entrada['id_paciente']);
+
+        if(!$paciente) {
+            return redirect()->route('erro', ['msg_erro' => "Paciente " .$entrada['id_paciente']. " inexistente"]);
+        }
+
+        $anamnese_t = $paciente->anamneseFonoaudiologias;
+        if($anamnese_t){
+            return redirect()->route('erro', ['msg_erro' => "Anamnese do paciente " .$entrada['id_paciente']. " já existe"]);
+        }
+
         if ($paciente->pais_sao_casados == 1) {
             $status_relacao_pais = "Casados";
             $se_pais_separados_paciente_vive_com_quem = "Pais casados";
@@ -265,7 +275,19 @@ class ProfissionalAnamneseController extends Controller {
 
     public function salvarPsicopedagogia(Request $request) {
 
+
         $entrada = $request->all();
+
+        $paciente = Paciente::find($entrada['id_paciente']);
+        if(!$paciente) {
+            return redirect()->route('erro', ['msg_erro' => "Paciente " .$entrada['id_paciente']. " inexistente"]);
+        }
+
+        $anamnese_t = $paciente->anamneseGigantePsicopedaNeuroPsicomotos();
+        if($anamnese_t){
+            return redirect()->route('erro', ['msg_erro' => "Anamnese do paciente " .$entrada['id_paciente']. " já existe"]);
+        }
+
 
         $messages = [
             'required' => 'O campo :attribute é obrigatório.',
@@ -380,6 +402,16 @@ class ProfissionalAnamneseController extends Controller {
 
     public function salvarTerapiaOcupacional(Request $request) {
         $entrada = $request->all();
+
+        $paciente = Paciente::find($entrada['id_paciente']);
+        if(!$paciente) {
+            return redirect()->route('erro', ['msg_erro' => "Paciente " .$entrada['id_paciente']. " inexistente"]);
+        }
+
+        $anamnese_t = $paciente->anamneseTerapiaOcupacionals;
+        if($anamnese_t){
+            return redirect()->route('erro', ['msg_erro' => "Anamnese do paciente " .$entrada['id_paciente']. " já existe"]);
+        }
 
         $messages = [
             'required' => 'O campo :attribute é obrigatório.',
