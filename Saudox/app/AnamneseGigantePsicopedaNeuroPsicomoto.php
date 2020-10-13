@@ -134,7 +134,7 @@ class AnamneseGigantePsicopedaNeuroPsicomoto extends Model {
 
 
 
-    public static function nova() {
+    public static function novaAnamnese() {
 
         $pt1 = new AnamneseGigantePsicopedaNeuroPsicomotoPt1;
         $pt2 = new AnamneseGigantePsicopedaNeuroPsicomotoPt2;

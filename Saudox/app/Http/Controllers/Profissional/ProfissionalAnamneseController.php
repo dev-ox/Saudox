@@ -277,13 +277,19 @@ class ProfissionalAnamneseController extends Controller {
             'unique' => 'O :attribute já está cadastrado',
         ];
 
-        $conhecimentos = "";
-        foreach($entrada["conhece_tais_coisas"] as $coisas) {
-            $conhecimentos .= $coisas . ", ";
-        }
 
-        $conhecimentos = preg_replace("/, $/", "", $conhecimentos);
-        $entrada["conhece_tais_coisas"] = $conhecimentos;
+        if(isset($entrada["conhece_tais_coisas"])) {
+            $conhecimentos = "";
+            foreach($entrada["conhece_tais_coisas"] as $coisas) {
+                $conhecimentos .= $coisas . ", ";
+            }
+
+            $conhecimentos = preg_replace("/, $/", "", $conhecimentos);
+            $entrada["conhece_tais_coisas"] = $conhecimentos;
+
+        } else {
+            $entrada["conhece_tais_coisas"] = "Nada...";
+        }
 
         $validator_anamnese_gigante_1 = Validator::make($entrada, AnamneseGigantePsicopedaNeuroPsicomotoPt1::$regras_validacao, $messages);
         $validator_anamnese_gigante_2 = Validator::make($entrada, AnamneseGigantePsicopedaNeuroPsicomotoPt2::$regras_validacao, $messages);
@@ -310,7 +316,7 @@ class ProfissionalAnamneseController extends Controller {
                              ->withInput();
         }
 
-        $anamneses_arr = AnamneseGigantePsicopedaNeuroPsicomoto::nova();
+        $anamneses_arr = AnamneseGigantePsicopedaNeuroPsicomoto::novaAnamnese();
 
         $anamneses_arr["pt1"]->fill($entrada);
         $anamneses_arr["pt2"]->fill($entrada);

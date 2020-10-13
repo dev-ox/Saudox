@@ -167,7 +167,7 @@ function old2($obj, $valor) {
                             <!-- $table->text('outras_crianças_e_parentes_que_moram_com_a_criança')->nullable(true); -->
 
                             <h3>Outras crianças e parentes que moram com a criança</h3>
-                            <textarea class="textareas_form" name="outras_crianças_e_parentes_que_moram_com_a_criança" rows="4" cols="50" style="">{{ old2($anamnese, "outras_crianças_e_parentes_que_moram_com_a_criança") }}</textarea>
+                            <textarea placeholder="Nome, Idade, Relação, Educação, Ocupação, Saúde, Problemas de aprendizado" class="textareas_form" name="outras_crianças_e_parentes_que_moram_com_a_criança" rows="4" cols="50" style="">{{ old2($anamnese, "outras_crianças_e_parentes_que_moram_com_a_criança") }}</textarea>
 
 
 
@@ -182,7 +182,7 @@ function old2($obj, $valor) {
                             <h3>Tratamento para infertilidade</h3>
                             <input type="text" name="tratamento_para_infertilidade" value="{{ old2($anamnese, "tratamento_para_infertilidade") }}" />
 
-                            <h3>Historia familiar de doença neurologica</h3>
+                            <h3>História familiar de doença neurológica</h3>
                             <input type="text" name="historia_familiar_de_doenca_neurologica" value="{{ old2($anamnese, "historia_familiar_de_doenca_neurologica") }}" />
 
                             <h3>Convulsões</h3>
@@ -209,28 +209,32 @@ function old2($obj, $valor) {
                             <h3>Idade do pai na concepção</h3>
                             <input type="number" name="idade_dos_pais_na_epoca_pai" value="{{ old2($anamnese, "idade_dos_pais_na_epoca_pai") }}" />
 
-                            <h3>Numero de gestações anteriores</h3>
+                            <h3>Número de gestações anteriores</h3>
                             <input type="number" name="gestacoes_anteriores" value="{{ old2($anamnese, "gestacoes_anteriores") }}" />
 
                             <h3>Abortos?</h3>
-                            <input type="radio" name="abortos" value="1" {{ old_checked($anamnese, "abortos", "1") }} /><label>Sim</label><br>
-                            <input type="radio" name="abortos" value="0" {{ old_checked($anamnese, "abortos", "0") }} /><label>Não</label><br>
+                            <input onclick="document.getElementById('div_numeros_abortos').style.display = 'block'" type="radio" name="abortos" value="1" {{ old_checked($anamnese, "abortos", "1") }} /><label>Sim</label><br>
+                            <input onclick="document.getElementById('div_numeros_abortos').style.display = 'none'" type="radio" name="abortos" value="0" {{ old_checked($anamnese, "abortos", "0") }} /><label>Não</label><br>
 
-                            <h3>Número de abortos naturais</h3>
-                            <input type="number" name="naturais" value="{{ old2($anamnese, "naturais") }}" />
+                            <div id="div_numeros_abortos">
+                                <h3>Número de abortos naturais</h3>
+                                <input type="number" name="naturais" value="{{ old2($anamnese, "naturais") }}" />
 
-                            <h3>Número de abortos provocados</h3>
-                            <input type="number" name="provocados" value="{{ old2($anamnese, "provocados") }}" />
+                                <h3>Número de abortos provocados</h3>
+                                <input type="number" name="provocados" value="{{ old2($anamnese, "provocados") }}" />
+                            </div>
 
                             <h3>Perdeu algum filho?</h3>
-                            <input type="radio" name="perdeu_algum_filho" value="1" {{ old_checked($anamnese, "abortos", "1") }} /><label>Sim</label><br>
-                            <input type="radio" name="perdeu_algum_filho" value="0" {{ old_checked($anamnese, "abortos", "0") }} /><label>Não</label><br>
+                            <input onclick="document.getElementById('div_perda_filhos').style.display = 'block'" type="radio" name="perdeu_algum_filho" value="1" {{ old_checked($anamnese, "abortos", "1") }} /><label>Sim</label><br>
+                            <input onclick="document.getElementById('div_perda_filhos').style.display = 'none'" type="radio" name="perdeu_algum_filho" value="0" {{ old_checked($anamnese, "abortos", "0") }} /><label>Não</label><br>
 
-                            <input type="radio" name="a_perca_foi_antes_do_paciente" value="1" {{ old_checked($anamnese, "a_perca_foi_antes_do_paciente", "1") }} /><label>Perdeu o filho antes do paciente</label><br>
-                            <input type="radio" name="a_perca_foi_antes_do_paciente" value="0" {{ old_checked($anamnese, "a_perca_foi_antes_do_paciente", "0") }} /><label>Perdeu o filho depois do paciente</label><br>
+                            <div id="div_perda_filhos">
+                                <input type="radio" name="a_perca_foi_antes_do_paciente" value="1" {{ old_checked($anamnese, "a_perca_foi_antes_do_paciente", "1") }} /><label>Perdeu o filho antes do paciente</label><br>
+                                <input type="radio" name="a_perca_foi_antes_do_paciente" value="0" {{ old_checked($anamnese, "a_perca_foi_antes_do_paciente", "0") }} /><label>Perdeu o filho depois do paciente</label><br>
 
-                            <h3>Como foi (foram) o(s) aborto(s)</h3>
-                            <input type="text" name="como_perdeu_o_filho" value="{{ old2($anamnese, "como_perdeu_o_filho") }}" />
+                                <h3>Como perdeu o(s) filho(s)?</h3>
+                                <input type="text" name="como_perdeu_o_filho" value="{{ old2($anamnese, "como_perdeu_o_filho") }}" />
+                            </div>
 
 
 
@@ -261,7 +265,7 @@ function old2($obj, $valor) {
                             <input type="text" name="sofreu_acidentes_quedas_se_sim_como_foi" value="{{ old2($anamnese, "sofreu_acidentes_quedas_se_sim_como_foi") }}" />
 
                             <h3>Teve alguma doença durante a gravidez? Se sim, quais?</h3>
-                            <input type="text" name="teve_alguma_doenca_na_gestacao" value="{{ old2($anamnese, "teve_alguma_doenca_na_gestacao") }}" />
+                            <input placeholder="(Rubéola, Toxoplasmose, Sífilis, Herpes, etc)" type="text" name="teve_alguma_doenca_na_gestacao" value="{{ old2($anamnese, "teve_alguma_doenca_na_gestacao") }}" />
 
                             <h3>Tomou alguma medicação durante a gravidez? Se sim, qual?</h3>
                             <input type="text" name="tomou_alguma_medicacao_se_sim_qual" value="{{ old2($anamnese, "tomou_alguma_medicacao_se_sim_qual") }}" />
@@ -283,7 +287,7 @@ function old2($obj, $valor) {
                             <input type="text" name="entrou_em_contato_com_algum_produto_quimicotoxico_se_sim_qual" value="{{ old2($anamnese, "entrou_em_contato_com_algum_produto_quimicotoxico_se_sim_qual") }}" />
 
 
-                            <h3>Esteve em ambientes com alto nivel de poluição?</h3>
+                            <h3>Esteve em ambientes com alto nível de poluição?</h3>
                             <input type="radio" name="esteve_em_ambientes_com_alto_nivel_de_poluicao" value="1" {{ old_checked($anamnese, "esteve_em_ambientes_com_alto_nivel_de_poluicao", "1") }} /><label>Sim</label><br>
                             <input type="radio" name="esteve_em_ambientes_com_alto_nivel_de_poluicao" value="0" {{ old_checked($anamnese, "esteve_em_ambientes_com_alto_nivel_de_poluicao", "0") }} /><label>Não</label><br>
 
@@ -358,7 +362,7 @@ function old2($obj, $valor) {
                             <br>
 
                             <h3>Como se deu a alimentação?</h3>
-                            <textarea class="textareas_form" name="como_se_deu_a_alimentação" rows="4" cols="50" style="">{{ old2($anamnese, "como_se_deu_a_alimentação") }}</textarea>
+                            <textarea class="textareas_form" name="como_se_deu_a_alimentação" rows="4" cols="50" style="">{{ old2($anamnese, "como_se_deu_a_alimentação") }}</textarea><br><br>
 
                             <h3>Mamou no seio? Se não, por quê?</h3>
                             <input type="text" name="mamou_no_seio_se_nao_qual_o_motivo" value="{{ old2($anamnese, "mamou_no_seio_se_nao_qual_o_motivo") }}" />
@@ -411,7 +415,7 @@ function old2($obj, $valor) {
                             <br>
                             <br>
                             <br>
-                            <h3>Doenças na infâmia</h3>
+                            <h2 style="color: #fff; margin-left: 0px; margin-top: 0px;">Doenças na infância</h2>
                             <hr class="hr_form">
                             <br>
 
@@ -422,7 +426,7 @@ function old2($obj, $valor) {
                             <h3>Dores de ouvido</h3>
                             <input type="text" name="teve_dores_ouvido_infancia" value="{{ old2($anamnese, "teve_dores_ouvido_infancia") }}" />
 
-                            <h3>Cólicas na infância</h3>
+                            <h3>Cólicas</h3>
                             <input type="text" name="teve_colicas_infancia" value="{{ old2($anamnese, "teve_colicas_infancia") }}" />
 
                             <h3>Catapora</h3>
@@ -464,13 +468,10 @@ function old2($obj, $valor) {
                             <h3>Febres</h3>
                             <input type="text" name="teve_febres_infancia" value="{{ old2($anamnese, "teve_febres_infancia") }}" />
 
-                            <h3>Febres</h3>
-                            <input type="text" name="teve_febres_infancia" value="{{ old2($anamnese, "teve_febres_infancia") }}" />
-
-                            <h3>Internações (Quanto tempo?)</h3>
+                            <h3>Internações (quanto tempo?)</h3>
                             <input type="text" name="foi_internado_se_sim_por_quanto_tempo" value="{{ old2($anamnese, "foi_internado_se_sim_por_quanto_tempo") }}" />
 
-                            <h3>Cirurgias (e idades que fez as cirurgias)</h3>
+                            <h3>Cirurgias (e idade que fez as cirurgias)</h3>
                             <input type="text" name="ja_fez_cirurgia_se_sim_com_quantos_anos_e_qual_cirugia" value="{{ old2($anamnese, "ja_fez_cirurgia_se_sim_com_quantos_anos_e_qual_cirugia") }}" />
 
                             <h3>Quedas e traumatismos</h3>
@@ -503,7 +504,7 @@ function old2($obj, $valor) {
                             <h1>Sono</h1>
                             <br>
 
-                            <h3>Sono tranquilo ou agitado? Se é agitado, quando acontece? Com que frequência</h3>
+                            <h3>Sono tranquilo ou agitado? Se é agitado, quando acontece? Com que frequência?</h3>
                             <input type="text" name="sono_tranquilo_se_for_agitado_quando_e_qual_frequencia" value="{{ old2($anamnese, "sono_tranquilo_se_for_agitado_quando_e_qual_frequencia") }}" />
 
                             <h3>Ranger de dentes</h3>
@@ -526,8 +527,8 @@ function old2($obj, $valor) {
                             <input type="radio" name="fala_durante_sono" value="1" {{ old_checked($anamnese, "fala_durante_sono", "1") }} /><label>Sim</label><br>
                             <input type="radio" name="fala_durante_sono" value="0" {{ old_checked($anamnese, "fala_durante_sono", "0") }} /><label>Não</label><br>
 
-                            <h3>Sono tranquilo ou agitado? Se é agitado, quando acontece? Com que frequência</h3>
-                            <textarea class="textareas_form" name="dorme_so_se_nao_com_quem_dorme" rows="4" cols="50" style="">{{ old2($anamnese, "dorme_so_se_nao_com_quem_dorme") }}</textarea>
+                            <h3>Dorme com alguém? Com quem?</h3>
+                            <textarea class="textareas_form" name="dorme_so_se_nao_com_quem_dorme" rows="4" cols="50" style="">{{ old2($anamnese, "dorme_so_se_nao_com_quem_dorme") }}</textarea><br><br>
 
                             <h3>Até quando dormiu com os pais?</h3>
                             <input type="text" name="ate_quando_dormiu_com_os_pais" value="{{ old2($anamnese, "ate_quando_dormiu_com_os_pais") }}" />
@@ -719,14 +720,14 @@ function old2($obj, $valor) {
                             <label>Números</label><input value="Números" type="checkbox" name="conhece_tais_coisas[]" id="mesmo_sexo" {{ in_array_old($anamnese, "Números", "conhece_tais_coisas") }}><br>
                             <label>Dinheiro</label><input value="Dinheiro" type="checkbox" name="conhece_tais_coisas[]" id="mesmo_sexo" {{ in_array_old($anamnese, "Dinheiro", "conhece_tais_coisas") }}><br>
                             <label>Meses do ano</label><input value="Meses do ano" type="checkbox" name="conhece_tais_coisas[]" id="mesmo_sexo" {{ in_array_old($anamnese, "Meses do ano", "conhece_tais_coisas") }}><br>
-                            <label>Saber recortar</label><input value="Saber recortar" type="checkbox" name="conhece_tais_coisas[]" id="mesmo_sexo" {{ in_array_old($anamnese, "Saber recortar", "conhece_tais_coisas") }}><br>
-                            <label>Saber dias da semana</label><input value="Saber dias da semana" type="checkbox" name="conhece_tais_coisas[]" id="mesmo_sexo" {{ in_array_old($anamnese, "Saber dias da semana", "conhece_tais_coisas") }}><br>
+                            <label>Sabe recortar</label><input value="Sabe recortar" type="checkbox" name="conhece_tais_coisas[]" id="mesmo_sexo" {{ in_array_old($anamnese, "Sabe recortar", "conhece_tais_coisas") }}><br>
+                            <label>Sabe dias da semana</label><input value="Sabe dias da semana" type="checkbox" name="conhece_tais_coisas[]" id="mesmo_sexo" {{ in_array_old($anamnese, "Sabe dias da semana", "conhece_tais_coisas") }}><br>
                             <br><br><br>
 
                             <h3>Tem tique? Quais?</h3>
                             <input type="text" name="apresenta_tiques_se_sim_quais" value="{{ old2($anamnese, "apresenta_tiques_se_sim_quais") }}" />
 
-                            <h3>Como pega no lapis?</h3>
+                            <h3>Como pega no lápis?</h3>
                             <input type="text" name="como_pegua_o_lapis" value="{{ old2($anamnese, "como_pegua_o_lapis") }}" />
 
                             <h3>Força da escrita</h3>
@@ -740,7 +741,7 @@ function old2($obj, $valor) {
                             <textarea class="textareas_form" name="outras_questoes" rows="4" cols="50" style="">{{ old2($anamnese, "outras_questoes") }}</textarea><br><br><br>
 
                             <h3>Quais escolas frequentou e quando as frequentou?</h3>
-                            <textarea class="textareas_form" name="escolas_que_frequentou" rows="4" cols="50" style="">{{ old2($anamnese, "escolas_que_frequentou") }}</textarea><br><br><br>
+                            <textarea placeholder="(Escola, Série, Ano)" class="textareas_form" name="escolas_que_frequentou" rows="4" cols="50" style="">{{ old2($anamnese, "escolas_que_frequentou") }}</textarea><br><br><br>
 
                             <h3>Repetiu de ano? Quando o porque?</h3>
                             <input type="text" name="repetiu_ano_se_sim_qual_e_porque" value="{{ old2($anamnese, "repetiu_ano_se_sim_qual_e_porque") }}" />
@@ -762,7 +763,7 @@ function old2($obj, $valor) {
                             <h3>Humor habitual</h3>
                             <input type="text" name="humor_habitual" value="{{ old2($anamnese, "humor_habitual") }}" />
 
-                            <h3>Brinca sozinho ou em grupo?</h3>
+                            <h3>Prefere brincar sozinho ou em grupo?</h3>
                             <input type="text" name="prefere_brincar_sozinho_ou_em_grupos" value="{{ old2($anamnese, "prefere_brincar_sozinho_ou_em_grupos") }}" />
 
                             <h3>Estranha mudanças de ambiente?</h3>
@@ -1056,7 +1057,7 @@ function old2($obj, $valor) {
                             <h3>Constância de diálogos</h3>
                             <input type="text" name="constancia_de_dialogos" value="{{ old2($anamnese, "constancia_de_dialogos") }}" />
 
-                            <h3>Quais refeições juntas?</h3>
+                            <h3>Quais refeições fazem juntos?</h3>
                             <input type="text" name="fazem_refeicoes_juntos_se_sim_quais" value="{{ old2($anamnese, "fazem_refeicoes_juntos_se_sim_quais") }}" />
 
                             <h3>Algum vício na família? (drogas, alcoolismo)</h3>
