@@ -49,7 +49,7 @@ class CreateAnamneseGigantePsicopedaNeuroPsicomotoPt1sTable extends Migration {
             $table->boolean('a_perca_foi_antes_do_paciente')->nullable(true);
             $table->string('como_perdeu_o_filho')->nullable(true);
             $table->string('como_foi_a_aceitacao_das_familias');
-            $table->boolean('gravidez_planejada_por_ambos')->default(true);
+            $table->string('gravidez_planejada_por_ambos')->default(true);
             $table->boolean('fez_tratamento_pre_natal')->default(true);
             $table->string('sofreu_acidentes_quedas_se_sim_como_foi')->nullable(true);
             $table->string('teve_alguma_doenca_na_gestacao')->nullable(true);
@@ -77,6 +77,7 @@ class CreateAnamneseGigantePsicopedaNeuroPsicomotoPt1sTable extends Migration {
             $table->string('tomou_mamadeira_ate_quando')->nullable(true);
             $table->boolean('aceitou_bem_a_alimentação_pastosa');
             $table->boolean('aceitou_bem_a_alimentação_solida');
+            $table->boolean('usa_copo');
             $table->text('alimentacao_atual');
             $table->string('retardo_diabetes_síndromes_doenças_nervosas_epilepsia');
             $table->string('teve_sarampo_infancia');

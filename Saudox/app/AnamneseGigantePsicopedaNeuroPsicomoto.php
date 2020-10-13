@@ -7,14 +7,18 @@ use Illuminate\Support\Facades\Schema;
 
 
 function getProtectedMember($class_object,$protected_member) {
-     $array = (array)$class_object;      //Object typecast into (associative) array
-     $prefix = chr(0).'*'.chr(0);           //Prefix which is prefixed to protected member
-     return $array[$prefix.$protected_member];
+    $array = (array)$class_object;      //Object typecast into (associative) array
+    $prefix = chr(0).'*'.chr(0);           //Prefix which is prefixed to protected member
+    return $array[$prefix.$protected_member];
 }
 
 class AnamneseGigantePsicopedaNeuroPsicomoto extends Model {
 
     protected $table = 'anamnese__gigante__psicopeda__neuro__psicomotos';
+
+    protected $fillable = [];
+
+    public static $regras_validacao = [];
 
     public static function salvar($std_class_anamnese) {
 
@@ -127,4 +131,33 @@ class AnamneseGigantePsicopedaNeuroPsicomoto extends Model {
         return $anamnese_proxy;
 
     }
+
+
+
+    public static function novaAnamnese() {
+
+        $pt1 = new AnamneseGigantePsicopedaNeuroPsicomotoPt1;
+        $pt2 = new AnamneseGigantePsicopedaNeuroPsicomotoPt2;
+        $pt3 = new AnamneseGigantePsicopedaNeuroPsicomotoPt3;
+        $cabeca = new AnamneseGigantePsicopedaNeuroPsicomoto;
+
+        $pt1->id_tp = $cabeca->id;
+        $pt2->id_tp = $cabeca->id;
+        $pt3->id_tp = $cabeca->id;
+
+        $arr_return = [
+            "pt1" => $pt1,
+            "pt2" => $pt2,
+            "pt3" => $pt3,
+            "cabeca" => $cabeca
+        ];
+
+        return $arr_return;
+
+
+
+    }
+
+
+
 }
