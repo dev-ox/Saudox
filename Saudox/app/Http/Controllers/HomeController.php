@@ -13,9 +13,8 @@ class HomeController extends Controller {
     public function home() {
         if  (!Auth::guard('profissional')->check() && !Auth::guard('paciente')->check()){
             return view('welcome');
-        } else {
-            return redirect()->route('profissional.home');
         }
+        return redirect()->route('profissional.home');
     }
 
     // Redireciona para a página de erro (passando a mensagem de erro)
