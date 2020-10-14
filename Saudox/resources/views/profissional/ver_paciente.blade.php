@@ -6,82 +6,122 @@
     @endphp
 
     <div class="container">
+        <div id="welcome_div" class="row bordas_amarelas bg-padrao">
+            <div class="col-md">
+                <h1 class="pessoal"> Perfil de {{$paciente->nome_paciente}} </h1>
+                <h3 class="pessoal"> <a href="{{ route('agendamento.criar', $paciente->id) }}">Agendar pra esse paciente</a> <h3>
+                <br>
+            </div>
+        </div>
 
-
+        <div style="height: 5px;"></div>
 
         @if($profissional->podeCriarAnamnese())
-            <div id="linha_anamneses" class="row justify-content-center text-center">
-                <div class="col-md-10">
-
-                    @if($profissional->temProfissao(App\Profissional::Fonoaudiologo) || $profissional->ehAdmin())
-                        @if(!$paciente->anamneseFonoaudiologias)
-                            <a style="padding-top: 2%;" class="btn bordas_amarelas bg-azul bt_ana_ava_evo" href="{{ route("profissional.anamnese.fonoaudiologia.criar", $paciente->id) }}">Criar Anamnese de Fonoaudiologia</a>
-                        @else
-                            <a style="padding-top: 2%;" class="btn bordas_amarelas bg-azul bt_ana_ava_evo" href="{{ route("profissional.anamnese.fonoaudiologia.ver", $paciente->id) }}">Ver Anamnese de Fonoaudiologia</a>
-                        @endif
-                    @endif
-
-                    @if($profissional->temProfissao(App\Profissional::Psicopedagogo) || $profissional->temProfissao(App\Profissional::Neuropsicologo) || $profissional->ehAdmin())
-                        @if(!$paciente->anamneseGigantePsicopedaNeuroPsicomotos())
-                            <a style="padding-top: 1%;" class="btn bordas_amarelas bg-azul bt_ana_ava_evo" href="{{ route("profissional.anamnese.psicopedagogia.criar", $paciente->id) }}">Criar Anamnese de Psicopedagia/Neuropsicologia/Psicomotricidade</a>
-                        @else
-                            <a style="padding-top: 1%;" class="btn bordas_amarelas bg-azul bt_ana_ava_evo" href="{{ route("profissional.anamnese.psicopedagogia.ver", $paciente->id) }}">Ver Anamnese de Psicopedagia/Neuropsicologia/Psicomotricidade</a>
-                        @endif
-                    @endif
-
-                    @if($profissional->temProfissao(App\Profissional::TerapeutaOcupacional) || $profissional->ehAdmin())
-                        @if(!$paciente->anamneseTerapiaOcupacionals)
-                            <a style="padding-top: 2%;" class="btn bordas_amarelas bg-azul bt_ana_ava_evo" href="{{ route("profissional.anamnese.terapia_ocupacional.criar", $paciente->id) }}">Criar Anamnese de Terapia Ocupacional</a>
-                        @else
-                            <a style="padding-top: 2%;" class="btn bordas_amarelas bg-azul bt_ana_ava_evo" href="{{ route("profissional.anamnese.terapia_ocupacional.ver", $paciente->id) }}">Ver Anamnese de Terapia Ocupacional</a>
-                        @endif
-                    @endif
-
-                </div>
+        <div class="row bordas_amarelas bg-padrao">
+            <div class="col-md-12">
+                <br>
+                <h4 class="paciente-nav-titles">Anamneses</h4>
             </div>
-
-            <br>
-            <br>
+            <div class="col-md-4">
+                @if($profissional->temProfissao(App\Profissional::Fonoaudiologo) || $profissional->ehAdmin())
+                    @if(!$paciente->anamneseFonoaudiologias)
+                        <a style="padding-top: 2%;" class="bt formularios-bt" href="{{ route("profissional.anamnese.fonoaudiologia.criar", $paciente->id) }}">Criar Anamnese de Fonoaudiologia</a>
+                    @else
+                        <a style="padding-top: 2%;" class="bt formularios-bt" href="{{ route("profissional.anamnese.fonoaudiologia.ver", $paciente->id) }}">Ver Anamnese de Fonoaudiologia</a>
+                    @endif
+                <br>
+                @endif
+            </div>
+            <div class="col-md-4">
+                @if($profissional->temProfissao(App\Profissional::Psicopedagogo) || $profissional->temProfissao(App\Profissional::Neuropsicologo) || $profissional->ehAdmin())
+                    @if(!$paciente->anamneseGigantePsicopedaNeuroPsicomotos())
+                        <a style="padding-top: 1%;" class="bt formularios-bt" href="{{ route("profissional.anamnese.psicopedagogia.criar", $paciente->id) }}">Criar Anamnese de PsicopedaNeuroPsicomoto</a>
+                    @else
+                        <a style="padding-top: 1%;" class="bt formularios-bt" href="{{ route("profissional.anamnese.psicopedagogia.ver", $paciente->id) }}">Ver Anamnese de PsicopedaNeuroPsicomoto</a>
+                    @endif
+                    <br>
+                @endif
+            </div>
+            <div class="col-md-4">
+                @if($profissional->temProfissao(App\Profissional::TerapeutaOcupacional) || $profissional->ehAdmin())
+                    @if(!$paciente->anamneseTerapiaOcupacionals)
+                        <a style="padding-top: 2%;" class="bt formularios-bt" href="{{ route("profissional.anamnese.terapia_ocupacional.criar", $paciente->id) }}">Criar Anamnese de Terapia Ocupacional</a>
+                    @else
+                        <a style="padding-top: 2%;" class="bt formularios-bt" href="{{ route("profissional.anamnese.terapia_ocupacional.ver", $paciente->id) }}">Ver Anamnese de Terapia Ocupacional</a>
+                    @endif
+                    <br>
+                @endif
+            </div>
+        </div>
         @endif
 
+        <div style="height: 5px;"></div>
 
         @if($profissional->podeCriarAvaliacao())
-            <div id="linha_anamneses" class="row justify-content-center text-center">
-                <div class="col-md-10">
-
-
-                    @if($profissional->temProfissao(App\Profissional::TerapeutaOcupacional) || $profissional->ehAdmin())
-                        @if(!$paciente->avaliacaoJudo)
-                            <a style="padding-top: 2%;" class="btn bordas_amarelas bg-azul bt_ana_ava_evo" href="{{ route("profissional.avaliacao.judo.criar", $paciente->id) }}">Criar Avaliação de Judô</a>
-                        @else
-                            <a style="padding-top: 2%;" class="btn bordas_amarelas bg-azul bt_ana_ava_evo" href="{{ route("profissional.avaliacao.judo.ver", $paciente->id) }}">Ver Avaliação de Judô</a>
-                        @endif
+        <div class="row bordas_amarelas bg-padrao">
+            <div class="col-md-12">
+                <br>
+                <h4 class="paciente-nav-titles">Avaliações</h4>
+            </div>
+            <div class="col-md-3">
+                @if($profissional->temProfissao(App\Profissional::TerapeutaOcupacional) || $profissional->ehAdmin())
+                    @if(!$paciente->avaliacaoJudo)
+                        <a style="padding-top: 2%;" class="bt formularios-bt" href="{{ route("profissional.avaliacao.judo.criar", $paciente->id) }}">Criar Avaliação de Judô</a>
+                    @else
+                        <a style="padding-top: 2%;" class="bt formularios-bt" href="{{ route("profissional.avaliacao.judo.ver", $paciente->id) }}">Ver Avaliação de Judô</a>
                     @endif
-                    @if($profissional->temProfissao(App\Profissional::TerapeutaOcupacional) || $profissional->ehAdmin())
-                        @if(!$paciente->avaliacaoTerapiaOcupacional)
-                            <a style="padding-top: 2%;" class="btn bordas_amarelas bg-azul bt_ana_ava_evo" href="{{ route("profissional.avaliacao.terapia_ocupacional.criar", $paciente->id) }}">Criar Avaliação de Terapia Ocupacional</a>
-                        @else
-                            <a style="padding-top: 2%;" class="btn bordas_amarelas bg-azul bt_ana_ava_evo" href="{{ route("profissional.avaliacao.terapia_ocupacional.ver", $paciente->id) }}">Ver Avaliação de Terapia Ocupacional</a>
-                        @endif
-                    @endif
-
-
-
-
-                </div>
+                    <br>
+                @endif
             </div>
 
-            <br>
-            <br>
+            <div class="col-md-3">
+                @if($profissional->temProfissao(App\Profissional::TerapeutaOcupacional) || $profissional->ehAdmin())
+                    @if(!$paciente->avaliacaoTerapiaOcupacional)
+                        <a style="padding-top: 2%;" class="bt formularios-bt" href="{{ route("profissional.avaliacao.terapia_ocupacional.criar", $paciente->id) }}">Criar Avaliação de Terapia Ocupacional</a>
+                    @else
+                        <a style="padding-top: 2%;" class="bt formularios-bt" href="{{ route("profissional.avaliacao.terapia_ocupacional.ver", $paciente->id) }}">Ver Avaliação de Terapia Ocupacional</a>
+                    @endif
+                    <br>
+                @endif
+            </div>
+
+            <div class="col-md-3">
+
+            </div>
+            <div class="col-md-3">
+
+            </div>
+        </div>
         @endif
 
+        <div style="height: 5px;"></div>
 
+        <div class="row bordas_amarelas bg-padrao">
+            <div class="col-md-12">
+                <br>
+                <h4 class="paciente-nav-titles">Evoluções</h4>
+            </div>
+            <div class="col-md-3">
+
+            </div>
+
+            <div class="col-md-3">
+
+            </div>
+
+            <div class="col-md-3">
+
+            </div>
+            <div class="col-md-3">
+
+            </div>
+        </div>
+
+        <div style="height: 15px;"></div>
 
         <div class="row bordas_amarelas bg-padrao">
             <div class="col-md">
 
-                <h1 class="pessoal"> Perfil de {{$paciente->nome_paciente}} </h1>
-                <h3 class="pessoal"> <a href="{{ route('agendamento.criar', $paciente->id) }}">Agendar pra esse paciente</a> <h3>
 
                         <!--
                             BOTÃOD E EDITAR PACIENTE!!!!

@@ -66,7 +66,7 @@
 
 .paciente-bt{
     display: block;
-    width: 200px;
+    width: 40%;
     height: auto;
     font-size: 20px;
     font-weight: bold;
@@ -76,8 +76,21 @@
     border-width: 2px;
 }
 
+.formularios-bt{
+    display: block;
+    width: 100%;
+    height: 60px;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    border-style: solid;
+    border-width: 2px;
+}
+
 @media screen and (max-width: 1200px) {
-    .paciente-bt {width: 100% !important;}
+    .paciente-bt {width: 100% !important;
+    font-size: 12px;}
 }
 
 .paciente-nav-titles{
