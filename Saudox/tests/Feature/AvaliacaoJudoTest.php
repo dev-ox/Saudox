@@ -53,8 +53,8 @@ class AvaliacaoJudoTest extends TestCase {
 
         // Login
         $resposta_login = $this->post(route("profissional.login"), [
-             'login' => $prof_aux->login,
-             'password' => $password,
+            'login' => $prof_aux->login,
+            'password' => $password,
         ]);
 
         // Login teste
@@ -111,9 +111,22 @@ class AvaliacaoJudoTest extends TestCase {
                 Profissional::TerapeutaOcupacional
             ), $this->password);
 
-            // Verifica se a anamnese agora existe
-            $resposta_ver_ava_judo = $this->get(route("profissional.avaliacao.judo.ver", ['id_paciente' => $this->paciente->id]));
-            $resposta_ver_ava_judo->assertSee("Comportamento reflexivo");
+        // Verifica se a anamnese agora existe
+        $resposta_ver_ava_judo = $this->get(route("profissional.avaliacao.judo.ver", ['id_paciente' => $this->paciente->id]));
+        $resposta_ver_ava_judo->assertSee("Comportamento reflexivo");
+    }
+
+    /** @test **/
+    public function respostaEmocionalAvaliacaoJudoNaoPodeSerVazio() {
+        $criarProf_Logar = $this->criarProfELogar(
+            array(
+                Profissional::TerapeutaOcupacional
+            ), $this->password);
+
+        $copia_anamnese = array($this->evolucao_judo);
+        $copia_anamnese['resposta_emocional'] = '';
+        $resposta = $this->post(route('profissional.avaliacao.judo.criar.salvar'), $copia_anamnese);
+        $resposta->assertSessionHasErrors('resposta_emocional');
     }
 
 }
