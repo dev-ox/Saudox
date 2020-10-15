@@ -119,8 +119,65 @@
 
         <main class="py-4" style="padding-top: 7rem !important;">
             @yield('content')
-            @include('layouts.partials.footer')
         </main>
     </div>
 </body>
+
+<br>
+<footer>
+  <div class="container-fluid bordas_amarelas" style="background-color:var(--cor_fundo)">
+
+    <button onclick="topFunction()" id="to-top" title="Go to top">Top</button>
+
+    <div class="row row-no-gutters">
+      <div class="col-xs-12 col-sm-6 col-md-6" >
+        <ul>
+          <li class="col-heading">Contato</li>
+          <li>
+            <i class="fa fa-phone" aria-hidden="true"></i><a href="tel:99-999-999-9999">99-999-999-9999</a>
+          </li>
+          <li>
+            <i class="fa fa-mobile" aria-hidden="true"></i><a href="sms:99-999-999-9999">SMS Message</a>
+          </li>
+          <li>
+             <i class="fa fa-envelope-square" aria-hidden="true"></i><a href="mailto:someone@yoursite.com?subject=Email Subject line">Email Us</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-xs-12 col-sm-6 col-md-6" >
+        <ul>
+          <li class="col-heading">Endereço</li>
+          <li class="ender">Link to page</li>
+          <li class="ender">Link to page</li>
+          <li class="ender">Link to page</li>
+        </ul>
+      </div>
+
+    </div> <!--  end row  -->
+
+    <div class="row row-no-gutters bg-padrao-claro" id="bottom-footer" >
+
+      <div class="col-xs-12 col-md-5 text-center" >
+          <ul class="vertical-links small">
+            <li><a href="#">Privacidade</a></li>
+            <li><a href="#">Licença</a></li>
+            <li><a href="#">Fale conosco</a></li>
+          </ul>
+      </div>
+      <div class="col-xs-12 col-md-2 text-center" >
+        <p><i class="fa fa-heart-o" aria-hidden="true"></i></p>
+      </div>
+      <div class="col-xs-12 col-md-5 text-center" >
+        <ul>
+          <li class="small">© Copyright 2020 Website by <a href="#" style="color:white;font-weight:500;">Devox</a>. All Rights reserved.</li>
+        </ul>
+      </div>
+    </div> <!--  end row  -->
+
+  </div> <!--  end container-fluid  -->
+<script>
+    window.onscroll = function() {scrollFunction()};
+</script>
+</footer>
 </html>
