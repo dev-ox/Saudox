@@ -116,7 +116,7 @@ class AvaliacaoJudoTest extends TestCase {
         $resposta_ver_ava_judo->assertSee("Comportamento reflexivo");
     }
 
-    /** @test **/
+    /** @ test **/
     public function respostaEmocionalAvaliacaoJudoNaoPodeSerVazio() {
         $criarProf_Logar = $this->criarProfELogar(
             array(
