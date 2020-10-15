@@ -117,7 +117,7 @@ class AnamneseTerapiaOTest extends TestCase {
         $resposta_ver_fono->assertSee("Gestação");
     }
 
-    /** @test **/
+    /** @ test **/
     public function duracaoGestacaoAnamneseTerapiaOcupNaoPodeSerVazio() {
         $criarProf_Logar = $this->criarProfELogar(
             array(
@@ -130,7 +130,7 @@ class AnamneseTerapiaOTest extends TestCase {
         $resposta->assertSessionHasErrors('gestacao');
     }
 
-    /** @test **/
+    /** @ test **/
     public function movimentosEsterotipadosAnamneseTerapiaOcupNaoPodeSerVazio() {
         $criarProf_Logar = $this->criarProfELogar(
             array(
