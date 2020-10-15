@@ -9,12 +9,16 @@ class AgendamentosAutSeeds extends Seeder {
         include('database/seeds/SeedsConfig.php');
         include_once('database/seeds/FuncoesAuxuliaresSeeds.php');
 
+        $nome = ['Maria', 'Miguel', 'Alice', 'Arthur', 'Laura', 'Heitor', 'Manuela', 'Bernardo', 'Valentina', 'Davi', 'Shophia', 'Pedro', 'Júlia', 'João', 'Lívia', 'Lucas', 'Beatriz', 'Gustavo', 'Maria Clara', 'Murilo', 'Beatriz', 'Isaac'];
+        $sobrenome = ['Monteiro da Silva', 'Alves de Melo', 'Dias Cardoso', 'Ferreira dos Santos', 'da Silva Nascimento', 'Medeiros de Lima', 'Vieira Nazário', 'Dantas de Oliveira', 'Rodrigues dos Santos', 'Souza Pereira', 'Gomes Ribeiro', 'Martins Andrade'];
+        $local_de_atendimento = ['Clínica', 'Residência do paciente'];
+
         //Gerando anamnese terapia ocupacional automaticamente
         for($i = 0; $i < $qtd_agendamentos; $i++){
             DB::table('agendamentos')->insert([
                 'id_convenio' => rand(1,$qtd_convenios),
                 'id_profissional' => rand(1,$qtd_profissionals),
-                'nome' => Str::random(10),
+                'nome' => $nome[rand(0, sizeof($nome)-1)] . " " . $sobrenome[rand(0, sizeof($sobrenome)-1)],
                 'cpf' => (string)rand(10000000000,99999999999),
                 'data_nascimento_paciente' => Carbon::now()->format('Y-m-d H:i:s'),
                 'telefone' => (string)rand(10000000000,99999999999),
@@ -22,7 +26,7 @@ class AgendamentosAutSeeds extends Seeder {
                 'id_endereco' => rand(1,$qtd_enderecos),
                 'data_entrada' => Carbon::now()->format('Y-m-d H:i:s'),
                 'data_saida' => Carbon::now()->format('Y-m-d H:i:s'),
-                'local_de_atendimento' => Str::random(10),
+                'local_de_atendimento' => $local_de_atendimento[rand(0, sizeof($local_de_atendimento)-1)],
                 'recorrencia_do_agendamento' => rand(0,1) >= 0.5,
                 'tipo_da_recorrencia' => Str::random(10),
                 'observacoes' => texto(5),
