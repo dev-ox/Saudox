@@ -53,7 +53,7 @@ class ProfissionalAnamneseController extends Controller {
 
         $anamnese_t = $paciente->anamneseFonoaudiologias;
         if($anamnese_t){
-            return redirect()->route('erro', ['msg_erro' => "Anamnese do paciente " .$entrada['id_paciente']. " já existe"]);
+            return redirect()->route('erro', ['msg_erro' => "Anamnese do paciente já existe"]);
         }
 
         if ($paciente->pais_sao_casados == 1) {
@@ -280,12 +280,12 @@ class ProfissionalAnamneseController extends Controller {
 
         $paciente = Paciente::find($entrada['id_paciente']);
         if(!$paciente) {
-            return redirect()->route('erro', ['msg_erro' => "Paciente " .$entrada['id_paciente']. " inexistente"]);
+            return redirect()->route('erro', ['msg_erro' => "Paciente inexistente"]);
         }
 
         $anamnese_t = $paciente->anamneseGigantePsicopedaNeuroPsicomotos();
         if($anamnese_t){
-            return redirect()->route('erro', ['msg_erro' => "Anamnese do paciente " .$entrada['id_paciente']. " já existe"]);
+            return redirect()->route('erro', ['msg_erro' => "Anamnese do paciente já existe"]);
         }
 
 
@@ -405,12 +405,12 @@ class ProfissionalAnamneseController extends Controller {
 
         $paciente = Paciente::find($entrada['id_paciente']);
         if(!$paciente) {
-            return redirect()->route('erro', ['msg_erro' => "Paciente " .$entrada['id_paciente']. " inexistente"]);
+            return redirect()->route('erro', ['msg_erro' => "Paciente inexistente"]);
         }
 
         $anamnese_t = $paciente->anamneseTerapiaOcupacionals;
         if($anamnese_t){
-            return redirect()->route('erro', ['msg_erro' => "Anamnese do paciente " .$entrada['id_paciente']. " já existe"]);
+            return redirect()->route('erro', ['msg_erro' => "Anamnese do paciente já existe"]);
         }
 
         $messages = [

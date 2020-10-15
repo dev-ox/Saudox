@@ -84,12 +84,12 @@ class ProfissionalAvaliacaoController extends Controller {
 
         $paciente = Paciente::find($entrada['id_paciente']);
         if(!$paciente) {
-            return redirect()->route('erro', ['msg_erro' => "Paciente " .$entrada['id_paciente']. " inexistente"]);
+            return redirect()->route('erro', ['msg_erro' => "Paciente inexistente"]);
         }
 
         $avaliacao_t = $paciente->avaliacaoJudo;
         if($avaliacao_t){
-            return redirect()->route('erro', ['msg_erro' => "Avaliação do paciente " .$entrada['id_paciente']. " já existe"]);
+            return redirect()->route('erro', ['msg_erro' => "Avaliação do paciente já existe"]);
         }
 
 
@@ -218,12 +218,12 @@ class ProfissionalAvaliacaoController extends Controller {
 
         $paciente = Paciente::find($entrada['id_paciente']);
         if(!$paciente) {
-            return redirect()->route('erro', ['msg_erro' => "Paciente " .$entrada['id_paciente']. " inexistente"]);
+            return redirect()->route('erro', ['msg_erro' => "Paciente inexistente"]);
         }
 
         $avaliacao_t = $paciente->avaliacaoTerapiaOcupacional;
         if($avaliacao_t){
-            return redirect()->route('erro', ['msg_erro' => "Avaliação do paciente " .$entrada['id_paciente']. " já existe"]);
+            return redirect()->route('erro', ['msg_erro' => "Avaliação do paciente já existe"]);
         }
 
 
