@@ -57,7 +57,7 @@
                     </div>
 
                 @else
-                    <h3>Não há agendamentos para você!</h3>
+                    <h3 style="text-align: center">Não há agendamentos para você!</h3>
                 @endif
             </div>
 

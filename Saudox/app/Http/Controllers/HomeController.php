@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Profissional;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller {
 
     // Redireciona para a página inicial do site (/)
     public function home() {
-        return view('welcome');
+        if  (!Auth::guard('profissional')->check() && !Auth::guard('paciente')->check()){
+            return view('welcome');
+        }
+        return redirect()->route('profissional.home');
     }
 
     // Redireciona para a página de erro (passando a mensagem de erro)
