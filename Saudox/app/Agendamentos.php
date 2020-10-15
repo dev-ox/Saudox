@@ -41,8 +41,13 @@ class Agendamentos extends Model {
         if($today == date('d-m-Y')){
             return date('H:m',$time);
         }else{
-            return date('H:m d-m-Y',$time);
+            return date('H:m d / m / Y',$time);
         }
+    }
+
+    public function dataNascimentoFormatada(){
+        $time = strtotime($this->data_nascimento_paciente);
+        return date('d / m / Y',$time);
     }
 
     public function dataSaidaFormatada(){
