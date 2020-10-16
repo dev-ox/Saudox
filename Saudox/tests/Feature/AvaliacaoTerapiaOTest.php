@@ -33,10 +33,10 @@ class AvaliacaoTerapiaOTest extends TestCase {
             'profissao' => Profissional::Adm,
         ]);
         $this->array_ava_terapia_ocupacional = [
-            'id_paciente' => 0,
-            'id_profissional' => 0,
+            'id_paciente' => $this->paciente->id,
+            'id_profissional' => $this->profissional->id,
             'data_avaliacao' => Carbon::now()->format('Y-m-d H:i:s'),
-            'entrevistado' => 'asfasiohfoiashfsaiofh',
+            'entrevistado' => 'paulinho',
             'queixa_principal' => 'safhasoufhasofa',
             'brincadeiras_favoritas' => 'safhasoufhasofa',
             'onde_brinca' => 'safhasoufhasofa',
@@ -131,7 +131,7 @@ class AvaliacaoTerapiaOTest extends TestCase {
         return ['profissional' => $prof_aux, 'resposta_login' => $resposta_login];
     }
 
-    /** @ test **/
+    /** @test **/
     /* url: https://www.pivotaltracker.com/story/show/174990176 */
     /* TA_01 */
     public function profissionalPodeAcessarACriacaoAvaliacaoTerapiaOcupacional() {
@@ -187,22 +187,33 @@ class AvaliacaoTerapiaOTest extends TestCase {
         $res->assertSessionHasNoErrors();
 
         // Verifica se a avaliacao agora existe
-        $resposta_ver_fono = $this->get(route("profissional.avaliacao.terapia_ocupacional.ver", ['id_paciente' => $paciente_aux->id]));
-        $resposta_ver_fono->assertSee("nome_test");
+        $resposta_ver_to = $this->get(route("profissional.avaliacao.terapia_ocupacional.ver", ['id_paciente' => $paciente_aux->id]));
+        $resposta_ver_to->assertSee("nome_test");
     }
 
-    /** @ test **/
+    /** @test **/
     /* url: https://www.pivotaltracker.com/story/show/174990176 */
     /* TA_02 */
-    public function profissionalPodeAcessarAvaliacaoTerapiaOcupacional() {
+    public function profissionalPodeEditarAvaliacaoTerapiaOcupacional() {
         $criarProf_Logar = $this->criarProfELogar(
             array(
                 Profissional::Adm,
                 Profissional::TerapeutaOcupacional
             ), $this->password);
 
-        $resposta_ver_fono = $this->get(route("profissional.anamnese.terapia_ocupacional.ver", ['id_paciente' => $this->paciente->id]));
-        $resposta_ver_fono->assertSee("Gestação");
+        // Gera uma cópia da avaliacao da Factory, indicando os ids
+        $copia_avaliacao = $this->array_ava_terapia_ocupacional;
+        $copia_avaliacao['id_paciente'] = $this->paciente->id;
+        $copia_avaliacao['id_profissional'] = $this->profissional->id;
+        $copia_avaliacao['entrevistado'] = 'paulinho';
+
+        // Cria a Anamnese
+        $res = $this->post(route("profissional.avaliacao.terapia_ocupacional.criar.salvar", $copia_avaliacao));
+        $res->assertSessionHasNoErrors();
+
+        $copia_avaliacao['entrevistado'] = 'maria';
+        $resposta_ver_to = $this->get(route("profissional.avaliacao.terapia_ocupacional.editar.salvar", $copia_avaliacao));
+        $resposta_ver_to->assertSee("maria");
     }
 
 }
