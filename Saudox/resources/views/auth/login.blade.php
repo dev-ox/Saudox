@@ -4,18 +4,17 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <?php // TODO: arrumar isso, claro! ?>
-            @if(count($errors) > 0)
-                {{ $errors }}
-            @endif
-
-                @if (session('status'))
-                    <div class="alert alert-success">
-                        {{ session('status') }}
-                    </div>
-                @endif
 
                 <div class="card-body" style="margin-left: 20%;">
+                    @if($errors->any())
+                        <div class="alert alert-danger">
+                            <ul style="padding: 0px;">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <div class="card-header">{{ $title }}</div>
                     <form method="POST" action="{{ route($loginRoute) }}">
                         @csrf
