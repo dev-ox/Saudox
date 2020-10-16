@@ -31,8 +31,8 @@ class CadastroClienteTest extends TestCase {
             //CPF precisa ser valido aqui...
             'cpf' => '90653263163',
             'sexo' => 1,
-            //A data de nascimento precisa ser valida aqui...
-            'data_nascimento' => '10-05-1999',
+            //A data de nascimento precisa ser como vem na view...
+            'data_nascimento' => '1999-05-10',
             'responsavel' => 'Maria Sueli',
             'numero_irmaos' => 1,
             'lista_irmaos' => 'Barbara Yorrana',
@@ -368,7 +368,9 @@ class CadastroClienteTest extends TestCase {
 
         $copia_pac = $this->paciente;
 
-        $copia_pac['data_nascimento'] = '1999-10-05';
+        //Na view vem Y-m-d
+        //d-m-Y é errado, já que na view vem diferente
+        $copia_pac['data_nascimento'] = '05-10-1999';
 
         $resposta = $this->post(route('profissional.criar_paciente.salvar'), $copia_pac);
 

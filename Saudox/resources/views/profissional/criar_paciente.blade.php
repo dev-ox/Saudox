@@ -21,7 +21,7 @@
                         </div>
                     @endif
 
-                    <form method="post" action="{{ route('profissional.criar_paciente.salvar') }}">
+                    <form id="form_criar_paciente" method="post" action="{{ route('profissional.criar_paciente.salvar') }}">
 
                         <!-- CROSS Site Request Forgery Protection -->
                         @csrf
@@ -40,9 +40,9 @@
                         <label class="required">Sexo:</label><br>
 
                         <label for="masculino">Masculino</label>
-                        <input value="0" type="radio" name="sexo" id="sexo">
+                        <input value="0" type="radio" name="sexo" id="sexo" {{ g_old_checked(NULL, "sexo", "0") }}>
                         <label for="feminino">Feminino</label>
-                        <input value="1" type="radio" name="sexo" id="sexo">
+                        <input value="1" type="radio" name="sexo" id="sexo" {{ g_old_checked(NULL, "sexo", "1") }}>
                         <br>
                         <label class="required">Naturalidade:</label><br>
                         <input value="{{ old('naturalidade') }}" placeholder="Naturalidade" type="text" name="naturalidade" id="naturalidade">
@@ -56,15 +56,19 @@
                         <input value="{{ old('lista_irmaos') }}" placeholder="Separado por vírgula" type="text" name="lista_irmaos" id="lista_irmaos">
                         <label class="required">Filho biológico ou adotivo?</label><br>
                         <label for="biologico">Biológico</label>
-                        <input value="0" type="radio" name="tipo_filho_biologico_adotivo" id="tipo_filho_biologico_adotivo">
+                        <input onclick="document.getElementById('filho_sabe_adotado').style.display = 'none'" value="0" type="radio" name="tipo_filho_biologico_adotivo" id="tipo_filho_biologico_adotivo" {{ g_old_checked(NULL, "tipo_filho_biologico_adotivo", "0") }}>
                         <label for="adotivo">Adotivo</label>
-                        <input value="1" class="command_hidden" type="radio" name="tipo_filho_biologico_adotivo" id="tipo_filho_biologico_adotivo">
-                        <div class="hidden">
+                        <input onclick="document.getElementById('filho_sabe_adotado').style.display = 'block'" value="1" type="radio" name="tipo_filho_biologico_adotivo" id="tipo_filho_biologico_adotivo" {{ g_old_checked(NULL, "tipo_filho_biologico_adotivo", "1") }}>
+                        <div id="filho_sabe_adotado">
                             <label>Filho sabe que é adotado?</label><br>
                             <label for="sim">Sim</label>
-                            <input value="1" class="command_hidden_extra" type="radio" name="'crianca_sabe_se_adotivo'" id="'crianca_sabe_se_adotivo'">
+
+                            <input value="1" type="radio" name="crianca_sabe_se_adotivo" id="crianca_sabe_se_adotivo" {{ g_old_checked(NULL, "crianca_sabe_se_adotivo", "1") }}>
+
                             <label for="nao">Não</label>
-                            <input value="0" type="radio" name="'crianca_sabe_se_adotivo'" id="'crianca_sabe_se_adotivo'">
+
+                            <input value="0" type="radio" name="crianca_sabe_se_adotivo" id="crianca_sabe_se_adotivo" {{ g_old_checked(NULL, "crianca_sabe_se_adotivo", "0") }}>
+
                             <input value="{{ old('reacao_quando_descobriu_se_adotivo') }}" placeholder="Reação ao descobrir que era adotado (Opcional)" type="text" name="reacao_quando_descobriu_se_adotivo" id="reacao_quando_descobriu_se_adotivo">
                         </div>
 
@@ -77,7 +81,7 @@
                         <label class="required">Telefone do pai:</label><br>
                         <input value="{{ old('telefone_pai') }}" placeholder="Telefone do Pai (Apenas números)" type="text" name="telefone_pai" id="telefone_pai">
                         <label class="required">Telefone da mãe:</label><br>
-                        <input value="{{ old('telefone_mae, $agendamento->telefone') }}" placeholder="Telefone da Mãe (Apenas números)" type="text" name="telefone_mae" id="telefone_mae">
+                        <input value="{{ old('telefone_mae', $agendamento->telefone) }}" placeholder="Telefone da Mãe (Apenas números)" type="text" name="telefone_mae" id="telefone_mae">
                         <label class="required">Email do pai:</label><br>
                         <input value="{{ old('email_pai') }}" placeholder="E-Mail do Pai" type="text" name="email_pai" id="email_pai">
                         <label class="required">Email da mãe:</label><br>
@@ -89,16 +93,16 @@
                         <h3>Situação Atual</h3>
                         <label class="required">Casados?</label><br>
                         <label for="pais_sao_casados">Sim</label>
-                        <input value="1" type="radio" name="pais_sao_casados" id="pais_sao_casados">
+                        <input value="1" type="radio" name="pais_sao_casados" id="pais_sao_casados" {{ g_old_checked(NULL, "pais_sao_casados", "1") }}>
                         <label for="pais_sao_casados">Não</label>
-                        <input value="0" class="command_hidden" type="radio" name="pais_sao_casados" id="pais_sao_casados">
+                        <input value="0" class="command_hidden" type="radio" name="pais_sao_casados" id="pais_sao_casados" {{ g_old_checked(NULL, "pais_sao_casados", "0") }}>
                         <br>
                         <div class="hidden">
                             <label>Divorciados?</label><br>
                             <label for="pais_sao_divorciados">Sim</label>
-                            <input value="1" class="command_hidden" type="radio" name="pais_sao_divorciados" id="pais_sao_divorciados">
+                            <input value="1" class="command_hidden" type="radio" name="pais_sao_divorciados" id="pais_sao_divorciados" {{ g_old_checked(NULL, "pais_sao_divorciados", "1") }}>
                             <label for="pais_sao_casados">Não</label>
-                            <input value="0" type="radio" name="pais_sao_divorciados" id="pais_sao_divorciados" checked>
+                            <input value="0" type="radio" name="pais_sao_divorciados" id="pais_sao_divorciados" {{ g_old_checked(NULL, "pais_sao_divorciados", "0") }}>
                             <input value="{{ old('reacao_sobre_a_relacao_pais_caso_divorciados') }}" placeholder="Reação a relação dos pais" type="text" name="reacao_sobre_a_relacao_pais_caso_divorciados" id="reacao_sobre_a_relacao_pais_caso_divorciados">
                             <input value="{{ old('vive_com_quem_caso_pais_divorciados') }}" placeholder="Vive com quem?" type="text" name="vive_com_quem_caso_pais_divorciados" id="vive_com_quem_caso_pais_divorciados">
                         </div>
