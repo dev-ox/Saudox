@@ -25,6 +25,8 @@
             @endif
         </div>
 
+        <div style="height: 5px;"></div>
+
         <div id="prox_paciente_div" class="row bordas_amarelas bg-padrao">
             <div class="col-xl-8">
                 @if(count($agenda) > 0)
