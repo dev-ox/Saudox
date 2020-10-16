@@ -116,14 +116,33 @@ class ProfissionalController extends Controller {
 
         $rota_erro = "profissional.criar_paciente";
 
-        if(!$this->validatarData($entrada["data_nascimento"])) {
+        //A data vem em Y-m-d
+        if(!$this->validatarData($entrada["data_nascimento"], 'Y-m-d')) {
             return redirect()->route($rota_erro)
                              ->withErrors(['data_nascimento'=>'Data de nascimento inválida!'])
                              ->withInput();
         }
 
         $time = strtotime($entrada['data_nascimento']);
+        //salvando como Y-m-d
         $entrada['data_nascimento'] = date('Y-m-d',$time);
+
+
+        $validator_endereco = Validator::make($entrada, Endereco::$regras_validacao, $messages);
+        if ($validator_endereco->fails()) {
+            return redirect()->back()
+                             ->withErrors($validator_endereco)
+                             ->withInput();
+        }
+
+
+        $validator_paciente = Validator::make($entrada, Paciente::$regras_validacao, $messages);
+        if ($validator_paciente->fails()) {
+            return redirect()->back()
+                             ->withErrors($validator_paciente)
+                             ->withInput();
+        }
+
 
         if($entrada["sexo"] != "0" && $entrada["sexo"] != "1") {
             return redirect()->route($rota_erro)
@@ -145,19 +164,10 @@ class ProfissionalController extends Controller {
         }
 
 
-
-
-        $validator_endereco = Validator::make($entrada, Endereco::$regras_validacao, $messages);
-        if ($validator_endereco->fails()) {
+        $validar_cpf = $this->validaCPF($entrada['cpf']);
+        if (!$validar_cpf) {
             return redirect()->back()
-                             ->withErrors($validator_endereco)
-                             ->withInput();
-        }
-
-        $validator_paciente = Validator::make($entrada, Paciente::$regras_validacao, $messages);
-        if ($validator_paciente->fails()) {
-            return redirect()->back()
-                             ->withErrors($validator_paciente)
+                             ->withErrors(['cpf'=>'Cpf inválido!'])
                              ->withInput();
         }
 
@@ -165,13 +175,6 @@ class ProfissionalController extends Controller {
         $endereco = new Endereco;
         $endereco->fill($entrada);
         $endereco->save();
-
-        $validar_cpf = $this->validaCPF($entrada['cpf']);
-        if (!$validar_cpf) {
-            return redirect()->back()
-                             ->withErrors(['cpf'=>'Cpf inválido!'])
-                             ->withInput();
-        }
 
         $paciente = new Paciente;
         $paciente->fill($entrada);
