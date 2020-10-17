@@ -303,7 +303,7 @@ class ProfissionalAnamneseController extends Controller {
         if(isset($entrada["conhece_tais_coisas"])) {
             $conhecimentos = "";
             foreach($entrada["conhece_tais_coisas"] as $coisas) {
-                $conhecimentos .= $coisas . ", ";
+                $conhecimentos .= $coisas . ",";
             }
 
             $conhecimentos = preg_replace("/, $/", "", $conhecimentos);
@@ -362,13 +362,87 @@ class ProfissionalAnamneseController extends Controller {
     public function editarPsicopedagogia($id_paciente) {
         $paciente = Paciente::find($id_paciente);
         if(!$paciente){
-            return redirect()->route('erro', ['msg_erro' => "Paciente " .$id_paciente. " inexistente"]);
+            return redirect()->route('erro', ['msg_erro' => "Paciente inexistente"]);
         }
         $anamnese = $paciente->anamneseGigantePsicopedaNeuroPsicomotos();
         if(!$anamnese){
-            return redirect()->route('erro', ['msg_erro' => "Anamnese do paciente " .$id_paciente. " não existe"]);
+            return redirect()->route('erro', ['msg_erro' => "Anamnese do paciente não existe"]);
         }
-        return view('profissional/anamnese/psicopedagogia/editar', ['anamnese' => $anamnese]);
+
+        return view('profissional/anamnese/psicopedagogia/editar', [
+            'paciente' => $paciente,
+            'anamnese' => $anamnese,
+        ]);
+    }
+
+    public function salvarEditarPsicopedagogia(Request $request) {
+
+        $entrada = $request->all();
+
+
+
+        $paciente = Paciente::find($entrada['id_paciente']);
+        if(!$paciente) {
+            return redirect()->route('erro', ['msg_erro' => "Paciente inexistente"]);
+        }
+
+        $messages = [
+            'required' => 'O campo :attribute é obrigatório.',
+            'min' => 'O campo :attribute é deve ter no minimo :min caracteres.',
+            'max' => 'O campo :attribute é deve ter no máximo :max caracteres.',
+            'password.required' => 'A senha é obrigatória.',
+            'gt' => 'O campo :attribute deve ser maior que 18.',
+            'lt' => 'O campo :attribute deve ser menor que 100.',
+            'unique' => 'O :attribute já está cadastrado',
+        ];
+
+
+        if(isset($entrada["conhece_tais_coisas"])) {
+            $conhecimentos = "";
+            foreach($entrada["conhece_tais_coisas"] as $coisas) {
+                $conhecimentos .= $coisas . ",";
+            }
+
+            $conhecimentos = preg_replace("/, $/", "", $conhecimentos);
+            $entrada["conhece_tais_coisas"] = $conhecimentos;
+
+        } else {
+            $entrada["conhece_tais_coisas"] = "Nada...";
+        }
+
+
+        $validator_anamnese_gigante_1 = Validator::make($entrada, AnamneseGigantePsicopedaNeuroPsicomotoPt1::$regras_validacao, $messages);
+        $validator_anamnese_gigante_2 = Validator::make($entrada, AnamneseGigantePsicopedaNeuroPsicomotoPt2::$regras_validacao, $messages);
+        $validator_anamnese_gigante_3 = Validator::make($entrada, AnamneseGigantePsicopedaNeuroPsicomotoPt3::$regras_validacao, $messages);
+
+        // Tem que rodar as 3, pra ter todos os erros
+        // Se rodasse tudo num ||, aconteceria curto circiuto, e não teria todos os erros
+        $validator_check_1 = $validator_anamnese_gigante_1->fails();
+        $validator_check_2 = $validator_anamnese_gigante_2->fails();
+        $validator_check_3 = $validator_anamnese_gigante_3->fails();
+
+        // Agora sim pode ser avaliado em curto circuito
+        $validator_check = $validator_check_1 || $validator_check_2 || $validator_check_3;
+
+        if ($validator_check) {
+
+            $erros1 = $validator_anamnese_gigante_1->errors()->all();
+            $erros2 = $validator_anamnese_gigante_2->errors()->all();
+            $erros3 = $validator_anamnese_gigante_3->errors()->all();
+
+            $erros = array_merge($erros1, $erros2, $erros3);
+            return redirect()->back()
+                             ->withErrors($erros)
+                             ->withInput();
+        }
+
+
+
+        $anamnese = AnamneseGigantePsicopedaNeuroPsicomoto::pegarPorIdPaciente($entrada["id_paciente"]);
+        $anamnese->fill($entrada);
+        $anamnese->save();
+        return redirect()->route("profissional.ver_paciente", $entrada["id_paciente"]);
+
     }
 
 
