@@ -15,6 +15,12 @@ class ProfissionaisAutSeeds extends Seeder {
         include('database/seeds/SeedsConfig.php');
         include_once('database/seeds/FuncoesAuxuliaresSeeds.php');
 
+        $nome = ['Maria', 'Miguel', 'Alice', 'Arthur', 'Laura', 'Heitor', 'Manuela', 'Bernardo', 'Valentina', 'Davi', 'Shophia', 'Pedro', 'Júlia', 'João', 'Lívia', 'Lucas', 'Beatriz', 'Gustavo', 'Maria Clara', 'Murilo', 'Beatriz', 'Isaac'];
+        $sobrenome = ['Monteiro da Silva', 'Alves de Melo', 'Dias Cardoso', 'Ferreira dos Santos', 'da Silva Nascimento', 'Medeiros de Lima', 'Vieira Nazário', 'Dantas de Oliveira', 'Rodrigues dos Santos', 'Souza Pereira', 'Gomes Ribeiro', 'Martins Andrade'];
+        $estado_civil = ['Solteiro(a)', 'Casado(a)', 'Separado(a)', 'Divorciado(a)', 'Viúvo(a)', 'Amasiado(a)'];
+        $nacionalidade = ['Brasileira', 'Chilena', 'Colombiana', 'Argentina', 'Cubana', 'Equatoriana', 'Egípcia', 'Inglesa', 'Francesa', 'Alemã', 'Grega', 'Holandesa', 'Italiana', 'Espanhola'];
+
+
         //Gerando profissionais automaticamente
         for($i = 0; $i < $qtd_profissionals; $i++){
 
@@ -31,7 +37,7 @@ class ProfissionaisAutSeeds extends Seeder {
             }
 
             DB::table('profissionals')->insert([
-                'nome' => Str::random(10),
+                'nome' => $nome[rand(0, sizeof($nome)-1)] . " " . $sobrenome[rand(0, sizeof($sobrenome)-1)],
                 'cpf' => (string)rand(10000000000,99999999999),
                 'rg' => (string)rand(1000000,9999999),
                 'status' => rand(0,1) >= 0.2 ? Profissional::Trabalhando : Profissional::Demitido,
@@ -43,8 +49,8 @@ class ProfissionaisAutSeeds extends Seeder {
                 'telefone_1' => (string)rand(10000000000,99999999999),
                 'telefone_2' => (string)rand(10000000000,99999999999),
                 'email' => Str::random(10).'@gmail.com',
-                'estado_civil' => Str::random(10),
-                'nacionalidade' => Str::random(15),
+                'estado_civil' => $estado_civil[rand(0, sizeof($estado_civil)-1)],
+                'nacionalidade' => $nacionalidade[rand(0, sizeof($nacionalidade)-1)],
                 'descricao_de_conhecimento_e_experiencia' => texto(20),
             ]);
         }
