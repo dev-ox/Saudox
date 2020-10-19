@@ -94,10 +94,16 @@ class AnamneseGigantePsicopedaNeuroPsicomoto extends Model {
         $anamnese_proxy = new class($pt1_pt2_pt3) {
             private $anamnese_original;
             private $id_tp;
+            private $pt1;
+            private $pt2;
+            private $pt3;
 
             public function __construct($orig) {
                 $this->anamnese_original = $orig;
                 $this->id_tp = $orig->id_tp;
+                $this->pt1 =  \App\AnamneseGigantePsicopedaNeuroPsicomotoPt1::where('id_tp', $this->id_tp)->first();
+                $this->pt2 =  \App\AnamneseGigantePsicopedaNeuroPsicomotoPt2::where('id_tp', $this->id_tp)->first();
+                $this->pt3 =  \App\AnamneseGigantePsicopedaNeuroPsicomotoPt3::where('id_tp', $this->id_tp)->first();
             }
 
             public function __get($name) {
@@ -114,17 +120,25 @@ class AnamneseGigantePsicopedaNeuroPsicomoto extends Model {
             }
 
             public function get_pt1() {
-                return \App\AnamneseGigantePsicopedaNeuroPsicomotoPt1::where('id_tp', $this->id_tp)->first();
+                return $this->pt1;
             }
             public function get_pt2() {
-                return \App\AnamneseGigantePsicopedaNeuroPsicomotoPt2::where('id_tp', $this->id_tp)->first();
+                return $this->pt2;
             }
             public function get_pt3() {
-                return \App\AnamneseGigantePsicopedaNeuroPsicomotoPt3::where('id_tp', $this->id_tp)->first();
+                return $this->pt3;
+            }
+
+            public function fill($entrada) {
+                $this->pt1->fill($entrada);
+                $this->pt2->fill($entrada);
+                $this->pt3->fill($entrada);
             }
 
             public function save() {
-                return \App\AnamneseGigantePsicopedaNeuroPsicomoto::salvar($this->anamnese_original);
+                $this->pt1->save();
+                $this->pt2->save();
+                $this->pt3->save();
             }
         };
 

@@ -53,7 +53,7 @@ echo $anamnese->algum_problema_no_parto_se_sim_qual; echo "<br>\n";
 echo $anamnese->peso_ao_nascer; echo "<br>\n";
 echo $anamnese->comprimento_ao_nascer; echo "<br>\n";
 echo $anamnese->teve_ictericia; echo "<br>\n";
-echo $anamnese->idade_gestacional_do_bebê_ao_nascer; echo "<br>\n";
+echo $anamnese->idade_gestacional_do_bebe_ao_nascer; echo "<br>\n";
 echo $anamnese->como_se_deu_a_alimentação; echo "<br>\n";
 echo $anamnese->mamou_no_seio_se_nao_qual_o_motivo; echo "<br>\n";
 echo $anamnese->se_mamou_foi_ate_quando_e_como_se_sentia_ao_amamentar; echo "<br>\n";
