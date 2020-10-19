@@ -24,21 +24,22 @@ class AvaliacaoNeuropsicologicaTest extends TestCase {
 
         $this->endereco = factory(Endereco::class)->create();
         $this->profissional = factory(Profissional::class)->create([
-            'password' => $this->password,
+            'password' => $this->password_encrypt,
             'profissao' => Profissional::Adm,
         ]);
         $this->paciente = factory(Paciente::class)->create([
             'login' => 'login_teste',
-            'password' => $this->password,
+            'password' => $this->password_encrypt,
         ]);
     }
 
-    private function loginProfisssional() : void {
+    public function loginProfisssional() : void {
         $resposta = $this->post(route('profissional.efetuarLogin'), [
             'login' => $this->profissional->login,
             'password' => $this->password,
             'remember' => 'on',
         ]);
+        $resposta->assertSessionHasNoErrors();
         $resposta->assertRedirect(route('profissional.home'));
         $resposta->assertLocation(route('profissional.home'));
         Auth::login($this->profissional, true);
@@ -54,7 +55,7 @@ class AvaliacaoNeuropsicologicaTest extends TestCase {
     /* url: https://www.pivotaltracker.com/story/show/174639133 */
     /* TA_01 */
     public function profissionalPodeCriarAvaliacaoNeuro() {
-        // self::loginProfisssional();
+        self::loginProfisssional();
 
         $this->assertCount(0, AvaliacaoNeuropsicologica::all());
 
@@ -66,11 +67,11 @@ class AvaliacaoNeuropsicologicaTest extends TestCase {
         $this->assertCount(1, AvaliacaoNeuropsicologica::all());
     }
 
-    /** @ test **/
+    /** @test **/
     /* url: https://www.pivotaltracker.com/story/show/174639133 */
     /* TA_01 */
     public function profissionalPodeConsultarAvaliacaoNeuro() {
-        // self::loginProfisssional();
+        self::loginProfisssional();
 
         $this->assertCount(0, AvaliacaoNeuropsicologica::all());
 
