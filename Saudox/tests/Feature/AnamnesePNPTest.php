@@ -34,9 +34,6 @@ class AnamnesePNPTest extends TestCase {
             'password' => $this->password_encrypt,
             'profissao' => Profissional::Adm,
         ]);
-
-        // Array extendido da superclasse
-        $this->anamnese_pnp = $this->anamnese_pnp_array;
     }
 
     private function loginProfisssional() : void {
@@ -59,7 +56,7 @@ class AnamnesePNPTest extends TestCase {
         $resposta->assertSee(Profissional::first()->cpf);
     }
 
-    /** @ test **/
+    /** @test **/
     /* url: https://www.pivotaltracker.com/story/show/174990179 */
     /* TA_01 */
     public function profissionalPodeCriarAnamnese() {
@@ -69,7 +66,10 @@ class AnamnesePNPTest extends TestCase {
 
         $pnp = factory(AnamneseGigantePsicopedaNeuroPsicomoto::class)->create();
         factory(AnamneseGigantePsicopedaNeuroPsicomotoPt1::class)->create([
-            'id_tp' => $pnp->id
+            'id_paciente' => $this->paciente->id,
+            'id_profissional' => $this->profissional->id,
+            'id_tp' => $pnp->id,
+            'compareceram_entrevista' => "Joao de Deuso",
         ]);
         factory(AnamneseGigantePsicopedaNeuroPsicomotoPt2::class)->create([
             'id_tp' => $pnp->id
@@ -79,11 +79,10 @@ class AnamnesePNPTest extends TestCase {
         ]);
 
         $this->assertCount(1, AnamneseGigantePsicopedaNeuroPsicomoto::all());
-    }
 
-    /** @test */
-    public function funcaoTesteSoPraNaoFicarWarning() {
-        $this->assertTrue(true);
+        // Verifica se a anamnese agora existe
+        $resposta_ver_fono = $this->get(route("profissional.anamnese.psicopedagogia.ver", ['id_paciente' => $this->paciente->id]));
+        $resposta_ver_fono->assertSee("Joao de Deuso");
     }
 
 }
