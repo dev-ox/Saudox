@@ -13,10 +13,8 @@ class CreateAvaliacaoNeuropsicologicasTable extends Migration {
 
             $table->bigInteger('id_paciente')->unsigned();
             $table->bigInteger('id_profissional')->unsigned();
-            $table->bigInteger('id_anaminese')->unsigned();
             $table->foreign('id_paciente')->references('id')->on('pacientes');
             $table->foreign('id_profissional')->references('id')->on('profissionals');
-            $table->foreign('id_anaminese')->references('id')->on('anamnese__gigante__psicopeda__neuro__psicomotos');
             $table->text('queixa_principal');
             $table->string('encaminhado_por');
             $table->text('participantes_durante_anaminese');

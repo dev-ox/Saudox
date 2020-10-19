@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Profissional;
 
 use App\AvaliacaoJudo;
+use App\AvaliacaoNeuropsicologica;
 use App\AvaliacaoTerapiaOcupacional;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -96,8 +97,8 @@ class ProfissionalAvaliacaoController extends Controller {
         $validator_judo = Validator::make($entrada, AvaliacaoJudo::$regras_validacao, $messages);
         if ($validator_judo->fails()) {
             return redirect()->back()
-                ->withErrors($validator_judo)
-                ->withInput();
+                             ->withErrors($validator_judo)
+                             ->withInput();
         }
 
         $avaliacao_judo = new AvaliacaoJudo;
@@ -136,8 +137,8 @@ class ProfissionalAvaliacaoController extends Controller {
         $validator_judo = Validator::make($entrada, AvaliacaoJudo::$regras_validacao, $messages);
         if ($validator_judo->fails()) {
             return redirect()->back()
-                ->withErrors($validator_judo)
-                ->withInput();
+                             ->withErrors($validator_judo)
+                             ->withInput();
         }
 
         $avaliacao_judo = AvaliacaoJudo::find($entrada["id_avaliacao"]);
@@ -165,7 +166,114 @@ class ProfissionalAvaliacaoController extends Controller {
         if(!$paciente){
             return redirect()->route('erro', ['msg_erro' => "Paciente " .$id_paciente. " inexistente"]);
         }
-        return view('profissional/avaliacao/neuropsicologia/criar', ['paciente' => $paciente]);
+        return view('profissional/avaliacao/neuropsicologia/criar', [
+            'paciente' => $paciente,
+            'avaliacao' => NULL,
+        ]);
+    }
+
+
+    public function salvarNeuropsicologia(Request $request) {
+        $entrada = $request->all();
+
+        $paciente = Paciente::find($entrada["id_paciente"]);
+        if(!$paciente){
+            return redirect()->route('erro', ['msg_erro' => "Paciente inexistente"]);
+        }
+
+
+        $avaliacao_t = $paciente->avaliacaoNeuro;
+        if($avaliacao_t){
+            return redirect()->route('erro', ['msg_erro' => "Avaliação do paciente já existe"]);
+        }
+
+        foreach($entrada["atividades_para_ser_feito_na_clinica"] as $idx => $atv) {
+            $limpar_tabela_clinica = true;
+            foreach($atv as $coluna => $valor) {
+                if($valor != "") {
+                    $limpar_tabela_clinica = false;
+                    break;
+                }
+            }
+
+            if($limpar_tabela_clinica) {
+                unset($entrada["atividades_para_ser_feito_na_clinica"][$idx]);
+            }
+
+        }
+
+        if(sizeof($entrada["atividades_para_ser_feito_na_clinica"]) == 0) {
+            $entrada["atividades_para_ser_feito_na_clinica"] = NULL;
+        }
+
+
+
+        foreach($entrada["atividades_para_ser_feito_em_casa"] as $idx => $atv) {
+            $limpar_tabela_clinica = true;
+            foreach($atv as $coluna => $valor) {
+                if($valor != "") {
+                    $limpar_tabela_clinica = false;
+                    break;
+                }
+            }
+
+            if($limpar_tabela_clinica) {
+                unset($entrada["atividades_para_ser_feito_em_casa"][$idx]);
+            }
+
+        }
+
+        if(sizeof($entrada["atividades_para_ser_feito_em_casa"]) == 0) {
+            $entrada["atividades_para_ser_feito_em_casa"] = NULL;
+        }
+
+
+        $entrada["atividades_para_ser_feito_em_casa"] = json_encode($entrada["atividades_para_ser_feito_em_casa"]);
+        $entrada["atividades_para_ser_feito_na_clinica"] = json_encode($entrada["atividades_para_ser_feito_na_clinica"]);
+
+
+        if($request->hasFile("exames_clinicos_se_houver")) {
+            $info_arquivo = $request->file("exames_clinicos_se_houver");
+            $arquivo_encodado = base64_encode(file_get_contents(addslashes($entrada['exames_clinicos_se_houver'])));
+
+            $dados_arquivo = array(
+                "mime" => $info_arquivo->getMimeType(),
+                "nome" => $info_arquivo->getClientOriginalName(),
+                "bytes_64" => $arquivo_encodado,
+            );
+
+            $entrada["exames_clinicos_se_houver"] = strval(json_encode($dados_arquivo));
+        } else {
+            $entrada["exames_clinicos_se_houver"] = "";
+        }
+
+
+
+        if($request->hasFile("anexar_arquivos")) {
+            $info_arquivo = $request->file("anexar_arquivos");
+            $arquivo_encodado = base64_encode(file_get_contents(addslashes($entrada['anexar_arquivos'])));
+
+            $dados_arquivo = array(
+                "mime" => $info_arquivo->getMimeType(),
+                "nome" => $info_arquivo->getClientOriginalName(),
+                "bytes_64" => $arquivo_encodado,
+            );
+
+            $entrada["anexar_arquivos"] = strval(json_encode($dados_arquivo));
+        } else {
+            $entrada["anexar_arquivos"] = "";
+        }
+
+        $entrada["dia_hora_devolutiva_aos_responsavel"] = $entrada["dia_devolutiva"] . " " . $entrada["hora_devolutiva"] . ":00";
+
+        $avaliacao = new AvaliacaoNeuropsicologica;
+        $avaliacao->fill($entrada);
+        $avaliacao->save();
+
+        return view('profissional/avaliacao/neuropsicologia/ver', ['id_paciente' => $paciente->id]);
+
+
+
     }
 
     public function editarNeuropsicologia($id_paciente) {
@@ -231,8 +339,8 @@ class ProfissionalAvaliacaoController extends Controller {
         $validator_to = Validator::make($entrada, AvaliacaoTerapiaOcupacional::$regras_validacao, $messages);
         if ($validator_to->fails()) {
             return redirect()->back()
-                ->withErrors($validator_to)
-                ->withInput();
+                             ->withErrors($validator_to)
+                             ->withInput();
         }
         $avaliacao_terapia_ocupacional = new AvaliacaoTerapiaOcupacional;
         $avaliacao_terapia_ocupacional->fill($entrada);
@@ -272,8 +380,8 @@ class ProfissionalAvaliacaoController extends Controller {
         $validator_to = Validator::make($entrada, AvaliacaoTerapiaOcupacional::$regras_validacao, $messages);
         if ($validator_to->fails()) {
             return redirect()->back()
-                ->withErrors($validator_to)
-                ->withInput();
+                             ->withErrors($validator_to)
+                             ->withInput();
         }
         $avaliacao_terapia_ocupacional = AvaliacaoTerapiaOcupacional::find($entrada["id_avaliacao"]);
         $avaliacao_terapia_ocupacional->fill($entrada);

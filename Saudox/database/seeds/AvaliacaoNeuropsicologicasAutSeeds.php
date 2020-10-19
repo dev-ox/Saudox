@@ -14,7 +14,6 @@ class AvaliacaoNeuropsicologicasAutSeeds extends Seeder {
             DB::table('avaliacao__neuropsicologicas')->insert([
                 'id_paciente' => rand(1,$qtd_pacientes),
                 'id_profissional' => rand(1,$qtd_profissionals),
-                'id_anaminese' => rand(1,$qtd_anamnese_gigante),
                 'queixa_principal' => texto(20),
                 'encaminhado_por' => Str::random(10),
                 'participantes_durante_anaminese' => texto(5),
