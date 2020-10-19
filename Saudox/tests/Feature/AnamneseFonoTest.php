@@ -31,10 +31,10 @@ class AnamneseFonoTest extends TestCase {
             'password' => $this->password_encrypt,
             'profissao' => Profissional::Adm,
         ]);
-        $this->anamnese_fono = factory(AnamneseFonoaudiologia::class)->create([
+        $this->anamnese_fono = array(factory(AnamneseFonoaudiologia::class)->create([
             'id_paciente' => $this->paciente->id,
             'id_profissional' => $this->profissional->id,
-        ]);
+        ]));
     }
 
     // Função que cria um profissional e já loga ele.
@@ -89,7 +89,7 @@ class AnamneseFonoTest extends TestCase {
         $resposta_ver_terapiaOcupacional->assertSee("Posição no bloco familiar");
 
         // Gera uma cópia da anamnese da Factory, indicando os ids
-        $copia_anamnese = array($this->anamnese_fono);
+        $copia_anamnese = $this->anamnese_fono;
         $copia_anamnese['id_paciente'] = $paciente_aux->id;
         $copia_anamnese['id_profissional'] = $prof_aux->id;
 
@@ -163,7 +163,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['posicao_bloco_familiar'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('posicao_bloco_familiar');
@@ -176,7 +176,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['crianca_desejada'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('crianca_desejada');
@@ -189,7 +189,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['reacao_crianca_status_relacao_pais'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('reacao_crianca_status_relacao_pais');
@@ -202,7 +202,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['tinha_expectativa_em_relacao_ao_sexo_da_crianca'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('tinha_expectativa_em_relacao_ao_sexo_da_crianca');
@@ -215,7 +215,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['duracao_da_gestacao'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('duracao_da_gestacao');
@@ -228,7 +228,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['fez_pre_natal'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('fez_pre_natal');
@@ -240,7 +240,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['tipo_parto'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('tipo_parto');
@@ -253,7 +253,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['complicacao_durante_parto'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('complicacao_durante_parto');
@@ -266,7 +266,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['foi_necessario_algum_recurso'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('foi_necessario_algum_recurso');
@@ -279,7 +279,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['mae_apresentou_algum_problema_durante_gravidez'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('mae_apresentou_algum_problema_durante_gravidezz');
@@ -292,7 +292,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['amamentacao_natural'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('amamentacao_natural');
@@ -305,7 +305,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['atraso_ou_problema_na_fala'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('atraso_ou_problema_na_fala');
@@ -318,7 +318,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['tem_enurese_noturna'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('tem_enurese_noturna');
@@ -331,7 +331,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['desenvolvimento_motor_no_tempo_esperado'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('desenvolvimento_motor_no_tempo_esperado');
@@ -344,7 +344,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['perturbacoes_como_pesadelos_sonambulismo_agitacao_etc'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('perturbacoes_como_pesadelos_sonambulismo_agitacao_etc');
@@ -357,7 +357,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['letras_ou_fonrmas_trocados'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('letras_ou_fonemas_trocados');
@@ -370,7 +370,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['fatos_que_afetaram_o_desenvolvimento_do_paciente'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('fatos_que_afetaram_o_desenvolvimento_do_paciente');
@@ -384,7 +384,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['ate_quantos_anos_usou_chupetas'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('ate_quantos_anos_usou_chupetas');
@@ -397,7 +397,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['dificuldades_na_fala'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('dificuldades_na_fala');
@@ -410,7 +410,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['dificuldades_na_visao'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('dificuldades_na_visao');
@@ -423,7 +423,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['problemas_de_saude'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('problemas_de_saude');
@@ -436,7 +436,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['toma_ou_ja_tomou_remedio_controlado_se_sim_quais'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('toma_ou_ja_tomou_remedio_controlado_se_sim_quais');
@@ -449,7 +449,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['toma_banho_sozinho'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('toma_banho_sozinho');
@@ -462,7 +462,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['escova_os_dentes_sozinho'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('escova_os_dentes_sozinho');
@@ -475,7 +475,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['usa_o_banheiro_sozinho'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('usa_o_banheiro_sozinho');
@@ -488,7 +488,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['necessita_de_auxilio_para_se_vestir_ou_despir'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('necessita_de_auxilio_para_se_vestir_ou_despir');
@@ -501,7 +501,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['atende_as_intervencoes_quando_esta_desobedecendo'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('atende_as_intervencoes_quando_esta_desobedecendo');
@@ -514,7 +514,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['chora_facil'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('chora_facil');
@@ -527,7 +527,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['recusa_auxilio'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('recusa_auxilio');
@@ -540,7 +540,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['tem_resistencia_ao_toque'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('tem_resistencia_ao_toque');
@@ -553,7 +553,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['serie_atual_na_escola'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('serie_atual_na_escola');
@@ -566,7 +566,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['alfabetizada'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('alfabetizada');
@@ -579,7 +579,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['tem_dificuldades_de_aprendizagem'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('tem_dificuldades_de_aprendizagem');
@@ -592,7 +592,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['repetiu_algum_ano'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('repetiu_algum_ano');
@@ -605,7 +605,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['faz_amigos_com_facilidade'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('faz_amigos_com_facilidade');
@@ -618,7 +618,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['adapta_se_facilmente_ao_meio'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('adapta_se_facilmente_ao_meio');
@@ -631,7 +631,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['dorme_sozinho'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('dorme_sozinho');
@@ -644,7 +644,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['dorme_no_quarto_dos_pais'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('dorme_no_quarto_dos_pais');
@@ -658,7 +658,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['medidas_disciplinares_empregadas_pelos_pais'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('medidas_disciplinares_empregadas_pelos_pais');
@@ -671,7 +671,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['outras_ocorrencias_observacoes'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('outras_ocorrencias_observacoes');
@@ -684,7 +684,7 @@ class AnamneseFonoTest extends TestCase {
                 Profissional::Fonoaudiologo
             ), $this->password);
 
-        $anamnese_fono_incompleto = array($this->anamnese_fono);
+        $anamnese_fono_incompleto = $this->anamnese_fono;
         $anamnese_fono_incompleto['distracoes_preferidas'] = '';
         $resposta = $this->post(route('profissional.anamnese.fonoaudiologia.salvar'), $anamnese_fono_incompleto);
         $resposta->assertSee('distracoes_preferidas');
