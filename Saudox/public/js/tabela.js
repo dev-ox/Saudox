@@ -13,13 +13,13 @@ function add_linha_na_tabela(btn_add_da_tabela) {
     let trs = Array.from(table.tBodies[0].childNodes).filter(linha => linha.nodeType === 1);
 
     //o array começa em 0, então o tamanho é o proximo indice
-    let prox_idx = trs.length;
+    let prox_idx = Number(/\[[0-9]+\]/g.exec(trs[trs.length - 1].innerHTML)[0].replaceAll("[", "").replaceAll("]", "")) + 1;
 
-    //pega o codigo da linha da tabela
+    //pega o codigo da ultima linha da tabela
     let tr_modelo = trs[trs.length - 1].outerHTML;
 
     let str_idx_novo = `[${prox_idx}]`;
-    let tr_idx_novo = tr_modelo.replaceAll("[0]", str_idx_novo);
+    let tr_idx_novo = tr_modelo.replaceAll(`[${prox_idx - 1}]`, str_idx_novo);
 
     //remove o que já se tinha escrito dos novos textarea
     tr_idx_novo = (tr_idx_novo.replaceAll(/]\">.*<\/textarea/g, "]\"><\/textarea"));
