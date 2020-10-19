@@ -3,7 +3,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="espacador_mesma_altura_top+nav"></div>
+            <div class="espacador_mesma_altura_top_nav"></div>
             <div style="text-align: center; width: 100%;">
                 <div class = "caixa_form">
                     <br>

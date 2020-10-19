@@ -3,7 +3,7 @@
 
     <div class="container">
         <div class="row">
-            <div class="espacador_mesma_altura_top+nav"></div>
+            <div class="espacador_mesma_altura_top_nav"></div>
             <div style="text-align: center; width: 100%;">
                 <div class = "caixa_form">
                     <br>
@@ -73,7 +73,7 @@
                             <h3>Escola</h3>
                             <input type="text" name="escola" value="{{ g_old($anamnese, "escola") }}" />
 
-                            <h3>Escola publica ou privada?</h3>
+                            <h3>Escola pública ou privada?</h3>
                             <input type="radio" name="escola_publica_privada" value="Publica" {{ g_old_checked($anamnese, "escola_publica_privada", "Publica") }} /><label>Publica</label><br>
                             <input type="radio" name="escola_publica_privada" value="Privada" {{ g_old_checked($anamnese, "escola_publica_privada", "Privada") }} /><label>Privada</label><br>
 
@@ -309,7 +309,7 @@
                             <input type="radio" name="teve_ictericia" value="0" {{ g_old_checked($anamnese, "teve_ictericia", "0") }} /><label>Não</label><br>
 
                             <h3>Idade gestacional (semanas)</h3>
-                            <input type="number" name="idade_gestacional_do_bebê_ao_nascer" value="{{ g_old($anamnese, "idade_gestacional_do_bebê_ao_nascer") }}" />
+                            <input type="number" name="idade_gestacional_do_bebe_ao_nascer" value="{{ g_old($anamnese, "idade_gestacional_do_bebe_ao_nascer") }}" />
 
 
 
@@ -1104,11 +1104,9 @@
                             <h3>Encaminhamentos</h3>
                             <textarea class="textareas_form" name="encaminhamentos" rows="4" cols="50" style="">{{ g_old($anamnese, "encaminhamentos") }}</textarea><br><br><br>
 
-                            <input type="submit" value="Salvar">
-
-
                         </div>
 
+                        <input type="submit" value="Salvar">
                         <br>
                         <div id="container_btn_pags">
                             <a onclick="form_ante_pag(this)" class="btn_pags redondo">&#8249;</a>
