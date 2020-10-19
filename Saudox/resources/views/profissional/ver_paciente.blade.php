@@ -85,6 +85,22 @@
                 @endif
             </div>
 
+
+
+
+            <div class="col-md-3">
+                @if($profissional->temProfissao(App\Profissional::Neuropsicologo) || $profissional->ehAdmin())
+                    @if(!$paciente->avaliacaoNeuro)
+                        <a style="padding-top: 2%;" class="bt formularios-bt" href="{{ route("profissional.avaliacao.neuropsicologia.criar", $paciente->id) }}">Criar Avaliação de Neuropsicologia</a>
+                    @else
+                        <a style="padding-top: 2%;" class="bt formularios-bt" href="{{ route("profissional.avaliacao.neuropsicologia.ver", $paciente->id) }}">Ver Avaliação de Neuropsicologia</a>
+                    @endif
+                    <br>
+                @endif
+            </div>
+
+
+
             <div class="col-md-3">
 
             </div>
