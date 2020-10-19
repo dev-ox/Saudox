@@ -72,7 +72,7 @@ $factory->define(AnamneseGigantePsicopedaNeuroPsicomotoPt1::class, function (Fak
         'peso_ao_nascer' => (float)rand(0.1,4.0),
         'comprimento_ao_nascer' => (float)rand(0.3,0.5),
         'teve_ictericia' => 1,
-        'idade_gestacional_do_bebê_ao_nascer' => '9',
+        'idade_gestacional_do_bebe_ao_nascer' => '9',
         'como_se_deu_a_alimentação' => 'asfpi',
         'mamou_no_seio_se_nao_qual_o_motivo' => '9',
         'se_mamou_foi_ate_quando_e_como_se_sentia_ao_amamentar' => 'asfpi',

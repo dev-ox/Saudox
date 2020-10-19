@@ -60,6 +60,7 @@ class AnamneseGigantePsicopedaNeuroPsicomotosPt2AutSeeds extends Seeder {
                 'mudou_de_escola_se_sim_em_qual_serie_e_idade' => Str::random(10),
                 'escola_atual' => Str::random(10),
                 'metodo_alfabetizacao_atual' => Str::random(10),
+                'serie_e_turno' => Str::random(10),
                 'professor' => Str::random(10),
                 'faz_as_tarefaz_sozinho_se_nao_com_quem_faz' => Str::random(10),
                 'descricao_momento_licoes' => Str::random(10),
