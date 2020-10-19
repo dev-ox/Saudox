@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Profissional;
 use App\Paciente;
 use Auth;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Validator;
 
 class ProfissionalAvaliacaoController extends Controller {
@@ -270,7 +271,7 @@ class ProfissionalAvaliacaoController extends Controller {
         $avaliacao->fill($entrada);
         $avaliacao->save();
 
-        return view('profissional/avaliacao/neuropsicologia/ver', ['id_paciente' => $paciente->id]);
+        return redirect()->route('profissional.avaliacao.neuropsicologia.ver', ['id_paciente' => $paciente->id]);
 
 
 
@@ -285,7 +286,119 @@ class ProfissionalAvaliacaoController extends Controller {
         if(!$avaliacao){
             return redirect()->route('erro', ['msg_erro' => "Avaliação do paciente " .$id_paciente. " não existe"]);
         }
-        return view('profissional/avaliacao/neuropsicologia/editar', ['avaliacao' => $avaliacao]);
+
+
+        $avaliacao->dia_devolutiva = Carbon::parse($avaliacao->dia_hora_devolutiva_aos_responsavel)->format("Y-m-d");
+        $avaliacao->hora_devolutiva= Carbon::parse($avaliacao->dia_hora_devolutiva_aos_responsavel)->format("H:i");
+
+        return view('profissional/avaliacao/neuropsicologia/editar', [
+            'paciente' => $paciente,
+            'avaliacao' => $avaliacao,
+            'tabela_atividades_para_ser_feito_na_clinica' => json_decode($avaliacao->atividades_para_ser_feito_na_clinica),
+            'tabela_atividades_para_ser_feito_em_casa' => json_decode($avaliacao->atividades_para_ser_feito_em_casa),
+        ]);
+    }
+
+
+    public function salvarEditarNeuropsicologia(Request $request) {
+        $entrada = $request->all();
+
+        $paciente = Paciente::find($entrada["id_paciente"]);
+        if(!$paciente){
+            return redirect()->route('erro', ['msg_erro' => "Paciente inexistente"]);
+        }
+
+        $avaliacao = $paciente->avaliacaoNeuro;
+        if(!$avaliacao) {
+            return redirect()->route('erro', ['msg_erro' => "Avaliação inexistente"]);
+        }
+
+
+        foreach($entrada["atividades_para_ser_feito_na_clinica"] as $idx => $atv) {
+            $limpar_tabela_clinica = true;
+            foreach($atv as $coluna => $valor) {
+                if($valor != "") {
+                    $limpar_tabela_clinica = false;
+                    break;
+                }
+            }
+
+            if($limpar_tabela_clinica) {
+                unset($entrada["atividades_para_ser_feito_na_clinica"][$idx]);
+            }
+
+        }
+
+        if(sizeof($entrada["atividades_para_ser_feito_na_clinica"]) == 0) {
+            $entrada["atividades_para_ser_feito_na_clinica"] = NULL;
+        }
+
+
+
+        foreach($entrada["atividades_para_ser_feito_em_casa"] as $idx => $atv) {
+            $limpar_tabela_clinica = true;
+            foreach($atv as $coluna => $valor) {
+                if($valor != "") {
+                    $limpar_tabela_clinica = false;
+                    break;
+                }
+            }
+
+            if($limpar_tabela_clinica) {
+                unset($entrada["atividades_para_ser_feito_em_casa"][$idx]);
+            }
+
+        }
+
+        if(sizeof($entrada["atividades_para_ser_feito_em_casa"]) == 0) {
+            $entrada["atividades_para_ser_feito_em_casa"] = NULL;
+        }
+
+
+        $entrada["atividades_para_ser_feito_em_casa"] = json_encode($entrada["atividades_para_ser_feito_em_casa"]);
+        $entrada["atividades_para_ser_feito_na_clinica"] = json_encode($entrada["atividades_para_ser_feito_na_clinica"]);
+
+
+        if($request->hasFile("exames_clinicos_se_houver")) {
+            $info_arquivo = $request->file("exames_clinicos_se_houver");
+            $arquivo_encodado = base64_encode(file_get_contents(addslashes($entrada['exames_clinicos_se_houver'])));
+
+            $dados_arquivo = array(
+                "mime" => $info_arquivo->getMimeType(),
+                "nome" => $info_arquivo->getClientOriginalName(),
+                "bytes_64" => $arquivo_encodado,
+            );
+
+            $entrada["exames_clinicos_se_houver"] = strval(json_encode($dados_arquivo));
+        } else {
+            $entrada["exames_clinicos_se_houver"] = "";
+        }
+
+
+
+        if($request->hasFile("anexar_arquivos")) {
+            $info_arquivo = $request->file("anexar_arquivos");
+            $arquivo_encodado = base64_encode(file_get_contents(addslashes($entrada['anexar_arquivos'])));
+
+            $dados_arquivo = array(
+                "mime" => $info_arquivo->getMimeType(),
+                "nome" => $info_arquivo->getClientOriginalName(),
+                "bytes_64" => $arquivo_encodado,
+            );
+
+            $entrada["anexar_arquivos"] = strval(json_encode($dados_arquivo));
+        } else {
+            $entrada["anexar_arquivos"] = "";
+        }
+
+        $entrada["dia_hora_devolutiva_aos_responsavel"] = $entrada["dia_devolutiva"] . " " . $entrada["hora_devolutiva"] . ":00";
+
+
+        $avaliacao->fill($entrada);
+        $avaliacao->save();
+
+        return redirect()->route('profissional.avaliacao.neuropsicologia.ver', ['id_paciente' => $paciente->id]);
+
     }
 
 
