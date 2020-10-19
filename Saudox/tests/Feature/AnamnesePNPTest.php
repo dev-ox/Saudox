@@ -44,8 +44,6 @@ class AnamnesePNPTest extends TestCase {
         ]);
         $resposta->assertRedirect(route('profissional.home'));
         $resposta->assertLocation(route('profissional.home'));
-        // $resposta->assertSee("asddsa");
-        // $resposta->assertOk();
 
         Auth::login($this->profissional, true);
         $this->assertTrue(Auth::check());
