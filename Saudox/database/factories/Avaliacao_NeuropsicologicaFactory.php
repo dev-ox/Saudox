@@ -21,7 +21,6 @@ $factory->define(AvaliacaoNeuropsicologica::class, function (Faker $faker) {
     return [
         'id_paciente' => 1,
         'id_profissional' => 1,
-        'id_anaminese' => 1,
         'queixa_principal' => 'Nao existe nenhuma queixa',
         'encaminhado_por' => 'asfosafohsahf',
         'participantes_durante_anaminese' => 'asfsafasf',
