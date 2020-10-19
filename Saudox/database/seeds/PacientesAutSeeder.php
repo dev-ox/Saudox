@@ -21,16 +21,16 @@ class PacientesAutSeeder extends Seeder {
 
         //Gerando pacientes automaticamente
         for($i = 0; $i < $qtd_pacientes; $i++){
-            
+
             $lista_irmaos = '';
             $numero_irmaos = rand(0, 10);
             for ($j=0; $j<$numero_irmaos; $j++){
                 $lista_irmaos = $lista_irmaos . $nome[rand(0, sizeof($nome)-1)];
                 $lista_irmaos = $lista_irmaos . " " . $sobrenome[rand(0, sizeof($sobrenome)-1)];
                 $lista_irmaos = $lista_irmaos . ', ';
-                $lista_irmaos = substr($lista_irmaos, 0, -2);
             }
-            
+            $lista_irmaos = substr($lista_irmaos, 0, -2);
+
             DB::table('pacientes')->insert([
                 'login' => "PacienteLogin" . rand(1, 10000),
                 'password' => Hash::make("123123123"),
