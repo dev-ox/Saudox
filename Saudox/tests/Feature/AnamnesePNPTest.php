@@ -85,4 +85,43 @@ class AnamnesePNPTest extends TestCase {
         $resposta_ver_fono->assertSee("Joao de Deuso");
     }
 
+    /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174990148 */
+    /* TA_01 */
+    public function profissionalPodeEditarAnamnese() {
+        self::loginProfisssional();
+
+        $this->assertCount(0, AnamneseGigantePsicopedaNeuroPsicomoto::all());
+        $pnp = factory(AnamneseGigantePsicopedaNeuroPsicomoto::class)->create();
+        $arr_pt1 = factory(AnamneseGigantePsicopedaNeuroPsicomotoPt1::class)->create([
+            'id_paciente' => $this->paciente->id,
+            'id_profissional' => $this->profissional->id,
+            'id_tp' => $pnp->id,
+            'compareceram_entrevista' => "Joao de Deuso",
+        ]);
+        $arr_pt2 = factory(AnamneseGigantePsicopedaNeuroPsicomotoPt2::class)->create([
+            'id_tp' => $pnp->id
+        ]);
+        $arr_pt3 = factory(AnamneseGigantePsicopedaNeuroPsicomotoPt3::class)->create([
+            'id_tp' => $pnp->id
+        ]);
+        $this->assertCount(1, AnamneseGigantePsicopedaNeuroPsicomoto::all());
+
+        $pnp_array_merged = $arr_pt1;
+        $pnp_array_merged = array_merge($pnp_array_merged, $arr_pt2);
+        $pnp_array_merged = array_merge($pnp_array_merged, $arr_pt3);
+
+        // Verifica se a anamnese agora existe
+        $resposta_ver_fono = $this->get(route("profissional.anamnese.psicopedagogia.editar", ['id_paciente' => $this->paciente->id]));
+        $resposta_ver_fono->assertSee("Joao de Deuso");
+
+        $pnp_array_merged['compareceram_entrevista'] = "Maria de Deuso";
+        $resposta_ver_fono = $this->get(route("profissional.anamnese.psicopedagogia.editar.salvar", $pnp_array_merged));
+        $resposta_ver_fono->assertSee("Joao de Deuso");
+
+        // Verifica se a anamnese agora existe
+        $resposta_ver_fono = $this->get(route("profissional.anamnese.psicopedagogia.editar", ['id_paciente' => $this->paciente->id]));
+        $resposta_ver_fono->assertSee("Maria de Deuso");
+    }
+
 }
