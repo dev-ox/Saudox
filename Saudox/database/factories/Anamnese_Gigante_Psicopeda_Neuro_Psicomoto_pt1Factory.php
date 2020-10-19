@@ -79,6 +79,7 @@ $factory->define(AnamneseGigantePsicopedaNeuroPsicomotoPt1::class, function (Fak
         'tomou_mamadeira_ate_quando' => '9',
         'aceitou_bem_a_alimentação_pastosa' => 1,
         'aceitou_bem_a_alimentação_solida' => 1,
+        'usa_copo' => 1,
         'alimentacao_atual' => 'asfpi',
         'retardo_diabetes_síndromes_doenças_nervosas_epilepsia' => '9',
         'teve_sarampo_infancia' => '9',

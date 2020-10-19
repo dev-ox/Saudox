@@ -72,6 +72,7 @@ class AnamneseGigantePsicopedaNeuroPsicomotosPt1AutSeeds extends Seeder {
                 'tomou_mamadeira_ate_quando' => Str::random(10),
                 'aceitou_bem_a_alimentação_pastosa' => rand(0,1) >= 0.5,
                 'aceitou_bem_a_alimentação_solida' => rand(0,1) >= 0.5,
+                'usa_copo' => 1,
                 'alimentacao_atual' => texto(5),
                 'retardo_diabetes_síndromes_doenças_nervosas_epilepsia' => Str::random(10),
                 'teve_sarampo_infancia' => Str::random(10),
