@@ -31,31 +31,8 @@ class AgendamentosTest extends TestCase {
             'profissao' => 'recepcionista;',
         ]);
 
-        $this->agendamento_completo = [
-            'id_profissional' => '1',
-            'id_paciente' => '-1',
-            'id_convenio' => '0',
-            'nome' => "Pessoa silva santos",
-            'cpf' => "12312312312",
-            'data_nascimento_paciente' => date('d-m-Y'),
-            'telefone' => "87996811674",
-            'email' => "Qp0zNP5fIx@yandex.com",
-            'dia_da_consulta' => date('d-m-Y'),
-            'hora_entrada' => date('H:i:s'),
-            'hora_saida' => date('H:i:s'),
-            'local_de_atendimento' => 'laaaa longe',
-            'recorrencia_do_agendamento' => 0,
-            'tipo_da_recorrencia' => "negocin",
-            'observacoes' => 'observado',
-            'status' => true,
-            'estado' => "Pernambuco",
-            'cidade' => "Garanhuns",
-            'bairro' => "Boa Vista",
-            'nome_rua' => "Rua negocin",
-            'numero_casa' => 123,
-            'descricao' => "casa engraçada não tinha teto não tinha nada",
-            'ponto_referencia' => "ali lá",
-        ];
+        // Array extendido da superclasse
+        $this->agendamento_completo = $this->agendamento_array;
     }
 
     private function loginProfisssional() {

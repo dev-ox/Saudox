@@ -78,6 +78,8 @@ class AnamneseGigantePsicopedaNeuroPsicomotosPt3AutSeeds extends Seeder {
                 'com_que_frequencia_ignora_estimulos' => Str::random(10),
                 'com_que_frequencia_manipula_brinquedos_e_objetos' => Str::random(10),
                 'ansioso_no_processo_de_mudanca_de_rotina_se_sim_voce_lembra' => texto(20),
+                'analise_da_entrevista' => texto(10),
+                'encaminhamentos' => texto(10),
             ]);
         }
     }

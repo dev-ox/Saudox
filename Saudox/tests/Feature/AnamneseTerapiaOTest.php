@@ -31,10 +31,10 @@ class AnamneseTerapiaOTest extends TestCase {
             'password' => $this->password_encrypt,
             'profissao' => Profissional::Adm,
         ]);
-        $this->anamnese_terapiaOcupacional = factory(AnamneseTerapiaOcupacional::class)->create([
+        $this->anamnese_terapiaOcupacional = array(factory(AnamneseTerapiaOcupacional::class)->create([
             'id_paciente' => $this->paciente->id,
             'id_profissional' => $this->profissional->id,
-        ]);
+        ]));
     }
 
     // Função que cria um profissional e já loga ele.
@@ -90,7 +90,7 @@ class AnamneseTerapiaOTest extends TestCase {
         $resposta_ver_terapiaOcupacional->assertSee("gestação");
 
         // Gera uma cópia da anamnese da Factory, indicando os ids
-        $copia_anamnese = array($this->anamnese_terapiaOcupacional);
+        $copia_anamnese = $this->anamnese_terapiaOcupacional;
         $copia_anamnese['id_paciente'] = $paciente_aux->id;
         $copia_anamnese['id_profissional'] = $prof_aux->id;
 
@@ -123,7 +123,7 @@ class AnamneseTerapiaOTest extends TestCase {
                 Profissional::TerapeutaOcupacional
             ), $this->password);
 
-        $copia_anamnese = array($this->anamnese_terapiaOcupacional);
+        $copia_anamnese = $this->anamnese_terapiaOcupacional;
         $copia_anamnese['gestacao'] = '';
         $resposta = $this->post(route('profissional.anamnese.terapia_ocupacional.salvar'), $copia_anamnese);
         $resposta->assertSessionHasErrors('gestacao');
@@ -136,7 +136,7 @@ class AnamneseTerapiaOTest extends TestCase {
                 Profissional::TerapeutaOcupacional
             ), $this->password);
 
-        $copia_anamnese = array($this->anamnese_terapiaOcupacional);
+        $copia_anamnese = $this->anamnese_terapiaOcupacional;
         $copia_anamnese['movimentos_estereotipados'] = '';
         $resposta = $this->post(route('profissional.anamnese.terapia_ocupacional.salvar'), $copia_anamnese);
         $resposta->assertSessionHasErrors('movimentos_estereotipados');

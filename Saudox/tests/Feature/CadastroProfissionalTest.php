@@ -22,31 +22,8 @@ class CadastroProfissionalTest extends TestCase {
             'ponto_referencia' => 'Favela',
         ]);
 
-        $this->array_funcionario = [
-            'nome' => 'Carlos Antônio',
-            //CPF precisa ser valido aqui...
-            'cpf' => '90653263163',
-            'rg' => '12345678',
-            'status' => 'Ativo',
-            'login' => 'loooogin',
-            'password' => '123123123',
-            'profissao' => ['Administrador', 'Psicopedagogo'],
-            'numero_conselho' => '123',
-            'telefone_1' => '12345678910',
-            'telefone_2'=> '12345678911',
-            'email' => 'carlosaajunior.jp@gmail.com',
-            'estado_civil' => 'solteiro',
-            'nacionalidade' => 'Brasileiro',
-            'estado' => 'PE',
-            'cidade' => 'Garanhuns',
-            'bairro' => 'Boa Vista',
-            'nome_rua' => 'Rua Antonio carlos souto',
-            'numero_casa' => '857',
-            'descricao' => 'ali',
-            'ponto_referencia' => 'lá',
-            'profissoes' => ['fonocoiso', 'admin'],
-            'descricao_de_conhecimento_e_experiencia' => 'descricao_de_conhecimento_e_experiencia',
-        ];
+        // Array extendido da superclasse
+        $this->array_funcionario = $this->profissional_array;
 
         $this->funcionario_logado = factory(Profissional::class)->create([
             'password' => bcrypt($this->password = '123123123'),
