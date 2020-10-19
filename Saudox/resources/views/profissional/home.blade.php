@@ -42,10 +42,10 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>{{$agenda[0]->nome}}</td>
-                                <td>{{$agenda[0]->dataEntradaFormatada()}}</td>
-                                <td>{{$agenda[0]->dataSaidaFormatada()}}</td>
-                                <td>{{$agenda[0]->local_de_atendimento}}</td>
+                                <td>{{$agenda->first()->nome}}</td>
+                                <td>{{$agenda->first()->dataEntradaFormatada()}}</td>
+                                <td>{{$agenda->first()->dataSaidaFormatada()}}</td>
+                                <td>{{$agenda->first()->local_de_atendimento}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -54,7 +54,7 @@
                         @if($prox_paciente)
                             <a class="btn-paciente bordas_amarelas" href={{route('paciente.perfil', ['id' => $prox_paciente->id]) }}>Ver perfil</a>
                         @else
-                            <a class="btn-paciente bordas_amarelas"  href={{route('profissional.criar_paciente', $agenda[0]->id) }}>Registrar Cliente</a>
+                            <a class="btn-paciente bordas_amarelas"  href={{route('profissional.criar_paciente', $agenda->first()->id) }}>Registrar Cliente</a>
                         @endif
                     </div>
 

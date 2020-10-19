@@ -34,8 +34,9 @@ class ProfissionalController extends Controller {
 
         $prox_paciente = NULL;
 
-        if(count($agendamentos) > 0){
-            $prox_paciente = Paciente::where('cpf', $agendamentos[0]->cpf)->first();
+
+        if($agendamentos->count() > 0){
+            $prox_paciente = Paciente::where('cpf', $agendamentos->first()->cpf)->first();
         }
 
         return view('profissional/home',
