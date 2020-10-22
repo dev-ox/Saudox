@@ -66,8 +66,6 @@
                         <label class="required">Humor nos dias da avaliação</label><br>
                         <input value="{{ g_old($avaliacao, 'humor_nos_dias_da_avalicao') }}" type="text" name="humor_nos_dias_da_avalicao" id="humor_nos_dias_da_avalicao" required>
 
-                        <label class="required">Humor nos dias da avaliação</label><br>
-                        <input value="{{ g_old($avaliacao, 'humor_nos_dias_da_avalicao') }}" type="text" name="humor_nos_dias_da_avalicao" id="humor_nos_dias_da_avalicao" required>
 
 
 
