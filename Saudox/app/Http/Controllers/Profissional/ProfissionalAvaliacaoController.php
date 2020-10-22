@@ -159,7 +159,10 @@ class ProfissionalAvaliacaoController extends Controller {
         if(!$avaliacao){
             return redirect()->route('erro', ['msg_erro' => "Avaliação do paciente " .$id_paciente. " não existe"]);
         }
-        return view('profissional/avaliacao/neuropsicologia/ver', ['avaliacao' => $avaliacao]);
+        return view('profissional/avaliacao/neuropsicologia/ver', [
+            'avaliacao' => $avaliacao,
+            'paciente' => $paciente,
+        ]);
     }
 
     public function criarNeuropsicologia($id_paciente) {
