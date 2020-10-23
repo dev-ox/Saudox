@@ -23,7 +23,7 @@ class EvolucaoTest extends TestCase {
 
         $this->endereco = factory(Endereco::class)->create();
         $this->funcionario = factory(Profissional::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
             'profissao' => 'Atendente',
         ]);
 
@@ -71,9 +71,9 @@ class EvolucaoTest extends TestCase {
 
        $this->assertAuthenticatedAs($this->funcionario);
 
-       $copia_paciente = factory(Paciente::class)->create($this->paciente);
+       factory(Paciente::class)->create($this->paciente);
 
-       $pacie = Paciente::first();
+       Paciente::first();
 
        //$this->visit(route("profissional.evolucao", ['id_paciente' => $pacie->id]));
        //$this->seePageIs(route("profissional.evolucao", ['id_paciente' => $pacie->id]));
@@ -157,7 +157,7 @@ class EvolucaoTest extends TestCase {
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $evolucao_judo = factory(EvolucaoJudo::class)->create([
+        factory(EvolucaoJudo::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->funcionario->id,
         ]);
@@ -183,7 +183,7 @@ class EvolucaoTest extends TestCase {
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $evolucao_psicologica = factory(EvolucaoPsicologica::class)->create([
+        factory(EvolucaoPsicologica::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->funcionario->id,
         ]);
@@ -209,7 +209,7 @@ class EvolucaoTest extends TestCase {
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $evolucao_fonoaudiologica = factory(EvolucaoFonoaudiologia::class)->create([
+        factory(EvolucaoFonoaudiologia::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->funcionario->id,
         ]);
@@ -235,7 +235,7 @@ class EvolucaoTest extends TestCase {
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $evolucao_to = factory(EvolucaoTerapiaOcupacional::class)->create([
+        factory(EvolucaoTerapiaOcupacional::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->funcionario->id,
         ]);
@@ -267,7 +267,7 @@ class EvolucaoTest extends TestCase {
             'password' => $password,
         ]);
 
-        $evolucao_judo = factory(EvolucaoJudo::class)->create([
+        factory(EvolucaoJudo::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->funcionario->id,
         ]);
@@ -295,7 +295,7 @@ class EvolucaoTest extends TestCase {
             'password' => $password,
         ]);
 
-        $evolucao_psicologica = factory(EvolucaoPsicologica::class)->create([
+        factory(EvolucaoPsicologica::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->funcionario->id,
         ]);
@@ -323,7 +323,7 @@ class EvolucaoTest extends TestCase {
             'password' => $password,
         ]);
 
-        $evolucao_to = factory(EvolucaoTerapiaOcupacional::class)->create([
+        factory(EvolucaoTerapiaOcupacional::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->funcionario->id,
         ]);
@@ -353,7 +353,7 @@ class EvolucaoTest extends TestCase {
             'password' => $password,
         ]);
 
-        $evolucao_fonoaudiologica = factory(EvolucaoFonoaudiologia::class)->create([
+        factory(EvolucaoFonoaudiologia::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->funcionario->id,
         ]);
@@ -395,7 +395,7 @@ class EvolucaoTest extends TestCase {
 
 
         $this->funcN = factory(Profissional::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
             'profissao' => 'Professor de Judô',
         ]);
 
@@ -408,7 +408,7 @@ class EvolucaoTest extends TestCase {
         $this->assertAuthenticatedAs($this->funcionario);
 
         $paciente = factory(Paciente::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
         ]);
 
         $evolucao_judo = factory(EvolucaoJudo::class)->create([
@@ -437,7 +437,7 @@ class EvolucaoTest extends TestCase {
 
 
         $this->funcN = factory(Profissional::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
             'profissao' => 'Psicologo',
         ]);
 
@@ -450,7 +450,7 @@ class EvolucaoTest extends TestCase {
         $this->assertAuthenticatedAs($this->funcionario);
 
         $paciente = factory(Paciente::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
         ]);
 
         $evolucao_psicologica = factory(EvolucaoPsicologica::class)->create([
@@ -479,7 +479,7 @@ class EvolucaoTest extends TestCase {
 
 
         $this->funcN = factory(Profissional::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
             'profissao' => 'Fonoaudiologo',
         ]);
 
@@ -492,7 +492,7 @@ class EvolucaoTest extends TestCase {
         $this->assertAuthenticatedAs($this->funcionario);
 
         $paciente = factory(Paciente::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
         ]);
 
         $evolucao_fonoaudiologica = factory(EvolucaoFonoaudiologia::class)->create([
@@ -521,7 +521,7 @@ class EvolucaoTest extends TestCase {
 
 
         $this->funcN = factory(Profissional::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
             'profissao' => 'Terapeuta',
         ]);
 
@@ -534,7 +534,7 @@ class EvolucaoTest extends TestCase {
         $this->assertAuthenticatedAs($this->funcionario);
 
         $paciente = factory(Paciente::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
         ]);
 
         $evolucao_to = factory(EvolucaoTerapiaOcupacional::class)->create([
@@ -564,7 +564,7 @@ class EvolucaoTest extends TestCase {
 
 
         $this->funcN = factory(Profissional::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
             'profissao' => 'Professor de Judô',
         ]);
 
@@ -577,7 +577,7 @@ class EvolucaoTest extends TestCase {
         $this->assertAuthenticatedAs($this->funcionario);
 
         $paciente = factory(Paciente::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
         ]);
 
         $evolucao_judo = factory(EvolucaoJudo::class)->create([
@@ -606,7 +606,7 @@ class EvolucaoTest extends TestCase {
     public function profissionalNaoAutorizadoNaoPodeEditarEvolucaoPsicologia() {
 
         $this->funcN = factory(Profissional::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
             'profissao' => 'Psicologo',
         ]);
 
@@ -620,7 +620,7 @@ class EvolucaoTest extends TestCase {
 
 
         $paciente = factory(Paciente::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
         ]);
 
 
@@ -649,7 +649,7 @@ class EvolucaoTest extends TestCase {
     public function profissionalNaoAutorizadoNaoPodeEditarEvolucaoFonoaudiologica() {
 
         $this->funcN = factory(Profissional::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
             'profissao' => 'Fonoaudiologo',
         ]);
 
@@ -663,7 +663,7 @@ class EvolucaoTest extends TestCase {
 
 
         $paciente = factory(Paciente::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
         ]);
 
 
@@ -693,7 +693,7 @@ class EvolucaoTest extends TestCase {
 
 
         $this->funcN = factory(Profissional::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
             'profissao' => 'Terapeuta',
         ]);
 
@@ -706,7 +706,7 @@ class EvolucaoTest extends TestCase {
         $this->assertAuthenticatedAs($this->funcionario);
 
         $paciente = factory(Paciente::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
         ]);
 
         $evolucao_to = factory(EvolucaoTerapiaOcupacional::class)->create([

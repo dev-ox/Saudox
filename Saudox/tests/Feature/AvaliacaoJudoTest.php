@@ -106,7 +106,7 @@ class AvaliacaoJudoTest extends TestCase {
     /* url: https://www.pivotaltracker.com/story/show/174990377 */
     /* TA_02 */
     public function profissionalPodeAcessarAvaliacaoJudo() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Adm,
                 Profissional::TerapeutaOcupacional
@@ -119,7 +119,7 @@ class AvaliacaoJudoTest extends TestCase {
 
     /** @ test **/
     public function respostaEmocionalAvaliacaoJudoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::TerapeutaOcupacional
             ), $this->password);
@@ -140,7 +140,7 @@ class AvaliacaoJudoTest extends TestCase {
                 Profissional::Fonoaudiologo,
                 Profissional::TerapeutaOcupacional,
             ), $this->password);
-            $prof_aux = $criarProf_Logar['profissional'];
+            $criarProf_Logar['profissional'];
 
 
             // Gera uma cópia da anamnese da Factory, indicando os ids
@@ -150,7 +150,7 @@ class AvaliacaoJudoTest extends TestCase {
             $copia_ava['diagnostico'] = 9;
 
             // Cria a Anamnese
-            $res = $this->post(route("profissional.avaliacao.judo.editar.salvar", $copia_ava));
+            $this->post(route("profissional.avaliacao.judo.editar.salvar", $copia_ava));
 
             $resposta_ver_ava_judo = $this->get(route("profissional.avaliacao.judo.ver", ['id_paciente' => $this->paciente->id]));
             $resposta_ver_ava_judo->assertSee("9");

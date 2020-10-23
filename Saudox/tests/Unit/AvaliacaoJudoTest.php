@@ -16,8 +16,6 @@ class AvaliacaoJudoTest extends TestCase {
 
 
     private $controller;
-    private $endereco;
-    private $profissional;
     private $avaliacao_ok;
     protected function setUp(): void {
         parent::setUp();

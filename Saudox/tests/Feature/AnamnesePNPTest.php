@@ -58,7 +58,7 @@ class AnamnesePNPTest extends TestCase {
     /* url: https://www.pivotaltracker.com/story/show/174990179 */
     /* TA_01 */
     public function profissionalPodeCriarAnamnese() {
-        self::loginProfisssional();
+        $this->loginProfisssional();
 
         $this->assertCount(0, AnamneseGigantePsicopedaNeuroPsicomoto::all());
 
@@ -87,7 +87,7 @@ class AnamnesePNPTest extends TestCase {
     /* url: https://www.pivotaltracker.com/story/show/174990148 */
     /* TA_01 */
     public function profissionalPodeEditarAnamnese() {
-        self::loginProfisssional();
+        $this->loginProfisssional();
 
         $this->assertCount(0, AnamneseGigantePsicopedaNeuroPsicomoto::all());
         $pnp = factory(AnamneseGigantePsicopedaNeuroPsicomoto::class)->create();

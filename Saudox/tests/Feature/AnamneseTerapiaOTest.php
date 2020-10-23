@@ -106,7 +106,7 @@ class AnamneseTerapiaOTest extends TestCase {
     /* url: https://www.pivotaltracker.com/story/show/174990176 */
     /* TA_02 */
     public function profissionalPodeAcessarAnamneseTerapiaOcupacional() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Adm,
                 Profissional::TerapeutaOcupacional
@@ -118,7 +118,7 @@ class AnamneseTerapiaOTest extends TestCase {
 
     /** @ test **/
     public function duracaoGestacaoAnamneseTerapiaOcupNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::TerapeutaOcupacional
             ), $this->password);
@@ -131,7 +131,7 @@ class AnamneseTerapiaOTest extends TestCase {
 
     /** @ test **/
     public function movimentosEsterotipadosAnamneseTerapiaOcupNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::TerapeutaOcupacional
             ), $this->password);

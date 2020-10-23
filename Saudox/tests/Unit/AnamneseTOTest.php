@@ -9,16 +9,12 @@ use Tests\TestCase;
 use App\Paciente;
 use App\Profissional;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class AnamneseTerapiaOcupacionalTest extends TestCase {
 
 
     private $controller;
-    private $endereco;
-    private $profissional;
-    private $anamnese_ok;
     protected function setUp(): void {
         parent::setUp();
         $this->endereco = factory(Endereco::class)->create();
