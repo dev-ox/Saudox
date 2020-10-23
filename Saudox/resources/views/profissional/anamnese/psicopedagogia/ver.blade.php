@@ -347,7 +347,13 @@
                         </div>
 
                         <div class="col-md-4">
-                            <label class="lbinfo-perfis">Gravidez planejada por ambos?<br><label class="lbinfo-ntstatic">{{$anamnese->gravidez_planejada_por_ambos}}</label></label>
+                            <label class="lbinfo-perfis">Gravidez planejada por ambos?<br><label class="lbinfo-ntstatic">
+                                @if($anamnese->gravidez_planejada_por_ambos == 1)
+                                Sim
+                                @else
+                                Não
+                                @endif
+                            </label></label>
                         </div>
 
                         <div class="col-md-4">
@@ -742,31 +748,61 @@
                         <div class="col-md-3">
                             <label class="lbinfo-perfis">Range dentes:<br>
                                 <div class="c-wrapper">
-                                    <label class="lbinfo-ntstatic">{{$anamnese->range_dentes}}</label></label>
+                                    <label class="lbinfo-ntstatic">
+                                    @if($anamnese->range_dentes == 1)
+                                    Sim
+                                    @else
+                                    Não
+                                    @endif
+                                </label></label>
                                 </div>
                         </div>
                         <div class="col-md-2">
                             <label class="lbinfo-perfis">Terror noturno:<br>
                                 <div class="c-wrapper">
-                                    <label class="lbinfo-ntstatic">{{$anamnese->terror_noturno}}</label></label>
+                                    <label class="lbinfo-ntstatic">
+                                    @if($anamnese->terror_noturno == 1)
+                                    Sim
+                                    @else
+                                    Não
+                                    @endif
+                                    </label></label>
                                 </div>
                         </div>
                         <div class="col-md-2">
                             <label class="lbinfo-perfis">Sonambulismo:<br>
                                 <div class="c-wrapper">
-                                    <label class="lbinfo-ntstatic">{{$anamnese->sonambulistmo}}</label></label>
+                                    <label class="lbinfo-ntstatic">
+                                    @if($anamnese->sonambulistmo == 1)
+                                    Sim
+                                    @else
+                                    Não
+                                    @endif
+                                    </label></label>
                                 </div>
                         </div>
                         <div class="col-md-2">
                             <label class="lbinfo-perfis">Enurese:<br>
                                 <div class="c-wrapper">
-                                    <label class="lbinfo-ntstatic">{{$anamnese->enurese}}</label></label>
+                                    <label class="lbinfo-ntstatic">
+                                    @if($anamnese->enurese == 1)
+                                    Sim
+                                    @else
+                                    Não
+                                    @endif
+                                    </label></label>
                                 </div>
                         </div>
                         <div class="col-md-3">
                             <label class="lbinfo-perfis">Fala dormindo:<br>
                                 <div class="c-wrapper">
-                                    <label class="lbinfo-ntstatic">{{$anamnese->fala_durante_sono}}</label></label>
+                                    <label class="lbinfo-ntstatic">
+                                    @if($anamnese->fala_durante_sono == 1)
+                                    Sim
+                                    @else
+                                    Não
+                                    @endif
+                                    </label></label>
                                 </div>
                         </div>
 
