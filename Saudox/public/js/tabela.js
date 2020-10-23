@@ -5,12 +5,12 @@ function add_linha_na_tabela(btn_add_da_tabela) {
 
     let textareas = Array.from(table.querySelectorAll("textarea"));
 
-    textareas.forEach(textarea => {
+    textareas.forEach((textarea) => {
         textarea.innerHTML = textarea.value;
     });
 
     //pega a lista do trs dentro do table
-    let trs = Array.from(table.tBodies[0].childNodes).filter(linha => linha.nodeType === 1);
+    let trs = Array.from(table.tBodies[0].childNodes).filter((linha) => linha.nodeType === 1);
 
     //o array começa em 0, então o tamanho é o proximo indice
     let prox_idx = Number(/\[[0-9]+\]/g.exec(trs[trs.length - 1].innerHTML)[0].replaceAll("[", "").replaceAll("]", "")) + 1;
