@@ -1010,9 +1010,6 @@
                             <h3>Vai ao cinema ver o que e com que frequência?</h3>
                             <input type="text" name="vai_ao_cinema_e_com_que_frequencia" value="{{ g_old($anamnese, "vai_ao_cinema_e_com_que_frequencia") }}" />
 
-                            <h3>Vai ao cinema ver o que e com que frequência?</h3>
-                            <input type="text" name="vai_ao_cinema_e_com_que_frequencia" value="{{ g_old($anamnese, "vai_ao_cinema_e_com_que_frequencia") }}" />
-
                             <h3>Estímulos culturais</h3>
                             <input type="text" name="estimulo_cultural_se_sim_quais" value="{{ g_old($anamnese, "estimulo_cultural_se_sim_quais") }}" />
 
