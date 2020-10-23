@@ -566,7 +566,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <h6 class="lbinfo-perfis">História Patológica Pregressa:</h6>
-                            <label class="lbinfo-perfis-sub">(Nome, Idade, Relação, Educação, Ocupação, Saúde, Prob. aprendiz)
+                            <label class="lbinfo-perfis-sub">(Retardo, diabetes, síndromes, doenças nervosas, epilepsia)
                             <br>
                                 <div class="c-wrapper">
                                     <label class="lbinfo-ntstatic">{{$anamnese->retardo_diabetes_síndromes_doenças_nervosas_epilepsia}}</label></label>
