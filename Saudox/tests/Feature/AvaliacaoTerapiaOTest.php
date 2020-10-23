@@ -8,9 +8,6 @@ use App\Profissional;
 use App\Paciente;
 
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Carbon;
-
-use App\AvaliacaoTerapiaOcupacional;
 
 class AvaliacaoTerapiaOTest extends TestCase {
     public $profissional;
@@ -79,7 +76,7 @@ class AvaliacaoTerapiaOTest extends TestCase {
                 Profissional::Fonoaudiologo,
                 Profissional::TerapeutaOcupacional,
             ), $this->password);
-        $prof_aux = $criarProf_Logar['profissional'];
+        $criarProf_Logar['profissional'];
 
         // Gera um novo paciente (sem avaliacao)
         $paciente_aux = factory(Paciente::class)->create([
@@ -133,7 +130,7 @@ class AvaliacaoTerapiaOTest extends TestCase {
     /* url: https://www.pivotaltracker.com/story/show/174990176 */
     /* TA_02 */
     public function profissionalPodeEditarAvaliacaoTerapiaOcupacional() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Adm,
                 Profissional::TerapeutaOcupacional

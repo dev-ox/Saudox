@@ -66,7 +66,7 @@ class LoginProfissionalTest extends TestCase {
 
         $login_t = 'carlosaajunio@gmail.com' . Carbon::now()->toString();
 
-        $funcionario = factory(Profissional::class)->create([
+        factory(Profissional::class)->create([
             'login' => $login_t,
             'password' => bcrypt('123123123'),
         ]);
@@ -138,8 +138,8 @@ class LoginProfissionalTest extends TestCase {
         /* é só não logar */
         $this->assertCount(0, Profissional::all());
 
-        $funcionario = factory(Profissional::class)->create([
-            'password' => bcrypt($password = '123123123'),
+        factory(Profissional::class)->create([
+            'password' => bcrypt('123123123'),
         ]);
 
         $this->assertCount(1, Profissional::all());
@@ -183,8 +183,8 @@ class LoginProfissionalTest extends TestCase {
         /* é só não logar */
         $this->assertCount(0, Profissional::all());
 
-        $funcionario = factory(Profissional::class)->create([
-            'password' => bcrypt($password = '123123123'),
+        factory(Profissional::class)->create([
+            'password' => bcrypt('123123123'),
         ]);
 
         $this->assertCount(1, Profissional::all());

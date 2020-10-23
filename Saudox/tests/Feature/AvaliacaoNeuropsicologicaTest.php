@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Auth;
 
 class AvaliacaoNeuropsicologicaTest extends TestCase {
     public $funcionario;
-    private $endereco;
     private $paciente;
 
     public function setUp() : void {
@@ -55,7 +54,7 @@ class AvaliacaoNeuropsicologicaTest extends TestCase {
     /* url: https://www.pivotaltracker.com/story/show/174639133 */
     /* TA_01 */
     public function profissionalPodeCriarAvaliacaoNeuro() {
-        self::loginProfisssional();
+        $this->loginProfisssional();
 
         $this->assertCount(0, AvaliacaoNeuropsicologica::all());
 
@@ -71,7 +70,7 @@ class AvaliacaoNeuropsicologicaTest extends TestCase {
     /* url: https://www.pivotaltracker.com/story/show/174639133 */
     /* TA_01 */
     public function profissionalPodeConsultarAvaliacaoNeuro() {
-        self::loginProfisssional();
+        $this->loginProfisssional();
 
         $this->assertCount(0, AvaliacaoNeuropsicologica::all());
 

@@ -14,7 +14,6 @@ use App\AvaliacaoNeuropsicologica;
 
 class AvaliacaoTest extends TestCase {
     public $funcionario;
-    private $endereco;
     private $paciente;
 
     private $password;
@@ -52,9 +51,9 @@ class AvaliacaoTest extends TestCase {
 
        $this->assertAuthenticatedAs($this->funcionario);
 
-       $copia_pac = factory(Paciente::class)->create($this->paciente);
+       factory(Paciente::class)->create($this->paciente);
 
-       $pacie = Paciente::first();
+       Paciente::first();
 
        //$this->visit(route('profissional.avaliacao', ['id_paciente' => $pacie->id]));
        //$this->seePageIs(route('profissional.avaliacao', ['id_paciente' => $pacie->id]));
@@ -136,7 +135,7 @@ class AvaliacaoTest extends TestCase {
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $avali_judo = factory(AvaliacaoJudo::class)->create([
+        factory(AvaliacaoJudo::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->funcionario->id,
         ]);
@@ -162,7 +161,7 @@ class AvaliacaoTest extends TestCase {
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $avali_neuro_psi = factory(AvaliacaoNeuropsicologica::class)->create([
+        factory(AvaliacaoNeuropsicologica::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->funcionario->id,
         ]);
@@ -188,7 +187,7 @@ class AvaliacaoTest extends TestCase {
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $avali_fono = factory(AvaliacaoFonoaudiologia::class)->create([
+        factory(AvaliacaoFonoaudiologia::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->funcionario->id,
         ]);
@@ -214,7 +213,7 @@ class AvaliacaoTest extends TestCase {
             'password' => bcrypt($password = '123123123'),
         ]);
 
-        $avali_tera_ocu = factory(AvaliacaoTerapiaOcupacional::class)->create([
+        factory(AvaliacaoTerapiaOcupacional::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->funcionario->id,
         ]);
@@ -245,7 +244,7 @@ class AvaliacaoTest extends TestCase {
             'password' => $password,
         ]);
 
-        $avali_judo = factory(AvaliacaoJudo::class)->create([
+        factory(AvaliacaoJudo::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->funcionario->id,
         ]);
@@ -273,7 +272,7 @@ class AvaliacaoTest extends TestCase {
             'password' => $password,
         ]);
 
-        $avali_neuro_psi = factory(AvaliacaoNeuropsicologica::class)->create([
+        factory(AvaliacaoNeuropsicologica::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->funcionario->id,
         ]);
@@ -301,7 +300,7 @@ class AvaliacaoTest extends TestCase {
             'password' => $password,
         ]);
 
-        $avali_tera_ocu = factory(AvaliacaoTerapiaOcupacional::class)->create([
+        factory(AvaliacaoTerapiaOcupacional::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->funcionario->id,
         ]);
@@ -329,7 +328,7 @@ class AvaliacaoTest extends TestCase {
             'password' => $password,
         ]);
 
-        $avali_fono = factory(AvaliacaoFonoaudiologia::class)->create([
+        factory(AvaliacaoFonoaudiologia::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->funcionario->id,
         ]);
@@ -370,11 +369,11 @@ class AvaliacaoTest extends TestCase {
     /** @ test **/
     public function pacienteNaoPodeDeletarAvalicaoJudo() {
         $paciente = factory(Paciente::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
         ]);
 
         $this->funcN = factory(Profissional::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
             'profissao' => 'Professor de Judô',
         ]);
 
@@ -386,7 +385,7 @@ class AvaliacaoTest extends TestCase {
         $resposta->assertRedirect(route('profissional.home'));
         $this->assertAuthenticatedAs($this->funcionario);
 
-        $avali_judo = factory(AvaliacaoJudo::class)->create([
+        factory(AvaliacaoJudo::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->funcN->id,
         ]);
@@ -411,11 +410,11 @@ class AvaliacaoTest extends TestCase {
     /** @ test **/
     public function profissionalNaoAutorizadoNaoPodeDeletarAvalicaoPsicologia() {
         $paciente = factory(Paciente::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
         ]);
 
         $this->funcN = factory(Profissional::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
             'profissao' => 'Psicologo',
         ]);
 
@@ -427,7 +426,7 @@ class AvaliacaoTest extends TestCase {
         $resposta->assertRedirect(route('profissional.home'));
         $this->assertAuthenticatedAs($this->funcionario);
 
-        $avali_neuro_psi = factory(AvaliacaoNeuropsicologica::class)->create([
+        factory(AvaliacaoNeuropsicologica::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->funcN->id,
         ]);
@@ -452,11 +451,11 @@ class AvaliacaoTest extends TestCase {
     /** @ test **/
     public function profissionalNaoAutorizadoNaoPodeDeletarAvalicaoFonoaudiologica() {
         $paciente = factory(Paciente::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
         ]);
 
         $this->funcN = factory(Profissional::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
             'profissao' => 'Fonoaudiologo',
         ]);
 
@@ -468,7 +467,7 @@ class AvaliacaoTest extends TestCase {
         $resposta->assertRedirect(route('profissional.home'));
         $this->assertAuthenticatedAs($this->funcionario);
 
-        $avali_fono = factory(AvaliacaoFonoaudiologia::class)->create([
+        factory(AvaliacaoFonoaudiologia::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->funcN->id,
         ]);
@@ -493,11 +492,11 @@ class AvaliacaoTest extends TestCase {
     /** @ test **/
     public function profissionalNaoAutorizadoNaoPodeDeletarAvalicaoTerapiaOcupacional() {
         $paciente = factory(Paciente::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
         ]);
 
         $this->funcN = factory(Profissional::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
             'profissao' => 'Terapeuta',
         ]);
 
@@ -508,7 +507,7 @@ class AvaliacaoTest extends TestCase {
 
         $resposta->assertRedirect(route('profissional.home'));
         $this->assertAuthenticatedAs($this->funcionario);
-        $avali_tera_ocu = factory(AvaliacaoTerapiaOcupacional::class)->create([
+        factory(AvaliacaoTerapiaOcupacional::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->funcN->id,
         ]);
@@ -533,11 +532,11 @@ class AvaliacaoTest extends TestCase {
     /** @ test **/
     public function profissionalNaoAutorizadoNaoPodeEditarAvalicaoJudo() {
         $paciente = factory(Paciente::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
         ]);
 
         $this->funcN = factory(Profissional::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
             'profissao' => 'Professor de Judô',
         ]);
 
@@ -549,7 +548,7 @@ class AvaliacaoTest extends TestCase {
         $resposta->assertRedirect(route('profissional.home'));
         $this->assertAuthenticatedAs($this->funcionario);
 
-        $avali_judo = factory(AvaliacaoJudo::class)->create([
+        factory(AvaliacaoJudo::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->funcN->id,
         ]);
@@ -574,11 +573,11 @@ class AvaliacaoTest extends TestCase {
     /** @ test **/
     public function profissionalNaoAutorizadoNaoPodeEditarAvalicaoPsicologia() {
         $paciente = factory(Paciente::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
         ]);
 
         $this->funcN = factory(Profissional::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
             'profissao' => 'Psicologo',
         ]);
 
@@ -590,7 +589,7 @@ class AvaliacaoTest extends TestCase {
         $resposta->assertRedirect(route('profissional.home'));
         $this->assertAuthenticatedAs($this->funcionario);
 
-        $avali_neuro_psi = factory(AvaliacaoNeuropsicologica::class)->create([
+        factory(AvaliacaoNeuropsicologica::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->funcN->id,
         ]);
@@ -615,11 +614,11 @@ class AvaliacaoTest extends TestCase {
     /** @ test **/
     public function profissionalNaoAutorizadoNaoPodeEditarAvalicaoFonoaudiologica() {
         $paciente = factory(Paciente::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
         ]);
 
         $this->funcN = factory(Profissional::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
             'profissao' => 'Fonoaudiologo',
         ]);
 
@@ -630,7 +629,7 @@ class AvaliacaoTest extends TestCase {
 
         $resposta->assertRedirect(route('profissional.home'));
         $this->assertAuthenticatedAs($this->funcionario);
-        $avali_fono = factory(AvaliacaoFonoaudiologia::class)->create([
+        factory(AvaliacaoFonoaudiologia::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->funcN->id,
         ]);
@@ -655,11 +654,11 @@ class AvaliacaoTest extends TestCase {
     /** @ test **/
     public function profissionalNaoAutorizadoNaoPodeEditarAvalicaoTerapiaOcupacional() {
         $paciente = factory(Paciente::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
         ]);
 
         $this->funcN = factory(Profissional::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
             'profissao' => 'Terapeuta',
         ]);
 
@@ -671,9 +670,9 @@ class AvaliacaoTest extends TestCase {
         $resposta->assertRedirect(route('profissional.home'));
         $this->assertAuthenticatedAs($this->funcionario);
 
-        $avali_tera_ocu = factory(AvaliacaoTerapiaOcupacional::class)->create([
+        factory(AvaliacaoTerapiaOcupacional::class)->create([
             'id_paciente' => $paciente->id,
-            'id_profissional' => $this->$funcN->id,
+            'id_profissional' => $this->funcN->id,
         ]);
 
         $this->assertCount(1, AvaliacaoTerapiaOcupacional::all());

@@ -11,7 +11,6 @@ class AdminControllerTest extends TestCase {
 
 
     private $controller;
-    private $endereco;
     private $profissional;
     protected function setUp(): void {
         parent::setUp();
