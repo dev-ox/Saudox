@@ -258,7 +258,10 @@ class ProfissionalAnamneseController extends Controller {
         if(!$anamnese){
             return redirect()->route('erro', ['msg_erro' => "Anamnese do paciente " .$id_paciente. " não existe"]);
         }
-        return view('profissional/anamnese/psicopedagogia/ver', ['anamnese' => $anamnese]);
+        return view('profissional/anamnese/psicopedagogia/ver', [
+            'anamnese' => $anamnese,
+            'paciente' => $paciente,
+        ]);
     }
 
     public function criarPsicopedagogia($id_paciente) {

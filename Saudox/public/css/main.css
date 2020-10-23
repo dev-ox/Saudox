@@ -821,6 +821,18 @@ h3{
     font-weight: bold;
 }
 
+.lbinfo-perfis{
+    margin-left: 50px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.lbinfo-perfis-sub{
+    margin-left: 50px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
 .lbinfo-static-extra{
     font-size: 20px;
     margin-left: 160px;
