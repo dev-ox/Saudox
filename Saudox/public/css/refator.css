@@ -96,7 +96,8 @@
 
 @media screen and (max-width: 1200px) {
   .paciente-bt {width: 100% !important;
-  font-size: 12px;}
+    font-size: 12px;
+  }
 }
 
 .paciente-nav-titles{
