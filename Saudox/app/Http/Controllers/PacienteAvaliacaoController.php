@@ -16,7 +16,7 @@ class PacienteAvaliacaoController extends Controller {
 
     public function verFono() {
         $paciente = Paciente::find(Auth::id());
-        $avaliacao = $paciente->avaliacao_fono;
+        $avaliacao = $paciente->avaliacaoFono;
         if(!$avaliacao) {
             return redirect()->route('erro', ['msg_erro' => "Essa avaliação não existe."]);
         }
@@ -25,7 +25,7 @@ class PacienteAvaliacaoController extends Controller {
 
     public function verJudo() {
         $paciente = Paciente::find(Auth::id());
-        $avaliacao = $paciente->avaliacao_judo;
+        $avaliacao = $paciente->avaliacaoJudo;
         if(!$avaliacao) {
             return redirect()->route('erro', ['msg_erro' => "Essa avaliação não existe."]);
         }
@@ -34,7 +34,7 @@ class PacienteAvaliacaoController extends Controller {
 
     public function verNeuro() {
         $paciente = Paciente::find(Auth::id());
-        $avaliacao = $paciente->avaliacao_neuro;
+        $avaliacao = $paciente->avaliacaoNeuro;
         if(!$avaliacao) {
             return redirect()->route('erro', ['msg_erro' => "Essa avaliação não existe."]);
         }
@@ -43,7 +43,7 @@ class PacienteAvaliacaoController extends Controller {
 
     public function verTerapiaOcupacional() {
         $paciente = Paciente::find(Auth::id());
-        $avaliacao = $paciente->avaliacao_terapia_ocupacional;
+        $avaliacao = $paciente->avaliacaoTerapiaOcupacional;
         if(!$avaliacao) {
             return redirect()->route('erro', ['msg_erro' => "Essa avaliação não existe."]);
         }
