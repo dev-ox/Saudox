@@ -1,71 +1,71 @@
 #pontos_pags li {
-    display: inline;
+  display: inline;
 }
 
 /* a ordem é importante, tem que ser o inativo, e o ativo sobreescreve */
 .ponto_inativo {
-    color: var(--cor_preto) !important;
+  color: var(--cor_preto) !important;
 }
 .ponto_ativo {
-    color: var(--cor_azul) !important;
+  color: var(--cor_azul) !important;
 }
 
 
 .ponto_pag_link {
-    cursor: pointer;
-    text-decoration: none;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .ponto_pag_link:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 
 .btn_pags {
-    text-decoration: none !important;
-    display: inline-block !important;
-    padding: 7px 16px !important;
-    background-color: var(--cor_azul);
-    margin-left: 1%;
-    margin-right: 1%;
+  text-decoration: none !important;
+  display: inline-block !important;
+  padding: 7px 16px !important;
+  background-color: var(--cor_azul);
+  margin-left: 1%;
+  margin-right: 1%;
 }
 
 .btn_pags:hover {
-    background-color: var(--cor_roxo);
-    color: black;
+  background-color: var(--cor_roxo);
+  color: black;
 }
 
 .redondo {
-    border-radius: 50%;
+  border-radius: 50%;
 }
 
 
 .pag_form {
-    display: none;
-    visibility: hidden;
-    opacity: 0;
-    -webkit-transition: opacity 600ms, visibility 600ms;
-    transition: opacity 600ms, visibility 600ms;
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: opacity 600ms, visibility 600ms;
+  transition: opacity 600ms, visibility 600ms;
 }
 
 .pag_form.pag_form_ativa {
-    visibility: visible;
-    opacity: 1;
-    animation: fade 600ms;
-    display: block;
+  visibility: visible;
+  opacity: 1;
+  animation: fade 600ms;
+  display: block;
 }
 
 @keyframes fade {
-    0% {
-        opacity: 0;
-    }
+  0% {
+    opacity: 0;
+  }
 
-    100% {
-        opacity: 1;
-    }
+  100% {
+    opacity: 1;
+  }
 }
 
 
- html {
+html {
   scroll-behavior: smooth;
 }
