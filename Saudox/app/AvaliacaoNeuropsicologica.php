@@ -69,6 +69,19 @@ class AvaliacaoNeuropsicologica extends Model {
             'atividades_para_ser_feito_em_casa' => 'required',
     ];
 
+    public function atividades_para_ser_feito_na_clinica(){
+        return json_decode($this->atividades_para_ser_feito_na_clinica);
+    }
+
+    public function atividades_para_ser_feito_em_casa(){
+        return json_decode($this->atividades_para_ser_feito_em_casa);
+    }
+
+    public function dia_hora_devolutiva_aos_responsavel_formatado(){
+        $time = strtotime($this->dia_hora_devolutiva_aos_responsavel);
+        return date('H:m  d/m/Y',$time);
+    }
+
 
     /* TODO: Lembrar disso quando for criar/editar */
     /* Pra setar o acesso:
