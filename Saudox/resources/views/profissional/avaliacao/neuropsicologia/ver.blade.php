@@ -173,15 +173,21 @@
                                 </label>
                         </div>
                     </div>
+
+                    <h3 class="marker-label">Funções cognitivas avaliadas</h3>
+                    <br>
                     <div class="row">
                         <div class="col-md-12">
-                                <label class="lbinfo-static">Descrição das funções cognitivas avaliadas<br>
+                                <label class="lbinfo-static">Descrição das funções:<br>
                                     <div class="c-wrapper">
                                         <label class="lbinfo-ntstatic">{{$avaliacao->descricao_das_funcoes_cognitivas_avaliadas}}</label>
                                     </div>
                                 </label>
                         </div>
                     </div>
+
+                    <h3 class="marker-label">Instrumentos avaliativos utilizados</h3>
+                    <br>
                     <div class="row">
                         <div class="col-md-12">
                                 <label class="lbinfo-static">Testes neuropsicológicos:<br>
@@ -200,9 +206,10 @@
                                 </label>
                         </div>
                     </div>
+                    <h3 class="marker-label">Quantidade de dias necessários para avaliação:</h3>
                     <div class="row">
                         <div class="col-md-12">
-                                <label class="lbinfo-static">Quantidade de dias necessários para avaliação:<br>
+                                <label class="lbinfo-static"><br>
                                     <div class="c-wrapper">
                                         <label class="lbinfo-ntstatic">{{$avaliacao->dias_necessarios_para_avaliacao_justificados_se_mais_que_4_dias}}</label>
                                     </div>
@@ -212,26 +219,26 @@
                 </div>
 
                 <div>
-                    <h3 class="marker-label">Condições do (a) paciente nos dias da avaliação relativas à</h3>
+                    <h3 class="marker-label">Condições do(a) paciente nos dias da avaliação relativas à</h3>
                     <br>
                     <div class="row">
                         <div class="col-md-12">
-                            <label class="lbinfo-static">Alimentação nos dias da avaliação<br><label class="lbinfo-ntstatic">{{$avaliacao->alimentacao_nos_dias_da_avalicao}}</label></label>
+                            <label class="lbinfo-static">Alimentação nos dias da avaliação:<br><label class="lbinfo-ntstatic">{{$avaliacao->alimentacao_nos_dias_da_avalicao}}</label></label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <label class="lbinfo-static">Sono nos dias da avaliação<br><label class="lbinfo-ntstatic">{{$avaliacao->sono_nos_dias_da_avalicao}}</label></label>
+                            <label class="lbinfo-static">Sono nos dias da avaliação:<br><label class="lbinfo-ntstatic">{{$avaliacao->sono_nos_dias_da_avalicao}}</label></label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <label class="lbinfo-static">Higiene nos dias da avaliação<br><label class="lbinfo-ntstatic">{{$avaliacao->higiene_nos_dias_da_avalicao}}</label></label>
+                            <label class="lbinfo-static">Higiene nos dias da avaliação:<br><label class="lbinfo-ntstatic">{{$avaliacao->higiene_nos_dias_da_avalicao}}</label></label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <label class="lbinfo-static">Humor nos dias da avaliação<br><label class="lbinfo-ntstatic">{{$avaliacao->humor_nos_dias_da_avalicao}}</label></label>
+                            <label class="lbinfo-static">Humor nos dias da avaliação:<br><label class="lbinfo-ntstatic">{{$avaliacao->humor_nos_dias_da_avalicao}}</label></label>
                         </div>
                     </div>
                 </div>
@@ -242,18 +249,31 @@
                     <br>
                     <div class="row">
                         <div class="col-md-12">
-                            <label class="lbinfo-static">Apontar áreas preservadas<br><label class="lbinfo-ntstatic">{{$avaliacao->areas_preservadas}}</label></label>
+                            <label class="lbinfo-static">Apontar áreas preservadas:<br><label class="lbinfo-ntstatic">{{$avaliacao->areas_preservadas}}</label></label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <label class="lbinfo-static">Apontar áreas lesionadas<br><label class="lbinfo-ntstatic">{{$avaliacao->areas_lesionadas}}</label></label>
+                            <label class="lbinfo-static">Apontar áreas lesionadas:<br><label class="lbinfo-ntstatic">{{$avaliacao->areas_lesionadas}}</label></label>
                         </div>
                     </div>
                     <div class="row bg-padrao-claro">
                         <div class="col-md-12">
-                            <label class="lbinfo-static">Laudo<br><label class="lbinfo-ntstatic">{{$avaliacao->anexar_arquivos}}</label></label>
+                            <label class="lbinfo-static">Laudo  ESSE CAMPO NÃO ESTÁ PRONTO POIS É UM ARQUIVO!!!!: <br><label class="lbinfo-ntstatic">{{$avaliacao->anexar_arquivos}}</label></label>
                         </div>
+                    </div>
+                </div>
+
+                <div>
+                    <br>
+                    <h3 class="marker-label">Hipótese diagnóstica</h3>
+                    <div class="row">
+                        <label class="lbinfo-static"><br>
+                            <div class="c-wrapper">
+                                <label class="lbinfo-ntstatic">{{$avaliacao->hipotese_diagnostica}}</label>
+                            </div>
+                        </label>
+
                     </div>
                 </div>
 
@@ -262,19 +282,18 @@
                     <br>
                     <div class="row">
                         <div class="col-md-12">
-                            <label class="lbinfo-static">Data e Hora<br><label class="lbinfo-ntstatic">{{$avaliacao->dia_hora_devolutiva_aos_responsavel_formatado()}}</label></label>
+                            <label class="lbinfo-static">Data e Hora:<br><label class="lbinfo-ntstatic">{{$avaliacao->dia_hora_devolutiva_aos_responsavel_formatado()}}</label></label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <label class="lbinfo-static">Participantes<br><label class="lbinfo-ntstatic">{{$avaliacao->participantes}}</label></label>
+                            <label class="lbinfo-static">Participantes:<br><label class="lbinfo-ntstatic">{{$avaliacao->participantes}}</label></label>
                         </div>
                     </div>
                 </div>
 
                 <div>
                     <h3 class="marker-label">Elaboração do Programa de Reabilitação Neuropsicológica</h3>
-                    <br>
                     <br>
                     <h3 class="marker-label">Atividades para serem feitas na clínica:</h3>
                     <div class="row">
@@ -356,9 +375,11 @@
                             <label class="lbinfo-static">Sugestão de encaminhamento:<br><label class="lbinfo-ntstatic">{{$avaliacao->sugestao_encaminhamento}}</label></label>
                         </div>
                     </div>
+                    <h3 class="marker-label">Anexos de exames clínicos:</h3>
                     <div class="row bg-padrao-claro">
                         <div class="col-md-12">
-                            <label class="lbinfo-static">Exames clínicos:<br><label class="lbinfo-ntstatic">
+                            <label class="lbinfo-static"><br><label class="lbinfo-ntstatic">
+                            <h1> ESSE CAMPO NÃO ESTÁ PRONTO POIS É UM ARQUIVO!!!! </h1>
                             @if($avaliacao->exames_clinicos_se_houver)
                                 {{$avaliacao->exames_clinicos_se_houver}}
                             @else
