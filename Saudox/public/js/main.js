@@ -221,19 +221,23 @@ function verAgendamento(linha_tabela) {
 }
 
 
-
 function buscarPorNome(tipo_user) {
     let busca = tipo_user == 'paciente'
     ? (document.getElementById('pac').value) : (document.getElementById('prof').value);
 
     // Aviso quando a string de busca não existir
     if(!busca) {
-        document.getElementById("warning-busca").style.display = "block";
+        if(document.getElementById("warning-busca")){
+            document.getElementById("warning-busca").style.display = "block";
+        }
     } else {
-        document.getElementById("warning-busca").style.display = "none";
+        if(document.getElementById("warning-busca")){
+            document.getElementById("warning-busca").style.display = "none";
+        }
         window.location = "/profissional/buscar?buscou=true&tipo_user="+tipo_user+"&tipo_busca=nome&info=" + busca;
     }
 }
+
 
 function scrollFunction() {
     let height_px = 200;
