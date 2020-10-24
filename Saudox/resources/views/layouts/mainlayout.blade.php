@@ -160,9 +160,9 @@
 
       <div class="col-xs-12 col-md-5 text-center" >
           <ul class="vertical-links small">
-            <li><a href="#">Privacidade</a></li>
-            <li><a href="#">Licença</a></li>
-            <li><a href="#">Fale conosco</a></li>
+            <li><a href="#" style="color:black; text-decoration: underline;">Privacidade</a></li>
+            <li><a href="#" style="color:black; text-decoration: underline;">Licença</a></li>
+            <li><a href="#" style="color:black; text-decoration: underline;">Fale conosco</a></li>
           </ul>
       </div>
       <div class="col-xs-12 col-md-2 text-center" >
@@ -170,7 +170,7 @@
       </div>
       <div class="col-xs-12 col-md-5 text-center" >
         <ul>
-          <li class="small">© Copyright 2020 Website by <a href="#" style="color:white;font-weight:500;">Devox</a>. All Rights reserved.</li>
+          <li class="small">© Copyright 2020 Website by <a href="#" style="color:black; text-decoration: underline; font-weight:500;">Devox</a>. All Rights reserved.</li>
         </ul>
       </div>
     </div> <!--  end row  -->

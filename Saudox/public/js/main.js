@@ -46,7 +46,7 @@ document.getElementsByClassName("espacador_mesma_altura_top_nav")[0].style.heigh
 // Desabilida o scroll do mouse nos input de tipo number
 document.addEventListener("wheel", function(event){
     if(document.activeElement.type === "number" &&
-        document.activeElement.classList.contains("noscroll"))
+    document.activeElement.classList.contains("noscroll"))
     {
         document.activeElement.blur();
     }
@@ -114,7 +114,7 @@ document.getElementsByClassName("espacador_mesma_altura_top_nav")[0].style.heigh
 // Desabilida o scroll do mouse nos input de tipo number
 document.addEventListener("wheel", function(event){
     if(document.activeElement.type === "number" &&
-        document.activeElement.classList.contains("noscroll"))
+    document.activeElement.classList.contains("noscroll"))
     {
         document.activeElement.blur();
     }
@@ -126,7 +126,7 @@ document.getElementsByClassName("espacador_mesma_altura_top_nav")[0].style.heigh
 // Desabilida o scroll do mouse nos input de tipo number
 document.addEventListener("wheel", function(event){
     if(document.activeElement.type === "number" &&
-        document.activeElement.classList.contains("noscroll"))
+    document.activeElement.classList.contains("noscroll"))
     {
         document.activeElement.blur();
     }
@@ -137,37 +137,7 @@ document.getElementsByClassName("espacador_mesma_altura_top_nav")[0].style.heigh
 // Desabilida o scroll do mouse nos input de tipo number
 document.addEventListener("wheel", function(event){
     if(document.activeElement.type === "number" &&
-        document.activeElement.classList.contains("noscroll"))
-    {
-        document.activeElement.blur();
-    }
-});
-
-// Permitir apenas numeros nos campos com essa função
-function validar_apenas_numeros(evt) {
-    var theEvent = evt || window.event;
-
-    // Handle paste
-    if (theEvent.type === 'paste') {
-        key = event.clipboardData.getData('text/plain');
-    } else {
-        // Handle key press
-        var key = theEvent.keyCode || theEvent.which;
-        key = String.fromCharCode(key);
-    }
-    var regex = /[0-9]|\./;
-    if( !regex.test(key) ) {
-        theEvent.returnValue = false;
-        if(theEvent.preventDefault) theEvent.preventDefault();
-    }
-}
-// Pega a altura do topnav e coloca como a altura do espaçador, pra o topnav não ficar em cima do resto da pagina.
-document.getElementsByClassName("espacador_mesma_altura_top_nav")[0].style.height = document.getElementsByClassName("topnav")[0].getBoundingClientRect().height * 1.5;
-
-// Desabilida o scroll do mouse nos input de tipo number
-document.addEventListener("wheel", function(event){
-    if(document.activeElement.type === "number" &&
-        document.activeElement.classList.contains("noscroll"))
+    document.activeElement.classList.contains("noscroll"))
     {
         document.activeElement.blur();
     }
@@ -197,7 +167,37 @@ document.getElementsByClassName("espacador_mesma_altura_top_nav")[0].style.heigh
 // Desabilida o scroll do mouse nos input de tipo number
 document.addEventListener("wheel", function(event){
     if(document.activeElement.type === "number" &&
-        document.activeElement.classList.contains("noscroll"))
+    document.activeElement.classList.contains("noscroll"))
+    {
+        document.activeElement.blur();
+    }
+});
+
+// Permitir apenas numeros nos campos com essa função
+function validar_apenas_numeros(evt) {
+    var theEvent = evt || window.event;
+
+    // Handle paste
+    if (theEvent.type === 'paste') {
+        key = event.clipboardData.getData('text/plain');
+    } else {
+        // Handle key press
+        var key = theEvent.keyCode || theEvent.which;
+        key = String.fromCharCode(key);
+    }
+    var regex = /[0-9]|\./;
+    if( !regex.test(key) ) {
+        theEvent.returnValue = false;
+        if(theEvent.preventDefault) theEvent.preventDefault();
+    }
+}
+// Pega a altura do topnav e coloca como a altura do espaçador, pra o topnav não ficar em cima do resto da pagina.
+document.getElementsByClassName("espacador_mesma_altura_top_nav")[0].style.height = document.getElementsByClassName("topnav")[0].getBoundingClientRect().height * 1.5;
+
+// Desabilida o scroll do mouse nos input de tipo number
+document.addEventListener("wheel", function(event){
+    if(document.activeElement.type === "number" &&
+    document.activeElement.classList.contains("noscroll"))
     {
         document.activeElement.blur();
     }
@@ -234,15 +234,24 @@ function buscarProfissionalPorNome() {
 
 
 function scrollFunction() {
-  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    document.getElementById("to-top").style.display = "block";
-  } else {
-    document.getElementById("to-top").style.display = "none";
-  }
+    let height_px = 200;
+    if (document.body.scrollTop > height_px || document.documentElement.scrollTop > height_px) {
+        document.getElementById("to-top").style.display = "block";
+    } else {
+        document.getElementById("to-top").style.display = "none";
+    }
 }
 
 // When the user clicks on the button, scroll to the top of the document
 function topFunction() {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
+    // Tempo da animação em ms
+    let tempo_subida = 600; //ms
+
+    // Demora um pouco mais pra subir se ele estiver numa altura muito grande
+    if($(window).scrollTop() > 10000) {
+        tempo_subida = 1000;
+    }
+
+    // Animação para subir ao poucos
+    $("html, body").animate({ scrollTop: 0 }, tempo_subida);
 }
