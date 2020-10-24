@@ -9,6 +9,15 @@
             </div>
         </head>
 
+
+        <div id="warning-busca" class="alert alert-warning alert-dismissible"
+            style="display:none; font-size:20px">
+            <center>
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Atenção!</strong> Você deve inserir algo no campo de busca.
+            </center>
+        </div>
+
         <div class="profissionais-adm bg-padrao">
             <h3>Profissionais:</h3>
             <div class="adm-page">

@@ -228,8 +228,9 @@ function buscarPorNome(tipo_user) {
 
     // Aviso quando a string de busca não existir
     if(!busca) {
-        alert("Informe algum nome para realizar a busca");
+        document.getElementById("warning-busca").style.display = "block";
     } else {
+        document.getElementById("warning-busca").style.display = "none";
         window.location = "/profissional/buscar?buscou=true&tipo_user="+tipo_user+"&tipo_busca=nome&info=" + busca;
     }
 }
