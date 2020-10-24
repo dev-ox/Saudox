@@ -222,16 +222,17 @@ function verAgendamento(linha_tabela) {
 
 
 
-function buscarPacientePorNome() {
-    let busca = (document.getElementById('pac').value);
-    window.location = "/profissional/buscar?buscou=true&tipo_user=paciente&tipo_busca=nome&info=" + busca;
-}
+function buscarPorNome(tipo_user) {
+    let busca = tipo_user == 'paciente'
+    ? (document.getElementById('pac').value) : (document.getElementById('prof').value);
 
-function buscarProfissionalPorNome() {
-    let busca = (document.getElementById('prof').value);
-    window.location = "/profissional/buscar?buscou=true&tipo_user=profissional&tipo_busca=nome&info=" + busca;
+    // Aviso quando a string de busca não existir
+    if(!busca) {
+        alert("Informe algum nome para realizar a busca");
+    } else {
+        window.location = "/profissional/buscar?buscou=true&tipo_user="+tipo_user+"&tipo_busca=nome&info=" + busca;
+    }
 }
-
 
 function scrollFunction() {
     let height_px = 200;

@@ -16,7 +16,7 @@
                 <div class="search-part">
                     <label for="prof" class="search-label">Buscar profissional:</label>
                     <input placeholder="Nome do profissional" id="prof" type="text" class="search" name="buscar">
-                    <input value="Buscar" type="submit" class="bt-search-agenda_r" href="#" onclick="buscarProfissionalPorNome()">
+                    <input value="Buscar" type="submit" class="bt-search-agenda_r" href="#" onclick="buscarPorNome('profissional')">
                 </div>
             </div>
             <div class="table-wrapper-adm">
@@ -48,14 +48,15 @@
                 <div class="search-part">
                     <label for="pac" class="search-label">Buscar paciente:</label>
                     <input placeholder="Nome do paciente" id="pac" type="text" class="search" name="buscar">
-                    <input value="Buscar" type="submit" class="bt-search-agenda_r" href="#" onclick="buscarPacientePorNome()">
+                    <input value="Buscar" type="submit" class="bt-search-agenda_r" href="#" onclick="buscarPorNome('paciente')">
                 </div>
             </div>
             <div class="table-wrapper-adm">
                 <table class="adm-table">
                     <thead>
                         <tr class="adm table-row">
-                            <th class="tag-adm" colspan="3">Paciente:</th>
+                            <th class="tag-adm">Paciente</td>
+                            <th class="tag-adm">Editar</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -63,8 +64,7 @@
                             {{$pac->nome}}
                             <tr>
                                 <td class="corsim-adm"> <a class="corsim-intern" href={{route('profissional.ver_paciente', ['id' => $pac->id])}}>{{$pac->nome_paciente}}</a> </td>
-                                <td class="bt-acao-adm-tb"> <a class="bt-acao-adm" href= {{route('profissional.criar_paciente.editar', $pac->id)}}>Editar</a> </td>
-                                <td class="bt-acao-adm-tb"> <a class="bt-acao-adm" href= {{route('profissional.ver', ['id' => $pac->id])}}>Remover</a> </td>
+                                <td class="corsim-adm"> <a class="bt-acao-adm-editar" href= {{route('profissional.criar_paciente.editar', $pac->id)}}>Editar</a> </td>
                             </tr>
                         @endforeach
                     </tbody>
