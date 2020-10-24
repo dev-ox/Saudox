@@ -5,7 +5,8 @@
     <div id="welcome_div" class="row bordas_amarelas bg-padrao">
         <div class="col-md">
             <h1 style="margin-top: 1%;">Bem vindo! {{$paciente->nome_paciente}}</h1>
-            <hr class="hr_home">
+            <br>
+            <br>
         </div>
     </div>
 
@@ -20,36 +21,36 @@
             <h4 class="paciente-nav-titles">Anamneses</h4>
             @endif
             @if($id_anamnese_fono != -1)
-            <a href={{route('paciente.anamnese.fonoaudiologia.ver') }} class="bt paciente-bt">Fonoaudiologica</a>
+            <a href={{route('paciente.anamnese.fonoaudiologia.ver') }} class="bt paciente-bt old-bt">Fonoaudiologica</a>
             @endif
             @if($id_anamnese_pnps != -1)
-            <a href={{route('paciente.anamnese.pnp.ver')}} class="bt paciente-bt">Psicomotricidade</a>
+            <a href={{route('paciente.anamnese.pnp.ver')}} class="bt paciente-bt old-bt old">Psicomotricidade</a>
             @endif
             @if($id_anamnese_tocp != -1)
-            <a href={{route('paciente.anamnese.terapia_ocupacional.ver')}} class="bt paciente-bt">Terapia Ocupacional</a>
+            <a href={{route('paciente.anamnese.terapia_ocupacional.ver')}} class="bt paciente-bt old-bt">Terapia Ocupacional</a>
             @endif
             <br>
             @if($id_ava_fono != -1 || $id_ava_judo != -1 || $id_ava_neur != -1 || $id_ava_tocp != -1)
             <h4 class="paciente-nav-titles">Avaliações</h4>
             @endif
             @if($id_ava_fono != -1)
-            <a href={{route('paciente.avaliacao.fonoaudiologia.ver')}} class="bt paciente-bt">Fonoaudiologica</a>
+            <a href={{route('paciente.avaliacao.fonoaudiologia.ver')}} class="bt paciente-bt old-bt">Fonoaudiologica</a>
             @endif
             @if($id_ava_judo != -1)
-            <a href={{route('paciente.avaliacao.judo.ver')}} class="bt paciente-bt">Judô</a>
+            <a href={{route('paciente.avaliacao.judo.ver')}} class="bt paciente-bt old-bt">Judô</a>
             @endif
             @if($id_ava_neur != -1)
-            <a href={{route('paciente.avaliacao.neuropsicologia.ver')}} class="bt paciente-bt">Neuropsicologica</a>
+            <a href={{route('paciente.avaliacao.neuropsicologia.ver')}} class="bt paciente-bt old-bt">Neuropsicologica</a>
             @endif
             @if($id_ava_tocp != -1)
-            <a href={{route('paciente.avaliacao.terapia_ocupacional.ver')}} class="bt paciente-bt">Terapia Ocupacional</a>
+            <a href={{route('paciente.avaliacao.terapia_ocupacional.ver')}} class="bt paciente-bt old-bt">Terapia Ocupacional</a>
             @endif
             <br>
             <h4 class="paciente-nav-titles">Evoluções</h4>
-            <a href={{route('paciente.evolucao.fonoaudiologia')}} class="bt paciente-bt">Fonoaudiologica</a>
-            <a href={{route('paciente.evolucao.judo')}} class="bt paciente-bt">Judô</a>
-            <a href={{route('paciente.evolucao.neuropsicologica')}} class="bt paciente-bt">Neuropsicologica</a>
-            <a href={{route('paciente.evolucao.terapia_ocupacional')}} class="bt paciente-bt">Terapia Ocupacional</a>
+            <a href={{route('paciente.evolucao.fonoaudiologia')}} class="bt paciente-bt old-bt">Fonoaudiologica</a>
+            <a href={{route('paciente.evolucao.judo')}} class="bt paciente-bt old-bt">Judô</a>
+            <a href={{route('paciente.evolucao.neuropsicologica')}} class="bt paciente-bt old-bt">Neuropsicologica</a>
+            <a href={{route('paciente.evolucao.terapia_ocupacional')}} class="bt paciente-bt old-bt">Terapia Ocupacional</a>
         </div>
         </div>
 

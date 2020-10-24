@@ -82,6 +82,10 @@
   border-width: 2px;
 }
 
+.old-bt {
+    width: 100%;
+}
+
 .formularios-bt{
   display: block;
   width: 100%;
