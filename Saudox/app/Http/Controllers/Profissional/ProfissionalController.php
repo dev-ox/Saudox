@@ -341,6 +341,10 @@ class ProfissionalController extends Controller {
                 return view('erro', ['msg_erro' => "Por favor, informe dados válidos para a busca. (Você não indicou o o que de fato quer buscar.)"]);
             }
 
+            // Removendo caracteres especiais da string a ser buscada
+            $info = $this->removerCaracteresEspeciais($info);
+            $info = strtolower($info);
+
             // Se o usuário do sistema fez uma busca
             if($buscou) {
                 // Se o tipo de usuário que ele está buscando for paciente
@@ -350,6 +354,10 @@ class ProfissionalController extends Controller {
 
                     // Verifica se algum usuário possui no seu cpf ou nome a string buscada
                     if($tipo_busca == 'cpf') {
+                        // Remove o que não for dígito
+                        // O \D é a mesma coisa que [^0-9] (não dígito)
+                        $info = preg_replace('/\D/', '', $info);
+
                         $busca_ok = true; // Indicativo que a o conteúdo do request está ok
                         foreach ($pacientes_aux as $pac) {
                             // Se a string contém a substring
@@ -361,7 +369,8 @@ class ProfissionalController extends Controller {
                     } else if($tipo_busca == 'nome') {
                         $busca_ok = true;
                         foreach ($pacientes_aux as $pac) {
-                            if(str_contains($pac->nome_paciente, $info)) {
+                            $nome = strtolower($this->removerCaracteresEspeciais($pac->nome_paciente));
+                            if(str_contains($nome, $info)) {
                                 array_push($pacientes_array, $pac);
                             }
                         }
@@ -370,6 +379,10 @@ class ProfissionalController extends Controller {
                 } else if($tipo_user == 'profissional') {
                     $profissional_aux = Profissional::select('id', 'nome', 'cpf')->get();
                     if($tipo_busca == 'cpf') {
+                        // Remove o que não for dígito
+                        // O \D é a mesma coisa que [^0-9] (não dígito)
+                        $info = preg_replace('/\D/', '', $info);
+
                         $busca_ok = true;
                         foreach ($profissional_aux as $prof) {
                             if(str_contains($prof->cpf, $info)) {
@@ -379,7 +392,8 @@ class ProfissionalController extends Controller {
                     } else if($tipo_busca == 'nome') {
                         $busca_ok = true;
                         foreach ($profissional_aux as $prof) {
-                            if(str_contains($prof->nome, $info)) {
+                            $nome = strtolower($this->removerCaracteresEspeciais($prof->nome));
+                            if(str_contains($nome, $info)) {
                                 array_push($profissionais_array, $prof);
                             }
                         }
