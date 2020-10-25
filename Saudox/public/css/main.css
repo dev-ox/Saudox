@@ -78,6 +78,14 @@ form {
   transition: all 0.5s ease-in-out;
 }
 
+/* Tirar as setinha de numero */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .form-group input {
   border: 0;
   border-bottom: 1px solid #555;
@@ -85,7 +93,7 @@ form {
   width: 100%;
   padding: 8px 0 5px 0;
   font-size: 16px;
-  color: #000000;
+  color: #000;
 }
 
 .caixa_form input {
@@ -227,7 +235,6 @@ form {
 
 .nome-clinica-phone {
   margin-left: 2%;
-
 }
 
 .texto_clinica-phone {
@@ -1012,7 +1019,6 @@ h3 {
   display: block;
 }
 
-
 .welcome {
   margin-top: 100px;
   margin-left: 0.3%;
@@ -1159,6 +1165,11 @@ h1 {
   display: block;
   text-align: left;
   font-size: 12px;
+}
+
+.caixa a {
+  text-decoration: none;
+  color: white;
 }
 
 .topnav a:hover {
@@ -1323,14 +1334,6 @@ h2 {
   margin-left: 43%;
 }
 
-/* Tirar as setinha de numero */
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
@@ -1355,11 +1358,6 @@ input[type=number] {
   text-align: center;
 }
 
-.caixa a {
-  text-decoration: none;
-  color: white;
-}
-
 #conteudo_agendamento {
   text-align: left;
   width: 80%;
@@ -1374,23 +1372,6 @@ input[type=number] {
 
 .agendamento_tr {
   border: 1px solid black;
-}
-
-.textareas_form {
-  color: white;
-  background: #424242;
-  border: 2px solid var(--cor_amarelo);
-  border-radius: 24px;
-  width: 50%;
-  padding: 1%;
-}
-
-.tipo_da_recorrencia {
-  display: none;
-}
-
-#recorrencia_do_agendamento:checked ~ .tipo_da_recorrencia {
-  display: inline;
 }
 
 .textareas_form {

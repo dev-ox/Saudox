@@ -176,7 +176,7 @@ html {
   text-align: center;
 }
 
-.required:after {
+.required::after {
   content: " *";
   color: red;
 }
@@ -194,7 +194,6 @@ html {
   margin-bottom: 5px;
 }
 
-
 .search-agenda {
   border: 0;
   border-bottom: 1px solid white;
@@ -207,7 +206,6 @@ html {
   margin-bottom: 5px;
 }
 
-
 .bt-search-agenda_r {
   background: var(--cor_azul);
   padding: 5px;
@@ -218,7 +216,6 @@ html {
   border-color: var(--cor_amarelo);
   border-style: solid;
 }
-
 
 .table-wrapper {
   height: auto;
@@ -322,7 +319,6 @@ th.tag {
   margin-top: 2%;
 }
 
-
 .profissoes-table-wrapper {
   height: 105px;
   width: 100%;
@@ -331,14 +327,12 @@ th.tag {
   -ms-overflow-style: none;
 }
 
-
 .descricao {
   height: auto;
   width: 600px;
   margin-left: 45%;
   margin-bottom: 7%;
 }
-
 
 .dropdown {
   display: none;
@@ -458,6 +452,11 @@ ul > li > a {
   line-height: 1.8;
 }
 
+a:hover {
+  color: #f60;
+  font-weight: 500;
+}
+
 .vertical-links > li > a {
   color: white;
   font-weight: 400;
@@ -465,8 +464,7 @@ ul > li > a {
   list-style-type: square;
 }
 
-ul > li > a:hover,
-a:hover {
+ul > li > a:hover {
   color: #f60;
   font-weight: 500;
 }
