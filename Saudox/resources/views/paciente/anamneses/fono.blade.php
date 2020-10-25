@@ -1,59 +1,57 @@
-<?php
-echo $anamnese->id_paciente; echo "<br>\n";
-echo $anamnese->id_profissional; echo "<br>\n";
-echo $anamnese->responsavel_pelo_paciente; echo "<br>\n";
-echo $anamnese->numero_de_irmaos; echo "<br>\n";
-echo $anamnese->posicao_bloco_familiar; echo "<br>\n";
-echo $anamnese->status_relacao_pais; echo "<br>\n";
-echo $anamnese->reacao_crianca_status_relacao_pais; echo "<br>\n";
-echo $anamnese->se_pais_separados_paciente_vive_com_quem; echo "<br>\n";
-echo $anamnese->crianca_desejada; echo "<br>\n";
-echo $anamnese->idade_mae; echo "<br>\n";
-echo $anamnese->idade_pai; echo "<br>\n";
-echo $anamnese->tinha_expectativa_em_relacao_ao_sexo_da_crianca; echo "<br>\n";
-echo $anamnese->duracao_da_gestacao; echo "<br>\n";
-echo $anamnese->fez_pre_natal; echo "<br>\n";
-echo $anamnese->tipo_parto; echo "<br>\n";
-echo $anamnese->complicacao_durante_parto; echo "<br>\n";
-echo $anamnese->foi_necessario_utilizar_algum_recurso; echo "<br>\n";
-echo $anamnese->mae_apresentou_algum_problema_durante_gravidez; echo "<br>\n";
-echo $anamnese->amamentacao_natural; echo "<br>\n";
-echo $anamnese->atraso_ou_problema_na_fala; echo "<br>\n";
-echo $anamnese->tem_enurese_noturna; echo "<br>\n";
-echo $anamnese->desenvolvimento_motor_no_tempo_esperado; echo "<br>\n";
-echo $anamnese->perturbacoes_como_pesadelos_sonambulismo_agitacao_etc; echo "<br>\n";
-echo $anamnese->letras_ou_fonemas_trocados; echo "<br>\n";
-echo $anamnese->fatos_que_afetaram_o_desenvolvimento_do_paciente; echo "<br>\n";
-echo $anamnese->ate_quantos_anos_usou_chupetas; echo "<br>\n";
-echo $anamnese->ja_fez_tratamento_fonoaudiologo; echo "<br>\n";
-echo $anamnese->se_sim_tratamento_fono_anterior_onde; echo "<br>\n";
-echo $anamnese->se_sim_tratamento_fono_anterior_quando; echo "<br>\n";
-echo $anamnese->dificuldades_na_fala; echo "<br>\n";
-echo $anamnese->dificuldades_na_visao; echo "<br>\n";
-echo $anamnese->dificuldades_na_locomocao; echo "<br>\n";
-echo $anamnese->problemas_de_saude; echo "<br>\n";
-echo $anamnese->toma_ou_ja_tomou_remedio_controlado_se_sim_quais; echo "<br>\n";
-echo $anamnese->toma_banho_sozinho; echo "<br>\n";
-echo $anamnese->escova_os_dentes_sozinho; echo "<br>\n";
-echo $anamnese->usa_o_banheiro_sozinho; echo "<br>\n";
-echo $anamnese->necessita_de_auxilio_para_se_vestir_ou_despir; echo "<br>\n";
-echo $anamnese->atende_as_intervencoes_quando_esta_desobedecendo; echo "<br>\n";
-echo $anamnese->chora_facil; echo "<br>\n";
-echo $anamnese->recusa_auxilio; echo "<br>\n";
-echo $anamnese->tem_resistencia_ao_toque; echo "<br>\n";
-echo $anamnese->serie_atual_na_escola; echo "<br>\n";
-echo $anamnese->alfabetizada; echo "<br>\n";
-echo $anamnese->tem_dificuldades_de_aprendizagem; echo "<br>\n";
-echo $anamnese->repetiu_algum_ano; echo "<br>\n";
-echo $anamnese->faz_amigos_com_facilidade; echo "<br>\n";
-echo $anamnese->adapta_se_facilmente_ao_meio; echo "<br>\n";
-echo $anamnese->companheiros_da_crianca_nas_brincadeiras; echo "<br>\n";
-echo $anamnese->distracoes_preferidas; echo "<br>\n";
-echo $anamnese->atitudes_sociais_predominantes; echo "<br>\n";
-echo $anamnese->comportamento_emocional; echo "<br>\n";
-echo $anamnese->comportamento_sono; echo "<br>\n";
-echo $anamnese->dorme_sozinho; echo "<br>\n";
-echo $anamnese->dorme_no_quarto_dos_pais; echo "<br>\n";
-echo $anamnese->medidas_disciplinares_empregadas_pelos_pais; echo "<br>\n";
-echo $anamnese->outras_ocorrencias_observacoes; echo "<br>\n";
-?>
+{{$anamnese->id_paciente}} <br>
+{{$anamnese->id_profissional}} <br>
+{{$anamnese->responsavel_pelo_paciente}} <br>
+{{$anamnese->numero_de_irmaos}} <br>
+{{$anamnese->posicao_bloco_familiar}} <br>
+{{$anamnese->status_relacao_pais}} <br>
+{{$anamnese->reacao_crianca_status_relacao_pais}} <br>
+{{$anamnese->se_pais_separados_paciente_vive_com_quem}} <br>
+{{$anamnese->crianca_desejada}} <br>
+{{$anamnese->idade_mae}} <br>
+{{$anamnese->idade_pai}} <br>
+{{$anamnese->tinha_expectativa_em_relacao_ao_sexo_da_crianca}} <br>
+{{$anamnese->duracao_da_gestacao}} <br>
+{{$anamnese->fez_pre_natal}} <br>
+{{$anamnese->tipo_parto}} <br>
+{{$anamnese->complicacao_durante_parto}} <br>
+{{$anamnese->foi_necessario_utilizar_algum_recurso}} <br>
+{{$anamnese->mae_apresentou_algum_problema_durante_gravidez}} <br>
+{{$anamnese->amamentacao_natural}} <br>
+{{$anamnese->atraso_ou_problema_na_fala}} <br>
+{{$anamnese->tem_enurese_noturna}} <br>
+{{$anamnese->desenvolvimento_motor_no_tempo_esperado}} <br>
+{{$anamnese->perturbacoes_como_pesadelos_sonambulismo_agitacao_etc}} <br>
+{{$anamnese->letras_ou_fonemas_trocados}} <br>
+{{$anamnese->fatos_que_afetaram_o_desenvolvimento_do_paciente}} <br>
+{{$anamnese->ate_quantos_anos_usou_chupetas}} <br>
+{{$anamnese->ja_fez_tratamento_fonoaudiologo}} <br>
+{{$anamnese->se_sim_tratamento_fono_anterior_onde}} <br>
+{{$anamnese->se_sim_tratamento_fono_anterior_quando}} <br>
+{{$anamnese->dificuldades_na_fala}} <br>
+{{$anamnese->dificuldades_na_visao}} <br>
+{{$anamnese->dificuldades_na_locomocao}} <br>
+{{$anamnese->problemas_de_saude}} <br>
+{{$anamnese->toma_ou_ja_tomou_remedio_controlado_se_sim_quais}} <br>
+{{$anamnese->toma_banho_sozinho}} <br>
+{{$anamnese->escova_os_dentes_sozinho}} <br>
+{{$anamnese->usa_o_banheiro_sozinho}} <br>
+{{$anamnese->necessita_de_auxilio_para_se_vestir_ou_despir}} <br>
+{{$anamnese->atende_as_intervencoes_quando_esta_desobedecendo}} <br>
+{{$anamnese->chora_facil}} <br>
+{{$anamnese->recusa_auxilio}} <br>
+{{$anamnese->tem_resistencia_ao_toque}} <br>
+{{$anamnese->serie_atual_na_escola}} <br>
+{{$anamnese->alfabetizada}} <br>
+{{$anamnese->tem_dificuldades_de_aprendizagem}} <br>
+{{$anamnese->repetiu_algum_ano}} <br>
+{{$anamnese->faz_amigos_com_facilidade}} <br>
+{{$anamnese->adapta_se_facilmente_ao_meio}} <br>
+{{$anamnese->companheiros_da_crianca_nas_brincadeiras}} <br>
+{{$anamnese->distracoes_preferidas}} <br>
+{{$anamnese->atitudes_sociais_predominantes}} <br>
+{{$anamnese->comportamento_emocional}} <br>
+{{$anamnese->comportamento_sono}} <br>
+{{$anamnese->dorme_sozinho}} <br>
+{{$anamnese->dorme_no_quarto_dos_pais}} <br>
+{{$anamnese->medidas_disciplinares_empregadas_pelos_pais}} <br>
+{{$anamnese->outras_ocorrencias_observacoes}} <br>

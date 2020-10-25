@@ -1,36 +1,34 @@
-<?php
-echo $avaliacao->id; echo "<br>\n";
-echo $avaliacao->id_paciente; echo "<br>\n";
-echo $avaliacao->id_profissional; echo "<br>\n";
-echo $avaliacao->diagnostico; echo "<br>\n";
-echo $avaliacao->resposta_emocional; echo "<br>\n";
-echo $avaliacao->uso_do_corpo; echo "<br>\n";
-echo $avaliacao->uso_de_objetos; echo "<br>\n";
-echo $avaliacao->adaptacao_a_mudancas; echo "<br>\n";
-echo $avaliacao->resposta_auditiva; echo "<br>\n";
-echo $avaliacao->resposta_visual; echo "<br>\n";
-echo $avaliacao->medo_ou_nervosismo; echo "<br>\n";
-echo $avaliacao->comunicacao_verbal; echo "<br>\n";
-echo $avaliacao->orienta_se_por_som; echo "<br>\n";
-echo $avaliacao->comunicacao_nao_verbal; echo "<br>\n";
-echo $avaliacao->orienta_se_por_som; echo "<br>\n";
-echo $avaliacao->reacao_ao_nao; echo "<br>\n";
-echo $avaliacao->compreendem_comandos_simples_palavras_que_descrevam_objetos; echo "<br>\n";
-echo $avaliacao->manipula_brinquedos_objetos; echo "<br>\n";
-echo $avaliacao->equilibrio; echo "<br>\n";
-echo $avaliacao->forca; echo "<br>\n";
-echo $avaliacao->resistencia; echo "<br>\n";
-echo $avaliacao->marcha; echo "<br>\n";
-echo $avaliacao->agilidade; echo "<br>\n";
-echo $avaliacao->coordenacao_motora_fina; echo "<br>\n";
-echo $avaliacao->coordenacao_motora_grossa; echo "<br>\n";
-echo $avaliacao->propriocepcao; echo "<br>\n";
-echo $avaliacao->compreende_direcoes; echo "<br>\n";
-echo $avaliacao->compreende_comandos_professoras; echo "<br>\n";
-echo $avaliacao->concentracao; echo "<br>\n";
-echo $avaliacao->comportamento_reflexo; echo "<br>\n";
-echo $avaliacao->observacoes; echo "<br>\n";
-echo $avaliacao->terapias; echo "<br>\n";
-echo $avaliacao->objetivos; echo "<br>\n";
-echo $avaliacao->tipo_da_aula; echo "<br>\n";
-?>
+{{$avaliacao->id}} <br>
+{{$avaliacao->id_paciente}} <br>
+{{$avaliacao->id_profissional}} <br>
+{{$avaliacao->diagnostico}} <br>
+{{$avaliacao->resposta_emocional}} <br>
+{{$avaliacao->uso_do_corpo}} <br>
+{{$avaliacao->uso_de_objetos}} <br>
+{{$avaliacao->adaptacao_a_mudancas}} <br>
+{{$avaliacao->resposta_auditiva}} <br>
+{{$avaliacao->resposta_visual}} <br>
+{{$avaliacao->medo_ou_nervosismo}} <br>
+{{$avaliacao->comunicacao_verbal}} <br>
+{{$avaliacao->orienta_se_por_som}} <br>
+{{$avaliacao->comunicacao_nao_verbal}} <br>
+{{$avaliacao->orienta_se_por_som}} <br>
+{{$avaliacao->reacao_ao_nao}} <br>
+{{$avaliacao->compreendem_comandos_simples_palavras_que_descrevam_objetos}} <br>
+{{$avaliacao->manipula_brinquedos_objetos}} <br>
+{{$avaliacao->equilibrio}} <br>
+{{$avaliacao->forca}} <br>
+{{$avaliacao->resistencia}} <br>
+{{$avaliacao->marcha}} <br>
+{{$avaliacao->agilidade}} <br>
+{{$avaliacao->coordenacao_motora_fina}} <br>
+{{$avaliacao->coordenacao_motora_grossa}} <br>
+{{$avaliacao->propriocepcao}} <br>
+{{$avaliacao->compreende_direcoes}} <br>
+{{$avaliacao->compreende_comandos_professoras}} <br>
+{{$avaliacao->concentracao}} <br>
+{{$avaliacao->comportamento_reflexo}} <br>
+{{$avaliacao->observacoes}} <br>
+{{$avaliacao->terapias}} <br>
+{{$avaliacao->objetivos}} <br>
+{{$avaliacao->tipo_da_aula}} <br>

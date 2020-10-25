@@ -1,63 +1,61 @@
-<?php
-echo $avaliacao->id_paciente; echo "<br>\n";
-echo $avaliacao->id_profissional; echo "<br>\n";
-echo $avaliacao->data_avaliacao; echo "<br>\n";
-echo $avaliacao->entrevistado; echo "<br>\n";
-echo $avaliacao->queixa_principal; echo "<br>\n";
-echo $avaliacao->brincadeiras_favoritas; echo "<br>\n";
-echo $avaliacao->onde_brinca; echo "<br>\n";
-echo $avaliacao->com_quem_prefere_brincar; echo "<br>\n";
-echo $avaliacao->o_que_faz_rir; echo "<br>\n";
-echo $avaliacao->brincadeiras_evitadas; echo "<br>\n";
-echo $avaliacao->brinca_sozinho_ou_precisa_de_atencao; echo "<br>\n";
-echo $avaliacao->postura_crianca_quando_brinca; echo "<br>\n";
-echo $avaliacao->reacao_ao_ser_frustrada_ou_raiva; echo "<br>\n";
-echo $avaliacao->quem_disciplina_a_crianca; echo "<br>\n";
-echo $avaliacao->como_reage_a_orientacao_dos_pais; echo "<br>\n";
-echo $avaliacao->reacao_a_abracos_carinhos; echo "<br>\n";
-echo $avaliacao->areas_maior_habilidade; echo "<br>\n";
-echo $avaliacao->areas_maior_dificuldade; echo "<br>\n";
-echo $avaliacao->hora_de_levantar; echo "<br>\n";
-echo $avaliacao->hora_cafe_da_manha; echo "<br>\n";
-echo $avaliacao->hora_da_escola; echo "<br>\n";
-echo $avaliacao->hora_almoco; echo "<br>\n";
-echo $avaliacao->hora_janta; echo "<br>\n";
-echo $avaliacao->hora_dormir; echo "<br>\n";
-echo $avaliacao->dorme_durante_dia; echo "<br>\n";
-echo $avaliacao->dorme_com_facilidade; echo "<br>\n";
-echo $avaliacao->sono_tranqulo; echo "<br>\n";
-echo $avaliacao->acorda_noite; echo "<br>\n";
-echo $avaliacao->pesadelos; echo "<br>\n";
-echo $avaliacao->sonambulismo; echo "<br>\n";
-echo $avaliacao->rola_balanca_cabeca_enquanto_dorme; echo "<br>\n";
-echo $avaliacao->come_com_os_dedos; echo "<br>\n";
-echo $avaliacao->come_com_talheres; echo "<br>\n";
-echo $avaliacao->brinca_com_comida; echo "<br>\n";
-echo $avaliacao->derrama_comida; echo "<br>\n";
-echo $avaliacao->usa_mao_direita_para_comer; echo "<br>\n";
-echo $avaliacao->bebe_em_garrafa; echo "<br>\n";
-echo $avaliacao->usa_canudo; echo "<br>\n";
-echo $avaliacao->segura_copo_garrafa_com_uma_ou_duas_maos; echo "<br>\n";
-echo $avaliacao->ajuda_a_colocar_a_mesa; echo "<br>\n";
-echo $avaliacao->tipo_alimentacao; echo "<br>\n";
-echo $avaliacao->tem_bom_apetite; echo "<br>\n";
-echo $avaliacao->o_que_gosta_de_comer; echo "<br>\n";
-echo $avaliacao->nao_gosta_de_comer; echo "<br>\n";
-echo $avaliacao->houve_dificuldade_transicao_pastoso_solido; echo "<br>\n";
-echo $avaliacao->gosta_de_vestir_roupa; echo "<br>\n";
-echo $avaliacao->veste_roupa_sozinho_quais_pecas; echo "<br>\n";
-echo $avaliacao->tira_roupa_sozinho_quais_pecas; echo "<br>\n";
-echo $avaliacao->abotoa; echo "<br>\n";
-echo $avaliacao->amarra; echo "<br>\n";
-echo $avaliacao->usa_fralda; echo "<br>\n";
-echo $avaliacao->usa_vaso_sanitario; echo "<br>\n";
-echo $avaliacao->lava_maos_face_corpo; echo "<br>\n";
-echo $avaliacao->escova_dentes; echo "<br>\n";
-echo $avaliacao->se_diverte_com_o_banho; echo "<br>\n";
-echo $avaliacao->gosta_molhar_cabeca; echo "<br>\n";
-echo $avaliacao->enxuga_se; echo "<br>\n";
-echo $avaliacao->gosta_pentear_cabelos; echo "<br>\n";
-echo $avaliacao->gosta_cortar_cabelos; echo "<br>\n";
-echo $avaliacao->gosta_cortar_unhas; echo "<br>\n";
-echo $avaliacao->info_extras_relevante; echo "<br>\n";
-?>
+{{$avaliacao->id_paciente}} <br>
+{{$avaliacao->id_profissional}} <br>
+{{$avaliacao->data_avaliacao}} <br>
+{{$avaliacao->entrevistado}} <br>
+{{$avaliacao->queixa_principal}} <br>
+{{$avaliacao->brincadeiras_favoritas}} <br>
+{{$avaliacao->onde_brinca}} <br>
+{{$avaliacao->com_quem_prefere_brincar}} <br>
+{{$avaliacao->o_que_faz_rir}} <br>
+{{$avaliacao->brincadeiras_evitadas}} <br>
+{{$avaliacao->brinca_sozinho_ou_precisa_de_atencao}} <br>
+{{$avaliacao->postura_crianca_quando_brinca}} <br>
+{{$avaliacao->reacao_ao_ser_frustrada_ou_raiva}} <br>
+{{$avaliacao->quem_disciplina_a_crianca}} <br>
+{{$avaliacao->como_reage_a_orientacao_dos_pais}} <br>
+{{$avaliacao->reacao_a_abracos_carinhos}} <br>
+{{$avaliacao->areas_maior_habilidade}} <br>
+{{$avaliacao->areas_maior_dificuldade}} <br>
+{{$avaliacao->hora_de_levantar}} <br>
+{{$avaliacao->hora_cafe_da_manha}} <br>
+{{$avaliacao->hora_da_escola}} <br>
+{{$avaliacao->hora_almoco}} <br>
+{{$avaliacao->hora_janta}} <br>
+{{$avaliacao->hora_dormir}} <br>
+{{$avaliacao->dorme_durante_dia}} <br>
+{{$avaliacao->dorme_com_facilidade}} <br>
+{{$avaliacao->sono_tranqulo}} <br>
+{{$avaliacao->acorda_noite}} <br>
+{{$avaliacao->pesadelos}} <br>
+{{$avaliacao->sonambulismo}} <br>
+{{$avaliacao->rola_balanca_cabeca_enquanto_dorme}} <br>
+{{$avaliacao->come_com_os_dedos}} <br>
+{{$avaliacao->come_com_talheres}} <br>
+{{$avaliacao->brinca_com_comida}} <br>
+{{$avaliacao->derrama_comida}} <br>
+{{$avaliacao->usa_mao_direita_para_comer}} <br>
+{{$avaliacao->bebe_em_garrafa}} <br>
+{{$avaliacao->usa_canudo}} <br>
+{{$avaliacao->segura_copo_garrafa_com_uma_ou_duas_maos}} <br>
+{{$avaliacao->ajuda_a_colocar_a_mesa}} <br>
+{{$avaliacao->tipo_alimentacao}} <br>
+{{$avaliacao->tem_bom_apetite}} <br>
+{{$avaliacao->o_que_gosta_de_comer}} <br>
+{{$avaliacao->nao_gosta_de_comer}} <br>
+{{$avaliacao->houve_dificuldade_transicao_pastoso_solido}} <br>
+{{$avaliacao->gosta_de_vestir_roupa}} <br>
+{{$avaliacao->veste_roupa_sozinho_quais_pecas}} <br>
+{{$avaliacao->tira_roupa_sozinho_quais_pecas}} <br>
+{{$avaliacao->abotoa}} <br>
+{{$avaliacao->amarra}} <br>
+{{$avaliacao->usa_fralda}} <br>
+{{$avaliacao->usa_vaso_sanitario}} <br>
+{{$avaliacao->lava_maos_face_corpo}} <br>
+{{$avaliacao->escova_dentes}} <br>
+{{$avaliacao->se_diverte_com_o_banho}} <br>
+{{$avaliacao->gosta_molhar_cabeca}} <br>
+{{$avaliacao->enxuga_se}} <br>
+{{$avaliacao->gosta_pentear_cabelos}} <br>
+{{$avaliacao->gosta_cortar_cabelos}} <br>
+{{$avaliacao->gosta_cortar_unhas}} <br>
+{{$avaliacao->info_extras_relevante}} <br>
