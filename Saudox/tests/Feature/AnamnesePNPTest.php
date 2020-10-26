@@ -79,8 +79,8 @@ class AnamnesePNPTest extends TestCase {
         $this->assertCount(1, AnamneseGigantePsicopedaNeuroPsicomoto::all());
 
         // Verifica se a anamnese agora existe
-        $resposta_ver_fono = $this->get(route("profissional.anamnese.psicopedagogia.ver", ['id_paciente' => $this->paciente->id]));
-        $resposta_ver_fono->assertSee("Joao de Deuso");
+        $resposta_ana_pnp = $this->get(route("profissional.anamnese.psicopedagogia.ver", ['id_paciente' => $this->paciente->id]));
+        $resposta_ana_pnp->assertSee("Joao de Deuso");
     }
 
     /** @test **/
@@ -110,13 +110,13 @@ class AnamnesePNPTest extends TestCase {
         $pnp_array_merged = array_merge($pnp_array_merged, $arr_pt3);
 
         // Verifica se a anamnese agora existe
-        $resposta_ver_fono = $this->get(route("profissional.anamnese.psicopedagogia.editar", ['id_paciente' => $this->paciente->id]));
-        $resposta_ver_fono->assertSee("Joao de Deuso");
+        $resposta_ana_pnp = $this->get(route("profissional.anamnese.psicopedagogia.editar", ['id_paciente' => $this->paciente->id]));
+        $resposta_ana_pnp->assertSee("Joao de Deuso");
 
         $pnp_array_merged['compareceram_entrevista'] = "Maria de Deuso";
-        $resposta_ver_fono = $this->post(route("profissional.anamnese.psicopedagogia.editar.salvar", $pnp_array_merged));
-        $resposta_ver_fono->assertSessionHasNoErrors();
-        $resposta_ver_fono->assertSee("Maria de Deuso");
+        $resposta_ana_pnp = $this->post(route("profissional.anamnese.psicopedagogia.editar.salvar", $pnp_array_merged));
+        $resposta_ana_pnp->assertSessionHasNoErrors();
+        $resposta_ana_pnp->assertSee("Maria de Deuso");
 
     }
 
@@ -148,9 +148,9 @@ class AnamnesePNPTest extends TestCase {
         $this->assertCount(1, AnamneseGigantePsicopedaNeuroPsicomoto::all());
 
         // Verifica se a anamnese criada está acessível na view de ver
-        $resposta_ver_fono = $this->get(route("profissional.anamnese.psicopedagogia.ver", ['id_paciente' => $this->paciente->id]));
+        $resposta_ana_pnp = $this->get(route("profissional.anamnese.psicopedagogia.ver", ['id_paciente' => $this->paciente->id]));
         // Confirma que o nome de quem compareceu na entrevista é visível
-        $resposta_ver_fono->assertSee("Algum familiar próximo");
+        $resposta_ana_pnp->assertSee("Algum familiar próximo");
     }
 
 }
