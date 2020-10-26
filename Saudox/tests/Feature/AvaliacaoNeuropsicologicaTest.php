@@ -82,8 +82,29 @@ class AvaliacaoNeuropsicologicaTest extends TestCase {
 
         $this->assertCount(1, AvaliacaoNeuropsicologica::all());
 
-        $resposta_ver_fono = $this->get(route("profissional.avaliacao.neuropsicologia.ver", ['id_paciente' => $this->paciente->id]));
-        $resposta_ver_fono->assertSee("teste alguma coisa");
+        $resposta_ava_neuro = $this->get(route("profissional.avaliacao.neuropsicologia.ver", ['id_paciente' => $this->paciente->id]));
+        $resposta_ava_neuro->assertSee("teste alguma coisa");
+    }
+
+    /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/174982702 */
+    /* TA_01 */
+    public function profissionalPodeEditarAvaliacaoNeuro() {
+        $this->loginProfisssional();
+
+        $this->assertCount(0, AvaliacaoNeuropsicologica::all());
+
+        $ava_array = factory(AvaliacaoNeuropsicologica::class)->create([
+            'id_paciente' => $this->paciente->id,
+            'id_profissional' => $this->profissional->id,
+            'queixa_principal' => 'teste alguma coisa',
+        ]);
+
+        $ava_array['queixa_principal'] = "pipoco teste";
+        $resposta_ava_neuro = $this->get(route("profissional.avaliacao.neuropsicologia.editar.salvar", $ava_array));
+        $resposta_ava_neuro->assertSee("pipoco teste");
+
+        $this->assertCount(1, AvaliacaoNeuropsicologica::all());
     }
 
 }
