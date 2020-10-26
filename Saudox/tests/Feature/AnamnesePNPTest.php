@@ -120,4 +120,37 @@ class AnamnesePNPTest extends TestCase {
 
     }
 
+    /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/175322770 */
+    /* TA_01 */
+    public function profissionalPodeConsultarAnamnesePNP() {
+        $this->loginProfisssional();
+
+        // Verifica que não há nenhuma
+        $this->assertCount(0, AnamneseGigantePsicopedaNeuroPsicomoto::all());
+
+        // Cria a anamnese base (pivô)
+        $pnp = factory(AnamneseGigantePsicopedaNeuroPsicomoto::class)->create();
+        factory(AnamneseGigantePsicopedaNeuroPsicomotoPt1::class)->create([
+            'id_paciente' => $this->paciente->id,
+            'id_profissional' => $this->profissional->id,
+            'id_tp' => $pnp->id, // Referência a pivô
+            'compareceram_entrevista' => "Algum familiar próximo",
+        ]);
+        factory(AnamneseGigantePsicopedaNeuroPsicomotoPt2::class)->create([
+            'id_tp' => $pnp->id // Referência a pivô
+        ]);
+        factory(AnamneseGigantePsicopedaNeuroPsicomotoPt3::class)->create([
+            'id_tp' => $pnp->id // Referência a pivô
+        ]);
+
+        // Confirma a criação
+        $this->assertCount(1, AnamneseGigantePsicopedaNeuroPsicomoto::all());
+
+        // Verifica se a anamnese criada está acessível na view de ver
+        $resposta_ver_fono = $this->get(route("profissional.anamnese.psicopedagogia.ver", ['id_paciente' => $this->paciente->id]));
+        // Confirma que o nome de quem compareceu na entrevista é visível
+        $resposta_ver_fono->assertSee("Algum familiar próximo");
+    }
+
 }
