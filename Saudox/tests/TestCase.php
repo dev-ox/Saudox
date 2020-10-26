@@ -8,6 +8,7 @@ use Illuminate\Support\Carbon;
 
 abstract class TestCase extends BaseTestCase {
 
+    // Esse carinha possui o método de limpar de cache
     use CreatesApplication;
 
     protected $cliente;
