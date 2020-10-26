@@ -13,11 +13,17 @@ trait CreatesApplication
      */
     public function createApplication()
     {
-        $app = require __DIR__.'/../bootstrap/app.php';
+        $createApp = function() {
+            $app = require __DIR__.'/../bootstrap/app.php';
+            $app->make(Kernel::class)->bootstrap();
+            return $app;
+        };
 
-        $app->make(Kernel::class)->bootstrap();
-
-        $this->limpada_no_cache();
+        $app = $createApp();
+        if ($app->environment() !== 'testing') {
+            $this->limpada_no_cache();
+            $app = $createApp();
+        }
 
         return $app;
     }
