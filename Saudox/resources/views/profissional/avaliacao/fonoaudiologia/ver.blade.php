@@ -22,7 +22,7 @@
 
 
                 <hr class="hr_form">
-                <h3>Calculo dos escores</h3><br>
+                <h3>Cálculo dos escores</h3><br>
                 <hr class="hr_form">
 
 
@@ -35,7 +35,7 @@
                         </tr>
 
                         <tr>
-                            <td>Ultima tarefa correta</td>
+                            <td>Última tarefa correta</td>
                             <td>{{ $avaliacao->ultima_tarefa_correta_linguagem_receptiva }}</td>
                         </tr>
 
@@ -59,7 +59,7 @@
                         </tr>
 
                         <tr>
-                            <td>Ultimá tarefa correta</td>
+                            <td>Última tarefa correta</td>
                             <td>{{ $avaliacao->ultima_tarefa_correta_linguagem_expressiva }}</td>
                         </tr>
 
@@ -225,6 +225,7 @@
                             criança, estimulando-a a repetir:<br>
                         </i>
                         Ex.: Olhe a bola....bola <br>
+                        (bola, neném, carro, papai e mamãe) <br>
 
                     @else
                         Questionário ainda não implementado...

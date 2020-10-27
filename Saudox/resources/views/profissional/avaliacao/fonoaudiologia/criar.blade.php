@@ -117,6 +117,7 @@
                 criança, estimulando-a a repetir:<br>
             </i>
             Ex.: Olhe a bola....bola <br>
+            (bola, neném, carro, papai e mamãe) <br>
             <!-- o finalzinho parece ser só exemplos.... -->
 
         </div>
@@ -153,7 +154,6 @@
                     <hr class="hr_form">
 
                     <form style="margin-top: 0;" method="post" action="{{route('profissional.avaliacao.fonoaudiologia.criar.salvar')}}">
-                        <!-- CROSS Site Request Forgery Protection -->
                         @if($errors->any())
                             <div class="alert alert-danger">
                                 <ul style="padding: 0px;">
@@ -163,25 +163,12 @@
                                 </ul>
                             </div>
                         @endif
+                        <!-- CROSS Site Request Forgery Protection -->
                         @csrf
                         <input value="{{$paciente->id}}" type="hidden"  name="id_paciente" id="id_paciente">
                         <input value="{{Auth::id()}}" type="hidden"  name="id_profissional" id="id_profissional">
 
-
-                        <h3>Escolha o questionário</h3><br>
-                        <select name="seletor_questionario" id="seletor_questionario">
-                            <option value="nenhum_bloco"        >Nenhum</option>
-                            <option value="bloco_12_17_meses"   >12 a 17 meses</option>
-                            <option value="bloco_1e6_1e11_meses">1 ano e 6 m. até 1 ano e 11 m.</option>
-                            <option value="bloco_2_2e5_meses"   >2 anos até 2 anos e 5 meses</option>
-                            <option value="bloco_2e6_2e11_meses">2 anos e 6 m. até 2 anos e 11 m.</option>
-                            <option value="bloco_3_3e5_meses"   >3 anos até 3 anos e 5 meses</option>
-                            <option value="bloco_3e6_3e11_meses">3 anos e 6 m. até 3 anos e 11 m.</option>
-                            <option value="bloco_4_4e5_meses"   >4 anos até 4 anos e 5 meses</option>
-                            <option value="bloco_4e6_4e11_meses">4 anos e 6 m. até 4 anos e 11 m.</option>
-                            <option value="bloco_5_5e11_meses"  >5 anos até 5 anos e 11 meses</option>
-                            <option value="bloco_6_6e11_meses"  >6 anos até 6 anos e 11 meses</option>
-                        </select>
+                        <br><br>
 
 
                         <label class="required">Dia da avaliação</label><br>
@@ -198,7 +185,7 @@
 
 
                         <hr class="hr_form">
-                        <h3>Calculo dos escores</h3><br>
+                        <h3>Cálculo dos escores</h3><br>
                         <hr class="hr_form">
 
 
@@ -211,7 +198,7 @@
                                 </tr>
 
                                 <tr>
-                                    <td>Ultima tarefa correta</td>
+                                    <td>Última tarefa correta</td>
                                     <td><input required style="display: inherit; margin: auto; padding: 0;" value="{{ g_old($avaliacao, "ultima_tarefa_correta_linguagem_receptiva") }}" min="0" type="number" step="0.1" name="ultima_tarefa_correta_linguagem_receptiva" /></td>
                                 </tr>
 
@@ -235,7 +222,7 @@
                                 </tr>
 
                                 <tr>
-                                    <td>Ultimá tarefa correta</td>
+                                    <td>Última tarefa correta</td>
                                     <td><input required style="display: inherit; margin: auto; padding: 0;" value="{{ g_old($avaliacao, "ultima_tarefa_correta_linguagem_expressiva") }}" min="0" type="number" step="0.1" name="ultima_tarefa_correta_linguagem_expressiva" /></td>
                                 </tr>
 
@@ -285,6 +272,29 @@
                         <hr class="hr_form">
                         <h3>Observação do comportamento:</h3><br>
                         <textarea required placeholder="Descrição breve dos comportamentos: auditivo, visual, atencional e o tempo necessário para responder as tarefas (imediato, médio, lento)" class="textareas_form" id="observacao_comportamento" name="observacao_comportamento" rows="4" cols="50" style="">{{ g_old($avaliacao, "observacao_comportamento") }}</textarea>
+
+                        <br>
+                        <br>
+                        <br>
+
+                        <h3>Escolha o questionário</h3><br>
+                        <select name="seletor_questionario" id="seletor_questionario">
+                            <option value="nenhum_bloco"        >Nenhum</option>
+                            <option value="bloco_12_17_meses"   >12 a 17 meses</option>
+                            <option value="bloco_1e6_1e11_meses">1 ano e 6 m. até 1 ano e 11 m.</option>
+                            <option value="bloco_2_2e5_meses"   >2 anos até 2 anos e 5 meses</option>
+                            <option value="bloco_2e6_2e11_meses">2 anos e 6 m. até 2 anos e 11 m.</option>
+                            <option value="bloco_3_3e5_meses"   >3 anos até 3 anos e 5 meses</option>
+                            <option value="bloco_3e6_3e11_meses">3 anos e 6 m. até 3 anos e 11 m.</option>
+                            <option value="bloco_4_4e5_meses"   >4 anos até 4 anos e 5 meses</option>
+                            <option value="bloco_4e6_4e11_meses">4 anos e 6 m. até 4 anos e 11 m.</option>
+                            <option value="bloco_5_5e11_meses"  >5 anos até 5 anos e 11 meses</option>
+                            <option value="bloco_6_6e11_meses"  >6 anos até 6 anos e 11 meses</option>
+                        </select>
+
+
+
+                        <br>
 
                         <hr class="hr_form">
                         <h3>Questionário</h3><br>
