@@ -74,13 +74,21 @@
 
         <div style="height: 5px;"></div>
 
+        <div id="warning-busca" class="alert alert-warning alert-dismissible"
+            style="display:none; font-size:20px">
+            <center>
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                <strong>Atenção!</strong> Você deve inserir algo no campo de busca.
+            </center>
+        </div>
+
         <div id="agenda_div" class="row bordas_amarelas bg-padrao">
             <div class="col-md">
                 <h3 style="text-align: center; margin-top: 1%;">Agenda</h3>
                 <div class="search-agenda-home">
                     <label for="pac" class="search-label-agenda">Buscar Paciente:</label>
                     <input placeholder="Nome do paciente" id="pac" type="text" class="search-agenda" name="buscar">
-                    <input value="Buscar" type="submit" class="bt-search-agenda_r" href="#" onclick="buscarPacientePorNome()">
+                    <input value="Buscar" type="submit" class="bt-search-agenda_r" href="#" onclick="buscarPorNome('paciente')">
                 </div>
 
 

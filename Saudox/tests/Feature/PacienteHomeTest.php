@@ -6,10 +6,6 @@ use Tests\TestCase;
 use App\Paciente;
 use App\Endereco;
 
-use Illuminate\Support\Facades\Auth;
-
-use Illuminate\Support\Carbon;
-
 class PacienteHomeTest extends TestCase {
     private $paciente;
 
@@ -20,7 +16,6 @@ class PacienteHomeTest extends TestCase {
         $this->password = '123123123';
         $this->password_encrypt = bcrypt($this->password);
 
-        $nome_test = "Jose Carlos";
         $this->endereco = factory(Endereco::class)->create();
         $this->paciente = factory(Paciente::class)->create([
             'password' => $this->password_encrypt,

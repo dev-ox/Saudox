@@ -5,7 +5,6 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use \App\Endereco;
 use App\Profissional;
-use Illuminate\Support\Facades\Auth;
 
 class CadastroProfissionalTest extends TestCase {
 

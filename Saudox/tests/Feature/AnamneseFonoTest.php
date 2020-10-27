@@ -110,7 +110,7 @@ class AnamneseFonoTest extends TestCase {
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
-        $prof_aux = $criarProf_Logar['profissional'];
+        $criarProf_Logar['profissional'];
 
         // Gera um novo paciente (sem anamnese)
         $paciente_aux = factory(Paciente::class)->create([
@@ -128,7 +128,7 @@ class AnamneseFonoTest extends TestCase {
         ]);
 
         // Verifica o valor colocado no cmapo que será editado (para confirmar que aquele valor será editado)
-        $resposta_ver_terapiaOcupacional = $this->get(route("profissional.anamnese.fonoaudiologia.ver", ['id_paciente' => $paciente_aux->id]));
+        $this->get(route("profissional.anamnese.fonoaudiologia.ver", ['id_paciente' => $paciente_aux->id]));
 
         // Gera uma cópia da anamnese da já existente para submeter via post para edição
         $copia_anamnese_editada = $anamnese_novo_paciente;
@@ -136,7 +136,7 @@ class AnamneseFonoTest extends TestCase {
         $copia_anamnese_editada['dificuldades_na_visao'] = $str_valor_comparacao_depois;
 
         // Salva Edição realizada
-        $resposta_salvar_edicao_anamnese = $this->post(route("profissional.anamnese.fonoaudiologia.editar.salvar", $copia_anamnese_editada));
+        $this->post(route("profissional.anamnese.fonoaudiologia.editar.salvar", $copia_anamnese_editada));
 
         // Verifica se a anamnese foi editada
         $resposta_ver_anamnese_editada = $this->get(route("profissional.anamnese.fonoaudiologia.ver", ['id_paciente' => $paciente_aux->id]));
@@ -147,7 +147,7 @@ class AnamneseFonoTest extends TestCase {
     /* url: https://www.pivotaltracker.com/story/show/174639150 */
     /* TA_02 */
     public function profissionalPodeAcessarAnamneseFonoaudiologia() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
@@ -158,7 +158,7 @@ class AnamneseFonoTest extends TestCase {
 
     /** @test **/
     public function posicaoBlocoFamiliarAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
@@ -171,7 +171,7 @@ class AnamneseFonoTest extends TestCase {
 
     /** @test **/
     public function criancaDesejadaAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
@@ -184,7 +184,7 @@ class AnamneseFonoTest extends TestCase {
 
     /** @test **/
     public function reacaoCriancaRelacaoPaisAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
@@ -197,7 +197,7 @@ class AnamneseFonoTest extends TestCase {
 
     /** @test **/
     public function expectativaSexoCriancaAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
@@ -210,7 +210,7 @@ class AnamneseFonoTest extends TestCase {
 
     /** @test **/
     public function duracaoGestacaoAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
@@ -223,7 +223,7 @@ class AnamneseFonoTest extends TestCase {
 
     /** @test **/
     public function fezPreNatalAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
@@ -235,7 +235,7 @@ class AnamneseFonoTest extends TestCase {
     }
     /** @test **/
     public function tipoPartoAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
@@ -248,7 +248,7 @@ class AnamneseFonoTest extends TestCase {
 
     /** @test **/
     public function complicacaoDurantePartoAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
@@ -261,7 +261,7 @@ class AnamneseFonoTest extends TestCase {
 
     /** @test **/
     public function recursoPartoAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
@@ -274,7 +274,7 @@ class AnamneseFonoTest extends TestCase {
 
     /** @test **/
     public function maeApresentouProblemaGravidezAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
@@ -287,7 +287,7 @@ class AnamneseFonoTest extends TestCase {
 
     /** @test **/
     public function amamentacaoAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
@@ -300,7 +300,7 @@ class AnamneseFonoTest extends TestCase {
 
     /** @test **/
     public function atrasoProblemaFalaAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
@@ -313,7 +313,7 @@ class AnamneseFonoTest extends TestCase {
 
     /** @test **/
     public function temEnureseNoturnaAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
@@ -326,7 +326,7 @@ class AnamneseFonoTest extends TestCase {
 
     /** @test **/
     public function desenvolvimentoMotorAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
@@ -339,7 +339,7 @@ class AnamneseFonoTest extends TestCase {
 
     /** @test **/
     public function pertubacoesSonoAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
@@ -352,7 +352,7 @@ class AnamneseFonoTest extends TestCase {
 
     /** @test **/
     public function trocaLetraFonemaAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
@@ -365,7 +365,7 @@ class AnamneseFonoTest extends TestCase {
 
     /** @test **/
     public function fatosAfetaramDesenvolvimentoAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
@@ -379,7 +379,7 @@ class AnamneseFonoTest extends TestCase {
 
     /** @test **/
     public function idadeUsouChupetaAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
@@ -392,7 +392,7 @@ class AnamneseFonoTest extends TestCase {
 
     /** @test **/
     public function dificuldadeNaFalaAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
@@ -405,7 +405,7 @@ class AnamneseFonoTest extends TestCase {
 
     /** @test **/
     public function dificuldadeNaVisaoAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
@@ -418,7 +418,7 @@ class AnamneseFonoTest extends TestCase {
 
     /** @test **/
     public function problemasDeSaudeAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
@@ -431,7 +431,7 @@ class AnamneseFonoTest extends TestCase {
 
     /** @test **/
     public function tomouRemedioControladoAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
@@ -444,7 +444,7 @@ class AnamneseFonoTest extends TestCase {
 
     /** @test **/
     public function tomaBanhoSozinhoAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
@@ -457,7 +457,7 @@ class AnamneseFonoTest extends TestCase {
 
     /** @test **/
     public function escovaDentesSozinhoAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
@@ -470,7 +470,7 @@ class AnamneseFonoTest extends TestCase {
 
     /** @test **/
     public function usaBanheiroSozinhoAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
@@ -483,7 +483,7 @@ class AnamneseFonoTest extends TestCase {
 
     /** @test **/
     public function necessitaAuxilioVestirAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
@@ -496,7 +496,7 @@ class AnamneseFonoTest extends TestCase {
 
     /** @test **/
     public function atendeIntervencoesAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
@@ -509,7 +509,7 @@ class AnamneseFonoTest extends TestCase {
 
     /** @test **/
     public function choraFacilAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
@@ -522,7 +522,7 @@ class AnamneseFonoTest extends TestCase {
 
     /** @test **/
     public function recusaAuxilioAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
@@ -535,7 +535,7 @@ class AnamneseFonoTest extends TestCase {
 
     /** @test **/
     public function resistenciaAoToqueAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
@@ -548,7 +548,7 @@ class AnamneseFonoTest extends TestCase {
 
     /** @test **/
     public function serieEscolarAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
@@ -561,7 +561,7 @@ class AnamneseFonoTest extends TestCase {
 
     /** @test **/
     public function alfabetizadaAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
@@ -574,7 +574,7 @@ class AnamneseFonoTest extends TestCase {
 
     /** @test **/
     public function dificuldadeAprendizagemAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
@@ -587,7 +587,7 @@ class AnamneseFonoTest extends TestCase {
 
     /** @test **/
     public function repetiuAnoAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
@@ -600,7 +600,7 @@ class AnamneseFonoTest extends TestCase {
 
     /** @test **/
     public function fazAmigosFacilidadeAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
@@ -613,7 +613,7 @@ class AnamneseFonoTest extends TestCase {
 
     /** @test **/
     public function adaptaFacilmenteMeioAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
@@ -626,7 +626,7 @@ class AnamneseFonoTest extends TestCase {
 
     /** @test **/
     public function dormeSozinhoAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
@@ -639,7 +639,7 @@ class AnamneseFonoTest extends TestCase {
 
     /** @test **/
     public function dormeQuartoPaisAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
@@ -652,7 +652,7 @@ class AnamneseFonoTest extends TestCase {
 
     /** @test **/
     public function medidasDisciplinaresAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Adm,
                 Profissional::Fonoaudiologo
@@ -666,7 +666,7 @@ class AnamneseFonoTest extends TestCase {
 
     /** @test **/
     public function observacoesAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);
@@ -679,7 +679,7 @@ class AnamneseFonoTest extends TestCase {
 
     /** @test **/
     public function distracoesPreferidasAnamneseFonoNaoPodeSerVazio() {
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Fonoaudiologo
             ), $this->password);

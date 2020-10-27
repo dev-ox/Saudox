@@ -52,10 +52,10 @@ function limpar_pags_form() {
 
 function setar_pag_correta() {
     //mudar a cor do ponto adicionando a classe
-    pontos[idx].classList.add("ponto_ativo");
+    pontos.item(idx).classList.add("ponto_ativo");
 
     //exibir a pagina (até aqui não tem pagina nenhuma sendo mostrada pq removeu a classe na funcao setar_pontos())
-    paginas[idx].classList.add("pag_form_ativa");
+    paginas.item(idx).classList.add("pag_form_ativa");
 }
 
 

@@ -7,8 +7,6 @@ use App\Endereco;
 use App\Profissional;
 use App\Paciente;
 
-use Illuminate\Support\Facades\Auth;
-
 use App\AnamneseFonoaudiologia;
 use App\AnamneseTerapiaOcupacional;
 use App\AnamneseGigantePsicopedaNeuroPsicomoto;
@@ -74,7 +72,7 @@ class AnamneseTest extends TestCase {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
         ]);
-        $anamne_psi = factory(AnamneseGigantePsicopedaNeuroPsicomoto::class)->create();
+        factory(AnamneseGigantePsicopedaNeuroPsicomoto::class)->create();
         factory(AnamneseGigantePsicopedaNeuroPsicomotoPt1::class)->create();
         factory(AnamneseGigantePsicopedaNeuroPsicomotoPt2::class)->create();
         factory(AnamneseGigantePsicopedaNeuroPsicomotoPt3::class)->create();
@@ -99,7 +97,7 @@ class AnamneseTest extends TestCase {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
         ]);
-        $anamne_fono = factory(AnamneseFonoaudiologia::class)->create([
+        factory(AnamneseFonoaudiologia::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->profissional->id,
         ]);
@@ -122,7 +120,7 @@ class AnamneseTest extends TestCase {
         $paciente = factory(Paciente::class)->create([
             'password' => bcrypt($password = '123123123'),
         ]);
-        $anamne_to = factory(AnamneseTerapiaOcupacional::class)->create([
+        factory(AnamneseTerapiaOcupacional::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->profissional->id,
         ]);
@@ -154,7 +152,7 @@ class AnamneseTest extends TestCase {
             'login' => $paciente->login,
             'password' => $password,
         ]);
-        $anamne_psi = factory(AnamneseGigantePsicopedaNeuroPsicomoto::class)->create();
+        factory(AnamneseGigantePsicopedaNeuroPsicomoto::class)->create();
         factory(AnamneseGigantePsicopedaNeuroPsicomotoPt1::class)->create();
         factory(AnamneseGigantePsicopedaNeuroPsicomotoPt2::class)->create();
         factory(AnamneseGigantePsicopedaNeuroPsicomotoPt3::class)->create();
@@ -179,7 +177,7 @@ class AnamneseTest extends TestCase {
             'login' => $paciente->login,
             'password' => $password,
         ]);
-        $anamne_to = factory(AnamneseTerapiaOcupacional::class)->create([
+        factory(AnamneseTerapiaOcupacional::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->profissional->id,
         ]);
@@ -207,7 +205,7 @@ class AnamneseTest extends TestCase {
             'password' => $password,
         ]);
 
-        $anamne_fonoaudiologia = factory(AnamneseFonoaudiologia::class)->create([
+        factory(AnamneseFonoaudiologia::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->profissional->id,
         ]);
@@ -246,10 +244,10 @@ class AnamneseTest extends TestCase {
     /** @ test **/
     public function profissionalNaoAutorizadoNaoPodeDeletarAnamnesePsicologia() {
         $paciente = factory(Paciente::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
         ]);
         $this->func_novo = factory(Profissional::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
             'profissao' => 'Psicologo',
         ]);
 
@@ -260,7 +258,7 @@ class AnamneseTest extends TestCase {
         $resposta->assertRedirect(route("profissional.home"));
         $this->assertAuthenticatedAs($this->profissional);
 
-        $anamne_psi = factory(AnamneseGigantePsicopedaNeuroPsicomoto::class)->create();
+        factory(AnamneseGigantePsicopedaNeuroPsicomoto::class)->create();
         factory(AnamneseGigantePsicopedaNeuroPsicomotoPt1::class)->create();
         factory(AnamneseGigantePsicopedaNeuroPsicomotoPt2::class)->create();
         factory(AnamneseGigantePsicopedaNeuroPsicomotoPt3::class)->create();
@@ -285,12 +283,12 @@ class AnamneseTest extends TestCase {
     public function profissionalNaoAutorizadoNaoPodeDeletarAnamneseFonoaudiologica() {
 
         $paciente = factory(Paciente::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
         ]);
 
 
         $this->func_novo = factory(Profissional::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
             'profissao' => 'Fonoaudiologo',
         ]);
 
@@ -302,7 +300,7 @@ class AnamneseTest extends TestCase {
         $resposta->assertRedirect(route("profissional.home"));
         $this->assertAuthenticatedAs($this->profissional);
 
-        $anamne_fono = factory(AnamneseFonoaudiologia::class)->create([
+        factory(AnamneseFonoaudiologia::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->func_novo->id,
         ]);
@@ -324,10 +322,10 @@ class AnamneseTest extends TestCase {
     /** @ test **/
     public function profissionalNaoAutorizadoNaoPodeDeletarAnamneseTerapiaOcupacional() {
         $paciente = factory(Paciente::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
         ]);
         $this->func_novo = factory(Profissional::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
             'profissao' => 'Terapeuta',
         ]);
 
@@ -339,7 +337,7 @@ class AnamneseTest extends TestCase {
         $this->assertAuthenticatedAs($this->profissional);
 
 
-        $anamne_to = factory(AnamneseTerapiaOcupacional::class)->create([
+        factory(AnamneseTerapiaOcupacional::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->func_novo->id,
         ]);
@@ -363,11 +361,11 @@ class AnamneseTest extends TestCase {
     /** @ test **/
     public function profissionalNaoAutorizadoNaoPodeEditarAnamneseNeuroPsicoMoto() {
         $paciente = factory(Paciente::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
         ]);
 
         $this->func_novo = factory(Profissional::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
             'profissao' => 'Neurologista',
         ]);
 
@@ -380,7 +378,7 @@ class AnamneseTest extends TestCase {
         $this->assertAuthenticatedAs($this->profissional);
 
 
-        $anamne_psi = factory(AnamneseGigantePsicopedaNeuroPsicomoto::class)->create();
+        factory(AnamneseGigantePsicopedaNeuroPsicomoto::class)->create();
         factory(AnamneseGigantePsicopedaNeuroPsicomotoPt1::class)->create();
         factory(AnamneseGigantePsicopedaNeuroPsicomotoPt2::class)->create();
         factory(AnamneseGigantePsicopedaNeuroPsicomotoPt3::class)->create();
@@ -404,11 +402,11 @@ class AnamneseTest extends TestCase {
     public function profissionalNaoAutorizadoNaoPodeEditarAnamneseFonoaudiologica() {
 
         $paciente = factory(Paciente::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
         ]);
 
         $this->func_novo = factory(Profissional::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
             'profissao' => 'Fonoaudiologo',
         ]);
 
@@ -420,7 +418,7 @@ class AnamneseTest extends TestCase {
         $resposta->assertRedirect(route("profissional.home"));
         $this->assertAuthenticatedAs($this->profissional);
 
-        $anamne_fono = factory(AnamneseFonoaudiologia::class)->create([
+        factory(AnamneseFonoaudiologia::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->func_novo->id,
         ]);
@@ -442,10 +440,10 @@ class AnamneseTest extends TestCase {
     /** @ test **/
     public function profissionalNaoAutorizadoNaoPodeEditarAnamneseTerapiaOcupacional() {
         $paciente = factory(Paciente::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
         ]);
         $this->func_novo = factory(Profissional::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
             'profissao' => 'Terapeuta',
         ]);
         $resposta = $this->post(route("profissional.login"), [
@@ -456,7 +454,7 @@ class AnamneseTest extends TestCase {
         $resposta->assertRedirect(route("profissional.home"));
         $this->assertAuthenticatedAs($this->profissional);
 
-        $anamne_to = factory(AnamneseTerapiaOcupacional::class)->create([
+        factory(AnamneseTerapiaOcupacional::class)->create([
             'id_paciente' => $paciente->id,
             'id_profissional' => $this->func_novo->id,
         ]);
