@@ -22,15 +22,14 @@ class AvaliacaoFonoaudiologiasAutSeeds extends Seeder {
                 'ultima_tarefa_correta_linguagem_expressiva' => (float)rand(0,10),
                 'menos_total_respostas_incorretoas_linguagem_expressiva' => (float)rand(0,10),
                 'linguagem_expressiva' => (float)rand(0,10),
-                'seletor_questionario' => 'nenhum_bloco',
-                'observacao_comportamento' => texto(15),
                 'escore_padrao_linguagem_receptiva' => (float)rand(0,10),
                 'mais_escore_padrao_linguagem_expressiva' => (float)rand(0,10),
                 'total_linguagem_global' => (float)rand(0,10),
                 'escore_padrao_linguagem_global' => (float)rand(0,10),
+                
+                'observacao_comportamento' => texto(15),
+                'seletor_questionario' => 'nenhum_bloco',
                 'respostas' => json_encode(array()),
-
-
 
             ]);
         }
