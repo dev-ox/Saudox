@@ -99,14 +99,8 @@ class ProfissionalAvaliacaoController extends Controller {
     }
 
     public function salvarEditarFonoaudiologia(Request $request) {
-
-
-
-
-
-
-
-
+        $entrada = $request->all();
+        var_dump($entrada);
         return "falta salvar";
     }
 
