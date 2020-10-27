@@ -11,3 +11,9 @@
   margin-left: 2%;
   margin-right: 2%;
 }
+
+.quest_p {
+  text-decoration: underline;
+  margin: 15px;
+  font-size: 16px;
+}
