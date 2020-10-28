@@ -260,6 +260,148 @@
             <!-- o finalzinho parece ser só exemplos... -->
         </div>
 
+        <div id="bloco_2_2e5_meses">
+            <h3 style="margin-left: 12%;">Linguagem Receptiva</h3><br>
+
+            <br><br>
+
+            <h4>9. Compreende conceitos espaciais.<input name="respostas[quest_2_2e5_meses][0]" type="text" /></h4><br>
+            (1 ponto = 2 acertos) <br><br>
+
+            Material: uma bolsa e três bolas. <br>
+            <i>Coloque a bolsa com duas bolas dentro e uma do lado e diga:</i> <br><br>
+
+            <i>
+                a. Tire as bolas de dentro da bolsa <input name="respostas[quest_2_2e5_meses][1]" type="text" /><br><br>
+
+                b. Bote a bola em cima da mesa <input name="respostas[quest_2_2e5_meses][2]" type="text" /><br><br>
+
+                c. Bote as bolas dentro da bolsa <input name="respostas[quest_2_2e5_meses][3]" type="text" /><br><br>
+
+            </i>
+
+            <br><br><br><br>
+
+            <h4>10.Compreende alguns pronomes.<input name="respostas[quest_2_2e5_meses][4]" type="text" /></h4><br>
+            (1 ponto = 2 acertos) <br><br>
+
+            Material: uma cachorrinho e três bolas. <br>
+            Diga: <i>Vamos brincar com as bolas e o cachorrinho? <br>
+                    Eu dou todas as bolas para você!</i> <br><br>
+
+            <i>
+                a. Mostre a sua bola <input name="respostas[quest_2_2e5_meses][5]" type="text" /><br><br>
+
+                b. Agora, você dá uma bola para mim <input name="respostas[quest_2_2e5_meses][6]" type="text" /><br><br>
+
+                <b>Pegue uma bola e pergunte à criança:</b><br>
+
+                c. Onde está a minha bola? <input name="respostas[quest_2_2e5_meses][7]" type="text" /><br><br>
+
+                d. Agora dê uma bola para ele (cachorrinho) <input name="respostas[quest_2_2e5_meses][8]" type="text" /><br><br>
+
+            </i>
+
+            <br><br><br><br>
+
+            <h4>11.Compreende conceitos de quantidade.<input name="respostas[quest_2_2e5_meses][9]" type="text" /></h4><br>
+            (1 ponto = 2 acertos) <br><br>
+
+            Material: Uma bolsa e três bolas. <br>
+            <i>Coloque a bolsa com as bolas em frente a criança e diga:</i><br><br>
+
+            <i>
+                a. Me dê só uma bola. <input name="respostas[quest_2_2e5_meses][10]" type="text" /><br><br>
+
+                b. Agora bote o resto das bolas na mesa. <input name="respostas[quest_2_2e5_meses][11]" type="text" /><br><br>
+
+                c. Agora dê todas as bolas para mim. <input name="respostas[quest_2_2e5_meses][12]" type="text" /><br><br>
+
+            </i>
+
+            <br><br><br><br>
+
+            <h4>12.Reconhece a ação nas figuras.<input name="respostas[quest_2_2e5_meses][13]" type="text" /></h4><br>
+            (1 ponto = 2 acertos) <br><br>
+
+            Material: Manual de figuras pág. 3.<br>
+            <i><b>“Mostre quem está...</b></i><br><br>
+
+            <i>
+                a. chutando <input name="respostas[quest_2_2e5_meses][14]" type="text" /><br><br>
+
+                b. bebendo. <input name="respostas[quest_2_2e5_meses][15]" type="text" /><br><br>
+
+                c. comendo. <input name="respostas[quest_2_2e5_meses][16]" type="text" /><br><br>
+
+            </i>
+
+            <br><br><br><br>
+
+
+            <h3 style="margin-left: 12%;">Linguagem Expressiva</h3><br>
+
+            <br><br>
+
+            <h4>9. Usa entonação adequada para fazer pergunta. <input name="respostas[quest_2_2e5_meses][17]" type="text" /></h4>
+            (1 ponto = ffaz uma pergunta usando a entonação correta; Ex.: eleva a voz quando faz uma pergunta).<br><br>
+            Observação da linguagem espontânea em atividades lúdicas.<br>
+            <i>Crie situações através de brincadeiras para estimular a criança a falar</i>: <br>
+            <input name="respostas[quest_2_2e5_meses][18]" type="text" style="width: 30%;"/> <br><br>
+
+
+            <br><br><br><br>
+
+            <h4>10. Combina duas ou mais palavras na fala espontânea. <input name="respostas[quest_2_2e5_meses][19]" type="text" /></h4>
+            (1 ponto = se a criança produz duas ou mais palavras em uma emissão vocal e, com significado <br> semântico; Ex.: posse: “papato neném” = o sapato da boneca).<br><br>
+            Observação da linguagem espontânea em atividades lúdicas. A examinadora poderá <br> criar situações através de brincadeiras para estimular a criança a falar..<br>
+            <i>Escreva os exemplos:</i>: <br>
+            <input name="respostas[quest_2_2e5_meses][20]" type="text" style="width: 30%;"/> <br><br>
+
+
+            <br><br><br><br>
+
+            <h4>11.Nomeia figuras.<input name="respostas[quest_2_2e5_meses][21]" type="text" /></h4><br>
+            (1 ponto = 4 acertos) <br><br>
+
+            Material: Manual de figuras, pág. 51.<br>
+            <i>Aponte para cada figura e pergunte: <b>O que é isto?</b></i><br><br>
+
+            <i>
+                a. tênis ou sapato <input name="respostas[quest_2_2e5_meses][22]" type="text" /><br><br>
+
+                b. carro. <input name="respostas[quest_2_2e5_meses][23]" type="text" /><br><br>
+
+                c. mão. <input name="respostas[quest_2_2e5_meses][24]" type="text" /><br><br>
+
+                d. banana. <input name="respostas[quest_2_2e5_meses][25]" type="text" /><br><br>
+
+                e. pé. <input name="respostas[quest_2_2e5_meses][26]" type="text" /><br><br>
+
+                f. gato. <input name="respostas[quest_2_2e5_meses][27]" type="text" /><br><br>
+
+            </i>
+
+            <br><br><br><br>
+
+            <h4>12.Reconhece e nomeia ação em figuras.<input name="respostas[quest_2_2e5_meses][28]" type="text" /></h4><br>
+            (1 ponto = 2 acertos) <br><br>
+
+            Material: Manual de figuras, pág. 52.<br>
+            <i>Aponte para cada figura e pergunte:</i><br><br>
+
+
+                <i>a. O que este menino está fazendo?</i> <input name="respostas[quest_2_2e5_meses][29]" type="text" /> (chutando ou jogando)<br><br>
+
+                <i>b. O que esta menina está fazendo?</i> <input name="respostas[quest_2_2e5_meses][30]" type="text" /> (bebendo)<br><br>
+
+                <i>c. E esta menina?</i> <input name="respostas[quest_2_2e5_meses][31]" type="text" /> (dormindo)<br><br>
+
+            <br><br><br><br>
+
+
+        </div>
+
 
 
 
