@@ -38,7 +38,6 @@ class AnamneseGigantePsicopedaNeuroPsicomotosPt1AutSeeds extends Seeder {
         $local_parto = ['Hospital', 'Em casa'];
         $tipo_parto = ['Normal', 'Cesariana', 'Fórceps'];
         $algum_problema_no_parto_se_sim_qual = ['Não', 'Sim, ruptura prematura das membranas', 'Sim, posição e apresentação anormal do feto'];
-        $idade_gestacional_do_bebe_ao_nascer = ['7 meses', '8 meses', '9 meses'];
         $como_se_deu_a_alimentacao = ['Alimentação intravenosa', 'Amamentação'];
         $mamou_no_seio_se_nao_qual_o_motivo = ['Sim', 'Não, baixa produção'];
         $se_mamou_foi_ate_quando_e_como_se_sentia_ao_amamentar = ['Não foi amamentado', 'Até os 6 meses, se sentia bem', 'Até um anos, se sentia bem'];
@@ -112,7 +111,7 @@ class AnamneseGigantePsicopedaNeuroPsicomotosPt1AutSeeds extends Seeder {
                 'peso_ao_nascer' => (float)rand(0.1,4.0),
                 'comprimento_ao_nascer' => (float)rand(0.3,0.5),
                 'teve_ictericia' => rand(0,1) >= 0.5,
-                'idade_gestacional_do_bebê_ao_nascer' => $idade_gestacional_do_bebe_ao_nascer[rand(0, sizeof($idade_gestacional_do_bebe_ao_nascer)-1)],
+                'idade_gestacional_do_bebe_ao_nascer' => rand(39,42),
                 'como_se_deu_a_alimentação' => $como_se_deu_a_alimentacao[rand(0, sizeof($como_se_deu_a_alimentacao)-1)],
                 'mamou_no_seio_se_nao_qual_o_motivo' => $mamou_no_seio_se_nao_qual_o_motivo[rand(0, sizeof($mamou_no_seio_se_nao_qual_o_motivo)-1)],
                 'se_mamou_foi_ate_quando_e_como_se_sentia_ao_amamentar' => $se_mamou_foi_ate_quando_e_como_se_sentia_ao_amamentar[rand(0, sizeof($se_mamou_foi_ate_quando_e_como_se_sentia_ao_amamentar)-1)],
