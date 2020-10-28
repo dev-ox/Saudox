@@ -17,7 +17,6 @@ class DatabaseSeeder extends Seeder {
             ConveniosAutSeeds::class,
             AgendamentosAutSeeds::class,
             AnamneseFonoaudiologiasAutSeeds::class,
-            AvaliacaoFonoaudiologiaQuestionariosAutSeeds::class,
             EvolucaoPsicologicasAutSeeds::class,
             EvolucaoTerapiaOcupacionalsAutSeeds::class,
             EvolucaoTerapiaOcupacionalsAutSeeds::class,

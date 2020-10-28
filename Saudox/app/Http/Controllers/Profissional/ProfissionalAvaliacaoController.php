@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\Profissional;
 
+use App\AvaliacaoFonoaudiologia;
 use App\AvaliacaoJudo;
 use App\AvaliacaoNeuropsicologica;
 use App\AvaliacaoTerapiaOcupacional;
@@ -25,7 +26,13 @@ class ProfissionalAvaliacaoController extends Controller {
         if(!$avaliacao){
             return redirect()->route('erro', ['msg_erro' => "Avaliação do paciente " .$id_paciente. " não existe"]);
         }
-        return view('profissional/avaliacao/fonoaudiologia/ver', ['avaliacao' => $avaliacao]);
+
+        $avaliacao->respostas = json_decode($avaliacao->respostas);
+
+        return view('profissional/avaliacao/fonoaudiologia/ver', [
+            'avaliacao' => $avaliacao,
+            'paciente' => $paciente,
+        ]);
     }
 
     public function criarFonoaudiologia($id_paciente) {
@@ -33,7 +40,50 @@ class ProfissionalAvaliacaoController extends Controller {
         if(!$paciente){
             return redirect()->route('erro', ['msg_erro' => "Paciente " .$id_paciente. " inexistente"]);
         }
-        return view('profissional/avaliacao/fonoaudiologia/criar', ['paciente' => $paciente]);
+        return view('profissional/avaliacao/fonoaudiologia/criar', [
+            'paciente' => $paciente,
+            'avaliacao' => NULL,
+        ]);
+    }
+
+    public function salvarFonoaudiologia(Request $request) {
+
+        $messages = [
+            'required' => 'O campo :attribute é obrigatório.',
+            'numeric' => 'O campo :attribute deve ser um número.',
+            'id_paciente.exists' => 'O paciente não existe',
+            'id_profissional.exists' => 'O paciente não existe',
+        ];
+
+        $entrada = $request->all();
+
+        $paciente = Paciente::find($entrada['id_paciente']);
+        if(!$paciente) {
+            return redirect()->route('erro', ['msg_erro' => "Paciente inexistente"]);
+        }
+
+        $avaliacao_t = $paciente->avaliacaoFono;
+        if($avaliacao_t){
+            return redirect()->route('erro', ['msg_erro' => "Avaliação do paciente já existe"]);
+        }
+
+
+        $validator_fono = Validator::make($entrada, AvaliacaoFonoaudiologia::$regras_validacao, $messages);
+        if ($validator_fono->fails()) {
+            return redirect()->back()
+                             ->withErrors($validator_fono)
+                             ->withInput();
+        }
+
+        $entrada["data_avaliacao"] =  $entrada["data_avaliacao"] . " " . $entrada["hora_avaliacao"] . ":00";
+        $entrada["respostas"] = json_encode($entrada["respostas"]);
+
+        $avaliacao_fono = new AvaliacaoFonoaudiologia;
+        $avaliacao_fono->fill($entrada);
+        $avaliacao_fono->save();
+        return redirect()->route("profissional.avaliacao.fonoaudiologia.ver", $entrada["id_paciente"]);
+
+
     }
 
     public function editarFonoaudiologia($id_paciente) {
@@ -47,6 +97,13 @@ class ProfissionalAvaliacaoController extends Controller {
         }
         return view('profissional/avaliacao/fonoaudiologia/editar', ['avaliacao' => $avaliacao]);
     }
+
+    public function salvarEditarFonoaudiologia(Request $request) {
+        $entrada = $request->all();
+        var_dump($entrada);
+        return "falta salvar";
+    }
+
 
 
     // JUDO

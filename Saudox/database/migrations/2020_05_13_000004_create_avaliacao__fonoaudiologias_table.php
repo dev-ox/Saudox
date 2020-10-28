@@ -15,18 +15,26 @@ class CreateAvaliacaoFonoaudiologiasTable extends Migration {
             $table->bigInteger('id_profissional')->unsigned();
             $table->foreign('id_paciente')->references('id')->on('pacientes');
             $table->foreign('id_profissional')->references('id')->on('profissionals');
+            $table->string('seletor_questionario');
             $table->text('motivo_avaliacao');
             $table->dateTime('data_avaliacao');
+
             $table->float('ultima_tarefa_correta_linguagem_receptiva');
             $table->float('menos_total_respostas_incorretoas_linguagem_receptiva');
             $table->float('linguagem_receptiva');
+
             $table->float('ultima_tarefa_correta_linguagem_expressiva');
             $table->float('menos_total_respostas_incorretoas_linguagem_expressiva');
             $table->float('linguagem_expressiva');
-            $table->float('ultima_tarefa_correta_linguagem_global');
-            $table->float('menos_total_respostas_incorretoas_linguagem_global');
-            $table->float('linguagem_global');
+
+            $table->float('escore_padrao_linguagem_receptiva');
+            $table->float('mais_escore_padrao_linguagem_expressiva');
+            $table->float('total_linguagem_global');
+            $table->float('escore_padrao_linguagem_global');
+
             $table->text('observacao_comportamento');
+            /* $table->unsignedBigInteger('questionario')->nullable(true); Isso é pro futuro... chave estrangeira */
+            $table->json('respostas');
             /* O responsavel_por_este_documento é o profissional que tem a
             * resposabilidade, então ele vai ta no json de pode ver e pode
             * editar.

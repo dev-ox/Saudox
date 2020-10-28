@@ -1,61 +1,550 @@
-{{$avaliacao->id_paciente}} <br>
-{{$avaliacao->id_profissional}} <br>
-{{$avaliacao->data_avaliacao}} <br>
-{{$avaliacao->entrevistado}} <br>
-{{$avaliacao->queixa_principal}} <br>
-{{$avaliacao->brincadeiras_favoritas}} <br>
-{{$avaliacao->onde_brinca}} <br>
-{{$avaliacao->com_quem_prefere_brincar}} <br>
-{{$avaliacao->o_que_faz_rir}} <br>
-{{$avaliacao->brincadeiras_evitadas}} <br>
-{{$avaliacao->brinca_sozinho_ou_precisa_de_atencao}} <br>
-{{$avaliacao->postura_crianca_quando_brinca}} <br>
-{{$avaliacao->reacao_ao_ser_frustrada_ou_raiva}} <br>
-{{$avaliacao->quem_disciplina_a_crianca}} <br>
-{{$avaliacao->como_reage_a_orientacao_dos_pais}} <br>
-{{$avaliacao->reacao_a_abracos_carinhos}} <br>
-{{$avaliacao->areas_maior_habilidade}} <br>
-{{$avaliacao->areas_maior_dificuldade}} <br>
-{{$avaliacao->hora_de_levantar}} <br>
-{{$avaliacao->hora_cafe_da_manha}} <br>
-{{$avaliacao->hora_da_escola}} <br>
-{{$avaliacao->hora_almoco}} <br>
-{{$avaliacao->hora_janta}} <br>
-{{$avaliacao->hora_dormir}} <br>
-{{$avaliacao->dorme_durante_dia}} <br>
-{{$avaliacao->dorme_com_facilidade}} <br>
-{{$avaliacao->sono_tranqulo}} <br>
-{{$avaliacao->acorda_noite}} <br>
-{{$avaliacao->pesadelos}} <br>
-{{$avaliacao->sonambulismo}} <br>
-{{$avaliacao->rola_balanca_cabeca_enquanto_dorme}} <br>
-{{$avaliacao->come_com_os_dedos}} <br>
-{{$avaliacao->come_com_talheres}} <br>
-{{$avaliacao->brinca_com_comida}} <br>
-{{$avaliacao->derrama_comida}} <br>
-{{$avaliacao->usa_mao_direita_para_comer}} <br>
-{{$avaliacao->bebe_em_garrafa}} <br>
-{{$avaliacao->usa_canudo}} <br>
-{{$avaliacao->segura_copo_garrafa_com_uma_ou_duas_maos}} <br>
-{{$avaliacao->ajuda_a_colocar_a_mesa}} <br>
-{{$avaliacao->tipo_alimentacao}} <br>
-{{$avaliacao->tem_bom_apetite}} <br>
-{{$avaliacao->o_que_gosta_de_comer}} <br>
-{{$avaliacao->nao_gosta_de_comer}} <br>
-{{$avaliacao->houve_dificuldade_transicao_pastoso_solido}} <br>
-{{$avaliacao->gosta_de_vestir_roupa}} <br>
-{{$avaliacao->veste_roupa_sozinho_quais_pecas}} <br>
-{{$avaliacao->tira_roupa_sozinho_quais_pecas}} <br>
-{{$avaliacao->abotoa}} <br>
-{{$avaliacao->amarra}} <br>
-{{$avaliacao->usa_fralda}} <br>
-{{$avaliacao->usa_vaso_sanitario}} <br>
-{{$avaliacao->lava_maos_face_corpo}} <br>
-{{$avaliacao->escova_dentes}} <br>
-{{$avaliacao->se_diverte_com_o_banho}} <br>
-{{$avaliacao->gosta_molhar_cabeca}} <br>
-{{$avaliacao->enxuga_se}} <br>
-{{$avaliacao->gosta_pentear_cabelos}} <br>
-{{$avaliacao->gosta_cortar_cabelos}} <br>
-{{$avaliacao->gosta_cortar_unhas}} <br>
-{{$avaliacao->info_extras_relevante}} <br>
+
+@extends('layouts.mainlayout')
+@section('content')
+
+
+    <div class="container">
+        <div class="row bordas_amarelas bg-padrao">
+            <div class="col-md">
+
+
+                <h1 class="pessoal">Avaliação de Terapia Ocupacional</h1>
+
+
+                <br>
+                <br>
+                <div>
+                    <h3 class="marker-label">Informações Iniciais</h3>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="lbinfo-perfis">Data da avaliação:<br><label class="lbinfo-ntstatic">{{$avaliacao->data_avaliacao}}</label></label>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="lbinfo-perfis">Entrevistado:<br><label class="lbinfo-ntstatic">{{$avaliacao->entrevistado}}</label></label>
+                        </div>
+                        <br>
+                        <div class="col-md-12">
+                                <label class="lbinfo-perfis">Queixa Principal:<br>
+                                    <div class="c-wrapper">
+                                        <label class="lbinfo-ntstatic">{{$avaliacao->queixa_principal}}</label>
+                                    </div>
+                                </label>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div>
+                    <br>
+                    <br>
+                    <h3 class="marker-label">Brincar</h3>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="lbinfo-perfis">Brincadeiras favoritas:
+                            <div class="d-wrapper">
+                                <label class="lbinfo-ntstatic">{{$avaliacao->brincadeiras_favoritas}}</label>
+                            </div>
+                            </label><br>
+                            <label class="lbinfo-perfis">O que faz rir e sorrir?
+                            <div class="d-wrapper">
+                                <label class="lbinfo-ntstatic">{{$avaliacao->o_que_faz_rir}}</label>
+                            </div>
+                            </label><br>
+                            <label class="lbinfo-perfis">Postura ao brincar:
+                            <div class="d-wrapper">
+                                <label class="lbinfo-ntstatic">{{$avaliacao->postura_crianca_quando_brinca}}</label>
+                            </div>
+                            </label><br>
+                            <label class="lbinfo-perfis">Reação as orientações dos pais:
+                            <div class="d-wrapper">
+                                <label class="lbinfo-ntstatic">{{$avaliacao->como_reage_a_orientacao_dos_pais}}</label>
+                            </div>
+                            </label><br>
+                            <label class="lbinfo-perfis">Áreas de maior dificuldade:
+                            <div class="d-wrapper">
+                                <label class="lbinfo-ntstatic">{{$avaliacao->areas_maior_dificuldade}}</label>
+                            </div>
+                            </label><br>
+
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="lbinfo-perfis">Brincadeiras evitadas:
+                            <div class="d-wrapper">
+                                <label class="lbinfo-ntstatic">{{$avaliacao->brincadeiras_evitadas}}</label>
+                            </div>
+                            </label><br>
+                            <label class="lbinfo-perfis">Onde brinca:
+                            <div class="d-wrapper">
+                                <label class="lbinfo-ntstatic">{{$avaliacao->onde_brinca}}</label>
+                            </div>
+                            </label><br>
+                            <label class="lbinfo-perfis">Reacao à raiva/frustração:
+                            <div class="d-wrapper">
+                                <label class="lbinfo-ntstatic">{{$avaliacao->reacao_ao_ser_frustrada_ou_raiva}}</label>
+                            </div>
+                            </label><br>
+                            <label class="lbinfo-perfis">Reação à abraços/carinho:
+                            <div class="d-wrapper">
+                                <label class="lbinfo-ntstatic">{{$avaliacao->reacao_a_abracos_carinhos}}</label>
+                            </div>
+                            </label><br>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="lbinfo-perfis">Com quem prefere brincar?
+                            <div class="d-wrapper">
+                                <label class="lbinfo-ntstatic">{{$avaliacao->com_quem_prefere_brincar}}</label>
+                            </div>
+                            </label><br>
+                            <label class="lbinfo-perfis">Precisa de atenção ao brincar?
+                            <div class="d-wrapper">
+                                <label class="lbinfo-ntstatic">{{$avaliacao->brinca_sozinho_ou_precisa_de_atencao}}</label>
+                            </div>
+                            </label><br>
+                            <label class="lbinfo-perfis">Quem geralmente disciplina a criança?
+                            <div class="d-wrapper">
+                                <label class="lbinfo-ntstatic">{{$avaliacao->quem_disciplina_a_crianca}}</label>
+                            </div>
+                            </label><br>
+                            <label class="lbinfo-perfis">Àreas de maior habilidade:
+                            <div class="d-wrapper">
+                                <label class="lbinfo-ntstatic">{{$avaliacao->areas_maior_habilidade}}</label>
+                            </div>
+                            </label><br>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div>
+                    <br>
+                    <br>
+                    <h3 class="marker-label">Hórario de:</h3>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="lbinfo-perfis">Levantar:
+                            <div class="d-wrapper">
+                                <label class="lbinfo-ntstatic">{{$avaliacao->hora_de_levantar}}</label>
+                            </div>
+                            </label><br>
+                            <label class="lbinfo-perfis">Almoço:
+                            <div class="d-wrapper">
+                                <label class="lbinfo-ntstatic">{{$avaliacao->hora_almoco}}</label>
+                            </div>
+                            </label><br>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="lbinfo-perfis">Café da manhã:
+                            <div class="d-wrapper">
+                                <label class="lbinfo-ntstatic">{{$avaliacao->hora_cafe_da_manha}}</label>
+                            </div>
+                            </label><br>
+                            <label class="lbinfo-perfis">Janta:
+                            <div class="d-wrapper">
+                                <label class="lbinfo-ntstatic">{{$avaliacao->hora_janta}}</label>
+                            </div>
+                            </label><br>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="lbinfo-perfis">Escola:
+                            <div class="d-wrapper">
+                                <label class="lbinfo-ntstatic">{{$avaliacao->hora_da_escola}}</label>
+                            </div>
+                            </label><br>
+                            <label class="lbinfo-perfis">Dormir:
+                            <div class="d-wrapper">
+                                <label class="lbinfo-ntstatic">{{$avaliacao->hora_dormir}}</label>
+                            </div>
+                            </label><br>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div>
+                    <br>
+                    <br>
+                    <h3 class="marker-label">Sono</h3>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="lbinfo-perfis">Dorme durante o dia?<br><label class="lbinfo-ntstatic">
+                                @if($avaliacao->dorme_durante_dia == 0)
+                                    Não
+                                    @else
+                                    Sim
+                                    @endif
+                                </label></label>
+                                <br>
+                                <label class="lbinfo-perfis">Tem pesadelos?<br><label class="lbinfo-ntstatic">
+                                    @if($avaliacao->pesadelos == 0)
+                                        Não
+                                        @else
+                                        Sim
+                                        @endif
+                                </label></label>
+                                <br>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="lbinfo-perfis">Dorme com facilidade?<br><label class="lbinfo-ntstatic">
+                                @if($avaliacao->dorme_com_facilidade == 0)
+                                    Não
+                                    @else
+                                    Sim
+                                    @endif
+                                </label></label>
+                                <br>
+                                <label class="lbinfo-perfis">Sonambulismo?<br><label class="lbinfo-ntstatic">
+                                    @if($avaliacao->sonambulismo == 0)
+                                        Não
+                                        @else
+                                        Sim
+                                        @endif
+                                </label></label>
+                                <br>
+                        </div>
+                        <br>
+                        <div class="col-md-4">
+                            <label class="lbinfo-perfis">Tem sono tranquilo?<br><label class="lbinfo-ntstatic">
+                                @if($avaliacao->sono_tranqulo == 0)
+                                    Não
+                                    @else
+                                    Sim
+                                    @endif
+                            </label></label>
+                            <br>
+                            <label class="lbinfo-perfis">Rola/balança a cabeça?<br><label class="lbinfo-ntstatic">
+                                @if($avaliacao->rola_balanca_cabeca_enquanto_dorme == 0)
+                                    Não
+                                    @else
+                                    Sim
+                                    @endif
+                            </label></label>
+                            <br>
+                        </div>
+                        <br>
+                        <div class="col-md-12">
+                                <label class="lbinfo-perfis">Acorda à noite?<br>
+                                    <div class="c-wrapper">
+                                        <label class="lbinfo-ntstatic">{{$avaliacao->acorda_noite}}</label>
+                                    </div>
+                                </label>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div>
+                    <br>
+                    <br>
+                    <h3 class="marker-label">Alimentação</h3>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="lbinfo-perfis">Come com os dedos?<br><label class="lbinfo-ntstatic">
+                                @if($avaliacao->come_com_os_dedos == 0)
+                                    Não
+                                    @else
+                                    Sim
+                                    @endif
+                                </label></label>
+                                <br>
+                                <label class="lbinfo-perfis">Derrama a comida?<br><label class="lbinfo-ntstatic">
+                                    @if($avaliacao->derrama_comida == 0)
+                                        Não
+                                        @else
+                                        Sim
+                                        @endif
+                                </label></label>
+                                <br>
+                                <label class="lbinfo-perfis">Usa canudo?<br><label class="lbinfo-ntstatic">
+                                    @if($avaliacao->usa_canudo == 0)
+                                        Não
+                                        @else
+                                        Sim
+                                        @endif
+                                </label></label>
+                                <br>
+                                <label class="lbinfo-perfis">Tem bom apetite?<br><label class="lbinfo-ntstatic">
+                                    @if($avaliacao->tem_bom_apetite == 0)
+                                        Não
+                                        @else
+                                        Sim
+                                        @endif
+                                </label></label>
+                                <br>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="lbinfo-perfis">Como com talheres?<br><label class="lbinfo-ntstatic">
+                                @if($avaliacao->come_com_talheres == 0)
+                                    Não
+                                    @else
+                                    Sim
+                                    @endif
+                                </label></label>
+                                <br>
+                                <label class="lbinfo-perfis">Usa qual mão para comer?<br><label class="lbinfo-ntstatic">
+                                    @if($avaliacao->come_com_os_dedos == 0)
+                                        Esquerda
+                                        @else
+                                        Direita
+                                        @endif
+                                </label></label>
+                                <br>
+                                <label class="lbinfo-perfis">Ajuda a colocar a mesa?<br><label class="lbinfo-ntstatic">
+                                    @if($avaliacao->ajuda_a_colocar_a_mesa == 0)
+                                        Não
+                                        @else
+                                        Sim
+                                        @endif
+                                </label></label>
+                                <br>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="lbinfo-perfis">Brinca com a comida?<br><label class="lbinfo-ntstatic">
+                                @if($avaliacao->brinca_com_comida == 0)
+                                    Não
+                                    @else
+                                    Sim
+                                    @endif
+                            </label></label>
+                            <br>
+                            <label class="lbinfo-perfis">Bebe em garrafa, copo?<br><label class="lbinfo-ntstatic">
+                                @if($avaliacao->bebe_em_garrafa == 0)
+                                    Não
+                                    @else
+                                    Sim
+                                    @endif
+                            </label></label>
+                            <br>
+                            <label class="lbinfo-perfis">Teve dificuldades de passar de pastoso para sólido?<br><label class="lbinfo-ntstatic">
+                                @if($avaliacao->houve_dificuldade_transicao_pastoso_solido == 0)
+                                    Não
+                                    @else
+                                    Sim
+                                    @endif
+                            </label></label>
+                            <br>
+
+                        </div>
+                        <div class="col-md-12">
+                                <label class="lbinfo-perfis">Segura o copo ou garrafa com uma mão? ou com as duas mãos?<br>
+                                    <div class="c-wrapper">
+                                        <label class="lbinfo-ntstatic">{{$avaliacao->segura_copo_garrafa_com_uma_ou_duas_maos}}</label>
+                                    </div>
+                                </label>
+                        </div>
+                        <div class="col-md-12">
+                                <label class="lbinfo-perfis">Qual o tipo de alimentação usada?<br>
+                                    <div class="c-wrapper">
+                                        <label class="lbinfo-ntstatic">{{$avaliacao->tipo_alimentacao}}</label>
+                                    </div>
+                                </label>
+                        </div>
+                        <div class="col-md-12">
+                                <label class="lbinfo-perfis">O que mais gosta de comer?<br>
+                                    <div class="c-wrapper">
+                                        <label class="lbinfo-ntstatic">{{$avaliacao->o_que_gosta_de_comer}}</label>
+                                    </div>
+                                </label>
+                        </div>
+                        <div class="col-md-12">
+                                <label class="lbinfo-perfis">O que não gosta de comer?<br>
+                                    <div class="c-wrapper">
+                                        <label class="lbinfo-ntstatic">{{$avaliacao->nao_gosta_de_comer}}</label>
+                                    </div>
+                                </label>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div>
+                    <br>
+                    <br>
+                    <h3 class="marker-label">Vestuários</h3>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="lbinfo-perfis">Já abotoa?<br><label class="lbinfo-ntstatic">
+                                @if($avaliacao->abotoa == 0)
+                                    Não
+                                    @else
+                                    Sim
+                                    @endif
+                                </label></label>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="lbinfo-perfis">Amarra?<br><label class="lbinfo-ntstatic">
+                                @if($avaliacao->amarra == 0)
+                                    Não
+                                    @else
+                                    Sim
+                                    @endif
+                                </label></label>
+                        </div>
+                        <div class="col-md-12">
+                                <label class="lbinfo-perfis">Gosta de vestir roupas?<br>
+                                    <div class="c-wrapper">
+                                        <label class="lbinfo-ntstatic">{{$avaliacao->gosta_de_vestir_roupa}}</label>
+                                    </div>
+                                </label>
+                        </div>
+                        <div class="col-md-12">
+                                <label class="lbinfo-perfis">Veste roupa sozinho? Quais?<br>
+                                    <div class="c-wrapper">
+                                        <label class="lbinfo-ntstatic">{{$avaliacao->veste_roupa_sozinho_quais_pecas}}</label>
+                                    </div>
+                                </label>
+                        </div>
+                        <div class="col-md-12">
+                                <label class="lbinfo-perfis">Tira a roupa sozinho? Quais?<br>
+                                    <div class="c-wrapper">
+                                        <label class="lbinfo-ntstatic">{{$avaliacao->tira_roupa_sozinho_quais_pecas}}</label>
+                                    </div>
+                                </label>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div>
+                    <br>
+                    <br>
+                    <h3 class="marker-label">Higiene</h3>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="lbinfo-perfis">Usa fraldas?<br><label class="lbinfo-ntstatic">
+                                @if($avaliacao->usa_fralda == 0)
+                                    Não
+                                    @else
+                                    Sim
+                                    @endif
+                                </label></label>
+                                <br>
+                                <label class="lbinfo-perfis">Escova os dentes?<br><label class="lbinfo-ntstatic">
+                                    @if($avaliacao->escova_dentes == 0)
+                                        Não
+                                        @else
+                                        Sim
+                                        @endif
+                                </label></label>
+                                <br>
+                                <label class="lbinfo-perfis">Enxuga-se?<br><label class="lbinfo-ntstatic">
+                                    @if($avaliacao->enxuga_se == 0)
+                                        Não
+                                        @else
+                                        Sim
+                                        @endif
+                                </label></label>
+                                <br>
+                                <label class="lbinfo-perfis">Gosta de cortar as unhas?<br><label class="lbinfo-ntstatic">
+                                    @if($avaliacao->gosta_cortar_unhas == 0)
+                                        Não
+                                        @else
+                                        Sim
+                                        @endif
+                                </label></label>
+                                <br>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="lbinfo-perfis">Usa o vaso sanitário?<br><label class="lbinfo-ntstatic">
+                                @if($avaliacao->usa_vaso_sanitario == 0)
+                                    Não
+                                    @else
+                                    Sim
+                                    @endif
+                                </label></label>
+                                <br>
+                                <label class="lbinfo-perfis">Se diverte com o banho?<br><label class="lbinfo-ntstatic">
+                                    @if($avaliacao->se_diverte_com_o_banho == 0)
+                                        Esquerda
+                                        @else
+                                        Direita
+                                        @endif
+                                </label></label>
+                                <br>
+                                <label class="lbinfo-perfis">Gosta de pentear os cabelos?<br><label class="lbinfo-ntstatic">
+                                    @if($avaliacao->gosta_pentear_cabelos == 0)
+                                        Não
+                                        @else
+                                        Sim
+                                        @endif
+                                </label></label>
+                                <br>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="lbinfo-perfis">Lava as mãos, face e corpo?<br><label class="lbinfo-ntstatic">
+                                @if($avaliacao->lava_maos_face_corpo == 0)
+                                    Não
+                                    @else
+                                    Sim
+                                    @endif
+                            </label></label>
+                            <br>
+                            <label class="lbinfo-perfis">Gosta de molhar a cabeça?<br><label class="lbinfo-ntstatic">
+                                @if($avaliacao->gosta_molhar_cabeca == 0)
+                                    Não
+                                    @else
+                                    Sim
+                                    @endif
+                            </label></label>
+                            <br>
+                            <label class="lbinfo-perfis">Gosta de cortar os cabelos?<br><label class="lbinfo-ntstatic">
+                                @if($avaliacao->gosta_cortar_cabelos == 0)
+                                    Não
+                                    @else
+                                    Sim
+                                    @endif
+                            </label></label>
+                            <br>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div>
+                    <br>
+                    <br>
+                    <h3 class="marker-label">Outras informações importantes:</h3>
+                    <div class="col-md-12">
+                            <label class="lbinfo-perfis">
+                                <div class="c-wrapper">
+                                    <label class="lbinfo-ntstatic">{{$avaliacao->info_extras_relevante}}</label>
+                                </div>
+                            </label>
+                    </div>
+                    <br>
+                    <br>
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+@endsection

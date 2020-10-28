@@ -1,0 +1,19 @@
+#container_blocos_questionarios_ativo {
+  padding-left: 35%;
+  text-align: left;
+}
+
+#container_blocos_questionarios_ativo input {
+  display: inline;
+  margin: auto;
+  padding: 0;
+  width: 12%;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.quest_p {
+  text-decoration: underline;
+  margin: 15px;
+  font-size: 16px;
+}

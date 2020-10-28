@@ -8,7 +8,7 @@ use App\Endereco;
 
 use Illuminate\Support\Carbon;
 
-class LoginPacienteTest extends TestCase {
+class Paciente_LoginTest extends TestCase {
 
     public function setUp() : void {
         parent::setUp();

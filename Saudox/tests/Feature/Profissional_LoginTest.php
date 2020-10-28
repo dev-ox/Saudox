@@ -9,7 +9,7 @@ use App\Endereco;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 
-class LoginProfissionalTest extends TestCase {
+class Profissional_LoginTest extends TestCase {
 
     public function setUp() : void {
         parent::setUp();

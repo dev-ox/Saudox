@@ -8,7 +8,7 @@ use App\Profissional;
 use App\Paciente;
 use Illuminate\Support\Facades\Auth;
 
-class CadastroClienteTest extends TestCase {
+class Profissional_CadastroClienteTest extends TestCase {
     public $funcionario;
     private $paciente;
     private $password;
