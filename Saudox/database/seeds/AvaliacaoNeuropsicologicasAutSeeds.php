@@ -17,7 +17,7 @@ class AvaliacaoNeuropsicologicasAutSeeds extends Seeder {
         $testes_neuropsicologicos = ['TDE', 'Columbia', 'Teste de Trilhas Coloridas', 'Escalas Beck'];
         $recursos_complementares = ['Conjunto de testes de inteligência e de desempenho escolar e a análise de correlação entre eles'];
         $dias_necessarios_para_avaliacao_justificados_se_mais_que_4_dias = ['Um', 'Dois', 'Três', 'Quatro ou mais em virtude de atividades escolares'];
-        $alimentacao_nos_dias_da_avalicao = ['Alimentação saudável', 'Alimentação de fast food'];
+        $alimentacao_nos_dias_da_avalicao = ['Alimentação saudável', 'Alimentação de fast food', 'Apenas frutas'];
         $sono_nos_dias_da_avalicao = ['REM (rapid eye moviment) (Movimento rápido dos olhos)', 'NREM (non rapid eye moviment) (Movimento ocular não rápidp)'];
         $higiene_nos_dias_da_avalicao = ['Higiene pessoal completa', 'Não tomou banho', 'Não lavou as mãos', 'Não escovou os dentes'];
         $humor_nos_dias_da_avalicao = ['Disfórico', 'Elevado', 'Eutímico', 'Expansivo', 'Irritável'];
@@ -49,8 +49,8 @@ class AvaliacaoNeuropsicologicasAutSeeds extends Seeder {
                 'hipotese_diagnostica' => $hipotese_diagnostica[rand(0, sizeof($hipotese_diagnostica)-1)],
                 'dia_hora_devolutiva_aos_responsavel' => Carbon::now()->format('Y-m-d H:i:s'),
                 'participantes' => $participantes[rand(0, sizeof($participantes)-1)],
-                'atividades_para_ser_feito_na_clinica' => "{}",
-                'atividades_para_ser_feito_em_casa' => "{}",
+                'atividades_para_ser_feito_na_clinica' => "[{\"nome_atividade\":\"Letras escondidas\",\"recursos_utilizados\":\"Tabuleiro\",\"tempo_de_duracao\":\"10 minutos\",\"funcao_cognitiva\":\"Aten\u00e7\u00e3o seletiva\",\"objetivo\":\"Encontrar a letra indicada em um grupo de letras aleat\u00f3rias\",\"resultados\":\"Reabilita\u00e7\u00e3o cognitiva\"}]",
+                'atividades_para_ser_feito_em_casa' => "[{\"nome_atividade\":\"Ordem na fazenda\",\"recursos_utilizados\":\"Figuras\",\"tempo_de_duracao\":\"5 minutos\",\"funcao_cognitiva\":\"Velocidade de processamento\",\"objetivo\":\"Encontrar desenho diferente\",\"resultados\":\"Estimular pensamento\"}]",
                 'sugestao_encaminhamento' => $sugestao_encaminhamento[rand(0, sizeof($sugestao_encaminhamento)-1)],
                 'exames_clinicos_se_houver' => null,
             ]);
