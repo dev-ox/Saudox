@@ -725,6 +725,165 @@
 
         </div>
 
+        <div id="bloco_3e6_3e11_meses">
+            <h3 style="margin-left: 12%;">Linguagem Receptiva</h3><br>
+
+            <br><br>
+
+            <h4>21. Compara objetos.<input name="respostas[quest_3e6_3e11_meses][0]" type="text" /></h4><br>
+            (1 ponto = 3 acertos) <br><br>
+
+            Material: Manual de figuras, pág. 18.<br>
+            <i><b>Qual é o mais pesado?</b></i><br><br>
+
+            <i>
+                a. o banco ou a mesa? <input name="respostas[quest_3e6_3e11_meses][1]" type="text" /><br><br>
+
+                b. a televisão ou a bola? <input name="respostas[quest_3e6_3e11_meses][2]" type="text" /><br><br>
+
+                c. o carro ou caminhão? <input name="respostas[quest_3e6_3e11_meses][3]" type="text" /><br><br>
+
+                d. o livro ou a flor? <input name="respostas[quest_3e6_3e11_meses][4]" type="text" /><br><br>
+
+            </i>
+
+            <br><br><br><br>
+
+            <h4>22.Faz deduções.<input name="respostas[quest_3e6_3e11_meses][5]" type="text" /></h4><br>
+            (1 ponto = 3 acertos) <br><br>
+
+            Material: Manual de Figuras, págs. 19 a 21.<br>
+            <i>Leia a estória e, em seguida, peça para a criança mostrar a figura que<br>
+                responde a pergunta:</i><br><br>
+
+            <i>
+                a. Se Tiago sair de casa ficará todo molhado Como está o tempo lá <br>
+                fora? Mostre a figura. <input name="respostas[quest_3e6_3e11_meses][6]" type="text" /><br><br>
+
+                b. A boneca de Vanessa está muito suja. O que você acha que Vanessa <br>
+                deve fazer com a boneca? Mostre a figura. <input name="respostas[quest_3e6_3e11_meses][7]" type="text" /><br><br>
+
+                c. Lucas teve uma boa surpresa e ficou muito feliz. Mostre a figura. <input name="respostas[quest_3e6_3e11_meses][8]" type="text" /><br><br>
+
+            </i>
+
+            <br><br><br><br>
+
+            <h4>23.Vocabulário receptivo.<input name="respostas[quest_3e6_3e11_meses][9]" type="text" /></h4><br>
+            (1 ponto = 4 acertos) <br><br>
+
+            Material: Manual de Figuras, págs. 22 a 24.<br>
+            <i><b>Mostre...</b></i><br><br>
+
+            <i>
+                a. a calça <input name="respostas[quest_3e6_3e11_meses][10]" type="text" /><br><br>
+
+                b. o casaco <input name="respostas[quest_3e6_3e11_meses][11]" type="text" /><br><br>
+
+                c. o círculo <input name="respostas[quest_3e6_3e11_meses][12]" type="text" /><br><br>
+
+                d. o quadrado <input name="respostas[quest_3e6_3e11_meses][13]" type="text" /><br><br>
+
+                d. o médico <input name="respostas[quest_3e6_3e11_meses][14]" type="text" /><br><br>
+
+                d. o bombeiro <input name="respostas[quest_3e6_3e11_meses][15]" type="text" /><br><br>
+
+            </i>
+
+            <br><br><br><br>
+
+            <h4>24.Compreende pronome pessoal.<input name="respostas[quest_3e6_3e11_meses][16]" type="text" /></h4><br>
+            (1 ponto = 2 acertos) <br><br>
+
+            Material: Manual de Figuras, págs. 25 a 26.<br>
+            <i><b>Mostre a figura em que:</b></i><br><br>
+
+            <i>
+                a. Ela está chorando <input name="respostas[quest_3e6_3e11_meses][17]" type="text" /><br><br>
+
+                b. Ele está tomando sorvete <input name="respostas[quest_3e6_3e11_meses][18]" type="text" /><br><br>
+
+                c. Eles estão tomando sorvete <input name="respostas[quest_3e6_3e11_meses][19]" type="text" /><br><br>
+            </i>
+
+            <br><br><br><br>
+
+
+
+            <h3 style="margin-left: 12%;">Linguagem Expressiva</h3><br>
+
+            <br><br>
+
+            <h4>21. Habilidade para solucionar e responder a questões sobre situações <br>
+                problemas.<input name="respostas[quest_3e6_3e11_meses][20]" type="text" /></h4><br>
+            (ponto: 2 acertos, sendo que gestos não são considerados) <br><br>
+            <i><b>O que você faz quando...</b></i><br><br>
+
+            <i>
+                a. você está com sono? <input name="respostas[quest_3e6_3e11_meses][21]" type="text" /><br><br>
+
+                b. suas mãos estão sujas? <input name="respostas[quest_3e6_3e11_meses][22]" type="text" /><br><br>
+
+                c. você está com fome? <input name="respostas[quest_3e6_3e11_meses][23]" type="text" /><br><br>
+            </i>
+
+            <br><br><br><br>
+
+            <h4>22. Habilidade para definir objetos.<input name="respostas[quest_3e6_3e11_meses][24]" type="text" /></h4><br>
+            (1 ponto = se fala sobre a utilização adequada de dois objetos) <br><br>
+            <i><b>Para que serve...</b></i><br><br>
+
+            <i>
+                a. uma bola <input name="respostas[quest_3e6_3e11_meses][25]" type="text" /><br><br>
+
+                b. um carro <input name="respostas[quest_3e6_3e11_meses][26]" type="text" /><br><br>
+
+                d. uma faca <input name="respostas[quest_3e6_3e11_meses][27]" type="text" /><br><br>
+            </i>
+
+            <br><br><br><br>
+
+            <h4>23. Vocabulário expressivo.<input name="respostas[quest_3e6_3e11_meses][28]" type="text" /></h4><br>
+            (1 ponto = se fala sobre a utilização adequada de dois objetos) <br><br>
+
+            Material: Manual de Figuras, págs. 60 a 62.<br>
+            <i><b>Diga o nome das figuras que eu apontar...</b></i><br><br>
+
+            <i>
+                a. círculo <input name="respostas[quest_3e6_3e11_meses][29]" type="text" /><br><br>
+
+                b. estrela <input name="respostas[quest_3e6_3e11_meses][30]" type="text" /><br><br>
+
+                c. computador <input name="respostas[quest_3e6_3e11_meses][31]" type="text" /><br><br>
+
+                d. jornal <input name="respostas[quest_3e6_3e11_meses][32]" type="text" /><br><br>
+
+                e. celular <input name="respostas[quest_3e6_3e11_meses][33]" type="text" /><br><br>
+
+                f. lago <input name="respostas[quest_3e6_3e11_meses][34]" type="text" /><br><br>
+
+                g. árvore <input name="respostas[quest_3e6_3e11_meses][35]" type="text" /><br><br>
+
+                h. flor <input name="respostas[quest_3e6_3e11_meses][36]" type="text" /><br><br>
+            </i>
+
+            <br><br><br><br>
+
+            <h4>24. Adquiriu plural regular.<input name="respostas[quest_3e6_3e11_meses][24]" type="text" /></h4><br>
+            (1 ponto = se a criança acrescenta o “s” no final de duas palavras) <br><br>
+            Material: Manual de Figuras, pág. 63.<br><br>
+
+                <i>a. Aqui tem um carro e aqui tem dois <input name="respostas[quest_3e6_3e11_meses][25]" type="text" /></i>(carros)<br><br>
+
+                <i>b. Aqui tem uma meia e aqui tem duas <input name="respostas[quest_3e6_3e11_meses][26]" type="text" /></i>(meias)<br><br>
+
+                <i>c. Aqui tem uma bola e aqui tem três <input name="respostas[quest_3e6_3e11_meses][27]" type="text" /></i>(bolas)<br><br>
+
+
+            <br><br><br><br>
+
+
+        </div>
 
 
 
