@@ -48,9 +48,10 @@ class AnamneseGigantePsicopedaNeuroPsicomotosPt2AutSeeds extends Seeder {
         $idade_entrou_na_escola = ['4 anos', '5 anos', '6 anos'];
         $adaptouse_bem = ['Sim', 'Não'];
         $metodo_alfabetizacao = ['Métodos sintéticos', 'Métodos analíticos'];
-        $mudou_de_escola_se_sim_em_qual_serie_e_idade = [''];
+        $mudou_de_escola_se_sim_em_qual_serie_e_idade = ['Não mudou', 'Mudou, 1ª série, 6 anos', 'Mudou, 2ª série, 7 anos'];
         $escola_atual = ['Educandário Santa Isabel', 'Educandário Saber Crescer', 'Escola de Aplicação Professora Ivonita Alves Guerra', 'Educandário Cecília Meireles', 'Escola Simôa Gomes', 'Educandário Santo André'];
         $metodo_alfabetizacao_atual = ['Método sintético', 'Método analíticos'];
+        $serie_e_turno = ['3ª série, manhã', '4ª série, manhã', '5ª série, tarde'];
         $professor = ['Maria Ferreira', 'Ana da Silva', 'Joana Félix', 'Eliza Andrade'];
         $faz_as_tarefaz_sozinho_se_nao_com_quem_faz = ['Sim', 'Não, com o pai', 'Não, com o irmão'];
         $descricao_momento_licoes = ['Sem descrição'];
@@ -59,7 +60,7 @@ class AnamneseGigantePsicopedaNeuroPsicomotosPt2AutSeeds extends Seeder {
         $fato_importante_vida_escolar = ['Não há'];
         $queixas_frequentes = ['Não há'];
         $tem_dificuldades_para = ['Expressar sentimentos'];
-        $conhece_tais_coisas = ['Não soube informar'];
+        $conhece_tais_coisas_lista = ['Cores', 'Letras', 'Números', 'Dinheiro', 'Meses do ano', 'Sabe recortar', 'Sabe dias da semana'];
         $apresenta_tiques_se_sim_quais = ['Tique motor', 'Tique verbal'];
         $como_pegua_o_lapis = ['Três dedos'];
         $forca_da_escrita = ['Forte', 'Leve'];
@@ -73,6 +74,16 @@ class AnamneseGigantePsicopedaNeuroPsicomotosPt2AutSeeds extends Seeder {
 
         //Gerando anamnese gigante parte 2 automaticamente
         for($i = 0; $i < $qtd_anamnese_gigante; $i++){
+
+            $conhece_tais_coisas = '';
+            $qnt_conhece_tais_coisas = rand(1, 7);
+            for ($j=0; $j<$qnt_conhece_tais_coisas; $j++){
+                $conhece_tais_coisas = $conhece_tais_coisas . $conhece_tais_coisas_lista[rand(0, sizeof($conhece_tais_coisas_lista)-1)];
+                $conhece_tais_coisas = $conhece_tais_coisas . ', ';
+
+            }
+            $conhece_tais_coisas = substr($conhece_tais_coisas, 0, -1);
+
             DB::table('anamnese__pnp__pt2s')->insert([
                 'id_tp' => ($i + 1),
                 'teve_otite_infancia' => $teve_otite_infancia[rand(0, sizeof($teve_otite_infancia)-1)],
@@ -123,6 +134,7 @@ class AnamneseGigantePsicopedaNeuroPsicomotosPt2AutSeeds extends Seeder {
                 'mudou_de_escola_se_sim_em_qual_serie_e_idade' => $mudou_de_escola_se_sim_em_qual_serie_e_idade[rand(0, sizeof($mudou_de_escola_se_sim_em_qual_serie_e_idade)-1)],
                 'escola_atual' => $escola_atual[rand(0, sizeof($escola_atual)-1)],
                 'metodo_alfabetizacao_atual' => $metodo_alfabetizacao_atual[rand(0, sizeof($metodo_alfabetizacao_atual)-1)],
+                'serie_e_turno' =>  $serie_e_turno[rand(0, sizeof($serie_e_turno)-1)],
                 'professor' =>$professor[rand(0, sizeof($professor)-1)],
                 'faz_as_tarefaz_sozinho_se_nao_com_quem_faz' => $faz_as_tarefaz_sozinho_se_nao_com_quem_faz[rand(0, sizeof($faz_as_tarefaz_sozinho_se_nao_com_quem_faz)-1)],
                 'descricao_momento_licoes' => $descricao_momento_licoes[rand(0, sizeof($descricao_momento_licoes)-1)],
@@ -131,7 +143,7 @@ class AnamneseGigantePsicopedaNeuroPsicomotosPt2AutSeeds extends Seeder {
                 'fato_importante_vida_escolar' => $fato_importante_vida_escolar[rand(0, sizeof($fato_importante_vida_escolar)-1)],
                 'queixas_frequentes' => $queixas_frequentes[rand(0, sizeof($queixas_frequentes)-1)],
                 'tem_dificuldades_para' => $tem_dificuldades_para[rand(0, sizeof($tem_dificuldades_para)-1)],
-                'conhece_tais_coisas' => $conhece_tais_coisas[rand(0, sizeof($conhece_tais_coisas)-1)],
+                'conhece_tais_coisas' => $conhece_tais_coisas,
                 'apresenta_tiques_se_sim_quais' => $apresenta_tiques_se_sim_quais[rand(0, sizeof($apresenta_tiques_se_sim_quais)-1)],
                 'como_pegua_o_lapis' => $como_pegua_o_lapis[rand(0, sizeof($como_pegua_o_lapis)-1)],
                 'forca_da_escrita' => $forca_da_escrita[rand(0, sizeof($forca_da_escrita)-1)],
