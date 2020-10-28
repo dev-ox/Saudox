@@ -116,25 +116,150 @@
                 A examinadora aponta para o objeto e em seguida nomeia para a <br>
                 criança, estimulando-a a repetir:<br>
             </i>
-            Ex.: Olhe a bola....bola <br>
+            Ex.: Olhe a bola...bola <br>
             (bola, neném, carro, papai e mamãe) <br>
-            <!-- o finalzinho parece ser só exemplos.... -->
+            <!-- o finalzinho parece ser só exemplos... -->
 
         </div>
 
+        <div id="bloco_1e6_1e11_meses">
+            <h3 style="margin-left: 12%;">Linguagem Receptiva</h3><br>
+
+            <br><br>
+
+            <h4>5.Compreende ordens simples sem pistas gestuais.<input name="respostas[quest_1e6_1e11_meses][0]" type="text" /></h4><br>
+            (1 ponto = 2 acertos) <br><br>
+
+            Material: bolsa e algumas bolas. <br>
+            Ordem: Vamos ver as bolas que estão dentro da bolsa?. <br><br>
+
+            <i>
+                a. Tire as bolas da bolsa <input name="respostas[quest_1e6_1e11_meses][1]" type="text" /><br><br>
+
+                b. Agora me dê uma bolsa <input name="respostas[quest_1e6_1e11_meses][2]" type="text" /><br><br>
+
+                c. Agora ponha as bolas dentro da bolsa <input name="respostas[quest_1e6_1e11_meses][3]" type="text" /><br><br>
+
+            </i>
+
+            <br><br><br><br>
+
+            <h4>6.Identifica figuras.<input name="respostas[quest_1e6_1e11_meses][4]" type="text" /></h4><br>
+            (1 ponto = 4 acertos) <br><br>
+
+            Material: Manual de Figuras, pág.2. <br>
+            Ordem: Olhe estas figuras. Mostre... <br><br>
+
+            <i>
+                a. a banana <input name="respostas[quest_1e6_1e11_meses][5]" type="text" /><br><br>
+
+                b. o pé <input name="respostas[quest_1e6_1e11_meses][6]" type="text" /><br><br>
+
+                c. o carro <input name="respostas[quest_1e6_1e11_meses][7]" type="text" /><br><br>
+
+                d. o sapato <input name="respostas[quest_1e6_1e11_meses][8]" type="text" /><br><br>
+
+                e. o gato <input name="respostas[quest_1e6_1e11_meses][9]" type="text" /><br><br>
+
+                f. a mão <input name="respostas[quest_1e6_1e11_meses][10]" type="text" /><br><br>
+
+            </i>
+
+            <br><br><br><br>
+
+            <h4>7.Identifica partes do corpo em si próprio.<input name="respostas[quest_1e6_1e11_meses][11]" type="text" /></h4><br>
+            (1 ponto = 4 acertos) <br><br>
+
+            Ordem: Mostre o(a) seu(ua)... <br><br>
+
+            <i>
+                a. cabelo <input name="respostas[quest_1e6_1e11_meses][12]" type="text" /><br><br>
+
+                b. olho <input name="respostas[quest_1e6_1e11_meses][13]" type="text" /><br><br>
+
+                c. nariz <input name="respostas[quest_1e6_1e11_meses][14]" type="text" /><br><br>
+
+                d. pé <input name="respostas[quest_1e6_1e11_meses][15]" type="text" /><br><br>
+
+                e. orelha <input name="respostas[quest_1e6_1e11_meses][16]" type="text" /><br><br>
+
+                f. mão <input name="respostas[quest_1e6_1e11_meses][17]" type="text" /><br><br>
+
+                g. boca <input name="respostas[quest_1e6_1e11_meses][18]" type="text" /><br><br>
+
+            </i>
+
+            <br><br><br><br>
+
+            <h4>8.Compreende ações dentro de um contexto.<input name="respostas[quest_1e6_1e11_meses][19]" type="text" /></h4><br>
+            (1 ponto = 2 acertos) <br><br>
+
+            Material: um cachorrinho, um pratinho, uma colher e um copo. <br>
+            Ordem: Coloque o material sobre a mesa e fale para a criança: <br><br>
+
+            <i>
+                a. O cachorro está com fome. Dê comida pra ele comer. <input name="respostas[quest_1e6_1e11_meses][20]" type="text" /><br><br>
+
+                b. O cachorro está com sede. Dê água pra ele beber. <input name="respostas[quest_1e6_1e11_meses][21]" type="text" /><br><br>
+
+                c. O cachorro está com sono. Bote ele pra dormir. <input name="respostas[quest_1e6_1e11_meses][22]" type="text" /><br><br>
+
+            </i>
+
+            <br><br><br><br>
+            <br><br><br><br>
+
+            <h3 style="margin-left: 12%;">Linguagem Expressiva</h3><br>
+
+            <br><br>
 
 
+            <h4>5. Nomeia objetos. <input name="respostas[quest_1e6_1e11_meses][23]" type="text" /></h4>
+            (1 ponto = 2 acertos)<br><br>
+
+            Material: carrinho, cachorro, bola, bonequinha. <br>
+            Aponte para cada objeto e pergunte para a criança: O que é isso? <br><br>
+
+            <i>
+                a. bola <input name="respostas[quest_1e6_1e11_meses][24]" type="text" /><br><br>
+
+                b. carro <input name="respostas[quest_1e6_1e11_meses][25]" type="text" /><br><br>
+
+                c. neném <input name="respostas[quest_1e6_1e11_meses][26]" type="text" /><br><br>
+
+                d. cachorro <input name="respostas[quest_1e6_1e11_meses][27]" type="text" /><br><br>
+
+            </i>
+
+            <br><br><br><br>
+
+            <h4>6. Produz seqüência de palavras soltas: <input name="respostas[quest_1e6_1e11_meses][28]" type="text" /></h4>
+            (1 ponto = fala sobre um objeto, pessoa ou acontecimento através da seqüência de duas ou mais palavras em uma mesma emissão vocal)<br><br>
+            Observação da linguagem espontânea em atividades lúdicas.<br>
+            <i>Crie situações através de brincadeiras para estimular a criança a falar</i>: <br>
+            <input name="respostas[quest_1e6_1e11_meses][29]" type="text" style="width: 30%;"/> <br><br>
 
 
-        <div id="bloco_1e6_1e11_meses">1 ano e 6 m. até 1 ano e 11 m.</div>
-        <div id="bloco_2_2e5_meses">2 anos até 2 anos e 5 meses</div>
-        <div id="bloco_2e6_2e11_meses">2 anos e 6 m. até 2 anos e 11 m.</div>
-        <div id="bloco_3_3e5_meses">3 anos até 3 anos e 5 meses</div>
-        <div id="bloco_3e6_3e11_meses">3 anos e 6 m. até 3 anos e 11 m.</div>
-        <div id="bloco_4_4e5_meses">4 anos até 4 anos e 5 meses</div>
-        <div id="bloco_4e6_4e11_meses">4 anos e 6 m. até 4 anos e 11 m.</div>
-        <div id="bloco_5_5e11_meses">5 anos até 5 anos e 11 meses</div>
-        <div id="bloco_6_6e11_meses">6 anos até 6 anos e 11 meses</div>
+            <br><br><br><br>
+
+            <h4>7. Compreende relação de posse.<input name="respostas[quest_1e6_1e11_meses][30]" type="text" /></h4>
+            (1 ponto = se emprega espontaneamente: meu, minha ou diz o próprio nome)<br><br>
+            <i>Ex.: aponte para o seu sapato e diga para a criança:.</i><br>
+            <i>Este é o meu sapato. Em seguida aponte para o sapato da criança e pergunte: Este sapato é meu?</i> <br>
+            <input name="respostas[quest_1e6_1e11_meses][31]" type="text" /><br><br>
+
+            <br><br><br><br>
+
+            <h4>8.Adquiriu vocabulário de pelo menos 10 palavras diferentes.<input name="respostas[quest_1e6_1e11_meses][32]" type="text" /></h4>
+            (1 ponto = disse 10 palavras de forma espontânea no período da avaliação)<br><br>
+            <i>Escreva aqui as palavras que a criança disser durante a avaliação:</i>: <br>
+            <input name="respostas[quest_1e6_1e11_meses][33]" type="text" style="width: 30%;"/> <br><br>
+
+
+            <br><br><br><br>
+            <!-- o finalzinho parece ser só exemplos... -->
+        </div>
+
 
 
 
