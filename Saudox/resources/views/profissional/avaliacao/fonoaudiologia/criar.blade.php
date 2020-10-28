@@ -1290,6 +1290,151 @@
             <br><br><br><br>
         </div>
 
+        <div id="bloco_6_6e11_meses">
+            <h3 style="margin-left: 12%;">Linguagem Receptiva</h3><br>
+
+            <br><br>
+
+            <h4>37. Faz cálculo de soma e subtração até 5.<input name="respostas[quest_6_6e11_meses][0]" type="text" /></h4><br>
+            (1 ponto = 2 acertos; mostra com os dedos o número ou diz a resposta) <br><br>
+
+            <i>
+                a. Se você tem três balas e comeu uma, com quantas você ficou? <input name="respostas[quest_6_6e11_meses][1]" type="text" /><br><br>
+
+                b. Se você tem dois lápis e eu lhe dou mais dois, com quantos lápis você<br>
+                vai ficar? <input name="respostas[quest_6_6e11_meses][2]" type="text" /><br><br>
+
+                c. Se você tem três balas e eu lhe dou mais duas, com quantas você vai<br>
+                ficar? <input name="respostas[quest_6_6e11_meses][3]" type="text" /><br><br>
+
+            </i>
+
+            <br><br><br><br>
+
+            <h4>38.Compreende conceito de velocidade.<input name="respostas[quest_6_6e11_meses][4]" type="text" /></h4><br>
+            (1 ponto = 1 acerto) <br><br>
+
+            Material: Manual de Figuras, pág. 45.<br>
+            <i><b>Estas figuras mostram animais e transportes que se movem com<br>
+                velocidades diferentes.</b></i><br><br>
+
+            <i>
+                a. Mostre o transporte que é mais rápido <input name="respostas[quest_6_6e11_meses][5]" type="text" /><br><br>
+
+                b. Mostre o bicho que é mais lento <input name="respostas[quest_6_6e11_meses][6]" type="text" /><br><br>
+            </i>
+
+            <br><br><br><br>
+
+            <h4>39. Relação espacial.<input name="respostas[quest_6_6e11_meses][7]" type="text" /></h4><br>
+            (1 ponto = 2 acertos) <br><br>
+
+            Material: Manual de Figuras, págs. 46 a 48.<br>
+            <i><b>Olhe as figuras destes meninos empinando pipas.</b></i><br><br>
+
+            <i>
+                a. Mostre a pipa que está mais longe do menino <input name="respostas[quest_6_6e11_meses][8]" type="text" /><br><br>
+
+                    <b>Olhe as figuras destes bichinhos.</b>
+
+                b. Mostre o bichinho que está entre o gato e o cachorro <input name="respostas[quest_6_6e11_meses][9]" type="text" /><br><br>
+
+                c. Mostre o macaco que está mais perto do leão <input name="respostas[quest_6_6e11_meses][10]" type="text" /><br><br>
+            </i>
+
+            <br><br><br><br>
+
+            <h4>40. Relação temporal.<input name="respostas[quest_6_6e11_meses][11]" type="text" /></h4><br>
+            (1 ponto = 2 acertos) <br><br>
+
+            Material: Manual de Figuras, págs. 49 a 50.<br><br>
+
+            <i>
+                a. Depois de apontar para o gato amarelo, aponte para o gato branco <input name="respostas[quest_6_6e11_meses][12]" type="text" /><br><br>
+
+                b. Antes de apontar o elefante, aponte para o macaco e o jacaré <input name="respostas[quest_6_6e11_meses][13]" type="text" /><br><br>
+            </i>
+
+            <br><br><br><br>
+
+            <h3 style="margin-left: 12%;">Linguagem Expressiva</h3><br>
+
+            <br><br>
+
+            <h4>37. Habilidade para definir palavras.<input name="respostas[quest_6_6e11_meses][14]" type="text" /></h4><br>
+            (1 ponto=2 acertos. A criança tem que descrever pelo menos uma<br>
+            característica do objeto) <br><br>
+
+            <i><b>Diga duas coisas que você sabe sobre...</b></i><br><br>
+
+            <i>
+                a. a banana <input name="respostas[quest_6_6e11_meses][15]" type="text" /><br><br>
+
+                b. o celular <input name="respostas[quest_6_6e11_meses][16]" type="text" /><br><br>
+
+                b. o ônibus <input name="respostas[quest_6_6e11_meses][17]" type="text" /><br><br>
+            </i>
+
+            <br><br><br><br>
+
+            <h4>38.Completa analogias.<input name="respostas[quest_6_6e11_meses][18]" type="text" /></h4><br>
+            (1 ponto = 2 acertos) <br><br>
+
+            <i><b>Eu vou falar uma frase e queria que você terminasse para mim:</b></i><br><br>
+
+            <i>
+                a. O gato é pequeno, o leão é <input name="respostas[quest_6_6e11_meses][19]" type="text" /><br><br>
+
+                b. O sorvete é gelado, o café é <input name="respostas[quest_6_6e11_meses][20]" type="text" /><br><br>
+
+                c. A planta é verde, o céu é <input name="respostas[quest_6_6e11_meses][21]" type="text" /><br><br>
+            </i>
+
+            <br><br><br><br>
+
+
+            <h4>39.Faz derivação de palavra (acrescenta sufixos).<input name="respostas[quest_6_6e11_meses][22]" type="text" /></h4><br>
+            (1 ponto = 2 acertos) <br><br>
+
+            Material: Manual de Figuras, pág. 73.<br>
+            <i><b>Esse homem está trabalhando, ele é um trabalhador.</b></i><br><br>
+
+            <i>
+                a. Essa mulher canta, ela é uma <input name="respostas[quest_6_6e11_meses][23]" type="text" /><br><br>
+
+                b. Esse homem joga, ele é um <input name="respostas[quest_6_6e11_meses][24]" type="text" /><br><br>
+
+                c. Esse homem pinta, ele é um <input name="respostas[quest_6_6e11_meses][25]" type="text" /><br><br>
+            </i>
+
+            <br><br><br><br>
+
+            <h4>40.Memória.<input name="respostas[quest_6_6e11_meses][26]" type="text" /></h4><br>
+            (1 ponto = se a criança repetir duas frases corretamente) <br><br>
+
+            Material: Manual de Figuras, págs. 74 e 75.<br>
+            <i><b>Vou contar uma estória. Preste muita atenção:</b></i><br><br>
+
+            <i>
+                1. Breno cai muito quando joga futebol. Mas sempre levanta e continua jogando.<br>
+                Quando sua mãe pergunta: Breno você machucou o joelho? Ele começa a chorar.<br>
+
+                a. O que acontece quando Breno joga futebol? <input name="respostas[quest_6_6e11_meses][27]" type="text" /><br><br>
+
+                b. O que Breno faz quando sua mãe pergunta se machucou o joelho? <input name="respostas[quest_6_6e11_meses][28]" type="text" /><br><br>
+
+                2. Surpresa! Hoje a sobremesa é sorvete, mas tem que comer tudo!<br>
+                Paulinho diz: Ôba! já acabei de comer!<br>
+                Mas sua irmã Ana, está com o prato cheio. Ana diz:<b> Eu também vou comer tudo!</b><br>
+
+                a. O que Paulinho falou? <input name="respostas[quest_6_6e11_meses][29]" type="text" /><br><br>
+
+                b. O que Ana falou? <input name="respostas[quest_6_6e11_meses][30]" type="text" /><br><br>
+            </i>
+
+            <br><br><br><br>
+        </div>
+
 
     </div>
 
