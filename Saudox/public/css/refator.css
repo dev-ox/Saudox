@@ -177,7 +177,7 @@ html {
 }
 
 .required::after {
-  font-weight:bold;
+  font-weight: bold;
   content: " *";
   color: red;
 }
