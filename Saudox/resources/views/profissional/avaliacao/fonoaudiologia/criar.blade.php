@@ -570,6 +570,162 @@
 
         </div>
 
+        <div id="bloco_3_3e5_meses">
+            <h3 style="margin-left: 12%;">Linguagem Receptiva</h3><br>
+
+            <br><br>
+
+            <h4>17. Compreende conceitos de adjetivos.<input name="respostas[quest_3_3e5_meses][0]" type="text" /></h4><br>
+            (1 ponto = 2 acertos) <br><br>
+
+            Material: Manual de figuras, págs. 12 e 14.<br>
+            <i><b>Olhe estas figuras e mostre...</b></i><br><br>
+
+
+            <i>
+                a. o que é mais pesado <input name="respostas[quest_3_3e5_meses][1]" type="text" /><br><br>
+
+                b. o que está vazio <input name="respostas[quest_3_3e5_meses][2]" type="text" /><br><br>
+
+                c. os dois que são iguais <input name="respostas[quest_3_3e5_meses][3]" type="text" /><br><br>
+            </i>
+
+            <br><br><br><br>
+
+            <h4>18.Compreende perguntas negativas.<input name="respostas[quest_3_3e5_meses][4]" type="text" /></h4><br>
+            (1 ponto = 2 acertos) <br><br>
+
+            Material: Manual de figuras, págs. 15 e 16.<br><br>
+
+
+            <i>
+                a. Qual o lápis que não está dentro da caixa? <input name="respostas[quest_3_3e5_meses][5]" type="text" /><br><br>
+
+                b. Que passarinho não está voando? <input name="respostas[quest_3_3e5_meses][6]" type="text" /><br><br>
+
+            </i>
+
+            <br><br><br><br>
+
+            <h4>19.Categoriza.<input name="respostas[quest_3_3e5_meses][7]" type="text" /></h4><br>
+            (1 ponto = 2 acertos) <br><br>
+
+            Material: Manual de figuras, pág. 17.<br>
+            <i><b>Olhe estas figuras e mostre...</b></i><br><br>
+
+            <i>
+                a. todos os bichinhos <input name="respostas[quest_3_3e5_meses][8]" type="text" /><br><br>
+
+                b. todos os brinquedos <input name="respostas[quest_3_3e5_meses][9]" type="text" /><br><br>
+
+                c. todas as coisas que comemos <input name="respostas[quest_3_3e5_meses][10]" type="text" /><br><br>
+
+            </i>
+
+            <br><br><br><br>
+
+            <h4>20.Mostra partes do corpo.<input name="respostas[quest_3_3e5_meses][11]" type="text" /></h4><br>
+            (1 ponto = 6 acertos) <br><br>
+
+            <i><b>Mostre...</b></i><br><br>
+
+            <i>
+                a. a cabeça <input name="respostas[quest_3_3e5_meses][12]" type="text" /><br><br>
+
+                b. o braço <input name="respostas[quest_3_3e5_meses][13]" type="text" /><br><br>
+
+                c. o joelho <input name="respostas[quest_3_3e5_meses][14]" type="text" /><br><br>
+
+                d. o dedo <input name="respostas[quest_3_3e5_meses][15]" type="text" /><br><br>
+
+                e. o pescoço <input name="respostas[quest_3_3e5_meses][16]" type="text" /><br><br>
+
+                f. o queixo <input name="respostas[quest_3_3e5_meses][17]" type="text" /><br><br>
+
+                g. a bochecha <input name="respostas[quest_3_3e5_meses][18]" type="text" /><br><br>
+
+            </i>
+
+            <br><br><br><br>
+
+
+
+            <h3 style="margin-left: 12%;">Linguagem Expressiva</h3><br>
+
+            <br><br>
+
+            <h4>17. Compreende e responde questões sobre si.<input name="respostas[quest_3_3e5_meses][19]" type="text" /></h4><br>
+            (1 ponto = 2 acertos) <br><br>
+
+            <i>
+                a. Qual é o seu nome? <input name="respostas[quest_3_3e5_meses][20]" type="text" /><br><br>
+
+                b. Quantos anos você tem? <input name="respostas[quest_3_3e5_meses][21]" type="text" /><br><br>
+
+                c. Você tem irmãos? <input name="respostas[quest_3_3e5_meses][22]" type="text" /><br><br>
+
+                d. Como se chama(m)? <input name="respostas[quest_3_3e5_meses][23]" type="text" /><br><br>
+
+                e. Quais os brinquedos que vocês gostam de brincar? <input name="respostas[quest_3_3e5_meses][24]" type="text" /><br><br>
+
+            </i>
+
+            <br><br><br><br>
+
+            <h4>18.Fala sobre o uso de um objeto.<input name="respostas[quest_3_3e5_meses][25]" type="text" /></h4><br>
+            (1 ponto = 2 acertos, gestos não são considerados) <br><br>
+
+            <i><b>O que você faz com...</b></i><br><br>
+
+            <i>
+                a. uma colher <input name="respostas[quest_3_3e5_meses][26]" type="text" /><br><br>
+
+                b. um sabão <input name="respostas[quest_3_3e5_meses][27]" type="text" /><br><br>
+
+                c. uma calça <input name="respostas[quest_3_3e5_meses][28]" type="text" /><br><br>
+            </i>
+
+            <br><br><br><br>
+
+            <h4>19. Descreve ações diante de uma figura.<input name="respostas[quest_3_3e5_meses][29]" type="text" /></h4><br>
+            (1 ponto = 2 acertos) <br><br>
+
+            Figuras, págs. 58 e 59.<br><br>
+
+            <i>
+                a.Aqui este homem está andando, aqui ele está tocando a campainha. <br>
+                E aqui o que ele está fazendo? <input name="respostas[quest_3_3e5_meses][30]" type="text" /><br><br>
+
+                b. Este menino está comendo um sanduíche. E este o que está fazendo? <input name="respostas[quest_3_3e5_meses][31]" type="text" /><br><br>
+
+                c. Este menino está andando de bicicleta. E este o que está fazendo? <input name="respostas[quest_3_3e5_meses][32]" type="text" /><br><br>
+            </i>
+
+            <br><br><br><br>
+
+            <h4>20.Compreende e responde a questões com o pronome interrogativo<br>
+                “que”.<input name="respostas[quest_3_3e5_meses][33]" type="text" /></h4><br>
+            (1 ponto = 4 acertos, gestos não são considerados) <br><br>
+
+            <i>
+                a .O que voa? <input name="respostas[quest_3_3e5_meses][34]" type="text" /><br><br>
+
+                b. O que nada? <input name="respostas[quest_3_3e5_meses][35]" type="text" /><br><br>
+
+                c. O que dorme? <input name="respostas[quest_3_3e5_meses][36]" type="text" /><br><br>
+
+                d .O que morde? <input name="respostas[quest_3_3e5_meses][37]" type="text" /><br><br>
+
+                e. O que chora? <input name="respostas[quest_3_3e5_meses][38]" type="text" /><br><br>
+
+                f. O que queima? <input name="respostas[quest_3_3e5_meses][39]" type="text" /><br><br>
+            </i>
+
+            <br><br><br><br>
+
+        </div>
+
+
 
 
     </div>
