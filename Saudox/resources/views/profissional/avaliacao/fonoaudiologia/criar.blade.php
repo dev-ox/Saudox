@@ -402,6 +402,173 @@
 
         </div>
 
+        <div id="bloco_2e6_2e11_meses">
+            <h3 style="margin-left: 12%;">Linguagem Receptiva</h3><br>
+
+            <br><br>
+
+            <h4>13.Compreende o uso dos objetos.<input name="respostas[quest_2e6_2e11_meses][0]" type="text" /></h4><br>
+            (1 ponto = 3 acertos) <br><br>
+
+            Material: Manual de figuras, pág. 4.<br>
+            <i>Aponte para cada figura e diga: <b>Mostre...</b></i><br><br>
+
+
+            <i>
+                a. O que você usa para beber? <input name="respostas[quest_2e6_2e11_meses][1]" type="text" /><br><br>
+
+                b. O que nós usamos para varrer o chão? <input name="respostas[quest_2e6_2e11_meses][2]" type="text" /><br><br>
+
+                c. Com o que você penteia o cabelo? <input name="respostas[quest_2e6_2e11_meses][3]" type="text" /><br><br>
+
+                d. O que nós usamos para cortar papel? <input name="respostas[quest_2e6_2e11_meses][4]" type="text" /><br><br>
+
+                e. O que você usa para comer? <input name="respostas[quest_2e6_2e11_meses][5]" type="text" /><br><br>
+
+            </i>
+
+            <br><br><br><br>
+
+            <h4>14.Compreende os conceitos dos adjetivos.<input name="respostas[quest_2e6_2e11_meses][6]" type="text" /></h4><br>
+            (1 ponto = 3 acertos) <br><br>
+
+            Material: Manual de figuras, págs. 5 a 8.<br>
+            <i>Mostre uma página de cada vez e diga: <b>Mostre...</b></i><br><br>
+
+
+            <i>
+                a. o bicho grande <input name="respostas[quest_2e6_2e11_meses][7]" type="text" /><br><br>
+
+                b. a bola pequena <input name="respostas[quest_2e6_2e11_meses][8]" type="text" /><br><br>
+
+                c. o que está quente <input name="respostas[quest_2e6_2e11_meses][9]" type="text" /><br><br>
+
+                d. quem está molhado <input name="respostas[quest_2e6_2e11_meses][10]" type="text" /><br><br>
+
+                e. quem está sujo <input name="respostas[quest_2e6_2e11_meses][11]" type="text" /><br><br>
+
+            </i>
+
+            <br><br><br><br>
+
+            <h4>15. Compreende relações parte/todo.<input name="respostas[quest_2e6_2e11_meses][12]" type="text" /></h4><br>
+            (1 ponto = 3 acertos) <br><br>
+
+            Material: Manual de figuras, pág. 9.<br>
+            <i><b>Mostre...</b></i><br><br>
+
+
+            <i>
+                a. a porta do caminhão <input name="respostas[quest_2e6_2e11_meses][13]" type="text" /><br><br>
+
+                b. a perna do menino <input name="respostas[quest_2e6_2e11_meses][14]" type="text" /><br><br>
+
+                c. o rabo do cachorro <input name="respostas[quest_2e6_2e11_meses][15]" type="text" /><br><br>
+
+                d. as rodas do carro <input name="respostas[quest_2e6_2e11_meses][16]" type="text" /><br><br>
+
+            </i>
+
+            <br><br><br><br>
+
+            <h4>16.Identifica figuras.<input name="respostas[quest_2e6_2e11_meses][17]" type="text" /></h4><br>
+            (1 ponto = 4 acertos) <br><br>
+
+            Material: Manual de figuras, págs. 10 e 11.<br>
+            <i><b>Mostre...</b></i><br><br>
+
+
+            <i>
+                a. o barco <input name="respostas[quest_2e6_2e11_meses][18]" type="text" /><br><br>
+
+                b. o caminhão <input name="respostas[quest_2e6_2e11_meses][19]" type="text" /><br><br>
+
+                c. o avião <input name="respostas[quest_2e6_2e11_meses][20]" type="text" /><br><br>
+
+                d. a mochila <input name="respostas[quest_2e6_2e11_meses][21]" type="text" /><br><br>
+
+                e. a bolsa <input name="respostas[quest_2e6_2e11_meses][22]" type="text" /><br><br>
+
+                f. a mala <input name="respostas[quest_2e6_2e11_meses][23]" type="text" /><br><br>
+
+            </i>
+
+            <br><br><br><br>
+
+            <h3 style="margin-left: 12%;">Linguagem Expressiva</h3><br>
+
+            <br><br>
+
+            <h4>13.Responde a questões sobre si mesmo.<input name="respostas[quest_2e6_2e11_meses][24]" type="text" /></h4><br>
+            (1 ponto = se responde a duas perguntas corretamente) <br><br>
+
+            <i>Pergunte:</i><br><br>
+
+            <i>
+                a. Qual é o seu nome? <input name="respostas[quest_2e6_2e11_meses][25]" type="text" /><br><br>
+
+                b. Você é menino ou menina? <input name="respostas[quest_2e6_2e11_meses][26]" type="text" /><br><br>
+
+                c. Você tem irmãos? <input name="respostas[quest_2e6_2e11_meses][27]" type="text" /><br><br>
+
+            </i>
+
+            <br><br><br><br>
+
+            <h4>14.Vocabulário.<input name="respostas[quest_2e6_2e11_meses][28]" type="text" /></h4><br>
+            (1 ponto = 4 acertos) <br><br>
+
+            Material: Manual de figuras, págs. 53 e 55.<br>
+            <i>Aponte para cada figura e pergunte: <b>O que é isto?</b></i><br><br>
+
+
+            <i>
+                a. cavalo <input name="respostas[quest_2e6_2e11_meses][29]" type="text" /><br><br>
+
+                b. cachorro <input name="respostas[quest_2e6_2e11_meses][30]" type="text" /><br><br>
+
+                c. avião <input name="respostas[quest_2e6_2e11_meses][31]" type="text" /><br><br>
+
+                d. barco <input name="respostas[quest_2e6_2e11_meses][32]" type="text" /><br><br>
+
+                e. calça <input name="respostas[quest_2e6_2e11_meses][33]" type="text" /><br><br>
+
+                f. shorte <input name="respostas[quest_2e6_2e11_meses][34]" type="text" /><br><br>
+
+                g. camisa ou blusa <input name="respostas[quest_2e6_2e11_meses][35]" type="text" /><br><br>
+
+            </i>
+
+            <br><br><br><br>
+
+            <h4>15. Emprega palavras que indicam posse.<input name="respostas[quest_2e6_2e11_meses][36]" type="text" /></h4><br>
+            (1 ponto = 1 resposta correta) <br><br>
+
+            Material: Manual de figuras, pág. 56.<br>
+            <i>AAponte para cada figura e diga:</i><br><br>
+
+                <i>a. Esta bola é dele. De quem é esta bola? <input name="respostas[quest_2e6_2e11_meses][37]" type="text" /></i> (Dela, ou da menina) <br><br>
+
+                <i>b. Este sorvete é dela. De quem é este sorvete? <input name="respostas[quest_2e6_2e11_meses][38]" type="text" /></i> (Dele, ou da menina)<br><br>
+
+            <br><br><br><br>
+
+            <h4>Responde a questões que contenham: “o quê”, “onde” e questões <br>
+            que as respostas são sim/não.<input name="respostas[quest_2e6_2e11_meses][39]" type="text" /></h4><br>
+            (1 ponto = 2 corretos) <br><br>
+
+            Material: Manual de figuras, pág. 57.<br>
+            <i>AAponte para cada figura e pergunte:</i><br><br>
+
+                <i>a. O que ele está segurando? <input name="respostas[quest_2e6_2e11_meses][40]" type="text" /></i> (a bola) <br><br>
+
+                <i>b. Onde está o menino? <input name="respostas[quest_2e6_2e11_meses][41]" type="text" /></i> (no cavalo)<br><br>
+
+                <i>c. Este menino está acordado? <input name="respostas[quest_2e6_2e11_meses][42]" type="text" /></i> (não)<br><br>
+
+            <br><br><br><br>
+
+        </div>
 
 
 
