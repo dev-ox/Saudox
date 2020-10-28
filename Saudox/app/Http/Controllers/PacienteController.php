@@ -19,14 +19,16 @@ class PacienteController extends Controller {
     public function home(){
         $paciente = Paciente::find(Auth::id());
 
+        // Ele retorna o id da avaliação [note que o id nunca será negativo]
         $id_ava_fono = $paciente->avaliacaoFono ? $paciente->avaliacaoFono['id'] : -1;
         $id_ava_judo = $paciente->avaliacaoJudo ? $paciente->avaliacaoJudo['id'] : -1;
         $id_ava_neur = $paciente->avaliacaoNeuro ? $paciente->avaliacaoNeuro['id'] : -1;
         $id_ava_tocp = $paciente->avaliacaoTerapiaOcupacional ? $paciente->avaliacaoTerapiaOcupacional['id'] : -1;
 
-        $id_anamnese_fono = $paciente->anamneseTerapiaOcupacionals ? $paciente->anamneseTerapiaOcupacionals['id'] : -1;
-        $id_anamnese_pnps = $paciente->anamneseFonoaudiologias ? $paciente->anamneseFonoaudiologias['id'] : -1;
-        $id_anamnese_tocp = $paciente->anamneseGigantePsicopedaNeuroPsicomotos() ?  $paciente->anamneseGigantePsicopedaNeuroPsicomotos()->id : -1;
+        // Ele retorna o id da anamnese [note que o id nunca será negativo]
+        $id_anamnese_tocp = $paciente->anamneseTerapiaOcupacionals ? $paciente->anamneseTerapiaOcupacionals['id'] : -1;
+        $id_anamnese_fono = $paciente->anamneseFonoaudiologias ? $paciente->anamneseFonoaudiologias['id'] : -1;
+        $id_anamnese_pnps = $paciente->anamneseGigantePsicopedaNeuroPsicomotos() ?  $paciente->anamneseGigantePsicopedaNeuroPsicomotos()->id : -1;
 
         $agendamentos = Agendamentos::where('status', '1')
             ->where('cpf', $paciente->cpf)
