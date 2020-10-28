@@ -3,7 +3,7 @@ ul.timeline {
   position: relative;
 }
 
-ul.timeline:before {
+ul.timeline::before {
   content: ' ';
   background: var(--cor_azul);
   display: inline-block;
@@ -20,7 +20,7 @@ ul.timeline > li {
   margin-bottom: 60px;
 }
 
-ul.timeline > li:before {
+ul.timeline > li::before {
   content: ' ';
   background: var(--cor_azul);
   display: inline-block;
