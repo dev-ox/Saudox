@@ -9,7 +9,7 @@ use App\Paciente;
 
 use Illuminate\Support\Facades\Auth;
 
-class AvaliacaoTerapiaOTest extends TestCase {
+class Profissional_AvaliacaoTerapiaOTest extends TestCase {
     public $profissional;
     private $endereco;
     private $paciente;

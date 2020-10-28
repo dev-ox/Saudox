@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\AnamneseFonoaudiologia;
 
-class AnamneseFonoTest extends TestCase {
+class Profissional_AnamneseFonoTest extends TestCase {
     public $profissional;
     private $endereco;
     private $paciente;

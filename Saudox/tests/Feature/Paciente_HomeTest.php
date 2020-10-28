@@ -6,7 +6,7 @@ use Tests\TestCase;
 use App\Paciente;
 use App\Endereco;
 
-class PacienteHomeTest extends TestCase {
+class Paciente_HomeTest extends TestCase {
     private $paciente;
 
     private $nome_test;

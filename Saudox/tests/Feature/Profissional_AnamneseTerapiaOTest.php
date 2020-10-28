@@ -7,12 +7,12 @@ use App\Endereco;
 use App\Profissional;
 use App\Paciente;
 
-use App\AvaliacaoJudo;
-
 use Illuminate\Support\Facades\Auth;
 
-class AvaliacaoJudoTest extends TestCase {
-    public $funcionario;
+use App\AnamneseTerapiaOcupacional;
+
+class Profissional_AnamneseTerapiaOTest extends TestCase {
+    public $profissional;
     private $endereco;
     private $paciente;
 
@@ -23,16 +23,15 @@ class AvaliacaoJudoTest extends TestCase {
         $this->password_encrypt = bcrypt($this->password);
 
         $this->endereco = factory(Endereco::class)->create();
-        $this->profissional = factory(Profissional::class)->create([
-            'password' => $this->password,
-            'profissao' => Profissional::Recepcionista,
-        ]);
         $this->paciente = factory(Paciente::class)->create([
-            'login' => 'login_teste',
-            'password' => $this->password,
+            'password' => $this->password_encrypt,
+            'id_endereco' => $this->endereco->id,
         ]);
-
-        $this->avaliacao_judo = array(factory(AvaliacaoJudo::class)->create([
+        $this->profissional = factory(Profissional::class)->create([
+            'password' => $this->password_encrypt,
+            'profissao' => Profissional::Adm,
+        ]);
+        $this->anamnese_terapiaOcupacional = array(factory(AnamneseTerapiaOcupacional::class)->create([
             'id_paciente' => $this->paciente->id,
             'id_profissional' => $this->profissional->id,
         ]));
@@ -69,9 +68,9 @@ class AvaliacaoJudoTest extends TestCase {
     }
 
     /** @test **/
-    /* url: https://www.pivotaltracker.com/story/show/174990377 */
+    /* url: https://www.pivotaltracker.com/story/show/174990176 */
     /* TA_01 */
-    public function profissionalPodeCriarAvaliacaoJudo() {
+    public function profissionalPodeCriarAnamneseTerapiaOcupacional() {
         // Gera um profissional com as profissões indicadas e realiza o login
         $criarProf_Logar = $this->criarProfELogar(
             array(
@@ -82,79 +81,65 @@ class AvaliacaoJudoTest extends TestCase {
 
         // Gera um novo paciente (sem anamnese)
         $paciente_aux = factory(Paciente::class)->create([
-            'password' => $this->password,
+            'password' => $this->password_encrypt,
             'id_endereco' => $this->endereco->id,
         ]);
 
-        $resposta_ver_terapiaOcupacional = $this->get(route("profissional.avaliacao.judo.criar", ['id_paciente' => $paciente_aux->id]));
-        $resposta_ver_terapiaOcupacional->assertSee("Resposta emocional");
+        // Verifica se pode acessar a área de criação de anamnse de fonoaudiologia
+        $resposta_ver_terapiaOcupacional = $this->get(route("profissional.anamnese.terapia_ocupacional.criar", ['id_paciente' => $paciente_aux->id]));
+        $resposta_ver_terapiaOcupacional->assertSee("gestação");
 
         // Gera uma cópia da anamnese da Factory, indicando os ids
-        $copia_anamnese = $this->avaliacao_judo;
+        $copia_anamnese = $this->anamnese_terapiaOcupacional;
         $copia_anamnese['id_paciente'] = $paciente_aux->id;
         $copia_anamnese['id_profissional'] = $prof_aux->id;
 
         // Cria a Anamnese
-        $this->post(route("profissional.avaliacao.judo.criar.salvar", $copia_anamnese));
+        $this->post(route("profissional.anamnese.terapia_ocupacional.salvar", $copia_anamnese));
 
         // Verifica se a anamnese agora existe
-        $resposta_ver_ava_judo = $this->get(route("profissional.avaliacao.judo.ver", ['id_paciente' => $this->paciente->id]));
-        $resposta_ver_ava_judo->assertSee("Comportamento reflexivo");
+        $resposta_ver_fono = $this->get(route("profissional.anamnese.terapia_ocupacional.ver", ['id_paciente' => $this->paciente->id]));
+        $resposta_ver_fono->assertSee("Gestação");
     }
 
     /** @test **/
-    /* url: https://www.pivotaltracker.com/story/show/174990377 */
+    /* url: https://www.pivotaltracker.com/story/show/174990176 */
     /* TA_02 */
-    public function profissionalPodeAcessarAvaliacaoJudo() {
+    public function profissionalPodeAcessarAnamneseTerapiaOcupacional() {
         $this->criarProfELogar(
             array(
                 Profissional::Adm,
                 Profissional::TerapeutaOcupacional
             ), $this->password);
 
-        // Verifica se a anamnese agora existe
-        $resposta_ver_ava_judo = $this->get(route("profissional.avaliacao.judo.ver", ['id_paciente' => $this->paciente->id]));
-        $resposta_ver_ava_judo->assertSee("Comportamento reflexivo");
+        $resposta_ver_fono = $this->get(route("profissional.anamnese.terapia_ocupacional.ver", ['id_paciente' => $this->paciente->id]));
+        $resposta_ver_fono->assertSee("Gestação");
     }
 
     /** @ test **/
-    public function respostaEmocionalAvaliacaoJudoNaoPodeSerVazio() {
+    public function duracaoGestacaoAnamneseTerapiaOcupNaoPodeSerVazio() {
         $this->criarProfELogar(
             array(
                 Profissional::TerapeutaOcupacional
             ), $this->password);
 
-        $copia_anamnese = array($this->evolucao_judo);
-        $copia_anamnese['resposta_emocional'] = '';
-        $resposta = $this->post(route('profissional.avaliacao.judo.criar.salvar'), $copia_anamnese);
-        $resposta->assertSessionHasErrors('resposta_emocional');
+        $copia_anamnese = $this->anamnese_terapiaOcupacional;
+        $copia_anamnese['gestacao'] = '';
+        $resposta = $this->post(route('profissional.anamnese.terapia_ocupacional.salvar'), $copia_anamnese);
+        $resposta->assertSessionHasErrors('gestacao');
     }
 
-    /** @test **/
-    /* url: https://www.pivotaltracker.com/story/show/174990436 */
-    /* TA_01 */
-    public function profissionalPodeEditarAvaliacaoJudo() {
-        // Gera um profissional com as profissões indicadas e realiza o login
-        $criarProf_Logar = $this->criarProfELogar(
+    /** @ test **/
+    public function movimentosEsterotipadosAnamneseTerapiaOcupNaoPodeSerVazio() {
+        $this->criarProfELogar(
             array(
-                Profissional::Fonoaudiologo,
-                Profissional::TerapeutaOcupacional,
+                Profissional::TerapeutaOcupacional
             ), $this->password);
-            $criarProf_Logar['profissional'];
 
-
-            // Gera uma cópia da anamnese da Factory, indicando os ids
-            $copia_ava = $this->avaliacao_judo;
-            $copia_ava['id_paciente'] = $this->paciente->id;
-            $copia_ava['id_profissional'] = $this->profissional->id;
-            $copia_ava['diagnostico'] = 9;
-
-            // Cria a Anamnese
-            $this->post(route("profissional.avaliacao.judo.editar.salvar", $copia_ava));
-
-            $resposta_ver_ava_judo = $this->get(route("profissional.avaliacao.judo.ver", ['id_paciente' => $this->paciente->id]));
-            $resposta_ver_ava_judo->assertSee("9");
-
-        }
+        $copia_anamnese = $this->anamnese_terapiaOcupacional;
+        $copia_anamnese['movimentos_estereotipados'] = '';
+        $resposta = $this->post(route('profissional.anamnese.terapia_ocupacional.salvar'), $copia_anamnese);
+        $resposta->assertSessionHasErrors('movimentos_estereotipados');
+    }
 
 }
