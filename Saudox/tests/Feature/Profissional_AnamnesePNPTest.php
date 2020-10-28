@@ -14,7 +14,7 @@ use App\AnamneseGigantePsicopedaNeuroPsicomotoPt1;
 use App\AnamneseGigantePsicopedaNeuroPsicomotoPt2;
 use App\AnamneseGigantePsicopedaNeuroPsicomotoPt3;
 
-class AnamnesePNPTest extends TestCase {
+class Profissional_AnamnesePNPTest extends TestCase {
     public $profissional;
     private $endereco;
     private $paciente;

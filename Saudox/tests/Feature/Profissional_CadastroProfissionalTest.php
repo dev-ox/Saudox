@@ -6,7 +6,7 @@ use Tests\TestCase;
 use \App\Endereco;
 use App\Profissional;
 
-class CadastroProfissionalTest extends TestCase {
+class Profissional_CadastroProfissionalTest extends TestCase {
 
     private $array_funcionario;
     private $funcionario_logado;

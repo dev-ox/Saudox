@@ -11,7 +11,7 @@ use App\AvaliacaoNeuropsicologica;
 
 use Illuminate\Support\Facades\Auth;
 
-class AvaliacaoNeuropsicologicaTest extends TestCase {
+class Profissional_AvaliacaoNeuropsicologicaTest extends TestCase {
     public $funcionario;
     private $paciente;
 
