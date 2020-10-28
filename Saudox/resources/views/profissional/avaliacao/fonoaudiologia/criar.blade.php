@@ -885,6 +885,152 @@
 
         </div>
 
+        <div id="bloco_4_4e5_meses">
+            <h3 style="margin-left: 12%;">Linguagem Receptiva</h3><br>
+
+            <br><br>
+
+            <h4>25. Compreende conceitos espaciais (conjunções, advérbios).<input name="respostas[quest_4_4e5_meses][0]" type="text" /></h4><br>
+            (1 ponto = 3 acertos) <br><br>
+
+            Material: Manual de Figuras, pág. 27.<br>
+            <i><b>Mostre o cachorro que está...</b></i><br><br>
+
+            <i>
+                a. em cima da cadeira <input name="respostas[quest_4_4e5_meses][1]" type="text" /><br><br>
+
+                b. embaixo da cadeira <input name="respostas[quest_4_4e5_meses][2]" type="text" /><br><br>
+
+                c. atrás da cadeira <input name="respostas[quest_4_4e5_meses][3]" type="text" /><br><br>
+
+                d. do lado da cadeira <input name="respostas[quest_4_4e5_meses][4]" type="text" /><br><br>
+
+            </i>
+
+            <br><br><br><br>
+
+            <h4>26.Compreende conceitos de tempo.<input name="respostas[quest_4_4e5_meses][5]" type="text" /></h4><br>
+            (1 ponto = 2 acertos) <br><br>
+
+            Material: Manual de Figuras, pág. 28.<br><br>
+
+            <i>
+                a. Quais as figuras que mostram a noite? <input name="respostas[quest_4_4e5_meses][6]" type="text" /><br><br>
+
+                b. Quais as figuras que mostram o dia? <input name="respostas[quest_4_4e5_meses][7]" type="text" /><br><br>
+
+            </i>
+
+            <br><br><br><br>
+
+            <h4>27. Compreende ordens complexas.<input name="respostas[quest_4_4e5_meses][8]" type="text" /></h4><br>
+            (1 ponto = 2 acertos) <br><br>
+
+            Material: Manual de Figuras, pág. 29.<br><br>
+
+            <i>
+                a. Mostre o cachorro branco que está dormindo <input name="respostas[quest_4_4e5_meses][9]" type="text" /><br><br>
+
+                b. Mostre o cachorro branco com orelhas pretas <input name="respostas[quest_4_4e5_meses][10]" type="text" /><br><br>
+
+                c. Mostre o cachorro malhado com orelha marrom <input name="respostas[quest_4_4e5_meses][11]" type="text" /><br><br>
+
+            </i>
+
+            <br><br><br><br>
+
+            <h4>28.Identifica cores.<input name="respostas[quest_4_4e5_meses][12]" type="text" /></h4><br>
+            (1 ponto = 4 acertos) <br><br>
+
+            Material: Manual de Figuras, pág. 30.<br>
+            <i><b>Olhe estas bolas. Mostre a bola...</b></i><br><br>
+
+            <i>
+                a. vermelha <input name="respostas[quest_4_4e5_meses][13]" type="text" /><br><br>
+
+                b. laranja <input name="respostas[quest_4_4e5_meses][14]" type="text" /><br><br>
+
+                c. amarela <input name="respostas[quest_4_4e5_meses][15]" type="text" /><br><br>
+
+                d. preta <input name="respostas[quest_4_4e5_meses][16]" type="text" /><br><br>
+
+                e. verde <input name="respostas[quest_4_4e5_meses][17]" type="text" /><br><br>
+
+                f. azul <input name="respostas[quest_4_4e5_meses][18]" type="text" /><br><br>
+            </i>
+
+            <br><br><br><br>
+
+            <h3 style="margin-left: 12%;">Linguagem Expressiva</h3><br>
+
+            <br><br>
+
+            <h4>25. Usa palavras que expressam relação espacial.<input name="respostas[quest_4_4e5_meses][19]" type="text" /></h4><br>
+            (1 ponto = 2 acertos) <br><br>
+
+            Material: Figuras da pág. 64.<br>
+            Ordem: <i>Aponte para cada figura e diga: <br><b>Agora você me diz onde está este cachorro...</b></i><br><br>
+
+            <i>
+                a. em cima da cadeira <input name="respostas[quest_4_4e5_meses][20]" type="text" /><br><br>
+
+                b. atrás da cadeira <input name="respostas[quest_4_4e5_meses][21]" type="text" /><br><br>
+
+                c. embaixo da cadeira <input name="respostas[quest_4_4e5_meses][22]" type="text" /><br><br>
+
+                d. do lado da cadeira <input name="respostas[quest_4_4e5_meses][23]" type="text" /><br><br>
+            </i>
+
+            <br><br><br><br>
+
+            <h4>26. Memória para sentença.<input name="respostas[quest_4_4e5_meses][24]" type="text" /></h4><br>
+            (1 ponto = 2 acertos; alterações articulatórias não são consideradas) <br><br>
+
+            Material: Figuras da pág. 64.<br>
+            <i><b>Repita o que eu disser...</b></i><br><br>
+            <i>
+                a. Lucas treinou bem e ganhou o jogo. <input name="respostas[quest_4_4e5_meses][25]" type="text" /><br><br>
+
+                b. Ana caiu e derrubou o seu refrigerante. <input name="respostas[quest_4_4e5_meses][26]" type="text" /><br><br>
+
+                c. Igor ouviu a música e dançou. <input name="respostas[quest_4_4e5_meses][27]" type="text" /><br><br>
+            </i>
+
+            <br><br><br><br>
+
+            <h4>27. Categorização de nomes.<input name="respostas[quest_4_4e5_meses][28]" type="text" /></h4><br>
+            (1 ponto = 2 acertos) <br><br>
+
+            <i><b>Cachorro, gato, cavalo, porco, cobra – são todos bichinhos.<br>
+            Você sabe o que são:</b></i><br><br>
+
+            <i>
+                a. trenzinho, boneca, bola, carrinho <input name="respostas[quest_4_4e5_meses][29]" type="text" /><br><br>
+
+                b. shorte, saia, vestido, camisa, calça <input name="respostas[quest_4_4e5_meses][30]" type="text" /><br><br>
+
+                c. hamburguer, batata-frita, pizza, macarrão,feijão, pastel <input name="respostas[quest_4_4e5_meses][31]" type="text" /><br><br>
+
+            </i>
+
+            <br><br><br><br>
+
+            <h4>28. Emprega adjetivos para descrever pessoas e objetos.<input name="respostas[quest_4_4e5_meses][32]" type="text" /></h4><br>
+            (1 ponto = se a criança emprega dois adjetivos) <br><br>
+
+            Material: Manual de Figuras, pág. 65.<br><br>
+
+            <i>
+                a. Olhe bem estas meninas, esta menina está feliz com seu vestido novo <br>
+                e bonito. E esta, como está? <input name="respostas[quest_4_4e5_meses][33]" type="text" /><br><br>
+
+                b. Esse menino está alegre porque sua bicicleta é bonita e rápida. Esse <br>
+                menino, como ele está? <input name="respostas[quest_4_4e5_meses][34]" type="text" /><br><br>
+            </i>
+
+            <br><br><br><br>
+
+        </div>
 
 
     </div>
