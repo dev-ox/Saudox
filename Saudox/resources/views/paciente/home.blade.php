@@ -239,7 +239,7 @@
                                         </div>
 
                                         <div class="col-md-12">
-                                            <label class="lbinfo-static">Descricao:<br>
+                                            <label class="lbinfo-static">Descrição:<br>
                                                 <div class="c-wrapper">
                                                     <label class="lbinfo-ntstatic">{{$paciente->endereco->descricao}}</label></label>
                                                 </div>

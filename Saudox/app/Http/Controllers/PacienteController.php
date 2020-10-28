@@ -19,12 +19,12 @@ class PacienteController extends Controller {
     public function home(){
         $paciente = Paciente::find(Auth::id());
 
-        $id_ava_fono = $paciente->avaliacao_fono ? $paciente->avaliacao_fono['id'] : -1;
-        $id_ava_judo = $paciente->avaliacao_judo ? $paciente->avaliacao_judo['id'] : -1;
-        $id_ava_neur = $paciente->avaliacao_neuro ? $paciente->avaliacao_neuro['id'] : -1;
-        $id_ava_tocp = $paciente->avaliacao_terapia_ocupacional ? $paciente->avaliacao_terapia_ocupacional['id'] : -1;
+        $id_ava_fono = $paciente->avaliacaoFono ? $paciente->avaliacaoFono['id'] : -1;
+        $id_ava_judo = $paciente->avaliacaoJudo ? $paciente->avaliacaoJudo['id'] : -1;
+        $id_ava_neur = $paciente->avaliacaoNeuro ? $paciente->avaliacaoNeuro['id'] : -1;
+        $id_ava_tocp = $paciente->avaliacaoTerapiaOcupacional ? $paciente->avaliacaoTerapiaOcupacional['id'] : -1;
 
-        $id_anamnese_fono = $paciente->anamnese__terapia__ocupacionals ? $paciente->anamnese__terapia__ocupacionals['id'] : -1;
+        $id_anamnese_fono = $paciente->anamneseTerapiaOcupacionals ? $paciente->anamneseTerapiaOcupacionals['id'] : -1;
         $id_anamnese_pnps = $paciente->anamneseFonoaudiologias ? $paciente->anamneseFonoaudiologias['id'] : -1;
         $id_anamnese_tocp = $paciente->anamneseGigantePsicopedaNeuroPsicomotos() ?  $paciente->anamneseGigantePsicopedaNeuroPsicomotos()->id : -1;
 
