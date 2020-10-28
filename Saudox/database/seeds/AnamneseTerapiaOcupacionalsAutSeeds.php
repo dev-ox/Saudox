@@ -44,7 +44,7 @@ class AnamneseTerapiaOcupacionalsAutSeeds extends Seeder {
         $faz_amigos_com_facilidade = ['Sim', 'Não'];
         $adaptase_facilmente_ao_meio = ['Sim', 'Não'];
         $companheiros_da_crianca_em_brincadeiras = ['Irmãos', 'Colegas da escola', 'Crianças vizinhas'];
-        $escolha_de_grupo = ['Indiferente'];
+        $escolha_de_grupo_lista = ['Mesmo Sexo', 'Sexo Oposto', 'Criança da Mesma Idade', 'Criança Mais Nova', 'Criança Mais Velha'];
         $distracoes_preferidas = ['TV', 'Computador', 'Video-game', 'Livros'];
         $descricao_se_sim_dependente = ['Sim, gosta de receber ajuda'];
         $descricao_se_sim_indepedente = ['Sim, gosta de fazer tarefas sozinho'];
@@ -60,6 +60,16 @@ class AnamneseTerapiaOcupacionalsAutSeeds extends Seeder {
 
         //Gerando anamnese terapia ocupacional automaticamente
         for($i = 0; $i < $qtd_anamnese_terapia_ocupacionals; $i++){
+
+            $escolha_de_grupo = '';
+            $qnt_escolha_de_grupo = rand(1, 5);
+            for ($j=0; $j<$qnt_escolha_de_grupo; $j++){
+                $escolha_de_grupo = $escolha_de_grupo . $escolha_de_grupo_lista[rand(0, sizeof($escolha_de_grupo_lista)-1)];
+                $escolha_de_grupo = $escolha_de_grupo . ', ';
+            }
+            $escolha_de_grupo = substr($escolha_de_grupo, 0, -1);
+
+
             DB::table('anamnese__terapia__ocupacionals')->insert([
                 'id_paciente' => rand(1,$qtd_pacientes),
                 'id_profissional' => rand(1,$qtd_profissionals),
@@ -102,7 +112,7 @@ class AnamneseTerapiaOcupacionalsAutSeeds extends Seeder {
                 'faz_amigos_com_facilidade' => $faz_amigos_com_facilidade[rand(0, sizeof($faz_amigos_com_facilidade)-1)],
                 'adaptase_facilmente_ao_meio' => $adaptase_facilmente_ao_meio[rand(0, sizeof($adaptase_facilmente_ao_meio)-1)],
                 'companheiros_da_crianca_em_brincadeiras' => $companheiros_da_crianca_em_brincadeiras[rand(0, sizeof($companheiros_da_crianca_em_brincadeiras)-1)],
-                'escolha_de_grupo' => $escolha_de_grupo[rand(0, sizeof($escolha_de_grupo)-1)],
+                'escolha_de_grupo' => $escolha_de_grupo,
                 'distracoes_preferidas' => $distracoes_preferidas[rand(0, sizeof($distracoes_preferidas)-1)],
                 'obediente' => rand(0,1) >= 0.5,
                 'dependente' => rand(0,1) >= 0.5,
