@@ -28,7 +28,7 @@ class Profissional_AgendamentosTest extends TestCase {
 
         $this->profissional = factory(Profissional::class)->create([
             'password' => bcrypt($this->senha),
-            'profissao' => 'recepcionista;',
+            'profissao' => 'Recepcionista; Administrador;',
         ]);
 
         // Array extendido da superclasse
