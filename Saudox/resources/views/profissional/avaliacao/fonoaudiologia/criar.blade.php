@@ -1032,6 +1032,140 @@
 
         </div>
 
+        <div id="bloco_4e6_4e11_meses">
+            <h3 style="margin-left: 12%;">Linguagem Receptiva</h3><br>
+
+            <br><br>
+
+            <h4>29. Compreende conceitos de adjetivos.<input name="respostas[quest_4e6_4e11_meses][0]" type="text" /></h4><br>
+            (1 ponto = 2 acertos) <br><br>
+
+            Material: Manual de Figuras, págs. 31 a 33.<br><br>
+
+            <i>
+                a. Você está vendo estas cobras? Aponte a mais comprida. <input name="respostas[quest_4e6_4e11_meses][1]" type="text" /><br><br>
+
+                b. Olhe para estes cabelos. Qual deles é o mais curto? <input name="respostas[quest_4e6_4e11_meses][2]" type="text" /><br><br>
+
+                c. Você está vendo estas crianças? Aponte a mais alta. <input name="respostas[quest_4e6_4e11_meses][3]" type="text" /><br><br>
+            </i>
+
+            <br><br><br><br>
+
+            <h4>30. Compreende os sufixos nominais.<input name="respostas[quest_4e6_4e11_meses][4]" type="text" /></h4><br>
+            (1 ponto = 2 acertos) <br><br>
+
+            Material: Manual de Figuras, págs. 34 a 36.<br><br>
+
+            <i>
+                a. Mostre o jogador de futebol <input name="respostas[quest_4e6_4e11_meses][5]" type="text" /><br><br>
+
+                a. Mostre o pintor <input name="respostas[quest_4e6_4e11_meses][6]" type="text" /><br><br>
+
+                c. Mostre a cantora <input name="respostas[quest_4e6_4e11_meses][7]" type="text" /><br><br>
+            </i>
+
+            <br><br><br><br>
+
+            <h4>31. Compreende nome + 2 adjetivos.<input name="respostas[quest_4e6_4e11_meses][8]" type="text" /></h4><br>
+            (1 ponto = 2 acertos) <br><br>
+
+            Material: Manual de Figuras, pág. 37.<br><br>
+
+            <i>
+                a. Mostre o gato branco e peludo <input name="respostas[quest_4e6_4e11_meses][9]" type="text" /><br><br>
+
+                b. Mostre o gato preto e pequeno <input name="respostas[quest_4e6_4e11_meses][10]" type="text" /><br><br>
+            </i>
+
+            <br><br><br><br>
+
+            <h4>32. Compreende conceitos de quantidade.<input name="respostas[quest_4e6_4e11_meses][11]" type="text" /></h4><br>
+            (1 ponto = 2 acertos) <br><br>
+
+            Material: Manual de Figuras, págs. 38 e 39.<br>
+            <i><b>Olhe estas figuras com atenção. Agora mostre...</b></i><br><br>
+
+            <i>
+                a. Conte os pirulitos em cada copo. Qual desses copos tem três pirulitos? <input name="respostas[quest_4e6_4e11_meses][12]" type="text" /><br><br>
+
+                b. Conte as bolas de cada conjunto. Qual conjunto tem cinco bolas? <input name="respostas[quest_4e6_4e11_meses][13]" type="text" /><br><br>
+            </i>
+
+            <br><br><br><br>
+
+
+            <h3 style="margin-left: 12%;">Linguagem Expressiva</h3><br>
+
+            <br><br>
+
+            <h4>29. Nomeia cores.<input name="respostas[quest_4e6_4e11_meses][14]" type="text" /></h4><br>
+            (1 ponto = 4 acertos) <br><br>
+
+            Material: Manual de Figuras, pág. 66.<br>
+            <i><b>Olhe estas bolas; eu vou apontar e você diz a cor.</b></i><br><br>
+
+            <i>
+                a. vermelho <input name="respostas[quest_4e6_4e11_meses][15]" type="text" /><br><br>
+
+                b. laranja <input name="respostas[quest_4e6_4e11_meses][16]" type="text" /><br><br>
+
+                c. amarelo <input name="respostas[quest_4e6_4e11_meses][17]" type="text" /><br><br>
+
+                d. preta <input name="respostas[quest_4e6_4e11_meses][18]" type="text" /><br><br>
+
+                e. verde <input name="respostas[quest_4e6_4e11_meses][19]" type="text" /><br><br>
+
+                f. azul <input name="respostas[quest_4e6_4e11_meses][20]" type="text" /><br><br>
+            </i>
+
+            <br><br><br><br>
+
+            <h4>30. Construção de sentenças.<input name="respostas[quest_4e6_4e11_meses][21]" type="text" /></h4><br>
+            (1 ponto = se a criança faz frases sobre duas figuras) <br><br>
+
+            Material: Manual de Figuras, págs. 67 a 69.<br><br>
+
+            <i>
+                a. Olhe estes meninos e diga o que eles estão fazendo <input name="respostas[quest_4e6_4e11_meses][22]" type="text" /><br><br>
+
+                b. E aqui? O que o menino, o cavalo e o cachorro estão fazendo? <input name="respostas[quest_4e6_4e11_meses][23]" type="text" /><br><br>
+
+                c. O nome dessa menina é Beatriz. O que ela está fazendo? <input name="respostas[quest_4e6_4e11_meses][24]" type="text" /><br><br>
+            </i>
+
+            <br><br><br><br>
+
+            <h4>31. Responde a questões que utilizam o pronome interrogativo “quando”.<input name="respostas[quest_4e6_4e11_meses][25]" type="text" /></h4><br>
+            (1 ponto = 1 correta, sendo que ela deve dizer pelo menos duas etapas <br>
+            consecutivas do procedimento) <br><br>
+
+            <i>
+                a. O que você faz quando vai escovar os dentes? <input name="respostas[quest_4e6_4e11_meses][26]" type="text" /><br><br>
+
+                b. O que você faz quando vai tomar banho? <input name="respostas[quest_4e6_4e11_meses][27]" type="text" /><br><br>
+            </i>
+
+            <br><br><br><br>
+
+            <h4>32. Responde a questões sobre a sua rotina diária.<input name="respostas[quest_4e6_4e11_meses][28]" type="text" /></h4><br>
+            (1 ponto = 2 acertos, se a criança explica o motivo, exemplo(32.a):<br>
+            para não ficar com bichinhos)<br><br>
+
+            <i>
+                a. Por que você escova os dentes? <input name="respostas[quest_4e6_4e11_meses][29]" type="text" /><br><br>
+
+                b. Por que você toma banho? <input name="respostas[quest_4e6_4e11_meses][30]" type="text" /><br><br>
+
+                c. Por que você usa sapatos <input name="respostas[quest_4e6_4e11_meses][31]" type="text" /><br><br>
+            </i>
+
+            <br><br><br><br>
+
+
+        </div>
+
+
 
     </div>
 
