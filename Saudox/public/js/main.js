@@ -20,7 +20,7 @@ function startTime2() {
     m=checkTime(m);
     s=checkTime(s);
     document.getElementById('txt2').innerHTML=h+":"+m+":"+s;
-    t=setTimeout('startTime2()',500);
+    t=setTimeout('startTime2()',950);
 }
 
 function checkTime(i) {

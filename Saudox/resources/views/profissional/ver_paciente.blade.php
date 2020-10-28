@@ -9,7 +9,10 @@
         <div id="welcome_div" class="row bordas_amarelas bg-padrao">
             <div class="col-md">
                 <h1 class="pessoal"> Perfil de {{$paciente->nome_paciente}} </h1>
-                <h3 class="pessoal"> <a href="{{ route('agendamento.criar', $paciente->id) }}">Agendar pra esse paciente</a> <h3>
+                @if(Auth::user()->podeCriarAgendamento())
+                    <h3 class="pessoal"> <a href="{{ route('agendamento.criar', $paciente->id) }}">Agendar pra esse paciente</a> <h3>
+                @endif
+
                         <br>
             </div>
         </div>
@@ -23,34 +26,34 @@
                     <h4 class="paciente-nav-titles">Anamneses</h4>
                 </div>
                 <div class="col-md-4">
-                    @if($profissional->temProfissao(App\Profissional::Fonoaudiologo) || $profissional->ehAdmin())
-                        @if(!$paciente->anamneseFonoaudiologias)
+                    @if(!$paciente->anamneseFonoaudiologias)
+                        @if($profissional->temProfissao(App\Profissional::Fonoaudiologo) || $profissional->ehAdmin())
                             <a style="padding-top: 2%;" class="bt formularios-bt" href="{{ route("profissional.anamnese.fonoaudiologia.criar", $paciente->id) }}">Criar Anamnese de Fonoaudiologia</a>
-                        @else
-                            <a style="padding-top: 2%;" class="bt formularios-bt" href="{{ route("profissional.anamnese.fonoaudiologia.ver", $paciente->id) }}">Ver Anamnese de Fonoaudiologia</a>
                         @endif
-                        <br>
+                    @else
+                        <a style="padding-top: 2%;" class="bt formularios-bt" href="{{ route("profissional.anamnese.fonoaudiologia.ver", $paciente->id) }}">Ver Anamnese de Fonoaudiologia</a>
                     @endif
+                    <br>
                 </div>
                 <div class="col-md-4">
-                    @if($profissional->temProfissao(App\Profissional::Psicopedagogo) || $profissional->temProfissao(App\Profissional::Neuropsicologo) || $profissional->ehAdmin())
-                        @if(!$paciente->anamneseGigantePsicopedaNeuroPsicomotos())
+                    @if(!$paciente->anamneseGigantePsicopedaNeuroPsicomotos())
+                        @if($profissional->temProfissao(App\Profissional::Psicopedagogo) || $profissional->temProfissao(App\Profissional::Neuropsicologo) || $profissional->ehAdmin())
                             <a style="padding-top: 1%;" class="bt formularios-bt" href="{{ route("profissional.anamnese.psicopedagogia.criar", $paciente->id) }}">Criar Anamnese de PsicopedaNeuroPsicomoto</a>
-                        @else
-                            <a style="padding-top: 1%;" class="bt formularios-bt" href="{{ route("profissional.anamnese.psicopedagogia.ver", $paciente->id) }}">Ver Anamnese de PsicopedaNeuroPsicomoto</a>
                         @endif
-                        <br>
+                    @else
+                        <a style="padding-top: 1%;" class="bt formularios-bt" href="{{ route("profissional.anamnese.psicopedagogia.ver", $paciente->id) }}">Ver Anamnese de PsicopedaNeuroPsicomoto</a>
                     @endif
+                    <br>
                 </div>
                 <div class="col-md-4">
-                    @if($profissional->temProfissao(App\Profissional::TerapeutaOcupacional) || $profissional->ehAdmin())
-                        @if(!$paciente->anamneseTerapiaOcupacionals)
-                            <a style="padding-top: 2%;" class="bt formularios-bt" href="{{ route("profissional.anamnese.terapia_ocupacional.criar", $paciente->id) }}">Criar Anamnese de Terapia Ocupacional</a>
-                        @else
-                            <a style="padding-top: 2%;" class="bt formularios-bt" href="{{ route("profissional.anamnese.terapia_ocupacional.ver", $paciente->id) }}">Ver Anamnese de Terapia Ocupacional</a>
+                    @if(!$paciente->anamneseTerapiaOcupacionals)
+                        @if($profissional->temProfissao(App\Profissional::TerapeutaOcupacional) || $profissional->ehAdmin())
+                        <a style="padding-top: 2%;" class="bt formularios-bt" href="{{ route("profissional.anamnese.terapia_ocupacional.criar", $paciente->id) }}">Criar Anamnese de Terapia Ocupacional</a>
                         @endif
-                        <br>
+                    @else
+                        <a style="padding-top: 2%;" class="bt formularios-bt" href="{{ route("profissional.anamnese.terapia_ocupacional.ver", $paciente->id) }}">Ver Anamnese de Terapia Ocupacional</a>
                     @endif
+                    <br>
                 </div>
             </div>
         @endif
@@ -66,53 +69,53 @@
 
 
 
-                @if($profissional->temProfissao(App\Profissional::TerapeutaOcupacional) || $profissional->ehAdmin())
                     <div class="col-md-3">
                         @if(!$paciente->avaliacaoJudo)
-                            <a style="padding-top: 2%;" class="bt formularios-bt" href="{{ route("profissional.avaliacao.judo.criar", $paciente->id) }}">Criar Avaliação de Judô</a>
+                            @if($profissional->temProfissao(App\Profissional::TerapeutaOcupacional) || $profissional->ehAdmin())
+                                <a style="padding-top: 2%;" class="bt formularios-bt" href="{{ route("profissional.avaliacao.judo.criar", $paciente->id) }}">Criar Avaliação de Judô</a>
+                            @endif
                         @else
                             <a style="padding-top: 2%;" class="bt formularios-bt" href="{{ route("profissional.avaliacao.judo.ver", $paciente->id) }}">Ver Avaliação de Judô</a>
                         @endif
                         <br>
                     </div>
-                @endif
 
-                @if($profissional->temProfissao(App\Profissional::TerapeutaOcupacional) || $profissional->ehAdmin())
                     <div class="col-md-3">
                         @if(!$paciente->avaliacaoTerapiaOcupacional)
-                            <a style="padding-top: 2%;" class="bt formularios-bt" href="{{ route("profissional.avaliacao.terapia_ocupacional.criar", $paciente->id) }}">Criar Avaliação de Terapia Ocupacional</a>
+                            @if($profissional->temProfissao(App\Profissional::TerapeutaOcupacional) || $profissional->ehAdmin())
+                                <a style="padding-top: 2%;" class="bt formularios-bt" href="{{ route("profissional.avaliacao.terapia_ocupacional.criar", $paciente->id) }}">Criar Avaliação de Terapia Ocupacional</a>
+                            @endif
                         @else
                             <a style="padding-top: 2%;" class="bt formularios-bt" href="{{ route("profissional.avaliacao.terapia_ocupacional.ver", $paciente->id) }}">Ver Avaliação de Terapia Ocupacional</a>
                         @endif
                         <br>
                     </div>
-                @endif
 
 
 
 
-                @if($profissional->temProfissao(App\Profissional::Neuropsicologo) || $profissional->ehAdmin())
                     <div class="col-md-3">
                         @if(!$paciente->avaliacaoNeuro)
-                            <a style="padding-top: 2%;" class="bt formularios-bt" href="{{ route("profissional.avaliacao.neuropsicologia.criar", $paciente->id) }}">Criar Avaliação de Neuropsicologia</a>
+                            @if($profissional->temProfissao(App\Profissional::Neuropsicologo) || $profissional->ehAdmin())
+                                <a style="padding-top: 2%;" class="bt formularios-bt" href="{{ route("profissional.avaliacao.neuropsicologia.criar", $paciente->id) }}">Criar Avaliação de Neuropsicologia</a>
+                            @endif
                         @else
                             <a style="padding-top: 2%;" class="bt formularios-bt" href="{{ route("profissional.avaliacao.neuropsicologia.ver", $paciente->id) }}">Ver Avaliação de Neuropsicologia</a>
                         @endif
                         <br>
                     </div>
-                @endif
 
 
-                @if($profissional->temProfissao(App\Profissional::Fonoaudiologo) || $profissional->ehAdmin())
                 <div class="col-md-3">
                         @if(!$paciente->avaliacaoFono)
-                            <a style="padding-top: 2%;" class="bt formularios-bt" href="{{ route("profissional.avaliacao.fonoaudiologia.criar", $paciente->id) }}">Criar Avaliação de Fonoaudiologia</a>
+                            @if($profissional->temProfissao(App\Profissional::Fonoaudiologo) || $profissional->ehAdmin())
+                                <a style="padding-top: 2%;" class="bt formularios-bt" href="{{ route("profissional.avaliacao.fonoaudiologia.criar", $paciente->id) }}">Criar Avaliação de Fonoaudiologia</a>
+                            @endif
                         @else
                             <a style="padding-top: 2%;" class="bt formularios-bt" href="{{ route("profissional.avaliacao.fonoaudiologia.ver", $paciente->id) }}">Ver Avaliação de Fonoaudiologia</a>
                         @endif
                         <br>
                 </div>
-                @endif
 
 
 
@@ -121,26 +124,28 @@
 
         <div style="height: 5px;"></div>
 
-        <div class="row bordas_amarelas bg-padrao">
-            <div class="col-md-12">
-                <br>
-                <h4 class="paciente-nav-titles">Evoluções</h4>
+        @if($profissional->podeCriarEvolucao())
+            <div class="row bordas_amarelas bg-padrao">
+                <div class="col-md-12">
+                    <br>
+                    <h4 class="paciente-nav-titles">Evoluções</h4>
+                </div>
+                <div class="col-md-3">
+                    <p>Em desenvolvimento</p>
+                </div>
+
+                <div class="col-md-3">
+
+                </div>
+
+                <div class="col-md-3">
+
+                </div>
+                <div class="col-md-3">
+
+                </div>
             </div>
-            <div class="col-md-3">
-
-            </div>
-
-            <div class="col-md-3">
-
-            </div>
-
-            <div class="col-md-3">
-
-            </div>
-            <div class="col-md-3">
-
-            </div>
-        </div>
+        @endif
 
         <div style="height: 15px;"></div>
 

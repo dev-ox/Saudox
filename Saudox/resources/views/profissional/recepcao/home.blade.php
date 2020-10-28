@@ -3,6 +3,22 @@
 
     <div class="container">
 
+        @if(Auth::user()->podeCriarAgendamento())
+        <div class="row justify-content-center ">
+            <div class="col-md-3 text-center justify-content-center" style="display: flex;">
+                <a class="bt" href={{ route('agendamento.criar') }}>Criar Agendamento</a>
+            </div>
+            <div class="col-md-3 text-center justify-content-center" style="display: flex;">
+                <a class="bt" href=#>Todos Agendamentos<br>(EM CONSTRUÇÃO)</a>
+            </div>
+            <div class="col-md-3 text-center justify-content-center" style="display: flex;">
+                <a class="bt" style="margin: 5px;" href="{{route('profissional.buscar')}}">Buscar Paciente ou Profissional</a>
+            </div>
+        </div>
+        @endif
+
+        <br>
+        <br>
 
         <div class="row justify-content-center ">
             <div class="col-md text-center justify-content-center" style="display: flex;">
@@ -15,19 +31,6 @@
         </div>
 
         <br>
-        <br>
-
-
-        <!-- TODO: implementar buscar -->
-        <div class="row justify-content-center ">
-            <div class="col-md-3 text-center justify-content-center" style="display: flex;">
-                <a class="bt" style="margin: 5px;" href="{{route('profissional.buscar')}}">Buscar Paciente ou Profissional</a>
-            </div>
-        </div>
-
-        <br>
-        <br>
-
 
         @foreach($agendamentos_agrupados_por_profissional as $id_profissional => $agendamentos_do_profissional)
 

@@ -19,7 +19,9 @@
                 <a class="btn-full bordas_vermelhas" href={{route('profissional.admin.dashboard') }}>Ir para administração</a>
             @endif
 
-            <a class="btn-full bordas_vermelhas" href={{route('profissional.recepcao.home') }}>Ir para recepção</a>
+            @if(Auth::user()->podeCriarAgendamento())
+                <a class="btn-full bordas_vermelhas" href={{route('profissional.recepcao.home') }}>Ir para recepção</a>
+            @endif
             @if($profissional->podeCriarPaciente())
                 <a class="btn-full bordas_vermelhas" href={{route('profissional.criar_paciente') }}>Novo Paciente</a>
             @endif

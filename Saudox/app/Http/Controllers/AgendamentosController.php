@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+
 
 use App\Endereco;
 use App\Paciente;
@@ -11,10 +13,9 @@ use App\Convenios;
 use App\Profissional;
 use App\Agendamentos;
 
-class AgendamentosController extends Controller
-{
-    public function agendarPaciente($id_paciente = -1) {
+class AgendamentosController extends Controller {
 
+    public function agendarPaciente($id_paciente = -1) {
         $paciente = NULL;
         if($id_paciente == -1) {
             $paciente = new Paciente;
@@ -36,10 +37,14 @@ class AgendamentosController extends Controller
             'profissionais' => $profissionais,
         ]);
 
-
     }
 
     public function salvarAgendar(Request $request) {
+
+        $prof_logado = Profissional::find(Auth::id());
+        if(!$prof_logado->podeCriarAgendamento()) {
+            return view('erro', ['msg_erro' => "Você não tem permissão para manipular agendamentos!"]);
+        }
 
         $entrada = $request->all();
 
@@ -63,7 +68,6 @@ class AgendamentosController extends Controller
                              ->withErrors($validator_agendamento)
                              ->withInput();
         }
-
 
 
         if($entrada['id_paciente'] != "-1") {
@@ -100,7 +104,6 @@ class AgendamentosController extends Controller
         $agendamento->save();
 
         return redirect()->route('agendamento.ver', $agendamento->id);
-
     }
 
     public function verAgendamento($id_agendamento) {
@@ -116,6 +119,14 @@ class AgendamentosController extends Controller
     public function marcarAgendamentoConcluido($id_agendamento) {
         $agendamento = Agendamentos::find($id_agendamento);
 
+        $prof_logado = Profissional::find(Auth::id());
+        if(!$prof_logado->podeCriarAgendamento() ||
+            $agendamento->id_profissional != $prof_logado->id()) {
+
+            return view('erro', ['msg_erro' => "Você não tem permissão para realizar essa ação!"]);
+        }
+
+
         $agendamento->status = false;
         $agendamento->save();
 
@@ -127,6 +138,11 @@ class AgendamentosController extends Controller
     }
 
     public function editarAgendamento($id_agendamento) {
+        $prof_logado = Profissional::find(Auth::id());
+        if(!$prof_logado->podeCriarAgendamento()) {
+            return view('erro', ['msg_erro' => "Você não tem permissão para manipular agendamentos!"]);
+        }
+
         $agendamento = Agendamentos::find($id_agendamento);
         $convenios = Convenios::all();
         $profissionais = Profissional::all();
@@ -136,15 +152,19 @@ class AgendamentosController extends Controller
                 'agendamento' => $agendamento,
                 'convenios' => $convenios,
                 'profissionais' => $profissionais,
-
             ]);
         } else {
             return view('erro', ['msg_erro' => "Agendamento inexistente"]);
         }
     }
 
-
     public function salvarEditarAgendar(Request $request) {
+
+        $prof_logado = Profissional::find(Auth::id());
+        if(!$prof_logado->podeCriarAgendamento()) {
+            return view('erro', ['msg_erro' => "Você não tem permissão para manipular agendamentos!"]);
+        }
+
 
         $entrada = $request->all();
         $agendamento = Agendamentos::find($entrada['id']);
@@ -160,7 +180,6 @@ class AgendamentosController extends Controller
             'min' => 'O campo :attribute é deve ter no minimo :min caracteres.',
             'max' => 'O campo :attribute é deve ter no máximo :max caracteres.',
         ];
-
 
         $validator_endereco = Validator::make($entrada, Endereco::$regras_validacao, $messages);
         if ($validator_endereco->fails()) {
@@ -181,8 +200,6 @@ class AgendamentosController extends Controller
 
             ])->withErrors($validator_endereco->errors());
         }
-
-
 
         $agendamento->fill($entrada);
         $agendamento->endereco->fill($entrada);
@@ -211,9 +228,7 @@ class AgendamentosController extends Controller
         $agendamento->save();
 
         return redirect()->route('agendamento.ver', $agendamento->id);
-
     }
-
 
 
 }
