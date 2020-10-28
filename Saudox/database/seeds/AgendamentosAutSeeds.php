@@ -11,7 +11,7 @@ class AgendamentosAutSeeds extends Seeder {
         $nome = ['Maria', 'Miguel', 'Alice', 'Arthur', 'Laura', 'Heitor', 'Manuela', 'Bernardo', 'Valentina', 'Davi', 'Shophia', 'Pedro', 'Júlia', 'João', 'Lívia', 'Lucas', 'Beatriz', 'Gustavo', 'Maria Clara', 'Murilo', 'Beatriz', 'Isaac'];
         $sobrenome = ['Monteiro da Silva', 'Alves de Melo', 'Dias Cardoso', 'Ferreira dos Santos', 'da Silva Nascimento', 'Medeiros de Lima', 'Vieira Nazário', 'Dantas de Oliveira', 'Rodrigues dos Santos', 'Souza Pereira', 'Gomes Ribeiro', 'Martins Andrade'];
         $local_de_atendimento = ['Clínica', 'Residência do paciente'];
-        $tipo_da_recorrencia = ['Primeira vez', 'Frequente'];
+        $tipo_da_recorrencia = ['Primeira vez', 'Segunda vez', 'Terceira vez'];
         $observacoes = ['Sem observações', 'Glicose baixa ao nascer'];
 
         //Gerando anamnese terapia ocupacional automaticamente
