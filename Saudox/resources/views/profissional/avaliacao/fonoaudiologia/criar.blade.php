@@ -1165,6 +1165,130 @@
 
         </div>
 
+        <div id="bloco_5_5e11_meses">
+            <h3 style="margin-left: 12%;">Linguagem Receptiva</h3><br>
+
+            <br><br>
+
+            <h4>33. Compreende sentenças na voz passiva.<input name="respostas[quest_5_5e11_meses][0]" type="text" /></h4><br>
+            (1 ponto = 2 acertos) <br><br>
+
+            Material: Manual de Figuras, págs 40 e 41.<br>
+            <i><b>Olhe estas figuras com atenção. Agora mostre...</b></i><br><br>
+
+            <i>
+                a. A menina foi beijada pelo menino <input name="respostas[quest_5_5e11_meses][1]" type="text" /><br><br>
+
+                b. O menino foi empurrado pela menina <input name="respostas[quest_5_5e11_meses][2]" type="text" /><br><br>
+            </i>
+
+            <br><br><br><br>
+
+            <h4>34. Compreende conceitos de quantidade.<input name="respostas[quest_5_5e11_meses][3]" type="text" /></h4><br>
+            (1 ponto = 2 acertos) <br><br>
+
+            Material: Manual de Figuras, pág 42.<br>
+            <i><b>Joana cortou uma laranja ao meio...</b></i><br><br>
+
+            <i>
+                a. Mostre a metade da laranja <input name="respostas[quest_5_5e11_meses][4]" type="text" /><br><br>
+
+                b. Mostre a laranja inteira <input name="respostas[quest_5_5e11_meses][5]" type="text" /><br><br>
+            </i>
+
+            <br><br><br><br>
+
+            <h4>35. Identifica diferenças..<input name="respostas[quest_5_5e11_meses][6]" type="text" /></h4><br>
+            (1 ponto = 2 acertos) <br><br>
+
+            Material: Manual de Figuras, pág. 43.<br>
+            <i><b>Qual deles tem:</b></i><br><br>
+
+            <i>
+                a. as orelhas grandes <input name="respostas[quest_5_5e11_meses][7]" type="text" /><br><br>
+
+                b. um rabo fino e comprido <input name="respostas[quest_5_5e11_meses][8]" type="text" /><br><br>
+
+                c. um rabo grosso <input name="respostas[quest_5_5e11_meses][9]" type="text" /><br><br>
+
+                d. bico pequeno <input name="respostas[quest_5_5e11_meses][10]" type="text" /><br><br>
+            </i>
+
+            <br><br><br><br>
+
+            <h4>36. Compreende conceitos de seqüência de tempo.<input name="respostas[quest_5_5e11_meses][11]" type="text" /></h4><br>
+            (1 ponto = 2 acertos) <br><br>
+
+            Material: Manual de Figuras, pág. 44.<br>
+            <i><b>Preste atenção nestas figuras. Este menino está se arrumando para sair.</b></i><br><br>
+
+            <i>
+                a. O que ele botou por último? <input name="respostas[quest_5_5e11_meses][12]" type="text" /><br><br>
+
+                b. O que ele botou primeiro?<input name="respostas[quest_5_5e11_meses][13]" type="text" /><br><br>
+            </i>
+
+            <br><br><br><br>
+
+            <h3 style="margin-left: 12%;">Linguagem Expressiva</h3><br>
+
+            <br><br>
+
+
+            <h4>33. Adquiriu palavras que expressam quantidade.<input name="respostas[quest_5_5e11_meses][14]" type="text" /></h4><br>
+            (1 ponto = 1 acertos) <br><br>
+
+            Material: Manual de Figuras, pág. 70.<br>
+            <i><b>Qual deles tem:</b></i><br><br>
+
+                <i>a. O copo dessa menina tem muito suco e o desta menina tem <input name="respostas[quest_5_5e11_meses][15]" type="text" /></i>(Pouco)<br><br>
+
+                <i>b. O prato deste menino tem pouca pipoca e o prato deste menino tem <input name="respostas[quest_5_5e11_meses][16]" type="text" /></i>(Mas, muita)<br><br>
+
+            <br><br><br><br>
+
+            <h4>34. Habilidade para buscar palavras dentro de uma categoria.<input name="respostas[quest_5_5e11_meses][17]" type="text" /></h4><br>
+            (1 ponto = nomeia pelo menos seis animais ou comidas em um minuto) <br><br>
+
+            <i>Marque um minuto e escreva os nomes que a criança disser neste período.</i><br><br>
+
+            <i>
+                a. Diga o nome de todas as comidas que você se lembrar, até eu pedir<br>
+                para você parar: <input name="respostas[quest_5_5e11_meses][18]" type="text" /><br><br>
+
+                b. Diga o nome de todos os bichos que você se lembrar, até eu pedir<br>
+                para parar: <input name="respostas[quest_5_5e11_meses][19]" type="text" /><br><br>
+            </i>
+
+            <br><br><br><br>
+
+
+            <h4>35. Habilidade para solucionar e responder a questões sobre situações<br>
+                problemas.<input name="respostas[quest_5_5e11_meses][20]" type="text" /></h4><br>
+            (1 ponto = 1 acerto, se a criança responde com lógica) <br><br>
+
+            <i>
+                a. O que você faz quando perde o seu brinquedo? <input name="respostas[quest_5_5e11_meses][21]" type="text" /><br><br>
+
+                b. O que você faz antes de atravessar a rua? <input name="respostas[quest_5_5e11_meses][22]" type="text" /><br><br>
+            </i>
+
+            <br><br><br><br>
+
+            <h4>36. Conta uma estória diante de gravuras em quadrinhos.<input name="respostas[quest_5_5e11_meses][23]" type="text" /></h4><br>
+            (1 ponto = se a criança conta uma estória com lógica ou descreve<br>
+            as figuras seguindo a sua seqüência) <br><br>
+
+            Material: Manual de Figuras, Págs. 71 e 72.<br>
+            <i>Diga:<b>Esta é uma estória sobre um menino, que quer ir ao jogo de futebol<br>
+                com o pai. Olhe os quadrinhos e conte uma estorinha para mim.</b></i><br><br>
+
+            <i>
+                a. (a examinadora anota o que a criança falar) <input name="respostas[quest_5_5e11_meses][24]" type="text" /><br><br>
+            </i>
+
+            <br><br><br><br>
+        </div>
 
 
     </div>
