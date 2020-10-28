@@ -1,0 +1,41 @@
+ul.timeline {
+  list-style-type: none;
+  position: relative;
+}
+
+ul.timeline:before {
+  content: ' ';
+  background: var(--cor_azul);
+  display: inline-block;
+  position: absolute;
+  left: 29px;
+  width: 2px;
+  height: 100%;
+  z-index: 400;
+}
+
+ul.timeline > li {
+  margin: 20px 0;
+  padding-left: 20px;
+  margin-bottom: 60px;
+}
+
+ul.timeline > li:before {
+  content: ' ';
+  background: var(--cor_azul);
+  display: inline-block;
+  position: absolute;
+  border-radius: 50%;
+  border: 3px solid var(--cor_amarelo);
+  left: 20px;
+  width: 20px;
+  height: 20px;
+  z-index: 400;
+}
+
+/* TODO: Isso ainda tem que ser melhorado pra resoluções mais estreitas */
+ul.timeline li .anchor_data {
+  position: relative;
+  top: -3px;
+  left: -25%;
+}

@@ -104,14 +104,14 @@
 
 
                 @if($profissional->temProfissao(App\Profissional::Fonoaudiologo) || $profissional->ehAdmin())
-                <div class="col-md-3">
+                    <div class="col-md-3">
                         @if(!$paciente->avaliacaoFono)
                             <a style="padding-top: 2%;" class="bt formularios-bt" href="{{ route("profissional.avaliacao.fonoaudiologia.criar", $paciente->id) }}">Criar Avaliação de Fonoaudiologia</a>
                         @else
                             <a style="padding-top: 2%;" class="bt formularios-bt" href="{{ route("profissional.avaliacao.fonoaudiologia.ver", $paciente->id) }}">Ver Avaliação de Fonoaudiologia</a>
                         @endif
                         <br>
-                </div>
+                    </div>
                 @endif
 
 
@@ -127,7 +127,8 @@
                 <h4 class="paciente-nav-titles">Evoluções</h4>
             </div>
             <div class="col-md-3">
-
+                <a style="padding-top: 2%;" class="bt formularios-bt" href="{{ route("profissional.evolucao.neuropsicologica.ver", $paciente->id) }}">Neuropsicológica</a>
+                <br>
             </div>
 
             <div class="col-md-3">
