@@ -64,6 +64,8 @@ class AnamneseGigantePsicopedaNeuroPsicomotosPt3AutSeeds extends Seeder {
         $com_que_frequencia_ignora_estimulos = ['Não ignora', 'O tempo todo'];
         $com_que_frequencia_manipula_brinquedos_e_objetos = ['Não manipula', 'Sempre que está com tempo livre'];
         $ansioso_no_processo_de_mudanca_de_rotina_se_sim_voce_lembra = ['Não'];
+        $analise_da_entrevista = ['Necessário exames complementares'];
+        $encaminhamentos = ['Psiquiatra', 'Neurocirurgião'];
 
         //Gerando anamnese gigante parte 3 automaticamente
         for($i = 0; $i < $qtd_anamnese_gigante; $i++){
@@ -135,6 +137,9 @@ class AnamneseGigantePsicopedaNeuroPsicomotosPt3AutSeeds extends Seeder {
                 'com_que_frequencia_ignora_estimulos' => $com_que_frequencia_ignora_estimulos[rand(0, sizeof($com_que_frequencia_ignora_estimulos)-1)],
                 'com_que_frequencia_manipula_brinquedos_e_objetos' => $com_que_frequencia_manipula_brinquedos_e_objetos[rand(0, sizeof($com_que_frequencia_manipula_brinquedos_e_objetos)-1)],
                 'ansioso_no_processo_de_mudanca_de_rotina_se_sim_voce_lembra' => $ansioso_no_processo_de_mudanca_de_rotina_se_sim_voce_lembra[rand(0, sizeof($ansioso_no_processo_de_mudanca_de_rotina_se_sim_voce_lembra)-1)],
+                'analise_da_entrevista' => $analise_da_entrevista[rand(0, sizeof($analise_da_entrevista)-1)],
+                'encaminhamentos' => $encaminhamentos[rand(0, sizeof($encaminhamentos)-1)],
+
             ]);
         }
     }
