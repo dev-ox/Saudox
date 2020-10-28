@@ -35,7 +35,7 @@ class AnamneseFonoaudiologiasAutSeeds extends Seeder {
         $tem_dificuldades_de_aprendizagem = ['Sim', 'Não'];
         $faz_amigos_com_facilidade = ['Sim', 'Não'];
         $adapta_se_facilmente_ao_meio = ['Sim', 'Não'];
-        $companheiros_da_crianca_nas_brincadeiras = ['Mesmo sexo', 'Sexo oposto', 'Criança da mesma idade', 'Criança mais nova', 'Criança mais velha'];
+        $companheiros_da_crianca_nas_brincadeiras_lista = ['Mesmo Sexo', 'Sexo Oposto', 'Criança da Mesma Idade', 'Criança Mais Nova', 'Criança Mais Velha'];
         $distracoes_preferidas = ['Brincadeiras', 'Video-game', 'Computador', 'Televisão', 'Piscina'];
         $atitudes_sociais_predominantes = ['Obediente', 'Independente', 'Comunicativo', 'Agressivo', 'Cooperador'];
         $comportamento_emocional = ['Tranquilo', 'Seguro', 'Ansioso', 'Alegre', 'Emotivo', 'Queixoso'];
@@ -45,6 +45,16 @@ class AnamneseFonoaudiologiasAutSeeds extends Seeder {
 
         //Gerando anamnese fonoaudiologia automaticamente
         for($i = 0; $i < $qtd_anamnese_fonoaudiologia; $i++){
+
+            $companheiros_da_crianca_nas_brincadeiras = '';
+            $qnt_companheiros_da_crianca_nas_brincadeiras = rand(1, 5);
+            for ($j=0; $j<$qnt_companheiros_da_crianca_nas_brincadeiras; $j++){
+                $companheiros_da_crianca_nas_brincadeiras = $companheiros_da_crianca_nas_brincadeiras . $companheiros_da_crianca_nas_brincadeiras_lista[rand(0, sizeof($companheiros_da_crianca_nas_brincadeiras_lista)-1)];
+                $companheiros_da_crianca_nas_brincadeiras = $companheiros_da_crianca_nas_brincadeiras . ', ';
+            }
+            $companheiros_da_crianca_nas_brincadeiras = substr($companheiros_da_crianca_nas_brincadeiras, 0, -1);
+
+
             DB::table('anamnese_fonoaudiologias')->insert([
                 'id_paciente' => rand(1,$qtd_pacientes),
                 'id_profissional' => rand(1,$qtd_profissionals),
@@ -94,7 +104,7 @@ class AnamneseFonoaudiologiasAutSeeds extends Seeder {
                 'repetiu_algum_ano' => rand(0,1) >= 0.5,
                 'faz_amigos_com_facilidade' => $faz_amigos_com_facilidade[rand(0, sizeof($faz_amigos_com_facilidade)-1)],
                 'adapta_se_facilmente_ao_meio' => $adapta_se_facilmente_ao_meio[rand(0, sizeof($adapta_se_facilmente_ao_meio)-1)],
-                'companheiros_da_crianca_nas_brincadeiras' => $companheiros_da_crianca_nas_brincadeiras[rand(0, sizeof($companheiros_da_crianca_nas_brincadeiras)-1)],
+                'companheiros_da_crianca_nas_brincadeiras' => $companheiros_da_crianca_nas_brincadeiras,
                 'distracoes_preferidas' => $distracoes_preferidas[rand(0, sizeof($distracoes_preferidas)-1)],
                 'atitudes_sociais_predominantes' => $atitudes_sociais_predominantes[rand(0, sizeof($atitudes_sociais_predominantes)-1)],
                 'comportamento_emocional' => $comportamento_emocional[rand(0, sizeof($comportamento_emocional)-1)],
