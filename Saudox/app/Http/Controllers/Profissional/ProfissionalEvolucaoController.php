@@ -162,6 +162,11 @@ class ProfissionalEvolucaoController extends Controller {
             return redirect()->route('erro', ['msg_erro' => "Evolução não existe"]);
         }
 
+        $profissional_logado = Auth::user();
+        if(!$profissional_logado->ehAdmin() && $evolucao->id_profissional != $profissional_logado->id) {
+            return redirect()->route('erro', ['msg_erro' => "Você não tem permissão para acessar essa página."]);
+        }
+
         $evolucao->dia_evolucao = date_format(date_create($evolucao->data_evolucao), 'Y-m-d');
         $evolucao->hora_evolucao = date_format(date_create($evolucao->data_evolucao), 'H:i');
 
@@ -189,6 +194,10 @@ class ProfissionalEvolucaoController extends Controller {
             return redirect()->route('erro', ['msg_erro' => "Evolução não existe"]);
         }
 
+        $profissional_logado = Auth::user();
+        if(!$profissional_logado->ehAdmin() || $evolucao->id_profissional != $profissional_logado->id) {
+            return redirect()->route('erro', ['msg_erro' => "Você não tem permissão para acessar essa página"]);
+        }
 
         $validator_evo_psico = Validator::make($entrada, EvolucaoPsicologica::$regras_validacao_editar, $messages);
         if ($validator_evo_psico->fails()) {

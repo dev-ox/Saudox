@@ -178,7 +178,7 @@ class Profissional_EvolucaoNeuropsicologicaTest extends TestCase {
 
         $evolucao = factory(EvolucaoPsicologica::class)->create([
             'id_paciente' => $this->paciente->id,
-            'id_profissional' => $this->profissional,
+            'id_profissional' => $this->profissional->id,
             'texto' => "texto de teste",
         ]);
 
@@ -189,5 +189,71 @@ class Profissional_EvolucaoNeuropsicologicaTest extends TestCase {
     }
 
 
+    /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/175306051 */
+    /* TA_01 */
+    public function profissionalComPermissaoPodeEditarVerEvolucaoNeuro() {
+        // Gera um profissional com as profissões indicadas e realiza o login
+        $criarProf_Logar = $this->criarProfELogar(
+            array(
+                Profissional::Neuropsicologo,
+            ), $this->password);
+        $prof_aux = $criarProf_Logar['profissional'];
+
+        $evolucao = factory(EvolucaoPsicologica::class)->create([
+            'id_paciente' => $this->paciente->id,
+            'id_profissional' => $prof_aux->id,
+            'texto' => "texto de teste",
+        ]);
+
+        // Verifica a evolução
+        $resposta_ver_evo_neuro = $this->get(route("profissional.evolucao.neuropsicologica.editar", ['id_evolucao' => $evolucao->id]));
+        $resposta_ver_evo_neuro->assertSee("texto de teste");
+    }
+
+    /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/175306051 */
+    /* TA_02 */
+    public function profissionalAdminPodeEditarVerEvolucaoNeuro() {
+        // Gera um profissional com as profissões indicadas e realiza o login
+        $criarProf_Logar = $this->criarProfELogar(
+            array(
+                Profissional::Adm,
+            ), $this->password);
+        $prof_aux = $criarProf_Logar['profissional'];
+
+        $evolucao = factory(EvolucaoPsicologica::class)->create([
+            'id_paciente' => $this->paciente->id,
+            'id_profissional' => $prof_aux->id,
+            'texto' => "texto de teste",
+        ]);
+
+        // Verifica a evolução
+        $resposta_ver_evo_neuro = $this->get(route("profissional.evolucao.neuropsicologica.editar", ['id_evolucao' => $evolucao->id]));
+        $resposta_ver_evo_neuro->assertSee("texto de teste");
+    }
+
+    /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/175306051 */
+    /* TA_03 */
+    public function profissionalSemPermissaoNaoPodeEditarVerEvolucaoNeuro() {
+        // Gera um profissional com as profissões indicadas e realiza o login
+        $criarProf_Logar = $this->criarProfELogar(
+            array(
+                Profissional::Recepcionista,
+            ), $this->password);
+        $prof_aux = $criarProf_Logar['profissional'];
+
+        $evolucao = factory(EvolucaoPsicologica::class)->create([
+            'id_paciente' => $this->paciente->id,
+            'id_profissional' => $this->profissional,
+            'texto' => "texto de teste",
+        ]);
+
+        // Verifica a evolução
+        $resposta_ver_evo_neuro = $this->get(route("profissional.evolucao.neuropsicologica.editar", ['id_evolucao' => $evolucao->id]));
+        // Verifica que NÃO  está vendo o cmapo que tentou criar
+        $resposta_ver_evo_neuro->assertDontSee("texto de teste");
+    }
 
 }
