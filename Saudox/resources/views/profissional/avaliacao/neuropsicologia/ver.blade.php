@@ -254,7 +254,9 @@
                     </div>
                     <div class="row bg-padrao-claro">
                         <div class="col-md-12">
-                            <label class="lbinfo-perfis">Laudo  ESSE CAMPO NÃO ESTÁ PRONTO POIS É UM ARQUIVO!!!!: <br><label class="lbinfo-ntstatic">{{$avaliacao->anexar_arquivos}}</label></label>
+                            <label class="lbinfo-perfis">Laudo  ESSE CAMPO NÃO ESTÁ PRONTO POIS É UM ARQUIVO!!!!: <br>
+                                {{-- <label class="lbinfo-ntstatic">{{$avaliacao->anexar_arquivos}}</label> --}}
+                            </label>
                         </div>
                     </div>
                 </div>
@@ -375,11 +377,11 @@
                         <div class="col-md-12">
                             <label class="lbinfo-perfis"><br><label class="lbinfo-ntstatic">
                             <h1> ESSE CAMPO NÃO ESTÁ PRONTO POIS É UM ARQUIVO!!!! </h1>
-                            @if($avaliacao->exames_clinicos_se_houver)
+                            {{-- @if($avaliacao->exames_clinicos_se_houver)
                                 {{$avaliacao->exames_clinicos_se_houver}}
                             @else
                                 Nenhum exame
-                            @endif
+                            @endif --}}
                             </label></label>
                         </div>
                     </div>

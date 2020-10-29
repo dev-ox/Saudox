@@ -76,9 +76,6 @@
                                     <a class="bt" href={{ route('profissional.home') }}> Home </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="bt" href={{ route('agendamento.criar') }}> Novo Agendamento </a>
-                                </li>
-                                <li class="nav-item">
                                     <a class="bt" href={{ route('profissional.ver', Auth::id()) }}> Perfil </a>
                                 </li>
                             @endif
@@ -90,8 +87,8 @@
                                 </li>
 
                                 <div class="dropdown">
-                                    @if(Auth::guard('profissional')->check())
-                                    <a class="dropdown-item" href={{route('profissional.admin.cadastro')}}>Criar Profissional</a>
+                                    @if(Auth::guard('profissional')->check() && Auth::user()->ehAdmin())
+                                        <a class="dropdown-item" href={{route('profissional.admin.cadastro')}}>Criar Profissional</a>
                                     @endif
 
                                     <a class="dropdown-item perigo" href="{{ route('logout') }}"
