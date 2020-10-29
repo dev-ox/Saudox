@@ -15,5 +15,5 @@ function atualizar_questionario() {
 }
 
 document.getElementById("seletor_questionario").onchange = atualizar_questionario;
-document.getElementById("seletor_questionario").value = "bloco_12_17_meses";
+document.getElementById("seletor_questionario").value = "nenhum_bloco";
 atualizar_questionario();

@@ -118,6 +118,7 @@
                     @if($avaliacao->seletor_questionario == "nenhum_bloco")
                         Nenhum questionário respondido...
                     @elseif($avaliacao->seletor_questionario == "bloco_12_17_meses")
+                        <h3 style="margin-left: 12%;">12 a 17 meses</h3><br>
                         <h3 style="margin-left: 12%;">Linguagem Receptiva</h3><br>
 
                         <br><br>
@@ -230,6 +231,7 @@
 
                     @elseif($avaliacao->seletor_questionario == "bloco_1e6_1e11_meses")
 
+                        <h3 style="margin-left: 12%;">1 ano e 6 m. até 1 ano e 11 m.</h3><br>
                         <h3 style="margin-left: 12%;">Linguagem Receptiva</h3><br>
 
                         <br><br>
@@ -367,6 +369,7 @@
 
                     @elseif($avaliacao->seletor_questionario == "bloco_2_2e5_meses")
 
+                        <h3 style="margin-left: 12%;">2 anos até 2 anos e 5 meses</h3><br>
                         <h3 style="margin-left: 12%;">Linguagem Receptiva</h3><br>
 
                         <br><br>
@@ -509,6 +512,7 @@
 
                     @elseif($avaliacao->seletor_questionario == "bloco_2e6_2e11_meses")
 
+                    <h3 style="margin-left: 12%;">2 anos e 6 m. até 2 anos e 11 m</h3><br>
                     <h3 style="margin-left: 12%;">Linguagem Receptiva</h3><br>
 
                     <br><br>
@@ -676,6 +680,7 @@
 
                     @elseif($avaliacao->seletor_questionario == "bloco_3_3e5_meses")
 
+                    <h3 style="margin-left: 12%;">3 anos até 3 anos e 5 meses</h3><br>
                     <h3 style="margin-left: 12%;">Linguagem Receptiva</h3><br>
 
                     <br><br>
@@ -831,6 +836,7 @@
 
                     @elseif($avaliacao->seletor_questionario == "bloco_3e6_3e11_meses")
 
+                    <h3 style="margin-left: 12%;">3 anos e 6 m. até 3 anos e 11 m.</h3><br>
                     <h3 style="margin-left: 12%;">Linguagem Receptiva</h3><br>
 
                     <br><br>
@@ -990,6 +996,7 @@
 
                     @elseif($avaliacao->seletor_questionario == "bloco_4_4e5_meses")
 
+                    <h3 style="margin-left: 12%;">4 anos até 4 anos e 5 meses</h3><br>
                         <h3 style="margin-left: 12%;">Linguagem Receptiva</h3><br>
 
                         <br><br>
@@ -1138,6 +1145,7 @@
 
                     @elseif($avaliacao->seletor_questionario == "bloco_4e6_4e11_meses")
 
+                    <h3 style="margin-left: 12%;">4 anos e 6 m. até 4 anos e 11 m.</h3><br>
                     <h3 style="margin-left: 12%;">Linguagem Receptiva</h3><br>
 
                     <br><br>
@@ -1270,6 +1278,7 @@
 
                     @elseif($avaliacao->seletor_questionario == "bloco_5_5e11_meses")
 
+                    <h3 style="margin-left: 12%;">5 anos até 5 anos e 11 meses</h3><br>
                     <h3 style="margin-left: 12%;">Linguagem Receptiva</h3><br>
 
                     <br><br>
@@ -1395,6 +1404,7 @@
 
                     @elseif($avaliacao->seletor_questionario == "bloco_6_6e11_meses")
 
+                    <h3 style="margin-left: 12%;">6 anos até 6 anos e 11 meses</h3><br>
                     <h3 style="margin-left: 12%;">Linguagem Receptiva</h3><br>
 
                     <br><br>
