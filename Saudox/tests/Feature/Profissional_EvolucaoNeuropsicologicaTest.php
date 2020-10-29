@@ -170,7 +170,7 @@ class Profissional_EvolucaoNeuropsicologicaTest extends TestCase {
     /* TA_02 */
     public function profissionalSemPermissaoNaoPodeAcessarVerEvolucaoNeuro() {
         // Gera um profissional com as profissões indicadas e realiza o login
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Recepcionista,
             ), $this->password);
@@ -237,7 +237,7 @@ class Profissional_EvolucaoNeuropsicologicaTest extends TestCase {
     /* TA_03 */
     public function profissionalSemPermissaoNaoPodeEditarVerEvolucaoNeuro() {
         // Gera um profissional com as profissões indicadas e realiza o login
-        $criarProf_Logar = $this->criarProfELogar(
+        $this->criarProfELogar(
             array(
                 Profissional::Recepcionista,
             ), $this->password);
