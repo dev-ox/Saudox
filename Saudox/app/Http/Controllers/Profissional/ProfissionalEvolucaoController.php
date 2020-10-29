@@ -82,6 +82,12 @@ class ProfissionalEvolucaoController extends Controller {
 
     // NEUROPSICOLOGIA
     public function verNeuropsicologia($id_paciente) {
+
+        $profissional_logado = Auth::user();
+        if(!$profissional_logado->podeCriarEvolucao()) {
+            return redirect()->route('erro', ['msg_erro' => "Você não pode visualizar essa página"]);
+        }
+
         $paciente = Paciente::find($id_paciente);
         if(!$paciente){
             return redirect()->route('erro', ['msg_erro' => "Paciente " .$id_paciente. " inexistente"]);
@@ -114,6 +120,11 @@ class ProfissionalEvolucaoController extends Controller {
 
 
     public function salvarNeuropsicologia(Request $request) {
+
+        $profissional_logado = Auth::user();
+        if(!$profissional_logado->podeCriarEvolucao()) {
+            return redirect()->route('erro', ['msg_erro' => "Você não pode visualizar essa página"]);
+        }
 
         $messages = [
             'required' => 'O campo :attribute é obrigatório.',

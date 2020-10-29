@@ -165,5 +165,29 @@ class Profissional_EvolucaoNeuropsicologicaTest extends TestCase {
     }
 
 
+    /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/175306141 */
+    /* TA_02 */
+    public function profissionalSemPermissaoNaoPodeAcessarVerEvolucaoNeuro() {
+        // Gera um profissional com as profissões indicadas e realiza o login
+        $criarProf_Logar = $this->criarProfELogar(
+            array(
+                Profissional::Recepcionista,
+            ), $this->password);
+        $prof_aux = $criarProf_Logar['profissional'];
+
+        $evolucao = factory(EvolucaoPsicologica::class)->create([
+            'id_paciente' => $this->paciente->id,
+            'id_profissional' => $this->profissional,
+            'texto' => "texto de teste",
+        ]);
+
+        // Verifica a evolução
+        $resposta_ver_evo_neuro = $this->get(route("profissional.evolucao.neuropsicologica.ver", ['id_paciente' => $this->paciente->id]));
+        // Verifica que NÃO  está vendo o cmapo que tentou criar
+        $resposta_ver_evo_neuro->assertDontSee("texto de teste");
+    }
+
+
 
 }
