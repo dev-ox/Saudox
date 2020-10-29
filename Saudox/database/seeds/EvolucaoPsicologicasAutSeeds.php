@@ -17,7 +17,7 @@ class EvolucaoPsicologicasAutSeeds extends Seeder {
                 'id_evolucao_anterior' => null, //rand(1,$qtd_evolucao_psicologicas),
                 'data_evolucao' => Carbon::now()->format('Y-m-d H:i:s'),
                 'tipo_atendimento' => Str::random(10),
-                'texto' => texto(15),
+                'texto' => texto(3),
             ]);
         }
     }

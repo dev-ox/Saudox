@@ -16,7 +16,7 @@ class EvolucaoJudoAutSeeds extends Seeder {
                 'id_profissional' => rand(1,$qtd_profissionals),
                 'id_evolucao_anterior' => null, //rand(1,$qtd_evolucao_judo),
                 'data_evolucao' => Carbon::now()->format('Y-m-d H:i:s'),
-                'descricao_evolucao' => texto(50),
+                'descricao_evolucao' => texto(2),
                 'carimbo' => base64_encode(file_get_contents(addslashes(dirname(__FILE__) . "/pdf_seed.pdf"))),
             ]);
         }
