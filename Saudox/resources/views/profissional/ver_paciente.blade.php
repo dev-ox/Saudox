@@ -156,10 +156,11 @@
         <div class="row bordas_amarelas bg-padrao">
             <div class="col-md">
 
+                @if(Auth::guard('profissional')->check())
+                    <h3 class="pessoal"> <a href="{{ route('profissional.criar_paciente.editar', $paciente->id) }}">Editar</a> </h3>
+                @endif
 
-                <!--
-                    BOTÃOD E EDITAR PACIENTE!!!!
-                -->
+
                 <br>
                 <div class="row bg-padrao">
                     <br>
