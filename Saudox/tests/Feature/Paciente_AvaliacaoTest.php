@@ -240,7 +240,7 @@ class Paciente_AvaliacaoTest extends TestCase
     public function pacienteNaoPodeVerAvalicaoJudoPacienteSeNaoEstiverLogado() {
 
         $paciente = factory(Paciente::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
         ]);
         factory(AvaliacaoJudo::class)->create([
             'id_paciente' => $paciente->id,
@@ -265,7 +265,7 @@ class Paciente_AvaliacaoTest extends TestCase
     /* TA_01 */
     public function pacienteNaoPodeVerAvalicaoNeuropsicologicaPacienteSeNaoEstiverLogado() {
         $paciente = factory(Paciente::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt( '123123123'),
         ]);
         factory(AvaliacaoNeuropsicologica::class)->create([
             'id_paciente' => $paciente->id,
@@ -290,7 +290,7 @@ class Paciente_AvaliacaoTest extends TestCase
     /* TA_01 */
     public function pacienteNaoPodeVerAvalicaoTerapiaOcupacionalPacienteSeNaoEstiverLogado() {
         $paciente = factory(Paciente::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
         ]);
         factory(AvaliacaoTerapiaOcupacional::class)->create([
             'id_paciente' => $paciente->id,

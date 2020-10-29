@@ -95,7 +95,7 @@ class Paciente_AnamneseTest extends TestCase
     public function pacienteNaoPodeVerAnamnesePNPPacienteSeNaoEstiverLogado() {
 
         $paciente = factory(Paciente::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt( '123123123'),
         ]);
 
         factory(AnamneseGigantePsicopedaNeuroPsicomoto::class)->create();
@@ -146,7 +146,7 @@ class Paciente_AnamneseTest extends TestCase
     public function pacienteNaoPodeVerAnamneseFonoaudiologaPacienteSeNaoEstiverLogado() {
 
         $paciente = factory(Paciente::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
         ]);
         factory(AnamneseFonoaudiologia::class)->create([
             'id_paciente' => $paciente->id,
@@ -197,7 +197,7 @@ class Paciente_AnamneseTest extends TestCase
     public function pacienteNaoPodeVerAnamneseTerapiaOcupacionalPacienteSeNaoEstiverLogado() {
 
         $paciente = factory(Paciente::class)->create([
-            'password' => bcrypt($password = '123123123'),
+            'password' => bcrypt('123123123'),
         ]);
         factory(AnamneseTerapiaOcupacional::class)->create([
             'id_paciente' => $paciente->id,
