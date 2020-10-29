@@ -17,9 +17,9 @@ class ProfissionaisAutSeeds extends Seeder {
 
         $nome = ['Maria', 'Miguel', 'Alice', 'Arthur', 'Laura', 'Heitor', 'Manuela', 'Bernardo', 'Valentina', 'Davi', 'Shophia', 'Pedro', 'Júlia', 'João', 'Lívia', 'Lucas', 'Beatriz', 'Gustavo', 'Maria Clara', 'Murilo', 'Beatriz', 'Isaac'];
         $sobrenome = ['Monteiro da Silva', 'Alves de Melo', 'Dias Cardoso', 'Ferreira dos Santos', 'da Silva Nascimento', 'Medeiros de Lima', 'Vieira Nazário', 'Dantas de Oliveira', 'Rodrigues dos Santos', 'Souza Pereira', 'Gomes Ribeiro', 'Martins Andrade'];
-        $estado_civil = ['Solteiro(a)', 'Casado(a)', 'Separado(a)', 'Divorciado(a)', 'Viúvo(a)', 'Amasiado(a)'];
+        $estado_civil = ['solteiro', 'casado'];
         $nacionalidade = ['Brasileira', 'Chilena', 'Colombiana', 'Argentina', 'Cubana', 'Equatoriana', 'Egípcia', 'Inglesa', 'Francesa', 'Alemã', 'Grega', 'Holandesa', 'Italiana', 'Espanhola'];
-
+        $descricao_de_conhecimento_e_experiencia = ['Biopsia muscular; Reabilitação neuromuscular; Especialização em Neurogerontologia; Pilates associado a Neurologia; Experiência em Gestão'];
 
         //Gerando profissionais automaticamente
         for($i = 0; $i < $qtd_profissionals; $i++){
@@ -51,7 +51,7 @@ class ProfissionaisAutSeeds extends Seeder {
                 'email' => Str::random(10).'@gmail.com',
                 'estado_civil' => $estado_civil[rand(0, sizeof($estado_civil)-1)],
                 'nacionalidade' => $nacionalidade[rand(0, sizeof($nacionalidade)-1)],
-                'descricao_de_conhecimento_e_experiencia' => texto(20),
+                'descricao_de_conhecimento_e_experiencia' => $descricao_de_conhecimento_e_experiencia[rand(0, sizeof($descricao_de_conhecimento_e_experiencia)-1)],
             ]);
         }
     }
