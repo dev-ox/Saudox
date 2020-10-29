@@ -175,7 +175,7 @@ class Profissional_EvolucaoNeuropsicologicaTest extends TestCase {
                 Profissional::Recepcionista,
             ), $this->password);
 
-        $evolucao = factory(EvolucaoPsicologica::class)->create([
+        factory(EvolucaoPsicologica::class)->create([
             'id_paciente' => $this->paciente->id,
             'id_profissional' => $this->profissional->id,
             'texto' => "texto de teste",
@@ -241,7 +241,6 @@ class Profissional_EvolucaoNeuropsicologicaTest extends TestCase {
             array(
                 Profissional::Recepcionista,
             ), $this->password);
-        $prof_aux = $criarProf_Logar['profissional'];
 
         $evolucao = factory(EvolucaoPsicologica::class)->create([
             'id_paciente' => $this->paciente->id,
