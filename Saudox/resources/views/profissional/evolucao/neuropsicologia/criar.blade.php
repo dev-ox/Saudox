@@ -25,19 +25,19 @@
                         <input value="{{Auth::id()}}" type="hidden"  name="id_profissional">
 
 
-                        <h3>Hora da evolução</h3>
+                        <h3 class="required">Hora da evolução</h3>
                         <input value="{{ g_old($evolucao, "hora_evolucao") }}" type="time" name="hora_evolucao">
 
-                        <h3>Dia da evolução</h3>
+                        <h3 class="required">Dia da evolução</h3>
                         <input value="{{ g_old($evolucao, "dia_evolucao") }}" type="date" name="dia_evolucao">
 
 
 
-                        <h3>Tipo de a atendimento</h3>
+                        <h3 class="required">Tipo de a atendimento</h3>
                         <input type="text" name="tipo_atendimento" value="{{ g_old($evolucao, "tipo_atendimento") }}">
 
                         <hr class="hr_form">
-                        <h3>Descrição</h3>
+                        <h3 class="required">Descrição</h3>
                         <textarea class="textareas_form" name="texto" rows="8" cols="50" style="">{{ g_old($evolucao, "texto") }}</textarea>
 
 

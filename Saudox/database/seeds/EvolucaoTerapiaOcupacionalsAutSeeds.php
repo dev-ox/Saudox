@@ -16,8 +16,8 @@ class EvolucaoTerapiaOcupacionalsAutSeeds extends Seeder {
                 'id_profissional' => rand(1,$qtd_profissionals),
                 'id_evolucao_anterior' => null, //rand(1,$qtd_evolucao_terapia_ocupacional),
                 'data_evolucao' => Carbon::now()->format('Y-m-d H:i:s'),
-                'texto' => texto(50),
-                'obs_importante' => texto(15),
+                'texto' => texto(3),
+                'obs_importante' => texto(2),
             ]);
         }
     }
