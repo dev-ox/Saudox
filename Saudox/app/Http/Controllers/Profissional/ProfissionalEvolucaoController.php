@@ -84,7 +84,7 @@ class ProfissionalEvolucaoController extends Controller {
     public function verNeuropsicologia($id_paciente) {
 
         $profissional_logado = Auth::user();
-        if(!$profissional_logado->podeCriarEvolucao()) {
+        if(!$profissional_logado->podeCriarPaciente()) {
             return redirect()->route('erro', ['msg_erro' => "Você não pode visualizar essa página"]);
         }
 
