@@ -87,7 +87,7 @@
             (1 ponto = produz duas sílabas ou mais variando os fonemas em uma emissão vocal)<br><br>
 
             Observação realizada em contexto lúdico. <i>Escreva os exemplos</i>: <br>
-            <input name="respostas[quest_12_17][16]" type="text" style="width: 30%;"/> <br><br>
+            <input name="respostas[quest_12_17][16]" type="text" style="width: 50%;"/> <br><br>
 
             <br><br><br><br>
 
@@ -96,17 +96,17 @@
 
             <br><br><br><br>
 
-            <h4>3.Comunica-se de forma não verbal, usando gestos, chamando atenção <br>
+            <h4>3. Comunica-se de forma não verbal, usando gestos, chamando atenção <br>
                 para si ou apontando para um objeto ou pessoa. <input name="respostas[quest_12_17][18]" type="text" /></h4>
             (1 ponto = se apresenta alguns dos comportamentos descritos. Ex.: entrega brinquedo, puxa pela mão, aponta etc.)<br><br>
 
             <i>Descreva o que a criança faz: </i> <br>
-            <input name="respostas[quest_12_17][19]" type="text" style="width: 30%;"/> <br><br>
+            <input name="respostas[quest_12_17][19]" type="text" style="width: 50%;"/> <br><br>
 
             <br><br><br><br>
 
 
-            <h4>4.Imita uma palavra. <input name="respostas[quest_12_17][20]" type="text" /></h4>
+            <h4>4. Imita uma palavra. <input name="respostas[quest_12_17][20]" type="text" /></h4>
             (1 ponto = repete 1 palavra)<br><br>
 
             Material: bola, carro, miniatura de boneco ou palavras do contexto da criança como “mamãe” e “papai”. <br><br>
@@ -127,7 +127,7 @@
 
             <br><br>
 
-            <h4>5.Compreende ordens simples sem pistas gestuais.<input name="respostas[quest_1e6_1e11_meses][0]" type="text" /></h4><br>
+            <h4>5. Compreende ordens simples sem pistas gestuais.<input name="respostas[quest_1e6_1e11_meses][0]" type="text" /></h4><br>
             (1 ponto = 2 acertos) <br><br>
 
             Material: bolsa e algumas bolas. <br>
@@ -136,7 +136,7 @@
             <i>
                 a. Tire as bolas da bolsa <input name="respostas[quest_1e6_1e11_meses][1]" type="text" /><br><br>
 
-                b. Agora me dê uma bolsa <input name="respostas[quest_1e6_1e11_meses][2]" type="text" /><br><br>
+                b. Agora me dê uma bola <input name="respostas[quest_1e6_1e11_meses][2]" type="text" /><br><br>
 
                 c. Agora ponha as bolas dentro da bolsa <input name="respostas[quest_1e6_1e11_meses][3]" type="text" /><br><br>
 
@@ -144,7 +144,7 @@
 
             <br><br><br><br>
 
-            <h4>6.Identifica figuras.<input name="respostas[quest_1e6_1e11_meses][4]" type="text" /></h4><br>
+            <h4>6. Identifica figuras.<input name="respostas[quest_1e6_1e11_meses][4]" type="text" /></h4><br>
             (1 ponto = 4 acertos) <br><br>
 
             Material: Manual de Figuras, pág.2. <br>
@@ -167,7 +167,7 @@
 
             <br><br><br><br>
 
-            <h4>7.Identifica partes do corpo em si próprio.<input name="respostas[quest_1e6_1e11_meses][11]" type="text" /></h4><br>
+            <h4>7. Identifica partes do corpo em si próprio.<input name="respostas[quest_1e6_1e11_meses][11]" type="text" /></h4><br>
             (1 ponto = 4 acertos) <br><br>
 
             Ordem: Mostre o(a) seu(ua)... <br><br>
@@ -191,7 +191,7 @@
 
             <br><br><br><br>
 
-            <h4>8.Compreende ações dentro de um contexto.<input name="respostas[quest_1e6_1e11_meses][19]" type="text" /></h4><br>
+            <h4>8. Compreende ações dentro de um contexto.<input name="respostas[quest_1e6_1e11_meses][19]" type="text" /></h4><br>
             (1 ponto = 2 acertos) <br><br>
 
             Material: um cachorrinho, um pratinho, uma colher e um copo. <br>
@@ -233,11 +233,11 @@
 
             <br><br><br><br>
 
-            <h4>6. Produz seqüência de palavras soltas: <input name="respostas[quest_1e6_1e11_meses][28]" type="text" /></h4>
-            (1 ponto = fala sobre um objeto, pessoa ou acontecimento através da seqüência de duas ou mais palavras em uma mesma emissão vocal)<br><br>
+            <h4>6. Produz sequência de palavras soltas: <input name="respostas[quest_1e6_1e11_meses][28]" type="text" /></h4>
+            (1 ponto = fala sobre um objeto, pessoa ou acontecimento através da sequência de duas ou mais palavras em uma mesma emissão vocal)<br><br>
             Observação da linguagem espontânea em atividades lúdicas.<br>
             <i>Crie situações através de brincadeiras para estimular a criança a falar</i>: <br>
-            <input name="respostas[quest_1e6_1e11_meses][29]" type="text" style="width: 30%;"/> <br><br>
+            <input name="respostas[quest_1e6_1e11_meses][29]" type="text" style="width: 50%;"/> <br><br>
 
 
             <br><br><br><br>
@@ -250,10 +250,10 @@
 
             <br><br><br><br>
 
-            <h4>8.Adquiriu vocabulário de pelo menos 10 palavras diferentes.<input name="respostas[quest_1e6_1e11_meses][32]" type="text" /></h4>
+            <h4>8. Adquiriu vocabulário de pelo menos 10 palavras diferentes.<input name="respostas[quest_1e6_1e11_meses][32]" type="text" /></h4>
             (1 ponto = disse 10 palavras de forma espontânea no período da avaliação)<br><br>
             <i>Escreva aqui as palavras que a criança disser durante a avaliação:</i>: <br>
-            <input name="respostas[quest_1e6_1e11_meses][33]" type="text" style="width: 30%;"/> <br><br>
+            <input name="respostas[quest_1e6_1e11_meses][33]" type="text" style="width: 50%;"/> <br><br>
 
 
             <br><br><br><br>
@@ -282,7 +282,7 @@
 
             <br><br><br><br>
 
-            <h4>10.Compreende alguns pronomes.<input name="respostas[quest_2_2e5_meses][4]" type="text" /></h4><br>
+            <h4>10. Compreende alguns pronomes.<input name="respostas[quest_2_2e5_meses][4]" type="text" /></h4><br>
             (1 ponto = 2 acertos) <br><br>
 
             Material: uma cachorrinho e três bolas. <br>
@@ -304,7 +304,7 @@
 
             <br><br><br><br>
 
-            <h4>11.Compreende conceitos de quantidade.<input name="respostas[quest_2_2e5_meses][9]" type="text" /></h4><br>
+            <h4>11. Compreende conceitos de quantidade.<input name="respostas[quest_2_2e5_meses][9]" type="text" /></h4><br>
             (1 ponto = 2 acertos) <br><br>
 
             Material: Uma bolsa e três bolas. <br>
@@ -344,10 +344,10 @@
             <br><br>
 
             <h4>9. Usa entonação adequada para fazer pergunta. <input name="respostas[quest_2_2e5_meses][17]" type="text" /></h4>
-            (1 ponto = ffaz uma pergunta usando a entonação correta; Ex.: eleva a voz quando faz uma pergunta).<br><br>
+            (1 ponto = faz uma pergunta usando a entonação correta; Ex.: eleva a voz quando faz uma pergunta).<br><br>
             Observação da linguagem espontânea em atividades lúdicas.<br>
             <i>Crie situações através de brincadeiras para estimular a criança a falar</i>: <br>
-            <input name="respostas[quest_2_2e5_meses][18]" type="text" style="width: 30%;"/> <br><br>
+            <input name="respostas[quest_2_2e5_meses][18]" type="text" style="width: 50%;"/> <br><br>
 
 
             <br><br><br><br>
@@ -356,7 +356,7 @@
             (1 ponto = se a criança produz duas ou mais palavras em uma emissão vocal e, com significado <br> semântico; Ex.: posse: “papato neném” = o sapato da boneca).<br><br>
             Observação da linguagem espontânea em atividades lúdicas. A examinadora poderá <br> criar situações através de brincadeiras para estimular a criança a falar..<br>
             <i>Escreva os exemplos:</i>: <br>
-            <input name="respostas[quest_2_2e5_meses][20]" type="text" style="width: 30%;"/> <br><br>
+            <input name="respostas[quest_2_2e5_meses][20]" type="text" style="width: 50%;"/> <br><br>
 
 
             <br><br><br><br>
@@ -407,7 +407,7 @@
 
             <br><br>
 
-            <h4>13.Compreende o uso dos objetos.<input name="respostas[quest_2e6_2e11_meses][0]" type="text" /></h4><br>
+            <h4>13. Compreende o uso dos objetos.<input name="respostas[quest_2e6_2e11_meses][0]" type="text" /></h4><br>
             (1 ponto = 3 acertos) <br><br>
 
             Material: Manual de figuras, pág. 4.<br>
@@ -429,7 +429,7 @@
 
             <br><br><br><br>
 
-            <h4>14.Compreende os conceitos dos adjetivos.<input name="respostas[quest_2e6_2e11_meses][6]" type="text" /></h4><br>
+            <h4>14. Compreende os conceitos dos adjetivos.<input name="respostas[quest_2e6_2e11_meses][6]" type="text" /></h4><br>
             (1 ponto = 3 acertos) <br><br>
 
             Material: Manual de figuras, págs. 5 a 8.<br>
@@ -471,7 +471,7 @@
 
             <br><br><br><br>
 
-            <h4>16.Identifica figuras.<input name="respostas[quest_2e6_2e11_meses][17]" type="text" /></h4><br>
+            <h4>16. Identifica figuras.<input name="respostas[quest_2e6_2e11_meses][17]" type="text" /></h4><br>
             (1 ponto = 4 acertos) <br><br>
 
             Material: Manual de figuras, págs. 10 e 11.<br>
@@ -518,7 +518,7 @@
             <h4>14.Vocabulário.<input name="respostas[quest_2e6_2e11_meses][28]" type="text" /></h4><br>
             (1 ponto = 4 acertos) <br><br>
 
-            Material: Manual de figuras, págs. 53 e 55.<br>
+            Material: Manual de figuras, págs. 53 a 55.<br>
             <i>Aponte para cada figura e pergunte: <b>O que é isto?</b></i><br><br>
 
 
@@ -545,7 +545,7 @@
             (1 ponto = 1 resposta correta) <br><br>
 
             Material: Manual de figuras, pág. 56.<br>
-            <i>AAponte para cada figura e diga:</i><br><br>
+            <i>Aponte para cada figura e diga:</i><br><br>
 
                 <i>a. Esta bola é dele. De quem é esta bola? <input name="respostas[quest_2e6_2e11_meses][37]" type="text" /></i> (Dela, ou da menina) <br><br>
 
@@ -558,7 +558,7 @@
             (1 ponto = 2 corretos) <br><br>
 
             Material: Manual de figuras, pág. 57.<br>
-            <i>AAponte para cada figura e pergunte:</i><br><br>
+            <i>Aponte para cada figura e pergunte:</i><br><br>
 
                 <i>a. O que ele está segurando? <input name="respostas[quest_2e6_2e11_meses][40]" type="text" /></i> (a bola) <br><br>
 
@@ -578,7 +578,7 @@
             <h4>17. Compreende conceitos de adjetivos.<input name="respostas[quest_3_3e5_meses][0]" type="text" /></h4><br>
             (1 ponto = 2 acertos) <br><br>
 
-            Material: Manual de figuras, págs. 12 e 14.<br>
+            Material: Manual de figuras, págs. 12 a 14.<br>
             <i><b>Olhe estas figuras e mostre...</b></i><br><br>
 
 
@@ -592,7 +592,7 @@
 
             <br><br><br><br>
 
-            <h4>18.Compreende perguntas negativas.<input name="respostas[quest_3_3e5_meses][4]" type="text" /></h4><br>
+            <h4>18. Compreende perguntas negativas.<input name="respostas[quest_3_3e5_meses][4]" type="text" /></h4><br>
             (1 ponto = 2 acertos) <br><br>
 
             Material: Manual de figuras, págs. 15 e 16.<br><br>
@@ -607,7 +607,7 @@
 
             <br><br><br><br>
 
-            <h4>19.Categoriza.<input name="respostas[quest_3_3e5_meses][7]" type="text" /></h4><br>
+            <h4>19. Categoriza.<input name="respostas[quest_3_3e5_meses][7]" type="text" /></h4><br>
             (1 ponto = 2 acertos) <br><br>
 
             Material: Manual de figuras, pág. 17.<br>
@@ -693,7 +693,7 @@
             Figuras, págs. 58 e 59.<br><br>
 
             <i>
-                a.Aqui este homem está andando, aqui ele está tocando a campainha. <br>
+                a. Aqui este homem está andando, aqui ele está tocando a campainha. <br>
                 E aqui o que ele está fazendo? <input name="respostas[quest_3_3e5_meses][30]" type="text" /><br><br>
 
                 b. Este menino está comendo um sanduíche. E este o que está fazendo? <input name="respostas[quest_3_3e5_meses][31]" type="text" /><br><br>
@@ -703,18 +703,18 @@
 
             <br><br><br><br>
 
-            <h4>20.Compreende e responde a questões com o pronome interrogativo<br>
+            <h4>20. Compreende e responde a questões com o pronome interrogativo<br>
                 “que”.<input name="respostas[quest_3_3e5_meses][33]" type="text" /></h4><br>
             (1 ponto = 4 acertos, gestos não são considerados) <br><br>
 
             <i>
-                a .O que voa? <input name="respostas[quest_3_3e5_meses][34]" type="text" /><br><br>
+                a . O que voa? <input name="respostas[quest_3_3e5_meses][34]" type="text" /><br><br>
 
                 b. O que nada? <input name="respostas[quest_3_3e5_meses][35]" type="text" /><br><br>
 
                 c. O que dorme? <input name="respostas[quest_3_3e5_meses][36]" type="text" /><br><br>
 
-                d .O que morde? <input name="respostas[quest_3_3e5_meses][37]" type="text" /><br><br>
+                d . O que morde? <input name="respostas[quest_3_3e5_meses][37]" type="text" /><br><br>
 
                 e. O que chora? <input name="respostas[quest_3_3e5_meses][38]" type="text" /><br><br>
 
@@ -757,7 +757,7 @@
                 responde a pergunta:</i><br><br>
 
             <i>
-                a. Se Tiago sair de casa ficará todo molhado Como está o tempo lá <br>
+                a. Se Tiago sair de casa ficará todo molhado. Como está o tempo lá <br>
                 fora? Mostre a figura. <input name="respostas[quest_3e6_3e11_meses][6]" type="text" /><br><br>
 
                 b. A boneca de Vanessa está muito suja. O que você acha que Vanessa <br>
@@ -792,7 +792,7 @@
 
             <br><br><br><br>
 
-            <h4>24.Compreende pronome pessoal.<input name="respostas[quest_3e6_3e11_meses][16]" type="text" /></h4><br>
+            <h4>24. Compreende pronome pessoal.<input name="respostas[quest_3e6_3e11_meses][16]" type="text" /></h4><br>
             (1 ponto = 2 acertos) <br><br>
 
             Material: Manual de Figuras, págs. 25 a 26.<br>
@@ -844,7 +844,7 @@
             <br><br><br><br>
 
             <h4>23. Vocabulário expressivo.<input name="respostas[quest_3e6_3e11_meses][28]" type="text" /></h4><br>
-            (1 ponto = se fala sobre a utilização adequada de dois objetos) <br><br>
+            (1 ponto = 4 acertos) <br><br>
 
             Material: Manual de Figuras, págs. 60 a 62.<br>
             <i><b>Diga o nome das figuras que eu apontar...</b></i><br><br>
@@ -909,7 +909,7 @@
 
             <br><br><br><br>
 
-            <h4>26.Compreende conceitos de tempo.<input name="respostas[quest_4_4e5_meses][5]" type="text" /></h4><br>
+            <h4>26. Compreende conceitos de tempo.<input name="respostas[quest_4_4e5_meses][5]" type="text" /></h4><br>
             (1 ponto = 2 acertos) <br><br>
 
             Material: Manual de Figuras, pág. 28.<br><br>
@@ -939,7 +939,7 @@
 
             <br><br><br><br>
 
-            <h4>28.Identifica cores.<input name="respostas[quest_4_4e5_meses][12]" type="text" /></h4><br>
+            <h4>28. Identifica cores.<input name="respostas[quest_4_4e5_meses][12]" type="text" /></h4><br>
             (1 ponto = 4 acertos) <br><br>
 
             Material: Manual de Figuras, pág. 30.<br>
@@ -1009,7 +1009,7 @@
 
                 b. shorte, saia, vestido, camisa, calça <input name="respostas[quest_4_4e5_meses][30]" type="text" /><br><br>
 
-                c. hamburguer, batata-frita, pizza, macarrão,feijão, pastel <input name="respostas[quest_4_4e5_meses][31]" type="text" /><br><br>
+                c. hamburguer, batata-frita, pizza, macarrão, feijão, pastel <input name="respostas[quest_4_4e5_meses][31]" type="text" /><br><br>
 
             </i>
 
@@ -1216,7 +1216,7 @@
 
             <br><br><br><br>
 
-            <h4>36. Compreende conceitos de seqüência de tempo.<input name="respostas[quest_5_5e11_meses][11]" type="text" /></h4><br>
+            <h4>36. Compreende conceitos de sequência de tempo.<input name="respostas[quest_5_5e11_meses][11]" type="text" /></h4><br>
             (1 ponto = 2 acertos) <br><br>
 
             Material: Manual de Figuras, pág. 44.<br>
@@ -1243,7 +1243,7 @@
 
                 <i>a. O copo dessa menina tem muito suco e o desta menina tem <input name="respostas[quest_5_5e11_meses][15]" type="text" /></i>(Pouco)<br><br>
 
-                <i>b. O prato deste menino tem pouca pipoca e o prato deste menino tem <input name="respostas[quest_5_5e11_meses][16]" type="text" /></i>(Mas, muita)<br><br>
+                <i>b. O prato deste menino tem pouca pipoca e o prato deste menino tem <input name="respostas[quest_5_5e11_meses][16]" type="text" /></i>(Mais, muita)<br><br>
 
             <br><br><br><br>
 
@@ -1277,7 +1277,7 @@
 
             <h4>36. Conta uma estória diante de gravuras em quadrinhos.<input name="respostas[quest_5_5e11_meses][23]" type="text" /></h4><br>
             (1 ponto = se a criança conta uma estória com lógica ou descreve<br>
-            as figuras seguindo a sua seqüência) <br><br>
+            as figuras seguindo a sua sequência) <br><br>
 
             Material: Manual de Figuras, Págs. 71 e 72.<br>
             <i>Diga:<b>Esta é uma estória sobre um menino, que quer ir ao jogo de futebol<br>
@@ -1311,7 +1311,7 @@
 
             <br><br><br><br>
 
-            <h4>38.Compreende conceito de velocidade.<input name="respostas[quest_6_6e11_meses][4]" type="text" /></h4><br>
+            <h4>38. Compreende conceito de velocidade.<input name="respostas[quest_6_6e11_meses][4]" type="text" /></h4><br>
             (1 ponto = 1 acerto) <br><br>
 
             Material: Manual de Figuras, pág. 45.<br>
@@ -1335,7 +1335,7 @@
             <i>
                 a. Mostre a pipa que está mais longe do menino <input name="respostas[quest_6_6e11_meses][8]" type="text" /><br><br>
 
-                    <b>Olhe as figuras destes bichinhos.</b>
+                    <b>Olhe as figuras destes bichinhos.</b><br>
 
                 b. Mostre o bichinho que está entre o gato e o cachorro <input name="respostas[quest_6_6e11_meses][9]" type="text" /><br><br>
 
@@ -1377,7 +1377,7 @@
 
             <br><br><br><br>
 
-            <h4>38.Completa analogias.<input name="respostas[quest_6_6e11_meses][18]" type="text" /></h4><br>
+            <h4>38. Completa analogias.<input name="respostas[quest_6_6e11_meses][18]" type="text" /></h4><br>
             (1 ponto = 2 acertos) <br><br>
 
             <i><b>Eu vou falar uma frase e queria que você terminasse para mim:</b></i><br><br>
