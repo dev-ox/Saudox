@@ -33,7 +33,6 @@ class Profissional extends Authenticatable {
 
     const ProfissoesQuePodemCriarPacientes = [
         self::Adm,
-        self::Recepcionista,
         self::Fonoaudiologo,
         self::TerapeutaOcupacional,
         self::Neuropsicologo,

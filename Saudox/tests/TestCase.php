@@ -234,6 +234,16 @@ abstract class TestCase extends BaseTestCase {
             'info_extras_relevante' => 'asofugasoufgsafgasçiufgasuifgasuifgasuf',
         ];
 
+        $this->evolucao_neuropsicologica = [
+            'id_paciente' => 0,
+            'id_profissional' => 0,
+            'id_evolucao_anterior' => null, //rand(1,$qtd_evolucao_psicologicas),
+            'dia_evolucao' => "2020-10-28",
+            'hora_evolucao' => '06:06',
+            'tipo_atendimento' => '9',
+            'texto' => 'asfohasofuhsaoufhasoufhasioufhsa kfukxzgfuisagfaiufas',
+        ];
+
     }
 
 }

@@ -82,6 +82,12 @@ class ProfissionalEvolucaoController extends Controller {
 
     // NEUROPSICOLOGIA
     public function verNeuropsicologia($id_paciente) {
+
+        $profissional_logado = Auth::user();
+        if(!$profissional_logado->podeCriarPaciente()) {
+            return redirect()->route('erro', ['msg_erro' => "Você não pode visualizar essa página"]);
+        }
+
         $paciente = Paciente::find($id_paciente);
         if(!$paciente){
             return redirect()->route('erro', ['msg_erro' => "Paciente " .$id_paciente. " inexistente"]);
@@ -114,6 +120,11 @@ class ProfissionalEvolucaoController extends Controller {
 
 
     public function salvarNeuropsicologia(Request $request) {
+
+        $profissional_logado = Auth::user();
+        if(!$profissional_logado->podeCriarEvolucao()) {
+            return redirect()->route('erro', ['msg_erro' => "Você não pode visualizar essa página"]);
+        }
 
         $messages = [
             'required' => 'O campo :attribute é obrigatório.',
@@ -151,6 +162,11 @@ class ProfissionalEvolucaoController extends Controller {
             return redirect()->route('erro', ['msg_erro' => "Evolução não existe"]);
         }
 
+        $profissional_logado = Auth::user();
+        if(!$profissional_logado->ehAdmin() && $evolucao->id_profissional != $profissional_logado->id) {
+            return redirect()->route('erro', ['msg_erro' => "Você não tem permissão para acessar essa página."]);
+        }
+
         $evolucao->dia_evolucao = date_format(date_create($evolucao->data_evolucao), 'Y-m-d');
         $evolucao->hora_evolucao = date_format(date_create($evolucao->data_evolucao), 'H:i');
 
@@ -178,6 +194,10 @@ class ProfissionalEvolucaoController extends Controller {
             return redirect()->route('erro', ['msg_erro' => "Evolução não existe"]);
         }
 
+        $profissional_logado = Auth::user();
+        if(!$profissional_logado->ehAdmin() || $evolucao->id_profissional != $profissional_logado->id) {
+            return redirect()->route('erro', ['msg_erro' => "Você não tem permissão para acessar essa página"]);
+        }
 
         $validator_evo_psico = Validator::make($entrada, EvolucaoPsicologica::$regras_validacao_editar, $messages);
         if ($validator_evo_psico->fails()) {

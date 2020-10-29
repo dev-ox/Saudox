@@ -25,6 +25,5 @@ $factory->define(EvolucaoPsicologica::class, function (Faker $faker) {
         'data_evolucao' => Carbon::now()->format('Y-m-d H:i:s'),
         'tipo_atendimento' => '9',
         'texto' => 'asfohasofuhsaoufhasoufhasioufhsa kfukxzgfuisagfaiufas',
-
     ];
 });
