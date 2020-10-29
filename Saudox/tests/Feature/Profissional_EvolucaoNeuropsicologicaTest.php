@@ -6,6 +6,7 @@ use Tests\TestCase;
 use App\Endereco;
 use App\Profissional;
 use App\Paciente;
+use App\EvolucaoPsicologica;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -139,5 +140,30 @@ class Profissional_EvolucaoNeuropsicologicaTest extends TestCase {
         $res = $this->post(route("profissional.evolucao.neuropsicologica.salvar", $copia_evolucao));
         $res->assertSessionHasErrors();
     }
+
+
+    /** @test **/
+    /* url: https://www.pivotaltracker.com/story/show/175306141 */
+    /* TA_01 */
+    public function profissionalPodeAcessarVisualizacaoEvolucaoNeuro() {
+        // Gera um profissional com as profissões indicadas e realiza o login
+        $criarProf_Logar = $this->criarProfELogar(
+            array(
+                Profissional::Neuropsicologo,
+            ), $this->password);
+        $prof_aux = $criarProf_Logar['profissional'];
+
+        $evolucao = factory(EvolucaoPsicologica::class)->create([
+            'id_paciente' => $this->paciente->id,
+            'id_profissional' => $prof_aux->id,
+            'texto' => "texto de teste",
+        ]);
+
+        // Verifica se a evolução
+        $resposta_ver_evo_neuro = $this->get(route("profissional.evolucao.neuropsicologica.ver", ['id_paciente' => $this->paciente->id]));
+        $resposta_ver_evo_neuro->assertSee("texto de teste");
+    }
+
+
 
 }
