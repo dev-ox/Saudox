@@ -9,7 +9,7 @@
                 <a class="bt" href={{ route('agendamento.criar') }}>Criar Agendamento</a>
             </div>
             <div class="col-md-3 text-center justify-content-center" style="display: flex;">
-                <a class="bt" href=#>Todos Agendamentos<br>(EM CONSTRUÇÃO)</a>
+                <a class="bt" href="#">Todos Agendamentos<br>(EM CONSTRUÇÃO)</a>
             </div>
             <div class="col-md-3 text-center justify-content-center" style="display: flex;">
                 <a class="bt" style="margin: 5px;" href="{{route('profissional.buscar')}}">Buscar Paciente ou Profissional</a>

@@ -121,7 +121,7 @@ class AgendamentosController extends Controller {
 
         $prof_logado = Profissional::find(Auth::id());
         if(!$prof_logado->podeCriarAgendamento() ||
-            $agendamento->id_profissional != $prof_logado->id()) {
+            $agendamento->id_profissional != $prof_logado->id {
 
             return view('erro', ['msg_erro' => "Você não tem permissão para realizar essa ação!"]);
         }
